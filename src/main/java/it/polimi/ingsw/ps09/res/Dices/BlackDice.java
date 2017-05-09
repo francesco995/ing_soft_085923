@@ -5,16 +5,6 @@ import java.util.Random;
 /**
  * Created by franc on 09/05/2017.
  */
-public class BlackDice {
-    private int mValue;
+public class BlackDice extends Dice{
 
-
-    public void roll(){
-        Random mRandomGenerator = null;
-        mValue = mRandomGenerator.nextInt((6 - 1) + 1) + 1;
-    }
-
-    public int getValue() {
-        return mValue;
-    }
 }
