@@ -5,7 +5,7 @@ package it.polimi.ingsw.ps09.res.Resources;
  */
 public class Resource {
 
-    //VALUES
+    //VARIABLES
     private int mValue;
 
     //CONSTRUCTORS

@@ -5,7 +5,7 @@ package it.polimi.ingsw.ps09.res.UserPoints;
  */
 public class Points {
 
-    //VALUES
+    //VARIABLES
     private int mPoints;
 
     //CONSTRUCTORS

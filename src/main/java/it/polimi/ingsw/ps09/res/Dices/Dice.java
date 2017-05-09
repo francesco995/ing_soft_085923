@@ -7,7 +7,7 @@ import java.util.Random;
  */
 public class Dice {
 
-    //VALUES
+    //VARIABLES
     private int mValue;
 
     //GETTER

@@ -12,7 +12,7 @@ public class PersonalBoard {
     }
 
     //TODO: FraG Add PersonalBoardCards
-
+    PersonalBoardCards mPersonalBoardCards = new PersonalBoardCards();
 
 
 

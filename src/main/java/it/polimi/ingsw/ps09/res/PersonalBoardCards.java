@@ -12,7 +12,7 @@ import java.util.List;
  */
 public class PersonalBoardCards {
 
-
+    //VARIABLES
     // A list for each type of card
     private List<Building> mBoardBuildings = new ArrayList<>();
     private List<Character> mBoardCharacter = new ArrayList<>();
