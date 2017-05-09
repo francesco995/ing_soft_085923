@@ -10,11 +10,11 @@ public class Servant {
         return mValue;
     }
 
-    Servant(){
+    public Servant(){
         new Servant(0);
     }
 
-    Servant(int initialServants){
+    public Servant(int initialServants){
         mValue = initialServants;
     }
 }

@@ -6,11 +6,11 @@ package it.polimi.ingsw.ps09.res.Resources;
 public class Wood {
     private int mValue = 0;
 
-    Wood(){
+    public Wood(){
         new Wood(0);
     }
 
-    Wood(int initialWood){
+    public Wood(int initialWood){
         mValue = initialWood;
     }
 

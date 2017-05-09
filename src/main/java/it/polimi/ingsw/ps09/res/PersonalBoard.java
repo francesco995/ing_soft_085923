@@ -1,5 +1,4 @@
 package it.polimi.ingsw.ps09.res;
-import it.polimi.ingsw.ps09.res.PersonalBoardCards;
 
 
 /**
@@ -12,9 +11,14 @@ public class PersonalBoard {
         ONE, TWO
     }
 
-    private PersonalBoardCards mBoardCards = new PersonalBoardCards();
+    //TODO: FraG Add PersonalBoardCards
 
 
 
+
+
+    public PersonalBoard(){
+
+    }
 
 }

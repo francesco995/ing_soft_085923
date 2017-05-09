@@ -19,7 +19,7 @@ public class PersonalBoardCards {
     private List<Territory> mBoardTerritory = new ArrayList<>();
     private List<Venture> mBoardVenture = new ArrayList<>();
 
-    PersonalBoardCards(){
+    public PersonalBoardCards(){
 
     }
 
