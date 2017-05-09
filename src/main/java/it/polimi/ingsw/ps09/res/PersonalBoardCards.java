@@ -35,6 +35,6 @@ public class PersonalBoardCards {
         return mBoardVenture;
     }
 
-    //TODO: Add cards to the array lists
+    //TODO (FraG): Add cards to the array lists
 
 }
