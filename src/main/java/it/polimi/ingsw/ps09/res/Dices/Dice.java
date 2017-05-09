@@ -10,6 +10,11 @@ public class Dice {
     //VARIABLES
     private int mValue;
 
+    //CONSTRUCTOR
+    public Dice(){
+
+    }
+
     //GETTER
     public int getValue() {
         return mValue;

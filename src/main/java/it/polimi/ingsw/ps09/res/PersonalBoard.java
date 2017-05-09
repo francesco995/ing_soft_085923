@@ -7,15 +7,14 @@ package it.polimi.ingsw.ps09.res;
 
 public class PersonalBoard {
 
+    //VARIABLES
     private enum mSelectedBonusTile{
         ONE, TWO
     }
 
-    //TODO: FraG Add PersonalBoardCards
     PersonalBoardCards mPersonalBoardCards = new PersonalBoardCards();
 
-
-
+    //CONSTRUCTORS
 
     public PersonalBoard(){
 
