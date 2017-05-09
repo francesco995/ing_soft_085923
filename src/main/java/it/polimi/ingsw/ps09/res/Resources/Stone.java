@@ -10,11 +10,11 @@ public class Stone {
         return mValue;
     }
 
-    public Stone(){
+    Stone(){
         new Stone(0);
     }
 
-    public Stone(int initialStone){
+    Stone(int initialStone){
         mValue = initialStone;
     }
 

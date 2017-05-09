@@ -6,16 +6,17 @@ package it.polimi.ingsw.ps09.res.Resources;
 public class Wood {
     private int mValue = 0;
 
+    Wood(){
+        new Wood(0);
+    }
+
+    Wood(int initialWood){
+        mValue = initialWood;
+    }
+
     public int getValue() {
         return mValue;
     }
 
-    public Wood(){
-        new Wood(0);
-    }
-
-    public Wood(int initialWood){
-        mValue = initialWood;
-    }
 }
 

@@ -6,16 +6,17 @@ package it.polimi.ingsw.ps09.res.Resources;
 public class Coins {
     private int mValue = 0;
 
+    Coins(){
+        mValue = 0;
+    }
+
+    Coins(int initialCoins){
+        mValue = initialCoins;
+    }
+
     public int getValue() {
         return mValue;
     }
 
-    public Coins(){
-        mValue = 0;
-    }
-
-    public Coins(int initialCoins){
-        mValue = initialCoins;
-    }
 
 }
