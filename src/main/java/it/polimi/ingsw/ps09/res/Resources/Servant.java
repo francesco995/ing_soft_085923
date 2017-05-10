@@ -5,4 +5,15 @@ package it.polimi.ingsw.ps09.res.Resources;
  */
 public class Servant extends Resource{
 
+    //CONSTRUCTORS
+
+    public Servant(){
+        super(0);
+    }
+
+    public Servant(int initialValue){
+        super(initialValue);
+    }
+
+
 }

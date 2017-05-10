@@ -5,4 +5,15 @@ package it.polimi.ingsw.ps09.res.Resources;
  */
 public class Stone extends Resource{
 
+    //CONSTRUCTORS
+
+    public Stone(){
+        super(0);
+    }
+
+    public Stone(int initialValue){
+        super(initialValue);
+    }
+
+
 }

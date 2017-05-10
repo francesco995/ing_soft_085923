@@ -1,4 +1,4 @@
-package it.polimi.ingsw.ps09.res.UserPoints;
+package it.polimi.ingsw.ps09.res.Points;
 
 /**
  * Created by franc on 09/05/2017.
@@ -30,5 +30,6 @@ public class Points {
     public void addPoints(int points) {
         mPoints = mPoints + points;
     }
+
 
 }
