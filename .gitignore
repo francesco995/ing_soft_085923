@@ -54,3 +54,6 @@ crashlytics-build.properties
 fabric.properties
 /.idea/kotlinc.xml
 /.idea/inspectionProfiles/Project_Default.xml
+/Push.bat
+.idea/inspectionProfiles/
+Push.bat
