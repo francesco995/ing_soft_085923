@@ -15,7 +15,8 @@ public class Player {
     //VARIABLES
 
     private String mUserName;
-    private Colors mUserColor;
+    //TODO: try to switch user color back to enum
+    private String mUserColor;
     private PersonalBoard mPersonalBoard;
     private UserPoints mUserPoints;
 
@@ -23,18 +24,18 @@ public class Player {
 
     //CONSTRUCTOR
 
-    public Player(String userName, Colors userColor){
+    public Player(String userName, String userColor){
         new Player(userName, userColor, new PersonalBoard(), new UserPoints());
     }
 
-    public Player(String userName, Colors userColor, PersonalBoard personalBoard, UserPoints userPoints){
+    public Player(String userName, String userColor, PersonalBoard personalBoard, UserPoints userPoints){
         mUserName = userName;
         mUserColor = userColor;
         mPersonalBoard = personalBoard;
         mUserPoints = userPoints;
 
         //log created player
-        mLogger.log(INFO, "Created player -> " + mUserName + "with color -> " + userColor.getColor());
+        mLogger.log(INFO, "Created player -> " + mUserName + "with color -> " + mUserColor);
     }
 
     //GETTERS
@@ -45,7 +46,7 @@ public class Player {
         return mUserName;
     }
 
-    public Colors getUserColor() {
+    public String getUserColor() {
         return mUserColor;
     }
 
