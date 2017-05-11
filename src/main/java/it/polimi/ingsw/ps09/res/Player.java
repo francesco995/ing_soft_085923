@@ -3,6 +3,9 @@ package it.polimi.ingsw.ps09.res;
 import it.polimi.ingsw.ps09.res.Points.FaithPoints;
 import it.polimi.ingsw.ps09.res.Points.MilitaryPoints;
 import it.polimi.ingsw.ps09.res.Points.VictoryPoints;
+import java.util.logging.Logger;
+
+import static java.util.logging.Level.INFO;
 
 /**
  * Created by franc on 10/05/2017.
@@ -12,21 +15,26 @@ public class Player {
     //VARIABLES
 
     private String mUserName;
-    private UserColors mUserColor;
+    private Colors mUserColor;
     private PersonalBoard mPersonalBoard;
     private UserPoints mUserPoints;
 
+    private Logger mLogger;
+
     //CONSTRUCTOR
 
-    public Player(String userName, UserColors userColor){
+    public Player(String userName, Colors userColor){
         new Player(userName, userColor, new PersonalBoard(), new UserPoints());
     }
 
-    public Player(String userName, UserColors userColor, PersonalBoard personalBoard, UserPoints userPoints){
+    public Player(String userName, Colors userColor, PersonalBoard personalBoard, UserPoints userPoints){
         mUserName = userName;
         mUserColor = userColor;
         mPersonalBoard = personalBoard;
         mUserPoints = userPoints;
+
+        //log created player
+        mLogger.log(INFO, "Created player -> " + mUserName + "with color -> " + userColor.getColor());
     }
 
     //GETTERS
@@ -37,7 +45,7 @@ public class Player {
         return mUserName;
     }
 
-    public UserColors getUserColor() {
+    public Colors getUserColor() {
         return mUserColor;
     }
 
@@ -48,6 +56,7 @@ public class Player {
     public UserPoints getUserPoints() {
         return mUserPoints;
     }
+
 
     //User points as point objects
     public FaithPoints getFaithPoints() {
@@ -61,6 +70,7 @@ public class Player {
     public VictoryPoints getVictoryPoints() {
         return mUserPoints.getVictoryPoints();
     }
+
 
     //User points as int
 
