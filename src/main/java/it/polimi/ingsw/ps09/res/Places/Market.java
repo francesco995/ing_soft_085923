@@ -1,6 +1,6 @@
 package it.polimi.ingsw.ps09.res.Places;
 
-import it.polimi.ingsw.ps09.res.Resources.Places;
+import it.polimi.ingsw.ps09.res.Places.Place;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * Created by ale on 09/05/2017.
  */
-public class Market extends Places {
+public class Market extends Place {
 
     private Object mPawn;
     private Object mBonus;
