@@ -4,9 +4,9 @@ import it.polimi.ingsw.ps09.res.Resources.Coins;
 import it.polimi.ingsw.ps09.res.Resources.Servant;
 import it.polimi.ingsw.ps09.res.Resources.Stone;
 import it.polimi.ingsw.ps09.res.Resources.Wood;
-import it.polimi.ingsw.ps09.res.UserPoints.FaithPoints;
-import it.polimi.ingsw.ps09.res.UserPoints.MilitaryPoints;
-import it.polimi.ingsw.ps09.res.UserPoints.VictoryPoints;
+import it.polimi.ingsw.ps09.res.Points.FaithPoints;
+import it.polimi.ingsw.ps09.res.Points.MilitaryPoints;
+import it.polimi.ingsw.ps09.res.Points.VictoryPoints;
 
 
 /**

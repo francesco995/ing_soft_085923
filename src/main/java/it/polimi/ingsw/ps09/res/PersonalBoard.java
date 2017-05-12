@@ -4,11 +4,15 @@ package it.polimi.ingsw.ps09.res;
 import it.polimi.ingsw.ps09.res.Cards.Building;
 import it.polimi.ingsw.ps09.res.Cards.Territory;
 import it.polimi.ingsw.ps09.res.Cards.Venture;
+import it.polimi.ingsw.ps09.res.Resources.Coins;
+import it.polimi.ingsw.ps09.res.Resources.Servant;
+import it.polimi.ingsw.ps09.res.Resources.Stone;
+import it.polimi.ingsw.ps09.res.Resources.Wood;
 
 import java.util.List;
 
 /**
- * Created by franc on 09/05/2017.
+ * Created by francGianni on 09/05/2017.
  */
 
 public class PersonalBoard {
@@ -20,18 +24,21 @@ public class PersonalBoard {
     }
     mBonusTileSides mSelectedBonusTile;*/
 
-    PersonalBoardCards mPersonalBoardCards;
+    private PersonalBoardCards mPersonalBoardCards;
+    private UserResources mUserResources;
+
 
     //CONSTRUCTORS
 
     //Create an empty PersonalBoard
     public PersonalBoard(){
-        new PersonalBoard(new PersonalBoardCards());
+        this(new PersonalBoardCards(), new UserResources());
     }
 
     //Create a populated PersonalBoard
-    public PersonalBoard(PersonalBoardCards personalBoardCards){
+    public PersonalBoard(PersonalBoardCards personalBoardCards, UserResources userResources){
         mPersonalBoardCards = personalBoardCards;
+        mUserResources = userResources;
     }
 
 
@@ -40,6 +47,11 @@ public class PersonalBoard {
     //Get ALL BOARD CARDS
     public PersonalBoardCards getPersonalBoardCards() {
         return mPersonalBoardCards;
+    }
+
+    //Get UserResources
+    public UserResources getUserResources(){
+        return mUserResources;
     }
 
     //Get Cards list for specific type
@@ -107,5 +119,41 @@ public class PersonalBoard {
         mPersonalBoardCards.addVenture(venture);
     }
 
+
+    //GETTERS FOR USER RESOURCES
+
+    public Coins getCoins(){
+        return mUserResources.getCoins();
+    }
+
+    public Servant getServant(){
+        return mUserResources.getServant();
+    }
+
+    public Stone getStone(){
+        return mUserResources.getStone();
+    }
+
+    public Wood getWood(){
+        return mUserResources.getWood();
+    }
+
+    //ADD A RESOURCE
+
+    public void addCoins(Coins addCoins){
+        mUserResources.addCoins(addCoins);
+    }
+
+    public void addServant(Servant addServant){
+        mUserResources.addServant(addServant);
+    }
+
+    public void addStone(Stone addStone){
+        mUserResources.addStone(addStone);
+    }
+
+    public void addWood(Wood addWood){
+        mUserResources.addWood(addWood);
+    }
 
 }

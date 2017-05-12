@@ -1,7 +1,7 @@
 package it.polimi.ingsw.ps09.res.Points;
 
 /**
- * Created by franc on 09/05/2017.
+ * Created by francGianni on 09/05/2017.
  */
 public class FaithPoints extends Points{
 
@@ -13,6 +13,6 @@ public class FaithPoints extends Points{
 
     //Create with 0 value
     public FaithPoints(){
-        new FaithPoints(0);
+        this(0);
     }
 }

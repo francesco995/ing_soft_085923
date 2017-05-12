@@ -1,7 +1,7 @@
 package it.polimi.ingsw.ps09.res.Resources;
 
 /**
- * Created by franc on 09/05/2017.
+ * Created by francGianni on 09/05/2017.
  */
 public class Resource {
 
@@ -10,7 +10,7 @@ public class Resource {
 
     //CONSTRUCTORS
     public Resource(){
-        new Resource(0);
+        this(0);
     }
 
     public Resource(int initialValue){
@@ -22,14 +22,19 @@ public class Resource {
         return mValue;
     }
 
+    public String toString(){
+        return String.valueOf(mValue);
+    }
+
     //SETTERS
     public void setValue(int newValue){
         mValue = newValue;
     }
 
-    public void addValue(int addValue){
-        mValue = mValue + addValue;
+    public void addValue(Resource addValue){
+        mValue = mValue + addValue.getValue();
     }
+
 
 
 }

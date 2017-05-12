@@ -5,7 +5,7 @@ import it.polimi.ingsw.ps09.res.Points.MilitaryPoints;
 import it.polimi.ingsw.ps09.res.Points.VictoryPoints;
 
 /**
- * Created by franc on 10/05/2017.
+ * Created by francGianni on 10/05/2017.
  */
 public class UserPoints {
 
@@ -18,6 +18,7 @@ public class UserPoints {
 
     //Create empty UserPoints
     public UserPoints(){
+        this(0, 0, 0);
     }
 
     //Create UserPoints from Points items
@@ -28,8 +29,8 @@ public class UserPoints {
     }
 
     //Create UserPoints from int Values
-    public UserPoints(int faithPoints, int militaryPoints, int victoryPoints){
-        new UserPoints(new FaithPoints(faithPoints), new MilitaryPoints(militaryPoints), new VictoryPoints(victoryPoints));
+    public UserPoints(int initialFaithPoints, int initialMilitaryPoints, int initialVictoryPoints){
+        this(new FaithPoints(initialFaithPoints), new MilitaryPoints(initialMilitaryPoints), new VictoryPoints(initialVictoryPoints));
     }
 
 

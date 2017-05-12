@@ -1,7 +1,7 @@
 package it.polimi.ingsw.ps09.res.Points;
 
 /**
- * Created by franc on 09/05/2017.
+ * Created by francGianni on 09/05/2017.
  */
 public class VictoryPoints extends Points{
 
@@ -13,7 +13,7 @@ public class VictoryPoints extends Points{
 
     //Create with 0 value
     public VictoryPoints(){
-        new VictoryPoints(0);
+        this(0);
     }
 
 }

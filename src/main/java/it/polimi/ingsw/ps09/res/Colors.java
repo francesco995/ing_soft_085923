@@ -1,14 +1,14 @@
 package it.polimi.ingsw.ps09.res;
 
-/**
- * Created by franc on 10/05/2017.
- */
 public enum Colors {
     BLUE("blue"),
     RED("red"),
     GREEN("green"),
     YELLOW("yellow");
 
+    /**
+     * Created by francGianni on 10/05/2017.
+     */
     private String mColor;
 
     Colors(String color){

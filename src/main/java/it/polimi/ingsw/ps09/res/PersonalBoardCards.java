@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by franc on 09/05/2017.
+ * Created by francGianni on 09/05/2017.
  */
 public class PersonalBoardCards {
 

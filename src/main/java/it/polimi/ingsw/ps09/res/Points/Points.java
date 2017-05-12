@@ -1,7 +1,7 @@
 package it.polimi.ingsw.ps09.res.Points;
 
 /**
- * Created by franc on 09/05/2017.
+ * Created by francGianni on 09/05/2017.
  */
 public class Points {
 
@@ -10,7 +10,7 @@ public class Points {
 
     //CONSTRUCTORS
     public Points(){
-        new Points(0);
+        this(0);
     }
 
     public Points(int initialPoints) {
@@ -20,6 +20,11 @@ public class Points {
     //GETTERS
     public int getPoints() {
         return mPoints;
+    }
+
+    //Override toString method to get points value
+    public String toString(){
+        return String.valueOf(mPoints);
     }
 
     //SETTERS
