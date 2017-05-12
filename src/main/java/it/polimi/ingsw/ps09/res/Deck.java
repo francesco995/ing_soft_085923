@@ -17,20 +17,20 @@ import static java.lang.Integer.parseInt;
 public class Deck {
     //ALL BUILDINGS fix camel
     List<Card> mBuildingTierOne = new ArrayList<Card>();
-    List<Card> muildingTierTwo = new ArrayList<Card>();
-    List<Card> mbuildingTierThree = new ArrayList<Card>();
+    List<Card> mBuildingTierTwo = new ArrayList<Card>();
+    List<Card> mBuildingTierThree = new ArrayList<Card>();
     //ALL CHARACTERS
-    List<Card> mcharacterTierOne = new ArrayList<Card>();
-    List<Card> mcharacterTierTwo = new ArrayList<Card>();
-    List<Card> mcharacterTierThree = new ArrayList<Card>();
+    List<Card> mCharacterTierOne = new ArrayList<Card>();
+    List<Card> mCharacterTierTwo = new ArrayList<Card>();
+    List<Card> mCharacterTierThree = new ArrayList<Card>();
     //ALL TERRITORY
-    List<Card> mterritoryTierOne = new ArrayList<Card>();
-    List<Card> mterritoryTieTwo = new ArrayList<Card>();
-    List<Card> mterritoryTieThree = new ArrayList<Card>();
+    List<Card> mTerritoryTierOne = new ArrayList<Card>();
+    List<Card> mTerritoryTieTwo = new ArrayList<Card>();
+    List<Card> mTerritoryTieThree = new ArrayList<Card>();
     //ALL VENTURES
-    List<Card> mventureTierOne = new ArrayList<Card>();
-    List<Card> mventureTierTwo = new ArrayList<Card>();
-    List<Card> mventureTierThree = new ArrayList<Card>();
+    List<Card> mVentureTierOne = new ArrayList<Card>();
+    List<Card> mVentureTierTwo = new ArrayList<Card>();
+    List<Card> mVentureTierThree = new ArrayList<Card>();
 
 
 

@@ -54,6 +54,10 @@ crashlytics-build.properties
 fabric.properties
 /.idea/kotlinc.xml
 /.idea/inspectionProfiles/Project_Default.xml
+<<<<<<< Updated upstream
 /Push.bat
 .idea/inspectionProfiles/
 Push.bat
+=======
+.idea/ing_soft_085923.iml
+>>>>>>> Stashed changes
