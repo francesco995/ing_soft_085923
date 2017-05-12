@@ -1,5 +1,7 @@
 package it.polimi.ingsw.ps09.res.Towers;
 
+import it.polimi.ingsw.ps09.res.Towers.Floor.Floor;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,38 +9,53 @@ import java.util.List;
 /**
  * Created by ale on 10/05/2017.
  */
+
+
 public class Tower {
 
-    public List<Tower> CreateTowers(){
+    private List<Floor> mFloors = new ArrayList<Floor>();
+    private int cont = 0;
+    private String mColor;
 
-        //Create List of 4 towers
-        List<Tower> towerList = new ArrayList<Tower>();
-
-        towerList.add(0, new TerritoriesTower());
-        towerList.add(1, new CharactersTower());
-        towerList.add(2, new BuildingsTower());
-        towerList.add(3, new VenturesTower());
-
-        //Call CreateFloors for each tower
-        towerList.get(0).CreateFloors();
-        towerList.get(1).CreateFloors();
-        towerList.get(2).CreateFloors();
-        towerList.get(3).CreateFloors();
-
-        return towerList;
+    public Tower(String color) {
+        mColor = color;
     }
 
-    private List<Floor> CreateFloors(){
+    public void setFloors(List<Floor> floors) {
+        mFloors = floors;
+    }
 
-        //Create a List of 4 floors
-        List<Floor> FloorList = new ArrayList<Floor>();
+    //Return FloorList
+    public List<Floor> getFloors() {
+        return mFloors;
+    }
 
-        FloorList.add(0, new Floor());
-        FloorList.add(1, new Floor());
-        FloorList.add(2, new Floor());
-        FloorList.add(3, new Floor());
+    //Return tower's color
+    public String getColor() {
+        return mColor;
+    }
 
-        return FloorList;
+    //Check if a Pawn is on the tower
+    public boolean hasPawn(){
+
+        while (mFloors.get(cont) !=null){
+
+            if(mFloors.get(cont).getPawn() != null)
+                return true;
+                cont++;
+        }
+
+        return false;
+    }
+
+    //Check if tower's floor is free
+    public boolean isFree(int floor){
+
+        if(mFloors.get(floor).getPawn() == null)
+            return true;
+
+        else
+            return false;
 
     }
 
