@@ -1,17 +1,30 @@
 package it.polimi.ingsw.ps09.res.Dices;
 
-/**
 
- * Created by francLorenti on 09/05/2017.
- */
 public class Dice {
 
     //VARIABLES
     private int mValue;
+    private String mColor;
 
-    //GETTER
+    //GETTER/SETTER/CONSTRUCTOR
+
+
+    public Dice(int value, String color) {
+        mValue = value;
+        mColor = color;
+    }
+
     public int getValue() {
         return mValue;
+    }
+
+    public String getColor() {
+        return mColor;
+    }
+
+    public void setValue(int value) {
+        mValue = value;
     }
 
     //METHODS
