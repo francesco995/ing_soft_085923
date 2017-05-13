@@ -13,8 +13,23 @@ public class Council extends Place {
 
     //ArrayList of FamilyMember to know the order player for the next game
     private List<FamilyMember> mCouncilOrderList = new ArrayList<FamilyMember>();
-    private List<String> Queue = new ArrayList<String>();
-    private int cont;
 
-    //TODO: Ale crea meotodo ritorna lista ordine
+    public Council() {
+    }
+
+    //Add a FamilyMember into Council queue
+    public void addFamilyMember(FamilyMember Pawn){
+        mCouncilOrderList.add(Pawn);
+    }
+
+    //Get queue in the Council
+    public List getList(){
+        return mCouncilOrderList;
+    }
+
+    //Delete all the queue
+    public void clearAll(){
+        mCouncilOrderList.clear();
+    }
+
 }

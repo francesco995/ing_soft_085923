@@ -1,6 +1,6 @@
-package it.polimi.ingsw.ps09.res.Towers;
+package it.polimi.ingsw.ps09.res.Places.Towers;
 
-import it.polimi.ingsw.ps09.res.Towers.Floor.*;
+import it.polimi.ingsw.ps09.res.Places.Towers.Floor.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,27 +16,27 @@ import java.util.logging.Logger;
 public class CreateTower {
 
     private static final Logger LOGGER = Logger.getLogger(CreateTower.class.getName());
+    private List<Tower> mTowerList = new ArrayList<>();
 
 
     public List<Tower> CreateTower(){
 
-        List<Tower> TowerList = new ArrayList<>();
-
         //Create all towers
-        TowerList.add(new TerritoriesTower());
-        TowerList.add(new CharactersTower());
-        TowerList.add(new BuildingsTower());
-        TowerList.add(new VenturesTower());
+        mTowerList.add(new TerritoriesTower());
+        mTowerList.add(new CharactersTower());
+        mTowerList.add(new BuildingsTower());
+        mTowerList.add(new VenturesTower());
 
         //Create a List of Floor fore each tower
-        TowerList.get(0).setFloors(CreateFloors());
-        TowerList.get(1).setFloors(CreateFloors());
-        TowerList.get(2).setFloors(CreateFloors());
-        TowerList.get(3).setFloors(CreateFloors());
+        mTowerList.get(0).setFloors(CreateFloors());
+        mTowerList.get(1).setFloors(CreateFloors());
+        mTowerList.get(2).setFloors(CreateFloors());
+        mTowerList.get(3).setFloors(CreateFloors());
 
-        return TowerList;
+        return mTowerList;
 
     }
+
 
     private List<Floor> CreateFloors(){
 

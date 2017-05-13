@@ -1,6 +1,6 @@
-package it.polimi.ingsw.ps09.res.Towers;
+package it.polimi.ingsw.ps09.res.Places.Towers;
 
-import it.polimi.ingsw.ps09.res.Towers.Floor.Floor;
+import it.polimi.ingsw.ps09.res.Places.Towers.Floor.Floor;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,7 +9,6 @@ import java.util.List;
 /**
  * Created by ale on 10/05/2017.
  */
-
 
 public class Tower {
 
@@ -58,5 +57,8 @@ public class Tower {
             return false;
 
     }
+
+    //TODO: Ale waiting FraL for FamilyMember ID for comparison for
+
 
 }
