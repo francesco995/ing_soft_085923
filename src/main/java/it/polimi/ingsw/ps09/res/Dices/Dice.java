@@ -9,7 +9,6 @@ public class Dice {
 
     //GETTER/SETTER/CONSTRUCTOR
 
-
     public Dice(int value, String color) {
         mValue = value;
         mColor = color;

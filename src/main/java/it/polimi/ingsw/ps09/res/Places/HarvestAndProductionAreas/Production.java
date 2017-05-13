@@ -1,4 +1,4 @@
-package it.polimi.ingsw.ps09.res.Places;
+package it.polimi.ingsw.ps09.res.Places.HarvestAndProductionAreas;
 
 import it.polimi.ingsw.ps09.res.Places.Place;
 
