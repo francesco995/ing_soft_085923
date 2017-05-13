@@ -18,8 +18,7 @@ public class CreateTower {
     private static final Logger LOGGER = Logger.getLogger(CreateTower.class.getName());
     private List<Tower> mTowerList = new ArrayList<>();
 
-
-    public List<Tower> CreateTower(){
+    public List<Tower> CreateTower () {
 
         //Create all towers
         mTowerList.add(new TerritoriesTower());
@@ -50,6 +49,10 @@ public class CreateTower {
 
         return FloorList;
 
+    }
+
+    public List<Tower> getTowerList(){
+        return mTowerList;
     }
 
 }

@@ -12,7 +12,7 @@ public class CreateMarket {
     private  List<Market> mMarketSpaces = new ArrayList<Market>();
 
     //Initialize all Market Spaces
-    public List<Market> initialize (){
+    public List<Market> CreateMarket (){
 
         //Add all Market Spaces to the list
         mMarketSpaces.add(0, new MarketSpace1());
@@ -26,6 +26,10 @@ public class CreateMarket {
         //Return a List of market spaces
         return mMarketSpaces;
 
+    }
+
+    public List<Market> getMarketList(){
+        return mMarketSpaces;
     }
 
     //Clear MarketSpaces for a new round

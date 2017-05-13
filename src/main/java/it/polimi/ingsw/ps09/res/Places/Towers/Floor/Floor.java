@@ -42,4 +42,12 @@ public class Floor {
         return mCard;
     }
 
+    public boolean isAvailable(){
+        if(mPawn==null)
+            return true;
+
+        else
+            return false;
+    }
+
 }
