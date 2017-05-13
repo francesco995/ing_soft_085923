@@ -32,7 +32,11 @@ public class PersonalBoard {
 
     //Create an empty PersonalBoard
     public PersonalBoard(){
-        this(new PersonalBoardCards(), new UserResources());
+        this(0);
+    }
+
+    public PersonalBoard(int initialCoins){
+        this(new PersonalBoardCards(), new UserResources(initialCoins));
     }
 
     //Create a populated PersonalBoard

@@ -28,7 +28,11 @@ public class UserResources {
     }
 
     public UserResources(){
-        this(0, 3, 2, 2);
+        this(0);
+    }
+
+    public UserResources(int initialCoins){
+        this(initialCoins, 3, 2, 2);
     }
 
     public UserResources(int initialCoins, int initialServant, int initialStone, int initialWood){

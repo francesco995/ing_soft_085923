@@ -30,7 +30,9 @@ public class UserPoints {
 
     //Create UserPoints from int Values
     public UserPoints(int initialFaithPoints, int initialMilitaryPoints, int initialVictoryPoints){
-        this(new FaithPoints(initialFaithPoints), new MilitaryPoints(initialMilitaryPoints), new VictoryPoints(initialVictoryPoints));
+        this(   new FaithPoints(initialFaithPoints),
+                new MilitaryPoints(initialMilitaryPoints),
+                new VictoryPoints(initialVictoryPoints));
     }
 
 

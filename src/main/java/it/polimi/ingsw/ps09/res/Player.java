@@ -17,13 +17,18 @@ import static java.util.logging.Level.INFO;
  */
 public class Player {
 
+    public static int mUserId;
+
     //VARIABLES
 
     private String mUserName;
-    //TODO: try to switch user color back to enum
     private String mUserColor;
+
+    //GAME OBJECTS
     private PersonalBoard mPersonalBoard;
     private UserPoints mUserPoints;
+
+
 
     //LOGGER
     private static final Logger mLogger = Logger.getLogger( Player.class.getName() );
@@ -31,23 +36,30 @@ public class Player {
 
     //CONSTRUCTOR
 
-    public Player(String userName, String userColor){
-        this(userName, userColor, new PersonalBoard(), new UserPoints());
+    public Player(String userName, String userColor, int userId, int initialCoins){
+        this(userName, userColor, new PersonalBoard(initialCoins),
+                new UserPoints(), userId);
     }
 
-    public Player(String userName, String userColor, PersonalBoard personalBoard, UserPoints userPoints){
+    public Player(String userName, String userColor, PersonalBoard personalBoard,
+                  UserPoints userPoints, int userId){
         mUserName = userName;
         mUserColor = userColor;
         mPersonalBoard = personalBoard;
         mUserPoints = userPoints;
+        mUserId = userId;
 
         //log created player
-        //mLogger.log(INFO, "Created player -> " + mUserName + "with color -> " + mUserColor);
+        mLogger.log(INFO, "Created player -> " + mUserName +
+                                " with Id: " + mUserId +
+                                " with color -> " + mUserColor +
+                                " with " + mPersonalBoard.getCoins().getValue() + " initial Coins");
     }
 
     //GETTERS
 
     //User Data
+
 
     public String getUserName() {
         return mUserName;
