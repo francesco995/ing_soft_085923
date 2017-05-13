@@ -1,4 +1,4 @@
-package it.polimi.ingsw.ps09.res.Cards;
+package it.polimi.ingsw.ps09.res.DevelopmentCards;
 
 import it.polimi.ingsw.ps09.res.Resources.Coins;
 import it.polimi.ingsw.ps09.res.Resources.Servant;
@@ -12,7 +12,7 @@ import it.polimi.ingsw.ps09.res.Points.VictoryPoints;
 /**
  * Created by franc on 10/05/2017.
  */
-public class Card {
+public class DevelopmentCard {
 
     //VARIABLES COMMON TO ALL
     private String mCardName;
@@ -22,7 +22,7 @@ public class Card {
 
 
     //COMMONVAR CONSTRUCTOR
-    public Card(String cardName, int period) {
+    public DevelopmentCard(String cardName, int period) {
         mCardName = cardName;
         mPeriod = period;
     }

@@ -1,8 +1,5 @@
 package it.polimi.ingsw.ps09.res.Points;
 
-/**
- * Created by francGianni on 09/05/2017.
- */
 public class MilitaryPoints extends Points{
 
     //CONSTRUCTORS

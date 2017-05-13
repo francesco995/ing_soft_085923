@@ -1,8 +1,8 @@
 package it.polimi.ingsw.ps09.res;
 
-import it.polimi.ingsw.ps09.res.Cards.Building;
-import it.polimi.ingsw.ps09.res.Cards.Territory;
-import it.polimi.ingsw.ps09.res.Cards.Venture;
+import it.polimi.ingsw.ps09.res.DevelopmentCards.Building;
+import it.polimi.ingsw.ps09.res.DevelopmentCards.Territory;
+import it.polimi.ingsw.ps09.res.DevelopmentCards.Venture;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -63,7 +63,7 @@ public class PersonalBoardCards {
         mBoardVentures = boardVentures;
     }
 
-    //Add Cards to lists
+    //Add DevelopmentCards to lists
 
     //Add a BUILDING
     public void addBuilding(Building building){
