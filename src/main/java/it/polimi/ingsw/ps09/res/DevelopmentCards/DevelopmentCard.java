@@ -21,7 +21,7 @@ public class Card {
     private Gains mGains;
 
 
-    //COMMONVAR CONSTRUCTOR
+    //COMMON VAR CONSTRUCTOR
     public Card(String cardName, int period) {
         mCardName = cardName;
         mPeriod = period;

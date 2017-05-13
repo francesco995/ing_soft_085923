@@ -1,9 +1,9 @@
 package it.polimi.ingsw.ps09.res;
 
 
-import it.polimi.ingsw.ps09.res.Cards.Building;
-import it.polimi.ingsw.ps09.res.Cards.Territory;
-import it.polimi.ingsw.ps09.res.Cards.Venture;
+import it.polimi.ingsw.ps09.res.DevelopmentCards.Building;
+import it.polimi.ingsw.ps09.res.DevelopmentCards.Territory;
+import it.polimi.ingsw.ps09.res.DevelopmentCards.Venture;
 import it.polimi.ingsw.ps09.res.Resources.Coins;
 import it.polimi.ingsw.ps09.res.Resources.Servant;
 import it.polimi.ingsw.ps09.res.Resources.Stone;
@@ -58,7 +58,7 @@ public class PersonalBoard {
         return mUserResources;
     }
 
-    //Get Cards list for specific type
+    //Get DevelopmentCards list for specific type
 
     //Get BOARD BUILDINGS
     public List<Building> getBoardBuildings() {
