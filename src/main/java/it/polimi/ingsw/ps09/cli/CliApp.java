@@ -7,7 +7,6 @@ import it.polimi.ingsw.ps09.res.Places.Market.CreateMarket;
 import it.polimi.ingsw.ps09.res.Places.Market.Market;
 import it.polimi.ingsw.ps09.res.Places.Towers.CreateTower;
 import it.polimi.ingsw.ps09.res.Places.Towers.Tower;
-
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
