@@ -1,32 +1,36 @@
 package it.polimi.ingsw.ps09.res.Places.Towers.Floor;
 
+import it.polimi.ingsw.ps09.res.DevelopmentCards.DevelopmentCard;
+import it.polimi.ingsw.ps09.res.FamilyMember.FamilyMember;
+import it.polimi.ingsw.ps09.res.Resources.Bonus;
+
 /**
  * Created by ale on 10/05/2017.
  */
 public class Floor {
 
     private int mDiceValue;
-    private Object mBonus;
-    private Object mCard;
-    private Object mPawn;
+    private Bonus mBonus;
+    private DevelopmentCard mCard;
+    private FamilyMember mPawn;
 
     public Floor(int diceValue) {
         mDiceValue = diceValue;
     }
 
-    public void setPawn(Object pawn) {
+    public void setPawn(FamilyMember pawn) {
         mPawn = pawn;
     }
 
-    public void setBonus(Object bonus) {
+    public void setBonus(Bonus bonus) {
         mBonus = bonus;
     }
 
-    public void setCard(Object card) {
+    public void setCard(DevelopmentCard card) {
         mCard = card;
     }
 
-    public Object getPawn() {
+    public FamilyMember getPawn() {
         return mPawn;
     }
 
@@ -34,11 +38,11 @@ public class Floor {
         return mDiceValue;
     }
 
-    public Object getBonus() {
+    public Bonus getBonus() {
         return mBonus;
     }
 
-    public Object getCard() {
+    public DevelopmentCard getCard() {
         return mCard;
     }
 

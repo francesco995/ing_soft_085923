@@ -1,5 +1,7 @@
 package it.polimi.ingsw.ps09.res.Places.HarvestAndProductionAreas;
 
+import com.sun.org.apache.bcel.internal.generic.FADD;
+import it.polimi.ingsw.ps09.res.FamilyMember.FamilyMember;
 import it.polimi.ingsw.ps09.res.Places.Place;
 
 import java.util.List;
@@ -9,14 +11,14 @@ import java.util.List;
  */
 public class Slot extends Place {
 
-    private Object mPawn;
+    private FamilyMember mPawn;
     private int mDiceValue;
 
     public Slot(){
 
     }
 
-    public Slot(int diceValue, Object FamilyMember) {
+    public Slot(int diceValue, FamilyMember FamilyMember) {
         mDiceValue = diceValue;
         mPawn = FamilyMember;
     }
@@ -29,7 +31,7 @@ public class Slot extends Place {
         return mDiceValue;
     }
 
-    public void setPawn(Object pawn) {
+    public void setPawn(FamilyMember pawn) {
         mPawn = pawn;
     }
 

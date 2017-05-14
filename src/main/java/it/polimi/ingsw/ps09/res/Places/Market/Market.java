@@ -1,7 +1,9 @@
 package it.polimi.ingsw.ps09.res.Places.Market;
 
 import com.sun.corba.se.spi.ior.ObjectKey;
+import it.polimi.ingsw.ps09.res.FamilyMember.FamilyMember;
 import it.polimi.ingsw.ps09.res.Places.Place;
+import it.polimi.ingsw.ps09.res.Resources.Bonus;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,31 +13,31 @@ import java.util.List;
  */
 public class Market extends Place {
 
-    private Object mPawn;
-    private Object mBonus;
-    private Object mDiceValue;
+    private FamilyMember mPawn;
+    private Bonus mBonus;
+    private int mDiceValue;
 
-    public Object getPawn() {
+    public FamilyMember getPawn() {
         return mPawn;
     }
 
-    public Object getBonus() {
+    public Bonus getBonus() {
         return mBonus;
     }
 
-    public Object getDiceValue() {
+    public int getDiceValue() {
         return mDiceValue;
     }
 
-    public void setPawn(Object pawn) {
+    public void setPawn(FamilyMember pawn) {
         mPawn = pawn;
     }
 
-    public void setBonus(Object bonus) {
+    public void setBonus(Bonus bonus) {
         mBonus = bonus;
     }
 
-    public void setDiceValue(Object diceValue) {
+    public void setDiceValue(int diceValue) {
         mDiceValue = diceValue;
     }
 

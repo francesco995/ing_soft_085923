@@ -20,7 +20,7 @@ public class CreateAreas {
     //TODO: Ale waiting FraL for FamilyMember ID for comparison
 
     //Try to put FamilyMember in Area
-    public void addMember(Object FamilyMember){
+    public void addMember(FamilyMember FamilyMember){
 
         if(isAvailable(FamilyMember)){
             if(mSlotList==null)
@@ -35,8 +35,13 @@ public class CreateAreas {
 
     }
 
+    //Retrun List
+    public List getList(){
+        return mSlotList;
+    }
+
     //Check if a slot is available
-    public boolean isAvailable(Object FamilyMember){
+    public boolean isAvailable(FamilyMember FamilyMember){
         if(mSlotList.size()==0)
             return true;
 
