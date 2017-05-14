@@ -94,7 +94,7 @@ public class CliApp {
             //TODO: How to get NumberOfPlayer???
 
             //Check other slot only if number of player is more than 2
-            else if((harvest.getSlotList().size() != 0)&& (NumberOfPlayers>2))
+         //   else if((harvest.getSlotList().size() != 0)&& (NumberOfPlayers>2))
                 System.out.println("Slot available with DiceValue = 3");
         }
 

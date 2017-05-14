@@ -7,10 +7,12 @@ public class FamilyMember {
     //VARIABILI
     private int mPower;
     private String mColor;
+    private String mFamily;
     //METHODS
-    public FamilyMember(int power,String color) {
+    public FamilyMember(int power,String color, String family) {
         mPower = power;
         mColor = color;
+        mFamily = family;
     }
 
     public int getPower() {
@@ -29,5 +31,9 @@ public class FamilyMember {
     public int lessPower(int removeToTotal)
     {
         return mPower-removeToTotal;
+    }
+
+    public String getFamily() {
+        return mFamily;
     }
 }
