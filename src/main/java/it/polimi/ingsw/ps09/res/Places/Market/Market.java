@@ -41,14 +41,6 @@ public class Market extends Place {
 
     //Check if MarketSpace is available
     public boolean isAvailable(){
-        //TODO: Ale check number of player
-
-        return true;
-    }
-
-    //Check if MarketSpace is free
-    public boolean isFree(){
-
         if(mPawn==null)
             return true;
 

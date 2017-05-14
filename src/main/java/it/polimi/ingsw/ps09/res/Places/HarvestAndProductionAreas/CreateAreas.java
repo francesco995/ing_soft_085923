@@ -36,8 +36,8 @@ public class CreateAreas {
     }
 
     //Check if a slot is available
-    private boolean isAvailable(Object FamilyMember){
-        if(mSlotList==null)
+    public boolean isAvailable(Object FamilyMember){
+        if(mSlotList.size()==0)
             return true;
 
         for(mCont = 0; mCont<mSlotList.size(); mCont++){

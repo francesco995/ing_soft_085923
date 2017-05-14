@@ -1,6 +1,8 @@
 package it.polimi.ingsw.ps09.cli;
 
 
+import it.polimi.ingsw.ps09.res.FamilyMember.FamilyMember;
+import it.polimi.ingsw.ps09.res.Places.HarvestAndProductionAreas.Harvest;
 import it.polimi.ingsw.ps09.res.Places.Market.CreateMarket;
 import it.polimi.ingsw.ps09.res.Places.Market.Market;
 import it.polimi.ingsw.ps09.res.Places.Towers.CreateTower;
@@ -67,7 +69,7 @@ public class CliApp {
     }
 
     //Display only available MarketSpaces
-    public void DisplayFreeMarketSpace(CreateMarket market){
+    public void displayFreeMarketSpace(CreateMarket market){
 
         //Loop through all MarketSpaces
         for(int mNumberMarkeSpace=0; mNumberMarkeSpace<market.getMarketList().size(); mNumberMarkeSpace++){
@@ -77,5 +79,26 @@ public class CliApp {
                 System.out.println("Market space " + mNumberMarkeSpace+1 + " is available. " +
                 "Its bonus is: " + market.getMarketList().get(mNumberMarkeSpace).getBonus());
         }
+    }
+
+    public void displayFreeHarvest(Harvest harvest, FamilyMember Pawn){
+
+        //Check if there is a FamilyMember already
+        if(harvest.isAvailable(Pawn)) {
+            System.out.println("Available");
+
+            //Check which slot is available; With 1 diceValue or 3 diceValue
+            if(harvest.getSlotList().size() == 0)
+                System.out.println("The first slot with diceValue 1 is available");
+
+            //TODO: How to get NumberOfPlayer???
+
+            //Check other slot only if number of player is more than 2
+            else if((harvest.getSlotList().size() != 0)&& (NumberOfPlayers>2))
+                System.out.println("Slot available with DiceValue = 3");
+        }
+
+        else
+            System.out.println("No space available");
     }
 }
