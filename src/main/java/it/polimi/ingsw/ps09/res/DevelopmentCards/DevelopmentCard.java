@@ -1,34 +1,84 @@
 package it.polimi.ingsw.ps09.res.DevelopmentCards;
 
-import it.polimi.ingsw.ps09.res.Resources.Coins;
-import it.polimi.ingsw.ps09.res.Resources.Servant;
-import it.polimi.ingsw.ps09.res.Resources.Stone;
-import it.polimi.ingsw.ps09.res.Resources.Wood;
-import it.polimi.ingsw.ps09.res.Points.FaithPoints;
-import it.polimi.ingsw.ps09.res.Points.MilitaryPoints;
-import it.polimi.ingsw.ps09.res.Points.VictoryPoints;
+import it.polimi.ingsw.ps09.res.UserPoints;
+import it.polimi.ingsw.ps09.res.UserResources;
+
+import java.util.LinkedList;
+
 
 
 /**
  * Created by franc on 10/05/2017.
  */
+
 public class DevelopmentCard {
 
-    //VARIABLES COMMON TO ALL
+    //VARIABLES
+
+    //Card INFO
     private String mCardName;
     private int mPeriod;
-    private Costs mCosts;
-    private Gains mGains;
+
+    //Instant COSTS in UserResources and UserPoints
+    private UserResources mResourcesCosts;
+    private UserPoints mPointsCosts;
+
+    //Instant GAINS in UserResources and UserPoints
+    private UserResources mResourcesGains;
+    private UserPoints mPointsGains;
+
+    //UserPoints GAINS when game ends
+    private UserPoints mEndGamePointsGains;
+
+    //UserPoints REQUIREMENTS to get the card
+    private UserPoints mPointsRequirements;
+
+    //Immediate Effects
+    private LinkedList<String> mImmediateEffects = new LinkedList<>();
+
+    //Permanent Effects
+    private LinkedList<String> mPermanentEffects = new LinkedList<>();
 
 
-    //COMMON VAR CONSTRUCTOR
-    public DevelopmentCard(String cardName, int period) {
-        mCardName = cardName;
-        mPeriod = period;
+
+    //CONSTRUCTORS
+    public DevelopmentCard(String cardName, int cardPeriod) {
+        this(   cardName,
+                cardPeriod,
+                new UserResources(0,0,0,0),
+                new UserPoints(0, 0, 0),
+                new UserResources(0, 0, 0, 0),
+                new UserPoints(0, 0, 0),
+                new UserPoints(0, 0, 0),
+                new UserPoints(0, 0, 0),
+                new LinkedList<String>(),
+                new LinkedList<String>());
     }
 
+    public DevelopmentCard(String cardName,
+                           int period,
+                           UserResources resourcesCosts,
+                           UserPoints pointsCosts,
+                           UserResources resourcesGains,
+                           UserPoints pointsGains,
+                           UserPoints endGamePointsGains,
+                           UserPoints pointsRequirements,
+                           LinkedList<String> immediateEffects,
+                           LinkedList<String> permanentEffects) {
 
-    //GETTER
+        mCardName = cardName;
+        mPeriod = period;
+        mResourcesCosts = resourcesCosts;
+        mPointsCosts = pointsCosts;
+        mResourcesGains = resourcesGains;
+        mPointsGains = pointsGains;
+        mEndGamePointsGains = endGamePointsGains;
+        mPointsRequirements = pointsRequirements;
+        mImmediateEffects = immediateEffects;
+        mPermanentEffects = permanentEffects;
+    }
+
+    //GETTERS
     public String getCardName() {
         return mCardName;
     }
@@ -36,6 +86,50 @@ public class DevelopmentCard {
     public int getPeriod() {
         return mPeriod;
     }
+
+    public UserResources getResourcesCosts() {
+        return mResourcesCosts;
+    }
+
+    public UserPoints getPointsCosts() {
+        return mPointsCosts;
+    }
+
+    public UserResources getResourcesGains() {
+        return mResourcesGains;
+    }
+
+    public UserPoints getPointsGains() {
+        return mPointsGains;
+    }
+
+    public UserPoints getEndGamePointsGains() {
+        return mEndGamePointsGains;
+    }
+
+    public UserPoints getPointsRequirements() {
+        return mPointsRequirements;
+    }
+
+    public LinkedList<String> getImmediateEffects() {
+        return mImmediateEffects;
+    }
+
+    public LinkedList<String> getPermanentEffects() {
+        return mPermanentEffects;
+    }
+
+    public String getNextImmediateEffects() {
+        return mImmediateEffects.poll();
+    }
+
+    public String getNextPermanentEffects() {
+        return mPermanentEffects.poll();
+    }
+
+
+
+    /*
 
     private class Costs {
 
@@ -138,5 +232,6 @@ public class DevelopmentCard {
             return mVictoryPoints;
         }
     }
+*/
 
 }
