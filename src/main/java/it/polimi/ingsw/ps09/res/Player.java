@@ -25,6 +25,7 @@ public class Player {
     private String mUserColor;
 
     //GAME OBJECTS
+
     private PersonalBoard mPersonalBoard;
     private UserPoints mUserPoints;
 

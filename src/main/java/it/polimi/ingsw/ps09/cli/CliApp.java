@@ -90,7 +90,7 @@ public class CliApp {
             if(harvest.getSlotList().size() == 0)
                 System.out.println("The first slot with diceValue 1 is available");
 
-            //TODO: How to get NumberOfPlayer???
+            //TODO: How to get NumberOfPlayer??? FraG: i'll add a method in game to get how many players are playing
 
             //Check other slot only if number of player is more than 2
          //   else if((harvest.getSlotList().size() != 0)&& (NumberOfPlayers>2))
