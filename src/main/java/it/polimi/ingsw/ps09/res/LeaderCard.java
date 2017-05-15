@@ -5,60 +5,47 @@ import java.util.LinkedList;
 public class LeaderCard {
     //CARD INFO
 
-    private String mTileName;
-    private int mPeriod;
+    private String mCardName;
 
     //this Boolean says if the card effect is permanent (value set to true) or OncePerTurn (value set to false)
 
     private boolean mPermanent;
-
-    //EFFECT
-
-    private LinkedList<String> mEffects = new LinkedList<>();
+    private String mEffect;
 
     //CONSTRUCTOR
 
 
-    public LeaderCard(String tileName, int period, boolean permanent, LinkedList<String> effects) {
-        mTileName = tileName;
-        mPeriod = period;
+    public LeaderCard(String cardName, boolean permanent, String effects) {
+        mCardName = cardName;
         mPermanent = permanent;
-        mEffects = effects;
+        mEffect = effects;
     }
 
     //GETTER
 
-    public String getTileName() {
-        return mTileName;
-    }
-
-    public int getPeriod() {
-        return mPeriod;
+    public String getCardName() {
+        return mCardName;
     }
 
     public boolean isPermanent() {
         return mPermanent;
     }
 
-    public LinkedList<String> getEffects() {
-        return mEffects;
+    public String getEffects() {
+        return mEffect;
     }
 
     //SETTER
 
-    public void setTileName(String tileName) {
-        mTileName = tileName;
-    }
-
-    public void setPeriod(int period) {
-        mPeriod = period;
+    public void setCardName(String cardName) {
+        mCardName = cardName;
     }
 
     public void setPermanent(boolean permanent) {
         mPermanent = permanent;
     }
 
-    public void setEffects(LinkedList<String> effects) {
-        mEffects = effects;
+    public void setEffects(String effects) {
+        mEffect = effects;
     }
 }
