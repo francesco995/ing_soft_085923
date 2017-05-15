@@ -10,7 +10,6 @@ import it.polimi.ingsw.ps09.model.Places.Towers.BuildingsTower;
 import it.polimi.ingsw.ps09.model.Places.Towers.CharactersTower;
 import it.polimi.ingsw.ps09.model.Places.Towers.TerritoriesTower;
 import it.polimi.ingsw.ps09.model.Places.Towers.VenturesTower;
-import it.polimi.ingsw.ps09.model.Points.Bonus;
 
 import java.util.LinkedList;
 import java.util.List;

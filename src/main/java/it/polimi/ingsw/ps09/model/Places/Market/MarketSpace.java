@@ -2,7 +2,7 @@ package it.polimi.ingsw.ps09.model.Places.Market;
 
 import it.polimi.ingsw.ps09.model.FamilyMembers.FamilyMember;
 import it.polimi.ingsw.ps09.model.Places.Place;
-import it.polimi.ingsw.ps09.model.Points.Bonus;
+import it.polimi.ingsw.ps09.model.Bonus;
 
 /**
  * Created by ale on 09/05/2017.
