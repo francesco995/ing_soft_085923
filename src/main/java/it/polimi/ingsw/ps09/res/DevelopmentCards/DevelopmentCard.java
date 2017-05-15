@@ -4,7 +4,7 @@ import it.polimi.ingsw.ps09.res.UserPoints;
 import it.polimi.ingsw.ps09.res.UserResources;
 
 import java.util.LinkedList;
-
+import java.util.List;
 
 
 /**
