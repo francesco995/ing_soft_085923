@@ -2,35 +2,36 @@ package it.polimi.ingsw.ps09.res;
 
 import java.util.LinkedList;
 
-public class  ExcommunicationTile {
+public class ExcommunicationTile {
 
     //CARD INFO
 
     private String mTileName;
     private int mPeriod;
-    private String mEffect;
 
+    //Effects
 
+    private LinkedList<String> mEffects = new LinkedList<>();
 
     //Constructor
 
-    public ExcommunicationTile(String tileName, int period, String effect) {
+    public ExcommunicationTile(String tileName, int period, LinkedList<String> effects) {
         mTileName = tileName;
         mPeriod = period;
-        mEffect = effect;
+        mEffects = effects;
     }
 
     //Getter
 
-    public String getEffect() {
-        return mEffect;
+    public LinkedList<String> getEffects() {
+        return mEffects;
     }
 
-    public String getTileName() {
-        return mTileName;
+    //Setter
+
+    public void setEffects(LinkedList<String> effects) {
+        mEffects = effects;
     }
 
-    public int getPeriod() {
-        return mPeriod;
-    }
+
 }

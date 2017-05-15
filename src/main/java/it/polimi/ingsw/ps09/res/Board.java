@@ -52,11 +52,11 @@ public class Board {
         mVenturesTower = new VenturesTower();
         mBuildingsTower = new BuildingsTower();
 
-       /* mExcommunicationTile1 = new ExcommunicationTile("TileName", 1, effect);
+        mExcommunicationTile1 = new ExcommunicationTile("TileName", 1, effect);
         mExcommunicationTile2 = new ExcommunicationTile("TileName", 2, effect);
         mExcommunicationTile3 = new ExcommunicationTile("TileName", 3, effect);
         mExcommunicationTilesList = new ArrayList<ExcommunicationTile>();
-*/
+
         mOrder = new Order();
 
     }
@@ -384,7 +384,7 @@ public class Board {
         return mExcommunicationTilesList;
     }
 
-  /*  //TODO: Remeber to create setTitleName in Excommunication
+    //TODO: Remeber to create setTitleName in Excommunication
     public void setExcommunicationTitleName(String name, int periodo) {
         if(periodo==1)
             mExcommunicationTile1.setTitleName(name);
@@ -420,7 +420,7 @@ public class Board {
         else
             return null;
     }
-    */
+    
 
     public List getOrder() {
         return mOrder.getPlayerList();
