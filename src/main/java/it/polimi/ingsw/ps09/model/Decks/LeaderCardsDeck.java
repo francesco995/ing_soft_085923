@@ -31,4 +31,27 @@ public class LeaderCardsDeck {
         System.out.println(mLeaderCards.get(0).getCardName());
 
     }
+    /**
+     *Randomly draw the hands of 4 cards for the player
+     * @param mLeaderCards Deck of cards from which you want to draw the hand of cards for the player
+     * @return returns List of 4 Leader Cards drawn from the passed deck
+     */
+    public List<LeaderCard> cardDraw(List<LeaderCard> mLeaderCards){
+
+        List<LeaderCard> mHandOfCards = new ArrayList<LeaderCard>();
+        int randomNumber;
+        int size;
+
+        for(int counter = 1;counter <= 4; counter++) {
+
+            size = mLeaderCards.size();
+            randomNumber = (int) Math.random();
+            mHandOfCards.add(mLeaderCards.get(randomNumber));
+            mLeaderCards.remove(randomNumber);
+
+        }
+
+        return mHandOfCards;
+    }
+
 }

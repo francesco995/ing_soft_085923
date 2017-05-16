@@ -56,4 +56,19 @@ public class ExcommunicationTilesDeck {
         System.out.println(mExcommunicationTilesTierTwo.get(0).getPeriod());
         System.out.println(mExcommunicationTilesTierThree.get(0).getEffect());
     }
+
+    //random card picker
+
+    /**
+     *Randomly draw a tile from the List passed and returns the single tile drawn
+     * @param mExcommunicationTiles list of tiles from which you want to draw the single tile
+     * @return return object ExcommunicationTile drawn from the whole list
+     */
+    public ExcommunicationTile cardDraw(List<ExcommunicationTile> mExcommunicationTiles){
+
+        int size = mExcommunicationTiles.size();
+        int randomNumber = (int) Math.random() * size;
+        return mExcommunicationTiles.get(randomNumber);
+
+    }
 }

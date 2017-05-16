@@ -33,4 +33,5 @@ public class  ExcommunicationTile {
     public int getPeriod() {
         return mPeriod;
     }
+    
 }
