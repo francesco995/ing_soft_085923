@@ -2,6 +2,7 @@ package it.polimi.ingsw.ps09.model;
 
 
 import it.polimi.ingsw.ps09.model.DevelopmentCards.Building;
+import it.polimi.ingsw.ps09.model.DevelopmentCards.Character;
 import it.polimi.ingsw.ps09.model.DevelopmentCards.Territory;
 import it.polimi.ingsw.ps09.model.DevelopmentCards.Venture;
 import it.polimi.ingsw.ps09.model.Resources.Coins;
@@ -18,11 +19,6 @@ import java.util.List;
 public class PersonalBoard {
 
     //VARIABLES
-
-/*    private enum mBonusTileSides{
-        ONE, TWO
-    }
-    mBonusTileSides mSelectedBonusTile;*/
 
     private PersonalBoardCards mPersonalBoardCards;
     private UserResources mUserResources;

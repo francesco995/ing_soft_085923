@@ -1,6 +1,7 @@
 package it.polimi.ingsw.ps09.model;
 
 import it.polimi.ingsw.ps09.model.DevelopmentCards.Building;
+import it.polimi.ingsw.ps09.model.DevelopmentCards.Character;
 import it.polimi.ingsw.ps09.model.DevelopmentCards.Territory;
 import it.polimi.ingsw.ps09.model.DevelopmentCards.Venture;
 
