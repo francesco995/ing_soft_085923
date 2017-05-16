@@ -42,6 +42,14 @@ public class Player {
                 new UserPoints(), userId);
     }
 
+    /**
+     *
+     * @param userName The name of the Player that is being created
+     * @param userColor The color of the Player that is being created
+     * @param personalBoard The player can receive an already-created PersonalBoard
+     * @param userPoints The player can receive and already-created UserPoints
+     * @param userId The UserId for the Player that is being created
+     */
     public Player(String userName, String userColor, PersonalBoard personalBoard,
                   UserPoints userPoints, int userId){
         mUserName = userName;

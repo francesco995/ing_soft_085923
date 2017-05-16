@@ -91,6 +91,7 @@ public class DevelopmentCardsDeck {
         return new Gson().fromJson(stringDeck, mListType);
     }
 
+
     public void loadFromFile() throws FileNotFoundException {
 
         File mDirectory = new File("./");
@@ -114,6 +115,110 @@ public class DevelopmentCardsDeck {
         mVentureTierTwo = loadVentureDeck(mFilePath + "VentureDeck2.json");
         mVentureTierThree = loadVentureDeck(mFilePath + "VentureDeck3.json");
     }
+
+    private int getRandomNumber(int max){
+        return (int) (Math.random() *max);
+    }
+
+    public Building drawBuildingCard(){
+
+        Building mTempCard;
+        int mRandomNumber;
+
+        if(!mBuildingTierOne.isEmpty()){
+            mRandomNumber = getRandomNumber(mBuildingTierOne.size());
+            mTempCard = mBuildingTierOne.get(mRandomNumber);
+            mBuildingTierOne.remove(mRandomNumber);
+        }else
+            if(!mBuildingTierTwo.isEmpty()){
+                mRandomNumber = getRandomNumber(mBuildingTierOne.size());
+                mTempCard = mBuildingTierTwo.get(mRandomNumber);
+                mBuildingTierTwo.remove(mRandomNumber);
+            }else
+                if(!mBuildingTierThree.isEmpty()){
+                    mRandomNumber = getRandomNumber(mBuildingTierOne.size());
+                    mTempCard = mBuildingTierThree.get(mRandomNumber);
+                    mBuildingTierThree.remove(mRandomNumber);
+                }else
+                    return null;
+        return mTempCard;
+    }
+
+    public Character drawCharacterCard(){
+
+        Character mTempCard;
+        int mRandomNumber;
+
+        if(!mCharacterTierOne.isEmpty()){
+            mRandomNumber = getRandomNumber(mCharacterTierOne.size());
+            mTempCard = mCharacterTierOne.get(mRandomNumber);
+            mCharacterTierOne.remove(mRandomNumber);
+        }else
+        if(!mCharacterTierTwo.isEmpty()){
+            mRandomNumber = getRandomNumber(mCharacterTierOne.size());
+            mTempCard = mCharacterTierTwo.get(mRandomNumber);
+            mCharacterTierTwo.remove(mRandomNumber);
+        }else
+        if(!mCharacterTierThree.isEmpty()){
+            mRandomNumber = getRandomNumber(mCharacterTierOne.size());
+            mTempCard = mCharacterTierThree.get(mRandomNumber);
+            mCharacterTierThree.remove(mRandomNumber);
+        }else
+            return null;
+        return mTempCard;
+    }
+
+
+    public Territory drawTerritoryCard(){
+
+        Territory mTempCard;
+        int mRandomNumber;
+
+        if(!mTerritoryTierOne.isEmpty()){
+            mRandomNumber = getRandomNumber(mTerritoryTierOne.size());
+            mTempCard = mTerritoryTierOne.get(mRandomNumber);
+            mTerritoryTierOne.remove(mRandomNumber);
+        }else
+        if(!mTerritoryTierTwo.isEmpty()){
+            mRandomNumber = getRandomNumber(mTerritoryTierOne.size());
+            mTempCard = mTerritoryTierTwo.get(mRandomNumber);
+            mTerritoryTierTwo.remove(mRandomNumber);
+        }else
+        if(!mTerritoryTierThree.isEmpty()){
+            mRandomNumber = getRandomNumber(mTerritoryTierOne.size());
+            mTempCard = mTerritoryTierThree.get(mRandomNumber);
+            mTerritoryTierThree.remove(mRandomNumber);
+        }else
+            return null;
+        return mTempCard;
+    }
+
+
+    public Venture drawVentureCard(){
+
+        Venture mTempCard;
+        int mRandomNumber;
+
+        if(!mVentureTierOne.isEmpty()){
+            mRandomNumber = getRandomNumber(mVentureTierOne.size());
+            mTempCard = mVentureTierOne.get(mRandomNumber);
+            mVentureTierOne.remove(mRandomNumber);
+        }else
+        if(!mVentureTierTwo.isEmpty()){
+            mRandomNumber = getRandomNumber(mVentureTierOne.size());
+            mTempCard = mVentureTierTwo.get(mRandomNumber);
+            mVentureTierTwo.remove(mRandomNumber);
+        }else
+        if(!mVentureTierThree.isEmpty()){
+            mRandomNumber = getRandomNumber(mVentureTierOne.size());
+            mTempCard = mVentureTierThree.get(mRandomNumber);
+            mVentureTierThree.remove(mRandomNumber);
+        }else
+            return null;
+        return mTempCard;
+    }
+
+
 
 
 }
