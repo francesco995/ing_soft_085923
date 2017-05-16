@@ -18,6 +18,10 @@ public class DevelopmentCard {
     private String mCardName;
     private int mPeriod;
 
+    //Production COST
+
+    private int mActivationDiceCost;
+
     //Instant COSTS in UserResources and UserPoints
     private UserResources mResourcesCosts;
     private UserPoints mPointsCosts;
@@ -44,6 +48,7 @@ public class DevelopmentCard {
     public DevelopmentCard(String cardName, int cardPeriod) {
         this(   cardName,
                 cardPeriod,
+                0,
                 new UserResources(0,0,0,0),
                 new UserPoints(0, 0, 0),
                 new UserResources(0, 0, 0, 0),
@@ -56,6 +61,7 @@ public class DevelopmentCard {
 
     public DevelopmentCard(String cardName,
                            int period,
+                           int activationDiceCost,
                            UserResources resourcesCosts,
                            UserPoints pointsCosts,
                            UserResources resourcesGains,
@@ -67,6 +73,7 @@ public class DevelopmentCard {
 
         mCardName = cardName;
         mPeriod = period;
+        mActivationDiceCost = activationDiceCost;
         mResourcesCosts = resourcesCosts;
         mPointsCosts = pointsCosts;
         mResourcesGains = resourcesGains;
@@ -84,6 +91,10 @@ public class DevelopmentCard {
 
     public int getPeriod() {
         return mPeriod;
+    }
+
+    public int getActivationDiceCost() {
+        return mActivationDiceCost;
     }
 
     public UserResources getResourcesCosts() {
