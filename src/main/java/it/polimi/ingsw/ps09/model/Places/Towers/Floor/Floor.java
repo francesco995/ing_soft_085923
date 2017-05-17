@@ -2,7 +2,7 @@ package it.polimi.ingsw.ps09.model.Places.Towers.Floor;
 
 import it.polimi.ingsw.ps09.model.DevelopmentCards.DevelopmentCard;
 import it.polimi.ingsw.ps09.model.FamilyMembers.FamilyMember;
-import it.polimi.ingsw.ps09.model.Bonus;
+import it.polimi.ingsw.ps09.model.Resources.Bonus;
 
 /**
  * Created by ale on 10/05/2017.

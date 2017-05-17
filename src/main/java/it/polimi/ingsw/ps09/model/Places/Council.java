@@ -26,6 +26,21 @@ public class Council extends Place {
         return mCouncilOrderList;
     }
 
+    public FamilyMember getFamilyMember(int pos){
+        return mCouncilOrderList.get(pos);
+    }
+
+    public void deleteDuplicateFamilyMember(){
+        for(int cont=0; cont<mCouncilOrderList.size(); cont++){
+            for(int contInt=cont+1; contInt<mCouncilOrderList.size(); contInt++){
+                if(mCouncilOrderList.get(contInt).getFamily().equals(mCouncilOrderList.get(cont))){
+                    mCouncilOrderList.remove(contInt);
+                }
+            }
+        }
+
+    }
+
     //Delete all the queue
     public void clearAll(){
         mCouncilOrderList.clear();

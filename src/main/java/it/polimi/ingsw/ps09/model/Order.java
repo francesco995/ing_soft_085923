@@ -1,23 +1,34 @@
 package it.polimi.ingsw.ps09.model;
 
-import java.util.ArrayList;
-import java.util.List;
+import it.polimi.ingsw.ps09.model.FamilyMembers.FamilyMember;
+import it.polimi.ingsw.ps09.model.Places.Council;
+
+import java.util.*;
 
 /**
  * Created by ale on 14/05/2017.
  */
 public class Order {
 
-    private List<String> mOrderList = new ArrayList<>();
+    private List<FamilyMember> mOrderList = new ArrayList<FamilyMember>();
 
-    //Set a player in a set position
-    public void setPlayerNameInPos(String name, int pos){
-        mOrderList.set(pos, name);
+    private void addTop(FamilyMember Pawn){
+        mOrderList.add(0,Pawn);
     }
 
     //Get the list of player's order
-    public List getPlayerList(){
+    public List<FamilyMember> getPlayerList(){
         return mOrderList;
     }
 
+    public List<FamilyMember> getFinalOrderList(Council councilList){
+
+        councilList.deleteDuplicateFamilyMember();
+
+        for(int cont=0; cont<councilList.getList().size(); cont++){
+            mOrderList.add(0,councilList.getFamilyMember(cont));
+        }
+
+        return mOrderList;
+    }
 }

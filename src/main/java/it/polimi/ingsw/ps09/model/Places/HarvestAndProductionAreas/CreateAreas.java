@@ -10,20 +10,17 @@ import java.util.List;
  */
 public class CreateAreas {
 
-    protected List<Slot> mSlotList = new ArrayList<>();
-    private int mCont;
+    private List<Slot> mSlotList = new ArrayList<>();
 
     public List<Slot> getSlotList() {
         return mSlotList;
     }
 
-    //TODO: Ale waiting FraL for FamilyMembers ID for comparison
-
     //Try to put FamilyMembers in Area
     public void addMember(FamilyMember FamilyMember){
 
         if(isAvailable(FamilyMember)){
-            if(mSlotList==null)
+            if(mSlotList.isEmpty())
 
                 //Add into first slot
                 mSlotList.add(new Slot(1, FamilyMember));
@@ -42,7 +39,10 @@ public class CreateAreas {
 
     //Check if a slot is available
     public boolean isAvailable(FamilyMember FamilyMember){
-        if(mSlotList.size()==0)
+
+        int mCont;
+
+        if(mSlotList.isEmpty())
             return true;
 
         for(mCont = 0; mCont<mSlotList.size(); mCont++){
