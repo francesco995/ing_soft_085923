@@ -10,6 +10,7 @@ import it.polimi.ingsw.ps09.model.Places.Towers.BuildingsTower;
 import it.polimi.ingsw.ps09.model.Places.Towers.CharactersTower;
 import it.polimi.ingsw.ps09.model.Places.Towers.TerritoriesTower;
 import it.polimi.ingsw.ps09.model.Places.Towers.VenturesTower;
+import it.polimi.ingsw.ps09.model.Resources.Bonus;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -417,7 +418,7 @@ public class Board {
         else
             return null;
     }
-    */
+
 
     public List getOrder() {
         return mOrder.getPlayerList();
@@ -426,4 +427,5 @@ public class Board {
     public void setOrder(Order order) {
         mOrder = order;
     }
+    */
 }
