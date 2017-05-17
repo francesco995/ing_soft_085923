@@ -1,7 +1,8 @@
 [
   {
-    "mCardName": "CardName",
+    "mCardName": "Esattoria",
     "mPeriod": 1,
+    "mActivationDiceCost": 5,
     "mResourcesCosts": {
       "mCoins": {
         "mValue": 0
@@ -10,10 +11,10 @@
         "mValue": 0
       },
       "mStone": {
-        "mValue": 0
+        "mValue": 1
       },
       "mWood": {
-        "mValue": 0
+        "mValue": 3
       }
     },
     "mPointsCosts": {
@@ -49,7 +50,7 @@
         "mPoints": 0
       },
       "mVictoryPoints": {
-        "mPoints": 0
+        "mPoints": 5
       }
     },
     "mEndGamePointsGains": {
@@ -75,17 +76,16 @@
       }
     },
     "mImmediateEffects": [
-      "anImmediateEffect",
-      "anOtherImmediateEffect"
+      
     ],
     "mPermanentEffects": [
-      "aPermanentEffect",
-      "anOtherPermanentEffect"
+      "getCoinPerTerritory"
     ]
   },
-  {
-    "mCardName": "CardName2",
+   {
+    "mCardName": "Cappella",
     "mPeriod": 1,
+    "mActivationDiceCost": 2,
     "mResourcesCosts": {
       "mCoins": {
         "mValue": 0
@@ -97,7 +97,7 @@
         "mValue": 0
       },
       "mWood": {
-        "mValue": 0
+        "mValue": 2
       }
     },
     "mPointsCosts": {
@@ -127,13 +127,13 @@
     },
     "mPointsGains": {
       "mFaithPoints": {
-        "mPoints": 0
+        "mPoints": 1
       },
       "mMilitaryPoints": {
         "mPoints": 0
       },
       "mVictoryPoints": {
-        "mPoints": 0
+        "mPoints": 5
       }
     },
     "mEndGamePointsGains": {
@@ -159,12 +159,10 @@
       }
     },
     "mImmediateEffects": [
-      "anImmediateEffect",
-      "anOtherImmediateEffect"
+      
     ],
     "mPermanentEffects": [
-      "aPermanentEffect",
-      "anOtherPermanentEffect"
+      "getFaithForCoin"
     ]
   }
 ]

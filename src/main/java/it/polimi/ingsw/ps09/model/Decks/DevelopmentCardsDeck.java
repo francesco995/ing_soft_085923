@@ -1,17 +1,15 @@
 package it.polimi.ingsw.ps09.model.Decks;
 
 import it.polimi.ingsw.ps09.model.DevelopmentCards.*;
+import it.polimi.ingsw.ps09.model.DevelopmentCards.Character;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import it.polimi.ingsw.ps09.model.DevelopmentCards.Character;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.lang.reflect.Type;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 
 /**
@@ -19,24 +17,45 @@ import java.util.Scanner;
  */
 public class DevelopmentCardsDeck {
 
+    private final static int MAX_PERIODS = 3;
+    private final static String DECK_FORMAT = ".json";
+
+    //THE DECK
+    private HashMap<String, Map<Integer, List>> mDeck = new HashMap();
+
+    //OTHER VARIABLES
+    Random mRandom = new Random();
+
     //ALL BUILDINGS
+    @Deprecated
     private List<Building> mBuildingTierOne;
+    @Deprecated
     private List<Building> mBuildingTierTwo;
+    @Deprecated
     private List<Building> mBuildingTierThree;
 
     //ALL CHARACTERS
+    @Deprecated
     private List<Character> mCharacterTierOne;
+    @Deprecated
     private List<Character> mCharacterTierTwo;
+    @Deprecated
     private List<Character> mCharacterTierThree;
 
     //ALL TERRITORY
+    @Deprecated
     private List<Territory> mTerritoryTierOne;
+    @Deprecated
     private List<Territory> mTerritoryTierTwo;
+    @Deprecated
     private List<Territory> mTerritoryTierThree;
 
     //ALL VENTURES
+    @Deprecated
     private List<Venture> mVentureTierOne;
+    @Deprecated
     private List<Venture> mVentureTierTwo;
+    @Deprecated
     private List<Venture> mVentureTierThree;
 
 
@@ -51,6 +70,7 @@ public class DevelopmentCardsDeck {
         return mStringDeck;
     }
 
+    @Deprecated
     private List<Building> loadBuildingDeck(String fileName) throws FileNotFoundException {
         //TODO: FraG comment and LOG
 
@@ -61,6 +81,7 @@ public class DevelopmentCardsDeck {
         return new Gson().fromJson(stringDeck, mListType);
     }
 
+    @Deprecated
     private List<Character> loadCharacterDeck(String fileName) throws FileNotFoundException {
         //TODO: FraG comment and LOG
 
@@ -71,6 +92,7 @@ public class DevelopmentCardsDeck {
         return new Gson().fromJson(stringDeck, mListType);
     }
 
+    @Deprecated
     private List<Territory> loadTerritoryDeck(String fileName) throws FileNotFoundException {
         //TODO: FraG comment and LOG
 
@@ -81,6 +103,7 @@ public class DevelopmentCardsDeck {
         return new Gson().fromJson(stringDeck, mListType);
     }
 
+    @Deprecated
     private List<Venture> loadVentureDeck(String fileName) throws FileNotFoundException {
         //TODO: FraG comment and LOG
 
@@ -91,6 +114,14 @@ public class DevelopmentCardsDeck {
         return new Gson().fromJson(stringDeck, mListType);
     }
 
+    private List loadDeck(String fileName, Type listType) throws FileNotFoundException {
+        //TODO: FraG comment and LOG
+
+        String stringDeck = loadStringDeck(fileName);
+
+        return new Gson().fromJson(stringDeck, listType);
+    }
+
 
     public void loadFromFile() throws FileNotFoundException {
 
@@ -99,27 +130,40 @@ public class DevelopmentCardsDeck {
         String mFilePath = mDirectory.getAbsolutePath().replace(".",
                     "src\\main\\res\\DevelopmentCardDecks\\");
 
-        mBuildingTierOne = loadBuildingDeck(mFilePath + "BuildingDeck1.json");
-        mBuildingTierTwo = loadBuildingDeck(mFilePath + "BuildingDeck2.json");
-        mBuildingTierThree = loadBuildingDeck(mFilePath + "BuildingDeck3.json");
+        mDeck.put("BUILDING", new HashMap<>());
+        mDeck.put("CHARACTER", new HashMap<>());
+        mDeck.put("TERRITORY", new HashMap<>());
+        mDeck.put("VENTURE", new HashMap<>());
 
-        mCharacterTierOne = loadCharacterDeck(mFilePath + "CharacterDeck1.json");
-        mCharacterTierTwo = loadCharacterDeck(mFilePath + "CharacterDeck2.json");
-        mCharacterTierThree = loadCharacterDeck(mFilePath + "CharacterDeck3.json");
+        for(int i = 1; i <= MAX_PERIODS; i++){
+            mDeck.get("BUILDING").put(i, loadDeck(  mFilePath + "BuildingDeck" +  i + DECK_FORMAT,
+                                                    new TypeToken<LinkedList<Building>>(){}.getType() ));
+            mDeck.get("CHARACTER").put(i, loadDeck( mFilePath + "CharacterDeck" +  i + DECK_FORMAT,
+                                                    new TypeToken<LinkedList<Character>>(){}.getType() ));
+            mDeck.get("TERRITORY").put(i, loadDeck( mFilePath + "TerritoryDeck" + i + DECK_FORMAT,
+                                                    new TypeToken<LinkedList<Territory>>(){}.getType()));
+            mDeck.get("VENTURE").put(i, loadDeck(   mFilePath + "VentureDeck" + i + DECK_FORMAT,
+                                                    new TypeToken<LinkedList<Venture>>(){}.getType()));
+        }
 
-        mTerritoryTierOne = loadTerritoryDeck(mFilePath + "TerritoryDeck1.json");
-        mTerritoryTierTwo = loadTerritoryDeck(mFilePath + "TerritoryDeck2.json");
-        mTerritoryTierThree = loadTerritoryDeck(mFilePath + "TerritoryDeck3.json");
-
-        mVentureTierOne = loadVentureDeck(mFilePath + "VentureDeck1.json");
-        mVentureTierTwo = loadVentureDeck(mFilePath + "VentureDeck2.json");
-        mVentureTierThree = loadVentureDeck(mFilePath + "VentureDeck3.json");
     }
 
     private int getRandomNumber(int max){
-        return (int) (Math.random() *max);
+        return mRandom.nextInt(max);
     }
 
+    public Object drawCard(String cardType){
+
+        for(int i = 1; i <= MAX_PERIODS; i++){
+            if(!mDeck.get(cardType).get(i).isEmpty()){
+                return mDeck.get(cardType).get(i).remove(getRandomNumber(mDeck.get(cardType).get(i).size()));
+            }
+        }
+        return null;
+
+    }
+
+    @Deprecated
     public Building drawBuildingCard(){
 
         Building mTempCard;
@@ -144,6 +188,7 @@ public class DevelopmentCardsDeck {
         return mTempCard;
     }
 
+    @Deprecated
     public Character drawCharacterCard(){
 
         Character mTempCard;
@@ -168,7 +213,7 @@ public class DevelopmentCardsDeck {
         return mTempCard;
     }
 
-
+    @Deprecated
     public Territory drawTerritoryCard(){
 
         Territory mTempCard;
@@ -193,7 +238,7 @@ public class DevelopmentCardsDeck {
         return mTempCard;
     }
 
-
+    @Deprecated
     public Venture drawVentureCard(){
 
         Venture mTempCard;
@@ -217,8 +262,5 @@ public class DevelopmentCardsDeck {
             return null;
         return mTempCard;
     }
-
-
-
 
 }
