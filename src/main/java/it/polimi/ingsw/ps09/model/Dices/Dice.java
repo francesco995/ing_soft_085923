@@ -26,7 +26,9 @@ public class Dice {
         mValue = value;
     }
 
-    //METHODS
+    /**
+     * simulates the roll of a six sided dice
+     */
     public void roll() {
         mValue = (int) (Math.random() * 6 + 1);
     }

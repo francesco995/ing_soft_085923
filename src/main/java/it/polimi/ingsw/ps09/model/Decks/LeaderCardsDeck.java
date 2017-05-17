@@ -13,24 +13,38 @@ import java.util.Scanner;
 
 public class LeaderCardsDeck {
 
+    //This list is the full deck of LeaderCards
     private List<LeaderCard> mLeaderCards = new ArrayList<>();
 
+
+    /**
+     * loadFromFile load all the Leader Cards in one lists.
+     * All the cards are stored in an external .json file easily readable and editable
+     * @throws FileNotFoundException - throws an exception if it cannot open file .json
+     */
     public void loadFromFile() throws FileNotFoundException {
 
+        File mDirectory = new File("./");
+
+        String mFilePath = mDirectory.getAbsolutePath().replace(".",
+                "src\\main\\res\\");
+
         String mStringDeck;
+
         //read from a .json file and it imports it as a String into mStringDeck
-        Scanner mScanner = new Scanner(new File("D:\\file4.json"));
+        Scanner mScanner = new Scanner(new File(mFilePath+ "LeaderCardsDeck.json"));
         mStringDeck = mScanner.useDelimiter("\\A").next();
         mScanner.close();
+
         //using Gson insert the string into mExcommunication tiles
         Type mListType = new TypeToken<ArrayList<LeaderCard>>() {
         }.getType();
         mLeaderCards = new Gson().fromJson(mStringDeck, mListType);
 
 
-        System.out.println(mLeaderCards.get(0).getCardName());
-
     }
+
+
     /**
      *Randomly draw the hands of 4 cards for the player
      * @param mLeaderCards Deck of cards from which you want to draw the hand of cards for the player
