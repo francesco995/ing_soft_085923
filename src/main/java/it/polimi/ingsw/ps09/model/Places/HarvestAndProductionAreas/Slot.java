@@ -11,16 +11,12 @@ public class Slot extends Place {
     private FamilyMember mPawn;
     private int mDiceValue;
 
-    public Slot(){
-
-    }
-
     public Slot(int diceValue, FamilyMember FamilyMember) {
         mDiceValue = diceValue;
         mPawn = FamilyMember;
     }
 
-    public Object getPawn() {
+    public FamilyMember getPawn() {
         return mPawn;
     }
 
