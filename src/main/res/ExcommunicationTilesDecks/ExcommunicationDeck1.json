@@ -2,7 +2,7 @@
   {
     "mTileName": "TileOne",
     "mPeriod": 2,
-    "mEffect": "cardEffect"
+    "mEffect": "cardEffect1"
   },
   {
     "mTileName": "TileTwo",

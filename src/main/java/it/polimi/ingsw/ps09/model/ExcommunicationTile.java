@@ -4,6 +4,7 @@ import java.util.LinkedList;
 
 public class  ExcommunicationTile {
 
+
     //CARD INFO
 
     private String mTileName;

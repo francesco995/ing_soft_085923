@@ -3,6 +3,7 @@ package it.polimi.ingsw.ps09.model.Dices;
 
 public class Dice {
 
+
     //VARIABLES
     private int mValue;
     private String mColor;

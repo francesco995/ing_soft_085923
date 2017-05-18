@@ -67,3 +67,5 @@ Player.uml
 src/main/java/it/polimi/ingsw/ps09/AppTestFraG.java
 JavaDoc/
 *.uml
+
+src/main/java/it/polimi/ingsw/ps09/controller/FraLTest.java

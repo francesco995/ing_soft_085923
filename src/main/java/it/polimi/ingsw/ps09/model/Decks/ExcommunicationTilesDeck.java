@@ -16,6 +16,7 @@ import static sun.plugin2.os.windows.OSVERSIONINFOA.size;
  * Created by franc on 15/05/2017.
  */
 public class ExcommunicationTilesDeck {
+
     //DEFINE
 
     static final int MAX_PERIODS = 3;

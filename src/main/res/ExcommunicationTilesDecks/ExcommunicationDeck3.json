@@ -1,8 +1,8 @@
 [
   {
     "mTileName": "TileOne11",
-    "mPeriod": 1,
-    "mEffect": "cardEffect"
+    "mPeriod": 3,
+    "mEffect": "cardEffect1"
   },
   {
     "mTileName": "TileTwo",

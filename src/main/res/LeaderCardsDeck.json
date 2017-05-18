@@ -1,7 +1,7 @@
 [
   {
-    "mPermanent": true,
     "mCardName": "LeaderOne",
+    "mPermanent": true,
     "mEffect": "cardEffect"
   },
   {
