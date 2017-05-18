@@ -38,6 +38,9 @@ public class Board {
 
     private Order mOrder;
 
+    /**
+     * Create the board whit marke, harvest, production, towers, church and council
+     */
     public void CreateBoard(){
 
         mMarket = new Market();
@@ -61,34 +64,74 @@ public class Board {
 
     //##################### MarketSpace #####################
 
+    /**
+     *
+     * @return Market spaces list
+     */
     public List getMarket() {
         return mMarket.getMarketList();
     }
 
+    /**
+     *
+     *
+     * @param pos Specify in which market space looking for
+     * @return Family member of the specified market space
+     */
     public FamilyMember getMarketPawn(int pos){
         return mMarket.getMarketList().get(pos-1).getPawn();
     }
 
+    /**
+     *
+     * @param pos Specify in which market space looking for
+     * @return Get bonus object of the specified market space
+     */
     public Bonus getMarketBonus(int pos){
         return mMarket.getMarketList().get(pos-1).getBonus();
     }
 
+    /**
+     *
+     * @param pos Specify in which market space looking for
+     * @return Get deice value of the specified market space
+     */
     public int getMarketDiceValue(int pos){
         return mMarket.getMarketList().get(pos-1).getDiceValue();
     }
 
+    /**
+     *
+     * @param pos Specify in which market space looking for
+     * @return Boolean value: true if the specified market space is available, otherwise false
+     */
     public boolean isMarketSpaceAvailable(int pos){
         return mMarket.getMarketList().get(pos-1).isAvailable();
     }
 
+    /**
+     *
+     * @param pos Specify in which market space look for
+     * @param pawn Specify in which family member put into the market space
+     */
     public void setMarketSpaceFamilyMember(int pos, FamilyMember pawn) {
         mMarket.getMarketList().get(pos-1).setPawn(pawn);
     }
 
+    /**
+     *
+     * @param pos Specify in which market space look for
+     * @param bonus Specify the bonus to be set into the market space
+     */
     public void setMarketSpaceBonus(int pos, Bonus bonus){
         mMarket.getMarketList().get(pos-1).setBonus(bonus);
     }
 
+    /**
+     *
+     * @param pos Specify in which market space look for
+     * @param dice Specify the dice value to set
+     */
     public void setMarketSpaceDiceValue(int pos, int dice){
         mMarket.getMarketList().get(pos-1).setDiceValue(dice);
     }
@@ -97,14 +140,26 @@ public class Board {
     //####################################################
     //##################### Council ######################
 
+    /**
+     *
+     * @return Council object
+     */
     public Council getCouncil() {
         return mCouncil;
     }
 
+    /**
+     *
+     * @return Get family member list of those are in the council
+     */
     public List getCouncilList(){
         return mCouncil.getList();
     }
 
+    /**
+     *
+     * @param pawn Family member object to be add into family member
+     */
     public void addMemberCouncil(FamilyMember pawn){
         mCouncil.addFamilyMember(pawn);
     }
@@ -113,21 +168,38 @@ public class Board {
     //####################################################
     //################# Production #######################
 
+    //TODO: ALE L VEDI SE RIESCI A RIMANERE DRY CON HARVEST E PRODUCTION INSIEME
 
+    /**
+     *
+     * @return Get production area object
+     */
     public Production getProduction() {
         return mProduction;
     }
 
+    /**
+     *
+     * @return Get list of those in production area
+     */
     public List getProductionList() {
         return mProduction.getList();
     }
 
+    /**
+     *
+     * @param pawn Family member to be add into production area
+     */
     public void addFamilyMemberInProduction(FamilyMember pawn){
         mProduction.addMember(pawn);
     }
 
     //TODO: Ale try to do not hardcode
 
+    /**
+     *
+     * @return Get production dice cost
+     */
     public int getProductionSlotDiceValue(){
         if(mProduction.getList().size()==0)
             return 1;
@@ -140,20 +212,36 @@ public class Board {
     //####################################################
     //#################### Harvest #######################
 
+    /**
+     *
+     * @return Get harvest area object
+     */
     public Harvest getHarvest() {
         return mHarvest;
     }
 
+    /**
+     *
+     * @return Get list of those in harvest area
+     */
     public List getHarvestList() {
        return mHarvest.getList();
     }
 
+    /**
+     *
+     * @param pawn Family member to be add into production area
+     */
     public void addFamilyMemberInHarvest(FamilyMember pawn){
         mHarvest.addMember(pawn);
     }
 
     //TODO: Ale try to do not hardcode
 
+    /**
+     *
+     * @return Get production dice cost
+     */
     public int getHarvestSlotDiceValue(){
         if(mHarvest.getList().size()==0)
             return 1;
@@ -165,6 +253,8 @@ public class Board {
     //####################################################
     //####################################################
     //################ CharacterTower ####################
+
+    //TODO: ALE L STAY DRY CON LE TORRY INSIEME
 
     public CharactersTower getCharactersTower() {
         return mCharactersTower;

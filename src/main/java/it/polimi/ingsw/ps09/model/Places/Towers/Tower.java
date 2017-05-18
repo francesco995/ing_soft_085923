@@ -16,24 +16,44 @@ public class Tower {
     private List<Floor> mFloors = new ArrayList<>();
     private String mColor;
 
+    /**
+     *
+     * @param color Set tower's color
+     */
     public Tower(String color) {
         mColor = color;
     }
 
+    /**
+     *
+     * @param floors Set floor list
+     */
     public void setFloors(List<Floor> floors) {
         mFloors = floors;
     }
 
+    /**
+     *
+     * @return Get tower floor list
+     */
     //Return FloorList
     public List<Floor> getFloors() {
         return mFloors;
     }
 
+    /**
+     *
+     * @return Get tower's color
+     */
     //Return tower's color
     public String getColor() {
         return mColor;
     }
 
+    /**
+     *
+     * @return Get boolean value: true if there's a family member in th tower, otherwise false
+     */
     //Check if a Pawn is on the tower
     public boolean hasPawn(){
         int cont = 0;
@@ -50,6 +70,11 @@ public class Tower {
         return false;
     }
 
+    /**
+     *
+     * @param floor Floor number you want to check
+     * @return Boolean value: true if the specified floor is available, otherwise false
+     */
     //Check if tower's floor is free
     public boolean isFree(int floor){
 
@@ -61,6 +86,11 @@ public class Tower {
 
     }
 
+    /**
+     *
+     * @param Pawn Family member object to compare whth
+     * @return Boolean value: true if a member of that family is already in the tower, otherwise flase
+     */
     public boolean hasSameFamilyMember(FamilyMember Pawn){
 
         int cont = 0;

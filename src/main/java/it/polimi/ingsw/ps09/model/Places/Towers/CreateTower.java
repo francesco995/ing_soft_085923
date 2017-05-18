@@ -18,6 +18,10 @@ public class CreateTower {
     private static final Logger LOGGER = Logger.getLogger(CreateTower.class.getName());
     private List<Tower> mTowerList = new ArrayList<>();
 
+    /**
+     *
+     * @return List of all towers while creating
+     */
     public List<Tower> CreateTower () {
 
         //Create all towers
@@ -37,6 +41,10 @@ public class CreateTower {
     }
 
 
+    /**
+     *
+     * @return List of all tower's floors
+     */
     private List<Floor> CreateFloors(){
 
         //Create a List of 4 floors
@@ -51,6 +59,10 @@ public class CreateTower {
 
     }
 
+    /**
+     *
+     * @return List of all towers created
+     */
     public List<Tower> getTowerList(){
         return mTowerList;
     }
