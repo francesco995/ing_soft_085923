@@ -34,8 +34,14 @@ public class Game extends Thread {
     private Queue<String> mUserNames;
     private Queue<String> mUserColors;
 
+    //Number of players
+    public static int PLAYERS_NUMBER;
+
     //Map of Players by ID
     private HashMap<Integer, Player> mPlayers;
+
+    //The Players Order manager
+    private PlayersOrder mPlayersOrder;
 
     //The Game Board
     private Board mGameBoard;
@@ -64,6 +70,7 @@ public class Game extends Thread {
     public Game(Queue<Integer> userIds, Queue<String> userNames, Queue<String> userColors, int gameId){
 
         GAME_ID = gameId;
+        PLAYERS_NUMBER = userIds.size();
 
         mUserIds = userIds;
         mUserNames = userNames;
@@ -97,14 +104,33 @@ public class Game extends Thread {
     }
 
 
-    public void startGame() throws FileNotFoundException {
+    /**
+     * Start the game
+     * @throws FileNotFoundException
+     */
+    private void startGame() throws FileNotFoundException {
 
     }
 
 
+    /**
+     * Setup the game
+     * @throws FileNotFoundException
+     */
     private void setupGame() throws FileNotFoundException {
+
+        //Create 3 dices
+        setupDices();
+
+        //Setup the Player objects
         setupPlayers();
+
+        //Setup and loads the Deck objects
         setupDecks();
+
+        mGameBoard = new Board( mExcommunicationTilesDeck.drawCard(1),
+                                mExcommunicationTilesDeck.drawCard(2),
+                                mExcommunicationTilesDeck.drawCard(3));
     }
 
     /**
@@ -113,6 +139,7 @@ public class Game extends Thread {
     private void setupPlayers(){
 
         mPlayers = new HashMap<>();
+        mPlayersOrder = new PlayersOrder(mUserIds);
 
         while(!mUserIds.isEmpty() && !mUserNames.isEmpty()){
             mPlayers.put(
@@ -136,15 +163,21 @@ public class Game extends Thread {
     }
 
     /**
-     *
+     * Loads the 3 card decks
      */
     private void setupDecks() throws FileNotFoundException {
 
         mDevelopmentCardsDeck = new DevelopmentCardsDeck();
-
         mExcommunicationTilesDeck = new ExcommunicationTilesDeck();
-
         mLeaderCardsDeck = new LeaderCardsDeck();
+
+    }
+
+    private void setupDices(){
+
+        mWhiteDice = new WhiteDice();
+        mBlackDice = new BlackDice();
+        mOrangeDice = new OrangeDice();
 
     }
 

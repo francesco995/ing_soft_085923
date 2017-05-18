@@ -14,6 +14,24 @@ import java.util.*;
 
 /**
  * Created by franc on 10/05/2017.
+ *      * DevelopmentCardsDeck is a Collections that contains all the Development cards
+ * Provides a method for drawing cards
+ *
+ * HashMap of CARD TYPE to a Map of GAME PERIODS (Tiers) to a LinkedList of Cards
+ *
+ * BUILDING
+ *      TIER 1
+ *          LinkedList of Buildings
+ *      TIER 2
+ *          LinkedList of Buildings
+ *      ...
+ * CHARACTER
+ *      TIER 1
+ *          LinkedList of Characters
+ *      TIER 2
+ *          LinkedList of Characters
+ *      ...
+ * ...
  */
 public class DevelopmentCardsDeck {
 
@@ -60,25 +78,7 @@ public class DevelopmentCardsDeck {
 
 
     /**
-     * DevelopmentCardsDeck is a Collections that contains all the Development cards
-     * Provides a method for drawing cards
-     *
-     * HashMap of CARD TYPE to a Map of GAME PERIODS (Tiers) to a LinkedList of Cards
-     *
-     * BUILDING
-     *      TIER 1
-     *          LinkedList of Buildings
-     *      TIER 2
-     *          LinkedList of Buildings
-     *      ...
-     * CHARACTER
-     *      TIER 1
-     *          LinkedList of Characters
-     *      TIER 2
-     *          LinkedList of Characters
-     *      ...
-     * ...
-     *
+     * Loads the deck from file sources
      * @throws FileNotFoundException
      */
     public DevelopmentCardsDeck() throws FileNotFoundException {
@@ -192,7 +192,7 @@ public class DevelopmentCardsDeck {
     public Object drawCard(String cardType){
 
         for(int i = 1; i <= MAX_PERIODS; i++){
-            if(!mDeck.get(cardType).get(i).isEmpty()){
+            if(!mDeck.get(cardType.toUpperCase()).get(i).isEmpty()){
                 return mDeck.get(cardType).get(i).remove(getRandomNumber(mDeck.get(cardType).get(i).size()));
             }
         }

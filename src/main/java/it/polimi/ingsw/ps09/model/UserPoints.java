@@ -5,7 +5,7 @@ import it.polimi.ingsw.ps09.model.Points.MilitaryPoints;
 import it.polimi.ingsw.ps09.model.Points.VictoryPoints;
 
 /**
- * Created by francGianni on 10/05/2017.
+ * Created by francesco995 on 10/05/2017.
  */
 public class UserPoints {
 
@@ -68,6 +68,12 @@ public class UserPoints {
         add(userPoints.getFaithPoints());
         add(userPoints.getMilitaryPoints());
         add(userPoints.getVictoryPoints());
+    }
+
+    public FaithPoints clearFaithPoints(){
+        FaithPoints oldFaithPoints = mFaithPoints;
+        mFaithPoints = new FaithPoints(0);
+        return oldFaithPoints;
     }
 
 

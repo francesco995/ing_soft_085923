@@ -9,6 +9,8 @@ import it.polimi.ingsw.ps09.model.Resources.Servant;
 import it.polimi.ingsw.ps09.model.Resources.Stone;
 import it.polimi.ingsw.ps09.model.Resources.Wood;
 
+import java.util.LinkedList;
+import java.util.List;
 import java.util.logging.Logger;
 
 import static java.util.logging.Level.INFO;
@@ -29,6 +31,7 @@ public class Player {
 
     private PersonalBoard mPersonalBoard;
     private UserPoints mUserPoints;
+    private List<LeaderCard> mLeaderCards;
 
 
 
@@ -65,6 +68,8 @@ public class Player {
         mUserPoints = userPoints;
         PLAYER_ID = userId;
 
+        mLeaderCards = new LinkedList<>();
+
         //log created player
         mLogger.log(INFO, "Game: " + Game.GAME_ID +
                                 " created player: " + mUserName +
@@ -91,8 +96,11 @@ public class Player {
         return mUserPoints;
     }
 
+    public List<LeaderCard> getLeaderCards() {
+        return mLeaderCards;
+    }
 
-    //User points as point objects
+//User points as point objects
 
     public FaithPoints getFaithPoints() {
         return mUserPoints.getFaithPoints();
@@ -107,22 +115,24 @@ public class Player {
     }
 
 
-    //User points as int
+    //Add a Leader Card
 
-    public int getIntFaithPoints() {
-        return mUserPoints.getFaithPoints().getPoints();
+    public void add(LeaderCard leaderCard){
+        mLeaderCards.add(leaderCard);
+
+        //LOG
+        mLogger.log(INFO, "Game: " + Game.GAME_ID +
+                " add Leader Card " + leaderCard.getCardName() +
+                " to player: " + mUserName +
+                " now has: " + mLeaderCards.size() + " Leader Cards");
+
     }
-
-    public int getIntMilitaryPoints() {
-        return mUserPoints.getMilitaryPoints().getPoints();
-    }
-
-    public int getIntVictoryPoints() {
-        return mUserPoints.getVictoryPoints().getPoints();
-    }
-
 
     //Add User Points from Point objects
+
+    public FaithPoints clearFaithPoints(){
+        return mUserPoints.clearFaithPoints();
+    }
 
     public void add(FaithPoints faithPoints){
         mUserPoints.add(faithPoints);
@@ -175,6 +185,10 @@ public class Player {
     }
 
 
+    /**
+     *
+     * @param addCoins
+     */
     public void add(Coins addCoins){
         mPersonalBoard.addCoins(addCoins);
 
