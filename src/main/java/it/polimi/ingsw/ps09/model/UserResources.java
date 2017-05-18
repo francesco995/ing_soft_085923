@@ -61,40 +61,29 @@ public class UserResources {
         return mWood;
     }
 
-    //SETTERS
-
-    public void setCoins(Coins coins) {
-        mCoins = coins;
-    }
-
-    public void setServant(Servant servant) {
-        mServant = servant;
-    }
-
-    public void setStone(Stone stone) {
-        mStone = stone;
-    }
-
-    public void setWood(Wood wood) {
-        mWood = wood;
-    }
-
     //Add resources
 
-    public void addCoins(Coins addCoins){
-        mCoins.addValue(addCoins);
+    public void add(Coins addCoins){
+        mCoins.add(addCoins);
     }
 
-    public void addServant(Servant addServant){
-        mServant.addValue(addServant);
+    public void add(Servant addServant){
+        mServant.add(addServant);
     }
 
-    public void addStone(Stone addStone){
-        mStone.addValue(addStone);
+    public void add(Stone addStone){
+        mStone.add(addStone);
     }
 
-    public void addWood(Wood addWood){
-        mWood.addValue(addWood);
+    public void add(Wood addWood){
+        mWood.add(addWood);
+    }
+
+    public void add(UserResources userResources){
+        add(userResources.getCoins());
+        add(userResources.getServant());
+        add(userResources.getStone());
+        add(userResources.getWood());
     }
 
 

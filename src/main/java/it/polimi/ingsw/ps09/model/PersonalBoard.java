@@ -141,19 +141,19 @@ public class PersonalBoard {
     //ADD A RESOURCE
 
     public void addCoins(Coins addCoins){
-        mUserResources.addCoins(addCoins);
+        mUserResources.add(addCoins);
     }
 
     public void addServant(Servant addServant){
-        mUserResources.addServant(addServant);
+        mUserResources.add(addServant);
     }
 
     public void addStone(Stone addStone){
-        mUserResources.addStone(addStone);
+        mUserResources.add(addStone);
     }
 
     public void addWood(Wood addWood){
-        mUserResources.addWood(addWood);
+        mUserResources.add(addWood);
     }
 
 }

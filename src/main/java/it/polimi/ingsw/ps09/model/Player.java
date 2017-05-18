@@ -1,5 +1,6 @@
 package it.polimi.ingsw.ps09.model;
 
+import it.polimi.ingsw.ps09.controller.Game;
 import it.polimi.ingsw.ps09.model.Points.FaithPoints;
 import it.polimi.ingsw.ps09.model.Points.MilitaryPoints;
 import it.polimi.ingsw.ps09.model.Points.VictoryPoints;
@@ -17,7 +18,7 @@ import static java.util.logging.Level.INFO;
  */
 public class Player {
 
-    public static int mUserId;
+    public static int PLAYER_ID;
 
     //VARIABLES
 
@@ -37,38 +38,42 @@ public class Player {
 
     //CONSTRUCTOR
 
+    /**
+     * Create a new player with default resources and no cards
+     * @param userName The name of the Player that is being created
+     * @param userColor The color of the Player that is being created
+     * @param userId The UserId for the Player that is being created
+     */
     public Player(String userName, String userColor, int userId, int initialCoins){
         this(userName, userColor, new PersonalBoard(initialCoins),
                 new UserPoints(), userId);
     }
 
     /**
-     *
+     * Create a new player with given resources and cards
      * @param userName The name of the Player that is being created
      * @param userColor The color of the Player that is being created
      * @param personalBoard The player can receive an already-created PersonalBoard
      * @param userPoints The player can receive and already-created UserPoints
      * @param userId The UserId for the Player that is being created
      */
-    public Player(String userName, String userColor, PersonalBoard personalBoard,
+    private Player(String userName, String userColor, PersonalBoard personalBoard,
                   UserPoints userPoints, int userId){
         mUserName = userName;
         mUserColor = userColor;
         mPersonalBoard = personalBoard;
         mUserPoints = userPoints;
-        mUserId = userId;
+        PLAYER_ID = userId;
 
         //log created player
-        mLogger.log(INFO, "Created player -> " + mUserName +
-                                " with Id: " + mUserId +
-                                " with color -> " + mUserColor +
-                                " with " + mPersonalBoard.getCoins().getValue() + " initial Coins");
+        mLogger.log(INFO, "Game: " + Game.GAME_ID +
+                                " created player: " + mUserName +
+                                " with Id: " + PLAYER_ID +
+                                " with color: " + mUserColor +
+                                " with: " + mPersonalBoard.getCoins().getValue() + " initial Coins");
     }
 
-    //GETTERS
-
-    //User Data
-
+    //Get User info
 
     public String getUserName() {
         return mUserName;
@@ -78,16 +83,17 @@ public class Player {
         return mUserColor;
     }
 
-    public PersonalBoard getPersonalBoard() {
+    private PersonalBoard getPersonalBoard() {
         return mPersonalBoard;
     }
 
-    public UserPoints getUserPoints() {
+    private UserPoints getUserPoints() {
         return mUserPoints;
     }
 
 
     //User points as point objects
+
     public FaithPoints getFaithPoints() {
         return mUserPoints.getFaithPoints();
     }
@@ -116,119 +122,40 @@ public class Player {
     }
 
 
-    //SETTERS
-
-    //Set User Points from Point objects
-
-    public void setFaithPoints(FaithPoints faithPoints){
-        mUserPoints.setFaithPoints(faithPoints);
-
-        //LOG
-        mLogger.log(INFO, "Faith Points for user -> " + mUserName +
-                " set to -> " + mUserPoints.getFaithPoints().toString());
-    }
-
-    public void setMilitaryPoints(MilitaryPoints militaryPoints){
-        mUserPoints.setMilitaryPoints(militaryPoints);
-
-        //LOG
-        mLogger.log(INFO, "Military Points for user -> " + mUserName +
-                " set to -> " + mUserPoints.getMilitaryPoints().toString());
-    }
-
-    public void setVictoryPoints(VictoryPoints victoryPoints){
-        mUserPoints.setVictoryPoints(victoryPoints);
-
-        //LOG
-        mLogger.log(INFO, "Victory Points for user -> " + mUserName +
-                " set to -> " + mUserPoints.getVictoryPoints().toString());
-    }
-
-
-    //Set User Points from int
-
-    public void setFaithPoints(int faithPoints){
-        mUserPoints.getFaithPoints().setPoints(faithPoints);
-
-        //LOG
-        mLogger.log(INFO, "Faith Points for user -> " + mUserName +
-                " set to -> " + mUserPoints.getFaithPoints().toString());
-    }
-
-    public void setMilitaryPoints(int militaryPoints){
-        mUserPoints.getMilitaryPoints().setPoints(militaryPoints);
-
-        //LOG
-        mLogger.log(INFO, "Military Points for user -> " + mUserName +
-                " set to -> " + mUserPoints.getMilitaryPoints().toString());
-    }
-
-    public void setVictoryPoints(int victoryPoints){
-        mUserPoints.getVictoryPoints().setPoints(victoryPoints);
-
-        //LOG
-        mLogger.log(INFO, "Victory Points for user -> " + mUserName +
-                " set to -> " + mUserPoints.getVictoryPoints().toString());
-    }
-
-
     //Add User Points from Point objects
 
-    public void addFaithPoints(FaithPoints faithPoints){
-        mUserPoints.addFaithPoints(faithPoints);
+    public void add(FaithPoints faithPoints){
+        mUserPoints.add(faithPoints);
 
         //LOG
-        mLogger.log(INFO, "Add " + faithPoints.toString() + " Faith Points for user -> " + mUserName +
-                " set to -> " + mUserPoints.getFaithPoints().toString());
+        mLogger.log(INFO, "Game: " + Game.GAME_ID +
+                                " add " + faithPoints.toString() +
+                                " FaithPoints to player: " + mUserName +
+                                " now has: " + mUserPoints.getFaithPoints().toString() + " FaithPoints");
+
     }
 
-    public void addMilitaryPoints(MilitaryPoints militaryPoints){
-        mUserPoints.addMilitaryPoints(militaryPoints);
+    public void add(MilitaryPoints militaryPoints){
+        mUserPoints.add(militaryPoints);
 
         //LOG
-        mLogger.log(INFO, "Add " + militaryPoints.toString() + " Military Points for user -> " + mUserName +
-                " set to -> " + mUserPoints.getMilitaryPoints().toString());
+      mLogger.log(INFO,"Game: " + Game.GAME_ID +
+                            " add " + militaryPoints.toString() +
+                            " MilitaryPoints to player: " + mUserName +
+                            " now has: " + mUserPoints.getFaithPoints().toString() + " MilitaryPoints");
+
     }
 
-    public void addVictoryPoints(VictoryPoints victoryPoints){
-        mUserPoints.addVictoryPoints(victoryPoints);
+    public void add(VictoryPoints victoryPoints){
+        mUserPoints.add(victoryPoints);
 
         //LOG
-        mLogger.log(INFO, "Add " + victoryPoints.toString() + " Victory Points for user -> " + mUserName +
-                " set to -> " + mUserPoints.getVictoryPoints().toString());
+        mLogger.log(INFO, "Game: " + Game.GAME_ID +
+                                " add " + victoryPoints.toString() +
+                                " VictoryPoints to player: " + mUserName +
+                                " now has: " + this.getFaithPoints().toString() + " VictoryPoints");
+
     }
-
-
-    //Add User Points from int
-
-    public void addFaithPoints(int faithPoints){
-        mUserPoints.addFaithPoints(faithPoints);
-
-        //LOG
-        mLogger.log(INFO, "Add " + String.valueOf(faithPoints) + " Faith Points for user -> " + mUserName +
-                " set to -> " + mUserPoints.getFaithPoints().toString());
-    }
-
-    public void addMilitaryPoints(int militaryPoints){
-        mUserPoints.addMilitaryPoints(militaryPoints);
-
-        //LOG
-        mLogger.log(INFO, "Add " + String.valueOf(militaryPoints) + " Military Points for user -> " + mUserName +
-                " set to -> " + mUserPoints.getMilitaryPoints().toString());
-    }
-
-    public void addVictoryPoints(int victoryPoints){
-        mUserPoints.addVictoryPoints(victoryPoints);
-
-        //LOG
-        mLogger.log(INFO, "Add " + String.valueOf(victoryPoints) + " Victory Points for user -> " + mUserName +
-                " set to -> " + mUserPoints.getVictoryPoints().toString());
-    }
-
-
-    //USER RESOURCES
-
-    //GET User Resources
 
     //Get User Resources as Resource object
     public Coins getCoins() {
@@ -247,75 +174,49 @@ public class Player {
         return mPersonalBoard.getWood();
     }
 
-    //Get User Resources as int
-    public int getIntCoins() {
-        return mPersonalBoard.getCoins().getValue();
-    }
 
-    public int getIntServant() {
-        return mPersonalBoard.getServant().getValue();
-    }
-
-    public int getIntStone() {
-        return mPersonalBoard.getStone().getValue();
-    }
-
-    public int getIntWood() {
-        return mPersonalBoard.getWood().getValue();
-    }
-
-
-    //ADD User Resources
-
-    public void addCoins(Coins addCoins){
+    public void add(Coins addCoins){
         mPersonalBoard.addCoins(addCoins);
 
         //LOG
-        mLogger.log(INFO, "Add " + addCoins.toString() + " Coins for user -> " + mUserName +
-                " set to -> " + mPersonalBoard.getCoins().toString());
+        mLogger.log(INFO, "Game: " + Game.GAME_ID +
+                " add " + addCoins.toString() +
+                " Coins to player: " + mUserName +
+                " now has: " + this.getCoins().toString() + " Coins");
+
     }
 
-    public void addServant(Servant addServant){
+    public void add(Servant addServant){
         mPersonalBoard.addServant(addServant);
 
         //LOG
-        mLogger.log(INFO, "Add " + addServant.toString() + " Servant for user -> " + mUserName +
-                " set to -> " + mPersonalBoard.getServant().toString());
+        mLogger.log(INFO, "Game: " + Game.GAME_ID +
+                " add " + addServant.toString() +
+                " Servant to player: " + mUserName +
+                " now has: " + this.getServant().toString() + " Servant");
+
     }
 
-    public void addStone(Stone addStone){
+    public void add(Stone addStone){
         mPersonalBoard.addStone(addStone);
 
         //LOG
-        mLogger.log(INFO, "Add " + addStone.toString() + " Stone for user -> " + mUserName +
-                " set to -> " + mPersonalBoard.getStone().toString());
+        mLogger.log(INFO, "Game: " + Game.GAME_ID +
+                " add " + addStone.toString() +
+                " Stone to player: " + mUserName +
+                " now has: " + this.getStone().toString() + " Stone");
+
     }
 
-    public void addWood(Wood addWood){
+    public void add(Wood addWood){
         mPersonalBoard.addWood(addWood);
 
         //LOG
-        mLogger.log(INFO, "Add " + addWood.toString() + " Wood for user -> " + mUserName +
-                " set to -> " + mPersonalBoard.getWood().toString());
+        mLogger.log(INFO, "Game: " + Game.GAME_ID +
+                " add " + addWood.toString() +
+                " Wood to player: " + mUserName +
+                " now has: " + this.getWood().toString() + " Wood");
+
     }
-
-    //ADD User Resources as int
-
-    public void addCoins(int addCoins){
-        this.addCoins(new Coins(addCoins));
-    }
-
-    public void addServant(int addServant){
-        this.addServant(new Servant(addServant));
-    }
-
-    public void addStone(int addStone){
-        this.addStone(new Stone(addStone));
-    }
-
-    public void addWood(int addWood){
-        this.addWood(new Wood(addWood));
-    }
-
 
 }
