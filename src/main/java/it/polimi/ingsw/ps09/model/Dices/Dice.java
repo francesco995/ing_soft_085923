@@ -3,6 +3,7 @@ package it.polimi.ingsw.ps09.model.Dices;
 
 public class Dice {
 
+
     //VARIABLES
     private int mValue;
     private String mColor;
@@ -26,7 +27,9 @@ public class Dice {
         mValue = value;
     }
 
-    //METHODS
+    /**
+     * simulates the roll of a six sided dice
+     */
     public void roll() {
         mValue = (int) (Math.random() * 6 + 1);
     }

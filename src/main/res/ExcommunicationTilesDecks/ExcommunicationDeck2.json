@@ -1,0 +1,37 @@
+[
+  {
+    "mTileName": "TileOne1",
+    "mPeriod": 2,
+    "mEffect": "cardEffect1"
+  },
+  {
+    "mTileName": "TileTwo",
+    "mPeriod": 1,
+    "mEffect": "cardEffect"
+  },
+    {
+    "mTileName": "TileThree",
+    "mPeriod": 1,
+    "mEffect": "cardEffect"
+  },
+    {
+    "mTileName": "TileTwo",
+    "mPeriod": 1,
+    "mEffect": "cardEffect"
+  },
+    {
+    "mTileName": "TileTwo",
+    "mPeriod": 1,
+    "mEffect": "cardEffect2"
+  },
+    {
+    "mTileName": "TileTwo",
+    "mPeriod": 1,
+    "mEffect": "cardEffect2"
+  },
+    {
+    "mTileName": "TileTwo",
+    "mPeriod": 1,
+    "mEffect": "cardEffect2"
+  }
+]

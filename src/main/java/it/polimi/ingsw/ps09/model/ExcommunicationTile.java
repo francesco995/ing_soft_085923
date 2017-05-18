@@ -4,6 +4,7 @@ import java.util.LinkedList;
 
 public class  ExcommunicationTile {
 
+
     //CARD INFO
 
     private String mTileName;
@@ -12,7 +13,7 @@ public class  ExcommunicationTile {
 
 
 
-    //Constructor
+    //CONSTRUCTOR
 
     public ExcommunicationTile(String tileName, int period, String effect) {
         mTileName = tileName;
@@ -20,7 +21,8 @@ public class  ExcommunicationTile {
         mEffect = effect;
     }
 
-    //Getter
+    //GETTER
+    //NO SETTER BECAUSE ALL TILES ARE CREATED FROM EXTERNAL FILE
 
     public String getEffect() {
         return mEffect;
