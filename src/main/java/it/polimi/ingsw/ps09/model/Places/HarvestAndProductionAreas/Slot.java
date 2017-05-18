@@ -11,18 +11,39 @@ public class Slot extends Place {
     private FamilyMember mPawn;
     private int mDiceValue;
 
+    /**
+     *
+     * @param diceValue Dice value of the area
+     * @param FamilyMember Family member who is in the area
+     */
+
     public Slot(int diceValue, FamilyMember FamilyMember) {
         mDiceValue = diceValue;
         mPawn = FamilyMember;
     }
 
+    /**
+     *
+     * @return Family member who is in the area
+     */
+
     public FamilyMember getPawn() {
         return mPawn;
     }
 
+    /**
+     *
+     * @return Dice value of the area
+     */
+
     public int getDiceValue() {
         return mDiceValue;
     }
+
+    /**
+     *
+     * @param pawn Family member to set
+     */
 
     public void setPawn(FamilyMember pawn) {
         mPawn = pawn;
@@ -35,6 +56,11 @@ public class Slot extends Place {
         else
             return false;
     }
+
+    /**
+     *
+     * @param diceValue Set dice value of the area
+     */
 
     public void setDiceValue(int diceValue) {
         mDiceValue = diceValue;

@@ -11,6 +11,11 @@ public class Market {
     //Create A lis of market spaces
     private  List<MarketSpace> mMarketSpaceSpaces = new ArrayList<>();
 
+    /**
+     *
+     * @return List Market's marketspaces
+     */
+
     //Initialize all MarketSpace Spaces
     public List<MarketSpace> CreateMarket (){
 
@@ -27,6 +32,11 @@ public class Market {
         return mMarketSpaceSpaces;
 
     }
+
+    /**
+     *
+     * @return List Market's marketspaces
+     */
 
     public List<MarketSpace> getMarketList(){
         return mMarketSpaceSpaces;

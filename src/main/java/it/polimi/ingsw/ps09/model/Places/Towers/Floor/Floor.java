@@ -14,6 +14,7 @@ public class Floor {
     private DevelopmentCard mCard;
     private FamilyMember mPawn;
 
+
     public Floor(int diceValue) {
         mDiceValue = diceValue;
     }

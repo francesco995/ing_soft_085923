@@ -16,6 +16,11 @@ public class CreateAreas {
         return mSlotList;
     }
 
+    /**
+     *
+     * @param FamilyMember Add the specified family member in the area
+     */
+
     //Try to put FamilyMembers in Area
     public void addMember(FamilyMember FamilyMember){
 
@@ -32,10 +37,21 @@ public class CreateAreas {
 
     }
 
+    /**
+     *
+     * @return Entire list of slot
+     */
+
     //Return List
     public List getList(){
         return mSlotList;
     }
+
+    /**
+     *
+     * @param FamilyMember Check the ability to add a specific family member into the are
+     * @return Boolean true if available, false if not
+     */
 
     //Check if a slot is available
     public boolean isAvailable(FamilyMember FamilyMember){
@@ -52,6 +68,11 @@ public class CreateAreas {
 
         return true;
     }
+
+
+    /**
+     * Clear the list containing all family member in the area
+     */
 
     //Clear SlotList
     public void clearAll(){
