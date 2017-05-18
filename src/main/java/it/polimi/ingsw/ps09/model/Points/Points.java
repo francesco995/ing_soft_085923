@@ -24,13 +24,10 @@ public class Points {
         return String.valueOf(mPoints);
     }
 
-    //SETTERS
-    public void setPoints(int points) {
-        mPoints = points;
-    }
+    //ADD Points
 
-    public void addPoints(int points) {
-        mPoints = mPoints + points;
+    public void add(Points add){
+        mPoints = mPoints + add.getPoints();
     }
 
 

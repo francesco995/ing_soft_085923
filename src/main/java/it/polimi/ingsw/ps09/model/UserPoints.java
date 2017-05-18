@@ -50,46 +50,24 @@ public class UserPoints {
         return mVictoryPoints;
     }
 
-    //SETTERS
-
-    public void setFaithPoints(FaithPoints faithPoints) {
-        mFaithPoints = faithPoints;
-    }
-
-    public void setMilitaryPoints(MilitaryPoints militaryPoints) {
-        mMilitaryPoints = militaryPoints;
-    }
-
-    public void setVictoryPoints(VictoryPoints victoryPoints) {
-        mVictoryPoints = victoryPoints;
-    }
-
     //Add Points from points values
 
-    public void addFaithPoints(FaithPoints faithPoints) {
-        mFaithPoints.addPoints(faithPoints.getPoints());
+    public void add(FaithPoints faithPoints) {
+        mFaithPoints.add(faithPoints);
     }
 
-    public void addMilitaryPoints(MilitaryPoints militaryPoints) {
-        mMilitaryPoints.addPoints(militaryPoints.getPoints());
+    public void add(MilitaryPoints militaryPoints) {
+        mMilitaryPoints.add(militaryPoints);
     }
 
-    public void addVictoryPoints(VictoryPoints victoryPoints) {
-        mVictoryPoints.addPoints(victoryPoints.getPoints());
+    public void add(VictoryPoints victoryPoints) {
+        mVictoryPoints.add(victoryPoints);
     }
 
-    //Add points from int values
-
-    public void addFaithPoints(int faithPoints) {
-        mFaithPoints.addPoints(faithPoints);
-    }
-
-    public void addMilitaryPoints(int militaryPoints) {
-        mMilitaryPoints.addPoints(militaryPoints);
-    }
-
-    public void addVictoryPoints(int victoryPoints) {
-        mVictoryPoints.addPoints(victoryPoints);
+    public void add(UserPoints userPoints){
+        add(userPoints.getFaithPoints());
+        add(userPoints.getMilitaryPoints());
+        add(userPoints.getVictoryPoints());
     }
 
 

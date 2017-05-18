@@ -26,13 +26,9 @@ public class Resource {
         return String.valueOf(mValue);
     }
 
-    //SETTERS
-    public void setValue(int newValue){
-        mValue = newValue;
-    }
-
-    public void addValue(Resource addValue){
-        mValue = mValue + addValue.getValue();
+    //ADD
+    public void add(Resource add){
+        mValue = mValue + add.getValue();
     }
 
 
