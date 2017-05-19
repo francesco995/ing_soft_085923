@@ -71,12 +71,13 @@ public class ExcommunicationTilesDeck {
      * @param period of tiles from which you want to draw the single tile
      * @return return object ExcommunicationTile drawn from the whole list
      */
-    /*public ExcommunicationTile cardDraw(int period){
+    public ExcommunicationTile drawCard(int period){
 
 
-        int size = mExcommunicationTilesTierOne.size();
+        int size = mExcommunicationTilesDecks.get(period).size();
         int randomNumber = (int) Math.random() * size;
-        mExcommunicationTiles.get(randomNumber);
+        return mExcommunicationTilesDecks.get(period).get(randomNumber);
 
-    }*/
+
+    }
 }

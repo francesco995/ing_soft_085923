@@ -39,7 +39,7 @@ public class Board {
     private Order mOrder;
 
     /**
-     * Create the board whit marke, harvest, production, towers, church and council
+     * Create the board whit market, harvest, production, towers, church and council
      */
     public void CreateBoard(){
 
@@ -59,6 +59,13 @@ public class Board {
         mExcommunicationTilesList = new ArrayList<ExcommunicationTile>();
 */
         mOrder = new Order();
+
+    }
+
+    public void clearAll(){
+        //metodo che svuota tutte le torri se presenti le carte
+        //metodo che svuota tutti gli spazi azione
+        //metodo che restituisce i familymember ai singoli giocatori se necessario
 
     }
 

@@ -174,6 +174,35 @@ public class Player {
         return mPersonalBoard.getWood();
     }
 
+    //Get user cards count as int
+
+    /**
+     *
+     * @return number of territories card owned by player
+     */
+    public int getTerritoriesCount(){
+
+        return mPersonalBoard.getBoardTerritories().size();
+
+    }
+
+    public int getCharactersCount(){
+
+        return mPersonalBoard.getBoardCharacters().size();
+
+    }
+
+    public int getBuildingsCount(){
+
+        return mPersonalBoard.getBoardBuildings().size();
+
+    }
+
+    public int getVenturesCount(){
+
+        return mPersonalBoard.getBoardTerritories().size();
+
+    }
 
     public void add(Coins addCoins){
         mPersonalBoard.addCoins(addCoins);
