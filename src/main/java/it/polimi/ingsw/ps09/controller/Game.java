@@ -4,10 +4,13 @@ import it.polimi.ingsw.ps09.model.Board;
 import it.polimi.ingsw.ps09.model.Decks.DevelopmentCardsDeck;
 import it.polimi.ingsw.ps09.model.Decks.ExcommunicationTilesDeck;
 import it.polimi.ingsw.ps09.model.Decks.LeaderCardsDeck;
+import it.polimi.ingsw.ps09.model.DevelopmentCards.DevelopmentCard;
 import it.polimi.ingsw.ps09.model.Dices.BlackDice;
 import it.polimi.ingsw.ps09.model.Dices.OrangeDice;
 import it.polimi.ingsw.ps09.model.Dices.WhiteDice;
+import it.polimi.ingsw.ps09.model.FaithPointsTrack;
 import it.polimi.ingsw.ps09.model.Player;
+import it.polimi.ingsw.ps09.model.Points.VictoryPoints;
 
 import java.io.FileNotFoundException;
 import java.util.HashMap;
@@ -45,6 +48,12 @@ public class Game extends Thread {
 
     //The Game Board
     private Board mGameBoard;
+
+    //The Period
+    int period = 1;
+
+    //The Tracks
+    private FaithPointsTrack mFaithPointsTrack;
 
     //The Card Decks
     private DevelopmentCardsDeck mDevelopmentCardsDeck;
@@ -182,9 +191,126 @@ public class Game extends Thread {
     }
 
 
+    /**
+     * void method that fill the tower to the top with randomly drawn cards from the deck
+     */
+    private void fillTower() {
+
+        //problem it need to add as code every new kind of tower if a new tower is added to game
+
+        for (int i = 1; i <= mGameBoard.getTerritoriesTowerFloors().size(); i++) {
+
+            //it fills all the floor no metter how many are there
+            mGameBoard.setCharacterTowerCard(i, (DevelopmentCard) mDevelopmentCardsDeck.drawCard("TERRITORY"));
+
+        }
+
+        for (int i = 1; i <= mGameBoard.getCharacterTowerFloors().size(); i++) {
+
+            //it fills all the floor no metter how many are there
+            mGameBoard.setCharacterTowerCard(i, (DevelopmentCard) mDevelopmentCardsDeck.drawCard("CHARACTER"));
+
+        }
+
+        for (int i = 1; i <= mGameBoard.getBuildingsTowerFloors().size(); i++) {
+
+            //it fills all the floor no metter how many are there
+            mGameBoard.setCharacterTowerCard(i, (DevelopmentCard) mDevelopmentCardsDeck.drawCard("BUILDING"));
+
+        }
+
+        for (int i = 1; i <= mGameBoard.getVenturesTowerFloors().size(); i++) {
+            //it fills all the floor no metter how many are there
+            mGameBoard.setCharacterTowerCard(i, (DevelopmentCard) mDevelopmentCardsDeck.drawCard("VENTURE"));
+
+        }
+    }
+        /**
+         * simple method that roll all the dices
+         */
+        private void rollDices(){
+
+            mBlackDice.roll();
+            mWhiteDice.roll();
+            mOrangeDice.roll();
+
+        }
+
+        /**
+         * this method rappresents phase A of The Game
+         */
+        private void roundSetup(){
+
+            fillTower();
+            rollDices();
+
+        }
+
+        /**
+         * This method rappresents phase C of The Game, it must be called only when a period its at his end
+         */
+        private void vaticanReport(){
 
 
+            int numberOfPlayer = mPlayers.size();
+
+            if(mPlayers.get(0).getFaithPoints().getPoints() < period ){
+                //mPlayers.get(0).add();
+            }else {
+                //if(mDonate == false){
+                //mPlayers.get(0).add(tilescomunica);
+                //}else{
+                // FaithPoints mOffer = mPlayers.get(0).clearFaithPoints();
+                //VictoryPoints mReward = mFaithPointsTrack.convertToBonus(mOffer);
+                //mPlayers.get(0).add(mReward);
+            }
+
+        }
+        private void endRound(){
 
 
+            //inserire funzione gianni reorder
+            mGameBoard.clearAll();
 
-}
+
+        }
+
+        /**
+         *
+         */
+        private void endPeriod(){
+
+            //reorder dei pedoni
+            mGameBoard.clearAll();
+            vaticanReport();
+            period++;
+
+        }
+        private void endGame(){
+
+            //cicla tutti i giocatori (in base a come mettiamo id)
+
+            //Collected resources bonus//
+            /////////////////////////////
+            int total = mPlayers.get(0).getWood().getValue()+mPlayers.get(0).getStone().getValue()+mPlayers.get(0).getCoins().getValue()+mPlayers.get(0).getServant().getValue();
+            VictoryPoints collectedResources = new VictoryPoints(total/5);
+            mPlayers.get(0).add(collectedResources);
+
+            //Conquered territories Bonus//
+            ///////////////////////////////
+            total = mPlayers.get(0).getTerritoriesCount();
+            //decidiamo come caricare i bonus del tabellone personale
+
+            //Influenced Characters//
+            /////////////////////////
+            total = mPlayers.get(0).getCharactersCount();
+
+            //Encouraged Ventures//
+            ///////////////////////
+            total = mPlayers.get(0).getVenturesCount();
+
+            //Military Strength//
+            /////////////////////
+            mPlayers.get(0).getMilitaryPoints().getPoints();
+        }
+    }
