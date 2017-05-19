@@ -1,8 +1,8 @@
 package it.polimi.ingsw.ps09.model.Places.Market;
 
+import it.polimi.ingsw.ps09.model.BonusPlaceHolder;
 import it.polimi.ingsw.ps09.model.FamilyMembers.FamilyMember;
 import it.polimi.ingsw.ps09.model.Places.Place;
-import it.polimi.ingsw.ps09.model.Resources.Bonus;
 
 /**
  * Created by ale on 09/05/2017.
@@ -10,7 +10,7 @@ import it.polimi.ingsw.ps09.model.Resources.Bonus;
 public class MarketSpace extends Place {
 
     private FamilyMember mPawn;
-    private Bonus mBonus;
+    private BonusPlaceHolder mBonusPlaceHolder;
     private int mDiceValue;
 
     /**
@@ -23,10 +23,10 @@ public class MarketSpace extends Place {
 
     /**
      *
-     * @return Bonus that the player gain into the marketspace
+     * @return BonusPlaceHolder that the player gain into the marketspace
      */
-    public Bonus getBonus() {
-        return mBonus;
+    public BonusPlaceHolder getBonusPlaceHolder() {
+        return mBonusPlaceHolder;
     }
 
     /**
@@ -47,10 +47,10 @@ public class MarketSpace extends Place {
 
     /**
      *
-     * @param bonus Set the marketspace's bonus which the player will gain
+     * @param bonusPlaceHolder Set the marketspace's bonusPlaceHolder which the player will gain
      */
-    public void setBonus(Bonus bonus) {
-        mBonus = bonus;
+    public void setBonusPlaceHolder(BonusPlaceHolder bonusPlaceHolder) {
+        mBonusPlaceHolder = bonusPlaceHolder;
     }
 
     /**

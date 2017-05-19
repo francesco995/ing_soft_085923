@@ -74,7 +74,7 @@ public class CliApp {
             //If its free, print it
             if(market.getMarketList().get(mNumberMarketSpace).isAvailable())
                 System.out.println("MarketSpace space " + mNumberMarketSpace+1 + " is available. " +
-                "Its bonus is: " + market.getMarketList().get(mNumberMarketSpace).getBonus());
+                "Its bonus is: " + market.getMarketList().get(mNumberMarketSpace).getBonusPlaceHolder());
         }
     }
 

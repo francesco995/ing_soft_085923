@@ -4,10 +4,7 @@ import it.polimi.ingsw.ps09.controller.Game;
 import it.polimi.ingsw.ps09.model.Points.FaithPoints;
 import it.polimi.ingsw.ps09.model.Points.MilitaryPoints;
 import it.polimi.ingsw.ps09.model.Points.VictoryPoints;
-import it.polimi.ingsw.ps09.model.Resources.Coins;
-import it.polimi.ingsw.ps09.model.Resources.Servant;
-import it.polimi.ingsw.ps09.model.Resources.Stone;
-import it.polimi.ingsw.ps09.model.Resources.Wood;
+import it.polimi.ingsw.ps09.model.Resources.*;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -20,20 +17,17 @@ import static java.util.logging.Level.INFO;
  */
 public class Player {
 
+    //CONSTANTS
     public static int PLAYER_ID;
 
     //VARIABLES
-
     private String mUserName;
     private String mUserColor;
 
     //GAME OBJECTS
-
     private PersonalBoard mPersonalBoard;
     private UserPoints mUserPoints;
     private List<LeaderCard> mLeaderCards;
-
-
 
     //LOGGER
     private static final Logger mLogger = Logger.getLogger( Player.class.getName() );
@@ -88,14 +82,6 @@ public class Player {
         return mUserColor;
     }
 
-    private PersonalBoard getPersonalBoard() {
-        return mPersonalBoard;
-    }
-
-    private UserPoints getUserPoints() {
-        return mUserPoints;
-    }
-
     public List<LeaderCard> getLeaderCards() {
         return mLeaderCards;
     }
@@ -115,8 +101,14 @@ public class Player {
     }
 
 
-    //Add a Leader Card
+    //####################################################
+    //####################################################
+    //################ Add a Leader Card #################
 
+    /**
+     * Add a Leader Card to Player
+     * @param leaderCard Leader Card to add
+     */
     public void add(LeaderCard leaderCard){
         mLeaderCards.add(leaderCard);
 
@@ -128,12 +120,42 @@ public class Player {
 
     }
 
-    //Add User Points from Point objects
+    //####################################################
+    //####################################################
+    //################# Clear FaithPoints ################
 
+    /**
+     * Clears all the Player FaithPoints, and returns the value
+     * @return Old Player FaithPoints value (as object)
+     */
     public FaithPoints clearFaithPoints(){
+
+        //LOG
+        mLogger.log(INFO, "Game: " + Game.GAME_ID +
+                " clearing FaithPoints for player: " + mUserName +
+                " had: " + mUserPoints.getFaithPoints() + " FaithPoints, now has 0");
+
         return mUserPoints.clearFaithPoints();
     }
 
+    //####################################################
+    //####################################################
+    //#################### Add Points ####################
+
+    /**
+     * Add UserPoints to Player
+     * @param addPoints UserPoints containing multiple Points objects
+     */
+    public void add(UserPoints addPoints){
+        add(addPoints.getFaithPoints());
+        add(addPoints.getMilitaryPoints());
+        add(addPoints.getVictoryPoints());
+    }
+
+    /**
+     * Add FaithPoints to Player
+     * @param faithPoints FaithPoints (object) to add
+     */
     public void add(FaithPoints faithPoints){
         mUserPoints.add(faithPoints);
 
@@ -145,6 +167,10 @@ public class Player {
 
     }
 
+    /**
+     * Add MilitaryPoints to Player
+     * @param militaryPoints MilitaryPoints (object) to add
+     */
     public void add(MilitaryPoints militaryPoints){
         mUserPoints.add(militaryPoints);
 
@@ -156,6 +182,10 @@ public class Player {
 
     }
 
+    /**
+     * Add VictoryPoints to Player
+     * @param victoryPoints VictoryPoints (object) to add
+     */
     public void add(VictoryPoints victoryPoints){
         mUserPoints.add(victoryPoints);
 
@@ -167,7 +197,10 @@ public class Player {
 
     }
 
-    //Get User Resources as Resource object
+    //####################################################
+    //####################################################
+    //################## Get Resources ###################
+
     public Coins getCoins() {
         return mPersonalBoard.getCoins();
     }
@@ -213,10 +246,24 @@ public class Player {
         return mPersonalBoard.getBoardTerritories().size();
 
     }
+    //####################################################
+    //####################################################
+    //################## Add Resources ###################
 
     /**
-     *
-     * @param addCoins
+     * Add UserResources to Player
+     * @param addResources a UserResources containing multiple resource objects
+     */
+    public void add(UserResources addResources){
+        add(addResources.getCoins());
+        add(addResources.getServant());
+        add(addResources.getStone());
+        add(addResources.getWood());
+    }
+
+    /**
+     * Add Coins to Player
+     * @param addCoins Coins (object) to add
      */
     public void add(Coins addCoins){
         mPersonalBoard.addCoins(addCoins);
@@ -229,6 +276,10 @@ public class Player {
 
     }
 
+    /**
+     * Add Servants to Player
+     * @param addServant Servant (object) to add
+     */
     public void add(Servant addServant){
         mPersonalBoard.addServant(addServant);
 
@@ -240,6 +291,10 @@ public class Player {
 
     }
 
+    /**
+     * Add Stone to Player
+     * @param addStone Stone (object) to add
+     */
     public void add(Stone addStone){
         mPersonalBoard.addStone(addStone);
 
@@ -251,6 +306,10 @@ public class Player {
 
     }
 
+    /**
+     * Add Wood to Player
+     * @param addWood Wood (object) to add
+     */
     public void add(Wood addWood){
         mPersonalBoard.addWood(addWood);
 
@@ -261,5 +320,118 @@ public class Player {
                 " now has: " + this.getWood().toString() + " Wood");
 
     }
+
+
+    //####################################################
+    //####################################################
+    //######### Check if Player has Resources ############
+
+    /**
+     * Check if Player has a given Resource / Points
+     * @param hasCoins the Resource / Points to check if Player has
+     * @return returns true if the Player has the given Resource / Points
+     */
+    public boolean has(Coins hasCoins){
+        return mPersonalBoard.getCoins().isGreaterOrEqual(hasCoins);
+    }
+
+    /**
+     * Check if Player has a given Resource / Points
+     * @param hasServant the Resource / Points to check if Player has
+     * @return returns true if the Player has the given Resource / Points
+     */
+    public boolean has(Servant hasServant){
+        return mPersonalBoard.getServant().isGreaterOrEqual(hasServant);
+    }
+
+    /**
+     * Check if Player has a given Resource / Points
+     * @param hasStone the Resource / Points to check if Player has
+     * @return returns true if the Player has the given Resource / Points
+     */
+    public boolean has(Stone hasStone){
+        return mPersonalBoard.getStone().isGreaterOrEqual(hasStone);
+    }
+
+    /**
+     * Check if Player has a given Resource / Points
+     * @param hasWood the Resource / Points to check if Player has
+     * @return returns true if the Player has the given Resource / Points
+     */
+    public boolean has(Wood hasWood){
+        return mPersonalBoard.getWood().isGreaterOrEqual(hasWood);
+    }
+
+    /**
+     * Check if Player has a given Resource / Points
+     * @param hasUserResources the Resource / Points to check if Player has
+     * @return returns true if the Player has the given Resource / Points
+     */
+    public boolean has(UserResources hasUserResources){
+        return (
+                    has(hasUserResources.getCoins()) &&
+                    has(hasUserResources.getServant()) &&
+                    has(hasUserResources.getStone()) &&
+                    has(hasUserResources.getWood())
+                );
+    }
+
+    //####################################################
+    //####################################################
+    //########## Check if Player has Points ##############
+
+    /**
+     * Check if Player has a given Resource / Points
+     * @param hasUserPoints the Resource / Points to check if Player has
+     * @return returns true if the Player has the given Resource / Points
+     */
+    public boolean has(UserPoints hasUserPoints){
+        return (
+                    has(hasUserPoints.getFaithPoints()) &&
+                    has(hasUserPoints.getMilitaryPoints()) &&
+                    has(hasUserPoints.getVictoryPoints())
+                );
+    }
+
+    /**
+     * Check if Player has a given Resource / Points
+     * @param hasFaithPoints the Resource / Points to check if Player has
+     * @return returns true if the Player has the given Resource / Points
+     */
+    public boolean has(FaithPoints hasFaithPoints){
+        return mUserPoints.getFaithPoints().isGreaterOrEqual(hasFaithPoints);
+    }
+
+    /**
+     * Check if Player has a given Resource / Points
+     * @param hasMilitaryPoints the Resource / Points to check if Player has
+     * @return returns true if the Player has the given Resource / Points
+     */
+    public boolean has(MilitaryPoints hasMilitaryPoints){
+        return mUserPoints.getMilitaryPoints().isGreaterOrEqual(hasMilitaryPoints);
+    }
+
+    /**
+     * Check if Player has a given Resource / Points
+     * @param hasVictoryPoints the Resource / Points to check if Player has
+     * @return returns true if the Player has the given Resource / Points
+     */
+    public boolean has(VictoryPoints hasVictoryPoints){
+        return mUserPoints.getVictoryPoints().isGreaterOrEqual(hasVictoryPoints);
+    }
+
+
+    //####################################################
+    //####################################################
+    //########## Remove Points from Player ###############
+    //TODO: FraG
+
+    public void remove(FaithPoints removeFaithPoints){
+        if(has(removeFaithPoints)){
+
+        }
+
+    }
+
 
 }

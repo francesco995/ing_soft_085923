@@ -14,7 +14,7 @@ import java.util.*;
 
 /**
  * Created by franc on 10/05/2017.
- *      * DevelopmentCardsDeck is a Collections that contains all the Development cards
+ * DevelopmentCardsDeck is a Collections that contains all the Development cards
  * Provides a method for drawing cards
  *
  * HashMap of CARD TYPE to a Map of GAME PERIODS (Tiers) to a LinkedList of Cards

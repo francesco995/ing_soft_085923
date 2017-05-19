@@ -3,7 +3,7 @@ package it.polimi.ingsw.ps09.model.Resources;
 /**
  * Created by francGianni on 09/05/2017.
  */
-public class Coins extends Resource{
+public class Coins extends UserResource {
 
     //CONSTRUCTORS
 
