@@ -1,5 +1,6 @@
 package it.polimi.ingsw.ps09.model;
 
+import it.polimi.ingsw.ps09.controller.Game;
 import it.polimi.ingsw.ps09.model.DevelopmentCards.DevelopmentCard;
 import it.polimi.ingsw.ps09.model.FamilyMembers.FamilyMember;
 import it.polimi.ingsw.ps09.model.Places.Council;
@@ -12,6 +13,7 @@ import it.polimi.ingsw.ps09.model.Places.Towers.TerritoriesTower;
 import it.polimi.ingsw.ps09.model.Places.Towers.VenturesTower;
 import it.polimi.ingsw.ps09.model.Resources.Bonus;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -41,7 +43,7 @@ public class Board {
     /**
      * Create the board whit market, harvest, production, towers, church and council
      */
-    public void CreateBoard(){
+    public Board(ExcommunicationTile ExcomTile1, ExcommunicationTile ExcomTile2, ExcommunicationTile ExcomTile3){
 
         mMarket = new Market();
         mCouncil = new Council();
@@ -53,12 +55,12 @@ public class Board {
         mVenturesTower = new VenturesTower();
         mBuildingsTower = new BuildingsTower();
 
-       /* mExcommunicationTile1 = new ExcommunicationTile("TileName", 1, effect);
-        mExcommunicationTile2 = new ExcommunicationTile("TileName", 2, effect);
-        mExcommunicationTile3 = new ExcommunicationTile("TileName", 3, effect);
+        mExcommunicationTile1 = ExcomTile1;
+        mExcommunicationTile2 = ExcomTile2;
+        mExcommunicationTile3 = ExcomTile3;
         mExcommunicationTilesList = new ArrayList<ExcommunicationTile>();
-*/
         mOrder = new Order();
+        mNumbeOfPlayers = Game.PLAYERS_NUMBER;
 
     }
 
@@ -78,7 +80,7 @@ public class Board {
     public List getMarket() {
         return mMarket.getMarketList();
     }
-
+    
     /**
      *
      *
@@ -262,6 +264,7 @@ public class Board {
     //################ CharacterTower ####################
 
     //TODO: ALE L STAY DRY CON LE TORRY INSIEME
+    //TODO: ALE L Fra L passa le carte devel specifiche (Building, character, etc)
 
     public CharactersTower getCharactersTower() {
         return mCharactersTower;
@@ -525,4 +528,18 @@ public class Board {
         mOrder = order;
     }
     */
+
+    /**
+     * Clear all the board
+     */
+    public void clearAll(){
+        mHarvest.clearAll();
+        mProduction.clearAll();
+        mMarket.clearAll();
+        mTerritoriesTower.clearAll();
+        mCharactersTower.clearAll();
+        mVenturesTower.clearAll();
+        mBuildingsTower.clearAll();
+        mCouncil.clearAll();
+    }
 }

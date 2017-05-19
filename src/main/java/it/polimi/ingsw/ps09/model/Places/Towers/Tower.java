@@ -107,5 +107,9 @@ public class Tower {
 
     }
 
+    public void clearAll(){
+        mFloors.clear();
+    }
+
 
 }
