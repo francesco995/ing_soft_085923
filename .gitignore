@@ -69,3 +69,6 @@ JavaDoc/
 *.uml
 
 src/main/java/it/polimi/ingsw/ps09/controller/FraLTest.java
+/src/main/java/it/polimi/ingsw/ps09/AppTestFraG2.java
+src/main/java/it/polimi/ingsw/ps09/AppTestFraG2.java
+src/main/java/it/polimi/ingsw/ps09/view/

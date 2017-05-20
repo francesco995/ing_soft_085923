@@ -87,4 +87,30 @@ public class UserResources {
     }
 
 
+    //Remove resources
+
+    public void remove(Coins removeCoins){
+        mCoins.remove(removeCoins);
+    }
+
+    public void remove(Servant removeServant){
+        mServant.remove(removeServant);
+    }
+
+    public void remove(Stone removeStone){
+        mStone.remove(removeStone);
+    }
+
+    public void remove(Wood removeWood){
+        mWood.remove(removeWood);
+    }
+
+    public void remove(UserResources userResources){
+        remove(userResources.getCoins());
+        remove(userResources.getServant());
+        remove(userResources.getStone());
+        remove(userResources.getWood());
+    }
+
+
 }

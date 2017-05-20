@@ -1,11 +1,13 @@
 package it.polimi.ingsw.ps09.model.Resources;
 
+import it.polimi.ingsw.ps09.controller.Game;
+import it.polimi.ingsw.ps09.model.Player;
 import it.polimi.ingsw.ps09.model.UserPoints;
 
 import java.util.Comparator;
 
 /**
- * Created by francGianni on 09/05/2017.
+ * Created by francesco995 on 09/05/2017.
  */
 public abstract class UserResource{
 
@@ -26,15 +28,36 @@ public abstract class UserResource{
         return mValue;
     }
 
+    @Override
+    public String toString(){
+        return String.valueOf(mValue);
+    }
+
     //ADD
     public void add(UserResource add){
         mValue = mValue + add.getValue();
     }
 
-    @Override
-    public String toString(){
-        return String.valueOf(mValue);
+    //REMOVE
+    /**
+     * Remove Resource
+     * Points can be checked with isGreaterOrEqual before removing to avoid Exceptions
+     * @param remove Resource to remove
+     * @throws UnsupportedOperationException if resource would go negative.
+     */
+    public void remove(UserResource remove){
+        mValue = mValue - remove.getValue();
+        if(mValue < 0){
+            throw new UnsupportedOperationException(
+                    "ERROR || Game: " + Game.GAME_ID +
+                            " tried to remove " + remove.getValue() +
+                            " " + remove.getClass().getName().toString() +
+                            " from player: " + Player.PLAYER_ID +
+                            " now has " + mValue +
+                            " Points can't be negative!!!");
+        }
     }
+
 
     /**
      * Compare this UserResource object to an other one

@@ -137,6 +137,7 @@ public class Game extends Thread {
         //Setup and loads the Deck objects
         setupDecks();
 
+        //Set the Board
         mGameBoard = new Board( mExcommunicationTilesDeck.drawCard(1),
                                 mExcommunicationTilesDeck.drawCard(2),
                                 mExcommunicationTilesDeck.drawCard(3));
@@ -292,7 +293,12 @@ public class Game extends Thread {
 
             //Collected resources bonus//
             /////////////////////////////
-            int total = mPlayers.get(0).getWood().getValue()+mPlayers.get(0).getStone().getValue()+mPlayers.get(0).getCoins().getValue()+mPlayers.get(0).getServant().getValue();
+            int total =
+                    mPlayers.get(0).getWood().getValue()+
+                    mPlayers.get(0).getStone().getValue()+
+                    mPlayers.get(0).getCoins().getValue()+
+                    mPlayers.get(0).getServant().getValue();
+
             VictoryPoints collectedResources = new VictoryPoints(total/5);
             mPlayers.get(0).add(collectedResources);
 
