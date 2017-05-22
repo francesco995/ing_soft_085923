@@ -27,13 +27,12 @@ public class ExcommunicationTilesDeck {
     private Map<Integer,List<ExcommunicationTile>> mExcommunicationTilesDecks = new HashMap<Integer,List<ExcommunicationTile>>();
 
 
-
     /**
      * loadFromFile load all the ExcommunicationTiles in 3 different lists, one for each Period.
      * All the tiles are stored in an external .json file easily readable and editable
      * @throws FileNotFoundException - throws an exception if it cannot open file .json
      */
-    public void loadFromFile() throws FileNotFoundException {
+    public ExcommunicationTilesDeck() throws FileNotFoundException {
 
         //crea percorso comune a tutti i file
         File mDirectory = new File("./");
