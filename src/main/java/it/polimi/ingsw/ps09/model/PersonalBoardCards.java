@@ -20,10 +20,7 @@ public class PersonalBoardCards {
     private List<Character> mBoardCharacters = new ArrayList<>();
     private List<Territory> mBoardTerritories = new ArrayList<>();
     private List<Venture> mBoardVentures = new ArrayList<>();
-
-    public PersonalBoardCards(){
-
-    }
+    
 
     //GETTERS
     //Return a list of all the cards of a given kind a PersonalBoard contains

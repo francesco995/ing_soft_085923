@@ -2,6 +2,7 @@ package it.polimi.ingsw.ps09.model;
 
 import it.polimi.ingsw.ps09.model.Points.FaithPoints;
 import it.polimi.ingsw.ps09.model.Points.MilitaryPoints;
+import it.polimi.ingsw.ps09.model.Points.Points;
 import it.polimi.ingsw.ps09.model.Points.VictoryPoints;
 
 /**
@@ -50,31 +51,62 @@ public class UserPoints {
         return mVictoryPoints;
     }
 
-    //Add Points from points values
+    //####################################################
+    //####################################################
+    //#################### Add Points ####################
 
-    public void add(FaithPoints faithPoints) {
-        mFaithPoints.add(faithPoints);
+    public void add(FaithPoints addFaithPoints){
+        mFaithPoints.add(addFaithPoints);
     }
 
-    public void add(MilitaryPoints militaryPoints) {
-        mMilitaryPoints.add(militaryPoints);
+    public void add(MilitaryPoints addMilitaryPoints){
+        mMilitaryPoints.add(addMilitaryPoints);
     }
 
-    public void add(VictoryPoints victoryPoints) {
-        mVictoryPoints.add(victoryPoints);
+    public void add(VictoryPoints addVictoryPoints){
+        mVictoryPoints.add(addVictoryPoints);
     }
 
-    public void add(UserPoints userPoints){
-        add(userPoints.getFaithPoints());
-        add(userPoints.getMilitaryPoints());
-        add(userPoints.getVictoryPoints());
+    public void add(UserPoints addUserPoints){
+        add(addUserPoints.getFaithPoints());
+        add(addUserPoints.getMilitaryPoints());
+        add(addUserPoints.getVictoryPoints());
     }
+
+    //####################################################
+    //####################################################
+    //################## Remove Points ###################
+
+    public void remove(FaithPoints removeFaithPoints){
+        mFaithPoints.remove(removeFaithPoints);
+    }
+
+    public void remove(MilitaryPoints removeMilitaryPoints){
+        mMilitaryPoints.remove(removeMilitaryPoints);
+    }
+
+    public void remove(VictoryPoints removeVictoryPoints){
+        mVictoryPoints.remove(removeVictoryPoints);
+    }
+
+    public void remove(UserPoints removeUserPoints){
+        remove(removeUserPoints.getFaithPoints());
+        remove(removeUserPoints.getMilitaryPoints());
+        remove(removeUserPoints.getVictoryPoints());
+    }
+
+
+    //####################################################
+    //####################################################
+    //################# Clear FaithPoints ################
 
     public FaithPoints clearFaithPoints(){
         FaithPoints oldFaithPoints = mFaithPoints;
         mFaithPoints = new FaithPoints(0);
         return oldFaithPoints;
     }
+
+
 
 
 }

@@ -10,7 +10,7 @@ import java.util.LinkedList;
  * Created by franc on 10/05/2017.
  */
 
-public class DevelopmentCard {
+public abstract class DevelopmentCard {
 
     //VARIABLES
 

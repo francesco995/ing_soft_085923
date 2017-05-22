@@ -1,5 +1,11 @@
 package it.polimi.ingsw.ps09.model.Points;
 
+import it.polimi.ingsw.ps09.controller.Game;
+import it.polimi.ingsw.ps09.model.Player;
+
+/**
+ * Created by francesco995 on 09/05/2017.
+ */
 public abstract class Points {
 
     //VARIABLES
@@ -30,6 +36,7 @@ public abstract class Points {
         mPoints = mPoints + add.getPoints();
     }
 
+    //CHECK IF HAS
     /**
      * Compare this Points object to an other one
      * @param thanThis Points object to compare this. to
@@ -40,6 +47,28 @@ public abstract class Points {
         if(mPoints >= thanThis.getPoints())
             return true;
         return false;
+    }
+
+    //REMOVE
+
+    /**
+     * Remove Points
+     * Points can be checked with isGreaterOrEqual before removing to avoid Exceptions
+     * @param remove Points to remove
+     * @throws UnsupportedOperationException if points would go negative.
+     */
+    public void remove(Points remove){
+        mPoints = mPoints - remove.getPoints();
+
+        if(mPoints < 0){
+            throw new UnsupportedOperationException(
+                    "ERROR || Game: " + Game.GAME_ID +
+                    " tried to remove " + remove.getPoints() +
+                    " " + remove.getClass().getName().toString() +
+                    " from player: " + Player.PLAYER_ID +
+                    " now has " + mPoints +
+                    " Points can't be negative!!!");
+        }
     }
 
 

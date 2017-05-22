@@ -96,14 +96,19 @@ public class DevelopmentCardsDeck {
 
         //For each period and for each type of card, fill the corresponding Map and LinkedList
         for(int i = 1; i <= MAX_PERIODS; i++){
+
             mDeck.get("BUILDING").put(i, loadDeck(  mFilePath + "BuildingDeck" +  i + DECK_FORMAT,
                     new TypeToken<LinkedList<Building>>(){}.getType() ));
+
             mDeck.get("CHARACTER").put(i, loadDeck( mFilePath + "CharacterDeck" +  i + DECK_FORMAT,
                     new TypeToken<LinkedList<Character>>(){}.getType() ));
+
             mDeck.get("TERRITORY").put(i, loadDeck( mFilePath + "TerritoryDeck" + i + DECK_FORMAT,
                     new TypeToken<LinkedList<Territory>>(){}.getType()));
+
             mDeck.get("VENTURE").put(i, loadDeck(   mFilePath + "VentureDeck" + i + DECK_FORMAT,
                     new TypeToken<LinkedList<Venture>>(){}.getType()));
+            
         }
 
     }

@@ -5,6 +5,7 @@ import it.polimi.ingsw.ps09.model.DevelopmentCards.Building;
 import it.polimi.ingsw.ps09.model.DevelopmentCards.Character;
 import it.polimi.ingsw.ps09.model.DevelopmentCards.Territory;
 import it.polimi.ingsw.ps09.model.DevelopmentCards.Venture;
+import it.polimi.ingsw.ps09.model.Points.FaithPoints;
 import it.polimi.ingsw.ps09.model.Resources.Coins;
 import it.polimi.ingsw.ps09.model.Resources.Servant;
 import it.polimi.ingsw.ps09.model.Resources.Stone;
@@ -100,22 +101,22 @@ public class PersonalBoard {
 
     //Add single CARD
     //Add BUILDING
-    public void addBuilding(Building building){
+    public void add(Building building){
         mPersonalBoardCards.addBuilding(building);
     }
 
     //Add CHARACTER
-    public void addCharacter(Character character){
+    public void add(Character character){
         mPersonalBoardCards.addCharacter(character);
     }
 
     //Add TERRITORY
-    public void addTerritory(Territory territory){
+    public void add(Territory territory){
         mPersonalBoardCards.addTerritory(territory);
     }
 
     //Add VENTURE
-    public void addVenture(Venture venture){
+    public void add(Venture venture){
         mPersonalBoardCards.addVenture(venture);
     }
 
@@ -140,20 +141,41 @@ public class PersonalBoard {
 
     //ADD A RESOURCE
 
-    public void addCoins(Coins addCoins){
+    public void add(Coins addCoins){
         mUserResources.add(addCoins);
     }
 
-    public void addServant(Servant addServant){
+    public void add(Servant addServant){
         mUserResources.add(addServant);
     }
 
-    public void addStone(Stone addStone){
+    public void add(Stone addStone){
         mUserResources.add(addStone);
     }
 
-    public void addWood(Wood addWood){
+    public void add(Wood addWood){
         mUserResources.add(addWood);
     }
+
+
+    //REMOVE A RESOURCE
+
+    public void remove(Coins removeCoins){
+        mUserResources.remove(removeCoins);
+    }
+
+    public void remove(Servant removeServant){
+        mUserResources.remove(removeServant);
+    }
+
+    public void remove(Stone removeStone){
+        mUserResources.remove(removeStone);
+    }
+
+    public void remove(Wood removeWood){
+        mUserResources.remove(removeWood);
+    }
+
+
 
 }

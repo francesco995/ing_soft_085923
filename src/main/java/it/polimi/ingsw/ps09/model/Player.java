@@ -13,7 +13,7 @@ import java.util.logging.Logger;
 import static java.util.logging.Level.INFO;
 
 /**
- * Created by francGianni on 10/05/2017.
+ * Created by francesco995 on 10/05/2017.
  */
 public class Player {
 
@@ -86,137 +86,6 @@ public class Player {
         return mLeaderCards;
     }
 
-//User points as point objects
-
-    public FaithPoints getFaithPoints() {
-        return mUserPoints.getFaithPoints();
-    }
-
-    public MilitaryPoints getMilitaryPoints() {
-        return mUserPoints.getMilitaryPoints();
-    }
-
-    public VictoryPoints getVictoryPoints() {
-        return mUserPoints.getVictoryPoints();
-    }
-
-
-    //####################################################
-    //####################################################
-    //################ Add a Leader Card #################
-
-    /**
-     * Add a Leader Card to Player
-     * @param leaderCard Leader Card to add
-     */
-    public void add(LeaderCard leaderCard){
-        mLeaderCards.add(leaderCard);
-
-        //LOG
-        mLogger.log(INFO, "Game: " + Game.GAME_ID +
-                " add Leader Card " + leaderCard.getCardName() +
-                " to player: " + mUserName +
-                " now has: " + mLeaderCards.size() + " Leader Cards");
-
-    }
-
-    //####################################################
-    //####################################################
-    //################# Clear FaithPoints ################
-
-    /**
-     * Clears all the Player FaithPoints, and returns the value
-     * @return Old Player FaithPoints value (as object)
-     */
-    public FaithPoints clearFaithPoints(){
-
-        //LOG
-        mLogger.log(INFO, "Game: " + Game.GAME_ID +
-                " clearing FaithPoints for player: " + mUserName +
-                " had: " + mUserPoints.getFaithPoints() + " FaithPoints, now has 0");
-
-        return mUserPoints.clearFaithPoints();
-    }
-
-    //####################################################
-    //####################################################
-    //#################### Add Points ####################
-
-    /**
-     * Add UserPoints to Player
-     * @param addPoints UserPoints containing multiple Points objects
-     */
-    public void add(UserPoints addPoints){
-        add(addPoints.getFaithPoints());
-        add(addPoints.getMilitaryPoints());
-        add(addPoints.getVictoryPoints());
-    }
-
-    /**
-     * Add FaithPoints to Player
-     * @param faithPoints FaithPoints (object) to add
-     */
-    public void add(FaithPoints faithPoints){
-        mUserPoints.add(faithPoints);
-
-        //LOG
-        mLogger.log(INFO, "Game: " + Game.GAME_ID +
-                                " add " + faithPoints.toString() +
-                                " FaithPoints to player: " + mUserName +
-                                " now has: " + mUserPoints.getFaithPoints().toString() + " FaithPoints");
-
-    }
-
-    /**
-     * Add MilitaryPoints to Player
-     * @param militaryPoints MilitaryPoints (object) to add
-     */
-    public void add(MilitaryPoints militaryPoints){
-        mUserPoints.add(militaryPoints);
-
-        //LOG
-      mLogger.log(INFO,"Game: " + Game.GAME_ID +
-                            " add " + militaryPoints.toString() +
-                            " MilitaryPoints to player: " + mUserName +
-                            " now has: " + mUserPoints.getFaithPoints().toString() + " MilitaryPoints");
-
-    }
-
-    /**
-     * Add VictoryPoints to Player
-     * @param victoryPoints VictoryPoints (object) to add
-     */
-    public void add(VictoryPoints victoryPoints){
-        mUserPoints.add(victoryPoints);
-
-        //LOG
-        mLogger.log(INFO, "Game: " + Game.GAME_ID +
-                                " add " + victoryPoints.toString() +
-                                " VictoryPoints to player: " + mUserName +
-                                " now has: " + this.getFaithPoints().toString() + " VictoryPoints");
-
-    }
-
-    //####################################################
-    //####################################################
-    //################## Get Resources ###################
-
-    public Coins getCoins() {
-        return mPersonalBoard.getCoins();
-    }
-
-    public Servant getServant() {
-        return mPersonalBoard.getServant();
-    }
-
-    public Stone getStone() {
-        return mPersonalBoard.getStone();
-    }
-
-    public Wood getWood() {
-        return mPersonalBoard.getWood();
-    }
-
     //Get user cards count as int
 
     /**
@@ -246,13 +115,56 @@ public class Player {
         return mPersonalBoard.getBoardTerritories().size();
 
     }
+
+
+    //####################################################
+    //####################################################
+    //################ Add a Leader Card #################
+
+    /**
+     * Add a Leader Card to Player
+     * @param leaderCard Leader Card to add
+     */
+    public void add(LeaderCard leaderCard){
+        mLeaderCards.add(leaderCard);
+
+        //LOG
+        mLogger.log(INFO, "Game: " + Game.GAME_ID +
+                " add Leader Card " + leaderCard.getCardName() +
+                " to player: " + mUserName +
+                " now has: " + mLeaderCards.size() + " Leader Cards");
+
+    }
+
+
+    //####################################################
+    //####################################################
+    //################## Get Resources ###################
+
+    public Coins getCoins() {
+        return mPersonalBoard.getCoins();
+    }
+
+    public Servant getServant() {
+        return mPersonalBoard.getServant();
+    }
+
+    public Stone getStone() {
+        return mPersonalBoard.getStone();
+    }
+
+    public Wood getWood() {
+        return mPersonalBoard.getWood();
+    }
+
+
     //####################################################
     //####################################################
     //################## Add Resources ###################
 
     /**
      * Add UserResources to Player
-     * @param addResources a UserResources containing multiple resource objects
+     * @param addResources a UserResources object containing multiple resource objects
      */
     public void add(UserResources addResources){
         add(addResources.getCoins());
@@ -266,13 +178,13 @@ public class Player {
      * @param addCoins Coins (object) to add
      */
     public void add(Coins addCoins){
-        mPersonalBoard.addCoins(addCoins);
+        mPersonalBoard.add(addCoins);
 
         //LOG
         mLogger.log(INFO, "Game: " + Game.GAME_ID +
                 " add " + addCoins.toString() +
                 " Coins to player: " + mUserName +
-                " now has: " + this.getCoins().toString() + " Coins");
+                " now has: " + getCoins().toString() + " Coins");
 
     }
 
@@ -281,13 +193,13 @@ public class Player {
      * @param addServant Servant (object) to add
      */
     public void add(Servant addServant){
-        mPersonalBoard.addServant(addServant);
+        mPersonalBoard.add(addServant);
 
         //LOG
         mLogger.log(INFO, "Game: " + Game.GAME_ID +
                 " add " + addServant.toString() +
                 " Servant to player: " + mUserName +
-                " now has: " + this.getServant().toString() + " Servant");
+                " now has: " + getServant().toString() + " Servant");
 
     }
 
@@ -296,13 +208,13 @@ public class Player {
      * @param addStone Stone (object) to add
      */
     public void add(Stone addStone){
-        mPersonalBoard.addStone(addStone);
+        mPersonalBoard.add(addStone);
 
         //LOG
         mLogger.log(INFO, "Game: " + Game.GAME_ID +
                 " add " + addStone.toString() +
                 " Stone to player: " + mUserName +
-                " now has: " + this.getStone().toString() + " Stone");
+                " now has: " + getStone().toString() + " Stone");
 
     }
 
@@ -311,13 +223,13 @@ public class Player {
      * @param addWood Wood (object) to add
      */
     public void add(Wood addWood){
-        mPersonalBoard.addWood(addWood);
+        mPersonalBoard.add(addWood);
 
         //LOG
         mLogger.log(INFO, "Game: " + Game.GAME_ID +
                 " add " + addWood.toString() +
                 " Wood to player: " + mUserName +
-                " now has: " + this.getWood().toString() + " Wood");
+                " now has: " + getWood().toString() + " Wood");
 
     }
 
@@ -376,6 +288,183 @@ public class Player {
                 );
     }
 
+
+    //####################################################
+    //####################################################
+    //################ Remove Resources ##################
+
+    /**
+     * Remove UserResources from Player
+     * @param removeResources a UserResources containing multiple resource objects
+     */
+    public void remove(UserResources removeResources){
+        remove(removeResources.getCoins());
+        remove(removeResources.getServant());
+        remove(removeResources.getStone());
+        remove(removeResources.getWood());
+    }
+
+    /**
+     * Remove Coins from Player
+     * @param removeCoins Coins (object) to remove
+     */
+    public void remove(Coins removeCoins){
+        mPersonalBoard.remove(removeCoins);
+
+        //LOG
+        mLogger.log(INFO, "Game: " + Game.GAME_ID +
+                " remove " + removeCoins.toString() +
+                " Coins from player: " + mUserName +
+                " now has: " + getCoins().toString() + " Coins");
+
+    }
+
+    /**
+     * Remove Servants from Player
+     * @param removeServant Servant (object) to remove
+     */
+    public void remove(Servant removeServant){
+        mPersonalBoard.remove(removeServant);
+
+        //LOG
+        mLogger.log(INFO, "Game: " + Game.GAME_ID +
+                " add " + removeServant.toString() +
+                " Servant to player: " + mUserName +
+                " now has: " + getServant().toString() + " Servant");
+
+    }
+
+    /**
+     * Remove Stone from Player
+     * @param removeStone Stone (object) to remove
+     */
+    public void remove(Stone removeStone){
+        mPersonalBoard.remove(removeStone);
+
+        //LOG
+        mLogger.log(INFO, "Game: " + Game.GAME_ID +
+                " remove " + removeStone.toString() +
+                " Stone to player: " + mUserName +
+                " now has: " + getStone().toString() + " Stone");
+
+    }
+
+    /**
+     * Remove Wood from Player
+     * @param removeWood Wood (object) to remove
+     */
+    public void remove(Wood removeWood){
+        mPersonalBoard.remove(removeWood);
+
+        //LOG
+        mLogger.log(INFO, "Game: " + Game.GAME_ID +
+                " remove " + removeWood.toString() +
+                " Wood to player: " + mUserName +
+                " now has: " + getWood().toString() + " Wood");
+
+    }
+
+
+
+
+
+
+    //####################################################
+    //####################################################
+    //################ Get User Points ###################
+
+    public FaithPoints getFaithPoints() {
+        return mUserPoints.getFaithPoints();
+    }
+
+    public MilitaryPoints getMilitaryPoints() {
+        return mUserPoints.getMilitaryPoints();
+    }
+
+    public VictoryPoints getVictoryPoints() {
+        return mUserPoints.getVictoryPoints();
+    }
+
+
+    //####################################################
+    //####################################################
+    //#################### Add Points ####################
+
+    /**
+     * Add UserPoints to Player
+     * @param addPoints UserPoints containing multiple Points objects
+     */
+    public void add(UserPoints addPoints){
+        add(addPoints.getFaithPoints());
+        add(addPoints.getMilitaryPoints());
+        add(addPoints.getVictoryPoints());
+    }
+
+    /**
+     * Add FaithPoints to Player
+     * @param addFaithPoints FaithPoints (object) to add
+     */
+    public void add(FaithPoints addFaithPoints){
+        mUserPoints.add(addFaithPoints);
+
+        //LOG
+        mLogger.log(INFO, "Game: " + Game.GAME_ID +
+                " add " + addFaithPoints.toString() +
+                " FaithPoints to player: " + mUserName +
+                " now has: " + getFaithPoints().toString() + " FaithPoints");
+
+    }
+
+    /**
+     * Add MilitaryPoints to Player
+     * @param addMilitaryPoints MilitaryPoints (object) to add
+     */
+    public void add(MilitaryPoints addMilitaryPoints){
+        mUserPoints.add(addMilitaryPoints);
+
+        //LOG
+        mLogger.log(INFO,"Game: " + Game.GAME_ID +
+                " add " + addMilitaryPoints.toString() +
+                " MilitaryPoints to player: " + mUserName +
+                " now has: " + getMilitaryPoints().toString() + " MilitaryPoints");
+
+    }
+
+    /**
+     * Add VictoryPoints to Player
+     * @param addVictoryPoints VictoryPoints (object) to add
+     */
+    public void add(VictoryPoints addVictoryPoints){
+        mUserPoints.add(addVictoryPoints);
+
+        //LOG
+        mLogger.log(INFO, "Game: " + Game.GAME_ID +
+                " add " + addVictoryPoints.toString() +
+                " VictoryPoints to player: " + mUserName +
+                " now has: " + getVictoryPoints().toString() + " VictoryPoints");
+
+    }
+
+
+    //####################################################
+    //####################################################
+    //################# Clear FaithPoints ################
+
+    /**
+     * Clears all the Player FaithPoints, and returns the value
+     * @return Old Player FaithPoints value (as object)
+     */
+    public FaithPoints clearFaithPoints(){
+
+        //LOG
+        mLogger.log(INFO, "Game: " + Game.GAME_ID +
+                " clearing FaithPoints for player: " + mUserName +
+                " had: " + mUserPoints.getFaithPoints() + " FaithPoints, now has 0");
+
+        return mUserPoints.clearFaithPoints();
+    }
+
+
     //####################################################
     //####################################################
     //########## Check if Player has Points ##############
@@ -387,10 +476,10 @@ public class Player {
      */
     public boolean has(UserPoints hasUserPoints){
         return (
-                    has(hasUserPoints.getFaithPoints()) &&
-                    has(hasUserPoints.getMilitaryPoints()) &&
-                    has(hasUserPoints.getVictoryPoints())
-                );
+                has(hasUserPoints.getFaithPoints()) &&
+                has(hasUserPoints.getMilitaryPoints()) &&
+                has(hasUserPoints.getVictoryPoints())
+        );
     }
 
     /**
@@ -399,7 +488,7 @@ public class Player {
      * @return returns true if the Player has the given Resource / Points
      */
     public boolean has(FaithPoints hasFaithPoints){
-        return mUserPoints.getFaithPoints().isGreaterOrEqual(hasFaithPoints);
+        return getFaithPoints().isGreaterOrEqual(hasFaithPoints);
     }
 
     /**
@@ -408,7 +497,7 @@ public class Player {
      * @return returns true if the Player has the given Resource / Points
      */
     public boolean has(MilitaryPoints hasMilitaryPoints){
-        return mUserPoints.getMilitaryPoints().isGreaterOrEqual(hasMilitaryPoints);
+        return getMilitaryPoints().isGreaterOrEqual(hasMilitaryPoints);
     }
 
     /**
@@ -417,19 +506,66 @@ public class Player {
      * @return returns true if the Player has the given Resource / Points
      */
     public boolean has(VictoryPoints hasVictoryPoints){
-        return mUserPoints.getVictoryPoints().isGreaterOrEqual(hasVictoryPoints);
+        return getVictoryPoints().isGreaterOrEqual(hasVictoryPoints);
     }
 
 
     //####################################################
     //####################################################
     //########## Remove Points from Player ###############
-    //TODO: FraG
 
+    /**
+     * Remove Points from Player
+     * @param removeUserPoints UserPoints (object) to remove
+     */
+    public void remove(UserPoints removeUserPoints){
+        remove(removeUserPoints.getFaithPoints());
+        remove(removeUserPoints.getMilitaryPoints());
+        remove(removeUserPoints.getVictoryPoints());
+    }
+
+    /**
+     * Remove FaithPoints from Player
+     * @param removeFaithPoints FaithPoints (object) to remove
+     */
     public void remove(FaithPoints removeFaithPoints){
-        if(has(removeFaithPoints)){
+        mUserPoints.remove(removeFaithPoints);
 
-        }
+        //LOG
+        mLogger.log(INFO, "Game: " + Game.GAME_ID +
+                " remove " + removeFaithPoints.toString() +
+                " FaithPoints from player: " + mUserName +
+                " now has: " + getFaithPoints().toString() + " FaithPoints");
+
+    }
+
+    /**
+     * Remove MilitaryPoints from Player
+     * @param removeMilitaryPoints MilitaryPoints (object) to remove
+     */
+    public void remove(MilitaryPoints removeMilitaryPoints){
+        mUserPoints.remove(removeMilitaryPoints);
+
+        //LOG
+        mLogger.log(INFO, "Game: " + Game.GAME_ID +
+                " remove " + removeMilitaryPoints.toString() +
+                " MilitaryPoints from player: " + mUserName +
+                " now has: " + getMilitaryPoints().toString() + " MilitaryPoints");
+
+    }
+
+    /**
+     * Remove VictoryPoints from Player
+     * @param removeVictoryPoints VictoryPoints (object) to remove
+     */
+    public void remove(VictoryPoints removeVictoryPoints){
+        mUserPoints.remove(removeVictoryPoints);
+
+        //LOG
+        mLogger.log(INFO, "Game: " + Game.GAME_ID +
+                " remove " + removeVictoryPoints.toString() +
+                " VictoryPoints from player: " + mUserName +
+                " now has: " + getVictoryPoints().toString() + " VictoryPoints");
 
     }
 

@@ -10,8 +10,6 @@ import java.io.FileNotFoundException;
 import java.lang.reflect.Type;
 import java.util.*;
 
-import static sun.plugin2.os.windows.OSVERSIONINFOA.size;
-
 /**
  * Created by franc on 15/05/2017.
  */
