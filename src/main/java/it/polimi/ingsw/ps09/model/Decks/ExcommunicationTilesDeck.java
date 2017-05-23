@@ -46,7 +46,6 @@ public class ExcommunicationTilesDeck {
             //read from a .json file and it imports it as a String into mStringDeck
 
             Scanner mScanner = new Scanner(new File(mFilePath + "ExcommunicationDeck" + i + ".json"));
-            System.out.println(mFilePath + "ExcommunicationDeck" + i + ".json");
             mStringDeck = mScanner.useDelimiter("\\A").next();
             mScanner.close();
 

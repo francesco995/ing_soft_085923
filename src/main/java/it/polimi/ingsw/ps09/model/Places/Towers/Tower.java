@@ -1,7 +1,7 @@
 package it.polimi.ingsw.ps09.model.Places.Towers;
 
 import it.polimi.ingsw.ps09.model.FamilyMembers.FamilyMember;
-import it.polimi.ingsw.ps09.model.Places.Towers.Floor.Floor;
+import it.polimi.ingsw.ps09.model.Places.Towers.Floor.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,6 +22,11 @@ public class Tower {
      */
     public Tower(String color) {
         mColor = color;
+
+        mFloors.add(0, new FloorOne());
+        mFloors.add(1, new FloorTwo());
+        mFloors.add(2, new FloorThree());
+        mFloors.add(3, new FloorFour());
     }
 
     /**

@@ -1,6 +1,6 @@
 package it.polimi.ingsw.ps09.model.Places.Towers.Floor;
 
-import it.polimi.ingsw.ps09.model.BonusPlaceHolder;
+import it.polimi.ingsw.ps09.model.BoardBonus;
 import it.polimi.ingsw.ps09.model.DevelopmentCards.DevelopmentCard;
 import it.polimi.ingsw.ps09.model.FamilyMembers.FamilyMember;
 
@@ -10,7 +10,7 @@ import it.polimi.ingsw.ps09.model.FamilyMembers.FamilyMember;
 public class Floor {
 
     private int mDiceValue;
-    private BonusPlaceHolder mBonusPlaceHolder;
+    private BoardBonus mBoardBonus;
     private DevelopmentCard mCard;
     private FamilyMember mPawn;
 
@@ -32,10 +32,10 @@ public class Floor {
 
     /**
      *
-     * @param bonusPlaceHolder Set floor's bonusPlaceHolder you get when access to a specified floor
+     * @param boardBonus Set floor's boardBonus you get when access to a specified floor
      */
-    public void setBonusPlaceHolder(BonusPlaceHolder bonusPlaceHolder) {
-        mBonusPlaceHolder = bonusPlaceHolder;
+    public void setBoardBonus(BoardBonus boardBonus) {
+        mBoardBonus = boardBonus;
     }
 
     /**
@@ -66,8 +66,8 @@ public class Floor {
      *
      * @return Get the floor's instant bonus which is gained when a family member is set on that floor
      */
-    public BonusPlaceHolder getBonusPlaceHolder() {
-        return mBonusPlaceHolder;
+    public BoardBonus getBoardBonus() {
+        return mBoardBonus;
     }
 
     /**

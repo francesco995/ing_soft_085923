@@ -4,7 +4,8 @@ import it.polimi.ingsw.ps09.model.Board;
 import it.polimi.ingsw.ps09.model.Decks.DevelopmentCardsDeck;
 import it.polimi.ingsw.ps09.model.Decks.ExcommunicationTilesDeck;
 import it.polimi.ingsw.ps09.model.Decks.LeaderCardsDeck;
-import it.polimi.ingsw.ps09.model.DevelopmentCards.DevelopmentCard;
+import it.polimi.ingsw.ps09.model.DevelopmentCards.*;
+import it.polimi.ingsw.ps09.model.DevelopmentCards.Character;
 import it.polimi.ingsw.ps09.model.Dices.BlackDice;
 import it.polimi.ingsw.ps09.model.Dices.OrangeDice;
 import it.polimi.ingsw.ps09.model.Dices.WhiteDice;
@@ -141,6 +142,9 @@ public class Game extends Thread {
         mGameBoard = new Board( mExcommunicationTilesDeck.drawCard(1),
                                 mExcommunicationTilesDeck.drawCard(2),
                                 mExcommunicationTilesDeck.drawCard(3));
+
+        fillTower();
+
     }
 
     /**
@@ -183,6 +187,9 @@ public class Game extends Thread {
 
     }
 
+    /**
+     * Setup the Dices
+     */
     private void setupDices(){
 
         mWhiteDice = new WhiteDice();
@@ -199,35 +206,39 @@ public class Game extends Thread {
 
         //problem it need to add as code every new kind of tower if a new tower is added to game
 
-        for (int i = 1; i <= mGameBoard.getTerritoriesTowerFloors().size(); i++) {
+        for (int i = 0; i < mGameBoard.getTerritoriesTowerFloors().size(); i++) {
 
-            //it fills all the floor no metter how many are there
-            mGameBoard.setCharacterTowerCard(i, (DevelopmentCard) mDevelopmentCardsDeck.drawCard("TERRITORY"));
-
-        }
-
-        for (int i = 1; i <= mGameBoard.getCharacterTowerFloors().size(); i++) {
-
-            //it fills all the floor no metter how many are there
-            mGameBoard.setCharacterTowerCard(i, (DevelopmentCard) mDevelopmentCardsDeck.drawCard("CHARACTER"));
+            //it fills all the floor no matter how many are there
+            mGameBoard.setTerritoriesTowerCard(i,
+                    (Territory) mDevelopmentCardsDeck.drawCard("TERRITORY"));
 
         }
 
-        for (int i = 1; i <= mGameBoard.getBuildingsTowerFloors().size(); i++) {
+        for (int i = 0; i < mGameBoard.getCharacterTowerFloors().size(); i++) {
 
-            //it fills all the floor no metter how many are there
-            mGameBoard.setCharacterTowerCard(i, (DevelopmentCard) mDevelopmentCardsDeck.drawCard("BUILDING"));
+            //it fills all the floor no matter how many are there
+            mGameBoard.setCharacterTowerCard(i,
+                    (Character) mDevelopmentCardsDeck.drawCard("CHARACTER"));
 
         }
 
-        for (int i = 1; i <= mGameBoard.getVenturesTowerFloors().size(); i++) {
-            //it fills all the floor no metter how many are there
-            mGameBoard.setCharacterTowerCard(i, (DevelopmentCard) mDevelopmentCardsDeck.drawCard("VENTURE"));
+        for (int i = 0; i < mGameBoard.getBuildingsTowerFloors().size(); i++) {
+
+            //it fills all the floor no matter how many are there
+            mGameBoard.setBuildingsTowerCard(i,
+                    (Building) mDevelopmentCardsDeck.drawCard("BUILDING"));
+
+        }
+
+        for (int i = 0; i < mGameBoard.getVenturesTowerFloors().size(); i++) {
+            //it fills all the floor no matter how many are there
+            mGameBoard.setVenturesTowerCard(i,
+                    (Venture) mDevelopmentCardsDeck.drawCard("VENTURE"));
 
         }
     }
         /**
-         * simple method that roll all the dices
+         * Simple method that roll all the dices
          */
         private void rollDices(){
 
@@ -238,7 +249,7 @@ public class Game extends Thread {
         }
 
         /**
-         * this method rappresents phase A of The Game
+         * Prepare the board for a new Round
          */
         private void roundSetup(){
 
@@ -248,7 +259,7 @@ public class Game extends Thread {
         }
 
         /**
-         * This method rappresents phase C of The Game, it must be called only when a period its at his end
+         * This method represents phase C of The Game, it must be called only when a period its at his end
          */
         private void vaticanReport(){
 

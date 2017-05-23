@@ -1,6 +1,5 @@
 package it.polimi.ingsw.ps09.model;
 
-import it.polimi.ingsw.ps09.controller.Game;
 import it.polimi.ingsw.ps09.model.DevelopmentCards.DevelopmentCard;
 import it.polimi.ingsw.ps09.model.FamilyMembers.FamilyMember;
 import it.polimi.ingsw.ps09.model.Places.Council;
@@ -89,8 +88,8 @@ public class Board {
      * @param pos Specify in which market space looking for
      * @return Get bonus object of the specified market space
      */
-    public BonusPlaceHolder getMarketBonus(int pos){
-        return mMarket.getMarketList().get(pos-1).getBonusPlaceHolder();
+    public BoardBonus getMarketBonus(int pos){
+        return mMarket.getMarketList().get(pos-1).getBoardBonus();
     }
 
     /**
@@ -123,10 +122,10 @@ public class Board {
     /**
      *
      * @param pos Specify in which market space look for
-     * @param bonusPlaceHolder Specify the bonusPlaceHolder to be set into the market space
+     * @param boardBonus Specify the boardBonus to be set into the market space
      */
-    public void setMarketSpaceBonus(int pos, BonusPlaceHolder bonusPlaceHolder){
-        mMarket.getMarketList().get(pos-1).setBonusPlaceHolder(bonusPlaceHolder);
+    public void setMarketSpaceBonus(int pos, BoardBonus boardBonus){
+        mMarket.getMarketList().get(pos-1).setBoardBonus(boardBonus);
     }
 
     /**
@@ -283,8 +282,8 @@ public class Board {
         return mCharactersTower.getFloors().get(floor-1).getPawn();
     }
 
-    public BonusPlaceHolder getCharacterTowerBonus(int floor){
-        return mCharactersTower.getFloors().get(floor-1).getBonusPlaceHolder();
+    public BoardBonus getCharacterTowerBonus(int floor){
+        return mCharactersTower.getFloors().get(floor-1).getBoardBonus();
     }
 
     public boolean isCharacterTowerAvailable(){
@@ -299,8 +298,8 @@ public class Board {
         mCharactersTower.getFloors().get(floor).setPawn(pawn);
     }
 
-    public void setCharacterTowerBonus(int floor, BonusPlaceHolder bonusPlaceHolder) {
-        mCharactersTower.getFloors().get(floor).setBonusPlaceHolder(bonusPlaceHolder);
+    public void setCharacterTowerBonus(int floor, BoardBonus boardBonus) {
+        mCharactersTower.getFloors().get(floor).setBoardBonus(boardBonus);
     }
 
     public void setCharacterTowerCard(int floor, DevelopmentCard card) {
@@ -335,8 +334,8 @@ public class Board {
         return mTerritoriesTower.getFloors().get(floor-1).getPawn();
     }
 
-    public BonusPlaceHolder getTerritoriesTowerBonus(int floor){
-        return mTerritoriesTower.getFloors().get(floor-1).getBonusPlaceHolder();
+    public BoardBonus getTerritoriesTowerBonus(int floor){
+        return mTerritoriesTower.getFloors().get(floor-1).getBoardBonus();
     }
 
     public boolean isTerritoriesTowerAvailable(){
@@ -351,8 +350,8 @@ public class Board {
         mTerritoriesTower.getFloors().get(floor).setPawn(pawn);
     }
 
-    public void setTerritoriesTowerBonus(int floor, BonusPlaceHolder bonusPlaceHolder) {
-        mTerritoriesTower.getFloors().get(floor).setBonusPlaceHolder(bonusPlaceHolder);
+    public void setTerritoriesTowerBonus(int floor, BoardBonus boardBonus) {
+        mTerritoriesTower.getFloors().get(floor).setBoardBonus(boardBonus);
     }
 
     public void setTerritoriesTowerCard(int floor, DevelopmentCard card) {
@@ -387,8 +386,8 @@ public class Board {
         return mVenturesTower.getFloors().get(floor-1).getPawn();
     }
 
-    public BonusPlaceHolder getVenturesTowerBonus(int floor){
-        return mVenturesTower.getFloors().get(floor-1).getBonusPlaceHolder();
+    public BoardBonus getVenturesTowerBonus(int floor){
+        return mVenturesTower.getFloors().get(floor-1).getBoardBonus();
     }
 
     public boolean isVenturesTowerAvailable(){
@@ -403,8 +402,8 @@ public class Board {
         mVenturesTower.getFloors().get(floor).setPawn(pawn);
     }
 
-    public void setVenturesTowerBonus(int floor, BonusPlaceHolder bonusPlaceHolder) {
-        mVenturesTower.getFloors().get(floor).setBonusPlaceHolder(bonusPlaceHolder);
+    public void setVenturesTowerBonus(int floor, BoardBonus boardBonus) {
+        mVenturesTower.getFloors().get(floor).setBoardBonus(boardBonus);
     }
 
     public void setVenturesTowerCard(int floor, DevelopmentCard card) {
@@ -439,8 +438,8 @@ public class Board {
         return mBuildingsTower.getFloors().get(floor-1).getPawn();
     }
 
-    public BonusPlaceHolder getBuildingsTowerBonus(int floor){
-        return mBuildingsTower.getFloors().get(floor-1).getBonusPlaceHolder();
+    public BoardBonus getBuildingsTowerBonus(int floor){
+        return mBuildingsTower.getFloors().get(floor-1).getBoardBonus();
     }
 
     public boolean isBuildingsTowerAvailable(){
@@ -455,8 +454,8 @@ public class Board {
         mBuildingsTower.getFloors().get(floor).setPawn(pawn);
     }
 
-    public void setBuildingsTowerBonus(int floor, BonusPlaceHolder bonusPlaceHolder) {
-        mBuildingsTower.getFloors().get(floor).setBonusPlaceHolder(bonusPlaceHolder);
+    public void setBuildingsTowerBonus(int floor, BoardBonus boardBonus) {
+        mBuildingsTower.getFloors().get(floor).setBoardBonus(boardBonus);
     }
 
     public void setBuildingsTowerCard(int floor, DevelopmentCard card) {
