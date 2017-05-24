@@ -7,7 +7,14 @@ import it.polimi.ingsw.ps09.model.Resources.UserResource;
  */
 public class BoardBonus {
 
-    UserResources mResourcesBonus;
-    UserPoints mPointsBonus;
+    UserResources mResourcesBonus = new UserResources();
+    UserPoints mPointsBonus = new UserPoints();
 
+    public UserResources getResourcesBonus() {
+        return mResourcesBonus;
+    }
+
+    public UserPoints getPointsBonus() {
+        return mPointsBonus;
+    }
 }

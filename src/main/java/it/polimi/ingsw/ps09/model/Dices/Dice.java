@@ -1,7 +1,7 @@
 package it.polimi.ingsw.ps09.model.Dices;
 
 
-public class Dice {
+public abstract class Dice {
 
 
     //VARIABLES

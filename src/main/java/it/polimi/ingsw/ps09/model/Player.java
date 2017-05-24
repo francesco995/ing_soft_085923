@@ -1,6 +1,9 @@
 package it.polimi.ingsw.ps09.model;
 
 import it.polimi.ingsw.ps09.controller.Game;
+import it.polimi.ingsw.ps09.model.DevelopmentCardEffects.DevelopmentCardEffect;
+import it.polimi.ingsw.ps09.model.DevelopmentCards.Building;
+import it.polimi.ingsw.ps09.model.DevelopmentCards.DevelopmentCard;
 import it.polimi.ingsw.ps09.model.Points.FaithPoints;
 import it.polimi.ingsw.ps09.model.Points.MilitaryPoints;
 import it.polimi.ingsw.ps09.model.Points.VictoryPoints;
@@ -72,7 +75,7 @@ public class Player {
                                 " with: " + mPersonalBoard.getCoins().getValue() + " initial Coins");
     }
 
-    //Get User info
+   //Get User info
 
     public String getUserName() {
         return mUserName;
@@ -567,6 +570,36 @@ public class Player {
                 " VictoryPoints from player: " + mUserName +
                 " now has: " + getVictoryPoints().toString() + " VictoryPoints");
 
+    }
+
+
+    //####################################################
+    //####################################################
+    //######### Check if Player can Pick Card ############
+
+
+    public boolean canPickCard(DevelopmentCard card, BoardBonus bonus){
+        return
+                        has(new Coins(card.getResourcesCosts().getCoins().getValue()
+                                - bonus.getResourcesBonus().getCoins().getValue()))
+                &&
+                        has(new Servant(card.getResourcesCosts().getServant().getValue()
+                                - bonus.getResourcesBonus().getServant().getValue()))
+                &&
+                        has(new Stone(card.getResourcesCosts().getStone().getValue()
+                                - bonus.getResourcesBonus().getStone().getValue()))
+                &&
+                        has(new Wood(card.getResourcesCosts().getWood().getValue()
+                                - bonus.getResourcesBonus().getWood().getValue()))
+                &&
+                        has(new FaithPoints(card.getPointsCosts().getFaithPoints().getPoints()
+                                - bonus.getPointsBonus().getFaithPoints().getPoints()))
+                &&
+                        has(new MilitaryPoints(card.getPointsCosts().getMilitaryPoints().getPoints()
+                                - bonus.getPointsBonus().getMilitaryPoints().getPoints()))
+                &&
+                        has(new VictoryPoints(card.getPointsCosts().getVictoryPoints().getPoints()
+                                - bonus.getPointsBonus().getVictoryPoints().getPoints()));
     }
 
 

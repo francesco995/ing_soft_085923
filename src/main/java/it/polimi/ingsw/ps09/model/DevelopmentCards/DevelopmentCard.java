@@ -1,9 +1,12 @@
 package it.polimi.ingsw.ps09.model.DevelopmentCards;
 
+import it.polimi.ingsw.ps09.model.DevelopmentCardEffects.DevelopmentCardEffect;
+import it.polimi.ingsw.ps09.model.Resources.UserResource;
 import it.polimi.ingsw.ps09.model.UserPoints;
 import it.polimi.ingsw.ps09.model.UserResources;
 
 import java.util.LinkedList;
+import java.util.List;
 
 
 /**
@@ -18,41 +21,24 @@ public abstract class DevelopmentCard {
     private String mCardName;
     private int mPeriod;
 
-    //Production COST
-
-    private int mActivationDiceCost;
-
     //Instant COSTS in UserResources and UserPoints
     private UserResources mResourcesCosts;
     private UserPoints mPointsCosts;
 
-    //Instant GAINS in UserResources and UserPoints
-    private UserResources mResourcesGains;
-    private UserPoints mPointsGains;
-
-    //UserPoints GAINS when game ends
-    private UserPoints mEndGamePointsGains;
-
-    //UserPoints REQUIREMENTS to get the card
-    private UserPoints mPointsRequirements;
+    //Immediate Effect Resources and Points
+    private UserResources mImmediateEffectResources;
+    private UserPoints mImmediateEffectPoints;
 
     //Immediate Effects
-    private LinkedList<String> mImmediateEffects = new LinkedList<>();
+    private List<DevelopmentCardEffect> mImmediateEffects;
 
-    //Permanent Effects
-    private LinkedList<String> mPermanentEffects = new LinkedList<>();
-
-
+/*
 
     //CONSTRUCTORS
     public DevelopmentCard(String cardName, int cardPeriod) {
         this(   cardName,
                 cardPeriod,
-                0,
                 new UserResources(0,0,0,0),
-                new UserPoints(0, 0, 0),
-                new UserResources(0, 0, 0, 0),
-                new UserPoints(0, 0, 0),
                 new UserPoints(0, 0, 0),
                 new UserPoints(0, 0, 0),
                 new LinkedList<>(),
@@ -61,28 +47,21 @@ public abstract class DevelopmentCard {
 
     public DevelopmentCard(String cardName,
                            int period,
-                           int activationDiceCost,
                            UserResources resourcesCosts,
                            UserPoints pointsCosts,
-                           UserResources resourcesGains,
-                           UserPoints pointsGains,
-                           UserPoints endGamePointsGains,
                            UserPoints pointsRequirements,
                            LinkedList<String> immediateEffects,
                            LinkedList<String> permanentEffects) {
 
         mCardName = cardName;
         mPeriod = period;
-        mActivationDiceCost = activationDiceCost;
         mResourcesCosts = resourcesCosts;
         mPointsCosts = pointsCosts;
-        mResourcesGains = resourcesGains;
-        mPointsGains = pointsGains;
-        mEndGamePointsGains = endGamePointsGains;
         mPointsRequirements = pointsRequirements;
         mImmediateEffects = immediateEffects;
         mPermanentEffects = permanentEffects;
     }
+*/
 
     //GETTERS
     public String getCardName() {
@@ -93,10 +72,6 @@ public abstract class DevelopmentCard {
         return mPeriod;
     }
 
-    public int getActivationDiceCost() {
-        return mActivationDiceCost;
-    }
-
     public UserResources getResourcesCosts() {
         return mResourcesCosts;
     }
@@ -104,39 +79,6 @@ public abstract class DevelopmentCard {
     public UserPoints getPointsCosts() {
         return mPointsCosts;
     }
-
-    public UserResources getResourcesGains() {
-        return mResourcesGains;
-    }
-
-    public UserPoints getPointsGains() {
-        return mPointsGains;
-    }
-
-    public UserPoints getEndGamePointsGains() {
-        return mEndGamePointsGains;
-    }
-
-    public UserPoints getPointsRequirements() {
-        return mPointsRequirements;
-    }
-
-    public LinkedList<String> getImmediateEffects() {
-        return mImmediateEffects;
-    }
-
-    public LinkedList<String> getPermanentEffects() {
-        return mPermanentEffects;
-    }
-
-    public String getNextImmediateEffects() {
-        return mImmediateEffects.poll();
-    }
-
-    public String getNextPermanentEffects() {
-        return mPermanentEffects.poll();
-    }
-
 
 
     /*

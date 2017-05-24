@@ -55,12 +55,10 @@ public class LeaderCardsDeck {
 
         List<LeaderCard> mHandOfCards = new ArrayList<LeaderCard>();
         int randomNumber;
-        int size;
 
         for(int counter = 1;counter <= 4; counter++) {
 
-            size = mLeaderCards.size();
-            randomNumber = (int) Math.random();
+            randomNumber = (int) Math.random() * mLeaderCards.size();
             mHandOfCards.add(mLeaderCards.get(randomNumber));
             mLeaderCards.remove(randomNumber);
 

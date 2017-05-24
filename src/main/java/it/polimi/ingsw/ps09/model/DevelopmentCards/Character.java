@@ -7,8 +7,5 @@ public class Character extends DevelopmentCard {
 
     //BLUE CARDS
 
-    //CONSTRUCTORS
-    public Character(String cardName, int period) {
-        super(cardName, period);
-    }
+
 }
