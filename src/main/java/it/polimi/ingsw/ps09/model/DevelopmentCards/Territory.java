@@ -11,11 +11,11 @@ public class Territory extends DevelopmentCard {
 
     //GREEN CARD
 
-    //Production COST
-    private int mHarvestCost;
-
     //Production Effect
     private List<HarvestEffect> mHarvestEffects;
+
+
+
 
 }
 

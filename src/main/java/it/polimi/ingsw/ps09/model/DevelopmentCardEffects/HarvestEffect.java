@@ -9,12 +9,17 @@ import it.polimi.ingsw.ps09.model.UserResources;
  */
 public class HarvestEffect extends DevelopmentCardEffect {
 
+    //Production COST
+    private int mHarvestCost;
+
+    //Gains when activated
     private UserPoints mPointsGains;
     private UserResources mResourcesGains;
 
 
     @Override
     public void applyEffect(Player player) {
-
+        player.add(mPointsGains);
+        player.add(mResourcesGains);
     }
 }

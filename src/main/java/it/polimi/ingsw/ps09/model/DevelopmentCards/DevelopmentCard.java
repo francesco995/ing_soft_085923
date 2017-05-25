@@ -32,6 +32,7 @@ public abstract class DevelopmentCard {
     //Immediate Effects
     private List<DevelopmentCardEffect> mImmediateEffects;
 
+
 /*
 
     //CONSTRUCTORS
