@@ -1,5 +1,7 @@
 package it.polimi.ingsw.ps09.model.DevelopmentCards;
 
+import it.polimi.ingsw.ps09.model.DevelopmentCardEffects.DevelopmentCardEffect;
+
 import java.util.List;
 
 /**
@@ -12,6 +14,10 @@ public class Building extends DevelopmentCard {
     //Production COST
     private int mProductionCost;
 
+    //Production Effect
 
+    //TODO: check if only one list of DEVCARDEFF works
+
+    private List<DevelopmentCardEffect> mProductionEffects;
 
 }

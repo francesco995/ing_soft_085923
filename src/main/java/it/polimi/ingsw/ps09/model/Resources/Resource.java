@@ -2,24 +2,21 @@ package it.polimi.ingsw.ps09.model.Resources;
 
 import it.polimi.ingsw.ps09.controller.Game;
 import it.polimi.ingsw.ps09.model.Player;
-import it.polimi.ingsw.ps09.model.UserPoints;
-
-import java.util.Comparator;
 
 /**
  * Created by francesco995 on 09/05/2017.
  */
-public abstract class UserResource{
+public abstract class Resource {
 
     //VARIABLES
     private int mValue;
 
     //CONSTRUCTORS
-    public UserResource(){
+    public Resource(){
         this(0);
     }
 
-    public UserResource(int initialValue){
+    public Resource(int initialValue){
         mValue = initialValue;
     }
 
@@ -34,7 +31,7 @@ public abstract class UserResource{
     }
 
     //ADD
-    public void add(UserResource add){
+    public void add(Resource add){
         mValue = mValue + add.getValue();
     }
 
@@ -45,7 +42,7 @@ public abstract class UserResource{
      * @param remove Resource to remove
      * @throws UnsupportedOperationException if resource would go negative.
      */
-    public void remove(UserResource remove){
+    public void remove(Resource remove){
         mValue = mValue - remove.getValue();
         if(mValue < 0){
             throw new UnsupportedOperationException(
@@ -60,12 +57,12 @@ public abstract class UserResource{
 
 
     /**
-     * Compare this UserResource object to an other one
-     * @param thanThis UserResource object to compare this. to
-     * @return returns true if the UserResource that invokes the method
+     * Compare this Resource object to an other one
+     * @param thanThis Resource object to compare this. to
+     * @return returns true if the Resource that invokes the method
      * is GREATER or EQUALS the one passed as parameter
      */
-    public boolean isGreaterOrEqual(UserResource thanThis){
+    public boolean isGreaterOrEqual(Resource thanThis){
         if(mValue >= thanThis.getValue())
             return true;
         return false;

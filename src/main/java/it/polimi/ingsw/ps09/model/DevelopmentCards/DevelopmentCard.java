@@ -1,11 +1,9 @@
 package it.polimi.ingsw.ps09.model.DevelopmentCards;
 
 import it.polimi.ingsw.ps09.model.DevelopmentCardEffects.DevelopmentCardEffect;
-import it.polimi.ingsw.ps09.model.Resources.UserResource;
 import it.polimi.ingsw.ps09.model.UserPoints;
 import it.polimi.ingsw.ps09.model.UserResources;
 
-import java.util.LinkedList;
 import java.util.List;
 
 
@@ -22,12 +20,8 @@ public abstract class DevelopmentCard {
     private int mPeriod;
 
     //Instant COSTS in UserResources and UserPoints
-    private UserResources mResourcesCosts;
-    private UserPoints mPointsCosts;
-
-    //Immediate Effect Resources and Points
-    private UserResources mImmediateEffectResources;
-    private UserPoints mImmediateEffectPoints;
+    private List<UserResources> mResourcesCosts;
+    private List<UserPoints> mPointsCosts;
 
     //Immediate Effects
     private List<DevelopmentCardEffect> mImmediateEffects;
@@ -73,11 +67,11 @@ public abstract class DevelopmentCard {
         return mPeriod;
     }
 
-    public UserResources getResourcesCosts() {
+    public  List<UserResources> getResourcesCosts() {
         return mResourcesCosts;
     }
 
-    public UserPoints getPointsCosts() {
+    public List<UserPoints> getPointsCosts() {
         return mPointsCosts;
     }
 

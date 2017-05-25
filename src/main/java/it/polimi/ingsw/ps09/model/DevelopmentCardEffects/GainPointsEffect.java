@@ -3,17 +3,14 @@ package it.polimi.ingsw.ps09.model.DevelopmentCardEffects;
 import it.polimi.ingsw.ps09.model.Player;
 import it.polimi.ingsw.ps09.model.UserPoints;
 
-/**
- * Created by francesco995 on 23/05/2017.
- */
-public class EndGameEffect extends DevelopmentCardEffect {
+public class GainPointsEffect extends  DevelopmentCardEffect{
 
-    //UserPoints GAINS when game ends
-    private UserPoints mEndGamePointsGains;
-
+    private UserPoints mPointsGains;
 
     @Override
     public void applyEffect(Player player) {
+
+        player.add(mPointsGains);
 
     }
 }

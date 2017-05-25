@@ -9,7 +9,7 @@ import static org.junit.Assert.*;
 /**
  * Created by francesco995 on 21/05/2017.
  */
-public class UserResourceTest {
+public class ResourceTest {
 
     Coins mCoins;
 

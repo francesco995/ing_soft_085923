@@ -1,6 +1,7 @@
 package it.polimi.ingsw.ps09.model.DevelopmentCards;
 
-import it.polimi.ingsw.ps09.model.DevelopmentCardEffects.HarvestEffect;
+import it.polimi.ingsw.ps09.model.DevelopmentCardEffects.DevelopmentCardEffect;
+import it.polimi.ingsw.ps09.model.DevelopmentCardEffects.GainResourcesEffect;
 
 import java.util.List;
 
@@ -12,7 +13,10 @@ public class Territory extends DevelopmentCard {
     //GREEN CARD
 
     //Production Effect
-    private List<HarvestEffect> mHarvestEffects;
+
+    //TODO: check if only one list of DEVCARDEFF works
+
+    private List<DevelopmentCardEffect> mHarvestEffects;
 
 
 
