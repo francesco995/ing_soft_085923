@@ -577,8 +577,8 @@ public class Player {
     //####################################################
     //######### Check if Player can Pick Card ############
 
-
-    public boolean canPickCard(DevelopmentCard card, BoardBonus bonus){
+//TODO: FraG Fix
+ /*   public boolean canPickCard(DevelopmentCard card, BoardBonus bonus){
         return
                         has(new Coins(card.getResourcesCosts().getCoins().getValue()
                                 - bonus.getResourcesBonus().getCoins().getValue()))
@@ -601,6 +601,6 @@ public class Player {
                         has(new VictoryPoints(card.getPointsCosts().getVictoryPoints().getPoints()
                                 - bonus.getPointsBonus().getVictoryPoints().getPoints()));
     }
-
+*/
 
 }
