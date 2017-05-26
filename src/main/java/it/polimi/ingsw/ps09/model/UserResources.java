@@ -10,6 +10,11 @@ import it.polimi.ingsw.ps09.model.Resources.Wood;
  */
 public class UserResources {
 
+    //CONSTANTS
+    private static final int INITIAL_SERVANT = 3;
+    private static final int INITIAL_STONE = 2;
+    private static final int INITIAL_WOOD = 2;
+
     //VARIABLES
 
     private Coins mCoins;
@@ -32,7 +37,7 @@ public class UserResources {
     }
 
     public UserResources(int initialCoins){
-        this(initialCoins, 3, 2, 2);
+        this(initialCoins, INITIAL_SERVANT, INITIAL_STONE, INITIAL_WOOD);
     }
 
     public UserResources(int initialCoins, int initialServant, int initialStone, int initialWood){

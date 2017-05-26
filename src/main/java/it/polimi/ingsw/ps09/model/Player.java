@@ -61,6 +61,17 @@ public class Player {
      */
     private Player(String userName, String userColor, PersonalBoard personalBoard,
                    UserPoints userPoints, int userId) {
+
+        if(userName.isEmpty()){
+            throw new IllegalArgumentException("userName can't be empty");
+        }
+
+        if(userColor.isEmpty()){
+            throw new IllegalArgumentException("userColor can't be empty");
+        }
+
+
+
         mUserName = userName;
         mUserColor = userColor;
         mPersonalBoard = personalBoard;
