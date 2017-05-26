@@ -14,20 +14,18 @@ public class PlayersOrder {
 
     public PlayersOrder(Queue<Integer> userIds){
 
-       for(int userId : userIds){
-           mPlayersOrder.add(userId);
-       }
+        long seed = System.nanoTime();
 
-    }
+        mPlayersOrder = new ArrayList<>(userIds);
 
-    private int getRandomNumber(int max){
-        return mRandom.nextInt(max);
+        Collections.shuffle(mPlayersOrder, new Random(seed));
+
     }
 
     public int getUserIdByIndex(int index){
         return mPlayersOrder.get(index);
     }
 
-    //TODO: FraG aggiungere metodo per cambiare l'ordine dei giocatori
+
 
 }
