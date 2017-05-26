@@ -17,6 +17,11 @@ public abstract class Points {
     }
 
     public Points(int initialPoints) {
+
+        if(initialPoints < 0) {
+            throw new IllegalArgumentException("Points can't be negative");
+        }
+
         mPoints = initialPoints;
     }
 

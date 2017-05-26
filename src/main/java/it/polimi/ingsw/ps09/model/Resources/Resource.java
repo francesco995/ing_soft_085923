@@ -17,6 +17,11 @@ public abstract class Resource {
     }
 
     public Resource(int initialValue){
+
+        if(initialValue < 0 ){
+            throw new IllegalArgumentException("Resource can't be negative!");
+        }
+
         mValue = initialValue;
     }
 

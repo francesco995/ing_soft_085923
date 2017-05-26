@@ -11,7 +11,7 @@ public class FamilyMember {
     private String mFamily;
 
     //METHODS
-    public FamilyMember(int power,String color, String family) {
+    public FamilyMember(int power, String color, String family) {
         mPower = power;
         mColor = color;
         mFamily = family;
@@ -25,14 +25,12 @@ public class FamilyMember {
         mPower = dice.getValue();
     }
 
-    public int morePower(int addToTotal)
-    {
-        return mPower+addToTotal;
+    public int morePower(int addToTotal) {
+        return mPower + addToTotal;
     }
 
-    public int lessPower(int removeToTotal)
-    {
-        return mPower-removeToTotal;
+    public int lessPower(int removeToTotal) {
+        return mPower - removeToTotal;
     }
 
     public String getFamily() {

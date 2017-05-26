@@ -3,8 +3,8 @@ package it.polimi.ingsw.ps09.model.Resources;
 import org.junit.Before;
 import org.junit.Test;
 
-
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Created by francesco995 on 21/05/2017.
@@ -18,8 +18,15 @@ public class ResourceTest {
         mCoins = new Coins(10);
     }
 
+    @Test(expected = IllegalArgumentException.class)
+    public void createNegativeResourceThrowException () throws Exception{
+
+        mCoins = new Coins(-1);
+
+    }
+
     @Test
-    public void addCoins() throws Exception {
+    public void addCoinsTest() throws Exception {
 
         mCoins.add(new Coins(10));
 
