@@ -266,7 +266,7 @@ public class Game extends Thread {
 
             int numberOfPlayer = mPlayers.size();
 
-            if(mPlayers.get(0).getFaithPoints().getPoints() < period ){
+            if(mPlayers.get(0).getFaithPoints().getValue() < period ){
                 //mPlayers.get(0).add();
             }else {
                 //if(mDonate == false){
@@ -328,6 +328,6 @@ public class Game extends Thread {
 
             //Military Strength//
             /////////////////////
-            mPlayers.get(0).getMilitaryPoints().getPoints();
+            mPlayers.get(0).getMilitaryPoints().getValue();
         }
     }

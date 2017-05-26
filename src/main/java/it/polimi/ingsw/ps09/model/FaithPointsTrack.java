@@ -20,7 +20,7 @@ public class FaithPointsTrack {
      */
     public VictoryPoints convertToBonus(FaithPoints offer){
 
-        int ammount = offer.getPoints();
+        int ammount = offer.getValue();
 
         return mVictoryPointsBonus.get(ammount);
 

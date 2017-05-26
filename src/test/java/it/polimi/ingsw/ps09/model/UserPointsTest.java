@@ -25,21 +25,21 @@ public class UserPointsTest {
     @Test
     public void getFaithPointsTest() throws Exception {
 
-        assertEquals(10, mUserPoints.getFaithPoints().getPoints());
+        assertEquals(10, mUserPoints.getFaithPoints().getValue());
 
     }
 
     @Test
     public void getMilitaryPointsTest() throws Exception {
 
-        assertEquals(10, mUserPoints.getMilitaryPoints().getPoints());
+        assertEquals(10, mUserPoints.getMilitaryPoints().getValue());
 
     }
 
     @Test
     public void getVictoryPointsTest() throws Exception {
 
-        assertEquals(10, mUserPoints.getVictoryPoints().getPoints());
+        assertEquals(10, mUserPoints.getVictoryPoints().getValue());
 
     }
 
@@ -48,9 +48,9 @@ public class UserPointsTest {
 
         mUserPoints.add(new UserPoints(5, 5, 5));
 
-        assertEquals(15, mUserPoints.getVictoryPoints().getPoints());
-        assertEquals(15, mUserPoints.getMilitaryPoints().getPoints());
-        assertEquals(15, mUserPoints.getFaithPoints().getPoints());
+        assertEquals(15, mUserPoints.getVictoryPoints().getValue());
+        assertEquals(15, mUserPoints.getMilitaryPoints().getValue());
+        assertEquals(15, mUserPoints.getFaithPoints().getValue());
 
     }
 
@@ -59,7 +59,7 @@ public class UserPointsTest {
 
         mUserPoints.add(new FaithPoints(10));
 
-        assertEquals(20, mUserPoints.getFaithPoints().getPoints());
+        assertEquals(20, mUserPoints.getFaithPoints().getValue());
 
     }
 
@@ -68,7 +68,7 @@ public class UserPointsTest {
 
         mUserPoints.add(new MilitaryPoints(10));
 
-        assertEquals(20, mUserPoints.getMilitaryPoints().getPoints());
+        assertEquals(20, mUserPoints.getMilitaryPoints().getValue());
 
     }
 
@@ -77,7 +77,7 @@ public class UserPointsTest {
 
         mUserPoints.add(new VictoryPoints(10));
 
-        assertEquals(20, mUserPoints.getVictoryPoints().getPoints());
+        assertEquals(20, mUserPoints.getVictoryPoints().getValue());
 
     }
 
@@ -86,9 +86,9 @@ public class UserPointsTest {
 
         mUserPoints.remove( new UserPoints(5, 5, 5));
 
-        assertEquals(5, mUserPoints.getVictoryPoints().getPoints());
-        assertEquals(5, mUserPoints.getMilitaryPoints().getPoints());
-        assertEquals(5, mUserPoints.getFaithPoints().getPoints());
+        assertEquals(5, mUserPoints.getVictoryPoints().getValue());
+        assertEquals(5, mUserPoints.getMilitaryPoints().getValue());
+        assertEquals(5, mUserPoints.getFaithPoints().getValue());
 
     }
 
@@ -97,7 +97,7 @@ public class UserPointsTest {
 
         mUserPoints.remove(new FaithPoints(10));
 
-        assertEquals(0, mUserPoints.getFaithPoints().getPoints());
+        assertEquals(0, mUserPoints.getFaithPoints().getValue());
 
     }
 
@@ -106,7 +106,7 @@ public class UserPointsTest {
 
         mUserPoints.remove(new MilitaryPoints(10));
 
-        assertEquals(0, mUserPoints.getMilitaryPoints().getPoints());
+        assertEquals(0, mUserPoints.getMilitaryPoints().getValue());
 
     }
 
@@ -115,7 +115,7 @@ public class UserPointsTest {
 
         mUserPoints.remove(new VictoryPoints(10));
 
-        assertEquals(0, mUserPoints.getVictoryPoints().getPoints());
+        assertEquals(0, mUserPoints.getVictoryPoints().getValue());
 
     }
 
@@ -124,7 +124,7 @@ public class UserPointsTest {
 
         mUserPoints.clearFaithPoints();
 
-        assertEquals(0, mUserPoints.getFaithPoints().getPoints());
+        assertEquals(0, mUserPoints.getFaithPoints().getValue());
 
     }
 

@@ -629,14 +629,14 @@ public class Player {
                         has(new Wood(card.getResourcesCosts().getWood().getValue()
                                 - bonus.getResourcesBonus().getWood().getValue()))
                 &&
-                        has(new FaithPoints(card.getPointsCosts().getFaithPoints().getPoints()
-                                - bonus.getPointsBonus().getFaithPoints().getPoints()))
+                        has(new FaithPoints(card.getPointsCosts().getFaithPoints().getValue()
+                                - bonus.getPointsBonus().getFaithPoints().getValue()))
                 &&
-                        has(new MilitaryPoints(card.getPointsCosts().getMilitaryPoints().getPoints()
-                                - bonus.getPointsBonus().getMilitaryPoints().getPoints()))
+                        has(new MilitaryPoints(card.getPointsCosts().getMilitaryPoints().getValue()
+                                - bonus.getPointsBonus().getMilitaryPoints().getValue()))
                 &&
-                        has(new VictoryPoints(card.getPointsCosts().getVictoryPoints().getPoints()
-                                - bonus.getPointsBonus().getVictoryPoints().getPoints()));
+                        has(new VictoryPoints(card.getPointsCosts().getVictoryPoints().getValue()
+                                - bonus.getPointsBonus().getVictoryPoints().getValue()));
     }
 */
 

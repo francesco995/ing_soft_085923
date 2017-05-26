@@ -26,7 +26,7 @@ public abstract class Points {
     }
 
     //GETTERS
-    public int getPoints() {
+    public int getValue() {
         return mPoints;
     }
 
@@ -38,7 +38,7 @@ public abstract class Points {
     //ADD Points
 
     public void add(Points add){
-        mPoints = mPoints + add.getPoints();
+        mPoints = mPoints + add.getValue();
     }
 
     //CHECK IF HAS
@@ -49,7 +49,7 @@ public abstract class Points {
      * is GREATER or EQUALS the one passed as parameter
      */
     public boolean isGreaterOrEqual(Points thanThis){
-        if(mPoints >= thanThis.getPoints())
+        if(mPoints >= thanThis.getValue())
             return true;
         return false;
     }
@@ -63,12 +63,12 @@ public abstract class Points {
      * @throws UnsupportedOperationException if points would go negative.
      */
     public void remove(Points remove){
-        mPoints = mPoints - remove.getPoints();
+        mPoints = mPoints - remove.getValue();
 
         if(mPoints < 0){
             throw new UnsupportedOperationException(
                     "ERROR || Game: " + Game.GAME_ID +
-                    " tried to remove " + remove.getPoints() +
+                    " tried to remove " + remove.getValue() +
                     " " + remove.getClass().getName().toString() +
                     " from player: " + Player.PLAYER_ID +
                     " now has " + mPoints +

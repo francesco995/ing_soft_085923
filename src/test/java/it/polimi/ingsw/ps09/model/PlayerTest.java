@@ -305,21 +305,21 @@ public class PlayerTest {
     @Test
     public void getFaithPointsTest() throws Exception {
 
-        assertEquals(0, mPlayer.getFaithPoints().getPoints());
+        assertEquals(0, mPlayer.getFaithPoints().getValue());
 
     }
 
     @Test
     public void getMilitaryPointsTest() throws Exception {
 
-        assertEquals(0, mPlayer.getMilitaryPoints().getPoints());
+        assertEquals(0, mPlayer.getMilitaryPoints().getValue());
 
     }
 
     @Test
     public void getVictoryPointsTest() throws Exception {
 
-        assertEquals(0, mPlayer.getVictoryPoints().getPoints());
+        assertEquals(0, mPlayer.getVictoryPoints().getValue());
 
     }
 
@@ -328,7 +328,7 @@ public class PlayerTest {
 
         mPlayer.add(new FaithPoints(10));
 
-        assertEquals(10, mPlayer.getFaithPoints().getPoints());
+        assertEquals(10, mPlayer.getFaithPoints().getValue());
 
     }
 
@@ -337,7 +337,7 @@ public class PlayerTest {
 
         mPlayer.add(new MilitaryPoints(10));
 
-        assertEquals(10, mPlayer.getMilitaryPoints().getPoints());
+        assertEquals(10, mPlayer.getMilitaryPoints().getValue());
 
     }
 
@@ -346,7 +346,7 @@ public class PlayerTest {
 
         mPlayer.add(new VictoryPoints(10));
 
-        assertEquals(10, mPlayer.getVictoryPoints().getPoints());
+        assertEquals(10, mPlayer.getVictoryPoints().getValue());
 
     }
 
@@ -355,9 +355,9 @@ public class PlayerTest {
 
         mPlayer.add(new UserPoints(10, 10, 10));
 
-        assertEquals(10, mPlayer.getFaithPoints().getPoints());
-        assertEquals(10, mPlayer.getMilitaryPoints().getPoints());
-        assertEquals(10, mPlayer.getVictoryPoints().getPoints());
+        assertEquals(10, mPlayer.getFaithPoints().getValue());
+        assertEquals(10, mPlayer.getMilitaryPoints().getValue());
+        assertEquals(10, mPlayer.getVictoryPoints().getValue());
 
     }
 
@@ -366,8 +366,8 @@ public class PlayerTest {
 
         mPlayer.add(new FaithPoints(100));
 
-        assertEquals(100, mPlayer.clearFaithPoints().getPoints());
-        assertEquals(0, mPlayer.getVictoryPoints().getPoints());
+        assertEquals(100, mPlayer.clearFaithPoints().getValue());
+        assertEquals(0, mPlayer.getVictoryPoints().getValue());
 
     }
 
@@ -401,9 +401,9 @@ public class PlayerTest {
         mPlayer.add(new UserPoints(100, 100, 100));
         mPlayer.remove(new UserPoints(50, 50, 50));
 
-        assertEquals(50, mPlayer.getVictoryPoints().getPoints());
-        assertEquals(50, mPlayer.getMilitaryPoints().getPoints());
-        assertEquals(50, mPlayer.getFaithPoints().getPoints());
+        assertEquals(50, mPlayer.getVictoryPoints().getValue());
+        assertEquals(50, mPlayer.getMilitaryPoints().getValue());
+        assertEquals(50, mPlayer.getFaithPoints().getValue());
 
     }
 
@@ -413,9 +413,9 @@ public class PlayerTest {
         mPlayer.add(new UserPoints(100, 100, 100));
         mPlayer.remove(new UserPoints(100, 100, 100));
 
-        assertEquals(0, mPlayer.getVictoryPoints().getPoints());
-        assertEquals(0, mPlayer.getMilitaryPoints().getPoints());
-        assertEquals(0, mPlayer.getFaithPoints().getPoints());
+        assertEquals(0, mPlayer.getVictoryPoints().getValue());
+        assertEquals(0, mPlayer.getMilitaryPoints().getValue());
+        assertEquals(0, mPlayer.getFaithPoints().getValue());
 
     }
 

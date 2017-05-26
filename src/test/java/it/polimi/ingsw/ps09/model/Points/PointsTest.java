@@ -29,7 +29,7 @@ public class PointsTest {
 
         mVictoryPoints.add(new VictoryPoints(10));
 
-        assertEquals(20, mVictoryPoints.getPoints());
+        assertEquals(20, mVictoryPoints.getValue());
 
     }
 
@@ -38,7 +38,7 @@ public class PointsTest {
 
         mVictoryPoints.remove(new VictoryPoints(10));
 
-        assertEquals(0, mVictoryPoints.getPoints());
+        assertEquals(0, mVictoryPoints.getValue());
 
     }
 
