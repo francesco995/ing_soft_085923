@@ -7,7 +7,8 @@ import it.polimi.ingsw.ps09.model.UserResources;
 /**
  * Created by franc on 30/05/2017.
  */
-public class GainsForBuildingCards extends DevelopmentCardEffect{
+public class GainsForTerritoryCardsCount extends DevelopmentCardEffect{
+
     //Gains when activated
     private UserResources mResourcesGains;
     private UserPoints mUserPoints;
@@ -16,7 +17,7 @@ public class GainsForBuildingCards extends DevelopmentCardEffect{
     public void applyEffect(Player player) {
 
 
-        for (int i = 0; i < player.getBuildingsCount(); i++) {
+        for(int i=0; i< player.getTerritoriesCount(); i++){
 
             player.add(mResourcesGains);
             player.add(mUserPoints);
