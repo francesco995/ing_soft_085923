@@ -1,11 +1,15 @@
 package it.polimi.ingsw.ps09;
 
 
+import it.polimi.ingsw.ps09.controller.Game;
 import it.polimi.ingsw.ps09.model.FamilyMembers.FamilyMember;
 import it.polimi.ingsw.ps09.model.Places.HarvestAndProductionAreas.Harvest;
 import it.polimi.ingsw.ps09.model.Places.Market.Market;
+import it.polimi.ingsw.ps09.model.Places.Towers.CharactersTower;
 import it.polimi.ingsw.ps09.model.Places.Towers.CreateTower;
 import it.polimi.ingsw.ps09.model.Places.Towers.Tower;
+
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
@@ -40,44 +44,6 @@ public class CliApp {
         }
     }
 
-    //When a TowerList is passed (got when CreateTower.CreateTower is called) shows if and which Tower is free
-    public void displayFreeTowers(CreateTower TowerList){
-
-        int mFloor;
-
-        //Loop through all towers to see which one is available
-        for(int mTowerNum=0; mTowerNum<TowerList.getTowerList().size(); mTowerNum++){
-
-            mFloor = 0;
-
-            //Loop through each floor of the tower to see if all of them are available.
-            //If one floor is available, check the next one
-            while(TowerList.getTowerList().get(mTowerNum).getFloors().get(mFloor).isAvailable()){
-
-                mFloor++;
-            }
-
-            //If the number of floor is equal mFloor, it means the tower is free
-            if(mFloor==TowerList.getTowerList().size()){
-                System.out.println("Tower " + TowerList.getTowerList().get(mTowerNum).getColor() + "is available");
-            }
-        }
-
-    }
-
-    //Display only available MarketSpaces
-    public void displayFreeMarketSpace(Market market){
-
-        //Loop through all MarketSpaces
-        for(int mNumberMarketSpace=0; mNumberMarketSpace<market.getMarketList().size(); mNumberMarketSpace++){
-
-            //If its free, print it
-            if(market.getMarketList().get(mNumberMarketSpace).isAvailable())
-                System.out.println("MarketSpace space " + mNumberMarketSpace+1 + " is available. " +
-                "Its bonus is: " + market.getMarketList().get(mNumberMarketSpace).getBoardBonus());
-        }
-    }
-
     public void displayFreeHarvest(Harvest harvest, FamilyMember Pawn){
 
         //Check if there is a FamilyMembers already
@@ -98,4 +64,5 @@ public class CliApp {
         else
             System.out.println("No space available");
     }
+
 }

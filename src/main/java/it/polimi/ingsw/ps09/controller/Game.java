@@ -10,14 +10,20 @@ import it.polimi.ingsw.ps09.model.Dices.BlackDice;
 import it.polimi.ingsw.ps09.model.Dices.OrangeDice;
 import it.polimi.ingsw.ps09.model.Dices.WhiteDice;
 import it.polimi.ingsw.ps09.model.FaithPointsTrack;
+import it.polimi.ingsw.ps09.model.FamilyMembers.FamilyMember;
+import it.polimi.ingsw.ps09.model.Places.Towers.Floor.Floor;
+import it.polimi.ingsw.ps09.model.Places.Towers.TerritoriesTower;
+import it.polimi.ingsw.ps09.model.Places.Towers.Tower;
 import it.polimi.ingsw.ps09.model.Player;
 import it.polimi.ingsw.ps09.model.Points.VictoryPoints;
 
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Queue;
 
 import java.util.logging.Logger;
+
 import static java.util.logging.Level.INFO;
 
 
@@ -67,17 +73,18 @@ public class Game extends Thread {
     private WhiteDice mWhiteDice;
 
     //LOGGER
-    private static final Logger mLogger = Logger.getLogger( Player.class.getName() );
+    private static final Logger mLogger = Logger.getLogger(Player.class.getName());
 
 
     /**
      * The Game constructor creates the basic game structure without initializing anything
-     * @param userIds Queue of UserIDs
-     * @param userNames Queue of UserNames
+     *
+     * @param userIds    Queue of UserIDs
+     * @param userNames  Queue of UserNames
      * @param userColors Queue of UserColors
-     * @param gameId Unique GameID
+     * @param gameId     Unique GameID
      */
-    public Game(Queue<Integer> userIds, Queue<String> userNames, Queue<String> userColors, int gameId){
+    public Game(Queue<Integer> userIds, Queue<String> userNames, Queue<String> userColors, int gameId) {
 
         GAME_ID = gameId;
         PLAYERS_NUMBER = userIds.size();
@@ -95,7 +102,7 @@ public class Game extends Thread {
      * then setup and start the game, handling exceptions
      */
     @Override
-    public void run(){
+    public void run() {
 
         mLogger.log(INFO, "Game: " + GAME_ID + " is setting up!");
         try {
@@ -116,6 +123,7 @@ public class Game extends Thread {
 
     /**
      * Start the game
+     *
      * @throws FileNotFoundException
      */
     private void startGame() throws FileNotFoundException {
@@ -125,6 +133,7 @@ public class Game extends Thread {
 
     /**
      * Setup the game
+     *
      * @throws FileNotFoundException
      */
     private void setupGame() throws FileNotFoundException {
@@ -139,9 +148,9 @@ public class Game extends Thread {
         setupDecks();
 
         //Set the Board
-        mGameBoard = new Board( mExcommunicationTilesDeck.drawCard(1),
-                                mExcommunicationTilesDeck.drawCard(2),
-                                mExcommunicationTilesDeck.drawCard(3));
+        mGameBoard = new Board(mExcommunicationTilesDeck.drawCard(1),
+                mExcommunicationTilesDeck.drawCard(2),
+                mExcommunicationTilesDeck.drawCard(3));
 
         fillTower();
 
@@ -150,24 +159,24 @@ public class Game extends Thread {
     /**
      * Creates a new HashMap of Players to userIDs, each player contains his own PersonalBoard
      */
-    private void setupPlayers(){
+    private void setupPlayers() {
 
         mPlayers = new HashMap<>();
         mPlayersOrder = new PlayersOrder(mUserIds);
 
-        while(!mUserIds.isEmpty() && !mUserNames.isEmpty()){
+        while (!mUserIds.isEmpty() && !mUserNames.isEmpty()) {
             mPlayers.put(
                     mUserIds.peek(),
-                    new Player( mUserNames.peek(),
-                                mUserColors.peek(),
-                                mUserIds.peek(),
-                                mPlayers.size() + 5 ) );
+                    new Player(mUserNames.peek(),
+                            mUserColors.peek(),
+                            mUserIds.peek(),
+                            mPlayers.size() + 5));
 
             mLogger.log(INFO,
                     "Added a player to game# " + GAME_ID +
-                    " with userName: " + mUserNames.peek() +
-                    ", userColor: " + mUserColors.peek() +
-                    ", userId: " + mUserIds.peek());
+                            " with userName: " + mUserNames.peek() +
+                            ", userColor: " + mUserColors.peek() +
+                            ", userId: " + mUserIds.peek());
 
             mUserIds.remove();
             mUserNames.remove();
@@ -190,7 +199,7 @@ public class Game extends Thread {
     /**
      * Setup the Dices
      */
-    private void setupDices(){
+    private void setupDices() {
 
         mWhiteDice = new WhiteDice();
         mBlackDice = new BlackDice();
@@ -237,97 +246,173 @@ public class Game extends Thread {
 
         }
     }
-        /**
-         * Simple method that roll all the dices
-         */
-        private void rollDices(){
 
-            mBlackDice.roll();
-            mWhiteDice.roll();
-            mOrangeDice.roll();
+    /**
+     * Simple method that roll all the dices
+     */
+    private void rollDices() {
 
-        }
+        mBlackDice.roll();
+        mWhiteDice.roll();
+        mOrangeDice.roll();
 
-        /**
-         * Prepare the board for a new Round
-         */
-        private void roundSetup(){
-
-            fillTower();
-            rollDices();
-
-        }
-
-        /**
-         * This method represents phase C of The Game, it must be called only when a period its at his end
-         */
-        private void vaticanReport(){
-
-
-            int numberOfPlayer = mPlayers.size();
-
-            if(mPlayers.get(0).getFaithPoints().getValue() < period ){
-                //mPlayers.get(0).add();
-            }else {
-                //if(mDonate == false){
-                //mPlayers.get(0).add(tilescomunica);
-                //}else{
-                // FaithPoints mOffer = mPlayers.get(0).clearFaithPoints();
-                //VictoryPoints mReward = mFaithPointsTrack.convertToBonus(mOffer);
-                //mPlayers.get(0).add(mReward);
-            }
-
-        }
-        private void endRound(){
-
-
-            //inserire funzione gianni reorder
-            mGameBoard.clearAll();
-
-
-        }
-
-        /**
-         *
-         */
-        private void endPeriod(){
-
-            //reorder dei pedoni
-            mGameBoard.clearAll();
-            vaticanReport();
-            period++;
-
-        }
-        private void endGame(){
-
-            //cicla tutti i giocatori (in base a come mettiamo id)
-
-            //Collected resources bonus//
-            /////////////////////////////
-            int total =
-                    mPlayers.get(0).getWood().getValue()+
-                    mPlayers.get(0).getStone().getValue()+
-                    mPlayers.get(0).getCoins().getValue()+
-                    mPlayers.get(0).getServant().getValue();
-
-            VictoryPoints collectedResources = new VictoryPoints(total/5);
-            mPlayers.get(0).add(collectedResources);
-
-            //Conquered territories Bonus//
-            ///////////////////////////////
-            total = mPlayers.get(0).getTerritoriesCount();
-            //decidiamo come caricare i bonus del tabellone personale
-
-            //Influenced Characters//
-            /////////////////////////
-            total = mPlayers.get(0).getCharactersCount();
-
-            //Encouraged Ventures//
-            ///////////////////////
-            total = mPlayers.get(0).getVenturesCount();
-
-            //Military Strength//
-            /////////////////////
-            mPlayers.get(0).getMilitaryPoints().getValue();
-        }
     }
+
+    /**
+     * Prepare the board for a new Round
+     */
+    private void roundSetup() {
+
+        fillTower();
+        rollDices();
+
+    }
+
+    /**
+     * This method represents phase C of The Game, it must be called only when a period its at his end
+     */
+    private void vaticanReport() {
+
+
+        int numberOfPlayer = mPlayers.size();
+
+        if (mPlayers.get(0).getFaithPoints().getValue() < period) {
+            //mPlayers.get(0).add();
+        } else {
+            //if(mDonate == false){
+            //mPlayers.get(0).add(tilescomunica);
+            //}else{
+            // FaithPoints mOffer = mPlayers.get(0).clearFaithPoints();
+            //VictoryPoints mReward = mFaithPointsTrack.convertToBonus(mOffer);
+            //mPlayers.get(0).add(mReward);
+        }
+
+    }
+
+    private void endRound() {
+
+
+        //inserire funzione gianni reorder
+        mGameBoard.clearAll();
+
+
+    }
+
+    /**
+     *
+     */
+    private void endPeriod() {
+
+        //reorder dei pedoni
+        mGameBoard.clearAll();
+        vaticanReport();
+        period++;
+
+    }
+
+    private void endGame() {
+
+        //cicla tutti i giocatori (in base a come mettiamo id)
+
+        //Collected resources bonus//
+        /////////////////////////////
+        int total =
+                mPlayers.get(0).getWood().getValue() +
+                        mPlayers.get(0).getStone().getValue() +
+                        mPlayers.get(0).getCoins().getValue() +
+                        mPlayers.get(0).getServant().getValue();
+
+        VictoryPoints collectedResources = new VictoryPoints(total / 5);
+        mPlayers.get(0).add(collectedResources);
+
+        //Conquered territories Bonus//
+        ///////////////////////////////
+        total = mPlayers.get(0).getTerritoriesCount();
+        //decidiamo come caricare i bonus del tabellone personale
+
+        //Influenced Characters//
+        /////////////////////////
+        total = mPlayers.get(0).getCharactersCount();
+
+        //Encouraged Ventures//
+        ///////////////////////
+        total = mPlayers.get(0).getVenturesCount();
+
+        //Military Strength//
+        /////////////////////
+        mPlayers.get(0).getMilitaryPoints().getValue();
+    }
+
+    /**
+     *
+     * @return ArrayList of booelan value, true if tower is free otherwise false
+     */
+    private ArrayList TowerDisposability(){
+
+        ArrayList<Boolean> TowerDispos = new ArrayList<Boolean>();
+
+        if(mGameBoard.isTerritoriesTowerAvailable())
+            TowerDispos.add(true);
+        else
+            TowerDispos.add(false);
+
+        if(mGameBoard.isCharacterTowerAvailable())
+            TowerDispos.add(true);
+        else
+            TowerDispos.add(false);
+
+        if(mGameBoard.isBuildingsTowerAvailable())
+            TowerDispos.add(true);
+        else
+            TowerDispos.add(false);
+
+        if(mGameBoard.isVenturesTowerAvailable())
+            TowerDispos.add(true);
+        else
+            TowerDispos.add(false);
+
+        return TowerDispos;
+    }
+
+    /**
+     *
+     * @param tower The specific tower you like to check
+     * @return ArrayList of boolean value for each floor. True if a floor is free, otherwise false
+     */
+    private ArrayList AvailableFloor(Tower tower){
+
+        ArrayList<Boolean> FloorDispos = new ArrayList<Boolean>();
+
+        for(int cont=0; cont<tower.getFloors().size(); cont++){
+            if(tower.getFloors().get(cont).isAvailable())
+                FloorDispos.add(true);
+            else
+                FloorDispos.add(false);
+        }
+
+        return FloorDispos;
+    }
+
+    /**
+     *
+     * @return ArrayList of boolean value for each marketspace. True if available, false if not
+     */
+    private ArrayList AvailableMarketSpaces(){
+
+        ArrayList<Boolean> MarketSpacesDispos = new ArrayList<Boolean>();
+
+        for(int cont=0; cont<mGameBoard.getMarket().size(); cont++){
+            if(mGameBoard.isMarketSpaceAvailable(cont))
+                MarketSpacesDispos.add(true);
+            else
+                MarketSpacesDispos.add(false);
+        }
+
+        return MarketSpacesDispos;
+    }
+
+    private void setFamilyMemberOnFloor(FamilyMember familyMember, Tower tower, int floor){
+        tower.getFloors().get(floor).setPawn(familyMember);
+    }
+
+}

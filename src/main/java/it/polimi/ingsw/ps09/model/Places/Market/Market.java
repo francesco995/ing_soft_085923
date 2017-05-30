@@ -17,7 +17,7 @@ public class Market {
      */
 
     //Initialize all MarketSpace Spaces
-    public List<MarketSpace> CreateMarket (){
+    public Market (){
 
         //Add all MarketSpace Spaces to the list
         mMarketSpaceSpaces.add(0, new MarketSpaceSpace1());
@@ -29,8 +29,6 @@ public class Market {
         //TODO: Ale set MarketSpace's DiceValue once Dice is created by FraL
 
         //Return a List of market spaces
-        return mMarketSpaceSpaces;
-
     }
 
     /**
