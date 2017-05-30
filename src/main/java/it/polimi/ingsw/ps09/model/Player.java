@@ -11,6 +11,7 @@ import it.polimi.ingsw.ps09.model.Resources.Wood;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import static java.util.logging.Level.INFO;
@@ -39,6 +40,8 @@ public class Player {
 
     //CONSTRUCTOR
 
+    //TODO: FraG handle disable logger with constructor
+
     /**
      * Create a new player with default resources and no cards
      *
@@ -48,8 +51,22 @@ public class Player {
      */
     public Player(String userName, String userColor, int userId, int initialCoins) {
         this(userName, userColor, new PersonalBoard(initialCoins),
-                new UserPoints(), userId);
+                new UserPoints(), userId, false);
     }
+
+    /**
+     * Create a new player with default resources and no cards, and logger option
+     *
+     * @param userName  The name of the Player that is being created
+     * @param userColor The color of the Player that is being created
+     * @param userId    The UserId for the Player that is being created
+     * @param disableLogger Set to true if want to disable logger
+     */
+    public Player(String userName, String userColor, int userId, int initialCoins, boolean disableLogger) {
+        this(userName, userColor, new PersonalBoard(initialCoins),
+                new UserPoints(), userId, disableLogger);
+    }
+
 
     /**
      * Create a new player with given resources and cards
@@ -61,7 +78,7 @@ public class Player {
      * @param userId        The UserId for the Player that is being created
      */
     private Player(String userName, String userColor, PersonalBoard personalBoard,
-                   UserPoints userPoints, int userId) {
+                   UserPoints userPoints, int userId, boolean disableLogger) {
 
         if(userName.isEmpty()){
             throw new IllegalArgumentException("userName can't be empty");
@@ -71,6 +88,8 @@ public class Player {
             throw new IllegalArgumentException("userColor can't be empty");
         }
 
+        if(disableLogger)
+            disableLogger();
 
 
         mUserName = userName;
@@ -87,6 +106,16 @@ public class Player {
                 " with Id: " + PLAYER_ID +
                 " with color: " + mUserColor +
                 " with: " + mPersonalBoard.getCoins().getValue() + " initial Coins");
+    }
+
+    //Disable logger for Unit Testing
+    public void disableLogger(){
+        mLogger.setLevel(Level.OFF);
+    }
+
+    //Enable logger
+    public void enableLogger(){
+        mLogger.setLevel(Level.INFO);
     }
 
     //Get User info
