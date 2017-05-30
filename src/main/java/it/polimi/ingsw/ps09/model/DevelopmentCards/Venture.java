@@ -2,6 +2,7 @@ package it.polimi.ingsw.ps09.model.DevelopmentCards;
 
 import it.polimi.ingsw.ps09.model.DevelopmentCardEffects.DevelopmentCardEffect;
 import it.polimi.ingsw.ps09.model.UserPoints;
+import it.polimi.ingsw.ps09.model.UserResources;
 
 import java.util.List;
 
@@ -20,4 +21,17 @@ public class Venture extends DevelopmentCard {
 
     private List<DevelopmentCardEffect> mEndGameEffects;
 
+    public Venture(String cardName,
+                   int period,
+                   List<UserResources> resourcesCosts,
+                   List<UserPoints> pointsCosts,
+                   List<DevelopmentCardEffect> immediateEffects,
+                   UserPoints pointsRequirements,
+                   List<DevelopmentCardEffect> endGameEffects) {
+
+        super(cardName, period, resourcesCosts, pointsCosts, immediateEffects);
+
+        mPointsRequirements = pointsRequirements;
+        mEndGameEffects = endGameEffects;
+    }
 }

@@ -1,6 +1,8 @@
 package it.polimi.ingsw.ps09.model.DevelopmentCards;
 
 import it.polimi.ingsw.ps09.model.DevelopmentCardEffects.DevelopmentCardEffect;
+import it.polimi.ingsw.ps09.model.UserPoints;
+import it.polimi.ingsw.ps09.model.UserResources;
 
 import java.util.List;
 
@@ -14,7 +16,21 @@ public class Building extends DevelopmentCard {
     //Production COST
     private int mProductionCost;
 
-    //Production Effect
+    public Building(String cardName,
+                    int period,
+                    List<UserResources> resourcesCosts,
+                    List<UserPoints> pointsCosts,
+                    List<DevelopmentCardEffect> immediateEffects,
+                    int productionCost,
+                    List<DevelopmentCardEffect> productionEffects) {
+
+        super(cardName, period, resourcesCosts, pointsCosts, immediateEffects);
+        mProductionCost = productionCost;
+        mProductionEffects = productionEffects;
+    }
+
+
+//Production Effect
 
     //TODO: check if only one list of DEVCARDEFF works
 

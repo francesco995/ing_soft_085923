@@ -27,6 +27,22 @@ public abstract class DevelopmentCard {
     private List<DevelopmentCardEffect> mImmediateEffects;
 
 
+
+    //Constructor
+    public DevelopmentCard(String cardName,
+                           int period,
+                           List<UserResources> resourcesCosts,
+                           List<UserPoints> pointsCosts,
+                           List<DevelopmentCardEffect> immediateEffects) {
+
+        mCardName = cardName;
+        mPeriod = period;
+        mResourcesCosts = resourcesCosts;
+        mPointsCosts = pointsCosts;
+        mImmediateEffects = immediateEffects;
+
+    }
+
 /*
 
     //CONSTRUCTORS
