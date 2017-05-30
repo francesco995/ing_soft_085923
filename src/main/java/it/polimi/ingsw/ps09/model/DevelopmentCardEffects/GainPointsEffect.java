@@ -5,6 +5,7 @@ import it.polimi.ingsw.ps09.model.UserPoints;
 
 public class GainPointsEffect extends  DevelopmentCardEffect{
 
+    //Gains when activated
     private UserPoints mPointsGains;
 
     @Override

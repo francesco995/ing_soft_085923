@@ -26,6 +26,7 @@ public class Player {
     //VARIABLES
     private String mUserName;
     private String mUserColor;
+    private Boolean mHighFloorBonus = true;
 
     //GAME OBJECTS
     private PersonalBoard mPersonalBoard;
@@ -102,7 +103,18 @@ public class Player {
         return mLeaderCards;
     }
 
-    //Get user cards count as int
+    //No High Floor bonus
+
+    /**
+     * It sets the mHighFloorBonus to false for the current player
+     */
+    public void noHighFloorBonus(){
+        mHighFloorBonus = false;
+    }
+
+    //####################################################
+    //####################################################
+    //########### Get user card count as int #############
 
     /**
      * @return number of territories card owned by player
@@ -130,6 +142,8 @@ public class Player {
         return mPersonalBoard.getBoardTerritories().size();
 
     }
+
+
 
 
     //####################################################

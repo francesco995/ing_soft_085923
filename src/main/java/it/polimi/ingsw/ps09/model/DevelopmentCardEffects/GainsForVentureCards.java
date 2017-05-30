@@ -5,19 +5,23 @@ import it.polimi.ingsw.ps09.model.UserPoints;
 import it.polimi.ingsw.ps09.model.UserResources;
 
 /**
- * Created by francesco995 on 24/05/2017.
+ * Created by franc on 30/05/2017.
  */
-public class GainResourcesEffect extends DevelopmentCardEffect {
-
-
+public class GainsForVentureCards extends DevelopmentCardEffect {
     //Gains when activated
     private UserResources mResourcesGains;
-
+    private UserPoints mUserPoints;
 
     @Override
     public void applyEffect(Player player) {
 
-        player.add(mResourcesGains);
+
+        for (int i = 0; i < player.getVenturesCount(); i++) {
+
+            player.add(mResourcesGains);
+            player.add(mUserPoints);
+
+        }
 
     }
 }
