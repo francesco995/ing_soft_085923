@@ -24,7 +24,7 @@ public class PlayerTest {
     @Before
     public void setUp() throws Exception {
 
-        mPlayer = new Player("UserName", "COLOR", 100, 5);
+        mPlayer = new Player("UserName", "COLOR", 100, 5, true);
 
     }
 
