@@ -37,6 +37,7 @@
             }
         }],
         "mCardName": "Monastery",
+        "CARD_N": 6,
         "mPeriod": 1,
         "mResourcesCosts": [],
         "mPointsCosts": [],

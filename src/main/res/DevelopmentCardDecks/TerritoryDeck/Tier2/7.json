@@ -37,6 +37,7 @@
             }
         }],
         "mCardName": "Manor House",
+        "CARD_N": 15,
         "mPeriod": 2,
         "mResourcesCosts": [],
         "mPointsCosts": [],

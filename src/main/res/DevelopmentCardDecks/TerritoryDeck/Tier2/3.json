@@ -22,6 +22,7 @@
             }
         }],
         "mCardName": "Mining Town",
+        "CARD_N": 11,
         "mPeriod": 2,
         "mResourcesCosts": [],
         "mPointsCosts": [],

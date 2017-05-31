@@ -37,6 +37,7 @@
             }
         }],
         "mCardName": "Fortified Town",
+        "CARD_N": 24,
         "mPeriod": 3,
         "mResourcesCosts": [],
         "mPointsCosts": [],

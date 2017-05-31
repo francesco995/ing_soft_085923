@@ -19,6 +19,7 @@
             }
         }],
         "mCardName": "Hermitage",
+        "CARD_N": 14,
         "mPeriod": 2,
         "mResourcesCosts": [],
         "mPointsCosts": [],

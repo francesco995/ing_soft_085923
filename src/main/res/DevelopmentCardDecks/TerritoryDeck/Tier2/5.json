@@ -22,6 +22,7 @@
             }
         }],
         "mCardName": "Estate",
+        "CARD_N": 13,
         "mPeriod": 2,
         "mResourcesCosts": [],
         "mPointsCosts": [],

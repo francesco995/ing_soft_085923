@@ -22,6 +22,7 @@
             }
         }],
         "mCardName": "Gold Mine",
+        "CARD_N": 9,
         "mPeriod": 2,
         "mResourcesCosts": [],
         "mPointsCosts": [],

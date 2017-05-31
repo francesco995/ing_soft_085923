@@ -9,6 +9,7 @@
             }
         }],
         "mCardName": "City",
+        "CARD_N": 8,
         "mPeriod": 1,
         "mResourcesCosts": [],
         "mPointsCosts": [],

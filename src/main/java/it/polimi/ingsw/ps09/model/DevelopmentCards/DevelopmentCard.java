@@ -17,7 +17,9 @@ public abstract class DevelopmentCard {
 
     //Card INFO
     private String mCardName;
+\    private final int CARD_N;
     private int mPeriod;
+
 
     //Instant COSTS in UserResources and UserPoints
     private List<UserResources> mResourcesCosts;
@@ -41,6 +43,7 @@ public abstract class DevelopmentCard {
         mPointsCosts = pointsCosts;
         mImmediateEffects = immediateEffects;
 
+        CARD_N = 0;
     }
 
 /*

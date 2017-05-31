@@ -22,6 +22,7 @@
             }
         }],
         "mCardName": "Trading Town",
+        "CARD_N": 17,
         "mPeriod": 3,
         "mResourcesCosts": [],
         "mPointsCosts": [],

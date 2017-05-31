@@ -37,6 +37,7 @@
             }
         }],
         "mCardName": "Marble Pit",
+        "CARD_N": 20,
         "mPeriod": 3,
         "mResourcesCosts": [],
         "mPointsCosts": [],

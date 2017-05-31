@@ -37,6 +37,7 @@
             }
         }],
         "mCardName": "Castle",
+        "CARD_N": 23,
         "mPeriod": 3,
         "mResourcesCosts": [],
         "mPointsCosts": [],

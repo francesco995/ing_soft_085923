@@ -22,6 +22,7 @@
             }
         }],
         "mCardName": "Village",
+        "CARD_N": 3,
         "mPeriod": 1,
         "mResourcesCosts": [],
         "mPointsCosts": [],

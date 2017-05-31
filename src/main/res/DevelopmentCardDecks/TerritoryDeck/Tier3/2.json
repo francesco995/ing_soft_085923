@@ -37,6 +37,7 @@
             }
         }],
         "mCardName": "Farm",
+        "CARD_N": 18,
         "mPeriod": 3,
         "mResourcesCosts": [],
         "mPointsCosts": [],

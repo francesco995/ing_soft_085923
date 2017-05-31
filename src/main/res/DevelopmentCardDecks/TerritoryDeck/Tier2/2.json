@@ -37,6 +37,7 @@
             }
         }],
         "mCardName": "Mountain Town",
+        "CARD_N": 10,
         "mPeriod": 2,
         "mResourcesCosts": [],
         "mPointsCosts": [],

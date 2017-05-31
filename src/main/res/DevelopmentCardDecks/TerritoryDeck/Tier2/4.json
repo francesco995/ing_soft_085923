@@ -22,6 +22,7 @@
             }
         }],
         "mCardName": "Rock Pit",
+        "CARD_N": 12,
         "mPeriod": 2,
         "mResourcesCosts": [],
         "mPointsCosts": [],

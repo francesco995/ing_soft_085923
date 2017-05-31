@@ -37,6 +37,7 @@
             }
         }],
         "mCardName": "Sanctuary",
+        "CARD_N": 22,
         "mPeriod": 3,
         "mResourcesCosts": [],
         "mPointsCosts": [],

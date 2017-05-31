@@ -37,6 +37,7 @@
             }
         }],
         "mCardName": "Citadel",
+        "CARD_N": 7,
         "mPeriod": 1,
         "mResourcesCosts": [],
         "mPointsCosts": [],

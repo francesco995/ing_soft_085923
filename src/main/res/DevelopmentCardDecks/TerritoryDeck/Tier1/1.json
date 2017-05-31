@@ -22,6 +22,7 @@
             }
         }],
         "mCardName": "Commercial Hub",
+        "CARD_N": 1,
         "mPeriod": 1,
         "mResourcesCosts": [],
         "mPointsCosts": [],
