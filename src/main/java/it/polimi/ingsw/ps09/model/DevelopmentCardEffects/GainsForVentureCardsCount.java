@@ -10,14 +10,14 @@ import it.polimi.ingsw.ps09.model.UserResources;
 public class GainsForVentureCardsCount extends DevelopmentCardEffect {
     //Gains when activated
     private UserResources mResourcesGains;
-    private UserPoints mUserPoints;
+    private UserPoints mUserPointsGains;
 
 
     public GainsForVentureCardsCount(UserResources resourcesGains,
-                                     UserPoints userPoints) {
+                                     UserPoints userPointsGains) {
 
         mResourcesGains = resourcesGains;
-        mUserPoints = userPoints;
+        mUserPointsGains = userPointsGains;
     }
 
     @Override
@@ -27,7 +27,7 @@ public class GainsForVentureCardsCount extends DevelopmentCardEffect {
         for (int i = 0; i < player.getVenturesCount(); i++) {
 
             player.add(mResourcesGains);
-            player.add(mUserPoints);
+            player.add(mUserPointsGains);
 
         }
 
