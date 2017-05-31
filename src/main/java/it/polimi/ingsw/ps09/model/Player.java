@@ -32,15 +32,17 @@ public class Player {
     //GAME OBJECTS
     private PersonalBoard mPersonalBoard;
     private UserPoints mUserPoints;
+
+    //PLAYER OBJECTS
     private List<LeaderCard> mLeaderCards;
+    private PermanentPlayerEffects mPermanentEffects;
+
 
     //LOGGER
     private static final Logger mLogger = Logger.getLogger(Player.class.getName());
 
 
     //CONSTRUCTOR
-
-    //TODO: FraG handle disable logger with constructor
 
     /**
      * Create a new player with default resources and no cards

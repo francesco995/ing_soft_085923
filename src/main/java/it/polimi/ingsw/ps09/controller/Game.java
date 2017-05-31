@@ -148,7 +148,8 @@ public class Game extends Thread {
         setupDecks();
 
         //Set the Board
-        mGameBoard = new Board(mExcommunicationTilesDeck.drawCard(1),
+        mGameBoard = new Board(
+                mExcommunicationTilesDeck.drawCard(1),
                 mExcommunicationTilesDeck.drawCard(2),
                 mExcommunicationTilesDeck.drawCard(3));
 
