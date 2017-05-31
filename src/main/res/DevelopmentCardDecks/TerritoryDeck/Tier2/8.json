@@ -1,0 +1,48 @@
+{
+    "CLASSNAME": "it.polimi.ingsw.ps09.model.DevelopmentCards.Territory",
+    "INSTANCE": {
+        "mProductionCost": 6,
+        "mHarvestEffects": [{
+            "CLASSNAME": "it.polimi.ingsw.ps09.model.DevelopmentCardEffects.GainResourcesEffect",
+            "INSTANCE": {
+                "mResourcesGains": {
+                    "mCoins": {
+                        "mValue": 1
+                    },
+                    "mServant": {
+                        "mValue": 0
+                    },
+                    "mStone": {
+                        "mValue": 1
+                    },
+                    "mWood": {
+                        "mValue": 2
+                    }
+                }
+            }
+        }],
+        "mCardName": "Dukedom",
+        "mPeriod": 2,
+        "mResourcesCosts": [],
+        "mPointsCosts": [],
+        "mImmediateEffects": [{
+            "CLASSNAME": "it.polimi.ingsw.ps09.model.DevelopmentCardEffects.GainResourcesEffect",
+            "INSTANCE": {
+                "mResourcesGains": {
+                    "mCoins": {
+                        "mValue": 4
+                    },
+                    "mServant": {
+                        "mValue": 0
+                    },
+                    "mStone": {
+                        "mValue": 0
+                    },
+                    "mWood": {
+                        "mValue": 0
+                    }
+                }
+            }
+        }]
+    }
+}

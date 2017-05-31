@@ -1,0 +1,78 @@
+{
+    "CLASSNAME": "it.polimi.ingsw.ps09.model.DevelopmentCards.Territory",
+    "INSTANCE": {
+        "mProductionCost": 3,
+        "mHarvestEffects": [{
+            "CLASSNAME": "it.polimi.ingsw.ps09.model.DevelopmentCardEffects.GainResourcesEffect",
+            "INSTANCE": {
+                "mResourcesGains": {
+                    "mCoins": {
+                        "mValue": 0
+                    },
+                    "mServant": {
+                        "mValue": 0
+                    },
+                    "mStone": {
+                        "mValue": 0
+                    },
+                    "mWood": {
+                        "mValue": 2
+                    }
+                }
+            }
+        }, {
+            "CLASSNAME": "it.polimi.ingsw.ps09.model.DevelopmentCardEffects.GainPointsEffect",
+            "INSTANCE": {
+                "mPointsGains": {
+                    "mFaithPoints": {
+                        "mPoints": 0
+                    },
+                    "mMilitaryPoints": {
+                        "mPoints": 0
+                    },
+                    "mVictoryPoints": {
+                        "mPoints": 2
+                    }
+                }
+            }
+        }],
+        "mCardName": "Farm",
+        "mPeriod": 3,
+        "mResourcesCosts": [],
+        "mPointsCosts": [],
+        "mImmediateEffects": [{
+            "CLASSNAME": "it.polimi.ingsw.ps09.model.DevelopmentCardEffects.GainPointsEffect",
+            "INSTANCE": {
+                "mPointsGains": {
+                    "mFaithPoints": {
+                        "mPoints": 0
+                    },
+                    "mMilitaryPoints": {
+                        "mPoints": 0
+                    },
+                    "mVictoryPoints": {
+                        "mPoints": 1
+                    }
+                }
+            }
+        }, {
+            "CLASSNAME": "it.polimi.ingsw.ps09.model.DevelopmentCardEffects.GainResourcesEffect",
+            "INSTANCE": {
+                "mResourcesGains": {
+                    "mCoins": {
+                        "mValue": 0
+                    },
+                    "mServant": {
+                        "mValue": 0
+                    },
+                    "mStone": {
+                        "mValue": 0
+                    },
+                    "mWood": {
+                        "mValue": 1
+                    }
+                }
+            }
+        }]
+    }
+}

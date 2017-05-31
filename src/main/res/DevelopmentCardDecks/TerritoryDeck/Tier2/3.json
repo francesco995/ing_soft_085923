@@ -1,0 +1,48 @@
+{
+    "CLASSNAME": "it.polimi.ingsw.ps09.model.DevelopmentCards.Territory",
+    "INSTANCE": {
+        "mProductionCost": 4,
+        "mHarvestEffects": [{
+            "CLASSNAME": "it.polimi.ingsw.ps09.model.DevelopmentCardEffects.GainResourcesEffect",
+            "INSTANCE": {
+                "mResourcesGains": {
+                    "mCoins": {
+                        "mValue": 0
+                    },
+                    "mServant": {
+                        "mValue": 1
+                    },
+                    "mStone": {
+                        "mValue": 2
+                    },
+                    "mWood": {
+                        "mValue": 0
+                    }
+                }
+            }
+        }],
+        "mCardName": "Mining Town",
+        "mPeriod": 2,
+        "mResourcesCosts": [],
+        "mPointsCosts": [],
+        "mImmediateEffects": [{
+            "CLASSNAME": "it.polimi.ingsw.ps09.model.DevelopmentCardEffects.GainResourcesEffect",
+            "INSTANCE": {
+                "mResourcesGains": {
+                    "mCoins": {
+                        "mValue": 0
+                    },
+                    "mServant": {
+                        "mValue": 2
+                    },
+                    "mStone": {
+                        "mValue": 1
+                    },
+                    "mWood": {
+                        "mValue": 0
+                    }
+                }
+            }
+        }]
+    }
+}

@@ -1,0 +1,35 @@
+{
+    "CLASSNAME": "it.polimi.ingsw.ps09.model.DevelopmentCards.Territory",
+    "INSTANCE": {
+        "mProductionCost": 6,
+        "mHarvestEffects": [{
+            "CLASSNAME": "it.polimi.ingsw.ps09.model.DevelopmentCardEffects.GainCouncilPrivilege",
+            "INSTANCE": {
+                "mPrivilegesCount": 1
+            }
+        }],
+        "mCardName": "City",
+        "mPeriod": 1,
+        "mResourcesCosts": [],
+        "mPointsCosts": [],
+        "mImmediateEffects": [{
+            "CLASSNAME": "it.polimi.ingsw.ps09.model.DevelopmentCardEffects.GainResourcesEffect",
+            "INSTANCE": {
+                "mResourcesGains": {
+                    "mCoins": {
+                        "mValue": 3
+                    },
+                    "mServant": {
+                        "mValue": 0
+                    },
+                    "mStone": {
+                        "mValue": 0
+                    },
+                    "mWood": {
+                        "mValue": 0
+                    }
+                }
+            }
+        }]
+    }
+}

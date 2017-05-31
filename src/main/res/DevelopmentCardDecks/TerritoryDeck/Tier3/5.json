@@ -1,0 +1,68 @@
+{
+    "CLASSNAME": "it.polimi.ingsw.ps09.model.DevelopmentCards.Territory",
+    "INSTANCE": {
+        "mProductionCost": 6,
+        "mHarvestEffects": [{
+            "CLASSNAME": "it.polimi.ingsw.ps09.model.DevelopmentCardEffects.GainResourcesEffect",
+            "INSTANCE": {
+                "mResourcesGains": {
+                    "mCoins": {
+                        "mValue": 0
+                    },
+                    "mServant": {
+                        "mValue": 0
+                    },
+                    "mStone": {
+                        "mValue": 1
+                    },
+                    "mWood": {
+                        "mValue": 0
+                    }
+                }
+            }
+        }, {
+            "CLASSNAME": "it.polimi.ingsw.ps09.model.DevelopmentCardEffects.GainPointsEffect",
+            "INSTANCE": {
+                "mPointsGains": {
+                    "mFaithPoints": {
+                        "mPoints": 0
+                    },
+                    "mMilitaryPoints": {
+                        "mPoints": 0
+                    },
+                    "mVictoryPoints": {
+                        "mPoints": 4
+                    }
+                }
+            }
+        }],
+        "mCardName": "Province",
+        "mPeriod": 3,
+        "mResourcesCosts": [],
+        "mPointsCosts": [],
+        "mImmediateEffects": [{
+            "CLASSNAME": "it.polimi.ingsw.ps09.model.DevelopmentCardEffects.GainCouncilPrivilege",
+            "INSTANCE": {
+                "mPrivilegesCount": 1
+            }
+        }, {
+            "CLASSNAME": "it.polimi.ingsw.ps09.model.DevelopmentCardEffects.GainResourcesEffect",
+            "INSTANCE": {
+                "mResourcesGains": {
+                    "mCoins": {
+                        "mValue": 0
+                    },
+                    "mServant": {
+                        "mValue": 0
+                    },
+                    "mStone": {
+                        "mValue": 1
+                    },
+                    "mWood": {
+                        "mValue": 0
+                    }
+                }
+            }
+        }]
+    }
+}

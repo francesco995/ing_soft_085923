@@ -1,0 +1,42 @@
+{
+    "CLASSNAME": "it.polimi.ingsw.ps09.model.DevelopmentCards.Territory",
+    "INSTANCE": {
+        "mProductionCost": 2,
+        "mHarvestEffects": [{
+            "CLASSNAME": "it.polimi.ingsw.ps09.model.DevelopmentCardEffects.GainPointsEffect",
+            "INSTANCE": {
+                "mPointsGains": {
+                    "mFaithPoints": {
+                        "mPoints": 1
+                    },
+                    "mMilitaryPoints": {
+                        "mPoints": 0
+                    },
+                    "mVictoryPoints": {
+                        "mPoints": 0
+                    }
+                }
+            }
+        }],
+        "mCardName": "Hermitage",
+        "mPeriod": 2,
+        "mResourcesCosts": [],
+        "mPointsCosts": [],
+        "mImmediateEffects": [{
+            "CLASSNAME": "it.polimi.ingsw.ps09.model.DevelopmentCardEffects.GainPointsEffect",
+            "INSTANCE": {
+                "mPointsGains": {
+                    "mFaithPoints": {
+                        "mPoints": 1
+                    },
+                    "mMilitaryPoints": {
+                        "mPoints": 0
+                    },
+                    "mVictoryPoints": {
+                        "mPoints": 0
+                    }
+                }
+            }
+        }]
+    }
+}

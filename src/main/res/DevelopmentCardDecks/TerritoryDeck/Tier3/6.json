@@ -1,0 +1,60 @@
+{
+    "CLASSNAME": "it.polimi.ingsw.ps09.model.DevelopmentCards.Territory",
+    "INSTANCE": {
+        "mProductionCost": 1,
+        "mHarvestEffects": [{
+            "CLASSNAME": "it.polimi.ingsw.ps09.model.DevelopmentCardEffects.GainResourcesEffect",
+            "INSTANCE": {
+                "mResourcesGains": {
+                    "mCoins": {
+                        "mValue": 1
+                    },
+                    "mServant": {
+                        "mValue": 0
+                    },
+                    "mStone": {
+                        "mValue": 0
+                    },
+                    "mWood": {
+                        "mValue": 0
+                    }
+                }
+            }
+        }, {
+            "CLASSNAME": "it.polimi.ingsw.ps09.model.DevelopmentCardEffects.GainPointsEffect",
+            "INSTANCE": {
+                "mPointsGains": {
+                    "mFaithPoints": {
+                        "mPoints": 1
+                    },
+                    "mMilitaryPoints": {
+                        "mPoints": 0
+                    },
+                    "mVictoryPoints": {
+                        "mPoints": 0
+                    }
+                }
+            }
+        }],
+        "mCardName": "Sanctuary",
+        "mPeriod": 3,
+        "mResourcesCosts": [],
+        "mPointsCosts": [],
+        "mImmediateEffects": [{
+            "CLASSNAME": "it.polimi.ingsw.ps09.model.DevelopmentCardEffects.GainPointsEffect",
+            "INSTANCE": {
+                "mPointsGains": {
+                    "mFaithPoints": {
+                        "mPoints": 1
+                    },
+                    "mMilitaryPoints": {
+                        "mPoints": 0
+                    },
+                    "mVictoryPoints": {
+                        "mPoints": 0
+                    }
+                }
+            }
+        }]
+    }
+}
