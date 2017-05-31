@@ -17,7 +17,7 @@ public abstract class DevelopmentCard {
 
     //Card INFO
     private String mCardName;
-\    private final int CARD_N;
+    private final int CARD_N;
     private int mPeriod;
 
 
