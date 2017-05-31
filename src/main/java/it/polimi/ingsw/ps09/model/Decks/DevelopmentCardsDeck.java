@@ -1,5 +1,7 @@
 package it.polimi.ingsw.ps09.model.Decks;
 
+import com.google.gson.GsonBuilder;
+import it.polimi.ingsw.ps09.model.DevelopmentCardEffects.DevelopmentCardEffect;
 import it.polimi.ingsw.ps09.model.DevelopmentCards.*;
 import it.polimi.ingsw.ps09.model.DevelopmentCards.Character;
 
@@ -97,18 +99,14 @@ public class DevelopmentCardsDeck {
         //For each period and for each type of card, fill the corresponding Map and LinkedList
         for(int i = 1; i <= MAX_PERIODS; i++){
 
-            mDeck.get("BUILDING").put(i, loadDeck(  mFilePath + "BuildingDeck" +  i + DECK_FORMAT,
-                    new TypeToken<LinkedList<Building>>(){}.getType() ));
+            //mDeck.get("BUILDING").put(i, loadDeck(  mFilePath + "BuildingDeck\\Tier" +  i + "\\"));
 
-            mDeck.get("CHARACTER").put(i, loadDeck( mFilePath + "CharacterDeck" +  i + DECK_FORMAT,
-                    new TypeToken<LinkedList<Character>>(){}.getType() ));
+            //mDeck.get("CHARACTER").put(i, loadDeck(  mFilePath + "BuildingDeck\\Tier" +  i + "\\"));
 
-            mDeck.get("TERRITORY").put(i, loadDeck( mFilePath + "TerritoryDeck" + i + DECK_FORMAT,
-                    new TypeToken<LinkedList<Territory>>(){}.getType()));
+            mDeck.get("TERRITORY").put(i, loadDeck(  mFilePath + "TerritoryDeck\\Tier" +  i + "\\"));
 
-            mDeck.get("VENTURE").put(i, loadDeck(   mFilePath + "VentureDeck" + i + DECK_FORMAT,
-                    new TypeToken<LinkedList<Venture>>(){}.getType()));
-            
+            //mDeck.get("VENTURE").put(i, loadDeck(  mFilePath + "BuildingDeck\\Tier" +  i + "\\"));
+
         }
 
     }
@@ -119,7 +117,7 @@ public class DevelopmentCardsDeck {
      * @return returns the file as a string
      * @throws FileNotFoundException
      */
-    private String loadStringDeck(String fileName) throws FileNotFoundException {
+    private String loadStringFromFile(String fileName) throws FileNotFoundException {
 
         String mStringDeck;
 
@@ -131,62 +129,36 @@ public class DevelopmentCardsDeck {
         return mStringDeck;
     }
 
-    @Deprecated
-    private List<Building> loadBuildingDeck(String fileName) throws FileNotFoundException {
-        //TODO: FraG comment and LOG
+    private DevelopmentCard loadCardFromString(String cardString){
 
-        String stringDeck = loadStringDeck(fileName);
+        Gson gsonExt = null;
+        GsonBuilder builder = new GsonBuilder();
 
-        Type mListType = new TypeToken<LinkedList<Building>>(){}.getType();
+        builder.registerTypeAdapter(DevelopmentCard.class, new DevelopmentCardAdapter());
+        builder.registerTypeAdapter(DevelopmentCardEffect.class, new DevelopmentCardEffectAdapter());
 
-        return new Gson().fromJson(stringDeck, mListType);
-    }
+        gsonExt = builder.create();
 
-    @Deprecated
-    private List<Character> loadCharacterDeck(String fileName) throws FileNotFoundException {
-        //TODO: FraG comment and LOG
+        return gsonExt.fromJson(cardString, DevelopmentCard.class);
 
-        String stringDeck = loadStringDeck(fileName);
-
-        Type mListType = new TypeToken<LinkedList<Character>>(){}.getType();
-
-        return new Gson().fromJson(stringDeck, mListType);
-    }
-
-    @Deprecated
-    private List<Territory> loadTerritoryDeck(String fileName) throws FileNotFoundException {
-        //TODO: FraG comment and LOG
-
-        String stringDeck = loadStringDeck(fileName);
-
-        Type mListType = new TypeToken<LinkedList<Territory>>(){}.getType();
-
-        return new Gson().fromJson(stringDeck, mListType);
-    }
-
-    @Deprecated
-    private List<Venture> loadVentureDeck(String fileName) throws FileNotFoundException {
-        //TODO: FraG comment and LOG
-
-        String stringDeck = loadStringDeck(fileName);
-
-        Type mListType = new TypeToken<LinkedList<Venture>>(){}.getType();
-
-        return new Gson().fromJson(stringDeck, mListType);
     }
 
     /**
      * Import an object from the given file in json format
      * @param fileName complete path of the file to load (from the project index)
-     * @param objectType Type of the Object to import
      * @return
      * @throws FileNotFoundException
      */
-    private List loadDeck(String fileName, Type objectType) throws FileNotFoundException {
+    private List loadDeck(String fileName) throws FileNotFoundException {
 
-        String stringDeck = loadStringDeck(fileName);
+        List<DevelopmentCard> mTierDeck = new LinkedList<>();
 
-        return new Gson().fromJson(stringDeck, objectType);
+        for(int i=1; i<=8; i++){
+            mTierDeck.add(loadCardFromString(loadStringFromFile(fileName + i + DECK_FORMAT)));
+        }
+
+        return mTierDeck;
+
     }
 
 
@@ -204,6 +176,53 @@ public class DevelopmentCardsDeck {
         return null;
 
     }
+
+
+
+    @Deprecated
+    private List<Building> loadBuildingDeck(String fileName) throws FileNotFoundException {
+        //TODO: FraG comment and LOG
+
+        String stringDeck = loadStringFromFile(fileName);
+
+        Type mListType = new TypeToken<LinkedList<Building>>(){}.getType();
+
+        return new Gson().fromJson(stringDeck, mListType);
+    }
+
+    @Deprecated
+    private List<Character> loadCharacterDeck(String fileName) throws FileNotFoundException {
+        //TODO: FraG comment and LOG
+
+        String stringDeck = loadStringFromFile(fileName);
+
+        Type mListType = new TypeToken<LinkedList<Character>>(){}.getType();
+
+        return new Gson().fromJson(stringDeck, mListType);
+    }
+
+    @Deprecated
+    private List<Territory> loadTerritoryDeck(String fileName) throws FileNotFoundException {
+        //TODO: FraG comment and LOG
+
+        String stringDeck = loadStringFromFile(fileName);
+
+        Type mListType = new TypeToken<LinkedList<Territory>>(){}.getType();
+
+        return new Gson().fromJson(stringDeck, mListType);
+    }
+
+    @Deprecated
+    private List<Venture> loadVentureDeck(String fileName) throws FileNotFoundException {
+        //TODO: FraG comment and LOG
+
+        String stringDeck = loadStringFromFile(fileName);
+
+        Type mListType = new TypeToken<LinkedList<Venture>>(){}.getType();
+
+        return new Gson().fromJson(stringDeck, mListType);
+    }
+
 
     @Deprecated
     public Building drawBuildingCard(){
