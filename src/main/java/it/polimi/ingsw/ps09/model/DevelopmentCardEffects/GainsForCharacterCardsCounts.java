@@ -13,6 +13,13 @@ public class GainsForCharacterCardsCounts extends DevelopmentCardEffect {
     private UserResources mResourcesGains;
     private UserPoints mUserPoints;
 
+    public GainsForCharacterCardsCounts(UserResources resourcesGains,
+                                        UserPoints userPoints) {
+
+        mResourcesGains = resourcesGains;
+        mUserPoints = userPoints;
+    }
+
     @Override
     public void applyEffect(Player player) {
 

@@ -17,6 +17,19 @@ public class ConvertEffect extends DevelopmentCardEffect{
 
     //TODO: controllare se la scelta dell'attivazione va fatta qui o in GameLogic
 
+
+    public ConvertEffect(UserResources resourceCost,
+                         UserPoints pointsCost,
+                         UserResources resourcesGains,
+                         UserPoints pointsGains) {
+
+        mResourceCost = resourceCost;
+        mPointsCost = pointsCost;
+        mResourcesGains = resourcesGains;
+        mPointsGains = pointsGains;
+
+    }
+
     @Override
     public void applyEffect(Player player) {
 

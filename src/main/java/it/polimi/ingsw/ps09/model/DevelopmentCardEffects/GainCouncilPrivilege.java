@@ -9,6 +9,10 @@ public class GainCouncilPrivilege extends DevelopmentCardEffect{
 
     private int mPrivilegesCount;
 
+    public GainCouncilPrivilege(int privilegesCount) {
+        mPrivilegesCount = privilegesCount;
+    }
+
     @Override
     public void applyEffect(Player player) {
 

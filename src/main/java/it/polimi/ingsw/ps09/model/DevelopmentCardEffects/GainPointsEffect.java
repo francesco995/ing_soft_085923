@@ -8,6 +8,10 @@ public class GainPointsEffect extends  DevelopmentCardEffect{
     //Gains when activated
     private UserPoints mPointsGains;
 
+    public GainPointsEffect(UserPoints pointsGains) {
+        mPointsGains = pointsGains;
+    }
+
     @Override
     public void applyEffect(Player player) {
 

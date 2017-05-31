@@ -13,6 +13,9 @@ public class GainResourcesEffect extends DevelopmentCardEffect {
     //Gains when activated
     private UserResources mResourcesGains;
 
+    public GainResourcesEffect(UserResources resourcesGains) {
+        mResourcesGains = resourcesGains;
+    }
 
     @Override
     public void applyEffect(Player player) {
