@@ -1,0 +1,94 @@
+{
+    "CLASSNAME": "it.polimi.ingsw.ps09.model.DevelopmentCards.Building",
+    "INSTANCE": {
+        "mProductionCost": 6,
+        "mProductionEffects": [
+            {
+                "CLASSNAME": "it.polimi.ingsw.ps09.model.DevelopmentCardEffects.ConvertEffect",
+                "INSTANCE": {
+                    "mResourcesCosts": [
+                        {
+                            "mCoins": {
+                                "mValue": 1
+                            },
+                            "mServant": {
+                                "mValue": 0
+                            },
+                            "mStone": {
+                                "mValue": 0
+                            },
+                            "mWood": {
+                                "mValue": 0
+                            }
+                        }],
+                    "mPointsCosts": [],
+                    "mResourcesGains": [
+                        {
+                            "mCoins": {
+                                "mValue": 0
+                            },
+                            "mServant": {
+                                "mValue": 2
+                            },
+                            "mStone": {
+                                "mValue": 0
+                            },
+                            "mWood": {
+                                "mValue": 3
+                            }
+                        }],
+                    "mPointsGains": [{
+                        "mPointsGains": {
+                            "mFaithPoints": {
+                                "mPoints": 0
+                            },
+                            "mMilitaryPoints": {
+                                "mPoints": 0
+                            },
+                            "mVictoryPoints": {
+                                "mPoints": 4
+                        }
+                    }}]
+                }
+            }
+        ],
+        "mCardName": "Palace",
+        "CARD_N": 45,
+        "mPeriod": 3,
+        "mResourcesCosts": [
+            {
+                "mCoins": {
+                    "mValue": 3
+                },
+                "mServant": {
+                    "mValue": 0
+                },
+                "mStone": {
+                    "mValue": 1
+                },
+                "mWood": {
+                    "mValue": 3
+                }
+            }
+        ],
+        "mPointsCosts": [],
+        "mImmediateEffects": [
+            {
+                "CLASSNAME": "it.polimi.ingsw.ps09.model.DevelopmentCardEffects.GainPointsEffect",
+                "INSTANCE": {
+                    "mPointsGains": {
+                        "mFaithPoints": {
+                            "mPoints": 0
+                        },
+                        "mMilitaryPoints": {
+                            "mPoints": 0
+                        },
+                        "mVictoryPoints": {
+                            "mPoints": 9
+                        }
+                    }
+                }
+            }
+        ]
+    }
+}

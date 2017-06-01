@@ -1,0 +1,83 @@
+{
+    "CLASSNAME": "it.polimi.ingsw.ps09.model.DevelopmentCards.Building",
+    "INSTANCE": {
+        "mProductionCost": 4,
+        "mProductionEffects": [
+            {
+                "CLASSNAME": "it.polimi.ingsw.ps09.model.DevelopmentCardEffects.ConvertEffect",
+                "INSTANCE": {
+                    "mResourcesCosts": [
+                        {
+                            "mCoins": {
+                                "mValue": 4
+                            },
+                            "mServant": {
+                                "mValue": 0
+                            },
+                            "mStone": {
+                                "mValue": 0
+                            },
+                            "mWood": {
+                                "mValue": 0
+                            }
+                        }],
+                    "mPointsCosts": [],
+                    "mResourcesGains": [
+                        {
+                            "mCoins": {
+                                "mValue": 0
+                            },
+                            "mServant": {
+                                "mValue": 0
+                            },
+                            "mStone": {
+                                "mValue": 3
+                            },
+                            "mWood": {
+                                "mValue": 3
+                            }
+                        }],
+                    "mPointsGains": []
+                }
+            }
+        ],
+        "mCardName": "Fair",
+        "CARD_N": 42,
+        "mPeriod": 3,
+        "mResourcesCosts": [
+            {
+                "mCoins": {
+                    "mValue": 4
+                },
+                "mServant": {
+                    "mValue": 0
+                },
+                "mStone": {
+                    "mValue": 0
+                },
+                "mWood": {
+                    "mValue": 3
+                }
+            }
+        ],
+        "mPointsCosts": [],
+        "mImmediateEffects": [
+            {
+                "CLASSNAME": "it.polimi.ingsw.ps09.model.DevelopmentCardEffects.GainPointsEffect",
+                "INSTANCE": {
+                    "mPointsGains": {
+                        "mFaithPoints": {
+                            "mPoints": 0
+                        },
+                        "mMilitaryPoints": {
+                            "mPoints": 0
+                        },
+                        "mVictoryPoints": {
+                            "mPoints": 8
+                        }
+                    }
+                }
+            }
+        ]
+    }
+}

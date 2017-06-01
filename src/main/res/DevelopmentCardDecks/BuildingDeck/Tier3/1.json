@@ -1,0 +1,66 @@
+{
+    "CLASSNAME": "it.polimi.ingsw.ps09.model.DevelopmentCards.Building",
+    "INSTANCE": {
+        "mProductionCost": 2,
+        "mProductionEffects": [
+            {
+                "CLASSNAME": "it.polimi.ingsw.ps09.model.DevelopmentCardEffects.GainResourcesEffect",
+                "INSTANCE": {
+                    "mResourcesGains": {
+                        "mCoins": {
+                            "mValue": 5
+                        },
+                        "mServant": {
+                            "mValue": 0
+                        },
+                        "mStone": {
+                            "mValue": 0
+                        },
+                        "mWood": {
+                            "mValue": 0
+                        }
+                    }
+                }
+
+            }
+        ],
+        "mCardName": "Bank",
+        "CARD_N": 41,
+        "mPeriod": 3,
+        "mResourcesCosts": [
+            {
+                "mCoins": {
+                    "mValue": 3
+                },
+                "mServant": {
+                    "mValue": 0
+                },
+                "mStone": {
+                    "mValue": 3
+                },
+                "mWood": {
+                    "mValue": 1
+                }
+            }
+        ],
+        "mPointsCosts": [],
+        "mImmediateEffects": [
+            {
+                "CLASSNAME": "it.polimi.ingsw.ps09.model.DevelopmentCardEffects.GainPointsEffect",
+                "INSTANCE": {
+                    "mPointsGains": {
+                        "mFaithPoints": {
+                            "mPoints": 0
+                        },
+                        "mMilitaryPoints": {
+                            "mPoints": 0
+                        },
+                        "mVictoryPoints": {
+                            "mPoints": 7
+                        }
+                    }
+                }
+            }
+        ]
+    }
+}

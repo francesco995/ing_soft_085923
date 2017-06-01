@@ -1,0 +1,107 @@
+{
+    "CLASSNAME": "it.polimi.ingsw.ps09.model.DevelopmentCards.Building",
+    "INSTANCE": {
+        "mProductionCost": 4,
+        "mProductionEffects": [
+            {
+                "CLASSNAME": "it.polimi.ingsw.ps09.model.DevelopmentCardEffects.ConvertEffect",
+                "INSTANCE": {
+                    "mResourcesCosts": [
+                        {
+                            "mCoins": {
+                                "mValue": 0
+                            },
+                            "mServant": {
+                                "mValue": 0
+                            },
+                            "mStone": {
+                                "mValue": 0
+                            },
+                            "mWood": {
+                                "mValue": 1
+                            }
+                        },
+                        {
+                            "mCoins": {
+                                "mValue": 0
+                            },
+                            "mServant": {
+                                "mValue": 0
+                            },
+                            "mStone": {
+                                "mValue": 0
+                            },
+                            "mWood": {
+                                "mValue": 3
+                            }
+                        }
+                    ],
+                    "mPointsCosts": [],
+                    "mResourcesGains": [],
+                    "mPointsGains": [
+                        {
+                            "mFaithPoints": {
+                                "mPoints": 0
+                            },
+                            "mMilitaryPoints": {
+                                "mPoints": 0
+                            },
+                            "mVictoryPoints": {
+                                "mPoints": 3
+                            }
+                        },
+                        {
+                            "mFaithPoints": {
+                                "mPoints": 0
+                            },
+                            "mMilitaryPoints": {
+                                "mPoints": 0
+                            },
+                            "mVictoryPoints": {
+                                "mPoints": 7
+                            }
+                        }
+                    ]
+                }
+            }
+        ],
+        "mCardName": "Pointers' Guild",
+        "CARD_N": 35,
+        "mPeriod": 2,
+        "mResourcesCosts": [
+            {
+                "mCoins": {
+                    "mValue": 0
+                },
+                "mServant": {
+                    "mValue": 0
+                },
+                "mStone": {
+                    "mValue": 0
+                },
+                "mWood": {
+                    "mValue": 4
+                }
+            }
+        ],
+        "mPointsCosts": [],
+        "mImmediateEffects": [
+            {
+                "CLASSNAME": "it.polimi.ingsw.ps09.model.DevelopmentCardEffects.GainPointsEffect",
+                "INSTANCE": {
+                    "mPointsGains": {
+                        "mFaithPoints": {
+                            "mPoints": 0
+                        },
+                        "mMilitaryPoints": {
+                            "mPoints": 0
+                        },
+                        "mVictoryPoints": {
+                            "mPoints": 5
+                        }
+                    }
+                }
+            }
+        ]
+    }
+}

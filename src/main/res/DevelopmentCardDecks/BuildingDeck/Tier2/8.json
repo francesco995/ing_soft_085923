@@ -1,0 +1,66 @@
+{
+    "CLASSNAME": "it.polimi.ingsw.ps09.model.DevelopmentCards.Building",
+    "INSTANCE": {
+        "mProductionCost": 6,
+        "mProductionEffects": [
+            {
+                "CLASSNAME": "it.polimi.ingsw.ps09.model.DevelopmentCardEffects.ConvertEffect",
+                "INSTANCE": {
+                    "mResourcesCosts": [],
+                    "mPointsCosts": [],
+                    "mResourcesGains": [],
+                    "mPointsGains": [
+                        {
+                            "mFaithPoints": {
+                                "mPoints": 0
+                            },
+                            "mMilitaryPoints": {
+                                "mPoints": 2
+                            },
+                            "mVictoryPoints": {
+                                "mPoints": 2
+                            }
+                        }]
+                }
+            }
+        ],
+        "mCardName": "Stronghold",
+        "CARD_N": 40,
+        "mPeriod": 2,
+        "mResourcesCosts": [
+            {
+                "mCoins": {
+                    "mValue": 2
+                },
+                "mServant": {
+                    "mValue": 0
+                },
+                "mStone": {
+                    "mValue": 2
+                },
+                "mWood": {
+                    "mValue": 2
+                }
+            }
+        ],
+        "mPointsCosts": [],
+        "mImmediateEffects": [
+            {
+                "CLASSNAME": "it.polimi.ingsw.ps09.model.DevelopmentCardEffects.GainPointsEffect",
+                "INSTANCE": {
+                    "mPointsGains": {
+                        "mFaithPoints": {
+                            "mPoints": 0
+                        },
+                        "mMilitaryPoints": {
+                            "mPoints": 0
+                        },
+                        "mVictoryPoints": {
+                            "mPoints": 8
+                        }
+                    }
+                }
+            }
+        ]
+    }
+}
