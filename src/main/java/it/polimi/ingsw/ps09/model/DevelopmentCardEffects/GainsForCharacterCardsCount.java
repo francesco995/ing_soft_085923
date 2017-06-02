@@ -7,14 +7,14 @@ import it.polimi.ingsw.ps09.model.UserResources;
 /**
  * Created by franc on 30/05/2017.
  */
-public class GainsForCharacterCardsCounts extends DevelopmentCardEffect {
+public class GainsForCharacterCardsCount extends DevelopmentCardEffect {
 
     //Gains when activated
     private UserResources mResourcesGains;
     private UserPoints mUserPointsGains;
 
-    public GainsForCharacterCardsCounts(UserResources resourcesGains,
-                                        UserPoints userPointsGains) {
+    public GainsForCharacterCardsCount(UserResources resourcesGains,
+                                       UserPoints userPointsGains) {
 
         mResourcesGains = resourcesGains;
         mUserPointsGains = userPointsGains;
