@@ -1,17 +1,22 @@
 package it.polimi.ingsw.ps09.model.Decks;
 
 import com.google.gson.GsonBuilder;
+import it.polimi.ingsw.ps09.controller.Game;
 import it.polimi.ingsw.ps09.model.DevelopmentCardEffects.DevelopmentCardEffect;
 import it.polimi.ingsw.ps09.model.DevelopmentCards.*;
 import it.polimi.ingsw.ps09.model.DevelopmentCards.Character;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import it.polimi.ingsw.ps09.model.Player;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.lang.reflect.Type;
 import java.util.*;
+import java.util.logging.Logger;
+
+import static java.util.logging.Level.INFO;
 
 
 /**
@@ -45,6 +50,10 @@ public class DevelopmentCardsDeck {
 
     //OTHER VARIABLES
     Random mRandom = new Random();
+
+    //LOGGER
+    private static final Logger mLogger = Logger.getLogger(Player.class.getName());
+
 
     //ALL BUILDINGS
     @Deprecated
@@ -169,11 +178,20 @@ public class DevelopmentCardsDeck {
         return mRandom.nextInt(max);
     }
 
-    public Object drawCard(String cardType) {
+    public DevelopmentCard drawCard(String cardType) {
 
         for (int i = 1; i <= MAX_PERIODS; i++) {
             if (!mDeck.get(cardType.toUpperCase()).get(i).isEmpty()) {
-                return mDeck.get(cardType).get(i).remove(getRandomNumber(mDeck.get(cardType).get(i).size()));
+
+                DevelopmentCard mCard = (DevelopmentCard) mDeck.get(cardType).get(i).remove(getRandomNumber(mDeck.get(cardType).get(i).size()));
+
+                //LOGGER
+                mLogger.log(INFO, "Game: " + Game.GAME_ID +
+                        " draw card # " + mCard.getCARD_N() +
+                        " Card Name: " + mCard.getCardName() +
+                        " Card Period: " + mCard.getPeriod());
+
+                return mCard;
             }
         }
         return null;
@@ -183,7 +201,6 @@ public class DevelopmentCardsDeck {
 
     @Deprecated
     private List<Building> loadBuildingDeck(String fileName) throws FileNotFoundException {
-        //TODO: FraG comment and LOG
 
         String stringDeck = loadStringFromFile(fileName);
 
@@ -195,7 +212,6 @@ public class DevelopmentCardsDeck {
 
     @Deprecated
     private List<Character> loadCharacterDeck(String fileName) throws FileNotFoundException {
-        //TODO: FraG comment and LOG
 
         String stringDeck = loadStringFromFile(fileName);
 
@@ -207,7 +223,6 @@ public class DevelopmentCardsDeck {
 
     @Deprecated
     private List<Territory> loadTerritoryDeck(String fileName) throws FileNotFoundException {
-        //TODO: FraG comment and LOG
 
         String stringDeck = loadStringFromFile(fileName);
 
@@ -219,7 +234,6 @@ public class DevelopmentCardsDeck {
 
     @Deprecated
     private List<Venture> loadVentureDeck(String fileName) throws FileNotFoundException {
-        //TODO: FraG comment and LOG
 
         String stringDeck = loadStringFromFile(fileName);
 

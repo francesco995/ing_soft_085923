@@ -21,6 +21,13 @@ public class GainsForBuildingCardsCount extends DevelopmentCardEffect{
     }
 
     @Override
+    public String toString(){
+        return ("Gain Points -> " + mUserPointsGains +
+                " and Resources -> " + mResourcesGains +
+                " for each Building");
+    }
+
+    @Override
     public void applyEffect(Player player) {
 
 

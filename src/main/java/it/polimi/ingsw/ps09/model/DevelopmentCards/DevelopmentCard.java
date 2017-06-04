@@ -5,10 +5,11 @@ import it.polimi.ingsw.ps09.model.UserPoints;
 import it.polimi.ingsw.ps09.model.UserResources;
 
 import java.util.List;
+import java.util.StringJoiner;
 
 
 /**
- * Created by franc on 10/05/2017.
+ * Created by francesco995 on 10/05/2017.
  */
 
 public abstract class DevelopmentCard {
@@ -46,36 +47,42 @@ public abstract class DevelopmentCard {
         CARD_N = 0;
     }
 
-/*
+    //TO STRING
+    @Override
+    public String toString(){
 
-    //CONSTRUCTORS
-    public DevelopmentCard(String cardName, int cardPeriod) {
-        this(   cardName,
-                cardPeriod,
-                new UserResources(0,0,0,0),
-                new UserPoints(0, 0, 0),
-                new UserPoints(0, 0, 0),
-                new LinkedList<>(),
-                new LinkedList<>());
+        StringJoiner mStringCard = new StringJoiner("\n     ", "", "");
+
+        mStringCard.add("Card #" + CARD_N + ": " + mCardName);
+
+        //TODO: test with all effects
+        if(!mResourcesCosts.isEmpty())
+            mStringCard.add("Resources Costs:");
+
+        mResourcesCosts.stream()
+                .map(UserResources::toString)
+                .forEach(mStringCard::add);
+
+
+        if(!mPointsCosts.isEmpty())
+            mStringCard.add("Points Costs:");
+
+        mPointsCosts.stream()
+                .map(UserPoints::toString)
+                .forEach(mStringCard::add);
+
+
+        if(!mImmediateEffects.isEmpty())
+            mStringCard.add("Immediate Effects:");
+
+        mImmediateEffects.stream()
+                .map(DevelopmentCardEffect::toString)
+                .forEach(mStringCard::add);
+
+
+        return mStringCard.toString();
     }
 
-    public DevelopmentCard(String cardName,
-                           int period,
-                           UserResources resourcesCosts,
-                           UserPoints pointsCosts,
-                           UserPoints pointsRequirements,
-                           LinkedList<String> immediateEffects,
-                           LinkedList<String> permanentEffects) {
-
-        mCardName = cardName;
-        mPeriod = period;
-        mResourcesCosts = resourcesCosts;
-        mPointsCosts = pointsCosts;
-        mPointsRequirements = pointsRequirements;
-        mImmediateEffects = immediateEffects;
-        mPermanentEffects = permanentEffects;
-    }
-*/
 
     //GETTERS
     public String getCardName() {
@@ -86,6 +93,14 @@ public abstract class DevelopmentCard {
         return mPeriod;
     }
 
+    public int getCARD_N() {
+        return CARD_N;
+    }
+
+    public List<DevelopmentCardEffect> getImmediateEffects() {
+        return mImmediateEffects;
+    }
+
     public  List<UserResources> getResourcesCosts() {
         return mResourcesCosts;
     }
@@ -94,110 +109,5 @@ public abstract class DevelopmentCard {
         return mPointsCosts;
     }
 
-
-    /*
-
-    private class Costs {
-
-        //COST VARIABLES (NOT ALL NEED TO BE SET TO VALUE)
-        private Coins mCoinsCost;
-        private Wood mWoodCost;
-        private Stone mStoneCost;
-        private Servant mServantCost;
-        private MilitaryPoints mMilitaryPointsRequirement;
-        private MilitaryPoints mMilitaryPointsCost;
-
-        //COST CONSTRUCTOR
-
-        public Costs(Coins coinsCost, Wood woodCost, Stone stoneCost,
-                     Servant servantCost, MilitaryPoints militaryPointsRequirement,
-                     MilitaryPoints militaryPointsCost) {
-            mCoinsCost = coinsCost;
-            mWoodCost = woodCost;
-            mStoneCost = stoneCost;
-            mServantCost = servantCost;
-            mMilitaryPointsRequirement = militaryPointsRequirement;
-            mMilitaryPointsCost = militaryPointsCost;
-        }
-        //GETTER
-
-        public Coins getCoinsCost() {
-            return mCoinsCost;
-        }
-
-        public Wood getWoodCost() {
-            return mWoodCost;
-        }
-
-        public Stone getStoneCost() {
-            return mStoneCost;
-        }
-
-        public Servant getServantCost() {
-            return mServantCost;
-        }
-
-        public MilitaryPoints getMilitaryPointsRequirement() {
-            return mMilitaryPointsRequirement;
-        }
-
-        public MilitaryPoints getMilitaryPointsCost() {
-            return mMilitaryPointsCost;
-        }
-    }
-
-    private class Gains {
-        //GAINS VARIABLES
-        private Coins mCoinsGain;
-        private Wood mWoodGain;
-        private Stone mStoneGain;
-        private Servant mServantGain;
-        private FaithPoints mFaithPointsGain;
-        private MilitaryPoints mMilitaryPointsGain;
-        private VictoryPoints mVictoryPoints;
-        //GAINS CONSTRUCTOR
-
-        public Gains(Coins coinsGain, Wood woodGain, Stone stoneGain,
-                     Servant servantGain, FaithPoints faithPointsGain,
-                     MilitaryPoints militaryPointsGain, VictoryPoints victoryPoints) {
-            mCoinsGain = coinsGain;
-            mWoodGain = woodGain;
-            mStoneGain = stoneGain;
-            mServantGain = servantGain;
-            mFaithPointsGain = faithPointsGain;
-            mMilitaryPointsGain = militaryPointsGain;
-            mVictoryPoints = victoryPoints;
-        }
-        //GETTER
-
-        public Coins getCoinsGain() {
-            return mCoinsGain;
-        }
-
-        public Wood getWoodGain() {
-            return mWoodGain;
-        }
-
-        public Stone getStoneGain() {
-            return mStoneGain;
-        }
-
-        public Servant getServantGain() {
-            return mServantGain;
-        }
-
-        public FaithPoints getFaithPointsGain() {
-            return mFaithPointsGain;
-        }
-
-        public MilitaryPoints getMilitaryPointsGain() {
-            return mMilitaryPointsGain;
-        }
-
-        public VictoryPoints getVictoryPoints() {
-            return mVictoryPoints;
-        }
-    }
-*/
 
 }

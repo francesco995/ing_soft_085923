@@ -36,6 +36,19 @@ public class UserPoints {
                 new VictoryPoints(initialVictoryPoints));
     }
 
+    @Override
+    public String toString(){
+
+        //TODO: FraG disable visualizing null Points (Faith Points: 0)
+
+        return (
+                "Faith Points: " + mFaithPoints +
+                ", Military Points: " + mMilitaryPoints +
+                ", Victory Points: " +  mVictoryPoints
+        );
+
+    }
+
 
     //GETTERS
 

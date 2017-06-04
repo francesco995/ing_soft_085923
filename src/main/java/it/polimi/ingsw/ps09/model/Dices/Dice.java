@@ -34,4 +34,9 @@ public abstract class Dice {
         mValue = (int) (Math.random() * 6 + 1);
     }
 
+    @Override
+    public String toString(){
+        return ( "\n" + mColor + " Dice -> " + mValue );
+    }
+
 }

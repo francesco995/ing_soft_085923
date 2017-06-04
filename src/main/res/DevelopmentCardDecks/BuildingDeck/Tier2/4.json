@@ -36,8 +36,56 @@
                             }
                         }
                     ],
-                    "mPointsCosts": [],
-                    "mResourcesGains": [],
+                    "mPointsCosts": [{
+                        "mFaithPoints": {
+                            "mPoints": 0
+                        },
+                        "mMilitaryPoints": {
+                            "mPoints": 0
+                        },
+                        "mVictoryPoints": {
+                            "mPoints": 0
+                        }
+                    },
+                        {
+                            "mFaithPoints": {
+                                "mPoints": 0
+                            },
+                            "mMilitaryPoints": {
+                                "mPoints": 0
+                            },
+                            "mVictoryPoints": {
+                                "mPoints": 0
+                            }
+                        }],
+                    "mResourcesGains": [{
+                        "mCoins": {
+                            "mValue": 0
+                        },
+                        "mServant": {
+                            "mValue": 0
+                        },
+                        "mStone": {
+                            "mValue": 0
+                        },
+                        "mWood": {
+                            "mValue": 0
+                        }
+                    },
+                        {
+                            "mCoins": {
+                                "mValue": 0
+                            },
+                            "mServant": {
+                                "mValue": 0
+                            },
+                            "mStone": {
+                                "mValue": 0
+                            },
+                            "mWood": {
+                                "mValue": 0
+                            }
+                        }],
                     "mPointsGains": [
                         {
                             "mFaithPoints": {
@@ -66,7 +114,7 @@
             }
         ],
         "mCardName": "Sculptors' Guild",
-        "CARD_N": 39,
+        "CARD_N": 36,
         "mPeriod": 2,
         "mResourcesCosts": [
             {

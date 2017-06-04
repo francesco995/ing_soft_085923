@@ -4,23 +4,19 @@
         "mProductionCost": 6,
         "mProductionEffects": [
             {
-                "CLASSNAME": "it.polimi.ingsw.ps09.model.DevelopmentCardEffects.ConvertEffect",
+                "CLASSNAME": "it.polimi.ingsw.ps09.model.DevelopmentCardEffects.GainPointsEffect",
                 "INSTANCE": {
-                    "mResourcesCosts": [],
-                    "mPointsCosts": [],
-                    "mResourcesGains": [],
-                    "mPointsGains": [
-                        {
-                            "mFaithPoints": {
-                                "mPoints": 0
-                            },
-                            "mMilitaryPoints": {
-                                "mPoints": 2
-                            },
-                            "mVictoryPoints": {
-                                "mPoints": 2
-                            }
-                        }]
+                    "mPointsGains": {
+                        "mFaithPoints": {
+                            "mPoints": 0
+                        },
+                        "mMilitaryPoints": {
+                            "mPoints": 2
+                        },
+                        "mVictoryPoints": {
+                            "mPoints": 2
+                        }
+                    }
                 }
             }
         ],

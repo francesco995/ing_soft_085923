@@ -13,6 +13,11 @@ public class GainPointsEffect extends  DevelopmentCardEffect{
     }
 
     @Override
+    public String toString(){
+        return ("Gain Points -> " + mPointsGains);
+    }
+
+    @Override
     public void applyEffect(Player player) {
 
         player.add(mPointsGains);

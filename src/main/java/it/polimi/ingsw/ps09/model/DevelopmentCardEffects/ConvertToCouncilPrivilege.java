@@ -5,31 +5,28 @@ import it.polimi.ingsw.ps09.model.UserPoints;
 import it.polimi.ingsw.ps09.model.UserResources;
 
 import java.util.List;
-import java.util.StringJoiner;
 
-public class ConvertEffect extends DevelopmentCardEffect{
+/**
+ * Created by francesco995 on 04/06/2017.
+ */
+public class ConvertToCouncilPrivilege extends DevelopmentCardEffect{
 
     //Resources or Points cost to activate conversion
     private List<UserResources> mResourcesCosts;
     private List<UserPoints> mPointsCosts;
 
-    //Resources or Point gained in conversion
-
-    private List<UserResources> mResourcesGains;
-    private List<UserPoints> mPointsGains;
+    private List<Integer> mPrivilegesCount;
 
     //TODO: controllare se la scelta dell'attivazione va fatta qui o in GameLogic
 
 
-    public ConvertEffect(List<UserResources> resourcesCosts,
+    public ConvertToCouncilPrivilege(List<UserResources> resourcesCosts,
                          List<UserPoints> pointsCosts,
-                         List<UserResources> resourcesGains,
-                         List<UserPoints> pointsGains) {
+                         List<Integer> privilegesCount) {
 
         mResourcesCosts = resourcesCosts;
         mPointsCosts = pointsCosts;
-        mResourcesGains = resourcesGains;
-        mPointsGains = pointsGains;
+        mPrivilegesCount = privilegesCount;
 
     }
 
@@ -41,7 +38,7 @@ public class ConvertEffect extends DevelopmentCardEffect{
 
         for(int i = 0; i < Integer.max(mResourcesCosts.size(), mPointsCosts.size()); i++){
             mConvert +=( "\n        " + Integer.toString(i + 1) + ") " + mResourcesCosts.get(i) + " " + mPointsCosts.get(i) +
-                    " To => " + mResourcesGains.get(i) + " " + mPointsGains.get(i));
+                    " To => " + Integer.toString(mPrivilegesCount.get(i)) + " Council Privilege(s)");
         }
 
 
@@ -59,9 +56,10 @@ public class ConvertEffect extends DevelopmentCardEffect{
         player.remove(mPointsCosts.get(0));
 
         //gains for conversion
-        player.add(mResourcesGains.get(0));
-        player.add(mPointsGains.get(0));
-
+        //TODO: gain council privilege
 
     }
+
+
+
 }

@@ -21,6 +21,14 @@ public class GainsForVentureCardsCount extends DevelopmentCardEffect {
     }
 
     @Override
+    public String toString(){
+        return ("Gain Points -> " + mUserPointsGains +
+                " and Resources -> " + mResourcesGains +
+                " for each Venture");
+    }
+
+
+    @Override
     public void applyEffect(Player player) {
 
 

@@ -6,6 +6,7 @@ import it.polimi.ingsw.ps09.model.UserPoints;
 import it.polimi.ingsw.ps09.model.UserResources;
 
 import java.util.List;
+import java.util.StringJoiner;
 
 /**
  * Created by franc on 09/05/2017.
@@ -35,5 +36,23 @@ public class Territory extends DevelopmentCard {
         mHarvestEffects = harvestEffects;
 
     }
+
+    @Override
+    public String toString(){
+
+        StringJoiner mStringCard = new StringJoiner("\n     ", "", "");
+
+        mStringCard.add(super.toString());
+
+        mStringCard.add("Harvest Effects (Cost: " + mProductionCost + "):");
+        mHarvestEffects.stream()
+                .map(DevelopmentCardEffect::toString)
+                .forEach(mStringCard::add);
+
+        return mStringCard.toString();
+
+    }
+
+
 }
 

@@ -1,15 +1,15 @@
 {
     "CLASSNAME": "it.polimi.ingsw.ps09.model.DevelopmentCards.Building",
     "INSTANCE": {
-        "mProductionCost": 4,
+        "mProductionCost": 1,
         "mProductionEffects": [
             {
-                "CLASSNAME": "it.polimi.ingsw.ps09.model.DevelopmentCardEffects.ConvertEffect",
+                "CLASSNAME": "it.polimi.ingsw.ps09.model.DevelopmentCardEffects.ConvertToCouncilPrivilege",
                 "INSTANCE": {
                     "mResourcesCosts": [
                         {
                             "mCoins": {
-                                "mValue": 0
+                                "mValue": 1
                             },
                             "mServant": {
                                 "mValue": 0
@@ -33,39 +33,9 @@
                                 "mPoints": 0
                             }
                         }],
-                    "mResourcesGains": [
-                        {
-                            "mCoins": {
-                                "mValue": 0
-                            },
-                            "mServant": {
-                                "mValue": 0
-                            },
-                            "mStone": {
-                                "mValue": 0
-                            },
-                            "mWood": {
-                                "mValue": 0
-                            }
-                        }],
-                    "mPointsGains": [
-                        {
-                            "mFaithPoints": {
-                                "mPoints": 0
-                            },
-                            "mMilitaryPoints": {
-                                "mPoints": 0
-                            },
-                            "mVictoryPoints": {
-                                "mPoints": 0
-                            }
-                        }]
-                }
-            },
-            {
-                "CLASSNAME": "it.polimi.ingsw.ps09.model.DevelopmentCardEffects.GainCouncilPrivilege",
-                "INSTANCE": {
-                    "mPrivilegesCount": 1
+                    "mPrivilegesCount": [
+                    1
+                    ]
                 }
             }
         ],

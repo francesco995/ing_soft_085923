@@ -21,6 +21,14 @@ public class GainsForTerritoryCardsCount extends DevelopmentCardEffect{
     }
 
     @Override
+    public String toString(){
+        return ("Gain Points -> " + mUserPointsGains +
+                " and Resources -> " + mResourcesGains +
+                " for each Territory");
+    }
+
+
+    @Override
     public void applyEffect(Player player) {
 
 

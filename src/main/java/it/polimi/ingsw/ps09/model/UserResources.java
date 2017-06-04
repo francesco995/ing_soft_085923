@@ -48,6 +48,19 @@ public class UserResources {
     }
 
 
+    @Override
+    public String toString(){
+
+        //TODO: FraG disable visualizing null resources (Coins: 0)
+
+        return (
+                "Coins: " + mCoins +
+                ", Servant: " + mServant +
+                ", Stone: " + mStone +
+                ", Wood: " + mWood
+        );
+    }
+
     //GETTERS
 
     public Coins getCoins() {

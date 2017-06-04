@@ -63,7 +63,6 @@ src/main/java/it/polimi/ingsw/ps09/FraLTest.java
 /.idea/misc.xml
 .idea/sonarIssues.xml
 .idea/sonarlint/
-Player.uml
 src/main/java/it/polimi/ingsw/ps09/AppTestFraG.java
 JavaDoc/
 *.uml
@@ -73,3 +72,7 @@ src/main/java/it/polimi/ingsw/ps09/controller/FraLTest.java
 src/main/java/it/polimi/ingsw/ps09/AppTestFraG2.java
 .scannerwork/
 src/main/java/it/polimi/ingsw/ps09/AppTestFraG3.java
+/diagram.png
+/ing_soft_085923.properties
+/ing_soft_085923.xml
+.idea/module_ing_soft_085923.xml

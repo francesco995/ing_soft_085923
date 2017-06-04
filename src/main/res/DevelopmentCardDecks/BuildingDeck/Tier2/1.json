@@ -21,7 +21,17 @@
                                 "mValue": 0
                             }
                         }],
-                    "mPointsCosts": [],
+                    "mPointsCosts": [{
+                        "mFaithPoints": {
+                            "mPoints": 0
+                        },
+                        "mMilitaryPoints": {
+                            "mPoints": 0
+                        },
+                        "mVictoryPoints": {
+                            "mPoints": 0
+                        }
+                    }],
                     "mResourcesGains": [
                         {
                             "mCoins": {
@@ -37,7 +47,17 @@
                                 "mValue": 2
                             }
                         }],
-                    "mPointsGains": []
+                    "mPointsGains": [{
+                        "mFaithPoints": {
+                            "mPoints": 0
+                        },
+                        "mMilitaryPoints": {
+                            "mPoints": 0
+                        },
+                        "mVictoryPoints": {
+                            "mPoints": 0
+                        }
+                    }]
                 }
             }
         ],

@@ -14,6 +14,11 @@ public class GainCouncilPrivilege extends DevelopmentCardEffect{
     }
 
     @Override
+    public String toString(){
+        return String.format("Gain Council Privileges: %d", mPrivilegesCount);
+    }
+
+    @Override
     public void applyEffect(Player player) {
 
     }

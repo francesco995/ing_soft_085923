@@ -18,6 +18,11 @@ public class GainResourcesEffect extends DevelopmentCardEffect {
     }
 
     @Override
+    public String toString(){
+        return String.format("Gain Resources -> " + mResourcesGains);
+    }
+
+    @Override
     public void applyEffect(Player player) {
 
         player.add(mResourcesGains);
