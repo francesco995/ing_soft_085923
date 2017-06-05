@@ -11,7 +11,7 @@ import java.lang.reflect.Type;
 import java.util.*;
 
 /**
- * Created by franc on 15/05/2017.
+ * Container for all the single Excommunication tiles
  */
 public class ExcommunicationTilesDeck {
 
@@ -63,7 +63,7 @@ public class ExcommunicationTilesDeck {
 
      //random card picker
      /**
-     *Randomly draw a tile from the List passed and returns the single tile drawn
+     * Randomly draw a tile from the List passed and returns the single tile drawn
      * @param period of tiles from which you want to draw the single tile
      * @return return object ExcommunicationTile drawn from the whole list
      */

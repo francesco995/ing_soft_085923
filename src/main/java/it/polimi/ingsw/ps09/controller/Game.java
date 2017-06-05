@@ -11,6 +11,7 @@ import it.polimi.ingsw.ps09.model.Dices.OrangeDice;
 import it.polimi.ingsw.ps09.model.Dices.WhiteDice;
 import it.polimi.ingsw.ps09.model.FaithPointsTrack;
 import it.polimi.ingsw.ps09.model.FamilyMembers.FamilyMember;
+import it.polimi.ingsw.ps09.model.PersonalBoardBonus;
 import it.polimi.ingsw.ps09.model.Places.Towers.Floor.Floor;
 import it.polimi.ingsw.ps09.model.Places.Towers.TerritoriesTower;
 import it.polimi.ingsw.ps09.model.Places.Towers.Tower;
@@ -61,6 +62,10 @@ public class Game extends Thread {
 
     //The Tracks
     private FaithPointsTrack mFaithPointsTrack;
+
+    //Personal Board Bonus
+
+    private PersonalBoardBonus mPersonalBoardBonus;
 
     //The Card Decks
     private DevelopmentCardsDeck mDevelopmentCardsDeck;
@@ -147,6 +152,10 @@ public class Game extends Thread {
         //Setup and loads the Deck objects
         setupDecks();
 
+        //Setup and loads the bonus
+        setupFaithTracksBonus();
+        setupPersonalBoardBonus();
+
         //Set the Board
         mGameBoard = new Board(
                 mExcommunicationTilesDeck.drawCard(1),
@@ -208,13 +217,32 @@ public class Game extends Thread {
 
     }
 
+    /**
+     * Setup for the FaithTracksBonus
+     * @throws FileNotFoundException
+     */
+    private void setupFaithTracksBonus() throws FileNotFoundException{
+
+        mFaithPointsTrack = new FaithPointsTrack();
+        mFaithPointsTrack.loadFromFile();
+
+    }
 
     /**
-     * void method that fill the tower to the top with randomly drawn cards from the deck
+     * Setup for the PersonaBoardBonus
+     * @throws FileNotFoundException
+     */
+    private void setupPersonalBoardBonus() throws FileNotFoundException{
+
+       mPersonalBoardBonus = new PersonalBoardBonus();
+
+    }
+    /**
+     * void method that fill the tower with randomly drawn cards from the deck
      */
     private void fillTower() {
 
-        //problem it need to add as code every new kind of tower if a new tower is added to game
+
 
         for (int i = 0; i < mGameBoard.getTerritoriesTowerFloors().size(); i++) {
 
@@ -260,7 +288,7 @@ public class Game extends Thread {
     }
 
     /**
-     * Prepare the board for a new Round
+     * Prepare the board for a new Round (PHASE A)
      */
     private void roundSetup() {
 
@@ -270,14 +298,15 @@ public class Game extends Thread {
     }
 
     /**
-     * This method represents phase C of The Game, it must be called only when a period its at his end
+     * It calls the vatican report only when a period end (once every two round) (PHASE C)
      */
     private void vaticanReport() {
 
 
         int numberOfPlayer = mPlayers.size();
 
-        if (mPlayers.get(0).getFaithPoints().getValue() < period) {
+        if (mPlayers.get(0).getFaithPoints().getValue() < period+2) {
+            //autoaggiunge scomunica
             //mPlayers.get(0).add();
         } else {
             //if(mDonate == false){
@@ -290,6 +319,9 @@ public class Game extends Thread {
 
     }
 
+    /**
+     * It must be called  at the end  of every round, it clears the board and reorders the player order (PHASE D1)
+     */
     private void endRound() {
 
 
@@ -300,7 +332,7 @@ public class Game extends Thread {
     }
 
     /**
-     *
+     *It must be called at the end of every period, does the same things that endRound does plus it adds the vaticanReport phase (PHASE D2)
      */
     private void endPeriod() {
 
@@ -309,8 +341,12 @@ public class Game extends Thread {
         vaticanReport();
         period++;
 
+
     }
 
+    /**
+     * This is the method called for calculating all the final scores and giving last bonus (LAST PHASE)
+     */
     private void endGame() {
 
         //cicla tutti i giocatori (in base a come mettiamo id)
@@ -328,16 +364,19 @@ public class Game extends Thread {
 
         //Conquered territories Bonus//
         ///////////////////////////////
+
         total = mPlayers.get(0).getTerritoriesCount();
-        //decidiamo come caricare i bonus del tabellone personale
+        mPlayers.get(0).add(mPersonalBoardBonus.EndTerritoriesBonus(total));
 
         //Influenced Characters//
         /////////////////////////
+
         total = mPlayers.get(0).getCharactersCount();
+        mPlayers.get(0).add(mPersonalBoardBonus.EndCharactersBonus(total));
 
         //Encouraged Ventures//
         ///////////////////////
-        total = mPlayers.get(0).getVenturesCount();
+
 
         //Military Strength//
         /////////////////////

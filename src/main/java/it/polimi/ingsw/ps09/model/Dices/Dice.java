@@ -1,6 +1,8 @@
 package it.polimi.ingsw.ps09.model.Dices;
 
-
+/**
+ * Abstract class dice contains all necessary methods for it to function
+ */
 public abstract class Dice {
 
 

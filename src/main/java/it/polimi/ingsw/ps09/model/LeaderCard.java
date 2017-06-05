@@ -1,25 +1,25 @@
 package it.polimi.ingsw.ps09.model;
 
-import java.util.LinkedList;
+import it.polimi.ingsw.ps09.model.LeaderCardEffects.LeaderCardEffect;
+
+import java.util.List;
 
 public class LeaderCard {
     //CARD INFO
 
     private String mCardName;
 
-    //this Boolean says if the card effect is permanent (value set to true) or OncePerTurn (value set to false)
+    //Effects
 
-    private boolean mPermanent;
-    private String mEffect;
+    private List<LeaderCardEffect> mLeaderCardEffect;
 
     //CONSTRUCTOR
 
-
-    public LeaderCard(String cardName, boolean permanent, String effects) {
+    public LeaderCard(String cardName, List<LeaderCardEffect> leaderCardEffect) {
         mCardName = cardName;
-        mPermanent = permanent;
-        mEffect = effects;
+        mLeaderCardEffect = leaderCardEffect;
     }
+
 
     //GETTER
 
@@ -27,25 +27,9 @@ public class LeaderCard {
         return mCardName;
     }
 
-    public boolean isPermanent() {
-        return mPermanent;
+    public List<LeaderCardEffect> getLeaderCardEffect() {
+        return mLeaderCardEffect;
     }
 
-    public String getEffects() {
-        return mEffect;
-    }
 
-    //SETTER
-
-    public void setCardName(String cardName) {
-        mCardName = cardName;
-    }
-
-    public void setPermanent(boolean permanent) {
-        mPermanent = permanent;
-    }
-
-    public void setEffects(String effects) {
-        mEffect = effects;
-    }
 }

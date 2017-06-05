@@ -1,32 +1,39 @@
 package it.polimi.ingsw.ps09.model;
 
+import it.polimi.ingsw.ps09.model.ExcommunicationTileEffect.ExcommunicationTileEffect;
+
 import java.util.LinkedList;
+import java.util.List;
 
 public class  ExcommunicationTile {
 
+    //Variables
 
-    //CARD INFO
+    //Tile general info
 
     private String mTileName;
     private int mPeriod;
-    private String mEffect;
 
+    //Effects
 
+    private List<ExcommunicationTileEffect> mExcommunicationTileEffects;
+
+    //Methods
 
     //CONSTRUCTOR
 
-    public ExcommunicationTile(String tileName, int period, String effect) {
+    public ExcommunicationTile(String tileName, int period, List<ExcommunicationTileEffect> excommunicationTileEffects) {
+
         mTileName = tileName;
         mPeriod = period;
-        mEffect = effect;
+        mExcommunicationTileEffects = excommunicationTileEffects;
+
     }
+
 
     //GETTER
     //NO SETTER BECAUSE ALL TILES ARE CREATED FROM EXTERNAL FILE
 
-    public String getEffect() {
-        return mEffect;
-    }
 
     public String getTileName() {
         return mTileName;
@@ -35,5 +42,10 @@ public class  ExcommunicationTile {
     public int getPeriod() {
         return mPeriod;
     }
-    
+
+    public List<ExcommunicationTileEffect> getExcommunicationTileEffects() {
+
+        return mExcommunicationTileEffects;
+
+    }
 }
