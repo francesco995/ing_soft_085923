@@ -1,6 +1,7 @@
 package it.polimi.ingsw.ps09.model;
 
 import it.polimi.ingsw.ps09.controller.Game;
+import it.polimi.ingsw.ps09.model.Bonus.HarvestAndProductionBonus;
 import it.polimi.ingsw.ps09.model.Points.FaithPoints;
 import it.polimi.ingsw.ps09.model.Points.MilitaryPoints;
 import it.polimi.ingsw.ps09.model.Points.VictoryPoints;
@@ -36,7 +37,7 @@ public class Player {
     //PLAYER OBJECTS
     private List<LeaderCard> mLeaderCards;
     private PermanentPlayerEffects mPermanentEffects;
-
+    private HarvestAndProductionBonus mHarvestAndProductionBonus;
 
     //LOGGER
     private static final Logger mLogger = Logger.getLogger(Player.class.getName());
@@ -101,6 +102,7 @@ public class Player {
         PLAYER_ID = userId;
 
         mLeaderCards = new LinkedList<>();
+        mHarvestAndProductionBonus = new HarvestAndProductionBonus();
 
         //log created player
         mLogger.log(INFO, "Game: " + Game.GAME_ID +

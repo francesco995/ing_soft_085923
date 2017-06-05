@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class PlayerActionsValueModifier {
 
-    private Map<String,Integer> mModifiers = new HashMap<String,Integer>();
+    private Map<String,Integer> mModifiers = new HashMap<>();
 
     public PlayerActionsValueModifier() {
         mModifiers.put("TerritoryBonus", 0);

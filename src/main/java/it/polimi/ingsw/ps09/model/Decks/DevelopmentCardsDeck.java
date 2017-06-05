@@ -111,7 +111,7 @@ public class DevelopmentCardsDeck {
 
             mDeck.get("BUILDING").put(i, loadDeck(mFilePath + "BuildingDeck\\Tier" + i + "\\"));
 
-            //mDeck.get("CHARACTER").put(i, loadDeck(  mFilePath + "BuildingDeck\\Tier" +  i + "\\"));
+            mDeck.get("CHARACTER").put(i, loadDeck(  mFilePath + "CharacterDeck\\Tier" +  i + "\\"));
 
             mDeck.get("TERRITORY").put(i, loadDeck(mFilePath + "TerritoryDeck\\Tier" + i + "\\"));
 

@@ -18,7 +18,7 @@ public class PlayersOrder {
 
         mPlayersOrder = new ArrayList<>(userIds);
 
-        Collections.shuffle(mPlayersOrder, new Random(seed));
+        //Collections.shuffle(mPlayersOrder, new Random(seed));
 
     }
 

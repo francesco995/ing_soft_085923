@@ -15,17 +15,17 @@ public class Character extends DevelopmentCard {
 
     //Effects
 
-    private List<DevelopmentCardEffect> mCardEffects ;
+    private List<DevelopmentCardEffect> mPermanentEffects;
 
     public Character(String cardName,
                      int period,
                      List<UserResources> resourcesCosts,
                      List<UserPoints> pointsCosts,
                      List<DevelopmentCardEffect> immediateEffects,
-                     List<DevelopmentCardEffect> cardEffects) {
+                     List<DevelopmentCardEffect> permanentEffects) {
 
         super(cardName, period, resourcesCosts, pointsCosts, immediateEffects);
 
-        mCardEffects = cardEffects;
+        mPermanentEffects = permanentEffects;
     }
 }
