@@ -1,0 +1,33 @@
+{
+    "CLASSNAME": "it.polimi.ingsw.ps09.model.DevelopmentCards.Character",
+    "INSTANCE": {
+        "mPermanentEffects": [],
+        "mCardName": "Hero",
+        "CARD_N": 60,
+        "mPeriod": 2,
+        "mResourcesCosts": [
+            {
+                "mCoins": {
+                    "mValue": 4
+                },
+                "mServant": {
+                    "mValue": 0
+                },
+                "mStone": {
+                    "mValue": 0
+                },
+                "mWood": {
+                    "mValue": 0
+                }
+            }],
+        "mPointsCosts": [],
+        "mImmediateEffects": [{
+            "CLASSNAME": "it.polimi.ingsw.ps09.model.DevelopmentCardEffects.GainCouncilPrivilege",
+            "INSTANCE": {
+                "mPrivilegesCount": 1
+            }
+        }
+        //TODO: add action
+        ]
+    }
+}

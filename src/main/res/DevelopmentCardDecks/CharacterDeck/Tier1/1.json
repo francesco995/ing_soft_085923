@@ -1,0 +1,49 @@
+{
+    "CLASSNAME": "it.polimi.ingsw.ps09.model.DevelopmentCards.Character",
+    "INSTANCE": {
+        "mPermanentEffects": [
+            {
+                "CLASSNAME": "it.polimi.ingsw.ps09.model.DevelopmentCardEffects.GainFamilyMemberPlacementBonus",
+                "INSTANCE": {
+                    "mCardType": "TERRITORY",
+                    "mBonusValue": 2
+                }
+      }],
+        "mCardName": "Warlord",
+        "CARD_N": 49,
+        "mPeriod": 1,
+        "mResourcesCosts": [
+            {
+                "mCoins": {
+                    "mValue": 2
+                },
+                "mServant": {
+                    "mValue": 0
+                },
+                "mStone": {
+                    "mValue": 0
+                },
+                "mWood": {
+                    "mValue": 0
+                }
+      }],
+        "mPointsCosts": [],
+        "mImmediateEffects": [
+            {
+                "CLASSNAME": "it.polimi.ingsw.ps09.model.DevelopmentCardEffects.GainPointsEffect",
+                "INSTANCE": {
+                    "mPointsGains": {
+                        "mFaithPoints": {
+                            "mPoints": 0
+                        },
+                        "mMilitaryPoints": {
+                            "mPoints": 3
+                        },
+                        "mVictoryPoints": {
+                            "mPoints": 0
+                        }
+                    }
+                }
+      }]
+    }
+}

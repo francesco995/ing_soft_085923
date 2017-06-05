@@ -1,0 +1,43 @@
+{
+    "CLASSNAME": "it.polimi.ingsw.ps09.model.DevelopmentCards.Character",
+    "INSTANCE": {
+        "mPermanentEffects": [],
+        "mCardName": "Cardinal",
+        "CARD_N": 69,
+        "mPeriod": 3,
+        "mResourcesCosts": [
+            {
+                "mCoins": {
+                    "mValue": 4
+                },
+                "mServant": {
+                    "mValue": 0
+                },
+                "mStone": {
+                    "mValue": 0
+                },
+                "mWood": {
+                    "mValue": 0
+                }
+            }],
+        "mPointsCosts": [],
+        "mImmediateEffects": [{
+            "CLASSNAME": "it.polimi.ingsw.ps09.model.DevelopmentCardEffects.GainPointsEffect",
+            "INSTANCE": {
+                "mPointsGains": {
+                    "mFaithPoints": {
+                        "mPoints": 2
+                    },
+                    "mMilitaryPoints": {
+                        "mPoints": 0
+                    },
+                    "mVictoryPoints": {
+                        "mPoints": 0
+                    }
+                }
+            }
+        }
+            //TODO: add action
+        ]
+    }
+}

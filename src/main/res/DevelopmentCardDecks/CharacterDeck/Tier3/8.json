@@ -1,0 +1,33 @@
+{
+    "CLASSNAME": "it.polimi.ingsw.ps09.model.DevelopmentCards.Character",
+    "INSTANCE": {
+        "mPermanentEffects": [],
+        "mCardName": "Ambassador",
+        "CARD_N": 72,
+        "mPeriod": 3,
+        "mResourcesCosts": [
+            {
+                "mCoins": {
+                    "mValue": 6
+                },
+                "mServant": {
+                    "mValue": 0
+                },
+                "mStone": {
+                    "mValue": 0
+                },
+                "mWood": {
+                    "mValue": 0
+                }
+            }],
+        "mPointsCosts": [],
+        "mImmediateEffects": [{
+            "CLASSNAME": "it.polimi.ingsw.ps09.model.DevelopmentCardEffects.GainCouncilPrivilege",
+            "INSTANCE": {
+                "mPrivilegesCount": 1
+            }
+        }
+            //TODO: Add Action
+        ]
+    }
+}

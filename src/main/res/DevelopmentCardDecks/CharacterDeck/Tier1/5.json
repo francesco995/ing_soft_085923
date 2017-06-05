@@ -1,0 +1,34 @@
+{
+    "CLASSNAME": "it.polimi.ingsw.ps09.model.DevelopmentCards.Character",
+    "INSTANCE": {
+        "mPermanentEffects": [
+            {
+                "CLASSNAME": "it.polimi.ingsw.ps09.model.DevelopmentCardEffects.GainHarvestAndProductionBonus",
+                "INSTANCE": {
+                    "mBonusType": "HARVEST",
+                    "mBonusValue": 2
+                }
+            }
+        ],
+        "mCardName": "Farmer",
+        "CARD_N": 53,
+        "mPeriod": 1,
+        "mResourcesCosts": [
+            {
+                "mCoins": {
+                    "mValue": 3
+                },
+                "mServant": {
+                    "mValue": 0
+                },
+                "mStone": {
+                    "mValue": 0
+                },
+                "mWood": {
+                    "mValue": 0
+                }
+            }],
+        "mPointsCosts": [],
+        "mImmediateEffects": []
+    }
+}

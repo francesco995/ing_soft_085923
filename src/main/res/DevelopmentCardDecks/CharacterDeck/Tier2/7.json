@@ -1,0 +1,42 @@
+{
+    "CLASSNAME": "it.polimi.ingsw.ps09.model.DevelopmentCards.Character",
+    "INSTANCE": {
+        "mPermanentEffects": [],
+        "mCardName": "Papal Messenger",
+        "CARD_N": 63,
+        "mPeriod": 2,
+        "mResourcesCosts": [
+            {
+                "mCoins": {
+                    "mValue": 5
+                },
+                "mServant": {
+                    "mValue": 0
+                },
+                "mStone": {
+                    "mValue": 0
+                },
+                "mWood": {
+                    "mValue": 0
+                }
+            }],
+        "mPointsCosts": [],
+        "mImmediateEffects": [
+            {
+                "CLASSNAME": "it.polimi.ingsw.ps09.model.DevelopmentCardEffects.GainPointsEffect",
+                "INSTANCE": {
+                    "mPointsGains": {
+                        "mFaithPoints": {
+                            "mPoints": 3
+                        },
+                        "mMilitaryPoints": {
+                            "mPoints": 0
+                        },
+                        "mVictoryPoints": {
+                            "mPoints": 0
+                        }
+                    }
+                }
+            }]
+    }
+}

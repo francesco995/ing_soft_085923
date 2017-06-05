@@ -1,0 +1,34 @@
+{
+    "CLASSNAME": "it.polimi.ingsw.ps09.model.DevelopmentCards.Character",
+    "INSTANCE": {
+        "mPermanentEffects": [
+            {
+                "CLASSNAME": "it.polimi.ingsw.ps09.model.DevelopmentCardEffects.GainHarvestAndProductionBonus",
+                "INSTANCE": {
+                    "mBonusType": "PRODUCTION",
+                    "mBonusValue": 2
+                }
+            }
+        ],
+        "mCardName": "Artisan",
+        "CARD_N": 54,
+        "mPeriod": 1,
+        "mResourcesCosts": [
+            {
+                "mCoins": {
+                    "mValue": 3
+                },
+                "mServant": {
+                    "mValue": 0
+                },
+                "mStone": {
+                    "mValue": 0
+                },
+                "mWood": {
+                    "mValue": 0
+                }
+            }],
+        "mPointsCosts": [],
+        "mImmediateEffects": []
+    }
+}

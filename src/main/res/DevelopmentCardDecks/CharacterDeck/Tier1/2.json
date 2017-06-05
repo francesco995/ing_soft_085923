@@ -1,0 +1,54 @@
+{
+    "CLASSNAME": "it.polimi.ingsw.ps09.model.DevelopmentCards.Character",
+    "INSTANCE": {
+        "mPermanentEffects": [
+            {
+                "CLASSNAME": "it.polimi.ingsw.ps09.model.DevelopmentCardEffects.GainFamilyMemberPlacementBonus",
+                "INSTANCE": {
+                    "mCardType": "BUILDING",
+                    "mBonusValue": 2
+                }
+      },
+            {
+                "CLASSNAME": "it.polimi.ingsw.ps09.model.DevelopmentCardEffects.GainFamilyMemberPlacementResourcesDiscount",
+                "INSTANCE": {
+                    "mCardType": "BUILDING",
+                    "mResourcesDiscount": {
+                        "mCoins": {
+                            "mValue": 0
+                        },
+                        "mServant": {
+                            "mValue": 0
+                        },
+                        "mStone": {
+                            "mValue": 1
+                        },
+                        "mWood": {
+                            "mValue": 1
+                        }
+                    }
+                }
+            }
+        ],
+        "mCardName": "Stonemason",
+        "CARD_N": 50,
+        "mPeriod": 1,
+        "mResourcesCosts": [
+            {
+                "mCoins": {
+                    "mValue": 4
+                },
+                "mServant": {
+                    "mValue": 0
+                },
+                "mStone": {
+                    "mValue": 0
+                },
+                "mWood": {
+                    "mValue": 0
+                }
+      }],
+        "mPointsCosts": [],
+        "mImmediateEffects": []
+    }
+}

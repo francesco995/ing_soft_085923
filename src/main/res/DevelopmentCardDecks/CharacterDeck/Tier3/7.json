@@ -1,0 +1,28 @@
+{
+    "CLASSNAME": "it.polimi.ingsw.ps09.model.DevelopmentCards.Character",
+    "INSTANCE": {
+        "mPermanentEffects": [],
+        "mCardName": "General",
+        "CARD_N": 71,
+        "mPeriod": 3,
+        "mResourcesCosts": [
+            {
+                "mCoins": {
+                    "mValue": 5
+                },
+                "mServant": {
+                    "mValue": 0
+                },
+                "mStone": {
+                    "mValue": 0
+                },
+                "mWood": {
+                    "mValue": 0
+                }
+            }],
+        "mPointsCosts": [],
+        "mImmediateEffects": [
+            //TODO: add effect
+        ]
+    }
+}
