@@ -20,6 +20,6 @@ public class GainCouncilPrivilege extends DevelopmentCardEffect{
 
     @Override
     public void applyEffect(Player player) {
-
+        //TODO: implement
     }
 }

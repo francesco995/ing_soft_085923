@@ -11,6 +11,8 @@ public class GainExtraActionEffect extends DevelopmentCardEffect {
 
     @Override
     public void applyEffect(Player player) {
-
+        //TODO: implement
     }
+
+    //TODO: toString
 }

@@ -32,5 +32,7 @@ public class FamilyMemberPlacementBonus {
 
     //TODO: test
 
+    //TODO: toString
+
 
 }

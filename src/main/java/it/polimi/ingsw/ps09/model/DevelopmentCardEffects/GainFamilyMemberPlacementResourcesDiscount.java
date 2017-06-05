@@ -23,6 +23,8 @@ public class GainFamilyMemberPlacementResourcesDiscount extends DevelopmentCardE
 
     @Override
     public void applyEffect(Player player) {
-
+        //TODO: implement
     }
+
+    //TODO: toString
 }

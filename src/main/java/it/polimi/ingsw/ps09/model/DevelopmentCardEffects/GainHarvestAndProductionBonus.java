@@ -20,8 +20,10 @@ public class GainHarvestAndProductionBonus extends DevelopmentCardEffect {
 
 
     public void applyEffect( Player player ){
-        //TODO
+        //TODO: implement
     }
+
+    //TODO: toString
 
 
 }

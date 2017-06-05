@@ -13,4 +13,6 @@ public class NoFloorBonusEffect extends DevelopmentCardEffect {
         player.noHighFloorBonus();
 
     }
+
+    //TODO: toString
 }
