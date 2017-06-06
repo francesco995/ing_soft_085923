@@ -20,7 +20,7 @@ import static java.util.logging.Level.INFO;
 
 
 /**
- * Created by franc on 10/05/2017.
+ * Created by francesco995 on 10/05/2017.
  * DevelopmentCardsDeck is a Collections that contains all the Development cards
  * Provides a method for drawing cards
  * <p>

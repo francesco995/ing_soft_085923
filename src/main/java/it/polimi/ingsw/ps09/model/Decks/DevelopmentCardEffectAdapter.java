@@ -7,6 +7,7 @@ import java.lang.reflect.Type;
 
 /**
  * Created by francesco995 on 30/05/2017.
+ * Adapter to allow correct loading of different DevelopmentCardEffects for json file
  */
 public class DevelopmentCardEffectAdapter implements
         JsonSerializer<DevelopmentCardEffect>, JsonDeserializer<DevelopmentCardEffect> {

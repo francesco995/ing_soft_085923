@@ -5,9 +5,21 @@ import java.util.Map;
 
 /**
  * Created by francesco995 on 04/06/2017.
+ * Whenever a Player performs an action to take a DevelopmentCard (through
+ * a Family Member or as an effect of another card), increase the value
+ * of the action by X.
+ * This bonus is card-specific and it depends on the type of card
+ * (ex: you can have a bonus of "2" for Building cards but not for the other cards)
+ *
+ * Each Player is supposed to have one instance of this object
+ * Placement actions and other bonus actions are supposed to do checks on this object
+ * to verify that a specific player can do a specific action
  */
 public class FamilyMemberPlacementBonus {
 
+    /**
+     * Map of Bonus value (Integer) to card Type (String)
+     */
     private Map<String, Integer> mBonus = new HashMap<String, Integer>(){{
         put("BUILDING", 0);
         put("CHARACTER", 0);
