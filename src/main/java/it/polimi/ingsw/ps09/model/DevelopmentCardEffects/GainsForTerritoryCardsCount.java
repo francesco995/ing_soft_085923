@@ -6,6 +6,7 @@ import it.polimi.ingsw.ps09.model.UserResources;
 
 /**
  * Created by franc on 30/05/2017.
+ * Player gains resources and points based on how many Territory cards has
  */
 public class GainsForTerritoryCardsCount extends DevelopmentCardEffect{
 

@@ -1,0 +1,70 @@
+{
+    "CLASSNAME": "it.polimi.ingsw.ps09.model.DevelopmentCards.Venture",
+    "INSTANCE": {
+        "mEndGameEffects": [
+            {
+                "CLASSNAME": "it.polimi.ingsw.ps09.model.DevelopmentCardEffects.GainPointsEffect",
+                "INSTANCE": {
+                    "mPointsGains": {
+                        "mFaithPoints": {
+                            "mPoints": 0
+                        },
+                        "mMilitaryPoints": {
+                            "mPoints": 0
+                        },
+                        "mVictoryPoints": {
+                            "mPoints": 6
+                        }
+                    }
+                }
+            }
+        ],
+        "mPointsRequirements": {
+            "mFaithPoints": {
+                "mPoints": 0
+            },
+            "mMilitaryPoints": {
+                "mPoints": 0
+            },
+            "mVictoryPoints": {
+                "mPoints": 0
+            }
+        },
+        "mCardName": "Hiring Mercenaries",
+        "CARD_N": 89,
+        "mPeriod": 3,
+        "mResourcesCosts": [
+            {
+                "mCoins": {
+                    "mValue": 8
+                },
+                "mServant": {
+                    "mValue": 0
+                },
+                "mStone": {
+                    "mValue": 0
+                },
+                "mWood": {
+                    "mValue": 0
+                }
+      }],
+        "mPointsCosts": [],
+        "mImmediateEffects": [
+            {
+                "CLASSNAME": "it.polimi.ingsw.ps09.model.DevelopmentCardEffects.GainPointsEffect",
+                "INSTANCE": {
+                    "mPointsGains": {
+                        "mFaithPoints": {
+                            "mPoints": 0
+                        },
+                        "mMilitaryPoints": {
+                            "mPoints": 7
+                        },
+                        "mVictoryPoints": {
+                            "mPoints": 0
+                        }
+                    }
+                }
+      }]
+    }
+}

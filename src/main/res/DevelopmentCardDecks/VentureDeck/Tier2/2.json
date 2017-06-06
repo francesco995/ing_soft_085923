@@ -1,0 +1,70 @@
+{
+    "CLASSNAME": "it.polimi.ingsw.ps09.model.DevelopmentCards.Venture",
+    "INSTANCE": {
+        "mEndGameEffects": [
+            {
+                "CLASSNAME": "it.polimi.ingsw.ps09.model.DevelopmentCardEffects.GainPointsEffect",
+                "INSTANCE": {
+                    "mPointsGains": {
+                        "mFaithPoints": {
+                            "mPoints": 0
+                        },
+                        "mMilitaryPoints": {
+                            "mPoints": 0
+                        },
+                        "mVictoryPoints": {
+                            "mPoints": 6
+                        }
+                    }
+                }
+            }
+        ],
+        "mPointsRequirements": {
+            "mFaithPoints": {
+                "mPoints": 0
+            },
+            "mMilitaryPoints": {
+                "mPoints": 0
+            },
+            "mVictoryPoints": {
+                "mPoints": 0
+            }
+        },
+        "mCardName": "Repairing the Abbey",
+        "CARD_N": 82,
+        "mPeriod": 2,
+        "mResourcesCosts": [
+            {
+                "mCoins": {
+                    "mValue": 2
+                },
+                "mServant": {
+                    "mValue": 0
+                },
+                "mStone": {
+                    "mValue": 2
+                },
+                "mWood": {
+                    "mValue": 2
+                }
+      }],
+        "mPointsCosts": [],
+        "mImmediateEffects": [
+            {
+                "CLASSNAME": "it.polimi.ingsw.ps09.model.DevelopmentCardEffects.GainPointsEffect",
+                "INSTANCE": {
+                    "mPointsGains": {
+                        "mFaithPoints": {
+                            "mPoints": 2
+                        },
+                        "mMilitaryPoints": {
+                            "mPoints": 0
+                        },
+                        "mVictoryPoints": {
+                            "mPoints": 0
+                        }
+                    }
+                }
+      }]
+    }
+}

@@ -1,0 +1,70 @@
+{
+    "CLASSNAME": "it.polimi.ingsw.ps09.model.DevelopmentCards.Venture",
+    "INSTANCE": {
+        "mEndGameEffects": [
+            {
+                "CLASSNAME": "it.polimi.ingsw.ps09.model.DevelopmentCardEffects.GainPointsEffect",
+                "INSTANCE": {
+                    "mPointsGains": {
+                        "mFaithPoints": {
+                            "mPoints": 3
+                        },
+                        "mMilitaryPoints": {
+                            "mPoints": 0
+                        },
+                        "mVictoryPoints": {
+                            "mPoints": 0
+                        }
+                    }
+                }
+            }
+        ],
+        "mPointsRequirements": {
+            "mFaithPoints": {
+                "mPoints": 0
+            },
+            "mMilitaryPoints": {
+                "mPoints": 0
+            },
+            "mVictoryPoints": {
+                "mPoints": 0
+            }
+        },
+        "mCardName": "Promoting Sacred Art",
+        "CARD_N": 92,
+        "mPeriod": 3,
+        "mResourcesCosts": [
+            {
+                "mCoins": {
+                    "mValue": 0
+                },
+                "mServant": {
+                    "mValue": 0
+                },
+                "mStone": {
+                    "mValue": 0
+                },
+                "mWood": {
+                    "mValue": 6
+                }
+      }],
+        "mPointsCosts": [],
+        "mImmediateEffects": [
+            {
+                "CLASSNAME": "it.polimi.ingsw.ps09.model.DevelopmentCardEffects.GainPointsEffect",
+                "INSTANCE": {
+                    "mPointsGains": {
+                        "mFaithPoints": {
+                            "mPoints": 3
+                        },
+                        "mMilitaryPoints": {
+                            "mPoints": 0
+                        },
+                        "mVictoryPoints": {
+                            "mPoints": 0
+                        }
+                    }
+                }
+      }]
+    }
+}

@@ -1,0 +1,68 @@
+{
+    "CLASSNAME": "it.polimi.ingsw.ps09.model.DevelopmentCards.Venture",
+    "INSTANCE": {
+        "mEndGameEffects": [
+            {
+                "CLASSNAME": "it.polimi.ingsw.ps09.model.DevelopmentCardEffects.GainPointsEffect",
+                "INSTANCE": {
+                    "mPointsGains": {
+                        "mFaithPoints": {
+                            "mPoints": 0
+                        },
+                        "mMilitaryPoints": {
+                            "mPoints": 0
+                        },
+                        "mVictoryPoints": {
+                            "mPoints": 5
+                        }
+                    }
+                }
+            }
+        ],
+        "mPointsRequirements": {
+            "mFaithPoints": {
+                "mPoints": 0
+            },
+            "mMilitaryPoints": {
+                "mPoints": 5
+            },
+            "mVictoryPoints": {
+                "mPoints": 0
+            }
+        },
+        "mCardName": "Fighting Heresies",
+        "CARD_N": 79,
+        "mPeriod": 1,
+        "mResourcesCosts": [],
+        "mPointsCosts": [{
+            "mPointsGains": {
+                "mFaithPoints": {
+                    "mPoints": 0
+                },
+                "mMilitaryPoints": {
+                    "mPoints": 3
+                },
+                "mVictoryPoints": {
+                    "mPoints": 0
+                }
+            }
+        }],
+        "mImmediateEffects": [
+            {
+                "CLASSNAME": "it.polimi.ingsw.ps09.model.DevelopmentCardEffects.GainPointsEffect",
+                "INSTANCE": {
+                    "mPointsGains": {
+                        "mFaithPoints": {
+                            "mPoints": 2
+                        },
+                        "mMilitaryPoints": {
+                            "mPoints": 0
+                        },
+                        "mVictoryPoints": {
+                            "mPoints": 0
+                        }
+                    }
+                }
+      }]
+    }
+}

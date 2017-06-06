@@ -6,6 +6,7 @@ import it.polimi.ingsw.ps09.model.UserResources;
 
 /**
  * Created by francesco995 on 30/05/2017.
+ * Player gains resources and points based on how many Character cards has
  */
 public class GainsForCharacterCardsCount extends DevelopmentCardEffect {
 

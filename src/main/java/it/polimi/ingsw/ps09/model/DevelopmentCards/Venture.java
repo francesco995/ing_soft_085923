@@ -36,9 +36,6 @@ public class Venture extends DevelopmentCard {
         mPointsRequirements = pointsRequirements;
         mEndGameEffects = endGameEffects;
 
-
-
-
     }
 
 

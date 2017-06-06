@@ -1,0 +1,80 @@
+{
+    "CLASSNAME": "it.polimi.ingsw.ps09.model.DevelopmentCards.Venture",
+    "INSTANCE": {
+        "mEndGameEffects": [
+            {
+                "CLASSNAME": "it.polimi.ingsw.ps09.model.DevelopmentCardEffects.GainPointsEffect",
+                "INSTANCE": {
+                    "mPointsGains": {
+                        "mFaithPoints": {
+                            "mPoints": 0
+                        },
+                        "mMilitaryPoints": {
+                            "mPoints": 0
+                        },
+                        "mVictoryPoints": {
+                            "mPoints": 1
+                        }
+                    }
+                }
+            }
+        ],
+        "mPointsRequirements": {
+            "mFaithPoints": {
+                "mPoints": 0
+            },
+            "mMilitaryPoints": {
+                "mPoints": 4
+            },
+            "mVictoryPoints": {
+                "mPoints": 0
+            }
+        },
+        "mCardName": "Support to the Bishop",
+        "CARD_N": 80,
+        "mPeriod": 1,
+        "mResourcesCosts": [
+            {
+                "mCoins": {
+                    "mValue": 2
+                },
+                "mServant": {
+                    "mValue": 0
+                },
+                "mStone": {
+                    "mValue": 1
+                },
+                "mWood": {
+                    "mValue": 1
+                }
+      }],
+        "mPointsCosts": [{
+            "mFaithPoints": {
+                "mPoints": 0
+            },
+            "mMilitaryPoints": {
+                "mPoints": 2
+            },
+            "mVictoryPoints": {
+                "mPoints": 0
+            }
+        }],
+        "mImmediateEffects": [
+            {
+                "CLASSNAME": "it.polimi.ingsw.ps09.model.DevelopmentCardEffects.GainPointsEffect",
+                "INSTANCE": {
+                    "mPointsGains": {
+                        "mFaithPoints": {
+                            "mPoints": 3
+                        },
+                        "mMilitaryPoints": {
+                            "mPoints": 0
+                        },
+                        "mVictoryPoints": {
+                            "mPoints": 0
+                        }
+                    }
+                }
+      }]
+    }
+}

@@ -1,0 +1,74 @@
+{
+    "CLASSNAME": "it.polimi.ingsw.ps09.model.DevelopmentCards.Venture",
+    "INSTANCE": {
+        "mEndGameEffects": [
+            {
+                "CLASSNAME": "it.polimi.ingsw.ps09.model.DevelopmentCardEffects.GainPointsEffect",
+                "INSTANCE": {
+                    "mPointsGains": {
+                        "mFaithPoints": {
+                            "mPoints": 0
+                        },
+                        "mMilitaryPoints": {
+                            "mPoints": 0
+                        },
+                        "mVictoryPoints": {
+                            "mPoints": 3
+                        }
+                    }
+                }
+            }
+        ],
+        "mPointsRequirements": {
+            "mFaithPoints": {
+                "mPoints": 0
+            },
+            "mMilitaryPoints": {
+                "mPoints": 6
+            },
+            "mVictoryPoints": {
+                "mPoints": 0
+            }
+        },
+        "mCardName": "Support to the King",
+        "CARD_N": 84,
+        "mPeriod": 2,
+        "mResourcesCosts": [],
+        "mPointsCosts": [{
+            "mFaithPoints": {
+                "mPoints": 0
+            },
+            "mMilitaryPoints": {
+                "mPoints": 3
+            },
+            "mVictoryPoints": {
+                "mPoints": 0
+            }
+        }],
+        "mImmediateEffects": [
+            {
+                "CLASSNAME": "it.polimi.ingsw.ps09.model.DevelopmentCardEffects.GainResourcesEffect",
+                "INSTANCE": {
+                    "mResourcesGains": {
+                        "mCoins": {
+                            "mValue": 5
+                        },
+                        "mServant": {
+                            "mValue": 0
+                        },
+                        "mStone": {
+                            "mValue": 0
+                        },
+                        "mWood": {
+                            "mValue": 0
+                        }
+                    }
+                }
+            },{
+                "CLASSNAME": "it.polimi.ingsw.ps09.model.DevelopmentCardEffects.GainCouncilPrivilege",
+                "INSTANCE": {
+                    "mPrivilegesCount": 1
+                }
+            }]
+    }
+}
