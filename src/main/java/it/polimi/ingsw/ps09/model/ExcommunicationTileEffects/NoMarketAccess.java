@@ -1,4 +1,4 @@
-package it.polimi.ingsw.ps09.model.ExcommunicationTileEffect;
+package it.polimi.ingsw.ps09.model.ExcommunicationTileEffects;
 
 /**
  * This effect just says you have no access to market and this will be checked before the action
