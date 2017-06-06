@@ -1,4 +1,4 @@
-package it.polimi.ingsw.ps09.model.ExcommunicationTileEffect;
+package it.polimi.ingsw.ps09.model.ExcommunicationTileEffects;
 
 import it.polimi.ingsw.ps09.model.UserPoints;
 

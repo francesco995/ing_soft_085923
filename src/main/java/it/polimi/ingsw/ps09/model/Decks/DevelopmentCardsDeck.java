@@ -145,7 +145,7 @@ public class DevelopmentCardsDeck {
         Gson gsonExt = null;
         GsonBuilder builder = new GsonBuilder();
 
-        builder.registerTypeAdapter(DevelopmentCard.class, new DevelopmentCardAdapter());
+        //builder.registerTypeAdapter(DevelopmentCard.class, new DevelopmentCardAdapter());
         builder.registerTypeAdapter(DevelopmentCardEffect.class, new DevelopmentCardEffectAdapter());
 
         gsonExt = builder.create();

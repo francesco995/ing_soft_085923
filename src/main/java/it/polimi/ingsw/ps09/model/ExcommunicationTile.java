@@ -1,8 +1,7 @@
 package it.polimi.ingsw.ps09.model;
 
-import it.polimi.ingsw.ps09.model.ExcommunicationTileEffect.ExcommunicationTileEffect;
+import it.polimi.ingsw.ps09.model.ExcommunicationTileEffects.ExcommunicationTileEffect;
 
-import java.util.LinkedList;
 import java.util.List;
 
 public class  ExcommunicationTile {

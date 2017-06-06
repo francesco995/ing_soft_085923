@@ -2,12 +2,12 @@ package it.polimi.ingsw.ps09.model.Decks;
 
 
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
+import com.google.gson.GsonBuilder;
 import it.polimi.ingsw.ps09.model.ExcommunicationTile;
+import it.polimi.ingsw.ps09.model.ExcommunicationTileEffects.ExcommunicationTileEffect;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.lang.reflect.Type;
 import java.util.*;
 
 /**
@@ -22,7 +22,7 @@ public class ExcommunicationTilesDeck {
 
     //three ExcommunicationTile list one for each period
 
-    private Map<Integer,List<ExcommunicationTile>> mExcommunicationTilesDecks = new HashMap<Integer,List<ExcommunicationTile>>();
+    private Map<Integer,List<ExcommunicationTile>> mDeck = new HashMap<Integer,List<ExcommunicationTile>>();
 
 
     /**
@@ -30,35 +30,86 @@ public class ExcommunicationTilesDeck {
      * All the tiles are stored in an external .json file easily readable and editable
      * @throws FileNotFoundException - throws an exception if it cannot open file .json
      */
+    /**
+     * Loads the deck from file sources
+     *
+     * @throws FileNotFoundException
+     */
     public ExcommunicationTilesDeck() throws FileNotFoundException {
 
-        //crea percorso comune a tutti i file
+        //Create the directory path
         File mDirectory = new File("./");
-
         String mFilePath = mDirectory.getAbsolutePath().replace(".",
                 "src\\main\\res\\ExcommunicationTilesDecks\\");
 
 
-        for (int i = 1; i <= MAX_PERIODS; i++ ) {
+        //For each period and for each type of card, fill the corresponding Map and LinkedList
 
-            String mStringDeck;
+            mDeck.put(1, loadDeck(mFilePath + "\\Tier1\\"));
 
-            //read from a .json file and it imports it as a String into mStringDeck
+           // mDeck.put(2, loadDeck(  mFilePath + "\\Tier2\\"));
 
-            Scanner mScanner = new Scanner(new File(mFilePath + "ExcommunicationDeck" + i + ".json"));
-            mStringDeck = mScanner.useDelimiter("\\A").next();
-            mScanner.close();
-
-            //using Gson insert the string into mExcommunicationtilesDecks
-
-            Type mListType = new TypeToken<ArrayList<ExcommunicationTile>>() {
-            }.getType();
-
-            mExcommunicationTilesDecks.put(i,new Gson().fromJson(mStringDeck, mListType));
-        }
+          //  mDeck.put(3, loadDeck(mFilePath + "\\Tier3\\"));
 
 
     }
+
+    /**
+     * Loads a text-based file to a string
+     *
+     * @param fileName name of the file to load
+     * @return returns the file as a string
+     * @throws FileNotFoundException
+     */
+    private String loadStringFromFile(String fileName) throws FileNotFoundException {
+
+        String mStringDeck;
+
+        Scanner mScanner = new Scanner(new File(fileName));
+        mStringDeck = mScanner.useDelimiter("\\A").next();
+
+        mScanner.close();
+
+        return mStringDeck;
+    }
+
+    private ExcommunicationTile loadCardFromString(String cardString) {
+
+        Gson gsonExt = null;
+        GsonBuilder builder = new GsonBuilder();
+
+       // builder.registerTypeAdapter(ExcommunicationTile.class, new ExcommunicationTileAdapter());
+        builder.registerTypeAdapter(ExcommunicationTileEffect.class, new ExcommunicationTileEffectAdapter());
+
+        gsonExt = builder.create();
+
+        return gsonExt.fromJson(cardString, ExcommunicationTile.class);
+
+    }
+
+    /**
+     * Import an object from the given file in json format
+     *
+     * @param fileName complete path of the file to load (from the project index)
+     * @return
+     * @throws FileNotFoundException
+     */
+    private List loadDeck(String fileName) throws FileNotFoundException {
+
+        List<ExcommunicationTile> mTierDeck = new LinkedList<>();
+
+        for (int i = 1; i <= 7; i++) {
+            mTierDeck.add(loadCardFromString(loadStringFromFile(fileName + i + ".json")));
+        }
+
+        return mTierDeck;
+
+    }
+
+
+
+
+
 
 
      //random card picker
@@ -70,9 +121,9 @@ public class ExcommunicationTilesDeck {
     public ExcommunicationTile drawCard(int period){
 
 
-        int size = mExcommunicationTilesDecks.get(period).size();
+        int size = mDeck.get(period).size();
         int randomNumber = (int) Math.random() * size;
-        return mExcommunicationTilesDecks.get(period).get(randomNumber);
+        return mDeck.get(period).get(randomNumber);
 
 
     }

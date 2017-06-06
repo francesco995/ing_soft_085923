@@ -1,0 +1,20 @@
+{
+    "CLASSNAME": "it.polimi.ingsw.ps09.model.ExcommunicationTile",
+    "INSTANCE": {
+        "mTileName": "DIO PORCO",
+        "mPeriod": 666,
+        "mExcommunicationTileEffects": [
+            {
+                "CLASSNAME": "it.polimi.ingsw.ps09.model.ExcommunicationTileEffects.DiceRollMalus",
+                "INSTANCE": {
+                    "mDiceMalus": 666666
+                }
+      },
+        {
+                "CLASSNAME": "it.polimi.ingsw.ps09.model.ExcommunicationTileEffects.DiceRollMalus",
+                "INSTANCE": {
+                    "mDiceMalus": 666666
+                }
+      }]
+    }
+}
