@@ -5,7 +5,6 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import it.polimi.ingsw.ps09.model.ExcommunicationTile;
 import it.polimi.ingsw.ps09.model.ExcommunicationTileEffects.ExcommunicationTileEffect;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.*;
@@ -22,7 +21,7 @@ public class ExcommunicationTilesDeck {
 
     //three ExcommunicationTile list one for each period
 
-    private Map<Integer,List<ExcommunicationTile>> mDeck = new HashMap<Integer,List<ExcommunicationTile>>();
+    private Map<Integer, List<ExcommunicationTile>> mDeck = new HashMap<Integer, List<ExcommunicationTile>>();
 
 
     /**
@@ -45,11 +44,11 @@ public class ExcommunicationTilesDeck {
 
         //For each period and for each type of card, fill the corresponding Map and LinkedList
 
-            mDeck.put(1, loadDeck(mFilePath + "\\Tier1\\"));
+        mDeck.put(1, loadDeck(mFilePath + "\\Tier1\\"));
 
-           // mDeck.put(2, loadDeck(  mFilePath + "\\Tier2\\"));
+        //mDeck.put(2, loadDeck(mFilePath + "\\Tier2\\"));
 
-          //  mDeck.put(3, loadDeck(mFilePath + "\\Tier3\\"));
+        //mDeck.put(3, loadDeck(mFilePath + "\\Tier3\\"));
 
 
     }
@@ -78,7 +77,6 @@ public class ExcommunicationTilesDeck {
         Gson gsonExt = null;
         GsonBuilder builder = new GsonBuilder();
 
-       // builder.registerTypeAdapter(ExcommunicationTile.class, new ExcommunicationTileAdapter());
         builder.registerTypeAdapter(ExcommunicationTileEffect.class, new ExcommunicationTileEffectAdapter());
 
         gsonExt = builder.create();
@@ -96,7 +94,7 @@ public class ExcommunicationTilesDeck {
      */
     private List loadDeck(String fileName) throws FileNotFoundException {
 
-        List<ExcommunicationTile> mTierDeck = new LinkedList<>();
+        List<ExcommunicationTile> mTierDeck = new ArrayList<>();
 
         for (int i = 1; i <= 7; i++) {
             mTierDeck.add(loadCardFromString(loadStringFromFile(fileName + i + ".json")));
@@ -107,18 +105,15 @@ public class ExcommunicationTilesDeck {
     }
 
 
+    //random card picker
 
-
-
-
-
-     //random card picker
-     /**
+    /**
      * Randomly draw a tile from the List passed and returns the single tile drawn
+     *
      * @param period of tiles from which you want to draw the single tile
      * @return return object ExcommunicationTile drawn from the whole list
      */
-    public ExcommunicationTile drawCard(int period){
+    public ExcommunicationTile drawCard(int period) {
 
 
         int size = mDeck.get(period).size();

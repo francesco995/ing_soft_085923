@@ -1,20 +1,16 @@
+
 {
-    "CLASSNAME": "it.polimi.ingsw.ps09.model.ExcommunicationTile",
+  "mTileName": "TILE",
+  "mPeriod": 1,
+  "mExcommunicationTileEffects": [{
+    "CLASSNAME": "it.polimi.ingsw.ps09.model.ExcommunicationTileEffects.DiceRollMalus",
     "INSTANCE": {
-        "mTileName": "DIO PORCO",
-        "mPeriod": 666,
-        "mExcommunicationTileEffects": [
-            {
-                "CLASSNAME": "it.polimi.ingsw.ps09.model.ExcommunicationTileEffects.DiceRollMalus",
-                "INSTANCE": {
-                    "mDiceMalus": 666666
-                }
-      },
-        {
-                "CLASSNAME": "it.polimi.ingsw.ps09.model.ExcommunicationTileEffects.DiceRollMalus",
-                "INSTANCE": {
-                    "mDiceMalus": 666666
-                }
-      }]
+      "mDiceMalus": 1
     }
+  }, {
+    "CLASSNAME": "it.polimi.ingsw.ps09.model.ExcommunicationTileEffects.DiceRollMalus",
+    "INSTANCE": {
+      "mDiceMalus": 1
+    }
+  }]
 }
