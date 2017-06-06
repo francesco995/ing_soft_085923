@@ -7,7 +7,7 @@ import it.polimi.ingsw.ps09.model.UserResources;
 import java.util.List;
 
 /**
- * Created by franc on 09/05/2017.
+ * Created by francesco995 on 09/05/2017.
  */
 public class Venture extends DevelopmentCard {
 
@@ -21,6 +21,8 @@ public class Venture extends DevelopmentCard {
 
     private List<DevelopmentCardEffect> mEndGameEffects;
 
+
+
     public Venture(String cardName,
                    int period,
                    List<UserResources> resourcesCosts,
@@ -33,5 +35,18 @@ public class Venture extends DevelopmentCard {
 
         mPointsRequirements = pointsRequirements;
         mEndGameEffects = endGameEffects;
+
+
+
+
+    }
+
+
+    public UserPoints getPointsRequirements() {
+        return mPointsRequirements;
+    }
+
+    public List<DevelopmentCardEffect> getEndGameEffects() {
+        return mEndGameEffects;
     }
 }

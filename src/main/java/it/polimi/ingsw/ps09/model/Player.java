@@ -145,6 +145,14 @@ public class Player {
         mHighFloorBonus = false;
     }
 
+    public static int getPlayerId() {
+        return PLAYER_ID;
+    }
+
+    public Boolean getHighFloorBonus() {
+        return mHighFloorBonus;
+    }
+
     //####################################################
     //####################################################
     //########### Get user card count as int #############

@@ -56,31 +56,38 @@ public abstract class DevelopmentCard {
         mStringCard.add("Card #" + CARD_N + ": " + mCardName);
 
         //TODO: test with all effects
-        if(!mResourcesCosts.isEmpty())
+        if(!mResourcesCosts.isEmpty()){
+
             mStringCard.add("Resources Costs:");
 
-        mResourcesCosts.stream()
-                .map(UserResources::toString)
-                .forEach(mStringCard::add);
+            mResourcesCosts.stream()
+                    .map(UserResources::toString)
+                    .forEach(mStringCard::add);
 
+        }
 
-        if(!mPointsCosts.isEmpty())
+        if(!mPointsCosts.isEmpty()){
+
             mStringCard.add("Points Costs:");
 
-        mPointsCosts.stream()
-                .map(UserPoints::toString)
-                .forEach(mStringCard::add);
+            mPointsCosts.stream()
+                    .map(UserPoints::toString)
+                    .forEach(mStringCard::add);
 
+        }
 
-        if(!mImmediateEffects.isEmpty())
+        if(!mImmediateEffects.isEmpty()){
+
             mStringCard.add("Immediate Effects:");
 
-        mImmediateEffects.stream()
-                .map(DevelopmentCardEffect::toString)
-                .forEach(mStringCard::add);
+            mImmediateEffects.stream()
+                    .map(DevelopmentCardEffect::toString)
+                    .forEach(mStringCard::add);
 
+        }
 
         return mStringCard.toString();
+
     }
 
 

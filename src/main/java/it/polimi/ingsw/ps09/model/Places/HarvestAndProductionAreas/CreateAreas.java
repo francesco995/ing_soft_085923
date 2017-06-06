@@ -18,21 +18,21 @@ public class CreateAreas {
 
     /**
      *
-     * @param FamilyMember Add the specified family member in the area
+     * @param familyMember Add the specified family member in the area
      */
 
     //Try to put FamilyMembers in Area
-    public void addMember(FamilyMember FamilyMember){
+    public void addMember(FamilyMember familyMember){
 
-        if(isAvailable(FamilyMember)){
+        if(isAvailable(familyMember)){
             if(mSlotList.isEmpty())
 
                 //Add into first slot
-                mSlotList.add(new Slot(1, FamilyMember));
+                mSlotList.add(new Slot(1, familyMember));
 
             else
                 //Add into other slot
-                mSlotList.add(new Slot(3,FamilyMember));
+                mSlotList.add(new Slot(3,familyMember));
         }
 
     }
@@ -49,12 +49,12 @@ public class CreateAreas {
 
     /**
      *
-     * @param FamilyMember Check the ability to add a specific family member into the are
+     * @param familyMember Check the ability to add a specific family member into the are
      * @return Boolean true if available, false if not
      */
 
     //Check if a slot is available
-    public boolean isAvailable(FamilyMember FamilyMember){
+    public boolean isAvailable(FamilyMember familyMember){
 
         int mCont;
 
@@ -62,7 +62,7 @@ public class CreateAreas {
             return true;
 
         for(mCont = 0; mCont<mSlotList.size(); mCont++){
-            if(mSlotList.get(mCont).getPawn() == FamilyMember)
+            if(mSlotList.get(mCont).getPawn() == familyMember)
                 return false;
         }
 

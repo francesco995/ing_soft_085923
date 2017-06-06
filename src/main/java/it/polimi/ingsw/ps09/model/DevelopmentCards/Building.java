@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.StringJoiner;
 
 /**
- * Created by franc on 09/05/2017.
+ * Created by francesco995 on 09/05/2017.
  */
 public class Building extends DevelopmentCard {
 
@@ -56,7 +56,11 @@ public class Building extends DevelopmentCard {
 
     }
 
+    public int getProductionCost() {
+        return mProductionCost;
+    }
 
-
-
+    public List<DevelopmentCardEffect> getProductionEffects() {
+        return mProductionEffects;
+    }
 }

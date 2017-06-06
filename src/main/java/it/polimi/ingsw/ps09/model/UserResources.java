@@ -51,14 +51,29 @@ public class UserResources {
     @Override
     public String toString(){
 
-        //TODO: FraG disable visualizing null resources (Coins: 0)
+        String toString = "|";
 
-        return (
-                "Coins: " + mCoins +
-                ", Servant: " + mServant +
-                ", Stone: " + mStone +
-                ", Wood: " + mWood
-        );
+        if(mCoins.isGreaterOrEqual(new Coins(1)))
+            toString += " Coins: " + mCoins + " | ";
+
+        if(mServant.isGreaterOrEqual(new Servant(1)))
+            toString += " Servant: " + mServant + " | ";
+
+        if(mStone.isGreaterOrEqual(new Stone(1)))
+            toString += " Stone: " + mStone + " | ";
+
+        if(mWood.isGreaterOrEqual(new Wood(1)))
+            toString += " Wood: " + mWood + " | ";
+
+        return toString;
+    }
+
+    public boolean isGreaterOrEqual(UserResources thanThis){
+        return
+                mCoins.isGreaterOrEqual(thanThis.getCoins()) ||
+                mServant.isGreaterOrEqual(thanThis.getServant()) ||
+                mStone.isGreaterOrEqual(thanThis.getStone()) ||
+                mWood.isGreaterOrEqual(thanThis.getWood());
     }
 
     //GETTERS

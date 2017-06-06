@@ -40,8 +40,31 @@ public class ConvertEffect extends DevelopmentCardEffect{
         //TODO: FraG fix for list
 
         for(int i = 0; i < Integer.max(mResourcesCosts.size(), mPointsCosts.size()); i++){
-            mConvert +=( "\n        " + Integer.toString(i + 1) + ") " + mResourcesCosts.get(i) + " " + mPointsCosts.get(i) +
-                    " To => " + mResourcesGains.get(i) + " " + mPointsGains.get(i));
+            mConvert +=( "\n        " + Integer.toString(i + 1) + ") ");
+
+            if(mResourcesCosts.get(i).isGreaterOrEqual(
+                    new UserResources(1, 1, 1, 1))){
+                mConvert += mResourcesCosts.get(i);
+            }
+
+            if(mPointsCosts.get(i).isGreaterOrEqual(
+                    new UserPoints(1, 1, 1))){
+                mConvert += mPointsCosts.get(i);
+            }
+
+
+            mConvert += " To => ";
+
+            if(mResourcesGains.get(i).isGreaterOrEqual(
+                    new UserResources(1, 1, 1, 1))){
+                mConvert += mResourcesGains.get(i);
+            }
+
+            if(mPointsGains.get(i).isGreaterOrEqual(
+                    new UserPoints(1, 1, 1))){
+                mConvert += mPointsGains.get(i);
+            }
+
         }
 
 

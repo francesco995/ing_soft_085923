@@ -11,21 +11,40 @@ public class GainsForTerritoryCardsCount extends DevelopmentCardEffect{
 
     //Gains when activated
     private UserResources mResourcesGains;
-    private UserPoints mUserPointsGains;
+    private UserPoints mPointsGains;
 
     public GainsForTerritoryCardsCount(UserResources resourcesGains,
-                                       UserPoints userPointsGains) {
+                                       UserPoints pointsGains) {
 
         mResourcesGains = resourcesGains;
-        mUserPointsGains = userPointsGains;
+        mPointsGains = pointsGains;
     }
 
     @Override
     public String toString(){
-        return ("Gain Points -> " + mUserPointsGains +
-                " and Resources -> " + mResourcesGains +
-                " for each Territory");
+
+        String toString = "";
+
+        if(mPointsGains.isGreaterOrEqual(
+                new UserPoints(1, 1, 1))){
+
+            toString += "Gain Points -> " + mPointsGains;
+
+        }
+
+        if(mResourcesGains.isGreaterOrEqual(
+                new UserResources(1, 1, 1, 1))){
+
+            toString += " and Resources -> " + mResourcesGains;
+
+        }
+
+        toString += " for each Territory";
+
+        return toString;
+
     }
+
 
 
     @Override
@@ -35,7 +54,7 @@ public class GainsForTerritoryCardsCount extends DevelopmentCardEffect{
         for(int i=0; i< player.getTerritoriesCount(); i++){
 
             player.add(mResourcesGains);
-            player.add(mUserPointsGains);
+            player.add(mPointsGains);
 
         }
 

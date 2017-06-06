@@ -5,6 +5,7 @@ import it.polimi.ingsw.ps09.model.UserPoints;
 import it.polimi.ingsw.ps09.model.UserResources;
 
 import java.util.List;
+import java.util.StringJoiner;
 
 /**
  * Created by franc on 09/05/2017.
@@ -28,4 +29,28 @@ public class Character extends DevelopmentCard {
 
         mPermanentEffects = permanentEffects;
     }
+
+    public List<DevelopmentCardEffect> getPermanentEffects() {
+        return mPermanentEffects;
+    }
+
+    @Override
+    public String toString(){
+
+        StringJoiner mStringCard = new StringJoiner("\n     ", "", "");
+
+        mStringCard.add(super.toString());
+
+        if(!mPermanentEffects.isEmpty()){
+            mStringCard.add("Permanent Effects :");
+            mPermanentEffects.stream()
+                    .map(DevelopmentCardEffect::toString)
+                    .forEach(mStringCard::add);
+        }
+
+        return mStringCard.toString();
+
+    }
+
+
 }

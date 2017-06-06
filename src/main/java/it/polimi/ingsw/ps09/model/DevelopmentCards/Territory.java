@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.StringJoiner;
 
 /**
- * Created by franc on 09/05/2017.
+ * Created by francesco995 on 09/05/2017.
  */
 public class Territory extends DevelopmentCard {
 
@@ -35,6 +35,14 @@ public class Territory extends DevelopmentCard {
         mProductionCost = productionCost;
         mHarvestEffects = harvestEffects;
 
+    }
+
+    public int getProductionCost() {
+        return mProductionCost;
+    }
+
+    public List<DevelopmentCardEffect> getHarvestEffects() {
+        return mHarvestEffects;
     }
 
     @Override

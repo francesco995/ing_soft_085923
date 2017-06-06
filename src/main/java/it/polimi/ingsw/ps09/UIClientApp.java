@@ -5,6 +5,6 @@ package it.polimi.ingsw.ps09;
  */
 public class UIClientApp {
     public static void main(String[] args) {
-        System.out.println("Hello Client!");
+        //System.out.println("Hello Client!");
     }
 }

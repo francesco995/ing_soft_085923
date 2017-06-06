@@ -39,14 +39,26 @@ public class UserPoints {
     @Override
     public String toString(){
 
-        //TODO: FraG disable visualizing null Points (Faith Points: 0)
+        String toString = "|";
 
-        return (
-                "Faith Points: " + mFaithPoints +
-                ", Military Points: " + mMilitaryPoints +
-                ", Victory Points: " +  mVictoryPoints
-        );
+        if(mFaithPoints.isGreaterOrEqual(new FaithPoints(1)))
+            toString += " Faith Points: " + mFaithPoints + " | ";
 
+        if(mMilitaryPoints.isGreaterOrEqual(new MilitaryPoints(1)))
+            toString += " Military Points: " + mMilitaryPoints + " | ";
+
+        if(mVictoryPoints.isGreaterOrEqual(new VictoryPoints(1)))
+            toString += " Victory Points: " + mVictoryPoints + " | ";
+
+        return toString;
+
+    }
+
+    public boolean isGreaterOrEqual(UserPoints thanThis){
+        return
+                mVictoryPoints.isGreaterOrEqual(thanThis.getVictoryPoints()) ||
+                mMilitaryPoints.isGreaterOrEqual(thanThis.getMilitaryPoints()) ||
+                mFaithPoints.isGreaterOrEqual(thanThis.getFaithPoints());
     }
 
 
