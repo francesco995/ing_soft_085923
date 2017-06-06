@@ -27,4 +27,16 @@ public class GainFamilyMemberPlacementResourcesDiscount extends DevelopmentCardE
     }
 
     //TODO: toString
+    @Override
+    public String toString(){
+
+        String toString = "";
+
+        toString += "Gain discount for picking " + mCardType.toLowerCase();
+
+        toString += " cards: you pay less => " + mResourcesDiscount;
+
+        return toString;
+
+    }
 }

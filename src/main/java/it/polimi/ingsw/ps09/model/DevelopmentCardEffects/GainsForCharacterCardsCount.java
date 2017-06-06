@@ -39,7 +39,7 @@ public class GainsForCharacterCardsCount extends DevelopmentCardEffect {
 
         }
 
-        toString += " for each Character";
+        toString += "for each Character";
 
         return toString;
 

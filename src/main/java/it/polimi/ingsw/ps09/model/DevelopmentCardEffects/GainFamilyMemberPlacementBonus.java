@@ -22,4 +22,19 @@ public class GainFamilyMemberPlacementBonus extends DevelopmentCardEffect{
     }
 
     //TODO: toString
+    @Override
+    public String toString(){
+
+        String toString = "";
+
+        toString += "Gain bonus when placing " + mCardType.toLowerCase();
+
+        toString += " cards: your family member has => +" + mBonusValue;
+
+        toString += " power";
+
+        return toString;
+
+    }
+
 }

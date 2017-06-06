@@ -39,7 +39,7 @@ public class GainsForBuildingCardsCount extends DevelopmentCardEffect{
 
         }
 
-        toString += " for each Building";
+        toString += "for each Building";
 
         return toString;
 

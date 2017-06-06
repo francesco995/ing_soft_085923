@@ -23,7 +23,18 @@ public class GainHarvestAndProductionBonus extends DevelopmentCardEffect {
         //TODO: implement
     }
 
-    //TODO: toString
+    @Override
+    public String toString(){
+
+        String toString = "";
+
+        toString += "Gain " + mBonusType.toLowerCase();
+
+        toString += " bonus => +" + mBonusValue;
+
+        return toString;
+
+    }
 
 
 }

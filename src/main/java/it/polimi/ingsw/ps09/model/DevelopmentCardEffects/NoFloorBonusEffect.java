@@ -14,5 +14,15 @@ public class NoFloorBonusEffect extends DevelopmentCardEffect {
 
     }
 
-    //TODO: toString
+
+    @Override
+    public String toString(){
+
+        String toString = "";
+
+        toString += "If you place a Family Member on floors 3 or 4, you no longer take the bonus effect";
+
+        return toString;
+
+    }
 }

@@ -39,7 +39,7 @@ public class GainsForVentureCardsCount extends DevelopmentCardEffect {
 
         }
 
-        toString += " for each Venture";
+        toString += "for each Venture";
 
         return toString;
 

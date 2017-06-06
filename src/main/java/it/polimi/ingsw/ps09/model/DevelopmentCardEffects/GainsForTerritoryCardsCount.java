@@ -39,7 +39,7 @@ public class GainsForTerritoryCardsCount extends DevelopmentCardEffect{
 
         }
 
-        toString += " for each Territory";
+        toString += "for each Territory";
 
         return toString;
 
