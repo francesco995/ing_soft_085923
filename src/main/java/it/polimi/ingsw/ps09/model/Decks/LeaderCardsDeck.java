@@ -6,6 +6,7 @@ import com.google.gson.reflect.TypeToken;
 import it.polimi.ingsw.ps09.model.ExcommunicationTile;
 import it.polimi.ingsw.ps09.model.ExcommunicationTileEffects.ExcommunicationTileEffect;
 import it.polimi.ingsw.ps09.model.LeaderCard;
+import it.polimi.ingsw.ps09.model.LeaderCardEffects.LeaderCardEffect;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -36,16 +37,11 @@ public class LeaderCardsDeck {
         //Create the directory path
         File mDirectory = new File("./");
         String mFilePath = mDirectory.getAbsolutePath().replace(".",
-                "src\\main\\res\\ExcommunicationTilesDecks\\");
-
+                "src\\main\\res\\LeaderCardsDeck\\");
 
         //For each period and for each type of card, fill the corresponding Map and LinkedList
 
-       // mDeck.add( loadDeck(mFilePath + "\\Tier1\\"));
-
-        //mDeck.put(2, loadDeck(mFilePath + "\\Tier2\\"));
-
-        //mDeck.put(3, loadDeck(mFilePath + "\\Tier3\\"));
+        mDeck = loadDeck(mFilePath);
 
 
     }
@@ -69,16 +65,16 @@ public class LeaderCardsDeck {
         return mStringDeck;
     }
 
-    private ExcommunicationTile loadCardFromString(String cardString) {
+    private LeaderCard loadCardFromString(String cardString) {
 
         Gson gsonExt = null;
         GsonBuilder builder = new GsonBuilder();
 
-        builder.registerTypeAdapter(ExcommunicationTileEffect.class, new ExcommunicationTileEffectAdapter());
+        builder.registerTypeAdapter(LeaderCardEffect.class, new LeaderCardEffectAdapter());
 
         gsonExt = builder.create();
 
-        return gsonExt.fromJson(cardString, ExcommunicationTile.class);
+        return gsonExt.fromJson(cardString, LeaderCard.class);
 
     }
 
@@ -91,9 +87,9 @@ public class LeaderCardsDeck {
      */
     private List loadDeck(String fileName) throws FileNotFoundException {
 
-        List<ExcommunicationTile> mTierDeck = new ArrayList<>();
+        List<LeaderCard> mTierDeck = new ArrayList<>();
 
-        for (int i = 1; i <= 7; i++) {
+        for (int i = 1; i <= 20; i++) {
             mTierDeck.add(loadCardFromString(loadStringFromFile(fileName + i + ".json")));
         }
 

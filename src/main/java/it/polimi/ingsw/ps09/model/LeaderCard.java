@@ -11,13 +11,13 @@ public class LeaderCard {
 
     //Effects
 
-    private List<LeaderCardEffect> mLeaderCardEffect;
+    private List<LeaderCardEffect> mLeaderCardEffects;
 
     //CONSTRUCTOR
 
-    public LeaderCard(String cardName, List<LeaderCardEffect> leaderCardEffect) {
+    public LeaderCard(String cardName, List<LeaderCardEffect> leaderCardEffects) {
         mCardName = cardName;
-        mLeaderCardEffect = leaderCardEffect;
+        mLeaderCardEffects = leaderCardEffects;
     }
 
 
@@ -28,7 +28,7 @@ public class LeaderCard {
     }
 
     public List<LeaderCardEffect> getLeaderCardEffect() {
-        return mLeaderCardEffect;
+        return mLeaderCardEffects;
     }
 
 
