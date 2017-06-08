@@ -4,8 +4,9 @@ import it.polimi.ingsw.ps09.model.Player;
 
 /**
  * Created by franc on 30/05/2017.
+ * Gain Council Privilege
  */
-public class GainCouncilPrivilege extends DevelopmentCardEffect{
+public class GainCouncilPrivilege implements DevelopmentCardEffect{
 
     private int mPrivilegesCount;
 

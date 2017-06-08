@@ -8,8 +8,14 @@ import java.util.List;
 
 /**
  * Created by francesco995 on 04/06/2017.
+ * Convert UserResources and/or UserPoints to Council Privilege(s)
+ *
+ * If more than one choice has to be given to the player, lists will have more than 1 item
+ * (ex: mResourcesCosts[0] -> mPrivilegesCount[0] OR mPointsCosts[1] -> mPrivilegesCount[1])
+ *
+ * empty resources still have to be inserted with "0" values, but will not be printed if empty
  */
-public class ConvertToCouncilPrivilege extends DevelopmentCardEffect{
+public class ConvertToCouncilPrivilege implements DevelopmentCardEffect{
 
     //Resources or Points cost to activate conversion
     private List<UserResources> mResourcesCosts;

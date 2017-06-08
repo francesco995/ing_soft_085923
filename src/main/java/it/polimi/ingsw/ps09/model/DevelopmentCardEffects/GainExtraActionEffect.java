@@ -5,7 +5,7 @@ import it.polimi.ingsw.ps09.model.Player;
 /**
  * Created by franc on 30/05/2017.
  */
-public class GainExtraActionEffect extends DevelopmentCardEffect {
+public class GainExtraActionEffect implements DevelopmentCardEffect {
 
 
 

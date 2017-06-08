@@ -4,9 +4,12 @@ import it.polimi.ingsw.ps09.model.Player;
 
 /**
  * Created by francesco995 on 23/05/2017.
+ * Generic interface for Effects used in DevelopmentCards
  */
-public abstract class DevelopmentCardEffect {
+public interface DevelopmentCardEffect {
 
-    public abstract void applyEffect(Player player);
+    void applyEffect(Player player);
+
+    String toString();
 
 }

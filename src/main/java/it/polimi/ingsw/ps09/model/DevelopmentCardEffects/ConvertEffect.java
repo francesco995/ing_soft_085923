@@ -7,7 +7,17 @@ import it.polimi.ingsw.ps09.model.UserResources;
 import java.util.List;
 import java.util.StringJoiner;
 
-public class ConvertEffect extends DevelopmentCardEffect{
+
+/**
+ * Created by francesco995 on 04/06/2017.
+ * Convert UserResources and UserPoints
+ *
+ * If more than one choice has to be given to the player, lists will have more than 1 item
+ * (ex: mResourcesCosts[0] -> mPointsGains[0] OR mPointsCosts[1] -> mResourcesGains[1])
+ *
+ * empty resources still have to be inserted with "0" values, but will not be printed if empty
+ */
+public class ConvertEffect implements DevelopmentCardEffect{
 
     //Resources or Points cost to activate conversion
     private List<UserResources> mResourcesCosts;

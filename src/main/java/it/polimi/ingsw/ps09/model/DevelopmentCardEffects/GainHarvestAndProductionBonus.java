@@ -4,8 +4,9 @@ import it.polimi.ingsw.ps09.model.Player;
 
 /**
  * Created by francesco995 on 04/06/2017.
+ * Gain permanent Harvest / Production action bonus
  */
-public class GainHarvestAndProductionBonus extends DevelopmentCardEffect {
+public class GainHarvestAndProductionBonus implements DevelopmentCardEffect {
 
     /**
      * HARVEST or PRODUCTION

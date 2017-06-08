@@ -6,8 +6,9 @@ import it.polimi.ingsw.ps09.model.UserResources;
 
 /**
  * Created by francesco995 on 24/05/2017.
+ * Gain UserResources
  */
-public class GainResourcesEffect extends DevelopmentCardEffect {
+public class GainResourcesEffect implements DevelopmentCardEffect {
 
 
     //Gains when activated

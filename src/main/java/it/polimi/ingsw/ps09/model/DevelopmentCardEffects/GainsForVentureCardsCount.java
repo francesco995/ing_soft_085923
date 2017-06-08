@@ -8,7 +8,7 @@ import it.polimi.ingsw.ps09.model.UserResources;
  * Created by franc on 30/05/2017.
  * Player gains resources and points based on how many Venture cards has
  */
-public class GainsForVentureCardsCount extends DevelopmentCardEffect {
+public class GainsForVentureCardsCount implements DevelopmentCardEffect {
     //Gains when activated
     private UserResources mResourcesGains;
     private UserPoints mPointsGains;

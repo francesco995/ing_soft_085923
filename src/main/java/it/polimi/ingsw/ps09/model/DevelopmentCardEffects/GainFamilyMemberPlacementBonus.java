@@ -4,8 +4,9 @@ import it.polimi.ingsw.ps09.model.Player;
 
 /**
  * Created by francesco995 on 05/06/2017.
+ * Gain permanent placement action bonus when placing FamilyMembers for taking a specific card color
  */
-public class GainFamilyMemberPlacementBonus extends DevelopmentCardEffect{
+public class GainFamilyMemberPlacementBonus implements DevelopmentCardEffect{
 
     private String mCardType;
     private int mBonusValue;

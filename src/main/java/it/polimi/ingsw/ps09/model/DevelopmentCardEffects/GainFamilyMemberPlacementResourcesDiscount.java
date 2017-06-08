@@ -5,8 +5,9 @@ import it.polimi.ingsw.ps09.model.UserResources;
 
 /**
  * Created by francesco995 on 05/06/2017.
+ * Gain permanent resources discount for when taking cards of a specific color
  */
-public class GainFamilyMemberPlacementResourcesDiscount extends DevelopmentCardEffect {
+public class GainFamilyMemberPlacementResourcesDiscount implements DevelopmentCardEffect {
 
 
     private UserResources mResourcesDiscount;
