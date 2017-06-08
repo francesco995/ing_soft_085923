@@ -14,11 +14,6 @@ import java.util.*;
  */
 public class ExcommunicationTilesDeck {
 
-    //DEFINE
-
-    static final int MAX_PERIODS = 3;
-
-
     //three ExcommunicationTile list one for each period
 
     private Map<Integer, List<ExcommunicationTile>> mDeck = new HashMap<Integer, List<ExcommunicationTile>>();
@@ -46,9 +41,9 @@ public class ExcommunicationTilesDeck {
 
         mDeck.put(1, loadDeck(mFilePath + "\\Tier1\\"));
 
-        //mDeck.put(2, loadDeck(mFilePath + "\\Tier2\\"));
+        mDeck.put(2, loadDeck(mFilePath + "\\Tier2\\"));
 
-        //mDeck.put(3, loadDeck(mFilePath + "\\Tier3\\"));
+        mDeck.put(3, loadDeck(mFilePath + "\\Tier3\\"));
 
 
     }

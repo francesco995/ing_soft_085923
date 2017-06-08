@@ -1,16 +1,9 @@
-
 {
-  "mTileName": "TILE",
-  "mPeriod": 1,
-  "mExcommunicationTileEffects": [{
-    "CLASSNAME": "it.polimi.ingsw.ps09.model.ExcommunicationTileEffects.DiceRollMalus",
-    "INSTANCE": {
-      "mDiceMalus": 1
-    }
-  }, {
-    "CLASSNAME": "it.polimi.ingsw.ps09.model.ExcommunicationTileEffects.DiceRollMalus",
-    "INSTANCE": {
-      "mDiceMalus": 1
-    }
+    "mTileName": "16",
+    "mPeriod": 3,
+    "mExcommunicationTileEffects": [{
+        "CLASSNAME": "it.polimi.ingsw.ps09.model.ExcommunicationTileEffects.NoEncouragedVenturesBonus",
+        "INSTANCE": {
+        }
   }]
 }

@@ -1,16 +1,12 @@
 
 {
-  "mTileName": "TILE",
+  "mTileName": "06",
   "mPeriod": 1,
   "mExcommunicationTileEffects": [{
-    "CLASSNAME": "it.polimi.ingsw.ps09.model.ExcommunicationTileEffects.DiceRollMalus",
-    "INSTANCE": {
-      "mDiceMalus": 1
-    }
-  }, {
-    "CLASSNAME": "it.polimi.ingsw.ps09.model.ExcommunicationTileEffects.DiceRollMalus",
-    "INSTANCE": {
-      "mDiceMalus": 1
-    }
+        "CLASSNAME": "it.polimi.ingsw.ps09.model.ExcommunicationTileEffects.GainHarverstAndProductionMalus",
+        "INSTANCE": {
+            "mMalusType": "Production",
+            "mMalusValue": 3
+        }
   }]
 }

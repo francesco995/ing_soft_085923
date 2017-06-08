@@ -1,7 +1,10 @@
 package it.polimi.ingsw.ps09.model.Decks;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
+import it.polimi.ingsw.ps09.model.ExcommunicationTile;
+import it.polimi.ingsw.ps09.model.ExcommunicationTileEffects.ExcommunicationTileEffect;
 import it.polimi.ingsw.ps09.model.LeaderCard;
 
 import java.io.File;
@@ -15,33 +18,86 @@ public class LeaderCardsDeck {
 
 
     //This list is the full deck of LeaderCards
-    private List<LeaderCard> mLeaderCards = new ArrayList<>();
+    private List<LeaderCard> mDeck = new ArrayList<>();
 
 
     /**
-     * loadFromFile load all the Leader Cards in one lists.
-     * All the cards are stored in an external .json file easily readable and editable
+     * loadFromFile load all the ExcommunicationTiles in 3 different lists, one for each Period.
+     * All the tiles are stored in an external .json file easily readable and editable
      * @throws FileNotFoundException - throws an exception if it cannot open file .json
      */
-    public void loadFromFile() throws FileNotFoundException {
+    /**
+     * Loads the deck from file sources
+     *
+     * @throws FileNotFoundException
+     */
+    public LeaderCardsDeck() throws FileNotFoundException {
 
+        //Create the directory path
         File mDirectory = new File("./");
-
         String mFilePath = mDirectory.getAbsolutePath().replace(".",
-                "src\\main\\res\\");
+                "src\\main\\res\\ExcommunicationTilesDecks\\");
+
+
+        //For each period and for each type of card, fill the corresponding Map and LinkedList
+
+       // mDeck.add( loadDeck(mFilePath + "\\Tier1\\"));
+
+        //mDeck.put(2, loadDeck(mFilePath + "\\Tier2\\"));
+
+        //mDeck.put(3, loadDeck(mFilePath + "\\Tier3\\"));
+
+
+    }
+
+    /**
+     * Loads a text-based file to a string
+     *
+     * @param fileName name of the file to load
+     * @return returns the file as a string
+     * @throws FileNotFoundException
+     */
+    private String loadStringFromFile(String fileName) throws FileNotFoundException {
 
         String mStringDeck;
 
-        //read from a .json file and it imports it as a String into mStringDeck
-        Scanner mScanner = new Scanner(new File(mFilePath+ "LeaderCardsDeck.json"));
+        Scanner mScanner = new Scanner(new File(fileName));
         mStringDeck = mScanner.useDelimiter("\\A").next();
+
         mScanner.close();
 
-        //using Gson insert the string into mExcommunication tiles
-        Type mListType = new TypeToken<ArrayList<LeaderCard>>() {
-        }.getType();
-        mLeaderCards = new Gson().fromJson(mStringDeck, mListType);
+        return mStringDeck;
+    }
 
+    private ExcommunicationTile loadCardFromString(String cardString) {
+
+        Gson gsonExt = null;
+        GsonBuilder builder = new GsonBuilder();
+
+        builder.registerTypeAdapter(ExcommunicationTileEffect.class, new ExcommunicationTileEffectAdapter());
+
+        gsonExt = builder.create();
+
+        return gsonExt.fromJson(cardString, ExcommunicationTile.class);
+
+    }
+
+    /**
+     * Import an object from the given file in json format
+     *
+     * @param fileName complete path of the file to load (from the project index)
+     * @return
+     * @throws FileNotFoundException
+     */
+    private List loadDeck(String fileName) throws FileNotFoundException {
+
+        List<ExcommunicationTile> mTierDeck = new ArrayList<>();
+
+        for (int i = 1; i <= 7; i++) {
+            mTierDeck.add(loadCardFromString(loadStringFromFile(fileName + i + ".json")));
+        }
+
+        return mTierDeck;
 
     }
 

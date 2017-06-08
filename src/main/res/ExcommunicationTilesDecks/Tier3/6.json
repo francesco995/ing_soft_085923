@@ -1,16 +1,24 @@
-
 {
-  "mTileName": "TILE",
-  "mPeriod": 1,
-  "mExcommunicationTileEffects": [{
-    "CLASSNAME": "it.polimi.ingsw.ps09.model.ExcommunicationTileEffects.DiceRollMalus",
-    "INSTANCE": {
-      "mDiceMalus": 1
-    }
-  }, {
-    "CLASSNAME": "it.polimi.ingsw.ps09.model.ExcommunicationTileEffects.DiceRollMalus",
-    "INSTANCE": {
-      "mDiceMalus": 1
-    }
+    "mTileName": "20",
+    "mPeriod": 3,
+    "mExcommunicationTileEffects": [{
+        "CLASSNAME": "it.polimi.ingsw.ps09.model.ExcommunicationTileEffects.LoseVPointForResources",
+        "INSTANCE": {
+           "mResources": {
+                "mCoins": {
+                    "mValue": 0
+                },
+                "mServant": {
+                    "mValue": 0
+                },
+                "mStone": {
+                    "mValue": 1
+                },
+                "mWood": {
+                    "mValue": 1
+                }
+            }
+        }
   }]
 }
+

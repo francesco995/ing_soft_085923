@@ -368,13 +368,13 @@ public class Game extends Thread {
         total = mPlayers.get(0).getTerritoriesCount();
         mPlayers.get(0).add(mPersonalBoardBonus.EndTerritoriesBonus(total));
 
-        //Influenced Characters//
+        //Influenced Characters Bonus//
         /////////////////////////
 
         total = mPlayers.get(0).getCharactersCount();
         mPlayers.get(0).add(mPersonalBoardBonus.EndCharactersBonus(total));
 
-        //Encouraged Ventures//
+        //Encouraged Ventures Bonus//
         ///////////////////////
 
 
