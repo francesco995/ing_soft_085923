@@ -6,6 +6,4 @@ package it.polimi.ingsw.ps09.model.Actions;
 public interface Action {
 
 
-
-
 }

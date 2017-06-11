@@ -1,6 +1,8 @@
 package it.polimi.ingsw.ps09.model;
 
 import it.polimi.ingsw.ps09.controller.Game;
+import it.polimi.ingsw.ps09.model.Bonus.FamilyMemberPlacementBonus;
+import it.polimi.ingsw.ps09.model.Bonus.FamilyMemberPlacementResourcesDiscount;
 import it.polimi.ingsw.ps09.model.Bonus.HarvestAndProductionBonus;
 import it.polimi.ingsw.ps09.model.Points.FaithPoints;
 import it.polimi.ingsw.ps09.model.Points.MilitaryPoints;
@@ -38,6 +40,8 @@ public class Player {
     private List<LeaderCard> mLeaderCards;
     private PermanentPlayerEffects mPermanentEffects;
     private HarvestAndProductionBonus mHarvestAndProductionBonus;
+    private FamilyMemberPlacementBonus mFamilyMemberPlacementBonus;
+    private FamilyMemberPlacementResourcesDiscount mFamilyMemberPlacementResourcesDiscount;
 
     //LOGGER
     private static final Logger mLogger = Logger.getLogger(Player.class.getName());
@@ -103,6 +107,9 @@ public class Player {
 
         mLeaderCards = new LinkedList<>();
         mHarvestAndProductionBonus = new HarvestAndProductionBonus();
+        mFamilyMemberPlacementBonus = new FamilyMemberPlacementBonus();
+        mFamilyMemberPlacementResourcesDiscount = new FamilyMemberPlacementResourcesDiscount();
+
 
         //log created player
         mLogger.log(INFO, "Game: " + Game.GAME_ID +
@@ -135,6 +142,29 @@ public class Player {
     public List<LeaderCard> getLeaderCards() {
         return mLeaderCards;
     }
+
+    public PersonalBoard getPersonalBoard() {
+        return mPersonalBoard;
+    }
+
+    public PermanentPlayerEffects getPermanentEffects() {
+        return mPermanentEffects;
+    }
+
+    public HarvestAndProductionBonus getHarvestAndProductionBonus() {
+        return mHarvestAndProductionBonus;
+    }
+
+    public FamilyMemberPlacementBonus getFamilyMemberPlacementBonus() {
+        return mFamilyMemberPlacementBonus;
+    }
+
+    public FamilyMemberPlacementResourcesDiscount getFamilyMemberPlacementResourcesDiscount() {
+        return mFamilyMemberPlacementResourcesDiscount;
+    }
+
+
+
 
     //No High Floor bonus
 
