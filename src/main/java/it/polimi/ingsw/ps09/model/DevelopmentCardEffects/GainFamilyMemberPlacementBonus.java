@@ -19,10 +19,12 @@ public class GainFamilyMemberPlacementBonus implements DevelopmentCardEffect{
 
     @Override
     public void applyEffect(Player player) {
-        //TODO: implement
+
+        player.addFamilyMemberPlacementBonus(mCardType, mBonusValue);
+
     }
 
-    //TODO: toString
+
     @Override
     public String toString(){
 

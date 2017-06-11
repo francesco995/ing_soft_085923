@@ -24,10 +24,10 @@ public class GainFamilyMemberPlacementResourcesDiscount implements DevelopmentCa
 
     @Override
     public void applyEffect(Player player) {
-        //TODO: implement
+        player.addFamilyMemberPlacementResourcesDiscount(mCardType, mResourcesDiscount);
     }
 
-    //TODO: toString
+
     @Override
     public String toString(){
 

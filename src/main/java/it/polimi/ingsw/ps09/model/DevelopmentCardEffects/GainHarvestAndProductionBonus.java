@@ -21,7 +21,9 @@ public class GainHarvestAndProductionBonus implements DevelopmentCardEffect {
 
 
     public void applyEffect( Player player ){
-        //TODO: implement
+
+        player.addHarvestAndProductionBonus( mBonusType, mBonusValue);
+
     }
 
     @Override

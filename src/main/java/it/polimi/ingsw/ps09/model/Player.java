@@ -151,16 +151,53 @@ public class Player {
         return mPermanentEffects;
     }
 
+
+    //####################################################
+    //####################################################
+    //############ Get and Set Player Bonus ##############
+
+
+
     public HarvestAndProductionBonus getHarvestAndProductionBonus() {
         return mHarvestAndProductionBonus;
     }
 
-    public FamilyMemberPlacementBonus getFamilyMemberPlacementBonus() {
-        return mFamilyMemberPlacementBonus;
+    public int getHarvestBonus(){
+        return mHarvestAndProductionBonus.getBonus("HARVEST");
     }
 
-    public FamilyMemberPlacementResourcesDiscount getFamilyMemberPlacementResourcesDiscount() {
-        return mFamilyMemberPlacementResourcesDiscount;
+    public int getProductionBonus(){
+        return mHarvestAndProductionBonus.getBonus("PRODUCTION");
+    }
+
+    public void addHarvestAndProductionBonus(String bonusType, int bonusValue){
+
+        mHarvestAndProductionBonus.addBonus(bonusType, bonusValue);
+
+    }
+
+    public int getFamilyMemberPlacementBonus(String cardType){
+        return mFamilyMemberPlacementBonus.getBonus(cardType);
+    }
+
+    public void addFamilyMemberPlacementBonus(String cardType, int bonusValue){
+
+        mFamilyMemberPlacementBonus.setBonus(cardType,
+                mFamilyMemberPlacementBonus.getBonus(cardType) + bonusValue
+                );
+
+    }
+
+    public UserResources getFamilyMemberPlacementResourcesDiscount(String cardType) {
+
+        return mFamilyMemberPlacementResourcesDiscount.getBonus(cardType);
+
+    }
+
+    public void addFamilyMemberPlacementResourcesDiscount(String cardType, UserResources resourcesDiscount){
+
+        mFamilyMemberPlacementResourcesDiscount.addBonus(cardType, resourcesDiscount);
+
     }
 
 
