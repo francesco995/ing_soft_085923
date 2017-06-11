@@ -9,7 +9,7 @@ import it.polimi.ingsw.ps09.model.Places.Place;
  */
 public class MarketSpace extends Place {
 
-    private FamilyMember mPawn;
+    private FamilyMember mFamilyMember;
     private BoardBonus mBoardBonus;
     private int mDiceValue;
 
@@ -17,8 +17,8 @@ public class MarketSpace extends Place {
      *
      * @return Family member into marketspace
      */
-    public FamilyMember getPawn() {
-        return mPawn;
+    public FamilyMember getFamilyMember() {
+        return mFamilyMember;
     }
 
     /**
@@ -39,10 +39,10 @@ public class MarketSpace extends Place {
 
     /**
      *
-     * @param pawn Set the family member into marketspace
+     * @param familyMember Set the family member into marketspace
      */
-    public void setPawn(FamilyMember pawn) {
-        mPawn = pawn;
+    public void setFamilyMember(FamilyMember familyMember) {
+        mFamilyMember = familyMember;
     }
 
     /**
@@ -68,7 +68,7 @@ public class MarketSpace extends Place {
      */
     //Check if MarketSpace is available
     public boolean isAvailable(){
-        if(mPawn==null)
+        if(mFamilyMember ==null)
             return true;
 
         else

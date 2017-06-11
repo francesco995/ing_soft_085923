@@ -6,6 +6,7 @@ import it.polimi.ingsw.ps09.model.Places.Council;
 import it.polimi.ingsw.ps09.model.Places.HarvestAndProductionAreas.Harvest;
 import it.polimi.ingsw.ps09.model.Places.HarvestAndProductionAreas.Production;
 import it.polimi.ingsw.ps09.model.Places.Market.Market;
+import it.polimi.ingsw.ps09.model.Places.Market.MarketSpace;
 import it.polimi.ingsw.ps09.model.Places.Towers.BuildingsTower;
 import it.polimi.ingsw.ps09.model.Places.Towers.CharactersTower;
 import it.polimi.ingsw.ps09.model.Places.Towers.TerritoriesTower;
@@ -69,7 +70,7 @@ public class Board {
      *
      * @return Market spaces list
      */
-    public List getMarket() {
+    public List<MarketSpace> getMarket() {
         return mMarket.getMarketList();
     }
     
@@ -80,7 +81,7 @@ public class Board {
      * @return Family member of the specified market space
      */
     public FamilyMember getMarketPawn(int pos){
-        return mMarket.getMarketList().get(pos-1).getPawn();
+        return mMarket.getMarketList().get(pos-1).getFamilyMember();
     }
 
     /**
@@ -116,7 +117,7 @@ public class Board {
      * @param pawn Specify in which family member put into the market space
      */
     public void setMarketSpaceFamilyMember(int pos, FamilyMember pawn) {
-        mMarket.getMarketList().get(pos-1).setPawn(pawn);
+        mMarket.getMarketList().get(pos-1).setFamilyMember(pawn);
     }
 
     /**
