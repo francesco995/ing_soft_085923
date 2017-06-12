@@ -24,10 +24,10 @@ public class Floor {
 
     /**
      *
-     * @param pawn Set floor's family memeber
+     * @param familyMember Set floor's family memeber
      */
-    public void setPawn(FamilyMember pawn) {
-        mPawn = pawn;
+    public void setPawn(FamilyMember familyMember) {
+        mPawn = familyMember;
     }
 
     /**

@@ -23,8 +23,13 @@ public class PlaceFamilyMemberInGreenFloor implements Action {
 
         int playerPower = 0;
         playerPower += familyMember.getPower();
-        playerPower += player.getFamilyMemberPlacementBonus().getBonus("BUILDING");
+        playerPower += player.getFamilyMemberPlacementBonus("BUILDING");
+        playerPower += player.getServant().getValue();
 
+        if(playerPower < floor.getDiceValue())
+            return false;
+
+        //TODO: check if there are other familyMembers in tower
 
 
 
@@ -33,7 +38,10 @@ public class PlaceFamilyMemberInGreenFloor implements Action {
 
     public static void doAction(Floor floor, Player player, FamilyMember familyMember){
 
-        //TODO: IMPLEMENT
+        player.add(floor.getBoardBonus().getResourcesBonus());
+        player.add(floor.getBoardBonus().getPointsBonus());
+
+        player.addBuildingCard( (Building) floor.getCard() );
 
     }
 

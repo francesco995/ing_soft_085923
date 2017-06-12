@@ -4,6 +4,9 @@ import it.polimi.ingsw.ps09.controller.Game;
 import it.polimi.ingsw.ps09.model.Bonus.FamilyMemberPlacementBonus;
 import it.polimi.ingsw.ps09.model.Bonus.FamilyMemberPlacementResourcesDiscount;
 import it.polimi.ingsw.ps09.model.Bonus.HarvestAndProductionBonus;
+import it.polimi.ingsw.ps09.model.DevelopmentCardEffects.DevelopmentCardEffect;
+import it.polimi.ingsw.ps09.model.DevelopmentCards.*;
+import it.polimi.ingsw.ps09.model.DevelopmentCards.Character;
 import it.polimi.ingsw.ps09.model.Points.FaithPoints;
 import it.polimi.ingsw.ps09.model.Points.MilitaryPoints;
 import it.polimi.ingsw.ps09.model.Points.VictoryPoints;
@@ -37,8 +40,11 @@ public class Player {
     private UserPoints mUserPoints;
 
     //PLAYER OBJECTS
+
+    private List<DevelopmentCardEffect> mPermanentEffects;
+    private List<DevelopmentCardEffect> mEndGameEffects;
+
     private List<LeaderCard> mLeaderCards;
-    private PermanentPlayerEffects mPermanentEffects;
     private HarvestAndProductionBonus mHarvestAndProductionBonus;
     private FamilyMemberPlacementBonus mFamilyMemberPlacementBonus;
     private FamilyMemberPlacementResourcesDiscount mFamilyMemberPlacementResourcesDiscount;
@@ -106,6 +112,10 @@ public class Player {
         PLAYER_ID = userId;
 
         mLeaderCards = new LinkedList<>();
+
+        mPermanentEffects = new LinkedList<>();
+        mEndGameEffects = new LinkedList<>();
+
         mHarvestAndProductionBonus = new HarvestAndProductionBonus();
         mFamilyMemberPlacementBonus = new FamilyMemberPlacementBonus();
         mFamilyMemberPlacementResourcesDiscount = new FamilyMemberPlacementResourcesDiscount();
@@ -118,6 +128,8 @@ public class Player {
                 " with color: " + mUserColor +
                 " with: " + mPersonalBoard.getCoins().getValue() + " initial Coins");
     }
+
+
 
     //Disable logger for Unit Testing
     public void disableLogger(){
@@ -147,9 +159,68 @@ public class Player {
         return mPersonalBoard;
     }
 
-    public PermanentPlayerEffects getPermanentEffects() {
+    public List<DevelopmentCardEffect> getPermanentEffects() {
         return mPermanentEffects;
     }
+
+    private void addPermanentEffects(List<DevelopmentCardEffect> permanentEffects){
+        mPermanentEffects.addAll(permanentEffects);
+    }
+
+    private void addEndGameEffects(List<DevelopmentCardEffect> endGameEffects){
+        mEndGameEffects.addAll(endGameEffects);
+    }
+
+
+    //####################################################
+    //####################################################
+    //########## Add Cards and apply effects #############
+
+    public void addCard(DevelopmentCard card, int costChoice){
+
+
+        if(card.getResourcesCosts().size() > 0)
+            remove(card.getResourcesCosts().get(costChoice));
+
+        if(card.getPointsCosts().size() > 0)
+            remove(card.getPointsCosts().get(costChoice));
+
+        card.getImmediateEffects().stream()
+                .forEach(c -> c.applyEffect(this));
+
+    }
+
+    public void addTerritoryCard(Territory card){
+
+        addCard(card, 0);
+
+    }
+
+
+    public void addBuildingCard(Building card){
+
+        addCard(card, 0);
+
+    }
+
+    public void addCharacterCard(Character card){
+
+        addCard(card, 0);
+
+        addPermanentEffects(card.getPermanentEffects());
+
+    }
+
+    public void addVentureCard(Venture card){
+
+        addCard(card, 0);
+
+        addEndGameEffects(card.getEndGameEffects());
+
+    }
+
+
+
 
 
     //####################################################
@@ -732,34 +803,6 @@ public class Player {
     }
 
 
-    //####################################################
-    //####################################################
-    //######### Check if Player can Pick Card ############
 
-//TODO: FraG Fix
- /*   public boolean canPickCard(DevelopmentCard card, BoardBonus bonus){
-        return
-                        has(new Coins(card.getResourcesCosts().getCoins().getValue()
-                                - bonus.getResourcesBonus().getCoins().getValue()))
-                &&
-                        has(new Servant(card.getResourcesCosts().getServant().getValue()
-                                - bonus.getResourcesBonus().getServant().getValue()))
-                &&
-                        has(new Stone(card.getResourcesCosts().getStone().getValue()
-                                - bonus.getResourcesBonus().getStone().getValue()))
-                &&
-                        has(new Wood(card.getResourcesCosts().getWood().getValue()
-                                - bonus.getResourcesBonus().getWood().getValue()))
-                &&
-                        has(new FaithPoints(card.getPointsCosts().getFaithPoints().getValue()
-                                - bonus.getPointsBonus().getFaithPoints().getValue()))
-                &&
-                        has(new MilitaryPoints(card.getPointsCosts().getMilitaryPoints().getValue()
-                                - bonus.getPointsBonus().getMilitaryPoints().getValue()))
-                &&
-                        has(new VictoryPoints(card.getPointsCosts().getVictoryPoints().getValue()
-                                - bonus.getPointsBonus().getVictoryPoints().getValue()));
-    }
-*/
 
 }
