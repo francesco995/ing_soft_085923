@@ -4,7 +4,7 @@ import it.polimi.ingsw.ps09.model.Player;
 
 /**
  * Created by francesco995 on 04/06/2017.
- * Gain permanent Harvest / Production action bonus
+ * Gain permanent HarvestArea / ProductionArea action bonus
  */
 public class GainHarvestAndProductionBonus implements DevelopmentCardEffect {
 

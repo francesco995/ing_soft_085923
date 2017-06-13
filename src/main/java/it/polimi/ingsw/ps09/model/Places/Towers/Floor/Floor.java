@@ -4,6 +4,8 @@ import it.polimi.ingsw.ps09.model.BoardBonus;
 import it.polimi.ingsw.ps09.model.DevelopmentCards.DevelopmentCard;
 import it.polimi.ingsw.ps09.model.FamilyMembers.FamilyMember;
 
+import java.util.StringJoiner;
+
 /**
  * Created by ale on 10/05/2017.
  */
@@ -88,6 +90,23 @@ public class Floor {
 
         else
             return false;
+    }
+
+    @Override
+    public String toString(){
+
+        StringJoiner mStringFloor = new StringJoiner("\n          ", "", "");
+
+        mStringFloor.add("");
+        mStringFloor.add("Dice value: " + mDiceValue);
+        mStringFloor.add("Bonus: " + mBoardBonus);
+        mStringFloor.add("Card: " + mCard);
+        mStringFloor.add("Family Memeber: " + mPawn);
+        mStringFloor.add("\n");
+
+
+
+        return mStringFloor.toString();
     }
 
 }

@@ -4,6 +4,7 @@ import it.polimi.ingsw.ps09.model.FamilyMembers.FamilyMember;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.StringJoiner;
 
 /**
  * Created by ale on 09/05/2017.
@@ -60,6 +61,22 @@ public class Council extends Place {
      */
     public void clearAll(){
         mCouncilOrderList.clear();
+    }
+
+    @Override
+    public String toString(){
+
+        StringJoiner mStringCouncil = new StringJoiner("\n", "", "");
+
+        mStringCouncil.add("Order list:");
+        mStringCouncil.add("");
+
+        for (int cont=0; cont<mCouncilOrderList.size(); cont++){
+
+            mStringCouncil.add("     " + (cont + 1) + ": " + mCouncilOrderList.get(cont));
+        }
+
+        return mStringCouncil.toString();
     }
 
 }

@@ -5,11 +5,11 @@ import java.util.Map;
 
 /**
  * Created by francesco995 on 04/06/2017.
- * Whenever a Player performs a Harvest or a Production action (through a Family Member or
+ * Whenever a Player performs a HarvestArea or a ProductionArea action (through a Family Member or
  * as an effect of another card), increase the value of the action by X.
  *
  * This Bonus is action-specific, so it can be different depending if the action
- * is Production or Harvest
+ * is ProductionArea or HarvestArea
  */
 public class HarvestAndProductionBonus {
 

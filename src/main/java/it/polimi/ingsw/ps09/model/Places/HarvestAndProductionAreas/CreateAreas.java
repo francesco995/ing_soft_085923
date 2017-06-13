@@ -4,6 +4,7 @@ import it.polimi.ingsw.ps09.model.FamilyMembers.FamilyMember;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.StringJoiner;
 
 /**
  * Created by ale on 13/05/2017.
@@ -77,6 +78,23 @@ public class CreateAreas {
     //Clear SlotList
     public void clearAll(){
         mSlotList.clear();
+    }
+
+    @Override
+    public String toString(){
+
+        StringJoiner mStringSlot = new StringJoiner("\n", "", "");
+
+        for(int cont=0; cont<mSlotList.size(); cont++){
+
+            mStringSlot.add("");
+            mStringSlot.add("Area " + (cont+1) + ":");
+            mStringSlot.add(mSlotList.get(cont).toString());
+            mStringSlot.add("");
+
+        }
+
+        return mStringSlot.toString();
     }
 
 }
