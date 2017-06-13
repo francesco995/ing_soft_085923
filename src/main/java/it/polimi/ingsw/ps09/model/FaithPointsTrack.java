@@ -30,7 +30,7 @@ public class FaithPointsTrack {
         File mDirectory = new File("./");
 
         String mFilePath = mDirectory.getAbsolutePath().replace(".",
-                "src\\main\\res\\");
+                "src/main/res/");
 
         String mStringDeck;
 

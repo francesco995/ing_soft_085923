@@ -65,7 +65,7 @@ public class PersonalBoardBonus {
         File mDirectory = new File("./");
 
         String mFilePath = mDirectory.getAbsolutePath().replace(".",
-                "src\\main\\res\\PersonalBoardBonus\\");
+                "src/main/res/PersonalBoardBonus/");
 
         String mStringDeck;
 

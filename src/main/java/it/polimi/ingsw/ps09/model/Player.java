@@ -1,6 +1,7 @@
 package it.polimi.ingsw.ps09.model;
 
 import it.polimi.ingsw.ps09.controller.Game;
+import it.polimi.ingsw.ps09.model.Bonus.BonusFlags;
 import it.polimi.ingsw.ps09.model.Bonus.FamilyMemberPlacementBonus;
 import it.polimi.ingsw.ps09.model.Bonus.FamilyMemberPlacementResourcesDiscount;
 import it.polimi.ingsw.ps09.model.Bonus.HarvestAndProductionBonus;
@@ -33,11 +34,11 @@ public class Player {
     //VARIABLES
     private String mUserName;
     private String mUserColor;
-    private Boolean mHighFloorBonus = true;
+    private BonusFlags mUserFlags;
 
     //GAME OBJECTS
-    private PersonalBoard mPersonalBoard;
-    private UserPoints mUserPoints;
+    private PersonalBoard mPersonalBoard; // già tostring
+    private UserPoints mUserPoints; //
 
     //PLAYER OBJECTS
 
@@ -274,22 +275,10 @@ public class Player {
 
 
 
-    //No High Floor bonus
-
-    /**
-     * It sets the mHighFloorBonus to false for the current player
-     */
-    public void noHighFloorBonus(){
-        mHighFloorBonus = false;
-    }
-
     public static int getPlayerId() {
         return PLAYER_ID;
     }
 
-    public Boolean getHighFloorBonus() {
-        return mHighFloorBonus;
-    }
 
     //####################################################
     //####################################################
