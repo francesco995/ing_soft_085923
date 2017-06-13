@@ -1,6 +1,6 @@
 package it.polimi.ingsw.ps09.model.Resources;
 
-import it.polimi.ingsw.ps09.controller.Game;
+import it.polimi.ingsw.ps09.controller.Game.Game;
 import it.polimi.ingsw.ps09.model.Player;
 
 /**

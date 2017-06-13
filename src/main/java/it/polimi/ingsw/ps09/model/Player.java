@@ -1,6 +1,6 @@
 package it.polimi.ingsw.ps09.model;
 
-import it.polimi.ingsw.ps09.controller.Game;
+import it.polimi.ingsw.ps09.controller.Game.Game;
 import it.polimi.ingsw.ps09.model.Bonus.BonusFlags;
 import it.polimi.ingsw.ps09.model.Bonus.FamilyMemberPlacementBonus;
 import it.polimi.ingsw.ps09.model.Bonus.FamilyMemberPlacementResourcesDiscount;
@@ -8,6 +8,9 @@ import it.polimi.ingsw.ps09.model.Bonus.HarvestAndProductionBonus;
 import it.polimi.ingsw.ps09.model.DevelopmentCardEffects.DevelopmentCardEffect;
 import it.polimi.ingsw.ps09.model.DevelopmentCards.*;
 import it.polimi.ingsw.ps09.model.DevelopmentCards.Character;
+import it.polimi.ingsw.ps09.model.Dices.Dice;
+import it.polimi.ingsw.ps09.model.FamilyMembers.FamilyMember;
+import it.polimi.ingsw.ps09.model.FamilyMembers.PlayerFamilyMembers;
 import it.polimi.ingsw.ps09.model.Points.FaithPoints;
 import it.polimi.ingsw.ps09.model.Points.MilitaryPoints;
 import it.polimi.ingsw.ps09.model.Points.VictoryPoints;
@@ -41,6 +44,8 @@ public class Player {
     private UserPoints mUserPoints; //
 
     //PLAYER OBJECTS
+
+    private PlayerFamilyMembers mPlayerFamilyMembers;
 
     private List<DevelopmentCardEffect> mPermanentEffects;
     private List<DevelopmentCardEffect> mEndGameEffects;
@@ -121,6 +126,8 @@ public class Player {
         mFamilyMemberPlacementBonus = new FamilyMemberPlacementBonus();
         mFamilyMemberPlacementResourcesDiscount = new FamilyMemberPlacementResourcesDiscount();
 
+        mPlayerFamilyMembers = new PlayerFamilyMembers(mUserColor);
+
 
         //log created player
         mLogger.log(INFO, "Game: " + Game.GAME_ID +
@@ -170,6 +177,10 @@ public class Player {
 
     private void addEndGameEffects(List<DevelopmentCardEffect> endGameEffects){
         mEndGameEffects.addAll(endGameEffects);
+    }
+
+    public FamilyMember getFamilyMember(String color){
+        return mPlayerFamilyMembers.getFamilyMember(color.toUpperCase());
     }
 
 
@@ -246,6 +257,10 @@ public class Player {
 
         mHarvestAndProductionBonus.addBonus(bonusType, bonusValue);
 
+    }
+
+    public void setFamilyMemberPower(String familyMemberColor, Dice powerDice){
+        mPlayerFamilyMembers.setFamilyMemberPower(familyMemberColor, powerDice);
     }
 
     public int getFamilyMemberPlacementBonus(String cardType){

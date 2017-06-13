@@ -1,5 +1,6 @@
-package it.polimi.ingsw.ps09.controller;
+package it.polimi.ingsw.ps09.controller.Game;
 
+import it.polimi.ingsw.ps09.controller.PlayersOrder;
 import it.polimi.ingsw.ps09.model.Board;
 import it.polimi.ingsw.ps09.model.Decks.DevelopmentCardsDeck;
 import it.polimi.ingsw.ps09.model.Decks.ExcommunicationTilesDeck;
@@ -21,6 +22,7 @@ import it.polimi.ingsw.ps09.model.Points.VictoryPoints;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Queue;
 
 import java.util.logging.Logger;
@@ -41,44 +43,44 @@ public class Game extends Thread {
     public static int GAME_ID;
 
     //Players IDs, Names and Colors
-    private Queue<Integer> mUserIds;
-    private Queue<String> mUserNames;
-    private Queue<String> mUserColors;
+    protected List<Integer> mUserIds;
+    protected List<String> mUserNames;
+    protected List<String> mUserColors;
 
     //Number of players
     public static int PLAYERS_NUMBER;
 
     //Map of Players by ID
-    private HashMap<Integer, Player> mPlayers;
+    protected HashMap<Integer, Player> mPlayers;
 
     //The Players Order manager
-    private PlayersOrder mPlayersOrder;
+    protected PlayersOrder mPlayersOrder;
 
     //The Game Board
-    private Board mGameBoard;
+    protected Board mGameBoard;
 
     //The Period
-    int period = 1;
+    private int period = 1;
 
     //The Tracks
-    private FaithPointsTrack mFaithPointsTrack;
+    protected FaithPointsTrack mFaithPointsTrack;
 
     //Personal Board Bonus
 
-    private PersonalBoardBonus mPersonalBoardBonus;
+    protected PersonalBoardBonus mPersonalBoardBonus;
 
     //The Card Decks
-    private DevelopmentCardsDeck mDevelopmentCardsDeck;
-    private ExcommunicationTilesDeck mExcommunicationTilesDeck;
-    private LeaderCardsDeck mLeaderCardsDeck;
+    protected DevelopmentCardsDeck mDevelopmentCardsDeck;
+    protected ExcommunicationTilesDeck mExcommunicationTilesDeck;
+    protected LeaderCardsDeck mLeaderCardsDeck;
 
     //The Dices
-    private BlackDice mBlackDice;
-    private OrangeDice mOrangeDice;
-    private WhiteDice mWhiteDice;
+    protected BlackDice mBlackDice;
+    protected OrangeDice mOrangeDice;
+    protected WhiteDice mWhiteDice;
 
     //LOGGER
-    private static final Logger mLogger = Logger.getLogger(Player.class.getName());
+    protected static final Logger mLogger = Logger.getLogger(Player.class.getName());
 
 
     /**
@@ -89,10 +91,10 @@ public class Game extends Thread {
      * @param userColors Queue of UserColors
      * @param gameId     Unique GameID
      */
-    public Game(Queue<Integer> userIds, Queue<String> userNames, Queue<String> userColors, int gameId) {
+    public Game(List<Integer> userIds, List<String> userNames, List<String> userColors, int gameId) {
 
         GAME_ID = gameId;
-        PLAYERS_NUMBER = userIds.size();
+        PLAYERS_NUMBER = userNames.size();
 
         mUserIds = userIds;
         mUserNames = userNames;
@@ -111,7 +113,7 @@ public class Game extends Thread {
 
         mLogger.log(INFO, "Game: " + GAME_ID + " is setting up!");
         try {
-            setupGame();
+            GameSetup.setupGame(this);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -133,169 +135,11 @@ public class Game extends Thread {
      */
     private void startGame() throws FileNotFoundException {
 
-    }
-
-
-    /**
-     * Setup the game
-     *
-     * @throws FileNotFoundException
-     */
-    private void setupGame() throws FileNotFoundException {
-
-        //Create 3 dices
-        setupDices();
-
-        //Setup the Player objects
-        setupPlayers();
-
-        //Setup and loads the Deck objects
-        setupDecks();
-
-        //Setup and loads the bonus
-        setupFaithTracksBonus();
-        setupPersonalBoardBonus();
-
-        //Set the Board
-        mGameBoard = new Board(
-                mExcommunicationTilesDeck.drawCard(1),
-                mExcommunicationTilesDeck.drawCard(2),
-                mExcommunicationTilesDeck.drawCard(3));
-
-        fillTower();
+        RoundSetup.setupRound(this);
 
     }
 
-    /**
-     * Creates a new HashMap of Players to userIDs, each player contains his own PersonalBoard
-     */
-    private void setupPlayers() {
 
-        mPlayers = new HashMap<>();
-        mPlayersOrder = new PlayersOrder(mUserIds);
-
-        while (!mUserIds.isEmpty() && !mUserNames.isEmpty()) {
-            mPlayers.put(
-                    mUserIds.peek(),
-                    new Player(mUserNames.peek(),
-                            mUserColors.peek(),
-                            mUserIds.peek(),
-                            mPlayers.size() + 5));
-
-            mLogger.log(INFO,
-                    "Added a player to game# " + GAME_ID +
-                            " with userName: " + mUserNames.peek() +
-                            ", userColor: " + mUserColors.peek() +
-                            ", userId: " + mUserIds.peek());
-
-            mUserIds.remove();
-            mUserNames.remove();
-            mUserColors.remove();
-        }
-
-    }
-
-    /**
-     * Loads the 3 card decks
-     */
-    private void setupDecks() throws FileNotFoundException {
-
-        mDevelopmentCardsDeck = new DevelopmentCardsDeck();
-        mExcommunicationTilesDeck = new ExcommunicationTilesDeck();
-        mLeaderCardsDeck = new LeaderCardsDeck();
-
-    }
-
-    /**
-     * Setup the Dices
-     */
-    private void setupDices() {
-
-        mWhiteDice = new WhiteDice();
-        mBlackDice = new BlackDice();
-        mOrangeDice = new OrangeDice();
-
-    }
-
-    /**
-     * Setup for the FaithTracksBonus
-     * @throws FileNotFoundException
-     */
-    private void setupFaithTracksBonus() throws FileNotFoundException{
-
-        mFaithPointsTrack = new FaithPointsTrack();
-        mFaithPointsTrack.loadFromFile();
-
-    }
-
-    /**
-     * Setup for the PersonaBoardBonus
-     * @throws FileNotFoundException
-     */
-    private void setupPersonalBoardBonus() throws FileNotFoundException{
-
-       mPersonalBoardBonus = new PersonalBoardBonus();
-
-    }
-    /**
-     * void method that fill the tower with randomly drawn cards from the deck
-     */
-    private void fillTower() {
-
-
-
-        for (int i = 0; i < mGameBoard.getTerritoriesTowerFloors().size(); i++) {
-
-            //it fills all the floor no matter how many are there
-            mGameBoard.setTerritoriesTowerCard(i,
-                    (Territory) mDevelopmentCardsDeck.drawCard("TERRITORY"));
-
-        }
-
-        for (int i = 0; i < mGameBoard.getCharacterTowerFloors().size(); i++) {
-
-            //it fills all the floor no matter how many are there
-            mGameBoard.setCharacterTowerCard(i,
-                    (Character) mDevelopmentCardsDeck.drawCard("CHARACTER"));
-
-        }
-
-        for (int i = 0; i < mGameBoard.getBuildingsTowerFloors().size(); i++) {
-
-            //it fills all the floor no matter how many are there
-            mGameBoard.setBuildingsTowerCard(i,
-                    (Building) mDevelopmentCardsDeck.drawCard("BUILDING"));
-
-        }
-
-        for (int i = 0; i < mGameBoard.getVenturesTowerFloors().size(); i++) {
-            //it fills all the floor no matter how many are there
-            mGameBoard.setVenturesTowerCard(i,
-                    (Venture) mDevelopmentCardsDeck.drawCard("VENTURE"));
-
-        }
-    }
-
-    /**
-     * Simple method that roll all the dices
-     */
-    private void rollDices() {
-
-        mBlackDice.roll();
-        mWhiteDice.roll();
-        mOrangeDice.roll();
-
-    }
-
-    /**
-     * Prepare the board for a new Round (PHASE A)
-     */
-    private void roundSetup() {
-
-        fillTower();
-        rollDices();
-
-    }
 
     /**
      * It calls the vatican report only when a period end (once every two round) (PHASE C)

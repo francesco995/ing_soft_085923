@@ -11,7 +11,8 @@ public class NoFloorBonusEffect implements DevelopmentCardEffect {
     @Override
     public void applyEffect(Player player) {
 
-        //TODO: implement method
+        //TODO: Implement
+        //player.noHighFloorBonus();
 
     }
 

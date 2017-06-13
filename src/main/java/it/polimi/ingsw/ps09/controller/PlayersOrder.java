@@ -12,13 +12,9 @@ public class PlayersOrder {
     //OTHER VARIABLES
     Random mRandom = new Random();
 
-    public PlayersOrder(Queue<Integer> userIds){
-
-        long seed = System.nanoTime();
+    public PlayersOrder(List<Integer> userIds){
 
         mPlayersOrder = new ArrayList<>(userIds);
-
-        //Collections.shuffle(mPlayersOrder, new Random(seed));
 
     }
 

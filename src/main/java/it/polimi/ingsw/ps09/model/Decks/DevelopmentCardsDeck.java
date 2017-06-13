@@ -1,7 +1,7 @@
 package it.polimi.ingsw.ps09.model.Decks;
 
 import com.google.gson.GsonBuilder;
-import it.polimi.ingsw.ps09.controller.Game;
+import it.polimi.ingsw.ps09.controller.Game.Game;
 import it.polimi.ingsw.ps09.model.DevelopmentCardEffects.DevelopmentCardEffect;
 import it.polimi.ingsw.ps09.model.DevelopmentCards.*;
 import it.polimi.ingsw.ps09.model.DevelopmentCards.Character;
