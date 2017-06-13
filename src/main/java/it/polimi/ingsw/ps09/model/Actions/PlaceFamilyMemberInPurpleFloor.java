@@ -1,5 +1,6 @@
 package it.polimi.ingsw.ps09.model.Actions;
 
+import it.polimi.ingsw.ps09.model.Board;
 import it.polimi.ingsw.ps09.model.FamilyMembers.FamilyMember;
 import it.polimi.ingsw.ps09.model.Places.Towers.Floor.Floor;
 import it.polimi.ingsw.ps09.model.Player;
@@ -7,7 +8,16 @@ import it.polimi.ingsw.ps09.model.Player;
 /**
  * Created by francesco995 on 11/06/2017.
  */
-public class PlaceFamilyMemberInPurpleFloor extends Action {
+public class PlaceFamilyMemberInPurpleFloor extends PlaceFamilyMemberInFloor {
+
+
+    public PlaceFamilyMemberInPurpleFloor(Board board, int floorIndex, Player player, FamilyMember familyMember){
+
+        super(board, floorIndex, player, familyMember);
+
+    }
+
+
 
     public static boolean isValid(Floor floor, Player player, FamilyMember familyMember){
 
@@ -16,7 +26,7 @@ public class PlaceFamilyMemberInPurpleFloor extends Action {
         return true;
     }
 
-    public static void doAction(Floor floor, Player player, FamilyMember familyMember){
+    public void doAction(Floor floor, Player player, FamilyMember familyMember){
 
         //TODO: IMPLEMENT
 

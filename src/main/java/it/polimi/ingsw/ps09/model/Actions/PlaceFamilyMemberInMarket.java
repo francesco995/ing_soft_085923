@@ -1,11 +1,10 @@
 package it.polimi.ingsw.ps09.model.Actions;
 
-import it.polimi.ingsw.ps09.controller.Game;
+import it.polimi.ingsw.ps09.controller.Game.Game;
 import it.polimi.ingsw.ps09.model.Board;
 import it.polimi.ingsw.ps09.model.FamilyMembers.FamilyMember;
 import it.polimi.ingsw.ps09.model.Player;
 import it.polimi.ingsw.ps09.model.Resources.Servant;
-import it.polimi.ingsw.ps09.model.UserResources;
 
 import java.io.InvalidObjectException;
 
@@ -38,7 +37,7 @@ public class PlaceFamilyMemberInMarket extends Action {
         return true;
     }
 
-    public static void doAction
+    public void doAction
             (Board board, Player player, FamilyMember familyMember, int marketIndex)
             throws InvalidObjectException, IndexOutOfBoundsException {
 

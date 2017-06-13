@@ -12,7 +12,7 @@ public class Harvest extends Action {
         return true;
     }
 
-    public static void doAction(){
+    public void doAction(){
 
         //TODO: IMPLEMENT
 

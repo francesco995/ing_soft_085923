@@ -14,7 +14,7 @@ public class Production extends Action {
         return true;
     }
 
-    public static void doAction(){
+    public void doAction(){
 
         //TODO: IMPLEMENT
 

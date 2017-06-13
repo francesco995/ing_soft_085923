@@ -17,7 +17,7 @@ public class PlaceFamilyMemberInTheCouncilPalace extends Action {
         return true;
     }
 
-    public static void doAction(Floor floor, Player player, FamilyMember familyMember){
+    public void doAction(Floor floor, Player player, FamilyMember familyMember){
 
         //TODO: IMPLEMENT
 
