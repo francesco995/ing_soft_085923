@@ -5,7 +5,6 @@ import it.polimi.ingsw.ps09.model.DevelopmentCards.Building;
 import it.polimi.ingsw.ps09.model.DevelopmentCards.Character;
 import it.polimi.ingsw.ps09.model.DevelopmentCards.Territory;
 import it.polimi.ingsw.ps09.model.DevelopmentCards.Venture;
-import it.polimi.ingsw.ps09.model.Points.FaithPoints;
 import it.polimi.ingsw.ps09.model.Resources.Coins;
 import it.polimi.ingsw.ps09.model.Resources.Servant;
 import it.polimi.ingsw.ps09.model.Resources.Stone;
@@ -42,6 +41,18 @@ public class PersonalBoard {
         mUserResources = userResources;
     }
 
+    @Override
+    public String toString(){
+
+        String mString = "Personal Board: \n";
+
+        mString += mPersonalBoardCards.toString();
+        mString += "\n\nUser Resources: \n\n";
+        mString += mUserResources.toString();
+
+        return mString;
+
+    }
 
     //GETTERS
 
@@ -102,22 +113,22 @@ public class PersonalBoard {
     //Add single CARD
     //Add BUILDING
     public void add(Building building){
-        mPersonalBoardCards.addBuilding(building);
+        mPersonalBoardCards.add(building);
     }
 
     //Add CHARACTER
     public void add(Character character){
-        mPersonalBoardCards.addCharacter(character);
+        mPersonalBoardCards.add(character);
     }
 
     //Add TERRITORY
     public void add(Territory territory){
-        mPersonalBoardCards.addTerritory(territory);
+        mPersonalBoardCards.add(territory);
     }
 
     //Add VENTURE
     public void add(Venture venture){
-        mPersonalBoardCards.addVenture(venture);
+        mPersonalBoardCards.add(venture);
     }
 
 
