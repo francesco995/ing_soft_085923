@@ -9,7 +9,7 @@ import it.polimi.ingsw.ps09.model.Player;
 /**
  * Created by francesco995 on 08/06/2017.
  */
-public class PlaceFamilyMemberInGreenFloor implements Action {
+public class PlaceFamilyMemberInGreenFloor extends Action {
 
     public static boolean isValid(Floor floor, Player player, FamilyMember familyMember){
 
@@ -19,7 +19,7 @@ public class PlaceFamilyMemberInGreenFloor implements Action {
             return false;
         }
 
-        Building card = (Building) floor.getCard();
+        //Building card = (Building) floor.getCard();
 
         int playerPower = 0;
         playerPower += familyMember.getPower();

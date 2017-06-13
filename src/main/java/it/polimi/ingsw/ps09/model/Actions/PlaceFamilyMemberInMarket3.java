@@ -12,7 +12,7 @@ import java.io.InvalidObjectException;
 /**
  * Created by francesco995 on 11/06/2017.
  */
-public class PlaceFamilyMemberInMarket3 implements Action {
+public class PlaceFamilyMemberInMarket3 extends Action {
 
     public static boolean isValid(Board board, Player player, FamilyMember familyMember){
 

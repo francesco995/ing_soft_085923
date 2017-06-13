@@ -3,7 +3,7 @@ package it.polimi.ingsw.ps09.model.Actions;
 /**
  * Created by francesco995 on 11/06/2017.
  */
-public class Harvest implements Action {
+public class Harvest extends Action {
 
     public static boolean isValid(){
 
