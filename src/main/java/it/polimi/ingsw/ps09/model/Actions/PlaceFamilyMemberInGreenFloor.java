@@ -1,6 +1,5 @@
 package it.polimi.ingsw.ps09.model.Actions;
 
-import it.polimi.ingsw.ps09.model.Board;
 import it.polimi.ingsw.ps09.model.DevelopmentCards.Building;
 import it.polimi.ingsw.ps09.model.FamilyMembers.FamilyMember;
 import it.polimi.ingsw.ps09.model.Places.Towers.Floor.Floor;
