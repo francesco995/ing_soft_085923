@@ -34,16 +34,16 @@ public class ExcommunicationTilesDeck {
         //Create the directory path
         File mDirectory = new File("./");
         String mFilePath = mDirectory.getAbsolutePath().replace(".",
-                "src\\main\\res\\ExcommunicationTilesDecks\\");
+                "src/main/res/ExcommunicationTilesDecks/");
 
 
         //For each period and for each type of card, fill the corresponding Map and LinkedList
 
-        mDeck.put(1, loadDeck(mFilePath + "\\Tier1\\"));
+        mDeck.put(1, loadDeck(mFilePath + "/Tier1/"));
 
-        mDeck.put(2, loadDeck(mFilePath + "\\Tier2\\"));
+        mDeck.put(2, loadDeck(mFilePath + "/Tier2/"));
 
-        mDeck.put(3, loadDeck(mFilePath + "\\Tier3\\"));
+        mDeck.put(3, loadDeck(mFilePath + "/Tier3/"));
 
 
     }
