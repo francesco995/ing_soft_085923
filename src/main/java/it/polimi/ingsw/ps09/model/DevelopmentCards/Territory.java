@@ -15,7 +15,7 @@ public class Territory extends DevelopmentCard {
 
     //GREEN CARD
 
-    //Harvest COST
+    //HarvestArea COST
     private int mProductionCost;
 
     //TODO: check if only one list of DEVCARDEFF works
@@ -52,7 +52,7 @@ public class Territory extends DevelopmentCard {
 
         mStringCard.add(super.toString());
 
-        mStringCard.add("Harvest Effects (Cost: " + mProductionCost + "):");
+        mStringCard.add("HarvestArea Effects (Cost: " + mProductionCost + "):");
         mHarvestEffects.stream()
                 .map(DevelopmentCardEffect::toString)
                 .forEach(mStringCard::add);

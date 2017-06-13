@@ -2,6 +2,7 @@ package it.polimi.ingsw.ps09.model.Places.Market;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.StringJoiner;
 
 /**
  * Created by ale on 12/05/2017.
@@ -43,6 +44,22 @@ public class Market {
     //Clear MarketSpaces for a new round
     public void clearAll(){
         mMarketSpaceSpaces.clear();
+    }
+
+    @Override
+    public String toString(){
+
+        StringJoiner mStringMarket = new StringJoiner("\n", "", "");
+
+        for (int cont=0; cont<mMarketSpaceSpaces.size(); cont++){
+
+            mStringMarket.add("");
+            mStringMarket.add("Market Space: " + (cont + 1));
+            mStringMarket.add(mMarketSpaceSpaces.get(cont).toString());
+            mStringMarket.add("");
+        }
+
+        return mStringMarket.toString();
     }
 
 }

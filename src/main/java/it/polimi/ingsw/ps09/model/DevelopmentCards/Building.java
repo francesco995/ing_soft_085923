@@ -14,7 +14,7 @@ public class Building extends DevelopmentCard {
 
     //YELLOW CARD
 
-    //Production COST
+    //ProductionArea COST
     private int mProductionCost;
 
     private List<DevelopmentCardEffect> mProductionEffects;
@@ -33,7 +33,7 @@ public class Building extends DevelopmentCard {
     }
 
 
-//Production Effect
+//ProductionArea Effect
 
     //TODO: check if only one list of DEVCARDEFF works
 
@@ -47,7 +47,7 @@ public class Building extends DevelopmentCard {
 
         mStringCard.add(super.toString());
 
-        mStringCard.add("Production Effects (Cost: " + mProductionCost + "):");
+        mStringCard.add("ProductionArea Effects (Cost: " + mProductionCost + "):");
         mProductionEffects.stream()
                 .map(DevelopmentCardEffect::toString)
                 .forEach(mStringCard::add);

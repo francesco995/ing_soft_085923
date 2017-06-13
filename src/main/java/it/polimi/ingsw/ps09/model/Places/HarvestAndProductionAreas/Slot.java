@@ -3,6 +3,8 @@ package it.polimi.ingsw.ps09.model.Places.HarvestAndProductionAreas;
 import it.polimi.ingsw.ps09.model.FamilyMembers.FamilyMember;
 import it.polimi.ingsw.ps09.model.Places.Place;
 
+import java.util.StringJoiner;
+
 /**
  * Created by ale on 09/05/2017.
  */
@@ -64,5 +66,19 @@ public class Slot extends Place {
 
     public void setDiceValue(int diceValue) {
         mDiceValue = diceValue;
+    }
+
+    @Override
+    public String toString(){
+
+        StringJoiner mStringSlot = new StringJoiner("\n     ", "", "");
+
+        mStringSlot.add("");
+        mStringSlot.add("Dice value: " + mDiceValue);
+        mStringSlot.add("Family Member: " + mPawn);
+
+
+
+        return mStringSlot.toString();
     }
 }

@@ -4,6 +4,8 @@ import it.polimi.ingsw.ps09.model.BoardBonus;
 import it.polimi.ingsw.ps09.model.FamilyMembers.FamilyMember;
 import it.polimi.ingsw.ps09.model.Places.Place;
 
+import java.util.StringJoiner;
+
 /**
  * Created by ale on 09/05/2017.
  */
@@ -73,6 +75,20 @@ public class MarketSpace extends Place {
 
         else
             return false;
+    }
+
+    @Override
+    public String toString(){
+
+        StringJoiner mStringMarket = new StringJoiner("\n     ", "", "");
+
+        mStringMarket.add("");
+        mStringMarket.add("Family Member: " + mFamilyMember);
+        mStringMarket.add("Bonus: " + mBoardBonus);
+        mStringMarket.add("Dice Value: " + mDiceValue);
+
+
+        return mStringMarket.toString();
     }
 
 }

@@ -3,8 +3,8 @@ package it.polimi.ingsw.ps09.model;
 import it.polimi.ingsw.ps09.model.DevelopmentCards.DevelopmentCard;
 import it.polimi.ingsw.ps09.model.FamilyMembers.FamilyMember;
 import it.polimi.ingsw.ps09.model.Places.Council;
-import it.polimi.ingsw.ps09.model.Places.HarvestAndProductionAreas.Harvest;
-import it.polimi.ingsw.ps09.model.Places.HarvestAndProductionAreas.Production;
+import it.polimi.ingsw.ps09.model.Places.HarvestAndProductionAreas.HarvestArea;
+import it.polimi.ingsw.ps09.model.Places.HarvestAndProductionAreas.ProductionArea;
 import it.polimi.ingsw.ps09.model.Places.Market.Market;
 import it.polimi.ingsw.ps09.model.Places.Market.MarketSpace;
 import it.polimi.ingsw.ps09.model.Places.Towers.BuildingsTower;
@@ -15,6 +15,7 @@ import it.polimi.ingsw.ps09.model.Places.Towers.VenturesTower;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.StringJoiner;
 
 /**
  * Created by ale on 14/05/2017.
@@ -23,8 +24,8 @@ public class Board {
 
     private Market mMarket;
     private Council mCouncil;
-    private Production mProduction;
-    private Harvest mHarvest;
+    private ProductionArea mProductionArea;
+    private HarvestArea mHarvestArea;
 
     private CharactersTower mCharactersTower;
     private TerritoriesTower mTerritoriesTower;
@@ -46,8 +47,8 @@ public class Board {
 
         mMarket = new Market();
         mCouncil = new Council();
-        mProduction = new Production();
-        mHarvest = new Harvest();
+        mProductionArea = new ProductionArea();
+        mHarvestArea = new HarvestArea();
 
         mCharactersTower = new CharactersTower();
         mTerritoriesTower = new TerritoriesTower();
@@ -168,7 +169,7 @@ public class Board {
 
     //####################################################
     //####################################################
-    //################# Production #######################
+    //################# ProductionArea #######################
 
     //TODO: ALE L VEDI SE RIESCI A RIMANERE DRY CON HARVEST E PRODUCTION INSIEME
 
@@ -176,8 +177,8 @@ public class Board {
      *
      * @return Get production area object
      */
-    public Production getProduction() {
-        return mProduction;
+    public ProductionArea getProduction() {
+        return mProductionArea;
     }
 
     /**
@@ -185,7 +186,7 @@ public class Board {
      * @return Get list of those in production area
      */
     public List getProductionList() {
-        return mProduction.getList();
+        return mProductionArea.getList();
     }
 
     /**
@@ -193,7 +194,7 @@ public class Board {
      * @param pawn Family member to be add into production area
      */
     public void addFamilyMemberInProduction(FamilyMember pawn){
-        mProduction.addMember(pawn);
+        mProductionArea.addMember(pawn);
     }
 
     //TODO: Ale try to do not hardcode
@@ -203,7 +204,7 @@ public class Board {
      * @return Get production dice cost
      */
     public int getProductionSlotDiceValue(){
-        if(mProduction.getList().size()==0)
+        if(mProductionArea.getList().size()==0)
             return 1;
 
         else
@@ -212,14 +213,14 @@ public class Board {
 
     //####################################################
     //####################################################
-    //#################### Harvest #######################
+    //#################### HarvestArea #######################
 
     /**
      *
      * @return Get harvest area object
      */
-    public Harvest getHarvest() {
-        return mHarvest;
+    public HarvestArea getHarvest() {
+        return mHarvestArea;
     }
 
     /**
@@ -227,7 +228,7 @@ public class Board {
      * @return Get list of those in harvest area
      */
     public List getHarvestList() {
-       return mHarvest.getList();
+       return mHarvestArea.getList();
     }
 
     /**
@@ -235,7 +236,7 @@ public class Board {
      * @param pawn Family member to be add into production area
      */
     public void addFamilyMemberInHarvest(FamilyMember pawn){
-        mHarvest.addMember(pawn);
+        mHarvestArea.addMember(pawn);
     }
 
     //TODO: Ale try to do not hardcode
@@ -245,7 +246,7 @@ public class Board {
      * @return Get production dice cost
      */
     public int getHarvestSlotDiceValue(){
-        if(mHarvest.getList().size()==0)
+        if(mHarvestArea.getList().size()==0)
             return 1;
 
         else
@@ -526,13 +527,33 @@ public class Board {
      * Clear all the board
      */
     public void clearAll(){
-        mHarvest.clearAll();
-        mProduction.clearAll();
+        mHarvestArea.clearAll();
+        mProductionArea.clearAll();
         mMarket.clearAll();
         mTerritoriesTower.clearAll();
         mCharactersTower.clearAll();
         mVenturesTower.clearAll();
         mBuildingsTower.clearAll();
         mCouncil.clearAll();
+    }
+
+    @Override
+    public String toString(){
+
+        StringJoiner mStringBoard = new StringJoiner("\n", "", "");
+
+        mStringBoard.add("Ecco la situazione attuale:");
+
+        mStringBoard.add(mTerritoriesTower.toString());
+        mStringBoard.add(mCharactersTower.toString());
+        mStringBoard.add(mBuildingsTower.toString());
+        mStringBoard.add(mVenturesTower.toString());
+
+        mStringBoard.add(mHarvestArea.toString());
+        mStringBoard.add(mProductionArea.toString());
+        mStringBoard.add(mMarket.toString());
+        mStringBoard.add(mCouncil.toString());
+
+        return mStringBoard.toString();
     }
 }

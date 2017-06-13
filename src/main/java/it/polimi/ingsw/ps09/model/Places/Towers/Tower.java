@@ -5,6 +5,7 @@ import it.polimi.ingsw.ps09.model.Places.Towers.Floor.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.StringJoiner;
 
 
 /**
@@ -116,5 +117,21 @@ public class Tower {
         mFloors.clear();
     }
 
+    @Override
+    public String toString(){
+
+        StringJoiner mStringTower = new StringJoiner("\n", "", "");
+
+        mStringTower.add("");
+        mStringTower.add("Tower color " + mColor);
+        mStringTower.add("");
+        mStringTower.add("Floor 1: " + mFloors.get(0).toString());
+        mStringTower.add("Floor 2: " + mFloors.get(1).toString());
+        mStringTower.add("Floor 3: " + mFloors.get(2).toString());
+        mStringTower.add("Floor 4: " + mFloors.get(3).toString());
+
+
+        return mStringTower.toString();
+    }
 
 }
