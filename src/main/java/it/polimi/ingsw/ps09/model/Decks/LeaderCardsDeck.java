@@ -37,7 +37,7 @@ public class LeaderCardsDeck {
         //Create the directory path
         File mDirectory = new File("./");
         String mFilePath = mDirectory.getAbsolutePath().replace(".",
-                "src\\main\\res\\LeaderCardsDeck\\");
+                "src/main/res/LeaderCardsDeck/");
 
         //For each period and for each type of card, fill the corresponding Map and LinkedList
 
