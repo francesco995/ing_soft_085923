@@ -12,4 +12,10 @@ public class GainPointMalus extends ExcommunicationTileEffect{
     public UserPoints getPointsMalus() {
         return mPointsMalus;
     }
+
+
+    @Override
+    public String toString(){
+        return ("Points malus -> " + mPointsMalus);
+    }
 }

@@ -47,4 +47,16 @@ public class  ExcommunicationTile {
         return mExcommunicationTileEffects;
 
     }
+
+    //TO STRING
+    @Override
+    public String toString(){
+        String mTile = "\n";
+        mTile += mTileName+ "period:" +mPeriod + "\neffect:";
+        for(int i= 0; i<mExcommunicationTileEffects.size(); i++)
+        {
+            mTile += mExcommunicationTileEffects.get(i).toString();
+        }
+        return mTile;
+    }
 }

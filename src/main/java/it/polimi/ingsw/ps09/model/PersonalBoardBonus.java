@@ -82,6 +82,25 @@ public class PersonalBoardBonus {
 
     }
 
+    //TO STRING
+    @Override
+    public String toString(){
+        String mBonus ="\n";
+
+        mBonus += "Territories Bonus";
+        for (int i = 0; i<mTerritoriesBonus.size(); i++){
+            mBonus += (i+1) + "->" + mTerritoriesBonus.get(i).getValue();
+        }
+        mBonus += "\n";
+        mBonus += "Characters Bonus";
+        for (int i = 0; i<mCharacterBonus.size(); i++){
+            mBonus += (i+1) + "->" + mCharacterBonus.get(i).getValue();
+        }
+
+        return mBonus;
+
+    }
+
 
     /**
      * return the number of victory points linked to the number of card owned by the player

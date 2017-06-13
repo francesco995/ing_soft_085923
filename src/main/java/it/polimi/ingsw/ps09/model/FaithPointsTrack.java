@@ -11,6 +11,7 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.StringJoiner;
 
 public class FaithPointsTrack {
 
@@ -58,4 +59,20 @@ public class FaithPointsTrack {
         return mVictoryPointsBonus.get(amount);
 
     }
-}
+
+    //TO STRING
+    @Override
+    public String toString(){
+        String mStringTrack ="\n";
+
+        mStringTrack = mStringTrack + "Faith Track Bonus:\n";
+
+           for(int i=0;i<mVictoryPointsBonus.size(); i++)
+           {
+               mStringTrack = mStringTrack + "bonus " + (i+1) +": " + mVictoryPointsBonus.get(i).getValue() + ";";
+           }
+
+           return mStringTrack.toString();
+        }
+    }
+

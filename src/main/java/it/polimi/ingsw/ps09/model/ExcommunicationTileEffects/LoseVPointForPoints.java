@@ -7,4 +7,10 @@ public class LoseVPointForPoints extends ExcommunicationTileEffect{
     //how many Victory point you must have to lose one Victory point
     private UserPoints mPoints;
 
+
+    @Override
+    public String toString(){
+        return ("Lose 1 Victory Points for every -> " + mPoints + "you have");
+    }
+
 }

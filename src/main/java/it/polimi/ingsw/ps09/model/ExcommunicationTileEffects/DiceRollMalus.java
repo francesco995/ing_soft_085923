@@ -15,4 +15,10 @@ public class DiceRollMalus extends ExcommunicationTileEffect{
     public int getDiceMalus() {
         return Math.abs(mDiceMalus);
     }
+
+
+    @Override
+    public String toString(){
+        return ("Dice Malus -> " + mDiceMalus);
+    }
 }

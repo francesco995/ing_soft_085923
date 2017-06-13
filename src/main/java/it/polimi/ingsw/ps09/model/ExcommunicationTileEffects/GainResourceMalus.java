@@ -13,5 +13,11 @@ public class GainResourceMalus extends ExcommunicationTileEffect{
     public UserResources getResourcesMalus() {
         return mResourcesMalus;
     }
+
+
+    @Override
+    public String toString(){
+        return ("Resource malus -> " + mResourcesMalus);
+    }
 }
 

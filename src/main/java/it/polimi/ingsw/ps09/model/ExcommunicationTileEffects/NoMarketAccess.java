@@ -7,4 +7,9 @@ public class NoMarketAccess extends ExcommunicationTileEffect{
 
     private boolean mMarketAccess = false;
 
+    @Override
+    public String toString(){
+        return ("You will no longer get access to market");
+    }
+
 }
