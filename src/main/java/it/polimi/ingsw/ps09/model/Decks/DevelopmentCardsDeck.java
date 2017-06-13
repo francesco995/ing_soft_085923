@@ -98,7 +98,7 @@ public class DevelopmentCardsDeck {
         //Create the directory path
         File mDirectory = new File("./");
         String mFilePath = mDirectory.getAbsolutePath().replace(".",
-                "src\\main\\res\\DevelopmentCardDecks\\");
+                "src/main/res/DevelopmentCardDecks/");
 
         //Initialize 4 maps for the 4 types of cards
         mDeck.put("BUILDING", new HashMap<>());
@@ -109,13 +109,13 @@ public class DevelopmentCardsDeck {
         //For each period and for each type of card, fill the corresponding Map and LinkedList
         for (int i = 1; i <= MAX_PERIODS; i++) {
 
-            mDeck.get("BUILDING").put(i, loadDeck(mFilePath + "BuildingDeck\\Tier" + i + "\\"));
+            mDeck.get("BUILDING").put(i, loadDeck(mFilePath + "BuildingDeck/Tier" + i + "/"));
 
-            mDeck.get("CHARACTER").put(i, loadDeck(  mFilePath + "CharacterDeck\\Tier" +  i + "\\"));
+            mDeck.get("CHARACTER").put(i, loadDeck(  mFilePath + "CharacterDeck/Tier" +  i + "/"));
 
-            mDeck.get("TERRITORY").put(i, loadDeck(mFilePath + "TerritoryDeck\\Tier" + i + "\\"));
+            mDeck.get("TERRITORY").put(i, loadDeck(mFilePath + "TerritoryDeck/Tier" + i + "/"));
 
-            mDeck.get("VENTURE").put(i, loadDeck(  mFilePath + "VentureDeck\\Tier" +  i + "\\"));
+            mDeck.get("VENTURE").put(i, loadDeck(  mFilePath + "VentureDeck/Tier" +  i + "/"));
 
         }
 
