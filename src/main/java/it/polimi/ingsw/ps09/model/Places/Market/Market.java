@@ -21,10 +21,10 @@ public class Market {
     public Market (){
 
         //Add all MarketSpace Spaces to the list
-        mMarketSpaceSpaces.add(0, new MarketSpaceSpace1());
-        mMarketSpaceSpaces.add(1, new MarketSpaceSpace2());
-        mMarketSpaceSpaces.add(2, new MarketSpaceSpace3());
-        mMarketSpaceSpaces.add(3, new MarketSpaceSpace4());
+        mMarketSpaceSpaces.add(0, new MarketSpaceSpace1(1));
+        mMarketSpaceSpaces.add(1, new MarketSpaceSpace2(1));
+        mMarketSpaceSpaces.add(2, new MarketSpaceSpace3(1));
+        mMarketSpaceSpaces.add(3, new MarketSpaceSpace4(1));
 
         //Set minimum dice value to access market spaces
         //TODO: Ale set MarketSpace's DiceValue once Dice is created by FraL

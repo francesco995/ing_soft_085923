@@ -5,16 +5,12 @@ import it.polimi.ingsw.ps09.model.Board;
 import it.polimi.ingsw.ps09.model.Decks.DevelopmentCardsDeck;
 import it.polimi.ingsw.ps09.model.Decks.ExcommunicationTilesDeck;
 import it.polimi.ingsw.ps09.model.Decks.LeaderCardsDeck;
-import it.polimi.ingsw.ps09.model.DevelopmentCards.*;
-import it.polimi.ingsw.ps09.model.DevelopmentCards.Character;
 import it.polimi.ingsw.ps09.model.Dices.BlackDice;
 import it.polimi.ingsw.ps09.model.Dices.OrangeDice;
 import it.polimi.ingsw.ps09.model.Dices.WhiteDice;
 import it.polimi.ingsw.ps09.model.FaithPointsTrack;
 import it.polimi.ingsw.ps09.model.FamilyMembers.FamilyMember;
 import it.polimi.ingsw.ps09.model.PersonalBoardBonus;
-import it.polimi.ingsw.ps09.model.Places.Towers.Floor.Floor;
-import it.polimi.ingsw.ps09.model.Places.Towers.TerritoriesTower;
 import it.polimi.ingsw.ps09.model.Places.Towers.Tower;
 import it.polimi.ingsw.ps09.model.Player;
 import it.polimi.ingsw.ps09.model.Points.VictoryPoints;
@@ -23,7 +19,6 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Queue;
 
 import java.util.logging.Logger;
 
@@ -296,7 +291,7 @@ public class Game extends Thread {
     }
 
     private void setFamilyMemberOnFloor(FamilyMember familyMember, Tower tower, int floor){
-        tower.getFloors().get(floor).setPawn(familyMember);
+        tower.getFloors().get(floor).setFamilyMember(familyMember);
     }
 
 }

@@ -81,7 +81,7 @@ public class Board {
      * @param pos Specify in which market space looking for
      * @return Family member of the specified market space
      */
-    public FamilyMember getMarketPawn(int pos){
+    public FamilyMember getMarketFamilyMember(int pos){
         return mMarket.getMarketList().get(pos-1).getFamilyMember();
     }
 
@@ -281,7 +281,7 @@ public class Board {
     }
 
     public FamilyMember getCharacterTowerFamilyMember(int floor){
-        return mCharactersTower.getFloors().get(floor-1).getPawn();
+        return mCharactersTower.getFloors().get(floor-1).getFamilyMember();
     }
 
     public BoardBonus getCharacterTowerBonus(int floor){
@@ -289,7 +289,7 @@ public class Board {
     }
 
     public boolean isCharacterTowerAvailable(){
-        return mCharactersTower.hasPawn();
+        return mCharactersTower.hasFamilyMember();
     }
 
     public boolean isCharacterTowerFloorAvailable(int floor){
@@ -297,7 +297,7 @@ public class Board {
     }
 
     public void setCharacterTowerFamilyMember(int floor, FamilyMember pawn) {
-        mCharactersTower.getFloors().get(floor).setPawn(pawn);
+        mCharactersTower.getFloors().get(floor).setFamilyMember(pawn);
     }
 
     public void setCharacterTowerBonus(int floor, BoardBonus boardBonus) {
@@ -333,7 +333,7 @@ public class Board {
     }
 
     public FamilyMember getTerritoriesTowerFamilyMember(int floor){
-        return mTerritoriesTower.getFloors().get(floor-1).getPawn();
+        return mTerritoriesTower.getFloors().get(floor-1).getFamilyMember();
     }
 
     public BoardBonus getTerritoriesTowerBonus(int floor){
@@ -341,7 +341,7 @@ public class Board {
     }
 
     public boolean isTerritoriesTowerAvailable(){
-        return mTerritoriesTower.hasPawn();
+        return mTerritoriesTower.hasFamilyMember();
     }
 
     public boolean isTerritoriesTowerFloorAvailable(int floor){
@@ -349,7 +349,7 @@ public class Board {
     }
 
     public void setTerritoriesTowerFamilyMember(int floor, FamilyMember pawn) {
-        mTerritoriesTower.getFloors().get(floor).setPawn(pawn);
+        mTerritoriesTower.getFloors().get(floor).setFamilyMember(pawn);
     }
 
     public void setTerritoriesTowerBonus(int floor, BoardBonus boardBonus) {
@@ -385,7 +385,7 @@ public class Board {
     }
 
     public FamilyMember getVenturesTowerFamilyMember(int floor){
-        return mVenturesTower.getFloors().get(floor-1).getPawn();
+        return mVenturesTower.getFloors().get(floor-1).getFamilyMember();
     }
 
     public BoardBonus getVenturesTowerBonus(int floor){
@@ -393,7 +393,7 @@ public class Board {
     }
 
     public boolean isVenturesTowerAvailable(){
-        return mVenturesTower.hasPawn();
+        return mVenturesTower.hasFamilyMember();
     }
 
     public boolean isVenturesTowerFloorAvailable(int floor){
@@ -401,7 +401,7 @@ public class Board {
     }
 
     public void setVenturesTowerFamilyMember(int floor, FamilyMember pawn) {
-        mVenturesTower.getFloors().get(floor).setPawn(pawn);
+        mVenturesTower.getFloors().get(floor).setFamilyMember(pawn);
     }
 
     public void setVenturesTowerBonus(int floor, BoardBonus boardBonus) {
@@ -437,7 +437,7 @@ public class Board {
     }
 
     public FamilyMember getBuildingsTowerFamilyMember(int floor){
-        return mBuildingsTower.getFloors().get(floor-1).getPawn();
+        return mBuildingsTower.getFloors().get(floor-1).getFamilyMember();
     }
 
     public BoardBonus getBuildingsTowerBonus(int floor){
@@ -445,7 +445,7 @@ public class Board {
     }
 
     public boolean isBuildingsTowerAvailable(){
-        return mBuildingsTower.hasPawn();
+        return mBuildingsTower.hasFamilyMember();
     }
 
     public boolean isBuildingsTowerFloorAvailable(int floor){
@@ -453,7 +453,7 @@ public class Board {
     }
 
     public void setBuildingsTowerFamilyMember(int floor, FamilyMember pawn) {
-        mBuildingsTower.getFloors().get(floor).setPawn(pawn);
+        mBuildingsTower.getFloors().get(floor).setFamilyMember(pawn);
     }
 
     public void setBuildingsTowerBonus(int floor, BoardBonus boardBonus) {
@@ -542,7 +542,7 @@ public class Board {
 
         StringJoiner mStringBoard = new StringJoiner("\n", "", "");
 
-        mStringBoard.add("Ecco la situazione attuale:");
+        mStringBoard.add("Here's the board:");
 
         mStringBoard.add(mTerritoriesTower.toString());
         mStringBoard.add(mCharactersTower.toString());

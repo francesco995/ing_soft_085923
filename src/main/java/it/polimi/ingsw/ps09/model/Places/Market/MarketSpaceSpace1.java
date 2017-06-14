@@ -5,9 +5,11 @@ package it.polimi.ingsw.ps09.model.Places.Market;
  */
 public class MarketSpaceSpace1 extends MarketSpace {
 
-    public MarketSpaceSpace1() {
 
-        //TODO: ale Receive Bonus object created by FraL
-
+    public MarketSpaceSpace1(int mDiceValue) {
+        super(mDiceValue);
     }
+
+    //TODO: ale Receive Bonus object created by FraL
+
 }

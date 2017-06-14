@@ -15,6 +15,10 @@ public class MarketSpace extends Place {
     private BoardBonus mBoardBonus;
     private int mDiceValue;
 
+    public MarketSpace(int mDiceValue) {
+        this.mDiceValue = mDiceValue;
+    }
+
     /**
      *
      * @return Family member into marketspace

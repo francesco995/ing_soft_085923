@@ -14,7 +14,7 @@ public class Floor {
     private int mDiceValue;
     private BoardBonus mBoardBonus;
     private DevelopmentCard mCard;
-    private FamilyMember mPawn;
+    private FamilyMember mFamilyMember;
 
     /**
      *
@@ -28,8 +28,8 @@ public class Floor {
      *
      * @param familyMember Set floor's family memeber
      */
-    public void setPawn(FamilyMember familyMember) {
-        mPawn = familyMember;
+    public void setFamilyMember(FamilyMember familyMember) {
+        mFamilyMember = familyMember;
     }
 
     /**
@@ -52,8 +52,8 @@ public class Floor {
      *
      * @return Get family member object who is on the floor
      */
-    public FamilyMember getPawn() {
-        return mPawn;
+    public FamilyMember getFamilyMember() {
+        return mFamilyMember;
     }
 
     /**
@@ -85,7 +85,7 @@ public class Floor {
      * @return Boolean value: true if the specified floor is available, false if not
      */
     public boolean isAvailable(){
-        if(mPawn==null)
+        if(mFamilyMember ==null)
             return true;
 
         else
@@ -101,7 +101,7 @@ public class Floor {
         mStringFloor.add("Dice value: " + mDiceValue);
         mStringFloor.add("Bonus: " + mBoardBonus);
         mStringFloor.add("Card: " + mCard);
-        mStringFloor.add("Family Memeber: " + mPawn);
+        mStringFloor.add("Family Memeber: " + mFamilyMember);
         mStringFloor.add("\n");
 
 

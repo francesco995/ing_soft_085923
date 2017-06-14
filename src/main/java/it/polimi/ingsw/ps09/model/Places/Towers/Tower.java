@@ -61,12 +61,12 @@ public class Tower {
      * @return Get boolean value: true if there's a family member in th tower, otherwise false
      */
     //Check if a Pawn is on the tower
-    public boolean hasPawn(){
+    public boolean hasFamilyMember(){
         int cont = 0;
 
         while (mFloors.get(cont)!=null){
 
-            if(mFloors.get(cont).getPawn()!=null) {
+            if(mFloors.get(cont).getFamilyMember()!=null) {
                 return true;
             }
             else
@@ -84,7 +84,7 @@ public class Tower {
     //Check if tower's floor is free
     public boolean isFree(int floor){
 
-        if(mFloors.get(floor).getPawn() == null)
+        if(mFloors.get(floor).getFamilyMember() == null)
             return true;
 
         else
@@ -101,7 +101,7 @@ public class Tower {
 
         int cont = 0;
 
-        while (mFloors.get(cont).getPawn()!=Pawn || (cont<=mFloors.size())){
+        while (mFloors.get(cont).getFamilyMember()!=Pawn || (cont<=mFloors.size())){
 
             cont++;
 

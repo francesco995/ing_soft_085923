@@ -5,6 +5,10 @@ package it.polimi.ingsw.ps09.model.Places.Market;
  */
 public class MarketSpaceSpace4 extends MarketSpace {
 
+    public MarketSpaceSpace4(int mDiceValue) {
+        super(mDiceValue);
+    }
+
     public boolean CheckNumberOfPlayer(){
         //TODO: Sapere numero di palyer per vedere se MarketSpaceSpace4 è disponibile (richiede 4 players)
 

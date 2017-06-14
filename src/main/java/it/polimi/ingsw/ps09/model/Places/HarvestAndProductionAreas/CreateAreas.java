@@ -63,7 +63,7 @@ public class CreateAreas {
             return true;
 
         for(mCont = 0; mCont<mSlotList.size(); mCont++){
-            if(mSlotList.get(mCont).getPawn() == familyMember)
+            if(mSlotList.get(mCont).getFamilyMember() == familyMember)
                 return false;
         }
 

@@ -16,12 +16,12 @@ public class Council extends Place {
 
     /**
      *
-     * @param pawn Add the family member you want to put into council
+     * @param familyMember Add the family member you want to put into council
      */
 
     //Add a FamilyMembers into Council queue
-    public void addFamilyMember(FamilyMember pawn){
-        mCouncilOrderList.add(pawn);
+    public void addFamilyMember(FamilyMember familyMember){
+        mCouncilOrderList.add(familyMember);
     }
 
     /**

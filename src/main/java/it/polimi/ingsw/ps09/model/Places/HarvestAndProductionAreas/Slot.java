@@ -10,18 +10,18 @@ import java.util.StringJoiner;
  */
 public class Slot extends Place {
 
-    private FamilyMember mPawn;
+    private FamilyMember mFamilyMember;
     private int mDiceValue;
 
     /**
      *
      * @param diceValue Dice value of the area
-     * @param FamilyMember Family member who is in the area
+     * @param familyMember Family member who is in the area
      */
 
-    public Slot(int diceValue, FamilyMember FamilyMember) {
+    public Slot(int diceValue, FamilyMember familyMember) {
         mDiceValue = diceValue;
-        mPawn = FamilyMember;
+        mFamilyMember = familyMember;
     }
 
     /**
@@ -29,8 +29,8 @@ public class Slot extends Place {
      * @return Family member who is in the area
      */
 
-    public FamilyMember getPawn() {
-        return mPawn;
+    public FamilyMember getFamilyMember() {
+        return mFamilyMember;
     }
 
     /**
@@ -44,15 +44,15 @@ public class Slot extends Place {
 
     /**
      *
-     * @param pawn Family member to set
+     * @param familyMember Family member to set
      */
 
-    public void setPawn(FamilyMember pawn) {
-        mPawn = pawn;
+    public void setFamilyMember(FamilyMember familyMember) {
+        mFamilyMember = familyMember;
     }
 
     public boolean isFree(){
-        if (mPawn==null)
+        if (mFamilyMember ==null)
             return true;
 
         else
@@ -75,7 +75,7 @@ public class Slot extends Place {
 
         mStringSlot.add("");
         mStringSlot.add("Dice value: " + mDiceValue);
-        mStringSlot.add("Family Member: " + mPawn);
+        mStringSlot.add("Family Member: " + mFamilyMember);
 
 
 
