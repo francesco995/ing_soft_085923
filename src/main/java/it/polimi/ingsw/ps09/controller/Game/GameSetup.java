@@ -11,6 +11,7 @@ import it.polimi.ingsw.ps09.model.Dices.WhiteDice;
 import it.polimi.ingsw.ps09.model.FaithPointsTrack;
 import it.polimi.ingsw.ps09.model.PersonalBoardBonus;
 import it.polimi.ingsw.ps09.model.Player;
+import it.polimi.ingsw.ps09.model.Resources.Coins;
 
 import java.io.FileNotFoundException;
 import java.util.Collections;
@@ -53,6 +54,8 @@ public class GameSetup {
         //Set the Board
         setupBoard(game);
 
+
+
     }
 
 
@@ -72,8 +75,6 @@ public class GameSetup {
      */
     private static void setupPlayers(Game game) {
 
-        long seed = System.nanoTime();
-        Collections.shuffle(game.mUserNames, new Random(seed));
 
         game.mPlayers = new HashMap<>();
         game.mPlayersOrder = new PlayersOrder(game.mUserIds);
@@ -84,7 +85,7 @@ public class GameSetup {
                     new Player(game.mUserNames.get(0),
                             game.mUserColors.get(0),
                             game.mUserIds.get(0),
-                            game.mPlayers.size() + 5));
+                            5));
 
             game.mLogger.log(INFO,
                     "Added a player to game# " + game.GAME_ID +
@@ -95,6 +96,16 @@ public class GameSetup {
             game.mUserIds.remove(0);
             game.mUserNames.remove(0);
             game.mUserColors.remove(0);
+        }
+
+        //TODO: Handle memorize connection method here before players order is mixed
+
+        game.mPlayersOrder.shufflePlayers();
+
+        for(int i = 0; i < game.mPlayersOrder.getPlayersOrder().size(); i++){
+            game.mPlayers.get(
+                    game.mPlayersOrder.getUserIdByIndex(i))
+                    .add(new Coins(i));
         }
 
     }

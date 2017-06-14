@@ -1,5 +1,6 @@
 package it.polimi.ingsw.ps09.model.DevelopmentCardEffects;
 
+import it.polimi.ingsw.ps09.controller.Game.Game;
 import it.polimi.ingsw.ps09.model.Player;
 import it.polimi.ingsw.ps09.model.UserPoints;
 import it.polimi.ingsw.ps09.model.UserResources;

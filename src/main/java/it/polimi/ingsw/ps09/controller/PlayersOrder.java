@@ -22,6 +22,15 @@ public class PlayersOrder {
         return mPlayersOrder.get(index);
     }
 
+    public List<Integer> getPlayersOrder(){
+        return mPlayersOrder;
+    }
+
+    public void shufflePlayers(){
+        long seed = System.nanoTime();
+        Collections.shuffle(mPlayersOrder, new Random(seed));
+    }
+
 
 
 }

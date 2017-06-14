@@ -22,6 +22,18 @@ public class CliApp {
 
         Scanner mScanner = new Scanner(System.in);
 
+        mUserColorsQueue.add("RED");
+        mUserColorsQueue.add("GREEN");
+        mUserColorsQueue.add("BLUE");
+        mUserColorsQueue.add("YELLOW");
+
+        mUserIDsQueue.add(101);
+        mUserIDsQueue.add(102);
+        mUserIDsQueue.add(103);
+        mUserIDsQueue.add(104);
+
+        List<String> mGameUserColorsQueue = new LinkedList<>();
+        List<Integer> mGameUserIDsQueue = new LinkedList<>();
 
         //SETUP
         System.out.println("\n\n---Hello and Welcome to Lorenzo il Magnifico---\n\n");
@@ -35,21 +47,18 @@ public class CliApp {
 
             if(!input.equalsIgnoreCase("start")){
                 mUserNamesQueue.add(input);
+                mGameUserColorsQueue.add(mUserColorsQueue.get(0));
+                mGameUserIDsQueue.add(mUserIDsQueue.get(0));
+
+                mUserColorsQueue.remove(0);
+                mUserIDsQueue.remove(0);
             }
 
         } while (!input.equalsIgnoreCase("start") && mUserNamesQueue.size() < 4);
 
-        mUserColorsQueue.add("RED");
-        mUserColorsQueue.add("GREEN");
-        mUserColorsQueue.add("BLUE");
-        mUserColorsQueue.add("YELLOW");
 
-        mUserIDsQueue.add(101);
-        mUserIDsQueue.add(102);
-        mUserIDsQueue.add(103);
-        mUserIDsQueue.add(104);
 
-        mGame = new Game(mUserIDsQueue, mUserNamesQueue, mUserColorsQueue, 100);
+        mGame = new Game(mGameUserIDsQueue, mUserNamesQueue, mGameUserColorsQueue, 100);
 
         mGame.run();
 

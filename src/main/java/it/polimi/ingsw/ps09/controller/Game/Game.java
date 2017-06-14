@@ -96,6 +96,7 @@ public class Game extends Thread {
         mUserColors = userColors;
 
         mLogger.log(INFO, "Created a new Game with ID: " + GAME_ID);
+        mLogger.log(INFO, "Created a new Game with ID: " + GAME_ID);
 
     }
 
@@ -130,7 +131,7 @@ public class Game extends Thread {
      */
     private void startGame() throws FileNotFoundException {
 
-        RoundSetup.setupRound(this);
+        Round.startRound(this);
 
     }
 
