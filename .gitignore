@@ -65,6 +65,7 @@ src/main/java/it/polimi/ingsw/ps09/FraLTest.java
 .idea/sonarlint/
 src/main/java/it/polimi/ingsw/ps09/AppTestFraG.java
 JavaDoc/
+.idea/
 *.uml
 
 src/main/java/it/polimi/ingsw/ps09/controller/FraLTest.java
