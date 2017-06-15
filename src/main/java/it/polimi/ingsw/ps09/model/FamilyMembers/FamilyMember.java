@@ -3,7 +3,7 @@ package it.polimi.ingsw.ps09.model.FamilyMembers;
 
 import it.polimi.ingsw.ps09.model.Dices.Dice;
 
-public class FamilyMember {
+public abstract class FamilyMember {
 
     //VARIABLES
     private int mPower;

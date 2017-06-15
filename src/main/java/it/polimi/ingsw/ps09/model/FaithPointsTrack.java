@@ -24,7 +24,7 @@ public class FaithPointsTrack {
      * @throws FileNotFoundException - throws an exception if it cannot open file .json
      */
 
-    public void loadFromFile() throws FileNotFoundException {
+    public FaithPointsTrack() throws FileNotFoundException {
 
 
         File mDirectory = new File("./");
@@ -74,5 +74,9 @@ public class FaithPointsTrack {
 
            return mStringTrack.toString();
         }
+
+    public List<VictoryPoints> getVictoryPointsBonus() {
+        return mVictoryPointsBonus;
     }
+}
 
