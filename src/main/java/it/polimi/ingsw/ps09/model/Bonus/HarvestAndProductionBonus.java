@@ -19,14 +19,29 @@ public class HarvestAndProductionBonus {
     }};
 
 
+    /**
+     * Get Bonus value for Harvest / Production
+     * @param bonusType Harvest or Production as String
+     * @return Bonus value
+     */
     public int getBonus(String bonusType){
         return mBonus.get(bonusType.toUpperCase());
     }
 
+    /**
+     * Set Bonus value for Harvest / Production
+     * @param bonusType Harvest or Production as String
+     * @param bonusValue Bonus value
+     */
     public void setBonus(String bonusType, int bonusValue){
         mBonus.put(bonusType.toUpperCase(), bonusValue);
     }
 
+    /**
+     * Add Bonus value for Harvest / Production
+     * @param bonusType Harvest or Production as String
+     * @param bonusValue Bonus value
+     */
     public void addBonus(String bonusType, int bonusValue){
         mBonus.put(
                 bonusType.toUpperCase(),

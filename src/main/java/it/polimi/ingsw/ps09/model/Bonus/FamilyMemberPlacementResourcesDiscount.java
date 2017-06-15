@@ -21,7 +21,7 @@ import java.util.Map;
 public class FamilyMemberPlacementResourcesDiscount {
 
     /**
-     * Map of Bonus value (UserResources) to card Type (String)
+     * Map of Discount Bonus value (UserResources) to card Type (String)
      */
     private Map<String, UserResources> mBonus = new HashMap<String, UserResources>(){{
         put("BUILDING", new UserResources());
@@ -31,11 +31,21 @@ public class FamilyMemberPlacementResourcesDiscount {
     }};
 
 
+    /**
+     * Get Discount value from card type
+     * @param cardType Card type
+     * @return Bonus Value as UserResources
+     */
     public UserResources getBonus(String cardType){
         return mBonus.get(cardType.toUpperCase());
     }
 
 
+    /**
+     * Add Discount Bonus value as UserResources
+     * @param cardType Card Type
+     * @param addBonus Bonus value as UserResources
+     */
     public void addBonus(String cardType, UserResources addBonus){
 
         UserResources tempBonus = mBonus.get(cardType.toUpperCase());

@@ -27,15 +27,29 @@ public class FamilyMemberPlacementBonus {
         put("VENTURE", 0);
     }};
 
-
+    /**
+     * Get Family Member Placement Bonus for card type
+     * @param cardType Card type
+     * @return Placement Bonus value
+     */
     public int getBonus(String cardType){
         return mBonus.get(cardType.toUpperCase());
     }
 
+    /**
+     * Set Family Member Placement Bonus for card type
+     * @param cardType Card type
+     * @param bonusValue New Bonus value
+     */
     public void setBonus(String cardType, int bonusValue){
         mBonus.put(cardType.toUpperCase(), bonusValue);
     }
 
+    /**
+     * Add Family Member Placement Bonus for card type
+     * @param cardType Card type
+     * @param bonusValue Bonus value to add
+     */
     public void addBonus(String cardType, int bonusValue){
         mBonus.put(
                 cardType.toUpperCase(),
