@@ -35,10 +35,14 @@ public class Harvest extends Action {
             //Do action
             board.getHarvest().addMember(familyMember);
             //check all player cards
-      /*  for (player.getPersonalBoard().getBoardTerritories()
-             ) {
-            
-        }
-*/
+             player.getPersonalBoard().getBoardTerritories()
+                     .stream()
+                     .filter(card -> card.getProductionCost()>familyMember.getPower()+ player.getHarvestBonus())
+                     .forEach(card ->
+                         card.getHarvestEffects().stream()
+                                 .forEach(effect -> effect.applyEffect(player))
+                     );
+
+
     }
 }
