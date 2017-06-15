@@ -58,7 +58,7 @@ public class DevelopmentCardsDeck {
     /**
      * Loads the deck from file sources
      *
-     * @throws FileNotFoundException
+     * @throws FileNotFoundException if decks are not present
      */
     public DevelopmentCardsDeck() throws FileNotFoundException {
 
@@ -107,14 +107,22 @@ public class DevelopmentCardsDeck {
         return mStringDeck;
     }
 
+    /**
+     * Deserialize a card from a String using DevelopmentCardAdapter and DevelopmentCardEffectAdapter
+     * @param cardString a json String
+     * @return a DevelopmentCard
+     */
     private DevelopmentCard loadCardFromString(String cardString) {
 
+        //Setup Gson Builder
         Gson gsonExt = null;
         GsonBuilder builder = new GsonBuilder();
 
+        //Register DevelopmentCard and DevelopmentCardEffect adapters
         builder.registerTypeAdapter(DevelopmentCard.class, new DevelopmentCardAdapter());
         builder.registerTypeAdapter(DevelopmentCardEffect.class, new DevelopmentCardEffectAdapter());
 
+        //Create Gson Builder
         gsonExt = builder.create();
 
         return gsonExt.fromJson(cardString, DevelopmentCard.class);
@@ -125,13 +133,15 @@ public class DevelopmentCardsDeck {
      * Import an object from the given file in json format
      *
      * @param fileName complete path of the file to load (from the project index)
-     * @return
+     * @return Deck List
      * @throws FileNotFoundException
      */
     private List loadDeck(String fileName) throws FileNotFoundException {
 
+        //Create a new Deck List
         List<DevelopmentCard> mTierDeck = new LinkedList<>();
 
+        //Load 8 Cards
         for (int i = 1; i <= 8; i++) {
             mTierDeck.add(loadCardFromString(loadStringFromFile(fileName + i + DECK_FORMAT)));
         }
@@ -145,12 +155,24 @@ public class DevelopmentCardsDeck {
         return mRandom.nextInt(max);
     }
 
+    /**
+     * Draw a card from of the given cardType
+     *
+     * It will always draw a card from the lowest tier available
+     *
+     * @param cardType CardType as String
+     * @return DevelopmentCard of the lowest tier available
+     */
     public DevelopmentCard drawCard(String cardType) {
 
         for (int i = 1; i <= MAX_PERIODS; i++) {
+
+            //Check if tier is not empty
             if (!mDeck.get(cardType.toUpperCase()).get(i).isEmpty()) {
 
-                DevelopmentCard mCard = (DevelopmentCard) mDeck.get(cardType).get(i).remove(getRandomNumber(mDeck.get(cardType).get(i).size()));
+                DevelopmentCard mCard =
+                        (DevelopmentCard) mDeck.get(cardType).get(i).
+                                remove(getRandomNumber(mDeck.get(cardType).get(i).size()));
 
                 //LOGGER
                 mLogger.log(INFO, "Game: " + Game.GAME_ID +
