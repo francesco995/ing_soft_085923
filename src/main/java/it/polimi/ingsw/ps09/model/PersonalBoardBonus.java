@@ -38,7 +38,7 @@ public class PersonalBoardBonus {
         File mDirectory = new File("./");
 
         String mFilePath = mDirectory.getAbsolutePath().replace(".",
-                "src\\main\\res\\PersonalBoardBonus\\");
+                "src/main/res/PersonalBoardBonus/");
 
         String mStringDeck;
 
@@ -122,5 +122,17 @@ public class PersonalBoardBonus {
 
         return mCharacterBonus.get(number);
 
+    }
+
+
+
+    //getters
+
+    public List<VictoryPoints> getTerritoriesBonus() {
+        return mTerritoriesBonus;
+    }
+
+    public List<VictoryPoints> getCharacterBonus() {
+        return mCharacterBonus;
     }
 }

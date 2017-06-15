@@ -128,7 +128,6 @@ public class GameSetup {
     private static void setupFaithTracksBonus(Game game) throws FileNotFoundException{
 
         game.mFaithPointsTrack = new FaithPointsTrack();
-        game.mFaithPointsTrack.loadFromFile();
 
     }
 
