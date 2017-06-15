@@ -17,6 +17,7 @@ public class Territory extends DevelopmentCard {
 
     //HarvestArea COST
     private int mProductionCost;
+    //TODO: fix typo and change mProdutionCost to mHarvestCost also in json cards
 
     //TODO: check if only one list of DEVCARDEFF works
 

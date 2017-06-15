@@ -1,60 +1,55 @@
 package it.polimi.ingsw.ps09.controller.Client.ServerConnections;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
+import java.io.*;
 import java.net.InetAddress;
-import java.net.ServerSocket;
 import java.net.Socket;
 
 /**
  * Created by francesco995 on 15/06/2017.
  */
-public class ServerConnectionSocket extends Thread implements ServerConnection{
+public class ServerConnectionSocket extends Thread implements ServerConnection {
 
-    ServerSocket mLocalSocket;
-    Socket mRemoteSocket;
+    private Socket mSocket;
 
+    private InetAddress mSERVER_ADDRESS;
+    private int mSERVER_PORT = 100;
 
     BufferedReader mIncomingMessages;
-    PrintWriter mOutgoingMessages;
+    BufferedWriter mOutgoingMessages;
 
     public ServerConnectionSocket() throws IOException {
 
-        mLocalSocket = new ServerSocket(101);
+        mSERVER_ADDRESS = InetAddress.getByName("localhost");
 
     }
 
-    public void run(){
+    public void run() {
+
+        try {
+
+            //Connects to Server
+            mSocket = new Socket(mSERVER_ADDRESS, mSERVER_PORT);
+
+            //Incoming and Outgoing Messages
+            mOutgoingMessages = new BufferedWriter(new OutputStreamWriter(mSocket.getOutputStream()));
+            mIncomingMessages = new BufferedReader(new InputStreamReader(mSocket.getInputStream()));
+
+            //Request connection to server
+            mOutgoingMessages.write("connect\n");
+            mOutgoingMessages.flush();
+
+            //Wait for Server response with a new free port
+            mSERVER_PORT = Integer.parseInt(mIncomingMessages.readLine());
+
+            //Close old connection
+            mSocket.close();
 
 
 
 
-
-        while(true){
-
-            try {
-
-                mRemoteSocket = mLocalSocket.accept();
-
-                mOutgoingMessages = new PrintWriter(mRemoteSocket.getOutputStream(), true);
-                mIncomingMessages = new BufferedReader(new InputStreamReader(mRemoteSocket.getInputStream()));
-
-                mOutgoingMessages.println("connect");
-
-
-                System.out.println(mIncomingMessages.readLine());
-
-
-
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-
-
 
     }
 
