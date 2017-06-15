@@ -22,12 +22,19 @@ public class GainFamilyMemberPlacementResourcesDiscount implements DevelopmentCa
 
 
 
+    /**
+     * Apply effect to a Player
+     * @param player Player to apply effect to
+     */
     @Override
     public void applyEffect(Player player) {
         player.addFamilyMemberPlacementResourcesDiscount(mCardType, mResourcesDiscount);
     }
 
 
+    /**
+     * Describe object as a string to CLI Clients
+     */
     @Override
     public String toString(){
 

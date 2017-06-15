@@ -19,13 +19,20 @@ public class GainHarvestAndProductionBonus implements DevelopmentCardEffect {
     private int mBonusValue;
 
 
-
+    /**
+     * Apply effect to a Player
+     * @param player Player to apply effect to
+     */
+    @Override
     public void applyEffect( Player player ){
 
         player.addHarvestAndProductionBonus( mBonusType, mBonusValue);
 
     }
 
+    /**
+     * Describe object as a string to CLI Clients
+     */
     @Override
     public String toString(){
 

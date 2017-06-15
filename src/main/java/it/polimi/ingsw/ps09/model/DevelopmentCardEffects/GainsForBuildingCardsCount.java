@@ -21,6 +21,26 @@ public class GainsForBuildingCardsCount implements DevelopmentCardEffect{
 
     }
 
+    /**
+     * Apply effect to a Player
+     * @param player Player to apply effect to
+     */
+    @Override
+    public void applyEffect(Player player) {
+
+
+        for (int i = 0; i < player.getBuildingsCount(); i++) {
+
+            player.add(mResourcesGains);
+            player.add(mPointsGains);
+
+        }
+
+    }
+
+    /**
+     * Describe object as a string to CLI Clients
+     */
     @Override
     public String toString(){
 
@@ -43,19 +63,6 @@ public class GainsForBuildingCardsCount implements DevelopmentCardEffect{
         toString += "for each Building";
 
         return toString;
-
-    }
-
-    @Override
-    public void applyEffect(Player player) {
-
-
-        for (int i = 0; i < player.getBuildingsCount(); i++) {
-
-            player.add(mResourcesGains);
-            player.add(mPointsGains);
-
-        }
 
     }
 }

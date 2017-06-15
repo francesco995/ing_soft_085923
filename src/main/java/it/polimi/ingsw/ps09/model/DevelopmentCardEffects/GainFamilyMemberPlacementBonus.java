@@ -17,6 +17,10 @@ public class GainFamilyMemberPlacementBonus implements DevelopmentCardEffect{
     }
 
 
+    /**
+     * Apply effect to a Player
+     * @param player Player to apply effect to
+     */
     @Override
     public void applyEffect(Player player) {
 
@@ -25,6 +29,9 @@ public class GainFamilyMemberPlacementBonus implements DevelopmentCardEffect{
     }
 
 
+    /**
+     * Describe object as a string to CLI Clients
+     */
     @Override
     public String toString(){
 

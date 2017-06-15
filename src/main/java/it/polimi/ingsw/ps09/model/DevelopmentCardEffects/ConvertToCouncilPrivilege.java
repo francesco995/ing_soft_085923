@@ -36,6 +36,28 @@ public class ConvertToCouncilPrivilege implements DevelopmentCardEffect{
 
     }
 
+    /**
+     * Apply effect to a Player
+     * @param player Player to apply effect to
+     */
+    @Override
+    public void applyEffect(Player player) {
+
+        //TODO: Prompt User for cost/gain 0 or 1
+
+        //cost payments
+        player.remove(mResourcesCosts.get(0));
+        player.remove(mPointsCosts.get(0));
+
+        //gains for conversion
+        //TODO: gain council privilege
+
+    }
+
+
+    /**
+     * Describe object as a string to CLI Clients
+     */
     @Override
     public String toString(){
 
@@ -49,21 +71,6 @@ public class ConvertToCouncilPrivilege implements DevelopmentCardEffect{
 
 
         return mConvert;
-    }
-
-
-    @Override
-    public void applyEffect(Player player) {
-
-        //TODO: Prompt User for cost/gain 0 or 1
-
-        //cost payments
-        player.remove(mResourcesCosts.get(0));
-        player.remove(mPointsCosts.get(0));
-
-        //gains for conversion
-        //TODO: gain council privilege
-
     }
 
 

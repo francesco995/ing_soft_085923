@@ -16,15 +16,23 @@ public class GainPointsEffect implements DevelopmentCardEffect{
         mPointsGains = pointsGains;
     }
 
-    @Override
-    public String toString(){
-        return ("Gain Points -> " + mPointsGains);
-    }
-
+    /**
+     * Apply effect to a Player
+     * @param player Player to apply effect to
+     */
     @Override
     public void applyEffect(Player player) {
 
         player.add(mPointsGains);
 
+    }
+
+
+    /**
+     * Describe object as a string to CLI Clients
+     */
+    @Override
+    public String toString(){
+        return ("Gain Points -> " + mPointsGains);
     }
 }

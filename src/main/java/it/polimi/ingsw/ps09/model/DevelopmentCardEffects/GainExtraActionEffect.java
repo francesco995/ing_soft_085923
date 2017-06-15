@@ -9,10 +9,21 @@ public class GainExtraActionEffect implements DevelopmentCardEffect {
 
 
 
+    /**
+     * Apply effect to a Player
+     * @param player Player to apply effect to
+     */
     @Override
     public void applyEffect(Player player) {
         //TODO: implement
     }
 
-    //TODO: toString
+    /**
+     * Describe object as a string to CLI Clients
+     */
+    @Override
+    public String toString(){
+        //TODO: implement
+        return null;
+    }
 }

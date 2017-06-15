@@ -21,6 +21,28 @@ public class GainsForVentureCardsCount implements DevelopmentCardEffect {
         mPointsGains = pointsGains;
     }
 
+    /**
+     * Apply effect to a Player
+     * @param player Player to apply effect to
+     */
+    @Override
+    public void applyEffect(Player player) {
+
+
+        for (int i = 0; i < player.getVenturesCount(); i++) {
+
+            player.add(mResourcesGains);
+            player.add(mPointsGains);
+
+        }
+
+    }
+
+
+
+    /**
+     * Describe object as a string to CLI Clients
+     */
     @Override
     public String toString(){
 
@@ -43,21 +65,6 @@ public class GainsForVentureCardsCount implements DevelopmentCardEffect {
         toString += "for each Venture";
 
         return toString;
-
-    }
-
-
-
-    @Override
-    public void applyEffect(Player player) {
-
-
-        for (int i = 0; i < player.getVenturesCount(); i++) {
-
-            player.add(mResourcesGains);
-            player.add(mPointsGains);
-
-        }
 
     }
 }

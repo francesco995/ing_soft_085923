@@ -8,6 +8,10 @@ import it.polimi.ingsw.ps09.model.Player;
  */
 public class NoFloorBonusEffect implements DevelopmentCardEffect {
 
+    /**
+     * Apply effect to a Player
+     * @param player Player to apply effect to
+     */
     @Override
     public void applyEffect(Player player) {
 
@@ -17,6 +21,9 @@ public class NoFloorBonusEffect implements DevelopmentCardEffect {
     }
 
 
+    /**
+     * Describe object as a string to CLI Clients
+     */
     @Override
     public String toString(){
 
