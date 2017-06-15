@@ -41,9 +41,10 @@ public class PlaceFamilyMemberInGreenFloor extends PlaceFamilyMemberInFloor {
             extraPrice.add(new Coins(3));
 
 
-        //assings a copy of the card to card variable to check for resources
+        //assing a copy of the card to card variable to check for resources
         Territory card = (Territory) board.getTerritoriesTowerCard(floorIndex);
-        //addExtraprice
+        //add Extra price
+        //TODO: TERRIBLE!!! you are modifying the card, not a copy
         card.getResourcesCosts().get(0).add(extraPrice);
         //check if enough resources and/or points to pay
 
