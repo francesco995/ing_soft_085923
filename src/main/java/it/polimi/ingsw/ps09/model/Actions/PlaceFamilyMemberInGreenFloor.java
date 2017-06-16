@@ -12,6 +12,7 @@ import it.polimi.ingsw.ps09.model.Resources.Coins;
  */
 public class PlaceFamilyMemberInGreenFloor extends PlaceFamilyMemberInFloor {
 
+    private static final int EXTRA_TOWER_COST = 3;
 
     public PlaceFamilyMemberInGreenFloor(Board board, int floorIndex, Player player, FamilyMember familyMember) {
 
@@ -35,17 +36,12 @@ public class PlaceFamilyMemberInGreenFloor extends PlaceFamilyMemberInFloor {
             }
 
 
-        //check if there are other familyMembers
-        Coins extraPrice = new Coins(0);
-        if(board.getTerritoriesTower().hasFamilyMember())
-            extraPrice.add(new Coins(3));
 
 
-        //assing a copy of the card to card variable to check for resources
+        //card variable to check for resources
         Territory card = (Territory) board.getTerritoriesTowerCard(floorIndex);
-        //add Extra price
-        //TODO: TERRIBLE!!! you are modifying the card, not a copy
-        card.getResourcesCosts().get(0).add(extraPrice);
+
+
         //check if enough resources and/or points to pay
 
         if(!player.has(card.getResourcesCosts().get(0)))
@@ -55,7 +51,22 @@ public class PlaceFamilyMemberInGreenFloor extends PlaceFamilyMemberInFloor {
                 <
                 card.getPointsCosts().get(0).getMilitaryPoints().getValue())
             return false;
-        else //control passed
+        else
+        //player has enough resources and/or points, check if tower already filled
+            if(board.getTerritoriesTower().hasFamilyMember())
+            {
+                if(player.getCoins().getValue()
+                        >
+                        (card.getResourcesCosts().get(0).getCoins().getValue() + EXTRA_TOWER_COST ))
+                    //passed extra coins check
+                    return true;
+                else
+                    return false;
+
+
+            }
+        else
+            //if tower not filled returns true
             return true;
 
         /*//enough coins
@@ -95,6 +106,13 @@ public class PlaceFamilyMemberInGreenFloor extends PlaceFamilyMemberInFloor {
         player.add(board.getTerritoriesTower().getFloors().get(floorIndex).getBoardBonus().getResourcesBonus());
         player.add(board.getTerritoriesTower().getFloors().get(floorIndex).getBoardBonus().getPointsBonus());
 
+        //pay for card
+        player.remove( board.getTerritoriesTowerCard(floorIndex).getResourcesCosts().get(0) );
+
+        //pay if floor already occupied
+        if(board.getTerritoriesTower().hasFamilyMember())
+            player.remove(new Coins(EXTRA_TOWER_COST));
+        //get card
         player.addTerritoryCard((Territory) board.getTerritoriesTower().getFloors().get(floorIndex).getCard());
 
         //TODO: ASK FRAG if immediate effect must be activated here or where
