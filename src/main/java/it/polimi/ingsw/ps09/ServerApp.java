@@ -1,9 +1,11 @@
 package it.polimi.ingsw.ps09;
 
+import it.polimi.ingsw.ps09.controller.Server.Server;
 import it.polimi.ingsw.ps09.controller.Server.WelcomeServers.WelcomeSocketServer;
 import it.polimi.ingsw.ps09.model.Player;
 
 import java.io.IOException;
+import java.util.SplittableRandom;
 import java.util.logging.Logger;
 
 /**
@@ -11,16 +13,23 @@ import java.util.logging.Logger;
  */
 public class ServerApp {
 
-    private static final Logger mLogger = Logger.getLogger(Player.class.getName());
+    private static final Logger mLogger = Logger.getAnonymousLogger();
+
+    private static Server mServer;
 
 
 
     public static void main(String[] args) throws IOException {
 
-        WelcomeSocketServer welcomeSocketServer = new WelcomeSocketServer();
+        System.setProperty("java.util.logging.SimpleFormatter.format", "%1$tF %1$tT %5$s%6$s%n");
 
-        welcomeSocketServer.start();
+        mServer = new Server();
 
+        mServer.startWelcomeServer();
+
+        mServer.start();
+
+        System.out.println("server started");
 
     }
 }

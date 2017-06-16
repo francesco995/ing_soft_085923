@@ -29,24 +29,24 @@ public class PlaceFamilyMemberInGreenFloor extends PlaceFamilyMemberInFloor {
             return false;
         } else
             //check if Family Member has enough power
-            if (familyMember.getPower() + player.getFamilyMemberPlacementBonus("TERRITORY")
+            if (
+                    familyMember.getPower()
+                            + player.getFamilyMemberPlacementBonus("TERRITORY")
                     <
                     board.getTerritoriesTower().getFloors().get(floorIndex).getDiceValue()) {
                 return false;
             }
 
 
-
-
         //card variable to check for resources
         Territory card = (Territory) board.getTerritoriesTowerCard(floorIndex);
-
 
         //check if enough resources and/or points to pay
 
         if(!player.has(card.getResourcesCosts().get(0)))
             return false;
         //enough Military points
+        //TODO: check. you mean points Requirements???
         else if (player.getMilitaryPoints().getValue()
                 <
                 card.getPointsCosts().get(0).getMilitaryPoints().getValue())
