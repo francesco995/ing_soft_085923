@@ -17,6 +17,8 @@ import java.util.Scanner;
 
 public class LeaderCardsDeck {
 
+    private final static int CARD_TOTAL = 20;
+    private final static int HAND_SIZE = 4;
 
     //This list is the full deck of LeaderCards
     private List<LeaderCard> mDeck = new ArrayList<>();
@@ -89,7 +91,7 @@ public class LeaderCardsDeck {
 
         List<LeaderCard> mTierDeck = new ArrayList<>();
 
-        for (int i = 1; i <= 20; i++) {
+        for (int i = 1; i <= CARD_TOTAL; i++) {
             mTierDeck.add(loadCardFromString(loadStringFromFile(fileName + i + ".json")));
         }
 
@@ -108,7 +110,7 @@ public class LeaderCardsDeck {
         List<LeaderCard> mHandOfCards = new ArrayList<LeaderCard>();
         int randomNumber;
 
-        for(int counter = 1;counter <= 4; counter++) {
+        for(int counter = 1;counter <= HAND_SIZE; counter++) {
 
             randomNumber = (int) Math.random() * mLeaderCards.size();
             mHandOfCards.add(mLeaderCards.get(randomNumber));
@@ -119,4 +121,15 @@ public class LeaderCardsDeck {
         return mHandOfCards;
     }
 
+    public static int getCardTotal() {
+        return CARD_TOTAL;
+    }
+
+    public static int getHandSize() {
+        return HAND_SIZE;
+    }
+
+    public List<LeaderCard> getDeck() {
+        return mDeck;
+    }
 }

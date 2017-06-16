@@ -15,7 +15,6 @@ public class PlayerFamilyMembers {
 
     public PlayerFamilyMembers(String playerColor) {
 
-        //TODO: ask ale about family attribute
         mPlayerFamilyMembers.put("BLACK", new BlackFamilyMember(playerColor));
         mPlayerFamilyMembers.put("ORANGE",new OrangeFamilyMember((playerColor)));
         mPlayerFamilyMembers.put("WHITE", new WhiteFamilyMember(playerColor));
@@ -27,6 +26,7 @@ public class PlayerFamilyMembers {
         return mPlayerFamilyMembers.get(color.toUpperCase());
     }
 
+    //TODO: check with FRAG if it controls if color same
     public void setFamilyMemberPower(String color, Dice powerDice){
         mPlayerFamilyMembers.get(color).setPower(powerDice);
     }

@@ -15,7 +15,7 @@ public class PlaceFamilyMemberInMarket extends Action {
 
     public static boolean isValid(Board board, Player player, FamilyMember familyMember, int marketIndex){
 
-        //Check if 4+ players are playing
+        //Check if 4+ players are playing to check if the last 2 spaces are open
         if(Game.PLAYERS_NUMBER < 4 && marketIndex > 1)
             return false;
 
