@@ -19,10 +19,10 @@ public class ServerConnectionSocket extends Thread implements ServerConnection {
 
     private String mMessage;
 
-    BufferedReader mMessageReader;
-    BufferedWriter mMessageSender;
+    private BufferedReader mMessageReader;
+    private BufferedWriter mMessageSender;
 
-    Queue<String> mIncomingMessages;
+    private Queue<String> mIncomingMessages;
 
     public ServerConnectionSocket() throws IOException {
 
@@ -109,7 +109,10 @@ public class ServerConnectionSocket extends Thread implements ServerConnection {
 
             do {
 
+                //Wait for incoming messages
                 mMessage = mMessageReader.readLine();
+
+                //Add new messages to IncomingMessages
                 mIncomingMessages.add(mMessage);
 
             }while(!mMessage.equalsIgnoreCase("close"));

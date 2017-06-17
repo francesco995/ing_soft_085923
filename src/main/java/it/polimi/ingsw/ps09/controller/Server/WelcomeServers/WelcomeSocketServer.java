@@ -1,7 +1,6 @@
 package it.polimi.ingsw.ps09.controller.Server.WelcomeServers;
 
 import it.polimi.ingsw.ps09.controller.Server.SocketPortsManager;
-import it.polimi.ingsw.ps09.model.Player;
 
 import java.io.*;
 import java.net.ServerSocket;
@@ -21,17 +20,17 @@ public class WelcomeSocketServer extends Thread implements WelcomeServer {
     private static final Logger mLogger = Logger.getLogger(WelcomeSocketServer.class.getName());
 
     //A ServerSocket listening and a Socket to answer
-    ServerSocket mLocalSocket;
-    Socket mRemoteSocket;
+    private ServerSocket mLocalSocket;
+    private Socket mRemoteSocket;
 
-    SocketPortsManager mSocketPortsManager;
+    private SocketPortsManager mSocketPortsManager;
 
-    Queue<Integer> mReadyPorts;
+    private Queue<Integer> mReadyPorts;
 
-    BufferedReader mIncomingMessages;
-    BufferedWriter mOutgoingMessages;
+    private BufferedReader mIncomingMessages;
+    private BufferedWriter mOutgoingMessages;
 
-    String mMessage;
+    private String mMessage;
 
     public WelcomeSocketServer() throws IOException {
 

@@ -17,15 +17,15 @@ import static java.util.logging.Level.INFO;
 public class PlayerConnectionSocket extends PlayerConnection {
 
     //A ServerSocket listening and a Socket to answer
-    ServerSocket mLocalSocket;
-    Socket mRemoteSocket;
+    private ServerSocket mLocalSocket;
+    private Socket mRemoteSocket;
 
-    BufferedReader mMessageReader;
-    BufferedWriter mMessageSender;
+    private BufferedReader mMessageReader;
+    private BufferedWriter mMessageSender;
 
-    String mMessage;
+    private String mMessage;
 
-    Queue<String> mIncomingMessages;
+    private Queue<String> mIncomingMessages;
 
     //LOGGER
     private static final Logger mLogger = Logger.getAnonymousLogger();
