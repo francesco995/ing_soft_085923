@@ -19,7 +19,7 @@ public class Server extends Thread{
 
     private Queue<PlayerConnection> mQueuedPlayers = new LinkedList<>();
 
-    WelcomeSocketServer mWelcomeSocketServer;
+    private WelcomeSocketServer mWelcomeSocketServer;
 
 
 
@@ -34,7 +34,6 @@ public class Server extends Thread{
 
     public void run(){
 
-
         while(true){
 
             try {
@@ -45,14 +44,15 @@ public class Server extends Thread{
 
             if(mWelcomeSocketServer.hasReadyPorts()) {
                 try {
+
                     mQueuedPlayers.add(new PlayerConnectionSocket(mWelcomeSocketServer.getReadyPort()));
+
+
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
             }
         }
-
-
 
     }
 

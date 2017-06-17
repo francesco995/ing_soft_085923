@@ -81,23 +81,21 @@ public class WelcomeSocketServer extends Thread implements WelcomeServer {
                 mOutgoingMessages = new BufferedWriter(new OutputStreamWriter(mRemoteSocket.getOutputStream()));
 
 
-                if(mMessage.equalsIgnoreCase("connect")){
+                //Answer the client with a new free port
+                port = mSocketPortsManager.getAvailablePort();
 
-                    //Answer the client with a new free port
-                    port = mSocketPortsManager.getAvailablePort();
+                mOutgoingMessages.write(String.valueOf(port));
+                mOutgoingMessages.write("\n");
+                mOutgoingMessages.flush();
 
-                    mOutgoingMessages.write(String.valueOf(port));
-                    mOutgoingMessages.write("\n");
-                    mOutgoingMessages.flush();
+                mLogger.log(INFO, "Sent new port available, port: " + port);
 
-                    mLogger.log(INFO, "Sent new port available, port: " + port);
+                mReadyPorts.add(port);
 
-                    mReadyPorts.add(port);
-
-                    mLogger.log(INFO, "Port " + port + " added to mReadyPorts");
+                mLogger.log(INFO, "Port " + port + " added to mReadyPorts");
 
 
-                }
+
 
         } catch (IOException e) {
             e.printStackTrace();

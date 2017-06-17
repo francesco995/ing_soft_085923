@@ -27,6 +27,8 @@ public class PlayerConnectionSocket extends PlayerConnection {
 
     private Queue<String> mIncomingMessages;
 
+    private String mUserName;
+
     //LOGGER
     private static final Logger mLogger = Logger.getAnonymousLogger();
 
@@ -91,13 +93,15 @@ public class PlayerConnectionSocket extends PlayerConnection {
             //Start listening to the socket
             mRemoteSocket = mLocalSocket.accept();
 
-            mLogger.log(INFO, "Socket connected");
-
             //Read the incoming message
             mMessageReader = new BufferedReader(new InputStreamReader(mRemoteSocket.getInputStream()));
 
             //Setup the message sender
             mMessageSender = new BufferedWriter(new OutputStreamWriter(mRemoteSocket.getOutputStream()));
+
+            mUserName = mMessageReader.readLine();
+
+            mLogger.log(INFO, "User " + mUserName + " connected on port " + mLocalSocket.getLocalPort());
 
             do {
 

@@ -24,9 +24,14 @@ public class ServerConnectionSocket extends Thread implements ServerConnection {
 
     private Queue<String> mIncomingMessages;
 
-    public ServerConnectionSocket() throws IOException {
+    private String mUserName;
 
-        mSERVER_ADDRESS = InetAddress.getByName("localhost");
+    private boolean mIsConnected = false;
+
+    public ServerConnectionSocket(String serverAddress, String userName) throws IOException {
+
+        mSERVER_ADDRESS = InetAddress.getByName(serverAddress);
+        mUserName = userName;
         mIncomingMessages = new LinkedList<>();
 
     }
@@ -70,6 +75,18 @@ public class ServerConnectionSocket extends Thread implements ServerConnection {
     }
 
 
+    public boolean isConnected(){
+        return mIsConnected;
+    }
+
+    public int getPort(){
+        return mSocket.getPort();
+    }
+
+    public String getAddress(){
+        return mSocket.getInetAddress().toString();
+    }
+
 
     public void run() {
 
@@ -103,9 +120,11 @@ public class ServerConnectionSocket extends Thread implements ServerConnection {
             mMessageReader = new BufferedReader(new InputStreamReader(mSocket.getInputStream()));
 
             //Request connection to server
-            mMessageSender.write("connect\n");
+            mMessageSender.write(mUserName + "\n");
             mMessageSender.flush();
 
+            if(mSocket.isConnected())
+                mIsConnected = true;
 
             do {
 
