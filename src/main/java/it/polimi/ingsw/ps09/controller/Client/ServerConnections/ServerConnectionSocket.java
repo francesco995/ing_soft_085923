@@ -4,6 +4,7 @@ import java.io.*;
 import java.net.InetAddress;
 import java.net.Socket;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Queue;
 
 /**
@@ -21,14 +22,54 @@ public class ServerConnectionSocket extends Thread implements ServerConnection {
     BufferedReader mMessageReader;
     BufferedWriter mMessageSender;
 
-    Queue<String> mIncomingMessage;
+    Queue<String> mIncomingMessages;
 
     public ServerConnectionSocket() throws IOException {
 
         mSERVER_ADDRESS = InetAddress.getByName("localhost");
-        mIncomingMessage = new LinkedList<>();
+        mIncomingMessages = new LinkedList<>();
 
     }
+
+
+    public String getMessage(){
+        return mIncomingMessages.poll();
+    }
+
+
+    public List<String> getAllMessages(){
+        List<String> messages = new LinkedList<>();
+
+        while (!mIncomingMessages.isEmpty()){
+            messages.add(mIncomingMessages.poll());
+        }
+
+        return messages;
+    }
+
+
+    public boolean hasIncomingMessages(){
+
+        if(!mIncomingMessages.isEmpty())
+            return true;
+
+        return false;
+    }
+
+    public void sendMessage(String message){
+    //TODO: maybe switch to boolean return
+
+        try {
+            mMessageSender.write(message);
+            mMessageSender.write("\n");
+            mMessageSender.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+
 
     public void run() {
 
@@ -69,7 +110,7 @@ public class ServerConnectionSocket extends Thread implements ServerConnection {
             do {
 
                 mMessage = mMessageReader.readLine();
-                mIncomingMessage.add(mMessage);
+                mIncomingMessages.add(mMessage);
 
             }while(!mMessage.equalsIgnoreCase("close"));
 

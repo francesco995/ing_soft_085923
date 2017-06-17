@@ -28,6 +28,7 @@ public class Server extends Thread{
         mWelcomeSocketServer = new WelcomeSocketServer();
         mWelcomeSocketServer.start();
 
+
     }
 
 
@@ -37,7 +38,7 @@ public class Server extends Thread{
         while(true){
 
             try {
-                Thread.sleep(1000);
+                Thread.sleep(500);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

@@ -3,6 +3,9 @@ package it.polimi.ingsw.ps09.controller.Server.PlayerConnections;
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
 import java.util.logging.Logger;
 
 import static java.util.logging.Level.INFO;
@@ -22,6 +25,8 @@ public class PlayerConnectionSocket extends PlayerConnection {
 
     String mMessage;
 
+    Queue<String> mIncomingMessages;
+
     //LOGGER
     private static final Logger mLogger = Logger.getAnonymousLogger();
 
@@ -31,9 +36,50 @@ public class PlayerConnectionSocket extends PlayerConnection {
         //Start ServerSocket on port 100
         mLocalSocket = new ServerSocket(port);
 
+        mIncomingMessages = new LinkedList<>();
+
         this.start();
 
     }
+
+    public String getMessage(){
+        return mIncomingMessages.poll();
+    }
+
+
+    public List<String> getAllMessages(){
+        List<String> messages = new LinkedList<>();
+
+        while (!mIncomingMessages.isEmpty()){
+            messages.add(mIncomingMessages.poll());
+        }
+
+        return messages;
+    }
+
+
+    public boolean hasIncomingMessages(){
+
+        if(!mIncomingMessages.isEmpty())
+            return true;
+
+        return false;
+    }
+
+    public void sendMessage(String message){
+        //TODO: maybe switch to boolean return
+
+        try {
+            mMessageSender.write(message);
+            mMessageSender.write("\n");
+            mMessageSender.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+
 
 
     public void run() {
@@ -42,19 +88,23 @@ public class PlayerConnectionSocket extends PlayerConnection {
 
         try {
 
+            //Start listening to the socket
+            mRemoteSocket = mLocalSocket.accept();
+
+            mLogger.log(INFO, "Socket connected");
+
+            //Read the incoming message
+            mMessageReader = new BufferedReader(new InputStreamReader(mRemoteSocket.getInputStream()));
+
+            //Setup the message sender
+            mMessageSender = new BufferedWriter(new OutputStreamWriter(mRemoteSocket.getOutputStream()));
+
             do {
 
-                //Start listening to the socket
-                mRemoteSocket = mLocalSocket.accept();
-
-                mLogger.log(INFO, "Socket connected");
-
-                //Read the incoming message
-                mMessageReader = new BufferedReader(new InputStreamReader(mRemoteSocket.getInputStream()));
+                //Read message from Player
                 mMessage = mMessageReader.readLine();
 
-                //Setup the message sender
-                mMessageSender = new BufferedWriter(new OutputStreamWriter(mRemoteSocket.getOutputStream()));
+                mIncomingMessages.add(mMessage);
 
             }while(!mMessage.equalsIgnoreCase("close"));
 
