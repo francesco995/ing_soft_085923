@@ -13,8 +13,10 @@ import static java.util.logging.Level.INFO;
 
 /**
  * Created by francesco995 on 15/06/2017.
+ *
+ * Thread instantiated by the Server app to connect to a Player
  */
-public class PlayerConnectionSocket extends PlayerConnection {
+public class PlayerConnectionSocket extends Thread implements PlayerConnection {
 
     //A ServerSocket listening and a Socket to answer
     private ServerSocket mLocalSocket;
@@ -46,6 +48,11 @@ public class PlayerConnectionSocket extends PlayerConnection {
 
     public String getMessage(){
         return mIncomingMessages.poll();
+    }
+
+    @Override
+    public String getUserName(){
+        return mUserName;
     }
 
 

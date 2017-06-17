@@ -113,7 +113,7 @@ public class ExcommunicationTilesDeck {
 
         int size = mDeck.get(period).size();
         int randomNumber = (int) Math.random() * size;
-        return mDeck.get(period-1).get(randomNumber);
+        return mDeck.get(period).get(randomNumber);
 
 
     }

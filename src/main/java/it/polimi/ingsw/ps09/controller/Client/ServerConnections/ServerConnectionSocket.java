@@ -9,6 +9,8 @@ import java.util.Queue;
 
 /**
  * Created by francesco995 on 15/06/2017.
+ *
+ * Thread instantiated by the user app to connect to the Server
  */
 public class ServerConnectionSocket extends Thread implements ServerConnection {
 
@@ -34,6 +36,11 @@ public class ServerConnectionSocket extends Thread implements ServerConnection {
         mUserName = userName;
         mIncomingMessages = new LinkedList<>();
 
+    }
+
+
+    public String getUserName() {
+        return mUserName;
     }
 
 

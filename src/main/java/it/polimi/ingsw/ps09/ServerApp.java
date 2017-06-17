@@ -6,7 +6,10 @@ import it.polimi.ingsw.ps09.model.Player;
 
 import java.io.IOException;
 import java.util.SplittableRandom;
+import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import static java.util.logging.Level.INFO;
 
 /**
  * Created by franc on 09/05/2017.
@@ -29,7 +32,7 @@ public class ServerApp {
 
         mServer.start();
 
-        System.out.println("server started");
+        mLogger.log(INFO, "ServerApp Started");
 
     }
 }
