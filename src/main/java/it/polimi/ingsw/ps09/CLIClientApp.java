@@ -11,6 +11,7 @@ import java.util.Scanner;
  * Created by franc on 09/05/2017.
  */
 public class CLIClientApp {
+
     public static void main(String[] args) throws IOException {
 
         Scanner scanner = new Scanner(System.in);
