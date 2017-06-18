@@ -1,6 +1,6 @@
-package it.polimi.ingsw.ps09.controller.Server.WelcomeServers;
+package it.polimi.ingsw.ps09.controller.Network.Server.WelcomeServers;
 
-import it.polimi.ingsw.ps09.controller.Server.SocketPortsManager;
+import it.polimi.ingsw.ps09.controller.Network.Server.SocketPortsManager;
 
 import java.io.*;
 import java.net.ServerSocket;
@@ -39,7 +39,7 @@ public class WelcomeSocketServer extends Thread implements WelcomeServer {
         mLogger.log(INFO, "Created ServerSocket on port 100");
 
         //Start SocketPortsManager to get a new free port every time a client connects
-        mSocketPortsManager = new SocketPortsManager(10000, 20000);
+        mSocketPortsManager = new SocketPortsManager(10001, 20000);
         mReadyPorts = new LinkedList<>();
 
     }

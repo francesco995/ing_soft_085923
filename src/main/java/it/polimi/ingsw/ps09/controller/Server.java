@@ -1,15 +1,13 @@
-package it.polimi.ingsw.ps09.controller.Server;
+package it.polimi.ingsw.ps09.controller;
 
 import it.polimi.ingsw.ps09.controller.Game.Game;
-import it.polimi.ingsw.ps09.controller.Server.PlayerConnections.PlayerConnection;
-import it.polimi.ingsw.ps09.controller.Server.PlayerConnections.PlayerConnectionSocket;
-import it.polimi.ingsw.ps09.controller.Server.WelcomeServers.WelcomeSocketServer;
+import it.polimi.ingsw.ps09.controller.Network.Server.PlayerConnections.PlayerConnection;
+import it.polimi.ingsw.ps09.controller.Network.Server.PlayerConnections.PlayerConnectionSocket;
+import it.polimi.ingsw.ps09.controller.Network.Server.WelcomeServers.WelcomeSocketServer;
 import it.polimi.ingsw.ps09.model.Player;
 
 import java.io.IOException;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
+import java.util.*;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
@@ -82,19 +80,24 @@ public class Server extends Thread{
             //Generate userIDs
             List<Integer> userIDs = new LinkedList<>();
 
+            //Generate Player connections
+            HashMap<Integer, PlayerConnection> connections = new HashMap<>();
+
             for(int i = 0; i < playersN; i++){
                 userIDs.add(gameID + userIDs.size() + 1);
+
             }
 
             //Generate partial PlayerConnections List
-            List<PlayerConnection> readyPlayers = new LinkedList<>();
+            List<PlayerConnection> readyPlayersConnections = new LinkedList<>();
 
             for(int i = 0; i < playersN; i++){
-                readyPlayers.add(mQueuedPlayers.poll());
+                readyPlayersConnections.add(mQueuedPlayers.poll());
+                connections.put(userIDs.get(i), readyPlayersConnections.get(i));
             }
 
             //Generate userName List
-            List<String> userNames = readyPlayers.stream()
+            List<String> userNames = readyPlayersConnections.stream()
                     .map(p -> p.getUserName())
                     .collect(Collectors.toList());
 
@@ -105,9 +108,9 @@ public class Server extends Thread{
             userColors.add("BLUE");
             userColors.add("YELLOW");
 
-            //TODO: Pass readyPlayers to Game
 
-            mActiveGames.add(new Game(userIDs, userNames, userColors, gameID));
+
+            mActiveGames.add(new Game(userIDs, userNames, userColors, gameID, connections));
             mActiveGames.get(mActiveGames.size() - 1).start();
 
 

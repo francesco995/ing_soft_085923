@@ -1,4 +1,4 @@
-package it.polimi.ingsw.ps09.controller.Server.PlayerConnections;
+package it.polimi.ingsw.ps09.controller.Network.Server.PlayerConnections;
 
 import java.io.*;
 import java.net.ServerSocket;

@@ -1,6 +1,7 @@
 package it.polimi.ingsw.ps09.controller.Game;
 
 import it.polimi.ingsw.ps09.controller.PlayersOrder;
+import it.polimi.ingsw.ps09.controller.Network.Server.PlayerConnections.PlayerConnection;
 import it.polimi.ingsw.ps09.model.Board;
 import it.polimi.ingsw.ps09.model.Decks.DevelopmentCardsDeck;
 import it.polimi.ingsw.ps09.model.Decks.ExcommunicationTilesDeck;
@@ -48,6 +49,9 @@ public class Game extends Thread {
     //Map of Players by ID
     protected HashMap<Integer, Player> mPlayers;
 
+    //Map of Players connection by ID
+    protected HashMap<Integer, PlayerConnection> mConnections;
+
     //The Players Order manager
     protected PlayersOrder mPlayersOrder;
 
@@ -86,7 +90,7 @@ public class Game extends Thread {
      * @param userColors Queue of UserColors
      * @param gameId     Unique GameID
      */
-    public Game(List<Integer> userIds, List<String> userNames, List<String> userColors, int gameId) {
+    public Game(List<Integer> userIds, List<String> userNames, List<String> userColors, int gameId, HashMap<Integer, PlayerConnection> connections) {
 
         GAME_ID = gameId;
         PLAYERS_NUMBER = userNames.size();
@@ -95,7 +99,8 @@ public class Game extends Thread {
         mUserNames = userNames;
         mUserColors = userColors;
 
-        mLogger.log(INFO, "Created a new Game with ID: " + GAME_ID);
+        mConnections = connections;
+
         mLogger.log(INFO, "Created a new Game with ID: " + GAME_ID);
 
     }

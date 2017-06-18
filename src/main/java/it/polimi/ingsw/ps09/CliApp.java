@@ -58,9 +58,9 @@ public class CliApp {
 
 
 
-        mGame = new Game(mGameUserIDsQueue, mUserNamesQueue, mGameUserColorsQueue, 100);
+        //mGame = new Game(mGameUserIDsQueue, mUserNamesQueue, mGameUserColorsQueue, 100);
 
-        mGame.run();
+        //mGame.run();
 
         System.out.println("DONE");
 

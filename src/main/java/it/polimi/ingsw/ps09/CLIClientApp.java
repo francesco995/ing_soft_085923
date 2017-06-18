@@ -1,7 +1,7 @@
 package it.polimi.ingsw.ps09;
 
 
-import it.polimi.ingsw.ps09.controller.Client.ServerConnections.ServerConnectionSocket;
+import it.polimi.ingsw.ps09.controller.Network.Client.ServerConnections.ServerConnectionSocket;
 
 
 import java.io.IOException;

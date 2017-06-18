@@ -1,4 +1,4 @@
-package it.polimi.ingsw.ps09.controller.Server;
+package it.polimi.ingsw.ps09.controller.Network.Server;
 
 import java.util.LinkedList;
 import java.util.Queue;

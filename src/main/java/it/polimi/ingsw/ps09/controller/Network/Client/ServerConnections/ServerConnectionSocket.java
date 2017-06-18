@@ -1,4 +1,4 @@
-package it.polimi.ingsw.ps09.controller.Client.ServerConnections;
+package it.polimi.ingsw.ps09.controller.Network.Client.ServerConnections;
 
 import java.io.*;
 import java.net.InetAddress;
