@@ -1,22 +1,21 @@
-package it.polimi.ingsw.ps09.model.Decks;
+package it.polimi.ingsw.ps09.model.GsonAdapters;
 
 import com.google.gson.*;
-import it.polimi.ingsw.ps09.model.DevelopmentCardEffects.DevelopmentCardEffect;
+import it.polimi.ingsw.ps09.model.ExcommunicationTileEffects.ExcommunicationTileEffect;
 
 import java.lang.reflect.Type;
 
 /**
- * Created by francesco995 on 30/05/2017.
- * Adapter to allow correct loading of different DevelopmentCardEffects for json file
+ * Created by franc on 06/06/2017.
  */
-public class DevelopmentCardEffectAdapter implements
-        JsonSerializer<DevelopmentCardEffect>, JsonDeserializer<DevelopmentCardEffect> {
+public class ExcommunicationTileEffectAdapter implements
+        JsonSerializer<ExcommunicationTileEffect>, JsonDeserializer<ExcommunicationTileEffect> {
 
     private static final String CLASSNAME = "CLASSNAME";
     private static final String INSTANCE  = "INSTANCE";
 
     @Override
-    public JsonElement serialize(DevelopmentCardEffect src, Type typeOfSrc,
+    public JsonElement serialize(ExcommunicationTileEffect src, Type typeOfSrc,
                                  JsonSerializationContext context) {
 
         JsonObject retValue = new JsonObject();
@@ -28,8 +27,8 @@ public class DevelopmentCardEffectAdapter implements
     }
 
     @Override
-    public DevelopmentCardEffect deserialize(JsonElement json, Type typeOfT,
-                               JsonDeserializationContext context) throws JsonParseException  {
+    public ExcommunicationTileEffect deserialize(JsonElement json, Type typeOfT,
+                                             JsonDeserializationContext context) throws JsonParseException  {
         JsonObject jsonObject = json.getAsJsonObject();
         JsonPrimitive prim = (JsonPrimitive) jsonObject.get(CLASSNAME);
         String className = prim.getAsString();

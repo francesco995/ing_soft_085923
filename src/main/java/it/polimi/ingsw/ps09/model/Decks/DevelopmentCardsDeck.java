@@ -4,15 +4,14 @@ import com.google.gson.GsonBuilder;
 import it.polimi.ingsw.ps09.controller.Game.Game;
 import it.polimi.ingsw.ps09.model.DevelopmentCardEffects.DevelopmentCardEffect;
 import it.polimi.ingsw.ps09.model.DevelopmentCards.*;
-import it.polimi.ingsw.ps09.model.DevelopmentCards.Character;
 
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
+import it.polimi.ingsw.ps09.model.GsonAdapters.DevelopmentCardAdapter;
+import it.polimi.ingsw.ps09.model.GsonAdapters.DevelopmentCardEffectAdapter;
 import it.polimi.ingsw.ps09.model.Player;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.lang.reflect.Type;
 import java.util.*;
 import java.util.logging.Logger;
 

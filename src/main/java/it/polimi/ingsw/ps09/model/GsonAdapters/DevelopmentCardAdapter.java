@@ -1,21 +1,21 @@
-package it.polimi.ingsw.ps09.model.Decks;
+package it.polimi.ingsw.ps09.model.GsonAdapters;
 
 import com.google.gson.*;
-import it.polimi.ingsw.ps09.model.ExcommunicationTileEffects.ExcommunicationTileEffect;
+import it.polimi.ingsw.ps09.model.DevelopmentCards.DevelopmentCard;
 
 import java.lang.reflect.Type;
 
 /**
- * Created by franc on 06/06/2017.
+ * Created by francesco995 on 30/05/2017.
+ * Adapter to allow correct loading of different DevelopmentCards from json file
  */
-public class ExcommunicationTileEffectAdapter implements
-        JsonSerializer<ExcommunicationTileEffect>, JsonDeserializer<ExcommunicationTileEffect> {
+public class DevelopmentCardAdapter implements JsonSerializer<DevelopmentCard>, JsonDeserializer<DevelopmentCard> {
 
     private static final String CLASSNAME = "CLASSNAME";
     private static final String INSTANCE  = "INSTANCE";
 
     @Override
-    public JsonElement serialize(ExcommunicationTileEffect src, Type typeOfSrc,
+    public JsonElement serialize(DevelopmentCard src, Type typeOfSrc,
                                  JsonSerializationContext context) {
 
         JsonObject retValue = new JsonObject();
@@ -27,8 +27,8 @@ public class ExcommunicationTileEffectAdapter implements
     }
 
     @Override
-    public ExcommunicationTileEffect deserialize(JsonElement json, Type typeOfT,
-                                             JsonDeserializationContext context) throws JsonParseException  {
+    public DevelopmentCard deserialize(JsonElement json, Type typeOfT,
+                               JsonDeserializationContext context) throws JsonParseException  {
         JsonObject jsonObject = json.getAsJsonObject();
         JsonPrimitive prim = (JsonPrimitive) jsonObject.get(CLASSNAME);
         String className = prim.getAsString();

@@ -1,4 +1,4 @@
-package it.polimi.ingsw.ps09.model.Decks;
+package it.polimi.ingsw.ps09.model.GsonAdapters;
 
 import com.google.gson.*;
 import it.polimi.ingsw.ps09.model.DevelopmentCardEffects.DevelopmentCardEffect;

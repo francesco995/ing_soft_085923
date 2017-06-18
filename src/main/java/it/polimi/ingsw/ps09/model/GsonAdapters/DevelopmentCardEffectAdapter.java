@@ -1,21 +1,22 @@
-package it.polimi.ingsw.ps09.model.Decks;
+package it.polimi.ingsw.ps09.model.GsonAdapters;
 
 import com.google.gson.*;
-import it.polimi.ingsw.ps09.model.DevelopmentCards.DevelopmentCard;
+import it.polimi.ingsw.ps09.model.DevelopmentCardEffects.DevelopmentCardEffect;
 
 import java.lang.reflect.Type;
 
 /**
  * Created by francesco995 on 30/05/2017.
- * Adapter to allow correct loading of different DevelopmentCards from json file
+ * Adapter to allow correct loading of different DevelopmentCardEffects for json file
  */
-public class DevelopmentCardAdapter implements JsonSerializer<DevelopmentCard>, JsonDeserializer<DevelopmentCard> {
+public class DevelopmentCardEffectAdapter implements
+        JsonSerializer<DevelopmentCardEffect>, JsonDeserializer<DevelopmentCardEffect> {
 
     private static final String CLASSNAME = "CLASSNAME";
     private static final String INSTANCE  = "INSTANCE";
 
     @Override
-    public JsonElement serialize(DevelopmentCard src, Type typeOfSrc,
+    public JsonElement serialize(DevelopmentCardEffect src, Type typeOfSrc,
                                  JsonSerializationContext context) {
 
         JsonObject retValue = new JsonObject();
@@ -27,7 +28,7 @@ public class DevelopmentCardAdapter implements JsonSerializer<DevelopmentCard>, 
     }
 
     @Override
-    public DevelopmentCard deserialize(JsonElement json, Type typeOfT,
+    public DevelopmentCardEffect deserialize(JsonElement json, Type typeOfT,
                                JsonDeserializationContext context) throws JsonParseException  {
         JsonObject jsonObject = json.getAsJsonObject();
         JsonPrimitive prim = (JsonPrimitive) jsonObject.get(CLASSNAME);

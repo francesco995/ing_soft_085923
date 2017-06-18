@@ -2,15 +2,12 @@ package it.polimi.ingsw.ps09.model.Decks;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.reflect.TypeToken;
-import it.polimi.ingsw.ps09.model.ExcommunicationTile;
-import it.polimi.ingsw.ps09.model.ExcommunicationTileEffects.ExcommunicationTileEffect;
+import it.polimi.ingsw.ps09.model.GsonAdapters.LeaderCardEffectAdapter;
 import it.polimi.ingsw.ps09.model.LeaderCard;
 import it.polimi.ingsw.ps09.model.LeaderCardEffects.LeaderCardEffect;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;

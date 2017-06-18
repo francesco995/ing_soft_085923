@@ -5,6 +5,8 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import it.polimi.ingsw.ps09.model.ExcommunicationTile;
 import it.polimi.ingsw.ps09.model.ExcommunicationTileEffects.ExcommunicationTileEffect;
+import it.polimi.ingsw.ps09.model.GsonAdapters.ExcommunicationTileEffectAdapter;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.*;
