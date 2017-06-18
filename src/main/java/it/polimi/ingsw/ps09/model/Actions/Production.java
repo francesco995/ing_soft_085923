@@ -11,9 +11,15 @@ import java.io.InvalidObjectException;
  * Created by francesco995 on 11/06/2017.
  */
 public class Production extends Action {
-    public Production(Board board, Player player, FamilyMember familyMember) {
 
-        //TODO GIANNI CHECK IF IT MAKES SENSE OR NOT TO HAVE THIS CONSTRUCTOR OR AN EMPTY ONE ()
+    Board mBoard;
+    Player mPlayer;
+    FamilyMember mFamilyMember;
+
+    public Production(Board board, Player player, FamilyMember familyMember) {
+        mBoard = board;
+        mPlayer = player;
+        mFamilyMember = familyMember;
     }
 
     public static boolean isValid(Board board, Player player, FamilyMember familyMember){

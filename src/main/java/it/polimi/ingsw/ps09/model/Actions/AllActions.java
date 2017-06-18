@@ -214,8 +214,6 @@ public class AllActions {
 
         if(Production.isValid(board, player, player.getFamilyMember("WHITE")))
             mActionsList.add(new Production(board, player, player.getFamilyMember("WHITE")));
-
-
     //returns list of possible actions
     return mActionsList;
     }

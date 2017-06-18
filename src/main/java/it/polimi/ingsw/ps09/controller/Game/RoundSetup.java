@@ -80,7 +80,7 @@ public class RoundSetup {
     private static void setPlayersFamilyMembers(Game game){
 
         game.mPlayersOrder.getPlayersOrder().stream().forEach(iD -> {
-
+            //TODO : isUsable
             game.mPlayers.get(iD).setFamilyMemberPower("BLACK", game.mBlackDice);
             game.mPlayers.get(iD).setFamilyMemberPower("WHITE", game.mWhiteDice);
             game.mPlayers.get(iD).setFamilyMemberPower("ORANGE", game.mOrangeDice);

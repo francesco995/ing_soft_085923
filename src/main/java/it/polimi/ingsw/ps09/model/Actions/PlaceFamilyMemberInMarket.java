@@ -13,7 +13,16 @@ import java.io.InvalidObjectException;
  */
 public class PlaceFamilyMemberInMarket extends Action {
 
+    Board mBoard;
+    Player mPlayer;
+    FamilyMember mFamilyMember;
+    int mMarketIndex;
+
     public PlaceFamilyMemberInMarket(Board board, Player player, FamilyMember familyMember, int marketIndex) {
+        mBoard = board;
+        mPlayer = player;
+        mFamilyMember = familyMember;
+        mMarketIndex = marketIndex;
     }
 
     public static boolean isValid(Board board, Player player, FamilyMember familyMember, int marketIndex){

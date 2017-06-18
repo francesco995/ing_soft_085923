@@ -11,9 +11,14 @@ import java.io.InvalidObjectException;
  */
 public class Harvest extends Action {
 
+    Board mBoard;
+    Player mPlayer;
+    FamilyMember mFamilyMember;
+
     public Harvest(Board board, Player player, FamilyMember familyMember) {
-
-
+        mBoard = board;
+        mPlayer = player;
+        mFamilyMember = familyMember;
     }
 
     public static boolean isValid(Board board, Player player, FamilyMember familyMember){
