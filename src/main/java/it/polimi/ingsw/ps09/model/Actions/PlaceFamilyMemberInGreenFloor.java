@@ -22,20 +22,22 @@ public class PlaceFamilyMemberInGreenFloor extends PlaceFamilyMemberInFloor {
 
 
     public static boolean isValid(Board board, int floorIndex, Player player, FamilyMember familyMember) {
-
-
-        //Check if floor is free
-        if (!board.getTerritoriesTower().getFloors().get(floorIndex).isAvailable()) {
+        //check if family member is usable
+        if (!familyMember.getUsable() == true)
             return false;
-        } else
-            //check if Family Member has enough power
-            if (
-                    familyMember.getPower()
-                            + player.getFamilyMemberPlacementBonus("TERRITORY")
-                    <
-                    board.getTerritoriesTower().getFloors().get(floorIndex).getDiceValue()) {
+        else
+            //Check if floor is free
+            if (!board.getTerritoriesTower().getFloors().get(floorIndex).isAvailable()) {
                 return false;
-            }
+            } else
+                //check if Family Member has enough power
+                if (
+                        familyMember.getPower()
+                                + player.getFamilyMemberPlacementBonus("TERRITORY")
+                                <
+                                board.getTerritoriesTower().getFloors().get(floorIndex).getDiceValue()) {
+                    return false;
+                }
 
 
         //card variable to check for resources
@@ -43,29 +45,27 @@ public class PlaceFamilyMemberInGreenFloor extends PlaceFamilyMemberInFloor {
 
         //check if enough resources
 
-        if(!player.has(card.getResourcesCosts().get(0)))
+        if (!player.has(card.getResourcesCosts().get(0)))
             return false;
-        //check if enough points
+            //check if enough points
 
         else if (!player.has(card.getPointsCosts().get(0)))
             return false;
         else
-        //player has enough resources and/or points, check if tower already filled
-            if(board.getTerritoriesTower().hasFamilyMember())
-            {
-                if(player.getCoins().getValue()
+            //player has enough resources and/or points, check if tower already filled
+            if (board.getTerritoriesTower().hasFamilyMember()) {
+                if (player.getCoins().getValue()
                         >
-                        (card.getResourcesCosts().get(0).getCoins().getValue() + EXTRA_TOWER_COST ))
+                        (card.getResourcesCosts().get(0).getCoins().getValue() + EXTRA_TOWER_COST))
                     //passed extra coins check
                     return true;
                 else
                     return false;
 
 
-            }
-        else
-            //if tower not filled returns true
-            return true;
+            } else
+                //if tower not filled returns true
+                return true;
 
         /*//enough coins
         if (player.getCoins().getValue()
@@ -105,10 +105,10 @@ public class PlaceFamilyMemberInGreenFloor extends PlaceFamilyMemberInFloor {
         player.add(board.getTerritoriesTower().getFloors().get(floorIndex).getBoardBonus().getPointsBonus());
 
         //pay for card
-        player.remove( board.getTerritoriesTowerCard(floorIndex).getResourcesCosts().get(0) );
+        player.remove(board.getTerritoriesTowerCard(floorIndex).getResourcesCosts().get(0));
 
         //pay if floor already occupied
-        if(board.getTerritoriesTower().hasFamilyMember())
+        if (board.getTerritoriesTower().hasFamilyMember())
             player.remove(new Coins(EXTRA_TOWER_COST));
         //get card
         player.addTerritoryCard((Territory) board.getTerritoriesTower().getFloors().get(floorIndex).getCard());

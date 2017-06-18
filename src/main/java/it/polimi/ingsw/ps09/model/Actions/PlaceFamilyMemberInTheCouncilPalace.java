@@ -26,6 +26,10 @@ public class PlaceFamilyMemberInTheCouncilPalace extends Action {
 
     public static boolean isValid(FamilyMember familyMember) {
 
+        //check if family member is usable
+        if (!familyMember.getUsable() == true)
+            return false;
+        else
         //check if has the minimum power for CouncilPalace
         if (familyMember.getPower() < 1)
             return false;

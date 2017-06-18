@@ -24,7 +24,10 @@ public class PlaceFamilyMemberInBlueFloor extends PlaceFamilyMemberInFloor {
 
     public static boolean isValid(Board board, int floorIndex,  Player player, FamilyMember familyMember){
 
-
+        //check if family member is usable
+        if (!familyMember.getUsable() == true)
+            return false;
+        else
         //Check if floor is free
         if (!board.getCharactersTower().getFloors().get(floorIndex).isAvailable()) {
             return false;

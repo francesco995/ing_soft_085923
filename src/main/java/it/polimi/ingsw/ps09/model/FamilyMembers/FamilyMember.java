@@ -9,7 +9,7 @@ public abstract class FamilyMember {
     private int mPower;
     private String mColor;
     private String mFamily;
-
+    private boolean mIsUsable;
     //METHODS
     public FamilyMember(int power, String color, String family) {
         mPower = power;
@@ -35,5 +35,16 @@ public abstract class FamilyMember {
 
     public String getFamily() {
         return mFamily;
+    }
+
+    public boolean getUsable() {
+        return mIsUsable;
+    }
+
+    public void used(){
+        mIsUsable = false;
+    }
+    public void nowUsable(){
+        mIsUsable = true;
     }
 }

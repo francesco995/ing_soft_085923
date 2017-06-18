@@ -13,8 +13,13 @@ import java.io.InvalidObjectException;
 public class IncreaseFamilyMemberValue extends Action {
 
     //check if player has enough servant to give
-    public static boolean isValid(Player player, Servant offer) {
+    public static boolean isValid(Player player,String color, Servant offer) {
 
+
+        //check if family member is usable
+        if (!player.getFamilyMember(color).getUsable() == true)
+            return false;
+        else
         if (player.has(offer))
             return true;
         else
@@ -25,7 +30,7 @@ public class IncreaseFamilyMemberValue extends Action {
             throws InvalidObjectException {
 
         //check if action is valid
-        if (!isValid(player, offer))
+        if (!isValid(player, color, offer))
             throw new InvalidObjectException("Operation not supported");
 
 
