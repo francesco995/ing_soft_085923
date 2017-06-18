@@ -11,6 +11,10 @@ import java.io.InvalidObjectException;
  * Created by francesco995 on 11/06/2017.
  */
 public class Production extends Action {
+    public Production(Board board, Player player, FamilyMember familyMember) {
+
+        //TODO GIANNI CHECK IF IT MAKES SENSE OR NOT TO HAVE THIS CONSTRUCTOR OR AN EMPTY ONE ()
+    }
 
     public static boolean isValid(Board board, Player player, FamilyMember familyMember){
 
@@ -29,8 +33,6 @@ public class Production extends Action {
         //check if action is valid
         if(!isValid(board, player, familyMember))
             throw new InvalidObjectException("Operation not supported");
-
-        //TODO: check if players want to give more power
 
 
         //Do action

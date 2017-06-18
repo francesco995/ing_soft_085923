@@ -13,6 +13,9 @@ import java.io.InvalidObjectException;
  */
 public class PlaceFamilyMemberInMarket extends Action {
 
+    public PlaceFamilyMemberInMarket(Board board, Player player, FamilyMember familyMember, int marketIndex) {
+    }
+
     public static boolean isValid(Board board, Player player, FamilyMember familyMember, int marketIndex){
 
         //Check if 4+ players are playing to check if the last 2 spaces are open

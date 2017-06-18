@@ -9,6 +9,7 @@ import static org.junit.Assert.*;
  * Created by franc on 16/06/2017.
  */
 /*
+
 public class ExcommunicationTilesDeckTest {
 
     ExcommunicationTilesDeck mTest;
@@ -16,23 +17,22 @@ public class ExcommunicationTilesDeckTest {
     public void setUp() throws Exception {
         mTest = new ExcommunicationTilesDeck();
     }
-    //TODO:CHECK WHY ERROR EVEN IF WITH DEBUGGER AL CONDITION RESPECTED
     @Test
     public void areAllCardLoaded() throws Exception {
         boolean control = true;
         if(mTest.getDeck().size() != 3)
             control = false;
         else
-            if(mTest.getDeck().get(0).size() != 7)
-                control = false;
+        if(mTest.getDeck().get(0).size() != 7)
+            control = false;
         else
-            if(mTest.getDeck().get(1).size() != 7)
-                control = false;
+        if(mTest.getDeck().get(1).size() != 7)
+            control = false;
         else
-            if(mTest.getDeck().get(2).size() != 7)
-                control = false;
+        if(mTest.getDeck().get(2).size() != 7)
+            control = false;
 
-        assertFalse(control);
+        assertTrue(control);
 
     }
     @Test
@@ -45,7 +45,7 @@ public class ExcommunicationTilesDeckTest {
             control = false;
         if(mTest.drawCard(3).getPeriod() != mTest.getDeck().get(2).get(0).getPeriod() )
             control = false;
-        assertFalse(control);
+        assertTrue(control);
 
 
     }

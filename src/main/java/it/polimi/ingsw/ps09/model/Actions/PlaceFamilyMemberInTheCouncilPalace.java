@@ -14,6 +14,10 @@ import java.io.InvalidObjectException;
  */
 public class PlaceFamilyMemberInTheCouncilPalace extends Action {
 
+    public PlaceFamilyMemberInTheCouncilPalace(Board board, Player player, FamilyMember familyMember) {
+        //TODO ASK GIANNI HOW THIS WORKS
+    }
+
     public static boolean isValid(FamilyMember familyMember) {
 
         //check if has the minimum power for CouncilPalace

@@ -41,15 +41,13 @@ public class PlaceFamilyMemberInGreenFloor extends PlaceFamilyMemberInFloor {
         //card variable to check for resources
         Territory card = (Territory) board.getTerritoriesTowerCard(floorIndex);
 
-        //check if enough resources and/or points to pay
+        //check if enough resources
 
         if(!player.has(card.getResourcesCosts().get(0)))
             return false;
-        //enough Military points
-        //TODO: check. you mean points Requirements???
-        else if (player.getMilitaryPoints().getValue()
-                <
-                card.getPointsCosts().get(0).getMilitaryPoints().getValue())
+        //check if enough points
+
+        else if (!player.has(card.getPointsCosts().get(0)))
             return false;
         else
         //player has enough resources and/or points, check if tower already filled

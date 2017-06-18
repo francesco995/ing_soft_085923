@@ -11,6 +11,11 @@ import java.io.InvalidObjectException;
  */
 public class Harvest extends Action {
 
+    public Harvest(Board board, Player player, FamilyMember familyMember) {
+
+
+    }
+
     public static boolean isValid(Board board, Player player, FamilyMember familyMember){
 
         //Check if the family Member has enough power to do basic action
@@ -28,8 +33,6 @@ public class Harvest extends Action {
             //check if action is valid
             if(!isValid(board, player, familyMember))
                 throw new InvalidObjectException("Operation not supported");
-
-            //TODO: check if players want to give more power
 
 
             //Do action
