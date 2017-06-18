@@ -105,6 +105,8 @@ public class Server extends Thread{
             userColors.add("BLUE");
             userColors.add("YELLOW");
 
+            //TODO: Pass readyPlayers to Game
+
             mActiveGames.add(new Game(userIDs, userNames, userColors, gameID));
             mActiveGames.get(mActiveGames.size() - 1).start();
 

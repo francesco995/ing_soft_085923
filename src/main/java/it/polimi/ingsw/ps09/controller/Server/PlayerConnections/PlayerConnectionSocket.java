@@ -108,7 +108,7 @@ public class PlayerConnectionSocket extends Thread implements PlayerConnection {
 
             mUserName = mMessageReader.readLine();
 
-            mLogger.log(INFO, "User " + mUserName + " connected on port " + mLocalSocket.getLocalPort());
+            mLogger.log(INFO, "User " + mUserName + " connected on port " + mLocalSocket.getLocalPort() + " form address " + mRemoteSocket.getInetAddress());
 
             do {
 
