@@ -44,6 +44,11 @@ public class Market {
     //Clear MarketSpaces for a new round
     public void clearAll(){
         mMarketSpaceSpaces.clear();
+
+        mMarketSpaceSpaces.add(0, new MarketSpaceSpace1(1));
+        mMarketSpaceSpaces.add(1, new MarketSpaceSpace2(1));
+        mMarketSpaceSpaces.add(2, new MarketSpaceSpace3(1));
+        mMarketSpaceSpaces.add(3, new MarketSpaceSpace4(1));
     }
 
     @Override

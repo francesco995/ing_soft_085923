@@ -94,19 +94,21 @@ public class Tower {
 
     /**
      *
-     * @param Pawn Family member object to compare whth
+     * @param familyMember Family member object to compare whth
      * @return Boolean value: true if a member of that family is already in the tower, otherwise flase
      */
-    public boolean hasSameFamilyMember(FamilyMember Pawn){
+    public boolean hasSameFamilyMember(FamilyMember familyMember){
 
         int cont = 0;
+        String familyColor = familyMember.getFamily();
 
-        while (mFloors.get(cont).getFamilyMember()!=Pawn || (cont<=mFloors.size())){
+        for (Floor mFloor: mFloors) {
 
-            cont++;
-
-            if(cont>mFloors.size())
-                return true;
+            if(mFloor.getFamilyMember()!=null){
+                if (mFloor.getFamilyMember().getFamily().equals(familyColor)) {
+                    return true;
+                }
+            }
         }
 
         return false;
@@ -115,6 +117,11 @@ public class Tower {
 
     public void clearAll(){
         mFloors.clear();
+
+        mFloors.add(0, new FloorOne());
+        mFloors.add(1, new FloorTwo());
+        mFloors.add(2, new FloorThree());
+        mFloors.add(3, new FloorFour());
     }
 
     @Override
