@@ -64,7 +64,7 @@ public class TowerTest {
         mTerritoriesTower.getFloors().get(2).setFamilyMember(mBlackFamily);
         mTerritoriesTower.clearAll();
 
-        assertEquals(0, mTerritoriesTower.getFloors().size());
+        assertEquals(4, mTerritoriesTower.getFloors().size());
 
     }
 
