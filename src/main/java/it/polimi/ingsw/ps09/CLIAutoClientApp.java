@@ -1,5 +1,6 @@
 package it.polimi.ingsw.ps09;
 
+import it.polimi.ingsw.ps09.controller.CLIClientGame;
 import it.polimi.ingsw.ps09.controller.Network.Client.ServerConnections.ServerConnectionSocket;
 
 import java.io.IOException;
@@ -10,6 +11,8 @@ import java.util.Scanner;
  */
 public class CLIAutoClientApp {
     public static void main(String[] args) throws IOException {
+
+        CLIClientGame mClientGame;
 
         Scanner scanner = new Scanner(System.in);
 
@@ -47,7 +50,8 @@ public class CLIAutoClientApp {
 
         System.out.println("Waiting for server to start Game... Hang on...");
 
-
+        mClientGame = new CLIClientGame(Integer.valueOf(serverConnectionSocket.getMessage()), serverConnectionSocket, userName);
+        mClientGame.start();
 
     }
 }

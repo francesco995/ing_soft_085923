@@ -61,6 +61,7 @@ public class GameSetup {
     private static void updateConnections(Game game) {
 
         game.mPlayersOrder.getPlayersOrder().stream().forEach(id -> {
+            game.mConnections.get(id).setUserID(id);
             game.mConnections.get(id).startGame(game.mGameBoard, game.mPlayers, game.mPlayersOrder);
         });
 
@@ -111,7 +112,7 @@ public class GameSetup {
 
         //TODO: Handle memorize connection method here before players order is mixed
 
-        //game.mPlayersOrder.shufflePlayers();
+        game.mPlayersOrder.shufflePlayers();
 
         for(int i = 0; i < game.mPlayersOrder.getPlayersOrder().size(); i++){
             game.mPlayers.get(

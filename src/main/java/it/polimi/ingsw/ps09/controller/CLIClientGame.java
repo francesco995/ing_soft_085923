@@ -16,6 +16,7 @@ public class CLIClientGame extends Thread{
     private Board mBoard;
 
     private HashMap<Integer, Player> mPlayers;
+    private PlayersOrder mPlayersOrder;
 
     private ServerConnectionSocket mServerConnection;
 
@@ -29,10 +30,17 @@ public class CLIClientGame extends Thread{
 
     }
 
+
+
     public void run(){
 
-        mServerConnection.startGame();
+        mServerConnection.updateView();
 
+        mBoard = mServerConnection.getBoard();
+        mPlayersOrder = mServerConnection.getPlayersOrder();
+        mPlayers = mServerConnection.getPlayers();
+
+        System.out.println(mBoard.toString());
 
 
 

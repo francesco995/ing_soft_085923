@@ -51,6 +51,8 @@ public class PlayerConnectionSocket extends Thread implements PlayerConnection {
 
     private String mUserName;
 
+    private int mUserID;
+
     Gson mGson = null;
     GsonBuilder mGsonBuilder;
 
@@ -78,11 +80,29 @@ public class PlayerConnectionSocket extends Thread implements PlayerConnection {
         mGsonBuilder.registerTypeAdapter(Game.class, new GameAdapter());
         mGsonBuilder.registerTypeAdapter(FamilyMember.class, new FamilyMemberAdapter());
 
-
+        //Create Gson
         mGson = mGsonBuilder.create();
 
         this.start();
 
+    }
+
+
+    private void sendBoard(){
+        mLogger.log(INFO, "Game: " + Game.GAME_ID + " sending Board to user " + mUserID);
+        sendMessage(mGson.toJson(mBoard, Board.class));
+    }
+
+    private void sendPlayersOrder(){
+        mLogger.log(INFO, "Game: " + Game.GAME_ID + " sending Players Order to user " + mUserID);
+        sendMessage(mGson.toJson(mPlayersOrder, PlayersOrder.class));
+    }
+
+    private void sendPlayers(){
+        mLogger.log(INFO, "Game: " + Game.GAME_ID + " sending Players to user " + mUserID);
+        mPlayersOrder.getPlayersOrder().stream().forEach(
+                id -> sendMessage(mGson.toJson(mPlayers.get(id), Player.class))
+        );
     }
 
     public String getMessage(){
@@ -94,7 +114,6 @@ public class PlayerConnectionSocket extends Thread implements PlayerConnection {
         return mUserName;
     }
 
-
     public List<String> getAllMessages(){
         List<String> messages = new LinkedList<>();
 
@@ -104,7 +123,6 @@ public class PlayerConnectionSocket extends Thread implements PlayerConnection {
 
         return messages;
     }
-
 
     public boolean hasIncomingMessages(){
 
@@ -133,7 +151,9 @@ public class PlayerConnectionSocket extends Thread implements PlayerConnection {
 
     }
 
-
+    public void setUserID(int userID) {
+        mUserID = userID;
+    }
 
 
     public void run() {
@@ -163,33 +183,22 @@ public class PlayerConnectionSocket extends Thread implements PlayerConnection {
                 switch(mMessage){
 
                     case "board": {
-
-                        sendMessage(mGson.toJson(mBoard, Board.class));
-
+                        sendBoard();
                         break;
                     }
 
                     case "playersOrder":{
-
-                        sendMessage(mGson.toJson(mPlayersOrder, PlayersOrder.class));
-                        //TODO: FraG fix serialization error
-
+                        sendPlayersOrder();
                         break;
                     }
 
                     case "players": {
-
-                        mPlayersOrder.getPlayersOrder().stream().forEach(
-                                id -> sendMessage(mGson.toJson(mPlayers.get(id), Player.class))
-                        );
-
+                        sendPlayers();
                         break;
                     }
 
                     default: {
-
                         mIncomingMessages.add(mMessage);
-
                     }
 
                 }

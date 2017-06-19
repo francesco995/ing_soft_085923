@@ -86,7 +86,6 @@ public class Server extends Thread{
 
             for(int i = 0; i < playersN; i++){
                 userIDs.add(gameID + userIDs.size() + 1);
-
             }
 
             //Generate partial PlayerConnections List
@@ -108,8 +107,6 @@ public class Server extends Thread{
             userColors.add("GREEN");
             userColors.add("BLUE");
             userColors.add("YELLOW");
-
-
 
             mActiveGames.add(new Game(userIDs, userNames, userColors, gameID, connections));
             mActiveGames.get(mActiveGames.size() - 1).start();

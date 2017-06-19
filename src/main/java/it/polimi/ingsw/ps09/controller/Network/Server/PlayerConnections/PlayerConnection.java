@@ -14,5 +14,6 @@ public interface PlayerConnection{
     String getUserName();
     void sendMessage(String message);
     void startGame(Board board, HashMap<Integer, Player> players, PlayersOrder playersOrder);
+    void setUserID(int userID);
 
 }

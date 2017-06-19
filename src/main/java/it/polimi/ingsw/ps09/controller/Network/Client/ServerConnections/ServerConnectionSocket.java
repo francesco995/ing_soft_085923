@@ -78,7 +78,19 @@ public class ServerConnectionSocket extends Thread implements ServerConnection {
 
     }
 
-    public void startGame(){
+    public Board getBoard() {
+        return mBoard;
+    }
+
+    public HashMap<Integer, Player> getPlayers() {
+        return mPlayers;
+    }
+
+    public PlayersOrder getPlayersOrder() {
+        return mPlayersOrder;
+    }
+
+    public void updateView(){
 
         sendMessage("board");
         mBoard = mGson.fromJson(getMessage(), Board.class);
@@ -91,7 +103,6 @@ public class ServerConnectionSocket extends Thread implements ServerConnection {
 
         mPlayersOrder.getPlayersOrder().stream().forEach(
                 id -> mPlayers.put(id, mGson.fromJson(getMessage(), Player.class)));
-
 
     }
 
@@ -203,8 +214,14 @@ public class ServerConnectionSocket extends Thread implements ServerConnection {
                 //Wait for incoming messages
                 mMessage = mMessageReader.readLine();
 
-                //Add new messages to IncomingMessages
-                mIncomingMessages.add(mMessage);
+
+                if(mMessage.equals("update")){
+                    updateView();
+                }
+                else{
+                    //Add new messages to IncomingMessages
+                    mIncomingMessages.add(mMessage);
+                }
 
             }while(!mMessage.equalsIgnoreCase("close"));
 
