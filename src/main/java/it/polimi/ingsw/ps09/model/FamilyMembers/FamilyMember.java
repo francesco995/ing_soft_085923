@@ -29,22 +29,22 @@ public abstract class FamilyMember {
         return mPower + addToTotal;
     }
 
-    public int lessPower(int removeToTotal) {
-        return mPower - removeToTotal;
+    public int lessPower(int removeFromTotal) {
+        return mPower - removeFromTotal;
     }
 
     public String getFamily() {
         return mFamily;
     }
 
-    public boolean getUsable() {
+    public boolean isUsable() {
         return mIsUsable;
     }
 
     public void used(){
         mIsUsable = false;
     }
-    public void nowUsable(){
+    public void setUsable(){
         mIsUsable = true;
     }
 }

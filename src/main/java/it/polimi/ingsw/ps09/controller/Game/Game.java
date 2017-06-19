@@ -136,7 +136,7 @@ public class Game extends Thread {
      */
     private void startGame() throws FileNotFoundException {
 
-        Round.startRound(this);
+        Round.startRound(this, 1);
 
     }
 

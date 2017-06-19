@@ -1,7 +1,6 @@
 package it.polimi.ingsw.ps09.model.Actions;
 
 import it.polimi.ingsw.ps09.model.Board;
-import it.polimi.ingsw.ps09.model.FamilyMembers.FamilyMember;
 import it.polimi.ingsw.ps09.model.Player;
 import it.polimi.ingsw.ps09.model.Resources.Servant;
 
@@ -17,7 +16,7 @@ public class IncreaseFamilyMemberValue extends Action {
 
 
         //check if family member is usable
-        if (!player.getFamilyMember(color).getUsable() == true)
+        if (!player.getFamilyMember(color).isUsable() == true)
             return false;
         else
         if (player.has(offer))

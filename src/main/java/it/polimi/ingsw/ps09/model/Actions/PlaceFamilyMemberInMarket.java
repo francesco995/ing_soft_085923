@@ -28,7 +28,7 @@ public class PlaceFamilyMemberInMarket extends Action {
     public static boolean isValid(Board board, Player player, FamilyMember familyMember, int marketIndex){
 
         //check if family member is usable
-        if (!familyMember.getUsable() == true)
+        if (!familyMember.isUsable() == true)
             return false;
 
         //Check if 4+ players are playing to check if the last 2 spaces are open

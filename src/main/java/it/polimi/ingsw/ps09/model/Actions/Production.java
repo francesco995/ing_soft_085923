@@ -25,7 +25,7 @@ public class Production extends Action {
     public static boolean isValid(Board board, Player player, FamilyMember familyMember){
 
         //check if family member is usable
-        if (!familyMember.getUsable() == true)
+        if (!familyMember.isUsable() == true)
             return false;
         else
         //Check if the family Member has enough power to do basic action

@@ -333,19 +333,19 @@ public class Board {
     }
 
     public int getTerritoriesTowerDiceValue(int floor){
-        return mTerritoriesTower.getFloors().get(floor-1).getDiceValue();
+        return mTerritoriesTower.getFloors().get(floor).getDiceValue();
     }
 
     public DevelopmentCard getTerritoriesTowerCard(int floor){
-        return mTerritoriesTower.getFloors().get(floor-1).getCard();
+        return mTerritoriesTower.getFloors().get(floor).getCard();
     }
 
     public FamilyMember getTerritoriesTowerFamilyMember(int floor){
-        return mTerritoriesTower.getFloors().get(floor-1).getFamilyMember();
+        return mTerritoriesTower.getFloors().get(floor).getFamilyMember();
     }
 
     public BoardBonus getTerritoriesTowerBonus(int floor){
-        return mTerritoriesTower.getFloors().get(floor-1).getBoardBonus();
+        return mTerritoriesTower.getFloors().get(floor).getBoardBonus();
     }
 
     public boolean isTerritoriesTowerAvailable(){

@@ -1,10 +1,8 @@
 package it.polimi.ingsw.ps09.model.Actions;
 
 import it.polimi.ingsw.ps09.model.Board;
-import it.polimi.ingsw.ps09.model.DevelopmentCards.Territory;
 import it.polimi.ingsw.ps09.model.DevelopmentCards.Venture;
 import it.polimi.ingsw.ps09.model.FamilyMembers.FamilyMember;
-import it.polimi.ingsw.ps09.model.Places.Towers.Floor.Floor;
 import it.polimi.ingsw.ps09.model.Player;
 import it.polimi.ingsw.ps09.model.Resources.Coins;
 
@@ -26,7 +24,7 @@ public class PlaceFamilyMemberInPurpleFloor extends PlaceFamilyMemberInFloor {
     public static boolean isValid(Board board, int floorIndex, Player player, FamilyMember familyMember){
 
         //check if family member is usable
-        if (!familyMember.getUsable() == true)
+        if (!familyMember.isUsable() == true)
             return false;
         else
         //Check if floor is free

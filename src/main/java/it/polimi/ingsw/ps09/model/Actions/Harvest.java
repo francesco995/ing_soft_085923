@@ -24,16 +24,14 @@ public class Harvest extends Action {
     public static boolean isValid(Board board, Player player, FamilyMember familyMember){
 
         //check if family member is usable
-        if (!familyMember.getUsable() == true)
+        if (!familyMember.isUsable())
             return false;
-        else
+
         //Check if the family Member has enough power to do basic action
-        if(
-                familyMember.getPower() + player.getHarvestBonus() > board.getHarvestSlotDiceValue()
-                )
-        return true;
-        else
+        if(familyMember.getPower() + player.getHarvestBonus() < board.getHarvestSlotDiceValue())
             return false;
+
+        return true;
     }
 
     public void doAction(Board board, Player player, FamilyMember familyMember)

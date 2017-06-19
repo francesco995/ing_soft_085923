@@ -183,6 +183,13 @@ public class Player {
         return mPlayerFamilyMembers.getFamilyMember(color.toUpperCase());
     }
 
+    public void setFamilyMembersToUsable(){
+        mPlayerFamilyMembers.getFamilyMember("BLACK").setUsable();
+        mPlayerFamilyMembers.getFamilyMember("WHITE").setUsable();
+        mPlayerFamilyMembers.getFamilyMember("ORANGE").setUsable();
+        mPlayerFamilyMembers.getFamilyMember("NEUTRAL").setUsable();
+    }
+
 
     //####################################################
     //####################################################

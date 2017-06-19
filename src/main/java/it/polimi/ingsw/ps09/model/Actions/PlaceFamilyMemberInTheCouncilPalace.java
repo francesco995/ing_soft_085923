@@ -2,10 +2,8 @@ package it.polimi.ingsw.ps09.model.Actions;
 
 import it.polimi.ingsw.ps09.model.Board;
 import it.polimi.ingsw.ps09.model.FamilyMembers.FamilyMember;
-import it.polimi.ingsw.ps09.model.Places.Towers.Floor.Floor;
 import it.polimi.ingsw.ps09.model.Player;
 import it.polimi.ingsw.ps09.model.Resources.Coins;
-import it.polimi.ingsw.ps09.model.Resources.Servant;
 
 import java.io.InvalidObjectException;
 
@@ -27,7 +25,7 @@ public class PlaceFamilyMemberInTheCouncilPalace extends Action {
     public static boolean isValid(FamilyMember familyMember) {
 
         //check if family member is usable
-        if (!familyMember.getUsable() == true)
+        if (!familyMember.isUsable() == true)
             return false;
         else
         //check if has the minimum power for CouncilPalace
