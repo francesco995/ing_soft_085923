@@ -322,7 +322,7 @@ public class Player {
 
     public int getVenturesCount() {
 
-        return mPersonalBoard.getBoardTerritories().size();
+        return mPersonalBoard.getBoardVentures().size();
 
     }
 
