@@ -290,7 +290,7 @@ public class Player {
 
 
 
-    public static int getPlayerId() {
+    public int getPlayerId() {
         return PLAYER_ID;
     }
 

@@ -1,6 +1,7 @@
 package it.polimi.ingsw.ps09;
 
 
+import it.polimi.ingsw.ps09.controller.CLIClientGame;
 import it.polimi.ingsw.ps09.controller.Network.Client.ServerConnections.ServerConnectionSocket;
 
 
@@ -15,6 +16,8 @@ public class CLIClientApp {
     public static void main(String[] args) throws IOException {
 
         Scanner scanner = new Scanner(System.in);
+
+        CLIClientGame mClientGame;
 
         String userName;
 
@@ -48,7 +51,23 @@ public class CLIClientApp {
 
         System.out.println("\nConnected to server " + serverConnectionSocket.getAddress() + " on port: " + serverConnectionSocket.getPort() + "\n");
 
-        System.out.println("Waiting for server to start Game... Hang on...");
+        System.out.print("\nWaiting for server to start Game... Hang on...");
+
+        do{
+
+            try {
+                System.out.print(".");
+                Thread.sleep(500);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+        }while (!serverConnectionSocket.hasIncomingMessages());
+
+            System.out.println("\nGame Starting!!!");
+
+            mClientGame = new CLIClientGame(Integer.valueOf(serverConnectionSocket.getMessage()), serverConnectionSocket, userName);
+            mClientGame.start();
 
 
 

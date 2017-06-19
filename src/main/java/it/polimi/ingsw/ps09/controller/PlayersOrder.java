@@ -7,14 +7,13 @@ import java.util.*;
  */
 public class PlayersOrder {
 
-    private List<Integer> mPlayersOrder = new LinkedList<>();
+    private ArrayList<Integer> mPlayersOrder;
 
-    //OTHER VARIABLES
-    Random mRandom = new Random();
+    public PlayersOrder(ArrayList<Integer> userIds){
 
-    public PlayersOrder(List<Integer> userIds){
+        mPlayersOrder = new ArrayList<>();
 
-        mPlayersOrder = new ArrayList<>(userIds);
+        userIds.stream().forEach(id -> mPlayersOrder.add(id));
 
     }
 

@@ -1,11 +1,22 @@
 package it.polimi.ingsw.ps09.controller.Network.Server.PlayerConnections;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import it.polimi.ingsw.ps09.controller.Game.Game;
+import it.polimi.ingsw.ps09.controller.PlayersOrder;
+import it.polimi.ingsw.ps09.model.Actions.Action;
+import it.polimi.ingsw.ps09.model.Board;
+import it.polimi.ingsw.ps09.model.DevelopmentCardEffects.DevelopmentCardEffect;
+import it.polimi.ingsw.ps09.model.DevelopmentCards.DevelopmentCard;
+import it.polimi.ingsw.ps09.model.ExcommunicationTileEffects.ExcommunicationTileEffect;
+import it.polimi.ingsw.ps09.model.FamilyMembers.FamilyMember;
+import it.polimi.ingsw.ps09.model.GsonAdapters.*;
+import it.polimi.ingsw.ps09.model.Player;
+
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
+import java.util.*;
 import java.util.logging.Logger;
 
 import static java.util.logging.Level.INFO;
@@ -17,6 +28,15 @@ import static java.util.logging.Level.INFO;
  * Thread instantiated by the Server app to connect to a Player
  */
 public class PlayerConnectionSocket extends Thread implements PlayerConnection {
+
+    //Game
+    private Board mBoard;
+
+    //Map of Players by ID
+    private HashMap<Integer, Player> mPlayers;
+
+    //The Players Order manager
+    private PlayersOrder mPlayersOrder;
 
     //A ServerSocket listening and a Socket to answer
     private ServerSocket mLocalSocket;
@@ -31,6 +51,11 @@ public class PlayerConnectionSocket extends Thread implements PlayerConnection {
 
     private String mUserName;
 
+    Gson mGson = null;
+    GsonBuilder mGsonBuilder;
+
+
+
     //LOGGER
     private static final Logger mLogger = Logger.getAnonymousLogger();
 
@@ -41,6 +66,20 @@ public class PlayerConnectionSocket extends Thread implements PlayerConnection {
         mLocalSocket = new ServerSocket(port);
 
         mIncomingMessages = new LinkedList<>();
+
+        //Create Gson Builder
+        mGsonBuilder = new GsonBuilder();
+
+        //Register adapters
+        mGsonBuilder.registerTypeAdapter(DevelopmentCard.class, new DevelopmentCardAdapter());
+        mGsonBuilder.registerTypeAdapter(DevelopmentCardEffect.class, new DevelopmentCardEffectAdapter());
+        mGsonBuilder.registerTypeAdapter(ExcommunicationTileEffect.class, new ExcommunicationTileEffectAdapter());
+        mGsonBuilder.registerTypeAdapter(Action.class, new ActionAdapter());
+        mGsonBuilder.registerTypeAdapter(Game.class, new GameAdapter());
+        mGsonBuilder.registerTypeAdapter(FamilyMember.class, new FamilyMemberAdapter());
+
+
+        mGson = mGsonBuilder.create();
 
         this.start();
 
@@ -73,6 +112,12 @@ public class PlayerConnectionSocket extends Thread implements PlayerConnection {
             return true;
 
         return false;
+    }
+
+    public void startGame(Board board, HashMap<Integer, Player> players, PlayersOrder playersOrder){
+        mBoard = board;
+        mPlayers = players;
+        mPlayersOrder = playersOrder;
     }
 
     public void sendMessage(String message){
@@ -115,7 +160,40 @@ public class PlayerConnectionSocket extends Thread implements PlayerConnection {
                 //Read message from Player
                 mMessage = mMessageReader.readLine();
 
-                mIncomingMessages.add(mMessage);
+                switch(mMessage){
+
+                    case "board": {
+
+                        sendMessage(mGson.toJson(mBoard, Board.class));
+
+                        break;
+                    }
+
+                    case "playersOrder":{
+
+                        sendMessage(mGson.toJson(mPlayersOrder, PlayersOrder.class));
+                        //TODO: FraG fix serialization error
+
+                        break;
+                    }
+
+                    case "players": {
+
+                        mPlayersOrder.getPlayersOrder().stream().forEach(
+                                id -> sendMessage(mGson.toJson(mPlayers.get(id), Player.class))
+                        );
+
+                        break;
+                    }
+
+                    default: {
+
+                        mIncomingMessages.add(mMessage);
+
+                    }
+
+                }
+
 
             }while(!mMessage.equalsIgnoreCase("close"));
 

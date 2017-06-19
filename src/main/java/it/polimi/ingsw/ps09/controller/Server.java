@@ -7,6 +7,7 @@ import it.polimi.ingsw.ps09.controller.Network.Server.WelcomeServers.WelcomeSock
 import it.polimi.ingsw.ps09.model.Player;
 
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.util.*;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
@@ -78,7 +79,7 @@ public class Server extends Thread{
             int gameID = (mActiveGames.size() + 1) * 100;
 
             //Generate userIDs
-            List<Integer> userIDs = new LinkedList<>();
+            ArrayList<Integer> userIDs = new ArrayList<>();
 
             //Generate Player connections
             HashMap<Integer, PlayerConnection> connections = new HashMap<>();

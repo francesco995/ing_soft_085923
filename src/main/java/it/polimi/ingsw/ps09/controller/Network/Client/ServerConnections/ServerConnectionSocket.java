@@ -1,11 +1,24 @@
 package it.polimi.ingsw.ps09.controller.Network.Client.ServerConnections;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
+import it.polimi.ingsw.ps09.controller.Game.Game;
+import it.polimi.ingsw.ps09.controller.PlayersOrder;
+import it.polimi.ingsw.ps09.model.Actions.Action;
+import it.polimi.ingsw.ps09.model.Board;
+import it.polimi.ingsw.ps09.model.DevelopmentCardEffects.DevelopmentCardEffect;
+import it.polimi.ingsw.ps09.model.DevelopmentCards.DevelopmentCard;
+import it.polimi.ingsw.ps09.model.ExcommunicationTileEffects.ExcommunicationTileEffect;
+import it.polimi.ingsw.ps09.model.FamilyMembers.FamilyMember;
+import it.polimi.ingsw.ps09.model.GsonAdapters.*;
+import it.polimi.ingsw.ps09.model.Player;
+
 import java.io.*;
+import java.lang.reflect.Type;
 import java.net.InetAddress;
 import java.net.Socket;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
+import java.util.*;
 
 /**
  * Created by francesco995 on 15/06/2017.
@@ -13,6 +26,15 @@ import java.util.Queue;
  * Thread instantiated by the user app to connect to the Server
  */
 public class ServerConnectionSocket extends Thread implements ServerConnection {
+
+    //Game
+    private Board mBoard;
+
+    //Map of Players by ID
+    private HashMap<Integer, Player> mPlayers;
+
+    //The Players Order manager
+    private PlayersOrder mPlayersOrder;
 
     private Socket mSocket;
 
@@ -30,14 +52,48 @@ public class ServerConnectionSocket extends Thread implements ServerConnection {
 
     private boolean mIsConnected = false;
 
+    Gson mGson = null;
+    GsonBuilder mGsonBuilder;
+
     public ServerConnectionSocket(String serverAddress, String userName) throws IOException {
 
         mSERVER_ADDRESS = InetAddress.getByName(serverAddress);
         mUserName = userName;
         mIncomingMessages = new LinkedList<>();
 
+        mPlayers = new HashMap<>();
+
+        //Create Gson Builder
+        mGsonBuilder = new GsonBuilder();
+
+        //Register adapters
+        mGsonBuilder.registerTypeAdapter(DevelopmentCard.class, new DevelopmentCardAdapter());
+        mGsonBuilder.registerTypeAdapter(DevelopmentCardEffect.class, new DevelopmentCardEffectAdapter());
+        mGsonBuilder.registerTypeAdapter(ExcommunicationTileEffect.class, new ExcommunicationTileEffectAdapter());
+        mGsonBuilder.registerTypeAdapter(Action.class, new ActionAdapter());
+        mGsonBuilder.registerTypeAdapter(Game.class, new GameAdapter());
+        mGsonBuilder.registerTypeAdapter(FamilyMember.class, new FamilyMemberAdapter());
+
+        mGson = mGsonBuilder.create();
+
     }
 
+    public void startGame(){
+
+        sendMessage("board");
+        mBoard = mGson.fromJson(getMessage(), Board.class);
+
+        sendMessage("playersOrder");
+
+        mPlayersOrder = mGson.fromJson(getMessage(), PlayersOrder.class);
+
+        sendMessage("players");
+
+        mPlayersOrder.getPlayersOrder().stream().forEach(
+                id -> mPlayers.put(id, mGson.fromJson(getMessage(), Player.class)));
+
+
+    }
 
     public String getUserName() {
         return mUserName;
@@ -45,6 +101,15 @@ public class ServerConnectionSocket extends Thread implements ServerConnection {
 
 
     public String getMessage(){
+
+        while(!hasIncomingMessages()){
+            try {
+                sleep(500);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+
         return mIncomingMessages.poll();
     }
 

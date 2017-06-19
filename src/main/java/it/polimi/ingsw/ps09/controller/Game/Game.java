@@ -19,6 +19,7 @@ import it.polimi.ingsw.ps09.model.Points.VictoryPoints;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 
 import java.util.logging.Logger;
@@ -39,7 +40,7 @@ public class Game extends Thread {
     public static int GAME_ID;
 
     //Players IDs, Names and Colors
-    protected List<Integer> mUserIds;
+    protected ArrayList<Integer> mUserIds;
     protected List<String> mUserNames;
     protected List<String> mUserColors;
 
@@ -59,7 +60,7 @@ public class Game extends Thread {
     protected Board mGameBoard;
 
     //The Period
-    private int period = 1;
+    protected int period = 1;
 
     //The Tracks
     protected FaithPointsTrack mFaithPointsTrack;
@@ -90,7 +91,7 @@ public class Game extends Thread {
      * @param userColors Queue of UserColors
      * @param gameId     Unique GameID
      */
-    public Game(List<Integer> userIds, List<String> userNames, List<String> userColors, int gameId, HashMap<Integer, PlayerConnection> connections) {
+    public Game(ArrayList<Integer> userIds, List<String> userNames, List<String> userColors, int gameId, HashMap<Integer, PlayerConnection> connections) {
 
         GAME_ID = gameId;
         PLAYERS_NUMBER = userNames.size();
