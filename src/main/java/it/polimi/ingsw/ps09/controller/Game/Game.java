@@ -19,7 +19,6 @@ import it.polimi.ingsw.ps09.model.Points.VictoryPoints;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.List;
 
 import java.util.logging.Logger;
@@ -287,7 +286,7 @@ public class Game extends Thread {
 
         ArrayList<Boolean> MarketSpacesDispos = new ArrayList<Boolean>();
 
-        for(int cont=0; cont<mGameBoard.getMarket().size(); cont++){
+        for(int cont = 0; cont<mGameBoard.getMarketList().size(); cont++){
             if(mGameBoard.isMarketSpaceAvailable(cont))
                 MarketSpacesDispos.add(true);
             else

@@ -7,7 +7,6 @@ import it.polimi.ingsw.ps09.controller.Network.Server.WelcomeServers.WelcomeSock
 import it.polimi.ingsw.ps09.model.Player;
 
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.util.*;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;

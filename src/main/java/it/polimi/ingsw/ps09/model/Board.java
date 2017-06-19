@@ -71,10 +71,18 @@ public class Board {
      *
      * @return Market spaces list
      */
-    public List<MarketSpace> getMarket() {
+    public List<MarketSpace> getMarketList() {
         return mMarket.getMarketList();
     }
-    
+
+    /**
+     *
+     * @return Market
+     */
+    public Market getMarket() {
+        return mMarket;
+    }
+
     /**
      *
      *

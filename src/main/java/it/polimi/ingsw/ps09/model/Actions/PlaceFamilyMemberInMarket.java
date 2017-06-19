@@ -40,7 +40,7 @@ public class PlaceFamilyMemberInMarket extends Action {
             throw new IndexOutOfBoundsException("Market index out of bound");
 
         //Check if market is empty
-        if(!board.getMarket().get(marketIndex).isAvailable())
+        if(!board.getMarketList().get(marketIndex).isAvailable())
             return false;
 
 
@@ -65,9 +65,9 @@ public class PlaceFamilyMemberInMarket extends Action {
             player.remove(new Servant(1));
 
         //Do action
-        board.getMarket().get(marketIndex).setFamilyMember(familyMember);
-        player.add(board.getMarket().get(marketIndex).getBoardBonus().getPointsBonus());
-        player.add(board.getMarket().get(marketIndex).getBoardBonus().getResourcesBonus());
+        board.getMarketList().get(marketIndex).setFamilyMember(familyMember);
+        player.add(board.getMarketList().get(marketIndex).getBoardBonus().getPointsBonus());
+        player.add(board.getMarketList().get(marketIndex).getBoardBonus().getResourcesBonus());
 
     }
 

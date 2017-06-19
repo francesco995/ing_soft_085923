@@ -16,6 +16,19 @@ public class Prompter {
     Scanner mReader = new Scanner(System.in);
 
 
+    public int promptForInt(String message) throws IOException {
+        System.out.println(message);
+        String answer;
+
+        do {
+            answer = mReader.nextLine();
+
+        } while (answer.isEmpty());
+
+        return Integer.valueOf(answer);
+    }
+
+
     public String promptForString(String message) throws IOException {
         System.out.println(message);
         String answer;
@@ -40,10 +53,11 @@ public class Prompter {
 
         //Asks for the choice
         do {
+            System.out.print("\nYour choice? -> ");
             choice = mReader.nextInt();
-        }while(choice < 0 && choice >= options.size());
+        }while(choice < 1 || choice > options.size());
 
-        return (choice - 1);
+        return (choice);
     }
 
     private void printStringList(List<String> options) {
