@@ -20,4 +20,15 @@ public class AddTrheeNeutralFamilyMemberValue {
 
     }
 
+    @Override
+    public String toString(){
+
+        String toString = "";
+
+        toString += "Neutral family member has +3 as value. You can increase it with servants or other Leader card";
+
+        return toString;
+
+    }
+
 }

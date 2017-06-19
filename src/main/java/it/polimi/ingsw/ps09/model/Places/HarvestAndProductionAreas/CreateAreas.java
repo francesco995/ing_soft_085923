@@ -13,10 +13,6 @@ public class CreateAreas {
 
     private List<Slot> mSlotList = new ArrayList<>();
 
-    public List<Slot> getSlotList() {
-        return mSlotList;
-    }
-
     /**
      *
      * @param familyMember Add the specified family member in the area
@@ -85,13 +81,21 @@ public class CreateAreas {
 
         StringJoiner mStringSlot = new StringJoiner("\n", "", "");
 
-        for(int cont=0; cont<mSlotList.size(); cont++){
+        if(mSlotList.size()==0){
 
             mStringSlot.add("");
-            mStringSlot.add("Area " + (cont+1) + ":");
-            mStringSlot.add(mSlotList.get(cont).toString());
-            mStringSlot.add("");
+            mStringSlot.add(getClass().getSimpleName() + " area is empty");
+        }
 
+        else {
+            for (int cont = 0; cont < mSlotList.size(); cont++) {
+
+                mStringSlot.add("");
+                mStringSlot.add("Area " + (cont + 1) + ":");
+                mStringSlot.add(mSlotList.get(cont).toString());
+                mStringSlot.add("");
+
+            }
         }
 
         return mStringSlot.toString();

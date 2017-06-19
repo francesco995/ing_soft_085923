@@ -3,8 +3,8 @@ package it.polimi.ingsw.ps09.model;
 import it.polimi.ingsw.ps09.model.DevelopmentCards.DevelopmentCard;
 import it.polimi.ingsw.ps09.model.FamilyMembers.FamilyMember;
 import it.polimi.ingsw.ps09.model.Places.Council;
-import it.polimi.ingsw.ps09.model.Places.HarvestAndProductionAreas.HarvestArea;
-import it.polimi.ingsw.ps09.model.Places.HarvestAndProductionAreas.ProductionArea;
+import it.polimi.ingsw.ps09.model.Places.HarvestAndProductionAreas.Harvest;
+import it.polimi.ingsw.ps09.model.Places.HarvestAndProductionAreas.Production;
 import it.polimi.ingsw.ps09.model.Places.Market.Market;
 import it.polimi.ingsw.ps09.model.Places.Market.MarketSpace;
 import it.polimi.ingsw.ps09.model.Places.Towers.BuildingsTower;
@@ -24,8 +24,8 @@ public class Board {
 
     private Market mMarket;
     private Council mCouncil;
-    private ProductionArea mProductionArea;
-    private HarvestArea mHarvestArea;
+    private Production mProductionArea;
+    private Harvest mHarvestArea;
 
     private CharactersTower mCharactersTower;
     private TerritoriesTower mTerritoriesTower;
@@ -47,8 +47,8 @@ public class Board {
 
         mMarket = new Market();
         mCouncil = new Council();
-        mProductionArea = new ProductionArea();
-        mHarvestArea = new HarvestArea();
+        mProductionArea = new Production();
+        mHarvestArea = new Harvest();
 
         mCharactersTower = new CharactersTower();
         mTerritoriesTower = new TerritoriesTower();
@@ -185,7 +185,7 @@ public class Board {
      *
      * @return Get production area object
      */
-    public ProductionArea getProduction() {
+    public Production getProduction() {
         return mProductionArea;
     }
 
@@ -227,7 +227,7 @@ public class Board {
      *
      * @return Get harvest area object
      */
-    public HarvestArea getHarvest() {
+    public Harvest getHarvest() {
         return mHarvestArea;
     }
 
