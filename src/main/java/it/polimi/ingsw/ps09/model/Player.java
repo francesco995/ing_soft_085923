@@ -21,6 +21,7 @@ import it.polimi.ingsw.ps09.model.Resources.Wood;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Observable;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -29,7 +30,7 @@ import static java.util.logging.Level.INFO;
 /**
  * Created by francesco995 on 10/05/2017.
  */
-public class Player {
+public class Player extends Observable {
 
     //CONSTANTS
     public static int PLAYER_ID;
@@ -135,8 +136,13 @@ public class Player {
                 " with Id: " + PLAYER_ID +
                 " with color: " + mUserColor +
                 " with: " + mPersonalBoard.getCoins().getValue() + " initial Coins");
+
     }
 
+    private void updated() {
+        setChanged();
+        notifyObservers();
+    }
 
 
     //Disable logger for Unit Testing
