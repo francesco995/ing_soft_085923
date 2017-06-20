@@ -62,16 +62,12 @@ public class Tower {
      */
     //Check if a Pawn is on the tower
     public boolean hasFamilyMember(){
-        int cont = 0;
 
-        while (mFloors.get(cont)!=null){
+        for(Floor mFloor: mFloors)
 
-            if(mFloors.get(cont).getFamilyMember()!=null) {
+            if(mFloor.getFamilyMember()!=null) {
                 return true;
             }
-            else
-                cont++;
-        }
 
         return false;
     }
@@ -99,7 +95,6 @@ public class Tower {
      */
     public boolean hasSameFamilyMember(FamilyMember familyMember){
 
-        int cont = 0;
         String familyColor = familyMember.getFamily();
 
         for (Floor mFloor: mFloors) {
