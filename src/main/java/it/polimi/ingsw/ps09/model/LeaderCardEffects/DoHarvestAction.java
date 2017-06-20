@@ -21,4 +21,15 @@ public class DoHarvestAction {
         return false;
 
     }
+
+    @Override
+    public String toString(){
+
+        String toString = "";
+
+        toString += "Do an harvest action of value 1. You can increase it with servants or by character card effect.";
+
+        return toString;
+
+    }
 }

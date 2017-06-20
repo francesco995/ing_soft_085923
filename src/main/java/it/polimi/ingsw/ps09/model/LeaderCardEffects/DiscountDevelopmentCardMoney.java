@@ -20,4 +20,16 @@ public class DiscountDevelopmentCardMoney {
         return false;
 
     }
+
+    @Override
+    public String toString(){
+
+        String toString = "";
+
+        toString += "Have a discount of 3 coins when purchasing a development card (if required)." +
+                "This discount is not applied to enter in the tower.";
+
+        return toString;
+
+    }
 }

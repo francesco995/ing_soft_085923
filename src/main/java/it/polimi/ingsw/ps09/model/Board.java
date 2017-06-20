@@ -90,7 +90,7 @@ public class Board {
      * @return Family member of the specified market space
      */
     public FamilyMember getMarketFamilyMember(int pos){
-        return mMarket.getMarketList().get(pos-1).getFamilyMember();
+        return mMarket.getMarketList().get(pos).getFamilyMember();
     }
 
     /**
@@ -99,7 +99,7 @@ public class Board {
      * @return Get bonus object of the specified market space
      */
     public BoardBonus getMarketBonus(int pos){
-        return mMarket.getMarketList().get(pos-1).getBoardBonus();
+        return mMarket.getMarketList().get(pos).getBoardBonus();
     }
 
     /**
@@ -108,7 +108,7 @@ public class Board {
      * @return Get deice value of the specified market space
      */
     public int getMarketDiceValue(int pos){
-        return mMarket.getMarketList().get(pos-1).getDiceValue();
+        return mMarket.getMarketList().get(pos).getDiceValue();
     }
 
     /**
@@ -117,7 +117,7 @@ public class Board {
      * @return Boolean value: true if the specified market space is available, otherwise false
      */
     public boolean isMarketSpaceAvailable(int pos){
-        return mMarket.getMarketList().get(pos-1).isAvailable();
+        return mMarket.getMarketList().get(pos).isAvailable();
     }
 
     /**
@@ -126,7 +126,7 @@ public class Board {
      * @param pawn Specify in which family member put into the market space
      */
     public void setMarketSpaceFamilyMember(int pos, FamilyMember pawn) {
-        mMarket.getMarketList().get(pos-1).setFamilyMember(pawn);
+        mMarket.getMarketList().get(pos).setFamilyMember(pawn);
     }
 
     /**
@@ -135,7 +135,7 @@ public class Board {
      * @param boardBonus Specify the boardBonus to be set into the market space
      */
     public void setMarketSpaceBonus(int pos, BoardBonus boardBonus){
-        mMarket.getMarketList().get(pos-1).setBoardBonus(boardBonus);
+        mMarket.getMarketList().get(pos).setBoardBonus(boardBonus);
     }
 
     /**
@@ -144,7 +144,7 @@ public class Board {
      * @param dice Specify the dice value to set
      */
     public void setMarketSpaceDiceValue(int pos, int dice){
-        mMarket.getMarketList().get(pos-1).setDiceValue(dice);
+        mMarket.getMarketList().get(pos).setDiceValue(dice);
     }
 
     //####################################################
@@ -281,19 +281,19 @@ public class Board {
     }
 
     public int getCharacterTowerDiceValue(int floor){
-        return mCharactersTower.getFloors().get(floor-1).getDiceValue();
+        return mCharactersTower.getFloors().get(floor).getDiceValue();
     }
 
     public DevelopmentCard getCharacterTowerCard(int floor){
-        return mCharactersTower.getFloors().get(floor-1).getCard();
+        return mCharactersTower.getFloors().get(floor).getCard();
     }
 
     public FamilyMember getCharacterTowerFamilyMember(int floor){
-        return mCharactersTower.getFloors().get(floor-1).getFamilyMember();
+        return mCharactersTower.getFloors().get(floor).getFamilyMember();
     }
 
     public BoardBonus getCharacterTowerBonus(int floor){
-        return mCharactersTower.getFloors().get(floor-1).getBoardBonus();
+        return mCharactersTower.getFloors().get(floor).getBoardBonus();
     }
 
     public boolean isCharacterTowerAvailable(){
@@ -385,19 +385,19 @@ public class Board {
     }
 
     public int getVenturesTowerDiceValue(int floor){
-        return mVenturesTower.getFloors().get(floor-1).getDiceValue();
+        return mVenturesTower.getFloors().get(floor).getDiceValue();
     }
 
     public DevelopmentCard getVenturesTowerCard(int floor){
-        return mVenturesTower.getFloors().get(floor-1).getCard();
+        return mVenturesTower.getFloors().get(floor).getCard();
     }
 
     public FamilyMember getVenturesTowerFamilyMember(int floor){
-        return mVenturesTower.getFloors().get(floor-1).getFamilyMember();
+        return mVenturesTower.getFloors().get(floor).getFamilyMember();
     }
 
     public BoardBonus getVenturesTowerBonus(int floor){
-        return mVenturesTower.getFloors().get(floor-1).getBoardBonus();
+        return mVenturesTower.getFloors().get(floor).getBoardBonus();
     }
 
     public boolean isVenturesTowerAvailable(){
@@ -437,19 +437,19 @@ public class Board {
     }
 
     public int getBuildingsTowerDiceValue(int floor){
-        return mBuildingsTower.getFloors().get(floor-1).getDiceValue();
+        return mBuildingsTower.getFloors().get(floor).getDiceValue();
     }
 
     public DevelopmentCard getBuildingsTowerCard(int floor){
-        return mBuildingsTower.getFloors().get(floor-1).getCard();
+        return mBuildingsTower.getFloors().get(floor).getCard();
     }
 
     public FamilyMember getBuildingsTowerFamilyMember(int floor){
-        return mBuildingsTower.getFloors().get(floor-1).getFamilyMember();
+        return mBuildingsTower.getFloors().get(floor).getFamilyMember();
     }
 
     public BoardBonus getBuildingsTowerBonus(int floor){
-        return mBuildingsTower.getFloors().get(floor-1).getBoardBonus();
+        return mBuildingsTower.getFloors().get(floor).getBoardBonus();
     }
 
     public boolean isBuildingsTowerAvailable(){

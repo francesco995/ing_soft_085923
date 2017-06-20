@@ -25,7 +25,7 @@ public class AddTrheeNeutralFamilyMemberValue {
 
         String toString = "";
 
-        toString += "Neutral family member has +3 as value. You can increase it with servants or other Leader card";
+        toString += "Increase neutral family member +3 as value. You can increase it with servants or other Leader card";
 
         return toString;
 

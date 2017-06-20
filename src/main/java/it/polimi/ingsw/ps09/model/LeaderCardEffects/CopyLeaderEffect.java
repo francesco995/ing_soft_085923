@@ -19,4 +19,15 @@ public class CopyLeaderEffect {
         return false;
 
     }
+
+    @Override
+    public String toString(){
+
+        String toString = "";
+
+        toString += "Copy a leader's ability. Once chosen, you can't undo it.";
+
+        return toString;
+
+    }
 }

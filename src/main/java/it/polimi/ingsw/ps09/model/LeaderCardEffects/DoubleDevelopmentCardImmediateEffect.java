@@ -19,4 +19,16 @@ public class DoubleDevelopmentCardImmediateEffect {
         return false;
 
     }
+
+    @Override
+    public String toString(){
+
+        String toString = "";
+
+        toString += "Every time you receive a wood, stone, coin or servant as development card immediate effect," +
+                " double the amount.";
+
+        return toString;
+
+    }
 }

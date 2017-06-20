@@ -21,4 +21,15 @@ public class DoProductionAction {
 
     }
 
+    @Override
+    public String toString(){
+
+        String toString = "";
+
+        toString += "Do a production action of value 0. You can increase it with servants or by character card effect.";
+
+        return toString;
+
+    }
+
 }

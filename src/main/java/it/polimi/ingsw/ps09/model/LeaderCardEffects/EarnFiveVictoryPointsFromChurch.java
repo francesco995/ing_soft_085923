@@ -20,4 +20,15 @@ public class EarnFiveVictoryPointsFromChurch {
         return false;
 
     }
+
+    @Override
+    public String toString(){
+
+        String toString = "";
+
+        toString += "Gain 5 victory points each time you show support for the church during Vatican Report round.";
+
+        return toString;
+
+    }
 }

@@ -19,4 +19,16 @@ public class SetOneFamilyMemberValueToSix {
         return false;
 
     }
+
+    @Override
+    public String toString(){
+
+        String toString = "";
+
+        toString += "One family memeber has value of 6 without considering dice value." +
+                "You can increase its value with servants or character cards.";
+
+        return toString;
+
+    }
 }

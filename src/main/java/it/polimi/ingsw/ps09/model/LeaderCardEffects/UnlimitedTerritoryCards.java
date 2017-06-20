@@ -25,4 +25,15 @@ public class UnlimitedTerritoryCards {
 
     }
 
+    @Override
+    public String toString(){
+
+        String toString = "";
+
+        toString += "You don't have to satisfy military points requirements when taking a territory card.";
+
+        return toString;
+
+    }
+
 }

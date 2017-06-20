@@ -19,4 +19,15 @@ public class OccupyTowerForFree {
 
     }
 
+    @Override
+    public String toString(){
+
+        String toString = "";
+
+        toString += "You don't have to spend 3 coins to enter into occupied tower.";
+
+        return toString;
+
+    }
+
 }

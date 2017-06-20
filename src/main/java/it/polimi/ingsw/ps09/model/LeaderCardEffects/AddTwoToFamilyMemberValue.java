@@ -24,4 +24,15 @@ public class AddTwoToFamilyMemberValue {
         return false;
 
     }
+
+    @Override
+    public String toString(){
+
+        String toString = "";
+
+        toString += "Increase colored family members +2 as value. You can increase it with servants or other character card";
+
+        return toString;
+
+    }
 }

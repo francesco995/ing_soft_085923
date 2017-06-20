@@ -20,4 +20,15 @@ public class GetCouncilPrivilege {
 
     }
 
+    @Override
+    public String toString(){
+
+        String toString = "";
+
+        toString += "Receive 1 Council Privilege.";
+
+        return toString;
+
+    }
+
 }

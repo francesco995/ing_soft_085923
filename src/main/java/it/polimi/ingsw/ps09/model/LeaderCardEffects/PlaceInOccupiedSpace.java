@@ -20,4 +20,15 @@ public class PlaceInOccupiedSpace {
 
     }
 
+    @Override
+    public String toString(){
+
+        String toString = "";
+
+        toString += "You can place your family members into occupied action spaces. ";
+
+        return toString;
+
+    }
+
 }

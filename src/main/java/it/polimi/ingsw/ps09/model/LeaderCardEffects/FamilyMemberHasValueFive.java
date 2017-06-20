@@ -23,6 +23,18 @@ public class FamilyMemberHasValueFive {
 
         return false;
 
-}
+    }
+
+    @Override
+    public String toString(){
+
+        String toString = "";
+
+        toString += "Colored family members have 5 as value, without considering dice value." +
+                "You can increase it with servants or other character card.";
+
+        return toString;
+
+    }
 
 }
