@@ -12,13 +12,10 @@ import java.io.InvalidObjectException;
  */
 public class Production extends Action {
 
-    Board mBoard;
-    Player mPlayer;
     FamilyMember mFamilyMember;
 
-    public Production(Board board, Player player, FamilyMember familyMember) {
-        mBoard = board;
-        mPlayer = player;
+    public Production(FamilyMember familyMember) {
+
         mFamilyMember = familyMember;
     }
 

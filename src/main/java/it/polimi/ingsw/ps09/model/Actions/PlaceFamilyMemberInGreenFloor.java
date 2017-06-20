@@ -1,7 +1,6 @@
 package it.polimi.ingsw.ps09.model.Actions;
 
 import it.polimi.ingsw.ps09.model.Board;
-import it.polimi.ingsw.ps09.model.DevelopmentCards.Building;
 import it.polimi.ingsw.ps09.model.DevelopmentCards.Territory;
 import it.polimi.ingsw.ps09.model.FamilyMembers.FamilyMember;
 import it.polimi.ingsw.ps09.model.Player;
@@ -14,9 +13,9 @@ public class PlaceFamilyMemberInGreenFloor extends PlaceFamilyMemberInFloor {
 
     private static final int EXTRA_TOWER_COST = 3;
 
-    public PlaceFamilyMemberInGreenFloor(Board board, int floorIndex, Player player, FamilyMember familyMember) {
+    public PlaceFamilyMemberInGreenFloor(int floorIndex, FamilyMember familyMember) {
 
-        super(board, floorIndex, player, familyMember);
+        super(floorIndex, familyMember);
 
     }
 

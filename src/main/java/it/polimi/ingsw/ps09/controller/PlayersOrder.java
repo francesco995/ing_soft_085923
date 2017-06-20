@@ -5,7 +5,7 @@ import java.util.*;
 /**
  * Created by francesco995 on 18/05/2017.
  */
-public class PlayersOrder {
+public class PlayersOrder extends Observable{
 
     private ArrayList<Integer> mPlayersOrder;
 
@@ -15,6 +15,11 @@ public class PlayersOrder {
 
         userIds.stream().forEach(id -> mPlayersOrder.add(id));
 
+    }
+
+    private void updated() {
+        setChanged();
+        notifyObservers();
     }
 
     public int getUserIdByIndex(int index){

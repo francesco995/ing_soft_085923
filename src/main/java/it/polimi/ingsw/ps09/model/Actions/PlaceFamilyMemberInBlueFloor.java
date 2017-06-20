@@ -13,9 +13,9 @@ public class PlaceFamilyMemberInBlueFloor extends PlaceFamilyMemberInFloor {
 
     private static final int EXTRA_TOWER_COST = 3;
 
-    public PlaceFamilyMemberInBlueFloor(Board board, int floorIndex, Player player, FamilyMember familyMember){
+    public PlaceFamilyMemberInBlueFloor(int floorIndex, FamilyMember familyMember){
 
-        super(board, floorIndex, player, familyMember);
+        super(floorIndex, familyMember);
 
     }
 

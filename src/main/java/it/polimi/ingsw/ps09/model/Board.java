@@ -139,6 +139,7 @@ public class Board extends Observable{
      */
     public void setMarketSpaceBonus(int pos, BoardBonus boardBonus){
         mMarket.getMarketList().get(pos).setBoardBonus(boardBonus);
+        updated();
     }
 
     /**

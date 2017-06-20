@@ -12,13 +12,10 @@ import java.io.InvalidObjectException;
  */
 public class PlaceFamilyMemberInTheCouncilPalace extends Action {
 
-    Board mBoard;
-    Player mPlayer;
     FamilyMember mFamilyMember;
 
-    public PlaceFamilyMemberInTheCouncilPalace(Board board, Player player, FamilyMember familyMember) {
-        mBoard = board;
-        mPlayer = player;
+    public PlaceFamilyMemberInTheCouncilPalace(FamilyMember familyMember) {
+
         mFamilyMember = familyMember;
     }
 

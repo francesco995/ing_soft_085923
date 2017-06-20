@@ -39,6 +39,8 @@ public class PlayerConnectionSocket extends Thread implements PlayerConnection, 
     //The Players Order manager
     private PlayersOrder mPlayersOrder;
 
+    private ArrayList<Action> mActions;
+
     //A ServerSocket listening and a Socket to answer
     private ServerSocket mLocalSocket;
     private Socket mRemoteSocket;
@@ -68,6 +70,7 @@ public class PlayerConnectionSocket extends Thread implements PlayerConnection, 
         //Start ServerSocket on port 100
         mLocalSocket = new ServerSocket(port);
 
+
         mIncomingMessages = new LinkedList<>();
 
         //Create Gson Builder
@@ -90,12 +93,24 @@ public class PlayerConnectionSocket extends Thread implements PlayerConnection, 
     }
 
     @Override
-    public void update(Observable board, Object arg){
-        sendMessage("board");
+    public void update(Observable o, Object arg){
+
+        if(o instanceof  Board)
+            sendMessage("board");
+
+        if(o instanceof Player)
+            sendMessage("player");
+
+        if(o instanceof PlayersOrder)
+            sendMessage("order");
+
     }
 
 
+    public void setActions(ArrayList<Action> actions){
+        mActions = actions;
 
+    }
 
     private void sendBoard(){
         mLogger.log(INFO, "Game: " + Game.GAME_ID + " sending Board to user " + mUserID);
@@ -112,6 +127,13 @@ public class PlayerConnectionSocket extends Thread implements PlayerConnection, 
         mPlayersOrder.getPlayersOrder().stream().forEach(
                 id -> sendMessage(mGson.toJson(mPlayers.get(id), Player.class))
         );
+    }
+
+    private void sendActions(){
+        sendMessage(String.valueOf(mActions.size()));
+        mActions.stream().forEach(a -> {
+            sendMessage(mGson.toJson(a, Action.class));
+        });
     }
 
     public String getMessage(){
@@ -205,6 +227,11 @@ public class PlayerConnectionSocket extends Thread implements PlayerConnection, 
 
                     case "players": {
                         sendPlayers();
+                        break;
+                    }
+
+                    case "actions": {
+                        sendActions();
                         break;
                     }
 

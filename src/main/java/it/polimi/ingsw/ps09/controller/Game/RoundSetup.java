@@ -25,13 +25,13 @@ public class RoundSetup {
     protected static void setupRound(Game game) {
 
         //First clear the Game Board
-
-        //TODO: uncomment next line when ale fix clearAll
-        //game.mGameBoard.clearAll();
+        game.mGameBoard.clearAll();
 
         fillTowers(game);
         rollDices(game);
         setPlayersFamilyMembers(game);
+
+        
 
     }
 

@@ -9,16 +9,12 @@ import it.polimi.ingsw.ps09.model.Player;
  */
 public class PlaceFamilyMemberInFloor extends Action {
 
-    private Board mBoard;
     private int mFloorIndex;
-    private Player mPlayer;
     private FamilyMember mFamilyMember;
 
-    public PlaceFamilyMemberInFloor(Board board, int floorIndex, Player player, FamilyMember familyMember){
+    public PlaceFamilyMemberInFloor(int floorIndex, FamilyMember familyMember){
 
-        mBoard = board;
         mFloorIndex = floorIndex;
-        mPlayer = player;
         mFamilyMember = familyMember;
 
     }

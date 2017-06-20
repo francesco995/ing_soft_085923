@@ -37,6 +37,10 @@ public class ServerConnectionSocket extends Thread implements ServerConnection {
     //The Players Order manager
     private PlayersOrder mPlayersOrder;
 
+    private boolean mHasAction;
+    private ArrayList<Action> mPlayerActionsList;
+
+
     private Socket mSocket;
 
     private InetAddress mSERVER_ADDRESS;
@@ -64,6 +68,8 @@ public class ServerConnectionSocket extends Thread implements ServerConnection {
 
         mPlayers = new HashMap<>();
 
+        mHasAction = false;
+
         //Create Gson Builder
         mGsonBuilder = new GsonBuilder();
 
@@ -78,6 +84,10 @@ public class ServerConnectionSocket extends Thread implements ServerConnection {
 
         mGson = mGsonBuilder.create();
 
+    }
+
+    public boolean hasAction(){
+        return mHasAction;
     }
 
     public Board getBoard() {
@@ -109,6 +119,10 @@ public class ServerConnectionSocket extends Thread implements ServerConnection {
         return mIncomingMessages.poll();
     }
 
+    public ArrayList<Action> getPlayerActionsList() {
+        updateActions();
+        return mPlayerActionsList;
+    }
 
     public List<String> getAllMessages(){
         List<String> messages = new LinkedList<>();
@@ -162,6 +176,14 @@ public class ServerConnectionSocket extends Thread implements ServerConnection {
         mPlayersOrder.getPlayersOrder().stream().forEach(
                 id -> mPlayers.put(id, mGson.fromJson(getMessage(), Player.class)));
 
+    }
+
+    private void updateActions() {
+        sendMessage("actions");
+        mPlayerActionsList = new ArrayList<>();
+        int actionsN = Integer.valueOf(getMessage());
+        for(int i = 0; i < actionsN; i++)
+            mPlayerActionsList.add(mGson.fromJson(getMessage(), Action.class));
     }
 
     private void updatePlayersOrder() {
@@ -232,36 +254,56 @@ public class ServerConnectionSocket extends Thread implements ServerConnection {
 
             do {
 
+                sleep(100);
+
                 //Wait for incoming messages
                 mMessage = mMessageReader.readLine();
 
                 //Check if message is a known command
 
-                if(mMessage.equals("update")){
-                    updateView();
+                switch (mMessage) {
+                    case "update":{
+                        updateView();
+                        break;
+                    }
+
+                    case "board":{
+                        updateBoard();
+                        break;
+                    }
+
+                    case "players":{
+                        updatePlayers();
+                        break;
+                    }
+
+                    case "order":{
+                        updatePlayersOrder();
+                        break;
+                    }
+
+                    case "action":{
+                        mHasAction = true;
+                        break;
+                    }
+
+                    case "noAction":{
+                        mHasAction = false;
+                        break;
+                    }
+
+                    case "close":{
+                        mSocket.close();
+                        break;
+                    }
+
+                    default:{
+                        //Add new messages to IncomingMessages
+                        mIncomingMessages.add(mMessage);
+                        break;
+                    }
                 }
 
-                if(mMessage.equals("board")){
-                    updateBoard();
-                }
-
-                if(mMessage.equals("players")){
-                    updatePlayers();
-                }
-
-                if(mMessage.equals("order")){
-                    updatePlayersOrder();
-                }
-
-                if(mMessage.equals("close")){
-                    mSocket.close();
-                }
-
-                else{
-
-                    //Add new messages to IncomingMessages
-                    mIncomingMessages.add(mMessage);
-                }
 
             }while(!mMessage.equalsIgnoreCase("close"));
 
@@ -275,5 +317,6 @@ public class ServerConnectionSocket extends Thread implements ServerConnection {
         }
 
     }
+
 
 }

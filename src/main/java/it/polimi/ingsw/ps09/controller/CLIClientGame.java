@@ -1,12 +1,15 @@
 package it.polimi.ingsw.ps09.controller;
 
 import it.polimi.ingsw.ps09.controller.Network.Client.ServerConnections.ServerConnectionSocket;
+import it.polimi.ingsw.ps09.model.Actions.Action;
 import it.polimi.ingsw.ps09.model.Board;
 import it.polimi.ingsw.ps09.model.Player;
 import it.polimi.ingsw.ps09.view.Prompter;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Created by francesco995 on 18/06/2017.
@@ -20,6 +23,9 @@ public class CLIClientGame extends Thread{
 
     private HashMap<Integer, Player> mPlayers;
     private PlayersOrder mPlayersOrder;
+    private ArrayList<Action> mPlayerActionsList;
+
+    private boolean mHasAction;
 
     //TODO: change to generic ServerConnection
     private ServerConnectionSocket mServerConnection;
@@ -37,6 +43,8 @@ public class CLIClientGame extends Thread{
         mServerConnection = serverConnection;
         mUserName = userName;
         mPrompter = new Prompter();
+
+        mHasAction = false;
 
         //TODO: change add method
         mMainMenu = new ArrayList<>();
@@ -57,16 +65,23 @@ public class CLIClientGame extends Thread{
 
     }
 
+    private void doAction(){
+        mPrompter.promptForIntChoice("Choose your action", mPlayerActionsList.stream().map(Action::toString).collect(Collectors.toList()));
+    }
+
     /**
      * Sends a request to the connection to update game data
      */
     private void updateData(){
 
-        mServerConnection.updateView();
-
+        mPlayers = mServerConnection.getPlayers();
         mBoard = mServerConnection.getBoard();
         mPlayersOrder = mServerConnection.getPlayersOrder();
-        mPlayers = mServerConnection.getPlayers();
+
+        mHasAction = mServerConnection.hasAction();
+        if(mHasAction)
+            mPlayerActionsList = mServerConnection.getPlayerActionsList();
+
 
     }
 
@@ -82,15 +97,25 @@ public class CLIClientGame extends Thread{
 
             updateData();
 
+            if(mHasAction && !mMainMenu.contains("Do Action"))
+                mMainMenu.add("Do Action");
+            else
+                mMainMenu.remove("Do Action");
+
             switch(mPrompter.promptForIntChoice("Main menu:", mMainMenu)){
 
                 case 1:{
+                    mServerConnection.updateView();
                     break;
                 }
 
                 case 2:{
                     displayBoard();
                     break;
+                }
+                case 3:{
+                    if(mHasAction)
+                        doAction();
                 }
 
             }

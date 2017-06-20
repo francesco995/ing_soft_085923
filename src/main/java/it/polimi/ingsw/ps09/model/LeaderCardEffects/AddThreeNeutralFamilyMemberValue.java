@@ -6,7 +6,7 @@ import it.polimi.ingsw.ps09.model.UserPoints;
 /**
  * Created by walle on 19/06/17.
  */
-public class AddTrheeNeutralFamilyMemberValue {
+public class AddThreeNeutralFamilyMemberValue {
 
     private UserPoints mUserPointsRequirements;
 

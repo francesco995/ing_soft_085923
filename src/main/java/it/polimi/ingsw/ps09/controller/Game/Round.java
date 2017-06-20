@@ -3,6 +3,7 @@ package it.polimi.ingsw.ps09.controller.Game;
 import it.polimi.ingsw.ps09.model.Actions.Action;
 import it.polimi.ingsw.ps09.model.Actions.AllActions;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -19,18 +20,28 @@ public class Round {
         RoundSetup.setupRound(game);
 
         game.mPlayersOrder.getPlayersOrder().stream().forEach(id -> {
-            playerAction(game, id);
+            playerDoAction(game, id);
         });
 
 
 
     }
 
-    private static void playerAction(Game game, int playerID){
+    private static void playerDoAction(Game game, int playerID){
 
-        List<Action> playerActionsList =  AllActions.getValidActionsForPlayer(game.mGameBoard, game.mPlayers.get(playerID));
 
-        System.out.println("dadada");
+
+        ArrayList<Action> playerActionsList =  AllActions.getValidActionsForPlayer(game.mGameBoard, game.mPlayers.get(playerID));
+
+        game.mConnections.get(playerID).setActions(playerActionsList);
+
+
+        game.mConnections.get(playerID).sendMessage("action");
+
+
+
+        
+
     }
 
 

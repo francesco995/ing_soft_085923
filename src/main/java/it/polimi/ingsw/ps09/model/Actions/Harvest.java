@@ -15,9 +15,8 @@ public class Harvest extends Action {
     Player mPlayer;
     FamilyMember mFamilyMember;
 
-    public Harvest(Board board, Player player, FamilyMember familyMember) {
-        mBoard = board;
-        mPlayer = player;
+    public Harvest(FamilyMember familyMember) {
+
         mFamilyMember = familyMember;
     }
 
