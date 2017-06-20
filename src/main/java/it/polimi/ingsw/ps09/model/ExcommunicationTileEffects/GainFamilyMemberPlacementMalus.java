@@ -8,10 +8,10 @@ public class GainFamilyMemberPlacementMalus extends  ExcommunicationTileEffect{
 
 
     public void applyEffect(Player player) {
-        //TODO: implement
+        player.getFamilyMemberPlacementBonus().addMalus(mCardType,mMalusValue);
     }
 
-    //TODO: toString
+
     @Override
     public String toString(){
 

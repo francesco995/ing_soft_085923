@@ -75,13 +75,19 @@ public class RoundSetup {
 
 
     /**
-     * Set Family Members value for all Players
+     * Set Family Members as usable and then sets their value to corresponsing dice
      * @param game Game instance
      */
     private static void setPlayersFamilyMembers(Game game){
 
         game.mPlayersOrder.getPlayersOrder().stream().forEach(iD -> {
-            //TODO : isUsable
+
+            //set as usable again all familyMembers
+            game.mPlayers.get(iD).getFamilyMember("NEUTRAL").setUsable();
+            game.mPlayers.get(iD).getFamilyMember("BLACK").setUsable();
+            game.mPlayers.get(iD).getFamilyMember("WHITE").setUsable();
+            game.mPlayers.get(iD).getFamilyMember("ORANGE").setUsable();
+
             game.mPlayers.get(iD).setFamilyMemberPower("BLACK", game.mBlackDice);
             game.mPlayers.get(iD).setFamilyMemberPower("WHITE", game.mWhiteDice);
             game.mPlayers.get(iD).setFamilyMemberPower("ORANGE", game.mOrangeDice);

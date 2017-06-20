@@ -27,14 +27,14 @@ public class Production extends Action {
         //check if family member is usable
         if (!familyMember.isUsable() == true)
             return false;
-        else
         //Check if the family Member has enough power to do basic action
         if(
-                familyMember.getPower() + player.getProductionBonus() > board.getProductionSlotDiceValue()
+                familyMember.getPower() + player.getProductionBonus() < board.getProductionSlotDiceValue()
                 )
-            return true;
-        else
             return false;
+
+        //if reaches here it passed all controls
+        return true;
     }
 
     public void doAction(Board board, Player player, FamilyMember familyMember)

@@ -18,11 +18,11 @@ public class IncreaseFamilyMemberValue extends Action {
         //check if family member is usable
         if (!player.getFamilyMember(color).isUsable() == true)
             return false;
-        else
-        if (player.has(offer))
-            return true;
-        else
+        if (!player.has(offer))
             return false;
+
+        //if reaches here it passed all controls
+        return true;
     }
 
     public void doAction(Board board, Player player, String color, Servant offer)

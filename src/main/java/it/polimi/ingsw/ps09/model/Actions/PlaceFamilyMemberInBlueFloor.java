@@ -23,7 +23,7 @@ public class PlaceFamilyMemberInBlueFloor extends PlaceFamilyMemberInFloor {
     public static boolean isValid(Board board, int floorIndex,  Player player, FamilyMember familyMember){
 
         //check if family member is usable
-        if (!familyMember.isUsable() == true)
+        if (!familyMember.isUsable())
             return false;
         else
         //Check if floor is free
@@ -41,7 +41,7 @@ public class PlaceFamilyMemberInBlueFloor extends PlaceFamilyMemberInFloor {
 
 
         //card variable to check for resources
-        Character card = (Character) board.getTerritoriesTowerCard(floorIndex);
+        Character card = (Character) board.getCharacterTowerCard(floorIndex);
 
         //check if enough resources
 

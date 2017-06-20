@@ -17,7 +17,7 @@ public class GainHarverstAndProductionMalus extends ExcommunicationTileEffect {
 
 
     public void applyEffect( Player player ){
-        //TODO: implement
+        player.getHarvestAndProductionBonus().addMalus(mMalusType,mMalusValue);
     }
 
     @Override

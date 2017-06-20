@@ -24,7 +24,7 @@ public class AllActions {
 
 
         //Check and add placement actions for Territory Tower
-        for (int i = 0; i <= 4; i++) {
+        for (int i = 0; i < 4; i++) {
 
             if (PlaceFamilyMemberInGreenFloor.isValid
                     (board, i, player, player.getFamilyMember("NEUTRAL")))
@@ -56,7 +56,7 @@ public class AllActions {
         }
 
         //Check and add placement actions for Character Tower
-        for (int i = 0; i <= 4; i++) {
+        for (int i = 0; i < 4; i++) {
 
             if (PlaceFamilyMemberInBlueFloor.isValid
                     (board, i, player, player.getFamilyMember("NEUTRAL")))
@@ -88,7 +88,7 @@ public class AllActions {
         }
 
         //Check and add placement actions for Building Tower
-        for (int i = 0; i <= 4; i++) {
+        for (int i = 0; i < 4; i++) {
 
             if (PlaceFamilyMemberInYellowFloor.isValid
                     (board, i, player, player.getFamilyMember("NEUTRAL")))
@@ -120,7 +120,7 @@ public class AllActions {
         }
 
         //Check and add placement actions for Venture Tower
-        for (int i = 0; i <= 4; i++) {
+        for (int i = 0; i < 4; i++) {
 
             if (PlaceFamilyMemberInPurpleFloor.isValid
                     (board, i, player, player.getFamilyMember("NEUTRAL")))

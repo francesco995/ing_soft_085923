@@ -50,6 +50,7 @@ public class PlaceFamilyMemberInMarket extends Action {
                 !player.has(new Servant(1)))
             return false;
 
+        //if reaches here it passed all controls
         return true;
     }
 

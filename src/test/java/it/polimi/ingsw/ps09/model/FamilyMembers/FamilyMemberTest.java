@@ -43,4 +43,19 @@ public class FamilyMemberTest {
         assertTrue(mTest.getPower() > mTest.lessPower(1));
 
     }
+
+    @Test
+    public void isNowUsable() throws Exception {
+
+        mTest.setUsable();
+        assertTrue(mTest.isUsable());
+
+    }
+    @Test
+    public void isNowUnusable() throws Exception {
+
+        mTest.used();
+        assertFalse(mTest.isUsable());
+
+    }
 }

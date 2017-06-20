@@ -1,6 +1,7 @@
 package it.polimi.ingsw.ps09.model.Actions;
 
 import it.polimi.ingsw.ps09.model.Board;
+import it.polimi.ingsw.ps09.model.DevelopmentCards.Building;
 import it.polimi.ingsw.ps09.model.DevelopmentCards.Territory;
 import it.polimi.ingsw.ps09.model.FamilyMembers.FamilyMember;
 import it.polimi.ingsw.ps09.model.Player;
@@ -21,79 +22,46 @@ public class PlaceFamilyMemberInGreenFloor extends PlaceFamilyMemberInFloor {
 
 
     public static boolean isValid(Board board, int floorIndex, Player player, FamilyMember familyMember) {
+
+        //CONTROLS ON FAMILY MEMBER
         //check if family member is usable
-        if (!familyMember.isUsable() == true)
+        if (!familyMember.isUsable())
             return false;
-        else
-            //Check if floor is free
-            if (!board.getTerritoriesTower().getFloors().get(floorIndex).isAvailable()) {
-                return false;
-            } else
-                //check if Family Member has enough power
-                if (
-                        familyMember.getPower()
-                                + player.getFamilyMemberPlacementBonus("TERRITORY")
-                                <
-                                board.getTerritoriesTower().getFloors().get(floorIndex).getDiceValue()) {
-                    return false;
-                }
+        //Check if floor is free
+        if (!board.getTerritoriesTower().getFloors().get(floorIndex).isAvailable())
+            return false;
 
+        //check if Family Member has enough power
+        if (
+                familyMember.getPower()
+                        + player.getFamilyMemberPlacementBonus("TERRITORY")
+                        <
+                        board.getTerritoriesTower().getFloors().get(floorIndex).getDiceValue())
+            return false;
 
-        //card variable to check for resources
+        //CONTROLS ON PLAYER
+     /*
+       //card variable to check for resources
         Territory card = (Territory) board.getTerritoriesTowerCard(floorIndex);
 
         //check if enough resources
-
         if (!player.has(card.getResourcesCosts().get(0)))
             return false;
-            //check if enough points
 
-        else if (!player.has(card.getPointsCosts().get(0)))
+        //check if enough points
+        if (!player.has(card.getPointsCosts().get(0)))
             return false;
-        else
-            //player has enough resources and/or points, check if tower already filled
-            if (board.getTerritoriesTower().hasFamilyMember()) {
-                if (player.getCoins().getValue()
-                        >
-                        (card.getResourcesCosts().get(0).getCoins().getValue() + EXTRA_TOWER_COST))
-                    //passed extra coins check
-                    return true;
-                else
-                    return false;
-
-
-            } else
-                //if tower not filled returns true
-                return true;
-
-        /*//enough coins
-        if (player.getCoins().getValue()
-                <
-                card.getResourcesCosts().get(0).getCoins().getValue())
-            return false;
-        //enough wood
-        else if (player.getWood().getValue()
-                <
-                card.getResourcesCosts().get(0).getWood().getValue())
-            return false;
-        //enough stone
-        else if (player.getStone().getValue()
-                <
-                card.getResourcesCosts().get(0).getStone().getValue())
-            return false;
-        //enough servant
-        else if (player.getServant().getValue()
-                <
-                card.getResourcesCosts().get(0).getServant().getValue())
-            return false;
-        //enough Military points
-        else if (player.getMilitaryPoints().getValue()
-                <
-                card.getPointsCosts().get(0).getMilitaryPoints().getValue())
-            return false;
-        else //all condition passed
-                return true;
 */
+        //check if tower already filled then he must have 3 more coins
+        if (board.getTerritoriesTower().hasFamilyMember()) {
+            if (player.getCoins().getValue()
+                    <
+                    (EXTRA_TOWER_COST))
+                return false;
+        }
+
+        //if reaches here it passed all controls
+        return true;
     }
 
 

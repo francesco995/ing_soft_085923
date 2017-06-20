@@ -282,6 +282,10 @@ public class Player {
 
     }
 
+    public FamilyMemberPlacementBonus getFamilyMemberPlacementBonus() {
+        return mFamilyMemberPlacementBonus;
+    }
+
     public UserResources getFamilyMemberPlacementResourcesDiscount(String cardType) {
 
         return mFamilyMemberPlacementResourcesDiscount.getBonus(cardType);

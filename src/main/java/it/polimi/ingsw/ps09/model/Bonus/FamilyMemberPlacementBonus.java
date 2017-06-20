@@ -56,6 +56,11 @@ public class FamilyMemberPlacementBonus {
                 bonusValue + mBonus.get(cardType.toUpperCase()));
     }
 
+    public void addMalus(String cardType, int bonusValue){
+        mBonus.put(
+                cardType.toUpperCase(),
+                - bonusValue + mBonus.get(cardType.toUpperCase()));
+    }
     //TODO: test
 
     //TODO: toString

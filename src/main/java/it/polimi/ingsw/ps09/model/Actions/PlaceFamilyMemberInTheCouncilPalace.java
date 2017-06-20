@@ -27,12 +27,12 @@ public class PlaceFamilyMemberInTheCouncilPalace extends Action {
         //check if family member is usable
         if (!familyMember.isUsable() == true)
             return false;
-        else
         //check if has the minimum power for CouncilPalace
         if (familyMember.getPower() < 1)
             return false;
-        else
-            return true;
+
+        //if reaches here it passed all controls
+        return true;
     }
 
     public void doAction
