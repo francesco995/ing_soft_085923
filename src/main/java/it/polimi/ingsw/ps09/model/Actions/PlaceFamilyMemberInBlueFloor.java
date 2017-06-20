@@ -22,52 +22,46 @@ public class PlaceFamilyMemberInBlueFloor extends PlaceFamilyMemberInFloor {
 
     public static boolean isValid(Board board, int floorIndex,  Player player, FamilyMember familyMember){
 
+        //FAMILY MEMBER CONTROLS
         //check if family member is usable
         if (!familyMember.isUsable())
             return false;
-        else
+
         //Check if floor is free
-        if (!board.getCharactersTower().getFloors().get(floorIndex).isAvailable()) {
+        if (!board.getCharactersTower().getFloors().get(floorIndex).isAvailable())
             return false;
-        } else
-            //check if Family Member has enough power
-            if (
-                    familyMember.getPower()
-                            + player.getFamilyMemberPlacementBonus("CHARACTER")
-                            <
-                            board.getCharactersTower().getFloors().get(floorIndex).getDiceValue()) {
-                return false;
-            }
+
+        //check if Family Member has enough power
+        if (
+                familyMember.getPower()
+                        + player.getFamilyMemberPlacementBonus("CHARACTER")
+                        <
+                        board.getCharactersTower().getFloors().get(floorIndex).getDiceValue())
+            return false;
 
 
+        //PLAYERS CONTROLS
         //card variable to check for resources
         Character card = (Character) board.getCharacterTowerCard(floorIndex);
 
         //check if enough resources
-
-        if(!player.has(card.getResourcesCosts().get(0)))
+        if (!player.has(card.getResourcesCosts().get(0)))
             return false;
-            //check if enough points
 
-        else if (!player.has(card.getPointsCosts().get(0)))
+        //check if enough points
+        if (!player.has(card.getPointsCosts().get(0)))
             return false;
-        else
-            //player has enough resources and/or points, check if tower already filled
-            if(board.getCharactersTower().hasFamilyMember())
-            {
-                if(player.getCoins().getValue()
-                        >
-                        (card.getResourcesCosts().get(0).getCoins().getValue() + EXTRA_TOWER_COST ))
-                    //passed extra coins check
-                    return true;
-                else
-                    return false;
 
+        //player has enough resources and/or points, check if tower already filled
+        if (board.getVenturesTower().hasFamilyMember()) {
+            if (player.getCoins().getValue()
+                    <
+                    (card.getResourcesCosts().get(0).getCoins().getValue() + EXTRA_TOWER_COST))
+                return false;
+        }
 
-            }
-            else
-                //if tower not filled returns true
-                return true;
+        //if reaches here it passed all controls
+        return true;
 
     }
 

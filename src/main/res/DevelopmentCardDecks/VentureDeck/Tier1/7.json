@@ -33,7 +33,20 @@
         "mCardName": "Fighting Heresies",
         "CARD_N": 79,
         "mPeriod": 1,
-        "mResourcesCosts": [],
+        "mResourcesCosts": [   {
+                "mCoins": {
+                    "mValue": 0
+                },
+                "mServant": {
+                    "mValue": 0
+                },
+                "mStone": {
+                    "mValue": 0
+                },
+                "mWood": {
+                    "mValue": 0
+                }
+      }],
         "mPointsCosts": [{
             "mPointsGains": {
                 "mFaithPoints": {
