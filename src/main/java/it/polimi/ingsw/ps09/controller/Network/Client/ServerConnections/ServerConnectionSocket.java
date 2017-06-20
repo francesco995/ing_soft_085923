@@ -12,6 +12,7 @@ import it.polimi.ingsw.ps09.model.DevelopmentCards.DevelopmentCard;
 import it.polimi.ingsw.ps09.model.ExcommunicationTileEffects.ExcommunicationTileEffect;
 import it.polimi.ingsw.ps09.model.FamilyMembers.FamilyMember;
 import it.polimi.ingsw.ps09.model.GsonAdapters.*;
+import it.polimi.ingsw.ps09.model.LeaderCardEffects.LeaderCardEffect;
 import it.polimi.ingsw.ps09.model.Player;
 
 import java.io.*;
@@ -73,6 +74,7 @@ public class ServerConnectionSocket extends Thread implements ServerConnection {
         mGsonBuilder.registerTypeAdapter(Action.class, new ActionAdapter());
         mGsonBuilder.registerTypeAdapter(Game.class, new GameAdapter());
         mGsonBuilder.registerTypeAdapter(FamilyMember.class, new FamilyMemberAdapter());
+        mGsonBuilder.registerTypeAdapter(LeaderCardEffect.class, new LeaderCardEffectAdapter());
 
         mGson = mGsonBuilder.create();
 
