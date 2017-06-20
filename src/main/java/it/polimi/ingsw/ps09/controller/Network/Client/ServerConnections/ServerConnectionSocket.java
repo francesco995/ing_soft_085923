@@ -92,26 +92,9 @@ public class ServerConnectionSocket extends Thread implements ServerConnection {
         return mPlayersOrder;
     }
 
-    public void updateView(){
-
-        sendMessage("board");
-        mBoard = mGson.fromJson(getMessage(), Board.class);
-
-        sendMessage("playersOrder");
-
-        mPlayersOrder = mGson.fromJson(getMessage(), PlayersOrder.class);
-
-        sendMessage("players");
-
-        mPlayersOrder.getPlayersOrder().stream().forEach(
-                id -> mPlayers.put(id, mGson.fromJson(getMessage(), Player.class)));
-
-    }
-
     public String getUserName() {
         return mUserName;
     }
-
 
     public String getMessage(){
 
@@ -146,6 +129,7 @@ public class ServerConnectionSocket extends Thread implements ServerConnection {
         return false;
     }
 
+
     public void sendMessage(String message){
     //TODO: maybe switch to boolean return
 
@@ -156,6 +140,25 @@ public class ServerConnectionSocket extends Thread implements ServerConnection {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+    }
+
+    /**
+     * Send the server requests to get updated data
+     */
+    public void updateView(){
+
+        sendMessage("board");
+        mBoard = mGson.fromJson(getMessage(), Board.class);
+
+        sendMessage("playersOrder");
+
+        mPlayersOrder = mGson.fromJson(getMessage(), PlayersOrder.class);
+
+        sendMessage("players");
+
+        mPlayersOrder.getPlayersOrder().stream().forEach(
+                id -> mPlayers.put(id, mGson.fromJson(getMessage(), Player.class)));
 
     }
 
@@ -216,17 +219,25 @@ public class ServerConnectionSocket extends Thread implements ServerConnection {
                 //Wait for incoming messages
                 mMessage = mMessageReader.readLine();
 
+                //Check if message is a known command
 
                 if(mMessage.equals("update")){
                     updateView();
                 }
+
+                if(mMessage.equals("close")){
+                    mSocket.close();
+                }
+
                 else{
+
                     //Add new messages to IncomingMessages
                     mIncomingMessages.add(mMessage);
                 }
 
             }while(!mMessage.equalsIgnoreCase("close"));
 
+            //Close connection
             mSocket.close();
 
         } catch (IOException e) {

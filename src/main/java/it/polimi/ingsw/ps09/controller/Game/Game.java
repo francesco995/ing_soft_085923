@@ -41,7 +41,7 @@ public class Game extends Thread {
     //Players IDs, Names and Colors
     protected ArrayList<Integer> mUserIds;
     protected List<String> mUserNames;
-    protected List<String> mUserColors;
+    protected ArrayList<String> mUserColors;
 
     //Number of players
     public static int PLAYERS_NUMBER;
@@ -90,7 +90,11 @@ public class Game extends Thread {
      * @param userColors Queue of UserColors
      * @param gameId     Unique GameID
      */
-    public Game(ArrayList<Integer> userIds, List<String> userNames, List<String> userColors, int gameId, HashMap<Integer, PlayerConnection> connections) {
+    public Game(ArrayList<Integer> userIds,
+                List<String> userNames,
+                ArrayList<String> userColors,
+                int gameId,
+                HashMap<Integer, PlayerConnection> connections) {
 
         GAME_ID = gameId;
         PLAYERS_NUMBER = userNames.size();

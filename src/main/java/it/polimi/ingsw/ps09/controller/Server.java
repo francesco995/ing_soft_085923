@@ -8,6 +8,7 @@ import it.polimi.ingsw.ps09.model.Player;
 
 import java.io.IOException;
 import java.util.*;
+import java.util.function.Supplier;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
@@ -88,7 +89,7 @@ public class Server extends Thread{
             }
 
             //Generate partial PlayerConnections List
-            List<PlayerConnection> readyPlayersConnections = new LinkedList<>();
+            ArrayList<PlayerConnection> readyPlayersConnections = new ArrayList<>();
 
             for(int i = 0; i < playersN; i++){
                 readyPlayersConnections.add(mQueuedPlayers.poll());
@@ -101,7 +102,7 @@ public class Server extends Thread{
                     .collect(Collectors.toList());
 
             //Generate userColor List
-            List<String> userColors = new LinkedList<>();
+            ArrayList<String> userColors = new ArrayList<>();
             userColors.add("RED");
             userColors.add("GREEN");
             userColors.add("BLUE");
