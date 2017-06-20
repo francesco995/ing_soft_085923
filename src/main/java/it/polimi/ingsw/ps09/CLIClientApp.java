@@ -7,6 +7,9 @@ import it.polimi.ingsw.ps09.controller.Network.Client.ServerConnections.ServerCo
 
 import java.io.IOException;
 import java.util.Scanner;
+import java.util.logging.Logger;
+
+import static java.util.logging.Level.WARNING;
 
 /**
  * Created by franc on 09/05/2017.
@@ -14,6 +17,9 @@ import java.util.Scanner;
 public class CLIClientApp {
 
     public static void main(String[] args) throws IOException {
+
+        final Logger mLogger = Logger.getAnonymousLogger();
+
 
         Scanner scanner = new Scanner(System.in);
 
@@ -44,7 +50,9 @@ public class CLIClientApp {
                 System.out.print(".");
                 Thread.sleep(500);
             } catch (InterruptedException e) {
-                e.printStackTrace();
+                mLogger.log(WARNING, "Interrupted!", e);
+                // clean up state...
+                Thread.currentThread().interrupt();
             }
 
         }while(!serverConnectionSocket.isConnected());
@@ -59,7 +67,9 @@ public class CLIClientApp {
                 System.out.print(".");
                 Thread.sleep(500);
             } catch (InterruptedException e) {
-                e.printStackTrace();
+                mLogger.log(WARNING, "Interrupted!", e);
+                // clean up state...
+                Thread.currentThread().interrupt();
             }
 
         }while (!serverConnectionSocket.hasIncomingMessages());

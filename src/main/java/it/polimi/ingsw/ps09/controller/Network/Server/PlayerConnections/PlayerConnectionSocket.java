@@ -28,7 +28,7 @@ import static java.util.logging.Level.INFO;
  *
  * Thread instantiated by the Server app to connect to a Player
  */
-public class PlayerConnectionSocket extends Thread implements PlayerConnection {
+public class PlayerConnectionSocket extends Thread implements PlayerConnection, Observer{
 
     //Game
     private Board mBoard;
@@ -86,6 +86,11 @@ public class PlayerConnectionSocket extends Thread implements PlayerConnection {
         mGson = mGsonBuilder.create();
 
         this.start();
+
+    }
+
+    @Override
+    public void update(Observable o, Object arg){
 
     }
 

@@ -41,7 +41,7 @@ public class Player {
 
     //GAME OBJECTS
     private PersonalBoard mPersonalBoard; // già tostring
-    private UserPoints mUserPoints; //
+    private UserPoints mUserPoints;
 
     //PLAYER OBJECTS
 

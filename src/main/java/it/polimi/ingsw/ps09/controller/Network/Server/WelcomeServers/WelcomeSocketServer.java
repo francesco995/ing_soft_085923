@@ -35,8 +35,8 @@ public class WelcomeSocketServer extends Thread implements WelcomeServer {
     public WelcomeSocketServer() throws IOException {
 
         //Start ServerSocket on port 100
-        mLocalSocket = new ServerSocket(100);
-        mLogger.log(INFO, "Created ServerSocket on port 100");
+        mLocalSocket = new ServerSocket(1024);
+        mLogger.log(INFO, "Created ServerSocket on port 1024");
 
         //Start SocketPortsManager to get a new free port every time a client connects
         mSocketPortsManager = new SocketPortsManager(10001, 20000);

@@ -2,9 +2,14 @@ package it.polimi.ingsw.ps09;
 
 import it.polimi.ingsw.ps09.controller.CLIClientGame;
 import it.polimi.ingsw.ps09.controller.Network.Client.ServerConnections.ServerConnectionSocket;
+import it.polimi.ingsw.ps09.model.Player;
 
 import java.io.IOException;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+import static java.util.logging.Level.WARNING;
 
 /**
  * Created by francesco995 on 17/06/2017.
@@ -12,9 +17,9 @@ import java.util.Scanner;
 public class CLIAutoClientApp {
     public static void main(String[] args) throws IOException {
 
-        CLIClientGame mClientGame;
+        final Logger mLogger = Logger.getAnonymousLogger();
 
-        Scanner scanner = new Scanner(System.in);
+        CLIClientGame mClientGame;
 
         String userName;
 
@@ -41,7 +46,9 @@ public class CLIAutoClientApp {
                 System.out.print(".");
                 Thread.sleep(500);
             } catch (InterruptedException e) {
-                e.printStackTrace();
+                mLogger.log(WARNING, "Interrupted!", e);
+                // clean up state...
+                Thread.currentThread().interrupt();
             }
 
         }while(!serverConnectionSocket.isConnected());

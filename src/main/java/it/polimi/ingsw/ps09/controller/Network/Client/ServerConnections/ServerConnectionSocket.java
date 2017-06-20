@@ -40,7 +40,7 @@ public class ServerConnectionSocket extends Thread implements ServerConnection {
     private Socket mSocket;
 
     private InetAddress mSERVER_ADDRESS;
-    private int mSERVER_PORT = 100;
+    private int mSERVER_PORT = 1024;
 
     private String mMessage;
 

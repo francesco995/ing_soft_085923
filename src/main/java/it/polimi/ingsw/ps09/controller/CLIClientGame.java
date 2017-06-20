@@ -5,7 +5,6 @@ import it.polimi.ingsw.ps09.model.Board;
 import it.polimi.ingsw.ps09.model.Player;
 import it.polimi.ingsw.ps09.view.Prompter;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -22,6 +21,7 @@ public class CLIClientGame extends Thread{
     private HashMap<Integer, Player> mPlayers;
     private PlayersOrder mPlayersOrder;
 
+    //TODO: change to generic ServerConnection
     private ServerConnectionSocket mServerConnection;
 
     private Prompter mPrompter;
@@ -38,24 +38,22 @@ public class CLIClientGame extends Thread{
         mUserName = userName;
         mPrompter = new Prompter();
 
-        mMainMenu = new ArrayList<String>(){{
-            add("Force view refresh");
-            add("Display Board");
-        }};
+        //TODO: change add method
+        mMainMenu = new ArrayList<>();
+        mMainMenu.add("Force view refresh");
+        mMainMenu.add("Display Board");
 
-        mBoardMenu = new ArrayList<String>(){{
-            add("Display the whole Board");
-            add("Display Towers");
-            add("Display Markets");
-            add("Display Harvest & Production");
-        }};
+        mBoardMenu = new ArrayList<>();
+        mBoardMenu.add("Display the whole Board");
+        mBoardMenu.add("Display Towers");
+        mBoardMenu.add("Display Markets");
+        mBoardMenu.add("Display Harvest & Production");
 
-        mTowersMenu = new ArrayList<String>(){{
-            add("Green Tower");
-            add("Yellow Tower");
-            add("Blue Tower");
-            add("Purple Tower");
-        }};
+        mTowersMenu = new ArrayList<>();
+        mTowersMenu.add("Green Tower");
+        mTowersMenu.add("Yellow Tower");
+        mTowersMenu.add("Blue Tower");
+        mTowersMenu.add("Purple Tower");
 
     }
 
