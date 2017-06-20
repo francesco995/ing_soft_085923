@@ -2,6 +2,7 @@ package it.polimi.ingsw.ps09.model.Bonus;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.StringJoiner;
 
 /**
  * Created by francesco995 on 04/06/2017.

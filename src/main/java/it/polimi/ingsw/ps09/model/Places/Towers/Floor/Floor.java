@@ -100,7 +100,7 @@ public class Floor {
         mStringFloor.add("");
         mStringFloor.add("Dice value: " + mDiceValue);
         mStringFloor.add("Bonus: " + mBoardBonus);
-        mStringFloor.add("Card: \n      " + mCard);
+        mStringFloor.add("Card: " + mCard);
         mStringFloor.add("Family Memeber: " + mFamilyMember);
         mStringFloor.add("\n");
 

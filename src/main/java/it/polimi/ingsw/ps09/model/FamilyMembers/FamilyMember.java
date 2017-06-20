@@ -3,6 +3,8 @@ package it.polimi.ingsw.ps09.model.FamilyMembers;
 
 import it.polimi.ingsw.ps09.model.Dices.Dice;
 
+import java.util.StringJoiner;
+
 public abstract class FamilyMember {
 
     //VARIABLES
@@ -47,4 +49,29 @@ public abstract class FamilyMember {
     public void setUsable(){
         mIsUsable = true;
     }
+
+    @Override
+    public String toString(){
+
+        String mIsUsableString;
+
+        StringJoiner mStringFamilyMember = new StringJoiner("\n", "", "");
+
+        mStringFamilyMember.add("");
+        mStringFamilyMember.add("Family: " + mFamily);
+        mStringFamilyMember.add("Color: " + mColor);
+        mStringFamilyMember.add("Power: " + mPower);
+
+        if(mIsUsable==true)
+            mIsUsableString = "Yes";
+        else
+            mIsUsableString = "No";
+
+        mStringFamilyMember.add("Available: " + mIsUsableString);
+
+        return mStringFamilyMember.toString();
+
+
+    }
+
 }

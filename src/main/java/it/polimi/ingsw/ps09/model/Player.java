@@ -40,12 +40,12 @@ public class Player {
     private BonusFlags mUserFlags;
 
     //GAME OBJECTS
-    private PersonalBoard mPersonalBoard; // già tostring
-    private UserPoints mUserPoints;
+    private PersonalBoard mPersonalBoard; // già toString
+    private UserPoints mUserPoints; // giá toString
 
     //PLAYER OBJECTS
 
-    private PlayerFamilyMembers mPlayerFamilyMembers;
+    private PlayerFamilyMembers mPlayerFamilyMembers;// giá toString
 
     private List<DevelopmentCardEffect> mPermanentEffects;
     private List<DevelopmentCardEffect> mEndGameEffects;

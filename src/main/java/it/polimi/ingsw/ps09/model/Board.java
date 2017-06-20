@@ -148,6 +148,7 @@ public class Board extends Observable{
      */
     public void setMarketSpaceDiceValue(int pos, int dice){
         mMarket.getMarketList().get(pos).setDiceValue(dice);
+        updated();
     }
 
     //####################################################
@@ -309,14 +310,17 @@ public class Board extends Observable{
 
     public void setCharacterTowerFamilyMember(int floor, FamilyMember pawn) {
         mCharactersTower.getFloors().get(floor).setFamilyMember(pawn);
+        updated();
     }
 
     public void setCharacterTowerBonus(int floor, BoardBonus boardBonus) {
         mCharactersTower.getFloors().get(floor).setBoardBonus(boardBonus);
+        updated();
     }
 
     public void setCharacterTowerCard(int floor, DevelopmentCard card) {
         mCharactersTower.getFloors().get(floor).setCard(card);
+        updated();
     }
 
     //####################################################
@@ -361,14 +365,17 @@ public class Board extends Observable{
 
     public void setTerritoriesTowerFamilyMember(int floor, FamilyMember pawn) {
         mTerritoriesTower.getFloors().get(floor).setFamilyMember(pawn);
+        updated();
     }
 
     public void setTerritoriesTowerBonus(int floor, BoardBonus boardBonus) {
         mTerritoriesTower.getFloors().get(floor).setBoardBonus(boardBonus);
+        updated();
     }
 
     public void setTerritoriesTowerCard(int floor, DevelopmentCard card) {
         mTerritoriesTower.getFloors().get(floor).setCard(card);
+        updated();
     }
 
     //####################################################
@@ -413,14 +420,17 @@ public class Board extends Observable{
 
     public void setVenturesTowerFamilyMember(int floor, FamilyMember pawn) {
         mVenturesTower.getFloors().get(floor).setFamilyMember(pawn);
+        updated();
     }
 
     public void setVenturesTowerBonus(int floor, BoardBonus boardBonus) {
         mVenturesTower.getFloors().get(floor).setBoardBonus(boardBonus);
+        updated();
     }
 
     public void setVenturesTowerCard(int floor, DevelopmentCard card) {
         mVenturesTower.getFloors().get(floor).setCard(card);
+        updated();
     }
 
     //####################################################
@@ -465,14 +475,17 @@ public class Board extends Observable{
 
     public void setBuildingsTowerFamilyMember(int floor, FamilyMember pawn) {
         mBuildingsTower.getFloors().get(floor).setFamilyMember(pawn);
+        updated();
     }
 
     public void setBuildingsTowerBonus(int floor, BoardBonus boardBonus) {
         mBuildingsTower.getFloors().get(floor).setBoardBonus(boardBonus);
+        updated();
     }
 
     public void setBuildingsTowerCard(int floor, DevelopmentCard card) {
         mBuildingsTower.getFloors().get(floor).setCard(card);
+        updated();
     }
 
     //####################################################
@@ -491,23 +504,29 @@ public class Board extends Observable{
     public void setExcommunicationTitleName(String name, int period) {
         if(period==1)
             mExcommunicationTile1.setTitleName(name);
+            updated();
 
         else if(period==2)
             mExcommunicationTile2.setTitleName(name);
+            updated();
 
         else if(period==3)
             mExcommunicationTile3.setTitleName(name);
+            updated();
     }
 
     public void setExcommunicationEffect(LinkedList effect, int period){
         if(period==1)
             mExcommunicationTile1.setEffects(effect);
+            updated();
 
         else if(period==2)
             mExcommunicationTile2.setEffects(effect);
+            updated();
 
         else if(period==3)
             mExcommunicationTile3.setEffects(effect);
+            updated();
     }
 
     public LinkedList getExcommunicationEffect(int period){
@@ -531,6 +550,7 @@ public class Board extends Observable{
 
     public void setOrder(Order order) {
         mOrder = order;
+        updated();
     }
     */
 
