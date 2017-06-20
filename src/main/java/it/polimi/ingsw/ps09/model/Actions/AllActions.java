@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * Created by francesco995 on 13/06/2017.
  */
-public class AllActions {
+public class  AllActions {
 
     public static List<Action> getValidActionsForPlayer(Board board, Player player) {
 

@@ -179,10 +179,14 @@ public class Player extends Observable {
 
     private void addPermanentEffects(List<DevelopmentCardEffect> permanentEffects){
         mPermanentEffects.addAll(permanentEffects);
+
+        updated();
     }
 
     private void addEndGameEffects(List<DevelopmentCardEffect> endGameEffects){
         mEndGameEffects.addAll(endGameEffects);
+
+        updated();
     }
 
     public FamilyMember getFamilyMember(String color){
@@ -194,6 +198,8 @@ public class Player extends Observable {
         mPlayerFamilyMembers.getFamilyMember("WHITE").setUsable();
         mPlayerFamilyMembers.getFamilyMember("ORANGE").setUsable();
         mPlayerFamilyMembers.getFamilyMember("NEUTRAL").setUsable();
+
+        updated();
     }
 
 
@@ -213,12 +219,14 @@ public class Player extends Observable {
         card.getImmediateEffects().stream()
                 .forEach(c -> c.applyEffect(this));
 
+        updated();
     }
 
     public void addTerritoryCard(Territory card){
 
         addCard(card, 0);
 
+        updated();
     }
 
 
@@ -226,6 +234,7 @@ public class Player extends Observable {
 
         addCard(card, 0);
 
+        updated();
     }
 
     public void addCharacterCard(Character card){
@@ -234,6 +243,7 @@ public class Player extends Observable {
 
         addPermanentEffects(card.getPermanentEffects());
 
+        updated();
     }
 
     public void addVentureCard(Venture card){
@@ -242,6 +252,7 @@ public class Player extends Observable {
 
         addEndGameEffects(card.getEndGameEffects());
 
+        updated();
     }
 
 
@@ -270,10 +281,13 @@ public class Player extends Observable {
 
         mHarvestAndProductionBonus.addBonus(bonusType, bonusValue);
 
+        updated();
     }
 
     public void setFamilyMemberPower(String familyMemberColor, Dice powerDice){
         mPlayerFamilyMembers.setFamilyMemberPower(familyMemberColor, powerDice);
+
+        updated();
     }
 
     public int getFamilyMemberPlacementBonus(String cardType){
@@ -286,6 +300,7 @@ public class Player extends Observable {
                 mFamilyMemberPlacementBonus.getBonus(cardType) + bonusValue
                 );
 
+        updated();
     }
 
     public FamilyMemberPlacementBonus getFamilyMemberPlacementBonus() {
@@ -302,6 +317,7 @@ public class Player extends Observable {
 
         mFamilyMemberPlacementResourcesDiscount.addBonus(cardType, resourcesDiscount);
 
+        updated();
     }
 
 
@@ -364,6 +380,7 @@ public class Player extends Observable {
                 " to player: " + mUserName +
                 " now has: " + mLeaderCards.size() + " Leader Cards");
 
+        updated();
     }
 
 
@@ -402,6 +419,8 @@ public class Player extends Observable {
         add(addResources.getServant());
         add(addResources.getStone());
         add(addResources.getWood());
+
+        updated();
     }
 
     /**
@@ -417,6 +436,8 @@ public class Player extends Observable {
                 " add " + addCoins.toString() +
                 " Coins to player: " + mUserName +
                 " now has: " + getCoins().toString() + " Coins");
+
+
 
     }
 
@@ -434,6 +455,8 @@ public class Player extends Observable {
                 " Servant to player: " + mUserName +
                 " now has: " + getServant().toString() + " Servant");
 
+
+
     }
 
     /**
@@ -450,6 +473,8 @@ public class Player extends Observable {
                 " Stone to player: " + mUserName +
                 " now has: " + getStone().toString() + " Stone");
 
+
+
     }
 
     /**
@@ -465,6 +490,8 @@ public class Player extends Observable {
                 " add " + addWood.toString() +
                 " Wood to player: " + mUserName +
                 " now has: " + getWood().toString() + " Wood");
+
+
 
     }
 
@@ -543,6 +570,8 @@ public class Player extends Observable {
         remove(removeResources.getServant());
         remove(removeResources.getStone());
         remove(removeResources.getWood());
+
+        updated();
     }
 
     /**
@@ -558,6 +587,8 @@ public class Player extends Observable {
                 " remove " + removeCoins.toString() +
                 " Coins from player: " + mUserName +
                 " now has: " + getCoins().toString() + " Coins");
+
+
 
     }
 
@@ -575,6 +606,8 @@ public class Player extends Observable {
                 " Servant to player: " + mUserName +
                 " now has: " + getServant().toString() + " Servant");
 
+
+
     }
 
     /**
@@ -591,6 +624,8 @@ public class Player extends Observable {
                 " Stone to player: " + mUserName +
                 " now has: " + getStone().toString() + " Stone");
 
+
+
     }
 
     /**
@@ -606,6 +641,7 @@ public class Player extends Observable {
                 " remove " + removeWood.toString() +
                 " Wood to player: " + mUserName +
                 " now has: " + getWood().toString() + " Wood");
+
 
     }
 
@@ -640,6 +676,8 @@ public class Player extends Observable {
         add(addPoints.getFaithPoints());
         add(addPoints.getMilitaryPoints());
         add(addPoints.getVictoryPoints());
+
+        updated();
     }
 
     /**
@@ -707,7 +745,9 @@ public class Player extends Observable {
                 " clearing FaithPoints for player: " + mUserName +
                 " had: " + mUserPoints.getFaithPoints() + " FaithPoints, now has 0");
 
+        updated();
         return mUserPoints.clearFaithPoints();
+
     }
 
 
@@ -773,6 +813,8 @@ public class Player extends Observable {
         remove(removeUserPoints.getFaithPoints());
         remove(removeUserPoints.getMilitaryPoints());
         remove(removeUserPoints.getVictoryPoints());
+
+        updated();
     }
 
     /**
