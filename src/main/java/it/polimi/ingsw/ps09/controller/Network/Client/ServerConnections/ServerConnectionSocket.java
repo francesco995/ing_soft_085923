@@ -148,17 +148,33 @@ public class ServerConnectionSocket extends Thread implements ServerConnection {
      */
     public void updateView(){
 
-        sendMessage("board");
-        mBoard = mGson.fromJson(getMessage(), Board.class);
+        updateBoard();
 
-        sendMessage("playersOrder");
+        updatePlayersOrder();
 
-        mPlayersOrder = mGson.fromJson(getMessage(), PlayersOrder.class);
+        updatePlayers();
+
+    }
+
+    private void updatePlayers() {
 
         sendMessage("players");
-
         mPlayersOrder.getPlayersOrder().stream().forEach(
                 id -> mPlayers.put(id, mGson.fromJson(getMessage(), Player.class)));
+
+    }
+
+    private void updatePlayersOrder() {
+
+        sendMessage("playersOrder");
+        mPlayersOrder = mGson.fromJson(getMessage(), PlayersOrder.class);
+
+    }
+
+    private void updateBoard() {
+
+        sendMessage("board");
+        mBoard = mGson.fromJson(getMessage(), Board.class);
 
     }
 
@@ -223,6 +239,18 @@ public class ServerConnectionSocket extends Thread implements ServerConnection {
 
                 if(mMessage.equals("update")){
                     updateView();
+                }
+
+                if(mMessage.equals("board")){
+                    updateBoard();
+                }
+
+                if(mMessage.equals("players")){
+                    updatePlayers();
+                }
+
+                if(mMessage.equals("order")){
+                    updatePlayersOrder();
                 }
 
                 if(mMessage.equals("close")){

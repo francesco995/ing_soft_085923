@@ -12,15 +12,12 @@ import it.polimi.ingsw.ps09.model.Places.Towers.CharactersTower;
 import it.polimi.ingsw.ps09.model.Places.Towers.TerritoriesTower;
 import it.polimi.ingsw.ps09.model.Places.Towers.VenturesTower;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.StringJoiner;
+import java.util.*;
 
 /**
  * Created by ale on 14/05/2017.
  */
-public class Board {
+public class Board extends Observable{
 
     private Market mMarket;
     private Council mCouncil;
@@ -64,6 +61,11 @@ public class Board {
     }
 
 
+
+    private void updated() {
+        setChanged();
+        notifyObservers();
+    }
 
     //##################### MarketSpace #####################
 
@@ -127,6 +129,7 @@ public class Board {
      */
     public void setMarketSpaceFamilyMember(int pos, FamilyMember pawn) {
         mMarket.getMarketList().get(pos).setFamilyMember(pawn);
+        updated();
     }
 
     /**

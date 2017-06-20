@@ -90,9 +90,11 @@ public class PlayerConnectionSocket extends Thread implements PlayerConnection, 
     }
 
     @Override
-    public void update(Observable o, Object arg){
-
+    public void update(Observable board, Object arg){
+        sendMessage("board");
     }
+
+
 
 
     private void sendBoard(){
