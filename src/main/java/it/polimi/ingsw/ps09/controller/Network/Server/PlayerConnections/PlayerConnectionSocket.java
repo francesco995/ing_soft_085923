@@ -30,6 +30,9 @@ import static java.util.logging.Level.INFO;
  */
 public class PlayerConnectionSocket extends Thread implements PlayerConnection, Observer{
 
+    //LOGGER
+    private static final Logger mLogger = Logger.getAnonymousLogger();
+
     //Game
     private Board mBoard;
 
@@ -61,8 +64,7 @@ public class PlayerConnectionSocket extends Thread implements PlayerConnection, 
 
 
 
-    //LOGGER
-    private static final Logger mLogger = Logger.getAnonymousLogger();
+
 
 
     public PlayerConnectionSocket(int port) throws IOException {
@@ -95,20 +97,32 @@ public class PlayerConnectionSocket extends Thread implements PlayerConnection, 
     @Override
     public void update(Observable o, Object arg){
 
-        if(o instanceof  Board)
+       /* if(o instanceof  Board)
             sendMessage("board");
 
         if(o instanceof Player)
             sendMessage("player");
 
         if(o instanceof PlayersOrder)
-            sendMessage("order");
+            sendMessage("order");*/
+
+    }
+
+    private void sleep(int mS){
+
+        try {
+            Thread.sleep(mS);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
     }
 
 
     public void setActions(ArrayList<Action> actions){
         mActions = actions;
+
+        sendMessage("action");
 
     }
 
@@ -130,6 +144,9 @@ public class PlayerConnectionSocket extends Thread implements PlayerConnection, 
     }
 
     private void sendActions(){
+
+        mLogger.log(INFO, "Game: " + Game.GAME_ID + " sending Actions list to user " + mUserID);
+
         sendMessage(String.valueOf(mActions.size()));
         mActions.stream().forEach(a -> {
             sendMessage(mGson.toJson(a, Action.class));
@@ -137,6 +154,11 @@ public class PlayerConnectionSocket extends Thread implements PlayerConnection, 
     }
 
     public String getMessage(){
+
+        while(!hasIncomingMessages()){
+            sleep(500);
+        }
+
         return mIncomingMessages.poll();
     }
 

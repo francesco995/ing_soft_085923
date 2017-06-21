@@ -41,6 +41,25 @@ public class Prompter {
         return answer;
     }
 
+    public int promptForIntChoiceZero(String message, List<String> options){
+
+        int choice;
+
+        //First prints the message
+        System.out.println(message);
+
+        //Prints all the options available
+        printStringList(options);
+
+        //Asks for the choice
+        do {
+            System.out.print("\nYour choice? -> ");
+            choice = mReader.nextInt();
+        }while(choice < 0 || choice > options.size());
+
+        return (choice);
+    }
+
     public int promptForIntChoice(String message, List<String> options){
 
         int choice;

@@ -8,7 +8,6 @@ import it.polimi.ingsw.ps09.view.Prompter;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.stream.Collectors;
 
 /**
@@ -34,6 +33,8 @@ public class CLIClientGame extends Thread{
     private ArrayList<String> mMainMenu;
     private ArrayList<String> mBoardMenu;
     private ArrayList<String> mTowersMenu;
+    private ArrayList<String> mPlayersMenu;
+    private ArrayList<String> mPlayerMenu;
 
     private String mUserName;
 
@@ -48,7 +49,7 @@ public class CLIClientGame extends Thread{
 
         //TODO: change add method
         mMainMenu = new ArrayList<>();
-        mMainMenu.add("Force view refresh");
+        mMainMenu.add("Display Players");
         mMainMenu.add("Display Board");
 
         mBoardMenu = new ArrayList<>();
@@ -62,6 +63,21 @@ public class CLIClientGame extends Thread{
         mTowersMenu.add("Yellow Tower");
         mTowersMenu.add("Blue Tower");
         mTowersMenu.add("Purple Tower");
+
+        mPlayerMenu = new ArrayList<>();
+        mPlayersMenu.add("Show Player info");
+        mPlayersMenu.add("Show Player available FamilyMembers");
+        mPlayersMenu.add("Show Player Resources and Points");
+        mPlayersMenu.add("Show Player Green cards");
+        mPlayersMenu.add("Show Player Yellow cards");
+        mPlayersMenu.add("Show Player Blue cards");
+        mPlayersMenu.add("Show Player Purple cards");
+
+        mServerConnection.updateData();
+
+        mPlayersMenu = new ArrayList<>();
+
+        updateData();
 
     }
 
@@ -78,9 +94,8 @@ public class CLIClientGame extends Thread{
         mBoard = mServerConnection.getBoard();
         mPlayersOrder = mServerConnection.getPlayersOrder();
 
-        mHasAction = mServerConnection.hasAction();
-        if(mHasAction)
-            mPlayerActionsList = mServerConnection.getPlayerActionsList();
+        mPlayersMenu.clear();
+        mPlayersOrder.getPlayersOrder().stream().forEach(id -> mPlayersMenu.add(mPlayers.get(id).getUserName()));
 
 
     }
@@ -97,15 +112,10 @@ public class CLIClientGame extends Thread{
 
             updateData();
 
-            if(mHasAction && !mMainMenu.contains("Do Action"))
-                mMainMenu.add("Do Action");
-            else
-                mMainMenu.remove("Do Action");
-
             switch(mPrompter.promptForIntChoice("Main menu:", mMainMenu)){
 
                 case 1:{
-                    mServerConnection.updateView();
+                    displayPlayers();
                     break;
                 }
 
@@ -114,8 +124,7 @@ public class CLIClientGame extends Thread{
                     break;
                 }
                 case 3:{
-                    if(mHasAction)
-                        doAction();
+
                 }
 
             }
@@ -123,6 +132,85 @@ public class CLIClientGame extends Thread{
         }
 
     }
+
+    /**
+     * Display a Player to the CLI
+     */
+    private void displayPlayer(String userName){
+
+        switch (mPrompter.promptForIntChoice("Please choose what to display of Player: " + userName, mPlayerMenu)){
+
+            case 1:{
+
+                break;
+            }
+
+            case 2:{
+
+                break;
+            }
+
+            case 3:{
+
+                break;
+            }
+
+            case 4:{
+
+                break;
+            }
+
+            case 5:{
+
+                break;
+            }
+
+            case 6:{
+
+                break;
+            }
+
+            case 7:{
+
+                break;
+            }
+
+        }
+
+    }
+
+
+    /**
+     * Display Players to the CLI
+     */
+    private void displayPlayers(){
+
+        switch (mPrompter.promptForIntChoice("Please choose the Player to display", mPlayersMenu)){
+
+            case 1:{
+                displayPlayer(mPlayersMenu.get(0));
+                break;
+            }
+
+            case 2:{
+                displayPlayer(mPlayersMenu.get(1));
+                break;
+            }
+
+            case 3:{
+                displayPlayer(mPlayersMenu.get(2));
+                break;
+            }
+
+            case 4:{
+                displayPlayer(mPlayersMenu.get(3));
+                break;
+            }
+
+        }
+
+    }
+
 
     /**
      * Display board components to the CLI

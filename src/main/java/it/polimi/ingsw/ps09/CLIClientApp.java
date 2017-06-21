@@ -77,7 +77,7 @@ public class CLIClientApp {
             System.out.println("\nGame Starting!!!");
 
             mClientGame = new CLIClientGame(Integer.valueOf(serverConnectionSocket.getMessage()), serverConnectionSocket, userName);
-            mClientGame.start();
+            mClientGame.run();
 
 
 

@@ -15,7 +15,7 @@ import java.util.StringJoiner;
 
 public class FaithPointsTrack {
 
-    private List<VictoryPoints> mVictoryPointsBonus = new ArrayList<VictoryPoints>();
+    private List<VictoryPoints> mVictoryPointsBonus = new ArrayList<>();
 
 
     /**

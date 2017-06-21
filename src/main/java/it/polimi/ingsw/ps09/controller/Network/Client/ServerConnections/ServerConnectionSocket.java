@@ -2,7 +2,6 @@ package it.polimi.ingsw.ps09.controller.Network.Client.ServerConnections;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.reflect.TypeToken;
 import it.polimi.ingsw.ps09.controller.Game.Game;
 import it.polimi.ingsw.ps09.controller.PlayersOrder;
 import it.polimi.ingsw.ps09.model.Actions.Action;
@@ -16,7 +15,6 @@ import it.polimi.ingsw.ps09.model.LeaderCardEffects.LeaderCardEffect;
 import it.polimi.ingsw.ps09.model.Player;
 
 import java.io.*;
-import java.lang.reflect.Type;
 import java.net.InetAddress;
 import java.net.Socket;
 import java.util.*;
@@ -109,18 +107,13 @@ public class ServerConnectionSocket extends Thread implements ServerConnection {
     public String getMessage(){
 
         while(!hasIncomingMessages()){
-            try {
-                sleep(500);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+            sleep(500);
         }
 
         return mIncomingMessages.poll();
     }
 
     public ArrayList<Action> getPlayerActionsList() {
-        updateActions();
         return mPlayerActionsList;
     }
 
@@ -160,7 +153,7 @@ public class ServerConnectionSocket extends Thread implements ServerConnection {
     /**
      * Send the server requests to get updated data
      */
-    public void updateView(){
+    public void updateData(){
 
         updateBoard();
 
@@ -190,6 +183,16 @@ public class ServerConnectionSocket extends Thread implements ServerConnection {
 
         sendMessage("playersOrder");
         mPlayersOrder = mGson.fromJson(getMessage(), PlayersOrder.class);
+
+    }
+
+    private void sleep(int mS){
+
+        try {
+            Thread.sleep(mS);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
     }
 
@@ -236,7 +239,7 @@ public class ServerConnectionSocket extends Thread implements ServerConnection {
             mSocket.close();
 
             //Sleep 5 seconds to let the server create new socket
-            Thread.sleep(5000);
+            sleep(5000);
 
             //Start connection to new Port
             mSocket = new Socket(mSERVER_ADDRESS, mSERVER_PORT);
@@ -263,7 +266,7 @@ public class ServerConnectionSocket extends Thread implements ServerConnection {
 
                 switch (mMessage) {
                     case "update":{
-                        updateView();
+                        updateData();
                         break;
                     }
 
@@ -283,6 +286,7 @@ public class ServerConnectionSocket extends Thread implements ServerConnection {
                     }
 
                     case "action":{
+                        updateActions();
                         mHasAction = true;
                         break;
                     }
@@ -311,8 +315,6 @@ public class ServerConnectionSocket extends Thread implements ServerConnection {
             mSocket.close();
 
         } catch (IOException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
             e.printStackTrace();
         }
 
