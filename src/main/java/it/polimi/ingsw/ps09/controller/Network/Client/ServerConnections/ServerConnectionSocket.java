@@ -2,6 +2,7 @@ package it.polimi.ingsw.ps09.controller.Network.Client.ServerConnections;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import it.polimi.ingsw.ps09.controller.CLIClientGame;
 import it.polimi.ingsw.ps09.controller.Game.Game;
 import it.polimi.ingsw.ps09.controller.PlayersOrder;
 import it.polimi.ingsw.ps09.model.Actions.Action;
@@ -21,7 +22,7 @@ import java.util.*;
 
 /**
  * Created by francesco995 on 15/06/2017.
- *
+ * <p>
  * Thread instantiated by the user app to connect to the Server
  */
 public class ServerConnectionSocket extends Thread implements ServerConnection {
@@ -84,7 +85,7 @@ public class ServerConnectionSocket extends Thread implements ServerConnection {
 
     }
 
-    public boolean hasAction(){
+    public boolean hasAction() {
         return mHasAction;
     }
 
@@ -104,12 +105,11 @@ public class ServerConnectionSocket extends Thread implements ServerConnection {
         return mUserName;
     }
 
-    public String getMessage(){
+    public String getMessage() {
 
-        while(!hasIncomingMessages()){
-            sleep(500);
+        while (!hasIncomingMessages()) {
+            sleep(50);
         }
-
         return mIncomingMessages.poll();
     }
 
@@ -117,10 +117,10 @@ public class ServerConnectionSocket extends Thread implements ServerConnection {
         return mPlayerActionsList;
     }
 
-    public List<String> getAllMessages(){
+    public List<String> getAllMessages() {
         List<String> messages = new LinkedList<>();
 
-        while (!mIncomingMessages.isEmpty()){
+        while (!mIncomingMessages.isEmpty()) {
             messages.add(mIncomingMessages.poll());
         }
 
@@ -128,18 +128,17 @@ public class ServerConnectionSocket extends Thread implements ServerConnection {
     }
 
 
-    public boolean hasIncomingMessages(){
+    public boolean hasIncomingMessages() {
 
-        if(!mIncomingMessages.isEmpty())
+        if (!mIncomingMessages.isEmpty())
             return true;
 
         return false;
     }
 
 
-    public void sendMessage(String message){
-    //TODO: maybe switch to boolean return
-
+    public void sendMessage(String message) {
+        //TODO: maybe switch to boolean return
         try {
             mMessageSender.write(message);
             mMessageSender.write("\n");
@@ -153,7 +152,7 @@ public class ServerConnectionSocket extends Thread implements ServerConnection {
     /**
      * Send the server requests to get updated data
      */
-    public void updateData(){
+    public void updateData() {
 
         updateBoard();
 
@@ -167,7 +166,7 @@ public class ServerConnectionSocket extends Thread implements ServerConnection {
 
         sendMessage("players");
         mPlayersOrder.getPlayersOrder().stream().forEach(
-                id -> mPlayers.put(id, mGson.fromJson(getMessage(), Player.class)));
+                id -> mPlayers.put(id, mGson.fromJson(waitForMessage(), Player.class)));
 
     }
 
@@ -175,18 +174,25 @@ public class ServerConnectionSocket extends Thread implements ServerConnection {
         sendMessage("actions");
         mPlayerActionsList = new ArrayList<>();
         int actionsN = Integer.valueOf(getMessage());
-        for(int i = 0; i < actionsN; i++)
-            mPlayerActionsList.add(mGson.fromJson(getMessage(), Action.class));
+        for (int i = 0; i < actionsN; i++)
+            mPlayerActionsList.add(mGson.fromJson(waitForMessage(), Action.class));
     }
 
     private void updatePlayersOrder() {
 
         sendMessage("playersOrder");
-        mPlayersOrder = mGson.fromJson(getMessage(), PlayersOrder.class);
+        mPlayersOrder = mGson.fromJson(waitForMessage(), PlayersOrder.class);
 
     }
 
-    private void sleep(int mS){
+    private void updateBoard() {
+
+        sendMessage("board");
+        mBoard = mGson.fromJson(waitForMessage(), Board.class);
+
+    }
+
+    private void sleep(int mS) {
 
         try {
             Thread.sleep(mS);
@@ -196,26 +202,46 @@ public class ServerConnectionSocket extends Thread implements ServerConnection {
 
     }
 
-    private void updateBoard() {
 
-        sendMessage("board");
-        mBoard = mGson.fromJson(getMessage(), Board.class);
-
-    }
-
-
-    public boolean isConnected(){
+    public boolean isConnected() {
         return mIsConnected;
     }
 
-    public int getPort(){
+    public int getPort() {
         return mSocket.getPort();
     }
 
-    public String getAddress(){
+    public String getAddress() {
         return mSocket.getInetAddress().toString();
     }
 
+
+    private String waitForMessage() {
+
+        String message;
+
+        waitForSocketReady();
+
+        try {
+
+            message = mMessageReader.readLine();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            message = "";
+        }
+
+        return message;
+    }
+
+    private void waitForSocketReady() {
+        try {
+            while (!mMessageReader.ready())
+                sleep(100);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     public void run() {
 
@@ -252,56 +278,54 @@ public class ServerConnectionSocket extends Thread implements ServerConnection {
             mMessageSender.write(mUserName + "\n");
             mMessageSender.flush();
 
-            if(mSocket.isConnected())
+            if (mSocket.isConnected())
                 mIsConnected = true;
 
             do {
 
-                sleep(100);
-
                 //Wait for incoming messages
-                mMessage = mMessageReader.readLine();
-
+                mMessage = waitForMessage();
+                System.out.println(mMessage);
                 //Check if message is a known command
 
                 switch (mMessage) {
-                    case "update":{
+                    case "update": {
                         updateData();
                         break;
                     }
 
-                    case "board":{
+                    case "board": {
                         updateBoard();
                         break;
                     }
 
-                    case "players":{
+                    case "players": {
                         updatePlayers();
                         break;
                     }
 
-                    case "order":{
+                    case "order": {
                         updatePlayersOrder();
                         break;
                     }
 
-                    case "action":{
+                    case "action": {
                         updateActions();
                         mHasAction = true;
                         break;
                     }
 
-                    case "noAction":{
+                    case "noAction": {
                         mHasAction = false;
                         break;
                     }
 
-                    case "close":{
+                    case "close": {
                         mSocket.close();
                         break;
                     }
 
-                    default:{
+                    default: {
                         //Add new messages to IncomingMessages
                         mIncomingMessages.add(mMessage);
                         break;
@@ -309,7 +333,7 @@ public class ServerConnectionSocket extends Thread implements ServerConnection {
                 }
 
 
-            }while(!mMessage.equalsIgnoreCase("close"));
+            } while (!mMessage.equalsIgnoreCase("close"));
 
             //Close connection
             mSocket.close();

@@ -40,9 +40,32 @@ public class Round {
 
         game.mPlayersOrder.getPlayersOrder().stream().forEach(id -> {
 
-            sleep(1000);
+            forceClientsReloadData(game);
 
-            playerDoAction(game, id);
+            sleep(1000);
+            forceClientsReloadData(game);
+
+            sleep(5000);
+            forceClientsReloadData(game);
+
+            sleep(5000);
+            forceClientsReloadData(game);
+
+            sleep(5000);
+            forceClientsReloadData(game);
+
+            sleep(5000);
+            forceClientsReloadData(game);
+
+            sleep(5000);
+            forceClientsReloadData(game);
+
+            sleep(0500);
+
+
+            //playerDoAction(game, id);
+
+
         });
 
 
@@ -56,6 +79,8 @@ public class Round {
         ArrayList<Action> playerActionsList =  AllActions.getValidActionsForPlayer(game.mGameBoard, game.mPlayers.get(playerID));
 
         game.mConnections.get(playerID).setActions(playerActionsList);
+
+        int choice = Integer.valueOf(game.mConnections.get(playerID).getMessage());
 
 
     }

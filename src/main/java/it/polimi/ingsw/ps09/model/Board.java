@@ -17,7 +17,7 @@ import java.util.*;
 /**
  * Created by ale on 14/05/2017.
  */
-public class Board extends Observable{
+public class Board{
 
     private Market mMarket;
     private Council mCouncil;
@@ -63,8 +63,8 @@ public class Board extends Observable{
 
 
     private void updated() {
-        setChanged();
-        notifyObservers();
+        //setChanged();
+        //notifyObservers();
     }
 
     //##################### MarketSpace #####################

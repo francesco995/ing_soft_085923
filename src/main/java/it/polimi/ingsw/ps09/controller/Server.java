@@ -64,7 +64,9 @@ public class Server extends Thread{
 
     private void addReadyGame(){
 
-        if(mQueuedPlayers.size() >= 4){
+
+        //TODO put back to 4 with timeout
+        if(mQueuedPlayers.size() >= 2){
 
             sleep(6000);
 

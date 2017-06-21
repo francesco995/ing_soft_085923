@@ -5,7 +5,7 @@ import java.util.*;
 /**
  * Created by francesco995 on 18/05/2017.
  */
-public class PlayersOrder extends Observable{
+public class PlayersOrder{
 
     private ArrayList<Integer> mPlayersOrder;
 
@@ -18,8 +18,8 @@ public class PlayersOrder extends Observable{
     }
 
     private void updated() {
-        setChanged();
-        notifyObservers();
+        //setChanged();
+        //notifyObservers();
     }
 
     public int getUserIdByIndex(int index){

@@ -30,7 +30,7 @@ import static java.util.logging.Level.INFO;
 /**
  * Created by francesco995 on 10/05/2017.
  */
-public class Player extends Observable {
+public class Player {
 
     //CONSTANTS
     public static int PLAYER_ID;
@@ -140,8 +140,8 @@ public class Player extends Observable {
     }
 
     private void updated() {
-        setChanged();
-        notifyObservers();
+        //setChanged();
+        //notifyObservers();
     }
 
 

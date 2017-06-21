@@ -65,13 +65,13 @@ public class CLIClientGame extends Thread{
         mTowersMenu.add("Purple Tower");
 
         mPlayerMenu = new ArrayList<>();
-        mPlayersMenu.add("Show Player info");
-        mPlayersMenu.add("Show Player available FamilyMembers");
-        mPlayersMenu.add("Show Player Resources and Points");
-        mPlayersMenu.add("Show Player Green cards");
-        mPlayersMenu.add("Show Player Yellow cards");
-        mPlayersMenu.add("Show Player Blue cards");
-        mPlayersMenu.add("Show Player Purple cards");
+        mPlayerMenu.add("Show Player info");
+        mPlayerMenu.add("Show Player available FamilyMembers");
+        mPlayerMenu.add("Show Player Resources and Points");
+        mPlayerMenu.add("Show Player Green cards");
+        mPlayerMenu.add("Show Player Yellow cards");
+        mPlayerMenu.add("Show Player Blue cards");
+        mPlayerMenu.add("Show Player Purple cards");
 
         mServerConnection.updateData();
 

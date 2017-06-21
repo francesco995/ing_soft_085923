@@ -19,6 +19,7 @@ public interface PlayerConnection{
     void startGame(Board board, HashMap<Integer, Player> players, PlayersOrder playersOrder);
     void setUserID(int userID);
     void setActions(ArrayList<Action> actions);
+    String getMessage();
 
 
 }

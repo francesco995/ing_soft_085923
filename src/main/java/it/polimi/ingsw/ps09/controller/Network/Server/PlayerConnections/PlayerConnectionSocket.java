@@ -127,20 +127,20 @@ public class PlayerConnectionSocket extends Thread implements PlayerConnection, 
     }
 
     private void sendBoard(){
-        mLogger.log(INFO, "Game: " + Game.GAME_ID + " sending Board to user " + mUserID);
         sendMessage(mGson.toJson(mBoard, Board.class));
+        mLogger.log(INFO, "Game: " + Game.GAME_ID + " sending Board to user " + mUserID);
     }
 
     private void sendPlayersOrder(){
-        mLogger.log(INFO, "Game: " + Game.GAME_ID + " sending Players Order to user " + mUserID);
         sendMessage(mGson.toJson(mPlayersOrder, PlayersOrder.class));
+        mLogger.log(INFO, "Game: " + Game.GAME_ID + " sending Players Order to user " + mUserID);
     }
 
     private void sendPlayers(){
-        mLogger.log(INFO, "Game: " + Game.GAME_ID + " sending Players to user " + mUserID);
         mPlayersOrder.getPlayersOrder().stream().forEach(
                 id -> sendMessage(mGson.toJson(mPlayers.get(id), Player.class))
         );
+        mLogger.log(INFO, "Game: " + Game.GAME_ID + " sending Players to user " + mUserID);
     }
 
     private void sendActions(){
@@ -156,9 +156,7 @@ public class PlayerConnectionSocket extends Thread implements PlayerConnection, 
     public String getMessage(){
 
         while(!hasIncomingMessages()){
-            sleep(500);
         }
-
         return mIncomingMessages.poll();
     }
 
@@ -195,6 +193,7 @@ public class PlayerConnectionSocket extends Thread implements PlayerConnection, 
         //TODO: maybe switch to boolean return
 
         try {
+            System.out.println(message);
             mMessageSender.write(message);
             mMessageSender.write("\n");
             mMessageSender.flush();
@@ -207,6 +206,33 @@ public class PlayerConnectionSocket extends Thread implements PlayerConnection, 
     public void setUserID(int userID) {
         mUserID = userID;
     }
+
+    private String waitForMessage() {
+        String message;
+
+        try {
+            waitForInputSocketReady();
+
+            message = mMessageReader.readLine();
+
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            message = "";
+        }
+
+        return message;
+    }
+
+    private void waitForInputSocketReady(){
+        try {
+            while(!mMessageReader.ready())
+                sleep(100);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 
 
     public void run() {
@@ -233,7 +259,7 @@ public class PlayerConnectionSocket extends Thread implements PlayerConnection, 
             do {
 
                 //Read message from Player
-                mMessage = mMessageReader.readLine();
+                mMessage = waitForMessage();
 
                 switch(mMessage){
 
