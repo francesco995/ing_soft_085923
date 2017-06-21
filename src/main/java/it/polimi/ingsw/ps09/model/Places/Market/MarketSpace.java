@@ -15,8 +15,8 @@ public class MarketSpace extends Place {
     private BoardBonus mBoardBonus;
     private int mDiceValue;
 
-    public MarketSpace(int mDiceValue) {
-        this.mDiceValue = mDiceValue;
+    public MarketSpace(int DiceValue) {
+        mDiceValue = DiceValue;
     }
 
     /**

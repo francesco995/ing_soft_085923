@@ -1,13 +1,16 @@
 package it.polimi.ingsw.ps09.model.Places.Market;
 
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.StringJoiner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * Created by ale on 12/05/2017.
  */
-public class Market {
+public class Market{
 
     //Create A lis of market spaces
     private  List<MarketSpace> mMarketSpaceSpaces = new ArrayList<>();
@@ -18,13 +21,18 @@ public class Market {
      */
 
     //Initialize all MarketSpace Spaces
-    public Market (){
+    public Market(){
 
         //Add all MarketSpace Spaces to the list
-        mMarketSpaceSpaces.add(0, new MarketSpaceSpace1(1));
-        mMarketSpaceSpaces.add(1, new MarketSpaceSpace2(1));
-        mMarketSpaceSpaces.add(2, new MarketSpaceSpace3(1));
-        mMarketSpaceSpaces.add(3, new MarketSpaceSpace4(1));
+
+        try {
+            mMarketSpaceSpaces.add(0, new MarketSpaceSpace1(1));
+            mMarketSpaceSpaces.add(1, new MarketSpaceSpace2(1));
+            mMarketSpaceSpaces.add(2, new MarketSpaceSpace3(1));
+            mMarketSpaceSpaces.add(3, new MarketSpaceSpace4(1));
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Market.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
         //Set minimum dice value to access market spaces
         //TODO: Ale set MarketSpace's DiceValue once Dice is created by FraL
@@ -45,10 +53,14 @@ public class Market {
     public void clearAll(){
         mMarketSpaceSpaces.clear();
 
-        mMarketSpaceSpaces.add(0, new MarketSpaceSpace1(1));
-        mMarketSpaceSpaces.add(1, new MarketSpaceSpace2(1));
-        mMarketSpaceSpaces.add(2, new MarketSpaceSpace3(1));
-        mMarketSpaceSpaces.add(3, new MarketSpaceSpace4(1));
+        try {
+            mMarketSpaceSpaces.add(0, new MarketSpaceSpace1(1));
+            mMarketSpaceSpaces.add(1, new MarketSpaceSpace2(1));
+            mMarketSpaceSpaces.add(2, new MarketSpaceSpace3(1));
+            mMarketSpaceSpaces.add(3, new MarketSpaceSpace4(1));
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Market.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @Override

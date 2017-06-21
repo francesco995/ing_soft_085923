@@ -23,7 +23,9 @@ public class MarketSpaceTest {
 
         mMarketSpace = new MarketSpace(1);
         mFamilyMember = new OrangeFamilyMember("Orange");
-        mBonus = new BoardBonus();
+
+        //TODO: rifare bonus qui
+        //mBonus = new BoardBonus();
     }
 
     @Test
