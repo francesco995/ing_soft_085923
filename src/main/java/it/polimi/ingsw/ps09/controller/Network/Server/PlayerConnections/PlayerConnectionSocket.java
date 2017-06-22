@@ -42,8 +42,6 @@ public class PlayerConnectionSocket extends Thread implements PlayerConnection, 
     //The Players Order manager
     private PlayersOrder mPlayersOrder;
 
-    private ArrayList<Action> mActions;
-
     //A ServerSocket listening and a Socket to answer
     private ServerSocket mLocalSocket;
     private Socket mRemoteSocket;
@@ -146,11 +144,11 @@ public class PlayerConnectionSocket extends Thread implements PlayerConnection, 
         );
     }
 
-    private void sendActions(){
+    public void sendActions(ArrayList<Action> playerActionsList){
         mLogger.log(INFO, "Game: " + Game.GAME_ID + " sending Actions list to user " + mUserID);
         sendMessage("actions");
-        sendMessage(String.valueOf(mActions.size()));
-        mActions.stream().forEach(a -> {
+        sendMessage(String.valueOf(playerActionsList.size()));
+        playerActionsList.stream().forEach(a -> {
             sendMessage(mGson.toJson(a, Action.class));
         });
     }
@@ -206,6 +204,7 @@ public class PlayerConnectionSocket extends Thread implements PlayerConnection, 
         } catch (IOException e) {
             e.printStackTrace();
         }
+
 
         //String confirm = waitForMessage();
 
@@ -270,6 +269,7 @@ public class PlayerConnectionSocket extends Thread implements PlayerConnection, 
 
                 switch(mMessage){
 
+                    //TODO: remove unused messages
                     case "board": {
                         sendBoard();
                         break;
@@ -286,7 +286,7 @@ public class PlayerConnectionSocket extends Thread implements PlayerConnection, 
                     }
 
                     case "actions": {
-                        sendActions();
+
                         break;
                     }
 

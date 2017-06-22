@@ -82,6 +82,12 @@ public class CLIClientGame extends Thread{
 
     }
 
+
+    public static void alertActions(){
+        System.out.println("It's your turn to play, press 0 to refresh view!!!");
+    }
+
+
     private void doAction(){
         mPrompter.promptForIntChoice("Choose your action", mPlayerActionsList.stream().map(Action::toString).collect(Collectors.toList()));
     }

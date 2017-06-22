@@ -36,15 +36,14 @@ public class Round {
 
         RoundSetup.setupRound(game);
 
+        //TODO: increase to maybe 30 seconds
         sleep(5000);
 
         game.mPlayersOrder.getPlayersOrder().stream().forEach(id -> {
 
             forceClientsReloadData(game);
 
-
-
-            //playerDoAction(game, id);
+            playerDoAction(game, id);
 
 
         });
@@ -59,9 +58,9 @@ public class Round {
 
         ArrayList<Action> playerActionsList =  AllActions.getValidActionsForPlayer(game.mGameBoard, game.mPlayers.get(playerID));
 
-        //game.mConnections.get(playerID).setActions(playerActionsList);
+        game.mConnections.get(playerID).sendActions(playerActionsList);
 
-        //int choice = Integer.valueOf(game.mConnections.get(playerID).getMessage());
+        int choice = Integer.valueOf(game.mConnections.get(playerID).getMessage());
 
 
     }

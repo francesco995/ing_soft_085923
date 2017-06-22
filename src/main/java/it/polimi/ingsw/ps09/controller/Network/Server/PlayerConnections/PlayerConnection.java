@@ -21,6 +21,5 @@ public interface PlayerConnection{
     void setUserID(int userID);
     void sendUpdatedData();
     String getMessage();
-
-
+    void sendActions(ArrayList<Action> playerActionsList);
 }

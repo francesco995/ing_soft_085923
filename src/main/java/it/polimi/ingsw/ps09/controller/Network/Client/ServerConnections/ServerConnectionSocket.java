@@ -153,6 +153,8 @@ public class ServerConnectionSocket extends Thread implements ServerConnection {
             e.printStackTrace();
         }
 
+        System.out.println(message);
+
     }
 
     /**
@@ -174,9 +176,13 @@ public class ServerConnectionSocket extends Thread implements ServerConnection {
     private void updateActions() {
 
         mPlayerActionsList = new ArrayList<>();
-        int actionsN = Integer.valueOf(getMessage());
+        int actionsN = Integer.valueOf(waitForMessage());
+
         for (int i = 0; i < actionsN; i++)
             mPlayerActionsList.add(mGson.fromJson(waitForMessage(), Action.class));
+
+        CLIClientGame.alertActions();
+
     }
 
     private void updatePlayersOrder() {
@@ -230,7 +236,6 @@ public class ServerConnectionSocket extends Thread implements ServerConnection {
             e.printStackTrace();
             message = "";
         }
-
 
         return message;
     }
@@ -329,7 +334,7 @@ public class ServerConnectionSocket extends Thread implements ServerConnection {
                         break;
                     }
 
-                    case "action": {
+                    case "actions": {
                         updateActions();
                         mHasAction = true;
                         break;
