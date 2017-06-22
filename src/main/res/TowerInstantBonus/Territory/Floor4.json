@@ -1,0 +1,28 @@
+{
+  "mResourcesBonus": {
+    "mCoins": {
+      "mValue": 0
+    },
+    "mServant": {
+      "mValue": 0
+    },
+    "mStone": {
+      "mValue": 0
+    },
+    "mWood": {
+      "mValue": 2
+    }
+  },
+  "mPointsBonus": {
+    "mFaithPoints": {
+      "mPoints": 0
+    },
+    "mMilitaryPoints": {
+      "mPoints": 0
+    },
+    "mVictoryPoints": {
+      "mPoints": 0
+    }
+  },
+  "mPrivilegesCount": 0
+}

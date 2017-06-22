@@ -5,7 +5,7 @@ package it.polimi.ingsw.ps09.model.Places.Towers.Floor;
  */
 public class FloorOne extends Floor {
 
-    public FloorOne() {
-        super(1);
+    public FloorOne(String finalPath) {
+        super(1, finalPath);
     }
 }

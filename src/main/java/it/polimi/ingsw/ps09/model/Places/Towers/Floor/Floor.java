@@ -1,10 +1,17 @@
 package it.polimi.ingsw.ps09.model.Places.Towers.Floor;
 
+import com.google.gson.Gson;
 import it.polimi.ingsw.ps09.model.BoardBonus;
 import it.polimi.ingsw.ps09.model.DevelopmentCards.DevelopmentCard;
 import it.polimi.ingsw.ps09.model.FamilyMembers.FamilyMember;
+import it.polimi.ingsw.ps09.model.Places.Market.Market;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
 import java.util.StringJoiner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * Created by ale on 10/05/2017.
@@ -20,8 +27,29 @@ public class Floor {
      *
      * @param diceValue Set dice value to access on the floor
      */
-    public Floor(int diceValue) {
+    public Floor(int diceValue, String finalFilePath) {
         mDiceValue = diceValue;
+
+        BoardBonus mFloorBonus;
+        String mStringDeck = "";
+
+        File mDirectory = new File("./");
+
+        String mFilePath = mDirectory.getAbsolutePath().replace(".",
+                "src/main/res/TowerInstantBonus/");
+
+        try {
+            Scanner mScanner = new Scanner(new File(mFilePath + finalFilePath));
+            mStringDeck = mScanner.useDelimiter("\\A").next();
+            mScanner.close();
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Market.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        mFloorBonus = new Gson().fromJson(mStringDeck, BoardBonus.class);
+
+
+
     }
 
     /**
