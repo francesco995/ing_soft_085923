@@ -28,7 +28,7 @@ public class Tower {
         String mFinalPath = "";
 
         if(mColor.equals("green"))
-            mFinalPath="Terrytory/";
+            mFinalPath="Territory/";
 
         else if(mColor.equals("yellow"))
             mFinalPath="Building/";
