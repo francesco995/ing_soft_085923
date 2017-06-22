@@ -53,8 +53,10 @@ public class ServerConnectionSocket extends Thread implements ServerConnection {
     private Queue<String> mIncomingMessages;
 
     private String mUserName;
+    private int mPlayerId;
 
     private boolean mIsConnected = false;
+    private boolean mGameStarted = false;
 
     Gson mGson = null;
     GsonBuilder mGsonBuilder;
@@ -87,6 +89,10 @@ public class ServerConnectionSocket extends Thread implements ServerConnection {
 
     public boolean hasAction() {
         return mHasAction;
+    }
+
+    public boolean gameStarted(){
+        return mGameStarted;
     }
 
     public Board getBoard() {
@@ -154,24 +160,19 @@ public class ServerConnectionSocket extends Thread implements ServerConnection {
      */
     public void updateData() {
 
-        updateBoard();
 
-        updatePlayersOrder();
-
-        updatePlayers();
 
     }
 
     private void updatePlayers() {
 
-        sendMessage("players");
         mPlayersOrder.getPlayersOrder().stream().forEach(
                 id -> mPlayers.put(id, mGson.fromJson(waitForMessage(), Player.class)));
 
     }
 
     private void updateActions() {
-        sendMessage("actions");
+
         mPlayerActionsList = new ArrayList<>();
         int actionsN = Integer.valueOf(getMessage());
         for (int i = 0; i < actionsN; i++)
@@ -180,14 +181,12 @@ public class ServerConnectionSocket extends Thread implements ServerConnection {
 
     private void updatePlayersOrder() {
 
-        sendMessage("playersOrder");
         mPlayersOrder = mGson.fromJson(waitForMessage(), PlayersOrder.class);
 
     }
 
     private void updateBoard() {
 
-        sendMessage("board");
         mBoard = mGson.fromJson(waitForMessage(), Board.class);
 
     }
@@ -216,20 +215,23 @@ public class ServerConnectionSocket extends Thread implements ServerConnection {
     }
 
 
-    private String waitForMessage() {
+    private synchronized String waitForMessage() {
 
         String message;
 
-        waitForSocketReady();
+        //waitForSocketReady();
 
         try {
 
             message = mMessageReader.readLine();
+            //sendMessage("ok");
 
         } catch (IOException e) {
             e.printStackTrace();
             message = "";
         }
+
+        System.out.println(message);
 
         return message;
     }
@@ -281,6 +283,30 @@ public class ServerConnectionSocket extends Thread implements ServerConnection {
             if (mSocket.isConnected())
                 mIsConnected = true;
 
+            for(int i = 0; i < 3; i++) {
+                switch (waitForMessage()) {
+                    case "board": {
+                        updateBoard();
+                        break;
+                    }
+
+                    case "players": {
+                        updatePlayers();
+                        break;
+                    }
+
+                    case "order": {
+                        updatePlayersOrder();
+                        break;
+                    }
+                }
+            }
+
+            mPlayerId = Integer.valueOf(waitForMessage());
+
+            mGameStarted = true;
+
+
             do {
 
                 //Wait for incoming messages
@@ -289,10 +315,6 @@ public class ServerConnectionSocket extends Thread implements ServerConnection {
                 //Check if message is a known command
 
                 switch (mMessage) {
-                    case "update": {
-                        updateData();
-                        break;
-                    }
 
                     case "board": {
                         updateBoard();

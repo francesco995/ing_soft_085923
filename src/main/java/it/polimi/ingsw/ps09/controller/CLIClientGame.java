@@ -10,6 +10,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.stream.Collectors;
 
+import static java.util.logging.Level.WARNING;
+
 /**
  * Created by francesco995 on 18/06/2017.
  * Client-side game instance for CLI clients
@@ -38,9 +40,8 @@ public class CLIClientGame extends Thread{
 
     private String mUserName;
 
-    public CLIClientGame(int playerID, ServerConnectionSocket serverConnection, String userName){
+    public CLIClientGame(ServerConnectionSocket serverConnection, String userName){
 
-        mPlayerID = playerID;
         mServerConnection = serverConnection;
         mUserName = userName;
         mPrompter = new Prompter();
@@ -77,7 +78,7 @@ public class CLIClientGame extends Thread{
 
         mPlayersMenu = new ArrayList<>();
 
-        updateData();
+        //updateData();
 
     }
 
@@ -105,6 +106,23 @@ public class CLIClientGame extends Thread{
      * Starts game session when 2+ players are ready
      */
     public void run(){
+
+        System.out.print("\nWaiting for server to start Game... Hang on...");
+
+        do{
+
+            try {
+                System.out.print(".");
+                Thread.sleep(500);
+            } catch (InterruptedException e) {
+                System.out.println("Interrupted!" + e);
+                // clean up state...
+                Thread.currentThread().interrupt();
+            }
+
+        }while (!mServerConnection.gameStarted());
+
+        System.out.println("\nGame Starting!!!");
 
         boolean run = true;
 

@@ -55,10 +55,8 @@ public class CLIAutoClientApp {
 
         System.out.println("\nConnected to server " + serverConnectionSocket.getAddress() + " on port: " + serverConnectionSocket.getPort() + "\n");
 
-        System.out.println("Waiting for server to start Game... Hang on...");
-
-        mClientGame = new CLIClientGame(Integer.valueOf(serverConnectionSocket.getMessage()), serverConnectionSocket, userName);
-        mClientGame.start();
+        mClientGame = new CLIClientGame(serverConnectionSocket, userName);
+        mClientGame.run();
 
     }
 }

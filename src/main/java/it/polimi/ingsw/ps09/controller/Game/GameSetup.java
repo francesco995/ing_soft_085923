@@ -62,7 +62,7 @@ public class GameSetup {
 
         game.mPlayersOrder.getPlayersOrder().stream().forEach(id -> {
             game.mConnections.get(id).setUserID(id);
-            game.mConnections.get(id).startGame(game.mGameBoard, game.mPlayers, game.mPlayersOrder);
+            game.mConnections.get(id).setGameData(game.mGameBoard, game.mPlayers, game.mPlayersOrder);
         });
 
 
@@ -71,8 +71,11 @@ public class GameSetup {
     private static void alertPlayers(Game game) {
 
         game.mPlayersOrder.getPlayersOrder().stream().forEach(id -> {
+            game.mConnections.get(id).sendUpdatedData();
             game.mConnections.get(id).sendMessage(String.valueOf(id));
         });
+
+
 
     }
 

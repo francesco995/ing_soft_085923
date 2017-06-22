@@ -78,9 +78,9 @@ public class Round {
 
         ArrayList<Action> playerActionsList =  AllActions.getValidActionsForPlayer(game.mGameBoard, game.mPlayers.get(playerID));
 
-        game.mConnections.get(playerID).setActions(playerActionsList);
+        //game.mConnections.get(playerID).setActions(playerActionsList);
 
-        int choice = Integer.valueOf(game.mConnections.get(playerID).getMessage());
+        //int choice = Integer.valueOf(game.mConnections.get(playerID).getMessage());
 
 
     }
@@ -88,7 +88,7 @@ public class Round {
     private static void forceClientsReloadData(Game game){
 
         game.mPlayersOrder.getPlayersOrder().stream().forEach(id -> {
-            game.mConnections.get(id).sendMessage("update");
+            game.mConnections.get(id).sendUpdatedData();
         });
 
     }

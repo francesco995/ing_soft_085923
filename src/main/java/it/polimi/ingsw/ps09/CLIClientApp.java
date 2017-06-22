@@ -57,26 +57,11 @@ public class CLIClientApp {
 
         }while(!serverConnectionSocket.isConnected());
 
+        //TODO: move into serverconnection
+
         System.out.println("\nConnected to server " + serverConnectionSocket.getAddress() + " on port: " + serverConnectionSocket.getPort() + "\n");
 
-        System.out.print("\nWaiting for server to start Game... Hang on...");
-
-        do{
-
-            try {
-                System.out.print(".");
-                Thread.sleep(500);
-            } catch (InterruptedException e) {
-                mLogger.log(WARNING, "Interrupted!", e);
-                // clean up state...
-                Thread.currentThread().interrupt();
-            }
-
-        }while (!serverConnectionSocket.hasIncomingMessages());
-
-            System.out.println("\nGame Starting!!!");
-
-            mClientGame = new CLIClientGame(Integer.valueOf(serverConnectionSocket.getMessage()), serverConnectionSocket, userName);
+            mClientGame = new CLIClientGame(serverConnectionSocket, userName);
             mClientGame.run();
 
 

@@ -119,34 +119,36 @@ public class PlayerConnectionSocket extends Thread implements PlayerConnection, 
     }
 
 
-    public void setActions(ArrayList<Action> actions){
-        mActions = actions;
-
-        sendMessage("action");
-
+    public synchronized void sendUpdatedData(){
+        sendBoard();
+        sendPlayersOrder();
+        sendPlayers();
     }
 
+
     private void sendBoard(){
-        sendMessage(mGson.toJson(mBoard, Board.class));
         mLogger.log(INFO, "Game: " + Game.GAME_ID + " sending Board to user " + mUserID);
+        sendMessage("board");
+        sendMessage(mGson.toJson(mBoard, Board.class));
     }
 
     private void sendPlayersOrder(){
-        sendMessage(mGson.toJson(mPlayersOrder, PlayersOrder.class));
         mLogger.log(INFO, "Game: " + Game.GAME_ID + " sending Players Order to user " + mUserID);
+        sendMessage("order");
+        sendMessage(mGson.toJson(mPlayersOrder, PlayersOrder.class));
     }
 
     private void sendPlayers(){
+        mLogger.log(INFO, "Game: " + Game.GAME_ID + " sending Players to user " + mUserID);
+        sendMessage("players");
         mPlayersOrder.getPlayersOrder().stream().forEach(
                 id -> sendMessage(mGson.toJson(mPlayers.get(id), Player.class))
         );
-        mLogger.log(INFO, "Game: " + Game.GAME_ID + " sending Players to user " + mUserID);
     }
 
     private void sendActions(){
-
         mLogger.log(INFO, "Game: " + Game.GAME_ID + " sending Actions list to user " + mUserID);
-
+        sendMessage("actions");
         sendMessage(String.valueOf(mActions.size()));
         mActions.stream().forEach(a -> {
             sendMessage(mGson.toJson(a, Action.class));
@@ -183,10 +185,15 @@ public class PlayerConnectionSocket extends Thread implements PlayerConnection, 
         return false;
     }
 
-    public void startGame(Board board, HashMap<Integer, Player> players, PlayersOrder playersOrder){
+    public void setGameData(Board board, HashMap<Integer, Player> players, PlayersOrder playersOrder){
         mBoard = board;
         mPlayers = players;
         mPlayersOrder = playersOrder;
+
+    }
+
+    public void startGame(){
+        sendUpdatedData();
     }
 
     public void sendMessage(String message){
@@ -201,6 +208,8 @@ public class PlayerConnectionSocket extends Thread implements PlayerConnection, 
             e.printStackTrace();
         }
 
+        //String confirm = waitForMessage();
+
     }
 
     public void setUserID(int userID) {
@@ -212,10 +221,7 @@ public class PlayerConnectionSocket extends Thread implements PlayerConnection, 
 
         try {
             waitForInputSocketReady();
-
             message = mMessageReader.readLine();
-
-
         } catch (IOException e) {
             e.printStackTrace();
             message = "";
