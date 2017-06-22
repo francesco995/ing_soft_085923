@@ -30,7 +30,6 @@ public class Floor {
     public Floor(int diceValue, String finalFilePath) {
         mDiceValue = diceValue;
 
-        BoardBonus mFloorBonus;
         String mStringDeck = "";
 
         File mDirectory = new File("./");
@@ -46,7 +45,7 @@ public class Floor {
             Logger.getLogger(Market.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        mFloorBonus = new Gson().fromJson(mStringDeck, BoardBonus.class);
+        mBoardBonus = new Gson().fromJson(mStringDeck, BoardBonus.class);
 
 
 
