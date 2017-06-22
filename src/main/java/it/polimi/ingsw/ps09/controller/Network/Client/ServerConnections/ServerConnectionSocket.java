@@ -219,7 +219,7 @@ public class ServerConnectionSocket extends Thread implements ServerConnection {
 
         String message;
 
-        //waitForSocketReady();
+        waitForSocketReady();
 
         try {
 
@@ -231,7 +231,6 @@ public class ServerConnectionSocket extends Thread implements ServerConnection {
             message = "";
         }
 
-        System.out.println(message);
 
         return message;
     }
@@ -311,7 +310,6 @@ public class ServerConnectionSocket extends Thread implements ServerConnection {
 
                 //Wait for incoming messages
                 mMessage = waitForMessage();
-                System.out.println(mMessage);
                 //Check if message is a known command
 
                 switch (mMessage) {

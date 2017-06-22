@@ -200,7 +200,6 @@ public class PlayerConnectionSocket extends Thread implements PlayerConnection, 
         //TODO: maybe switch to boolean return
 
         try {
-            System.out.println(message);
             mMessageSender.write(message);
             mMessageSender.write("\n");
             mMessageSender.flush();
@@ -218,6 +217,8 @@ public class PlayerConnectionSocket extends Thread implements PlayerConnection, 
 
     private String waitForMessage() {
         String message;
+
+        waitForInputSocketReady();
 
         try {
             waitForInputSocketReady();

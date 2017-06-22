@@ -42,25 +42,6 @@ public class Round {
 
             forceClientsReloadData(game);
 
-            sleep(1000);
-            forceClientsReloadData(game);
-
-            sleep(5000);
-            forceClientsReloadData(game);
-
-            sleep(5000);
-            forceClientsReloadData(game);
-
-            sleep(5000);
-            forceClientsReloadData(game);
-
-            sleep(5000);
-            forceClientsReloadData(game);
-
-            sleep(5000);
-            forceClientsReloadData(game);
-
-            sleep(0500);
 
 
             //playerDoAction(game, id);
