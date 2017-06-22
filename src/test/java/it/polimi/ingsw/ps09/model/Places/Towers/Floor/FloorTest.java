@@ -24,26 +24,8 @@ public class FloorTest {
 
     }
 
-    @Test
-    public void setFamilyMember() throws Exception {
-        mFloor.setFamilyMember(mFamilyMember1);
 
-        assertEquals(mFamilyMember1, mFloor.getFamilyMember());
-    }
 
-    @Test
-    public void setBoardBonus() throws Exception {
-    }
 
-    @Test
-    public void setCard() throws Exception {
-    }
-
-    @Test
-    public void isAvailable() throws Exception {
-        mFloor.setFamilyMember(mFamilyMember1);
-
-        assertEquals(false, mFloor.isAvailable());
-    }
 
 }
