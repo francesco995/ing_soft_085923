@@ -22,12 +22,27 @@ public class Tower {
      * @param color Set tower's color
      */
     public Tower(String color) {
+
         mColor = color;
 
-        mFloors.add(0, new FloorOne());
-        mFloors.add(1, new FloorTwo());
-        mFloors.add(2, new FloorThree());
-        mFloors.add(3, new FloorFour());
+        String mFinalPath = "";
+
+        if(mColor.equals("green"))
+            mFinalPath="Terrytory/";
+
+        else if(mColor.equals("yellow"))
+            mFinalPath="Building/";
+
+        else if(mColor.equals("blue"))
+            mFinalPath="Character/";
+
+        else if(mColor.equals("purple"))
+            mFinalPath="Venture/";
+
+        mFloors.add(0, new FloorOne(mFinalPath + "Floor1.json"));
+        mFloors.add(1, new FloorTwo(mFinalPath + "Floor2.json"));
+        mFloors.add(2, new FloorThree(mFinalPath + "Floor3.json"));
+        mFloors.add(3, new FloorFour(mFinalPath + "Floor4.json"));
     }
 
     /**
@@ -113,10 +128,24 @@ public class Tower {
     public void clearAll(){
         mFloors.clear();
 
-        mFloors.add(0, new FloorOne());
-        mFloors.add(1, new FloorTwo());
-        mFloors.add(2, new FloorThree());
-        mFloors.add(3, new FloorFour());
+        String mFinalPath = "";
+
+        if(mColor.equals("green"))
+            mFinalPath="Terrytory/";
+
+        else if(mColor.equals("yellow"))
+            mFinalPath="Building/";
+
+        else if(mColor.equals("blue"))
+            mFinalPath="Character/";
+
+        else if(mColor.equals("purple"))
+            mFinalPath="Venture/";
+
+        mFloors.add(0, new FloorOne(mFinalPath + "Floor1.json"));
+        mFloors.add(1, new FloorTwo(mFinalPath + "Floor2.json"));
+        mFloors.add(2, new FloorThree(mFinalPath + "Floor3.json"));
+        mFloors.add(3, new FloorFour(mFinalPath + "Floor4.json"));
     }
 
     @Override

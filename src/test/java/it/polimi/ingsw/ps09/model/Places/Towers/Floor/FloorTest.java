@@ -18,7 +18,7 @@ public class FloorTest {
 
     @Before
     public void setUp() throws Exception {
-        mFloor = new Floor(1);
+        //mFloor = new Floor(1);
         mFamilyMember1 = new OrangeFamilyMember("Smith");
         mFamilyMember2 = new BlackFamilyMember("Smith");
 
