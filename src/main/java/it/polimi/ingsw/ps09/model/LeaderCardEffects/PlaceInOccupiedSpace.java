@@ -5,7 +5,7 @@ import it.polimi.ingsw.ps09.model.Player;
 /**
  * Created by walle on 19/06/17.
  */
-public class PlaceInOccupiedSpace {
+public class PlaceInOccupiedSpace extends LeaderCardEffect{
 
     private int mCharacterCardsRequired;
 

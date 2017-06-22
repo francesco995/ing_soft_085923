@@ -1,8 +1,10 @@
 {
-    "mCardName": "Francesco Sforza",
+    "mCardName": "Ludovico Ariosto",
     "mLeaderCardEffects": [{
-            "CLASSNAME": "it.polimi.ingsw.ps09.model.LeaderCardEffects.FrancescoSforza",
-            "INSTANCE": {}
+            "CLASSNAME": "it.polimi.ingsw.ps09.model.LeaderCardEffects.PlaceInOccupiedSpace",
+            "INSTANCE": {
+                "mCharacterCardsRequired": 5
+            }
             }
         ]
 }
