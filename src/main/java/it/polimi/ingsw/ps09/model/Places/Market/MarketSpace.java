@@ -1,5 +1,7 @@
 package it.polimi.ingsw.ps09.model.Places.Market;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import it.polimi.ingsw.ps09.model.BoardBonus;
 import it.polimi.ingsw.ps09.model.FamilyMembers.FamilyMember;
 import it.polimi.ingsw.ps09.model.Places.Place;
@@ -12,7 +14,7 @@ import java.util.StringJoiner;
 public class MarketSpace extends Place {
 
     private FamilyMember mFamilyMember;
-    private BoardBonus mBoardBonus;
+    protected BoardBonus mBoardBonus;
     private int mDiceValue;
 
     public MarketSpace(int DiceValue) {
@@ -84,13 +86,18 @@ public class MarketSpace extends Place {
     @Override
     public String toString(){
 
+
         StringJoiner mStringMarket = new StringJoiner("\n     ", "", "");
 
         mStringMarket.add("");
         mStringMarket.add("Family Member: " + mFamilyMember);
-        mStringMarket.add("Bonus: " + mBoardBonus);
-        mStringMarket.add("Dice Value: " + mDiceValue);
 
+        mStringMarket.add("Bonus: "
+                + mBoardBonus.getPointsBonus().toString()
+                + mBoardBonus.getResourcesBonus().toString()
+                + " Privilage count: " + mBoardBonus.getPrivilegesCount());
+
+        mStringMarket.add("Dice Value: " + mDiceValue);
 
         return mStringMarket.toString();
     }

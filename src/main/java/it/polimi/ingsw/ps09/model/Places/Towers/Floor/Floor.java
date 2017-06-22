@@ -112,11 +112,11 @@ public class Floor {
      * @return Boolean value: true if the specified floor is available, false if not
      */
     public boolean isAvailable(){
-        if(mFamilyMember ==null)
-            return true;
+        if(mFamilyMember!=null)
+            return false;
 
         else
-            return false;
+            return true;
     }
 
     @Override
@@ -126,7 +126,12 @@ public class Floor {
 
         mStringFloor.add("");
         mStringFloor.add("Dice value: " + mDiceValue);
-        mStringFloor.add("Bonus: " + mBoardBonus);
+
+        mStringFloor.add("Bonus: "
+                + mBoardBonus.getPointsBonus().toString()
+                + mBoardBonus.getResourcesBonus().toString()
+                + "Privilage count: " + mBoardBonus.getPrivilegesCount());
+
         mStringFloor.add("Card: " + mCard);
         mStringFloor.add("Family Memeber: " + mFamilyMember);
         mStringFloor.add("\n");

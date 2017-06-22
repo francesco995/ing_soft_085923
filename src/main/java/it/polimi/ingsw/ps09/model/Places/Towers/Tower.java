@@ -64,6 +64,15 @@ public class Tower {
 
     /**
      *
+     * @param index Number of floor
+     * @return Floor object
+     */
+    public Floor getFloor(int index){
+        return mFloors.get(index);
+    }
+
+    /**
+     *
      * @return Get tower's color
      */
     //Return tower's color
