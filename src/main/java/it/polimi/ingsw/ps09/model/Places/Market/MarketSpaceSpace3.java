@@ -12,8 +12,6 @@ import java.util.Scanner;
  */
 public class MarketSpaceSpace3 extends MarketSpace {
 
-    private BoardBonus mMarketSpaceBonus;
-
     private File mDirectory = new File("./");
 
     private String mFilePath = mDirectory.getAbsolutePath().replace(".",
@@ -27,7 +25,7 @@ public class MarketSpaceSpace3 extends MarketSpace {
         String mStringDeck = mScanner.useDelimiter("\\A").next();
         mScanner.close();
 
-        mMarketSpaceBonus = new Gson().fromJson(mStringDeck, BoardBonus.class);
+        mBoardBonus = new Gson().fromJson(mStringDeck, BoardBonus.class);
     }
 
     public boolean CheckNumberOfPlayer(){
