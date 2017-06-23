@@ -49,6 +49,9 @@ public class Market{
         return mMarketSpaceSpaces;
     }
 
+    /**
+     * Clear MarketSpaces for a new round
+     */
     //Clear MarketSpaces for a new round
     public void clearAll(){
         mMarketSpaceSpaces.clear();
@@ -62,6 +65,11 @@ public class Market{
             Logger.getLogger(Market.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
+    /**
+     *
+     * @return All information about all market spaces into the market
+     */
 
     @Override
     public String toString(){

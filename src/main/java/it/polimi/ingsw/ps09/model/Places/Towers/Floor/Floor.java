@@ -119,6 +119,10 @@ public class Floor {
             return true;
     }
 
+    /**
+     *
+     * @return All floor's information
+     */
     @Override
     public String toString(){
 

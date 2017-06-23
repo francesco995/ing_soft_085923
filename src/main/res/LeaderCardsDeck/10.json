@@ -1,8 +1,13 @@
 {
-    "mCardName": "Francesco Sforza",
+    "mCardName": "Ludovico il Moro",
     "mLeaderCardEffects": [{
-            "CLASSNAME": "it.polimi.ingsw.ps09.model.LeaderCardEffects.FrancescoSforza",
-            "INSTANCE": {}
+            "CLASSNAME": "it.polimi.ingsw.ps09.model.LeaderCardEffects.FamilyMemberHasValueFive",
+            "INSTANCE": {
+              "mCharacterCardsRequired": 2,
+              "mBuildingCardsRequired": 2,
+              "mVentureCardsRequired": 2,
+              "mTerritoryCardsRequired": 2
+            }
             }
         ]
 }

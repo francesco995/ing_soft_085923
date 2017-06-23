@@ -1,8 +1,64 @@
 {
-    "mCardName": "Francesco Sforza",
-    "mLeaderCardEffects": [{
-            "CLASSNAME": "it.polimi.ingsw.ps09.model.LeaderCardEffects.FrancescoSforza",
-            "INSTANCE": {}
-            }
-        ]
+  "mCardName": "Cosimo de’ Medici",
+  "mLeaderCardEffects": [
+    {
+      "CLASSNAME": "it.polimi.ingsw.ps09.model.LeaderCardEffects.GainPointsAndResources",
+      "INSTANCE": {
+        "mUserResourcesRequirements": {
+          "mCoins": {
+            "mValue": 0
+          },
+          "mServant": {
+            "mValue": 0
+          },
+          "mStone": {
+            "mValue": 0
+          },
+          "mWood": {
+            "mValue": 0
+          }
+        },
+        "mUserPointsRequirements": {
+          "mFaithPoints": {
+            "mPoints": 0
+          },
+          "mMilitaryPoints": {
+            "mPoints": 0
+          },
+          "mVictoryPoints": {
+            "mPoints": 0
+          }
+        },
+        "mCharacterCardsRequired": 2,
+        "mBuildingCardsRequired": 4,
+        "mVentureCardsRequired": 0,
+        "mTerritoryCardsRequired": 0,
+        "mUserResourcesGains": {
+          "mCoins": {
+            "mValue": 0
+          },
+          "mServant": {
+            "mValue": 3
+          },
+          "mStone": {
+            "mValue": 0
+          },
+          "mWood": {
+            "mValue": 0
+          }
+        },
+        "mUserPointsGains": {
+          "mFaithPoints": {
+            "mPoints": 0
+          },
+          "mMilitaryPoints": {
+            "mPoints": 0
+          },
+          "mVictoryPoints": {
+            "mPoints": 1
+          }
+        }
+      }
+    }
+  ]
 }

@@ -1,8 +1,10 @@
 {
-    "mCardName": "Francesco Sforza",
+    "mCardName": "Leonardo da Vinci",
     "mLeaderCardEffects": [{
-            "CLASSNAME": "it.polimi.ingsw.ps09.model.LeaderCardEffects.FrancescoSforza",
-            "INSTANCE": {}
+            "CLASSNAME": "it.polimi.ingsw.ps09.model.LeaderCardEffects.DoProductionAction",
+            "INSTANCE": {
+              "mCharacterCardsRequired": 4,
+              "mTerritoryCardsRequired": 2
             }
-        ]
+    }]
 }

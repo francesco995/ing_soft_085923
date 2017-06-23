@@ -68,6 +68,10 @@ public class Slot extends Place {
         mDiceValue = diceValue;
     }
 
+    /**
+     *
+     * @return Dice value and Family Member into the slot
+     */
     @Override
     public String toString(){
 

@@ -63,6 +63,10 @@ public class Council extends Place {
         mCouncilOrderList.clear();
     }
 
+    /**
+     *
+     * @return Order list of family members into the council
+     */
     @Override
     public String toString(){
 

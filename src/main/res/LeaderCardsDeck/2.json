@@ -1,10 +1,11 @@
 {
-    "mCardName": "Ludovico Ariosto",
-    "mLeaderCardEffects": [{
-            "CLASSNAME": "it.polimi.ingsw.ps09.model.LeaderCardEffects.PlaceInOccupiedSpace",
-            "INSTANCE": {
-                "mCharacterCardsRequired": 5
-            }
-            }
-        ]
+  "mCardName": "Ludovico Ariosto",
+  "mLeaderCardEffects": [
+    {
+      "CLASSNAME": "it.polimi.ingsw.ps09.model.LeaderCardEffects.PlaceInOccupiedSpace",
+      "INSTANCE": {
+        "mCharacterCardsRequired": 5
+      }
+    }
+  ]
 }

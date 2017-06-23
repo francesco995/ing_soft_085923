@@ -5,17 +5,22 @@ import it.polimi.ingsw.ps09.model.Player;
 /**
  * Created by walle on 19/06/17.
  */
-public class FamilyMemberHasValueFive {
+public class FamilyMemberHasValueFive extends LeaderCardEffect {
 
     private int mCharacterCardsRequired;
-    private int mBuldingCardsRequired;
+    private int mBuildingCardsRequired;
     private int mVentureCardsRequired;
     private int mTerritoryCardsRequired;
 
+    /**
+     *
+     * @param player Object representing the player
+     * @return Boolean value, true if the player can apply the effect, otherwise false
+     */
     public boolean isValid(Player player){
 
         //Ludovico il Moro
-        if((player.getBuildingsCount()>=mBuldingCardsRequired)
+        if((player.getBuildingsCount()>=mBuildingCardsRequired)
                 &&(player.getTerritoriesCount()>=mTerritoryCardsRequired)
                 &&(player.getCharactersCount()>=mCharacterCardsRequired)
                 &&(player.getVenturesCount()>=mVentureCardsRequired))
@@ -25,6 +30,10 @@ public class FamilyMemberHasValueFive {
 
     }
 
+    /**
+     *
+     * @return Effect's description
+     */
     @Override
     public String toString(){
 

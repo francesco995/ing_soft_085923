@@ -134,6 +134,10 @@ public class Tower {
 
     }
 
+    /**
+     * Delete all floors and recreate them
+     */
+
     public void clearAll(){
         mFloors.clear();
 
@@ -157,6 +161,10 @@ public class Tower {
         mFloors.add(3, new FloorFour(mFinalPath + "Floor4.json"));
     }
 
+    /**
+     *
+     * @return All information of each floor
+     */
     @Override
     public String toString(){
 

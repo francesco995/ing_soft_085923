@@ -53,13 +53,11 @@ public class CreateAreas {
     //Check if a slot is available
     public boolean isAvailable(FamilyMember familyMember){
 
-        int mCont;
-
         if(mSlotList.isEmpty())
             return true;
 
-        for(mCont = 0; mCont<mSlotList.size(); mCont++){
-            if(mSlotList.get(mCont).getFamilyMember() == familyMember)
+        for(Slot mSlot : mSlotList){
+            if(mSlot.getFamilyMember() == familyMember)
                 return false;
         }
 
@@ -76,6 +74,10 @@ public class CreateAreas {
         mSlotList.clear();
     }
 
+    /**
+     *
+     * @return All areas information
+     */
     @Override
     public String toString(){
 

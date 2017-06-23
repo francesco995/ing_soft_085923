@@ -22,50 +22,53 @@ public class TowerTest {
         mTerritoriesTower = new TerritoriesTower();
         mOrangeFamily = new OrangeFamilyMember("Smith");
         mBlackFamily = new BlackFamilyMember("Smith");
+        mTerritoriesTower.getFloors().get(1).setFamilyMember(mBlackFamily);
     }
 
     @Test
-    public void SetterAndGetterWork() throws Exception {
+    public void SetFamilyMemberTest() throws Exception {
         mTerritoriesTower.getFloors().get(0).setFamilyMember(mOrangeFamily);
 
         assertEquals(mOrangeFamily, mTerritoriesTower.getFloors().get(0).getFamilyMember());
     }
 
     @Test
-    public void hasFamilyMember() throws Exception {
-        mTerritoriesTower.getFloors().get(0).setFamilyMember(mOrangeFamily);
+    public void hasFamilyMemberTest() throws Exception {
 
-        assertEquals(false, mTerritoriesTower.getFloors().get(0).isAvailable());
+        assertEquals(true, mTerritoriesTower.hasFamilyMember());
     }
 
     @Test
-    public void MustNotBeFree() throws Exception {
-        mTerritoriesTower.getFloors().get(0).setFamilyMember(mOrangeFamily);
+    public void MustBeFreeTest() throws Exception {
 
-        assertEquals(false, mTerritoriesTower.isFree(0));
+        assertEquals(true, mTerritoriesTower.isFree(0));
     }
 
     @Test
-    public void MustBeFree() throws Exception {
-        mTerritoriesTower.getFloors().get(0).setFamilyMember(mOrangeFamily);
+    public void MustNotBeFreeTest() throws Exception {
 
-        assertEquals(true, mTerritoriesTower.isFree(1));
+        assertEquals(false, mTerritoriesTower.isFree(1));
     }
 
     @Test
-    public void hasSameFamilyMember() throws Exception {
+    public void hasSameFamilyMemberTest() throws Exception {
         mTerritoriesTower.getFloors().get(3).setFamilyMember(mOrangeFamily);
 
         assertEquals(true, mTerritoriesTower.hasSameFamilyMember(mBlackFamily));
     }
 
     @Test
-    public void clearAll() throws Exception {
-        mTerritoriesTower.getFloors().get(2).setFamilyMember(mBlackFamily);
+    public void clearAllTest() throws Exception {
         mTerritoriesTower.clearAll();
 
         assertEquals(4, mTerritoriesTower.getFloors().size());
 
+    }
+
+    @Test
+    public void getColorTest() throws Exception{
+
+        assertEquals(true, mTerritoriesTower.getColor().equals("green"));
     }
 
 }

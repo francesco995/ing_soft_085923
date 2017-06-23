@@ -5,17 +5,22 @@ import it.polimi.ingsw.ps09.model.Player;
 /**
  * Created by walle on 19/06/17.
  */
-public class AddTwoToFamilyMemberValue {
+public class AddTwoToFamilyMemberValue extends LeaderCardEffect{
 
     private int mCharacterCardsRequired;
-    private int mBuldingCardsRequired;
+    private int mBuildingCardsRequired;
     private int mVentureCardsRequired;
     private int mTerritoryCardsRequired;
 
+    /**
+     *
+     * @param player Object representing the player
+     * @return Boolean value, true if the player can apply the effect, otherwise false
+     */
     public boolean isValid(Player player) {
 
         //Lucrezia Borgia
-        if ((player.getBuildingsCount() >= mBuldingCardsRequired)
+        if ((player.getBuildingsCount() >= mBuildingCardsRequired)
                 || (player.getTerritoriesCount() >= mTerritoryCardsRequired)
                 || (player.getCharactersCount() >= mCharacterCardsRequired)
                 || (player.getVenturesCount() >= mVentureCardsRequired))

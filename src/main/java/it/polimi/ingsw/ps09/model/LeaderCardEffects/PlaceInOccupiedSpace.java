@@ -9,7 +9,11 @@ public class PlaceInOccupiedSpace extends LeaderCardEffect{
 
     private int mCharacterCardsRequired;
 
-
+    /**
+     *
+     * @param player Object representing the player
+     * @return Boolean value, true if the player can apply the effect, otherwise false
+     */
     public boolean isValid(Player player){
 
         //Ludovico Ariosto
@@ -20,6 +24,10 @@ public class PlaceInOccupiedSpace extends LeaderCardEffect{
 
     }
 
+    /**
+     *
+     * @return Effect's description
+     */
     @Override
     public String toString(){
 

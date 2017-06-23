@@ -1,8 +1,11 @@
 {
-    "mCardName": "Francesco Sforza",
+    "mCardName": "Pico della Mirandola",
     "mLeaderCardEffects": [{
-            "CLASSNAME": "it.polimi.ingsw.ps09.model.LeaderCardEffects.FrancescoSforza",
-            "INSTANCE": {}
+            "CLASSNAME": "it.polimi.ingsw.ps09.model.LeaderCardEffects.DiscountDevelopmentCardMoney",
+            "INSTANCE": {
+              "mVentureCardsRequired": 4,
+              "mTerritoryCardsRequired": 2
+            }
             }
         ]
 }

@@ -1,8 +1,64 @@
 {
-    "mCardName": "Francesco Sforza",
-    "mLeaderCardEffects": [{
-            "CLASSNAME": "it.polimi.ingsw.ps09.model.LeaderCardEffects.FrancescoSforza",
-            "INSTANCE": {}
-            }
-        ]
+  "mCardName": "Giovanni dalle Bande Nere",
+  "mLeaderCardEffects": [
+    {
+      "CLASSNAME": "it.polimi.ingsw.ps09.model.LeaderCardEffects.GainPointsAndResources",
+      "INSTANCE": {
+        "mUserResourcesRequirements": {
+          "mCoins": {
+            "mValue": 0
+          },
+          "mServant": {
+            "mValue": 0
+          },
+          "mStone": {
+            "mValue": 0
+          },
+          "mWood": {
+            "mValue": 0
+          }
+        },
+        "mUserPointsRequirements": {
+          "mFaithPoints": {
+            "mPoints": 0
+          },
+          "mMilitaryPoints": {
+            "mPoints": 12
+          },
+          "mVictoryPoints": {
+            "mPoints": 0
+          }
+        },
+        "mCharacterCardsRequired": 0,
+        "mBuildingCardsRequired": 0,
+        "mVentureCardsRequired": 0,
+        "mTerritoryCardsRequired": 0,
+        "mUserResourcesGains": {
+          "mCoins": {
+            "mValue": 1
+          },
+          "mServant": {
+            "mValue": 0
+          },
+          "mStone": {
+            "mValue": 1
+          },
+          "mWood": {
+            "mValue": 1
+          }
+        },
+        "mUserPointsGains": {
+          "mFaithPoints": {
+            "mPoints": 0
+          },
+          "mMilitaryPoints": {
+            "mPoints": 0
+          },
+          "mVictoryPoints": {
+            "mPoints": 0
+          }
+        }
+      }
+    }
+  ]
 }

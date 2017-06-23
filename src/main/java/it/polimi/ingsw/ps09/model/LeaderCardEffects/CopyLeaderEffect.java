@@ -6,10 +6,15 @@ import it.polimi.ingsw.ps09.model.UserPoints;
 /**
  * Created by walle on 19/06/17.
  */
-public class CopyLeaderEffect {
+public class CopyLeaderEffect extends LeaderCardEffect{
 
     private UserPoints mUserPointsRequirements;
 
+    /**
+     *
+     * @param player Object representing the player
+     * @return Boolean value, true if the player can apply the effect, otherwise false
+     */
     public boolean isValid(Player player){
 
         //Lorenzo de' Medici

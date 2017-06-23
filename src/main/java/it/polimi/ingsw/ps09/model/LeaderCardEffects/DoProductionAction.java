@@ -5,15 +5,20 @@ import it.polimi.ingsw.ps09.model.Player;
 /**
  * Created by walle on 19/06/17.
  */
-public class DoProductionAction {
+public class DoProductionAction extends LeaderCardEffect {
 
-    private int mBuldingCardsRequired;
+    private int mCharacterCardsRequired;
     private int mTerritoryCardsRequired;
 
+    /**
+     *
+     * @param player Object representing the player
+     * @return Boolean value, true if the player can apply the effect, otherwise false
+     */
     public boolean isValid(Player player){
 
         //Leonardo Da Vinci
-        if((player.getBuildingsCount()>=mBuldingCardsRequired)
+        if((player.getCharactersCount()>=mCharacterCardsRequired)
                 &&(player.getTerritoriesCount()>=mTerritoryCardsRequired))
             return true;
 

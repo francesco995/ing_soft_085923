@@ -1,5 +1,6 @@
 package it.polimi.ingsw.ps09.model.Places.Market;
 
+import it.polimi.ingsw.ps09.model.FamilyMembers.OrangeFamilyMember;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -11,28 +12,32 @@ import static org.junit.Assert.*;
 public class MarketTest {
 
     private Market mMarket;
+    private OrangeFamilyMember mFamilyMember = new OrangeFamilyMember("Smith");
 
     @Before
     public void setUp() throws Exception {
 
         mMarket = new Market();
+        mMarket.getMarketList().get(0).setFamilyMember(mFamilyMember);
     }
 
     @Test
-    public void diceValueIsEqualOne(){
+    public void diceValueIsEqualOneTest(){
 
         assertEquals(1, mMarket.getMarketList().get(0).getDiceValue());
 
     }
 
     @Test
-    public void clearAllDeleteFamilyMember(){
+    public void clearAllDeleteFamilyMemberTest(){
+
+        mMarket.clearAll();
 
         assertEquals(null, mMarket.getMarketList().get(0).getFamilyMember());
     }
 
     @Test
-    public void clearAllDoNotDeleteDiceValue(){
+    public void clearAllDoNotDeleteDiceValueTest(){
 
         assertEquals(1, mMarket.getMarketList().get(0).getDiceValue());
     }

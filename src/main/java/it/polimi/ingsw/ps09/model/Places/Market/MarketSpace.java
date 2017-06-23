@@ -83,6 +83,10 @@ public class MarketSpace extends Place {
             return false;
     }
 
+    /**
+     *
+     * @return All market space's information
+     */
     @Override
     public String toString(){
 

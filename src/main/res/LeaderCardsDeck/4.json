@@ -1,8 +1,21 @@
 {
-    "mCardName": "Francesco Sforza",
-    "mLeaderCardEffects": [{
-            "CLASSNAME": "it.polimi.ingsw.ps09.model.LeaderCardEffects.FrancescoSforza",
-            "INSTANCE": {}
-            }
-        ]
+  "mCardName": "Sigismondo Malatesta",
+  "mLeaderCardEffects": [
+    {
+      "CLASSNAME": "it.polimi.ingsw.ps09.model.LeaderCardEffects.AddThreeNeutralFamilyMemberValue",
+      "INSTANCE": {
+        "mUserPointsRequirements": {
+          "mFaithPoints": {
+            "mPoints": 3
+          },
+          "mMilitaryPoints": {
+            "mPoints": 7
+          },
+          "mVictoryPoints": {
+            "mPoints": 0
+          }
+        }
+      }
+    }
+  ]
 }
