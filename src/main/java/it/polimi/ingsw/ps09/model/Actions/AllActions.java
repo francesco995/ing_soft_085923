@@ -25,31 +25,31 @@ public class  AllActions {
         for (int i = 0; i < 4; i++) {
 
             if (PlaceFamilyMemberInGreenFloor.isValid
-                    (board, i, player, player.getFamilyMember("NEUTRAL")))
+                    (board, player, player.getFamilyMember("NEUTRAL"), i))
 
                 mActionsList.add
-                        (new PlaceFamilyMemberInGreenFloor(i, player.getFamilyMember("NEUTRAL")));
+                        (new PlaceFamilyMemberInGreenFloor(player.getFamilyMember("NEUTRAL"), i));
 
 
             if (PlaceFamilyMemberInGreenFloor.isValid
-                    (board, i, player, player.getFamilyMember("BLACK")))
+                    (board, player, player.getFamilyMember("BLACK"), i))
 
                 mActionsList.add
-                        (new PlaceFamilyMemberInGreenFloor(i, player.getFamilyMember("BLACK")));
+                        (new PlaceFamilyMemberInGreenFloor(player.getFamilyMember("BLACK"), i));
 
 
             if (PlaceFamilyMemberInGreenFloor.isValid
-                    (board, i, player, player.getFamilyMember("ORANGE")))
+                    (board, player, player.getFamilyMember("ORANGE"), i))
 
                 mActionsList.add
-                        (new PlaceFamilyMemberInGreenFloor(i, player.getFamilyMember("ORANGE")));
+                        (new PlaceFamilyMemberInGreenFloor(player.getFamilyMember("ORANGE"), i));
 
 
             if (PlaceFamilyMemberInGreenFloor.isValid
-                    (board, i, player, player.getFamilyMember("WHITE")))
+                    (board, player, player.getFamilyMember("WHITE"), i))
 
                 mActionsList.add
-                        (new PlaceFamilyMemberInGreenFloor(i, player.getFamilyMember("WHITE")));
+                        (new PlaceFamilyMemberInGreenFloor(player.getFamilyMember("WHITE"), i));
 
         }
 
@@ -57,31 +57,31 @@ public class  AllActions {
         for (int i = 0; i < 4; i++) {
 
             if (PlaceFamilyMemberInBlueFloor.isValid
-                    (board, i, player, player.getFamilyMember("NEUTRAL")))
+                    (board, player, player.getFamilyMember("NEUTRAL"), i))
 
                 mActionsList.add
-                        (new PlaceFamilyMemberInBlueFloor(i, player.getFamilyMember("NEUTRAL")));
+                        (new PlaceFamilyMemberInBlueFloor(player.getFamilyMember("NEUTRAL"), i));
 
 
             if (PlaceFamilyMemberInBlueFloor.isValid
-                    (board, i, player, player.getFamilyMember("BLACK")))
+                    (board, player, player.getFamilyMember("BLACK"), i))
 
                 mActionsList.add
-                        (new PlaceFamilyMemberInBlueFloor(i, player.getFamilyMember("BLACK")));
+                        (new PlaceFamilyMemberInBlueFloor(player.getFamilyMember("BLACK"), i));
 
 
             if (PlaceFamilyMemberInBlueFloor.isValid
-                    (board, i, player, player.getFamilyMember("ORANGE")))
+                    (board, player, player.getFamilyMember("ORANGE"), i))
 
                 mActionsList.add
-                        (new PlaceFamilyMemberInBlueFloor(i, player.getFamilyMember("ORANGE")));
+                        (new PlaceFamilyMemberInBlueFloor(player.getFamilyMember("ORANGE"), i));
 
 
             if (PlaceFamilyMemberInBlueFloor.isValid
-                    (board, i, player, player.getFamilyMember("WHITE")))
+                    (board, player, player.getFamilyMember("WHITE"), i))
 
                 mActionsList.add
-                        (new PlaceFamilyMemberInBlueFloor(i, player.getFamilyMember("WHITE")));
+                        (new PlaceFamilyMemberInBlueFloor(player.getFamilyMember("WHITE"), i));
 
         }
 
@@ -89,31 +89,31 @@ public class  AllActions {
         for (int i = 0; i < 4; i++) {
 
             if (PlaceFamilyMemberInYellowFloor.isValid
-                    (board, i, player, player.getFamilyMember("NEUTRAL")))
+                    (board, player, player.getFamilyMember("NEUTRAL"), i))
 
                 mActionsList.add
-                        (new PlaceFamilyMemberInYellowFloor(i, player.getFamilyMember("NEUTRAL")));
+                        (new PlaceFamilyMemberInYellowFloor(player.getFamilyMember("NEUTRAL"), i));
 
 
             if (PlaceFamilyMemberInYellowFloor.isValid
-                    (board, i, player, player.getFamilyMember("BLACK")))
+                    (board, player, player.getFamilyMember("BLACK"), i))
 
                 mActionsList.add
-                        (new PlaceFamilyMemberInYellowFloor(i, player.getFamilyMember("BLACK")));
+                        (new PlaceFamilyMemberInYellowFloor(player.getFamilyMember("BLACK"), i));
 
 
             if (PlaceFamilyMemberInYellowFloor.isValid
-                    (board, i, player, player.getFamilyMember("ORANGE")))
+                    (board, player, player.getFamilyMember("ORANGE"), i))
 
                 mActionsList.add
-                        (new PlaceFamilyMemberInYellowFloor(i, player.getFamilyMember("ORANGE")));
+                        (new PlaceFamilyMemberInYellowFloor(player.getFamilyMember("ORANGE"), i));
 
 
             if (PlaceFamilyMemberInYellowFloor.isValid
-                    (board, i, player, player.getFamilyMember("WHITE")))
+                    (board, player, player.getFamilyMember("WHITE"), i))
 
                 mActionsList.add
-                        (new PlaceFamilyMemberInYellowFloor(i, player.getFamilyMember("WHITE")));
+                        (new PlaceFamilyMemberInYellowFloor(player.getFamilyMember("WHITE"), i));
 
         }
 
@@ -121,31 +121,31 @@ public class  AllActions {
         for (int i = 0; i < 4; i++) {
 
             if (PlaceFamilyMemberInPurpleFloor.isValid
-                    (board, i, player, player.getFamilyMember("NEUTRAL")))
+                    (board, player, player.getFamilyMember("NEUTRAL"), i))
 
                 mActionsList.add
-                        (new PlaceFamilyMemberInPurpleFloor(i, player.getFamilyMember("NEUTRAL")));
+                        (new PlaceFamilyMemberInPurpleFloor(player.getFamilyMember("NEUTRAL"), i));
 
 
             if (PlaceFamilyMemberInPurpleFloor.isValid
-                    (board, i, player, player.getFamilyMember("BLACK")))
+                    (board, player, player.getFamilyMember("BLACK"), i))
 
                 mActionsList.add
-                        (new PlaceFamilyMemberInPurpleFloor(i, player.getFamilyMember("BLACK")));
+                        (new PlaceFamilyMemberInPurpleFloor(player.getFamilyMember("BLACK"), i));
 
 
             if (PlaceFamilyMemberInPurpleFloor.isValid
-                    (board, i, player, player.getFamilyMember("ORANGE")))
+                    (board, player, player.getFamilyMember("ORANGE"), i))
 
                 mActionsList.add
-                        (new PlaceFamilyMemberInPurpleFloor(i, player.getFamilyMember("ORANGE")));
+                        (new PlaceFamilyMemberInPurpleFloor(player.getFamilyMember("ORANGE"), i));
 
 
             if (PlaceFamilyMemberInPurpleFloor.isValid
-                    (board, i, player, player.getFamilyMember("WHITE")))
+                    (board, player, player.getFamilyMember("WHITE"), i))
 
                 mActionsList.add
-                        (new PlaceFamilyMemberInPurpleFloor(i, player.getFamilyMember("WHITE")));
+                        (new PlaceFamilyMemberInPurpleFloor(player.getFamilyMember("WHITE"), i));
 
         }
 
@@ -157,16 +157,16 @@ public class  AllActions {
         //Check and add placement action for Council Palace
 
         if(PlaceFamilyMemberInTheCouncilPalace.isValid(player.getFamilyMember("NEUTRAL")))
-            mActionsList.add(new PlaceFamilyMemberInTheCouncilPalace(player.getFamilyMember("NEUTRAL")));
+            mActionsList.add(new PlaceFamilyMemberInTheCouncilPalace(player.getFamilyMember("NEUTRAL"), 0));
 
         if(PlaceFamilyMemberInTheCouncilPalace.isValid(player.getFamilyMember("BLACK")))
-            mActionsList.add(new PlaceFamilyMemberInTheCouncilPalace(player.getFamilyMember("BLACK")));
+            mActionsList.add(new PlaceFamilyMemberInTheCouncilPalace(player.getFamilyMember("BLACK"), 0));
 
         if(PlaceFamilyMemberInTheCouncilPalace.isValid(player.getFamilyMember("ORANGE")))
-            mActionsList.add(new PlaceFamilyMemberInTheCouncilPalace(player.getFamilyMember("ORANGE")));
+            mActionsList.add(new PlaceFamilyMemberInTheCouncilPalace(player.getFamilyMember("ORANGE"), 0));
 
         if(PlaceFamilyMemberInTheCouncilPalace.isValid(player.getFamilyMember("WHITE")))
-            mActionsList.add(new PlaceFamilyMemberInTheCouncilPalace(player.getFamilyMember("WHITE")));
+            mActionsList.add(new PlaceFamilyMemberInTheCouncilPalace(player.getFamilyMember("WHITE"), 0));
 
         //Check and add placement action for Market
         for(int i=0; i<3 ; i++) {

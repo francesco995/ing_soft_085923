@@ -13,14 +13,14 @@ public class PlaceFamilyMemberInPurpleFloor extends PlaceFamilyMemberInFloor {
 
     private static final int EXTRA_TOWER_COST = 3;
 
-    public PlaceFamilyMemberInPurpleFloor(int floorIndex, FamilyMember familyMember) {
+    public PlaceFamilyMemberInPurpleFloor(FamilyMember familyMember, int index) {
 
-        super(floorIndex, familyMember);
+        super(familyMember, index);
 
     }
 
 
-    public static boolean isValid(Board board, int floorIndex, Player player, FamilyMember familyMember) {
+    public static boolean isValid(Board board, Player player, FamilyMember familyMember, int index) {
 
         //FAMILY MEMBER CONTROLS
         //check if family member is usable
@@ -28,7 +28,7 @@ public class PlaceFamilyMemberInPurpleFloor extends PlaceFamilyMemberInFloor {
             return false;
 
         //Check if floor is free
-        if (!board.getVenturesTower().getFloors().get(floorIndex).isAvailable())
+        if (!board.getVenturesTower().getFloors().get(index).isAvailable())
             return false;
 
         //check if Family Member has enough power
@@ -36,13 +36,13 @@ public class PlaceFamilyMemberInPurpleFloor extends PlaceFamilyMemberInFloor {
                 familyMember.getPower()
                         + player.getFamilyMemberPlacementBonus("VENTURE")
                         <
-                        board.getVenturesTower().getFloors().get(floorIndex).getDiceValue())
+                        board.getVenturesTower().getFloors().get(index).getDiceValue())
             return false;
 
 
         //PLAYERS CONTROLS
         //card variable to check for resources
-        Venture card = (Venture) board.getVenturesTowerCard(floorIndex);
+        Venture card = (Venture) board.getVenturesTowerCard(index);
 
         //check if enough resources
         if (!player.has(card.getResourcesCosts().get(0)))
@@ -64,20 +64,20 @@ public class PlaceFamilyMemberInPurpleFloor extends PlaceFamilyMemberInFloor {
         return true;
     }
 
-    public void doAction(Board board, int floorIndex, Player player, FamilyMember familyMember) {
+    public void doAction(Board board, Player player, FamilyMember familyMember, int index) {
 
         //add instant r&p gains from board
-        player.add(board.getVenturesTower().getFloors().get(floorIndex).getBoardBonus().getResourcesBonus());
-        player.add(board.getVenturesTower().getFloors().get(floorIndex).getBoardBonus().getPointsBonus());
+        player.add(board.getVenturesTower().getFloors().get(index).getBoardBonus().getResourcesBonus());
+        player.add(board.getVenturesTower().getFloors().get(index).getBoardBonus().getPointsBonus());
 
         //pay for card
-        player.remove(board.getVenturesTowerCard(floorIndex).getResourcesCosts().get(0));
+        player.remove(board.getVenturesTowerCard(index).getResourcesCosts().get(0));
 
         //pay if floor already occupied
         if (board.getVenturesTower().hasFamilyMember())
             player.remove(new Coins(EXTRA_TOWER_COST));
         //get card
-        player.addVentureCard((Venture) board.getVenturesTower().getFloors().get(floorIndex).getCard());
+        player.addVentureCard((Venture) board.getVenturesTower().getFloors().get(index).getCard());
 
         //TODO: ASK FRAG if immediate effect must be activated here or where
 

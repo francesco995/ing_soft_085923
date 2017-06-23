@@ -10,7 +10,7 @@ import java.io.InvalidObjectException;
 /**
  * Created by francesco995 on 11/06/2017.
  */
-public class Production extends Action {
+public class Production implements Action {
 
     FamilyMember mFamilyMember;
 
@@ -34,12 +34,12 @@ public class Production extends Action {
         return true;
     }
 
-    public void doAction(Board board, Player player, FamilyMember familyMember)
-            throws InvalidObjectException {
+    public void doAction(Board board, Player player, FamilyMember familyMember, int index)
+            throws UnsupportedOperationException {
 
         //check if action is valid
         if(!isValid(board, player, familyMember))
-            throw new InvalidObjectException("Operation not supported");
+            throw new UnsupportedOperationException("Operation not supported");
 
 
         //Do action

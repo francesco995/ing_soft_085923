@@ -13,14 +13,14 @@ public class PlaceFamilyMemberInYellowFloor extends PlaceFamilyMemberInFloor {
 
     private static final int EXTRA_TOWER_COST = 3;
 
-    public PlaceFamilyMemberInYellowFloor(int floorIndex, FamilyMember familyMember) {
+    public PlaceFamilyMemberInYellowFloor(FamilyMember familyMember, int index) {
 
-        super(floorIndex, familyMember);
+        super(familyMember, index);
 
     }
 
 
-    public static boolean isValid(Board board, int floorIndex, Player player, FamilyMember familyMember) {
+    public static boolean isValid(Board board, Player player, FamilyMember familyMember, int index) {
 
 
         //FAMILY MEMBER CONTROLS
@@ -28,7 +28,7 @@ public class PlaceFamilyMemberInYellowFloor extends PlaceFamilyMemberInFloor {
         if (!familyMember.isUsable())
             return false;
         //Check if floor is free
-        if (!board.getBuildingsTower().getFloors().get(floorIndex).isAvailable())
+        if (!board.getBuildingsTower().getFloors().get(index).isAvailable())
             return false;
 
         //check if Family Member has enough power
@@ -36,13 +36,13 @@ public class PlaceFamilyMemberInYellowFloor extends PlaceFamilyMemberInFloor {
                 familyMember.getPower()
                         + player.getFamilyMemberPlacementBonus("BUILDING")
                         <
-                        board.getBuildingsTower().getFloors().get(floorIndex).getDiceValue())
+                        board.getBuildingsTower().getFloors().get(index).getDiceValue())
             return false;
 
 
         //PLAYER CONTROLS
         //card variable to check for resources
-        Building card = (Building) board.getBuildingsTowerCard(floorIndex);
+        Building card = (Building) board.getBuildingsTowerCard(index);
 
         //check if enough resources
         if (!player.has(card.getResourcesCosts().get(0)))
@@ -64,20 +64,20 @@ public class PlaceFamilyMemberInYellowFloor extends PlaceFamilyMemberInFloor {
         return true;
     }
 
-    public void doAction(Board board, int floorIndex, Player player, FamilyMember familyMember) {
+    public void doAction(Board board, Player player, FamilyMember familyMember, int index) {
 
         //add instant r&p gains from board
-        player.add(board.getBuildingsTower().getFloors().get(floorIndex).getBoardBonus().getResourcesBonus());
-        player.add(board.getBuildingsTower().getFloors().get(floorIndex).getBoardBonus().getPointsBonus());
+        player.add(board.getBuildingsTower().getFloors().get(index).getBoardBonus().getResourcesBonus());
+        player.add(board.getBuildingsTower().getFloors().get(index).getBoardBonus().getPointsBonus());
 
         //pay for card
-        player.remove(board.getBuildingsTowerCard(floorIndex).getResourcesCosts().get(0));
+        player.remove(board.getBuildingsTowerCard(index).getResourcesCosts().get(0));
 
         //pay if floor already occupied
         if (board.getBuildingsTower().hasFamilyMember())
             player.remove(new Coins(EXTRA_TOWER_COST));
         //get card
-        player.addBuildingCard((Building) board.getBuildingsTower().getFloors().get(floorIndex).getCard());
+        player.addBuildingCard((Building) board.getBuildingsTower().getFloors().get(index).getCard());
 
         //TODO: ASK FRAG if immediate effect must be activated here or where
 

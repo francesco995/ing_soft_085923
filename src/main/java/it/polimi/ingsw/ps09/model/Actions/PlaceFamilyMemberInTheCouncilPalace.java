@@ -10,11 +10,11 @@ import java.io.InvalidObjectException;
 /**
  * Created by francesco995 on 11/06/2017.
  */
-public class PlaceFamilyMemberInTheCouncilPalace extends Action {
+public class PlaceFamilyMemberInTheCouncilPalace implements Action {
 
     FamilyMember mFamilyMember;
 
-    public PlaceFamilyMemberInTheCouncilPalace(FamilyMember familyMember) {
+    public PlaceFamilyMemberInTheCouncilPalace(FamilyMember familyMember, int index) {
 
         mFamilyMember = familyMember;
     }
@@ -33,12 +33,12 @@ public class PlaceFamilyMemberInTheCouncilPalace extends Action {
     }
 
     public void doAction
-            (Board board, Player player, FamilyMember familyMember)
-            throws InvalidObjectException, IndexOutOfBoundsException {
+            (Board board, Player player, FamilyMember familyMember, int index)
+            throws UnsupportedOperationException, IndexOutOfBoundsException {
 
         // Check if action is actually valid
         if (!isValid(familyMember))
-            throw new InvalidObjectException("Operation not supported");
+            throw new UnsupportedOperationException("Operation not supported");
 
 
         //Do action
