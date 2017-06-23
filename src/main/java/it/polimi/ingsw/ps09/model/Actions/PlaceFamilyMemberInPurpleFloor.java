@@ -71,7 +71,7 @@ public class PlaceFamilyMemberInPurpleFloor extends PlaceFamilyMemberInFloor {
         player.add(board.getVenturesTower().getFloors().get(floorIndex).getBoardBonus().getPointsBonus());
 
         //pay for card
-        player.remove(board.getVenturesTowerCard(floorIndex).getResourcesCosts().get(0));
+       // player.remove(board.getVenturesTowerCard(floorIndex).getResourcesCosts().get(0));
 
         //pay if floor already occupied
         if (board.getVenturesTower().hasFamilyMember())

@@ -71,7 +71,7 @@ public class PlaceFamilyMemberInGreenFloor extends PlaceFamilyMemberInFloor {
         player.add(board.getTerritoriesTower().getFloors().get(floorIndex).getBoardBonus().getPointsBonus());
 
         //pay for card
-        player.remove(board.getTerritoriesTowerCard(floorIndex).getResourcesCosts().get(0));
+        //player.remove(board.getTerritoriesTowerCard(floorIndex).getResourcesCosts().get(0));
 
         //pay if floor already occupied
         if (board.getTerritoriesTower().hasFamilyMember())
