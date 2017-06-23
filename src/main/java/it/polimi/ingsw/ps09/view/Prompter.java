@@ -11,13 +11,14 @@ import java.util.stream.IntStream;
 /**
  * Created by francesco995 on 25/05/2017.
  */
-public class Prompter {
-
-    BufferedReader mBufferedStringReader = new BufferedReader(new InputStreamReader(System.in));
-    Scanner mReader = new Scanner(System.in);
+public abstract class Prompter {
 
 
-    public int promptForInt(String message) throws IOException {
+    public static int promptForInt(String message) throws IOException {
+
+        BufferedReader mBufferedStringReader = new BufferedReader(new InputStreamReader(System.in));
+        Scanner mReader = new Scanner(System.in);
+
         System.out.println(message);
         String answer;
 
@@ -30,7 +31,11 @@ public class Prompter {
     }
 
 
-    public String promptForString(String message) throws IOException {
+    public static String promptForString(String message) throws IOException {
+
+        BufferedReader mBufferedStringReader = new BufferedReader(new InputStreamReader(System.in));
+        Scanner mReader = new Scanner(System.in);
+
         System.out.println(message);
         String answer;
 
@@ -42,7 +47,10 @@ public class Prompter {
         return answer;
     }
 
-    public int promptForIntChoiceZero(String message, List<String> options){
+    public static int promptForIntChoiceZero(String message, List<String> options){
+
+        BufferedReader mBufferedStringReader = new BufferedReader(new InputStreamReader(System.in));
+        Scanner mReader = new Scanner(System.in);
 
         int choice;
 
@@ -61,7 +69,10 @@ public class Prompter {
         return (choice);
     }
 
-    public int promptForIntChoice(String message, List<String> options){
+    public static int promptForIntChoice(String message, List<String> options){
+
+        BufferedReader mBufferedStringReader = new BufferedReader(new InputStreamReader(System.in));
+        Scanner mReader = new Scanner(System.in);
 
         int choice;
 
@@ -80,13 +91,16 @@ public class Prompter {
         return (choice);
     }
 
-    private void printStringList(List<String> options) {
+    private static void printStringList(List<String> options) {
         IntStream.rangeClosed(1, options.size())
                 .mapToObj( i -> String.format("%d. %s", i, options.get( i - 1 ) ) )
                 .forEach(System.out::println);
     }
 
-    public ArrayList<Integer> PromptForMultipleDifferentChoices(String message, List<String> options, int numberOfChoices, int maxNumber) {
+    public static ArrayList<Integer> PromptForMultipleDifferentChoices(String message, List<String> options, int numberOfChoices, int maxNumber) {
+
+        BufferedReader mBufferedStringReader = new BufferedReader(new InputStreamReader(System.in));
+        Scanner mReader = new Scanner(System.in);
 
         ArrayList<Integer> mChoices =  new ArrayList<Integer>();
 
@@ -101,7 +115,7 @@ public class Prompter {
         do {
 
             System.out.println("\nYour choice max number("+ maxNumber +"), remember no repetitions? -> ");
-            int control =mReader.nextInt();
+            int control = mReader.nextInt();
 
             if(control<maxNumber) {
                 boolean isUsed = false;

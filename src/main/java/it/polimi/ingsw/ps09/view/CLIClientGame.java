@@ -1,16 +1,15 @@
-package it.polimi.ingsw.ps09.controller;
+package it.polimi.ingsw.ps09.view;
 
 import it.polimi.ingsw.ps09.controller.Network.Client.ServerConnections.ServerConnectionSocket;
+import it.polimi.ingsw.ps09.controller.PlayersOrder;
 import it.polimi.ingsw.ps09.model.Actions.Action;
 import it.polimi.ingsw.ps09.model.Board;
 import it.polimi.ingsw.ps09.model.Player;
-import it.polimi.ingsw.ps09.view.Prompter;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.stream.Collectors;
 
-import static java.util.logging.Level.WARNING;
 
 /**
  * Created by francesco995 on 18/06/2017.
@@ -31,7 +30,6 @@ public class CLIClientGame extends Thread{
     //TODO: change to generic ServerConnection
     private ServerConnectionSocket mServerConnection;
 
-    private Prompter mPrompter;
     private ArrayList<String> mMainMenu;
     private ArrayList<String> mBoardMenu;
     private ArrayList<String> mTowersMenu;
@@ -44,7 +42,6 @@ public class CLIClientGame extends Thread{
 
         mServerConnection = serverConnection;
         mUserName = userName;
-        mPrompter = new Prompter();
 
         mHasAction = false;
 
@@ -52,18 +49,24 @@ public class CLIClientGame extends Thread{
         mMainMenu = new ArrayList<>();
         mMainMenu.add("Display Players");
         mMainMenu.add("Display Board");
+        mMainMenu.add("Refresh main menu");
+
 
         mBoardMenu = new ArrayList<>();
         mBoardMenu.add("Display the whole Board");
         mBoardMenu.add("Display Towers");
         mBoardMenu.add("Display Markets");
         mBoardMenu.add("Display Harvest & Production");
+        mBoardMenu.add("Go back to main menu");
+
 
         mTowersMenu = new ArrayList<>();
         mTowersMenu.add("Green Tower");
         mTowersMenu.add("Yellow Tower");
         mTowersMenu.add("Blue Tower");
         mTowersMenu.add("Purple Tower");
+        mTowersMenu.add("Go back to main menu");
+
 
         mPlayerMenu = new ArrayList<>();
         mPlayerMenu.add("Show Player info");
@@ -73,6 +76,8 @@ public class CLIClientGame extends Thread{
         mPlayerMenu.add("Show Player Yellow cards");
         mPlayerMenu.add("Show Player Blue cards");
         mPlayerMenu.add("Show Player Purple cards");
+        mPlayerMenu.add("Show Player last Actions");
+        mPlayerMenu.add("Go back to main menu");
 
         mServerConnection.updateData();
 
@@ -84,12 +89,15 @@ public class CLIClientGame extends Thread{
 
 
     public static void alertActions(){
-        System.out.println("It's your turn to play, press 0 to refresh view!!!");
+        System.out.println("\n##It's your turn to play, actions available in main menu, please refresh!!!##");
+        System.out.println("\n##It's your turn to play, actions available in main menu, please refresh!!!##");
+        System.out.println("\n##It's your turn to play, actions available in main menu, please refresh!!!##");
+
     }
 
 
     private void doAction(){
-        mPrompter.promptForIntChoice("Choose your action", mPlayerActionsList.stream().map(Action::toString).collect(Collectors.toList()));
+        Prompter.promptForIntChoice("Choose your action", mPlayerActionsList.stream().map(Action::toString).collect(Collectors.toList()));
     }
 
     /**
@@ -136,7 +144,7 @@ public class CLIClientGame extends Thread{
 
             updateData();
 
-            switch(mPrompter.promptForIntChoice("Main menu:", mMainMenu)){
+            switch(Prompter.promptForIntChoice("Main menu:", mMainMenu)){
 
                 case 1:{
                     displayPlayers();
@@ -162,7 +170,7 @@ public class CLIClientGame extends Thread{
      */
     private void displayPlayer(String userName){
 
-        switch (mPrompter.promptForIntChoice("Please choose what to display of Player: " + userName, mPlayerMenu)){
+        switch (Prompter.promptForIntChoice("Please choose what to display of Player: " + userName, mPlayerMenu)){
 
             case 1:{
 
@@ -209,7 +217,7 @@ public class CLIClientGame extends Thread{
      */
     private void displayPlayers(){
 
-        switch (mPrompter.promptForIntChoice("Please choose the Player to display", mPlayersMenu)){
+        switch (Prompter.promptForIntChoice("Please choose the Player to display", mPlayersMenu)){
 
             case 1:{
                 displayPlayer(mPlayersMenu.get(0));
@@ -241,7 +249,7 @@ public class CLIClientGame extends Thread{
      */
     private void displayBoard(){
 
-        switch(mPrompter.promptForIntChoice("Please choose what to display", mBoardMenu)){
+        switch(Prompter.promptForIntChoice("Please choose what to display", mBoardMenu)){
 
             case 1:{
                 System.out.println(mBoard.toString());
@@ -273,7 +281,7 @@ public class CLIClientGame extends Thread{
      */
     private void displayTowers(){
 
-        switch (mPrompter.promptForIntChoice("Please choose a Tower", mTowersMenu)){
+        switch (Prompter.promptForIntChoice("Please choose a Tower", mTowersMenu)){
 
             case 1:{
                 System.out.println(mBoard.getTerritoriesTower().toString());

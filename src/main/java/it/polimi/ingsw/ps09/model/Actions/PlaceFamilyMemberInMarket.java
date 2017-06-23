@@ -11,14 +11,14 @@ import java.io.InvalidObjectException;
 /**
  * Created by francesco995 on 11/06/2017.
  */
-public class PlaceFamilyMemberInMarket extends Action {
+public class PlaceFamilyMemberInMarket implements Action {
 
     FamilyMember mFamilyMember;
     int mMarketIndex;
 
-    public PlaceFamilyMemberInMarket(FamilyMember familyMember, int marketIndex) {
+    public PlaceFamilyMemberInMarket(FamilyMember familyMember, int index) {
         mFamilyMember = familyMember;
-        mMarketIndex = marketIndex;
+        mMarketIndex = index;
     }
 
     public static boolean isValid(Board board, Player player, FamilyMember familyMember, int marketIndex){
@@ -51,20 +51,20 @@ public class PlaceFamilyMemberInMarket extends Action {
     }
 
     public void doAction
-            (Board board, Player player, FamilyMember familyMember, int marketIndex)
-            throws InvalidObjectException, IndexOutOfBoundsException {
+            (Board board, Player player, FamilyMember familyMember, int index)
+            throws UnsupportedOperationException, IndexOutOfBoundsException {
 
         // Check if action is actually valid
-        if(!isValid(board, player, familyMember, marketIndex))
-            throw new InvalidObjectException("Operation not supported");
+        if(!isValid(board, player, familyMember, index))
+            throw new UnsupportedOperationException("Operation not supported");
 
         if(familyMember.getPower() < 1)
             player.remove(new Servant(1));
 
         //Do action
-        board.getMarketList().get(marketIndex).setFamilyMember(familyMember);
-        player.add(board.getMarketList().get(marketIndex).getBoardBonus().getPointsBonus());
-        player.add(board.getMarketList().get(marketIndex).getBoardBonus().getResourcesBonus());
+        board.getMarketList().get(index).setFamilyMember(familyMember);
+        player.add(board.getMarketList().get(index).getBoardBonus().getPointsBonus());
+        player.add(board.getMarketList().get(index).getBoardBonus().getResourcesBonus());
 
     }
 

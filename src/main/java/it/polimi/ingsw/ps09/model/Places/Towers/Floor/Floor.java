@@ -5,6 +5,8 @@ import it.polimi.ingsw.ps09.model.BoardBonus;
 import it.polimi.ingsw.ps09.model.DevelopmentCards.DevelopmentCard;
 import it.polimi.ingsw.ps09.model.FamilyMembers.FamilyMember;
 import it.polimi.ingsw.ps09.model.Places.Market.Market;
+import it.polimi.ingsw.ps09.model.UserPoints;
+import it.polimi.ingsw.ps09.model.UserResources;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -131,10 +133,18 @@ public class Floor {
         mStringFloor.add("");
         mStringFloor.add("Dice value: " + mDiceValue);
 
-        mStringFloor.add("Bonus: "
-                + mBoardBonus.getPointsBonus().toString()
-                + mBoardBonus.getResourcesBonus().toString()
-                + "Privilage count: " + mBoardBonus.getPrivilegesCount());
+        String stringBonus = "Bonus: ";
+
+        if(mBoardBonus.getPointsBonus().isGreaterOrEqual(new UserPoints(0, 0, 0)))
+            stringBonus += mBoardBonus.getPointsBonus().toString();
+
+        if(mBoardBonus.getResourcesBonus().isGreaterOrEqual(new UserResources(0, 0, 0, 0)))
+            stringBonus += mBoardBonus.getResourcesBonus().toString();
+
+        if(mBoardBonus.getPrivilegesCount() > 0)
+            stringBonus += mBoardBonus.getPrivilegesCount();
+
+        mStringFloor.add(stringBonus);
 
         mStringFloor.add("Card: " + mCard);
         mStringFloor.add("Family Memeber: " + mFamilyMember);

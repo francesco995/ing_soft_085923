@@ -7,16 +7,17 @@ import it.polimi.ingsw.ps09.model.Player;
 /**
  * Created by francesco995 on 13/06/2017.
  */
-public class PlaceFamilyMemberInFloor extends Action {
+public abstract class PlaceFamilyMemberInFloor implements Action {
 
     private int mFloorIndex;
     private FamilyMember mFamilyMember;
 
-    public PlaceFamilyMemberInFloor(int floorIndex, FamilyMember familyMember){
+    public PlaceFamilyMemberInFloor(FamilyMember familyMember, int index){
 
-        mFloorIndex = floorIndex;
+        mFloorIndex = index;
         mFamilyMember = familyMember;
 
     }
+
 
 }

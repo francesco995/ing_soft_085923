@@ -29,7 +29,6 @@ public class Board{
     private VenturesTower mVenturesTower;
     private BuildingsTower mBuildingsTower;
 
-    private LinkedList effect;
     private ExcommunicationTile mExcommunicationTile1;
     private ExcommunicationTile mExcommunicationTile2;
     private ExcommunicationTile mExcommunicationTile3;
@@ -493,6 +492,8 @@ public class Board{
     //####################################################
 
     public List getExcommunicationTilesList() {
+
+        mExcommunicationTilesList = new ArrayList<>();
 
         mExcommunicationTilesList.add(mExcommunicationTile1);
         mExcommunicationTilesList.add(mExcommunicationTile2);

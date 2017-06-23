@@ -12,7 +12,7 @@ import java.util.List;
 /**
  * Created by franc on 22/06/2017.
  */
-public class UseCouncilPrivilege extends Action {
+public class UseCouncilPrivilege{
     //static data
     static final int MAX_NUMBER = 5;
     List<String> mStringList = new ArrayList<String>();
@@ -25,9 +25,10 @@ public class UseCouncilPrivilege extends Action {
         mStringList.add("Get 2 military points");
         mStringList.add("Get 1 faith point");
 
-        List<Integer> choice = new ArrayList<Integer>();
-        Prompter mPrompter = new Prompter();
-        choice = mPrompter.PromptForMultipleDifferentChoices("Choose " + privilegesCount +"different council privilege", mStringList , privilegesCount, MAX_NUMBER);
+        List<Integer> choice = new ArrayList<>();
+
+        //TODO: not here....
+        choice = Prompter.PromptForMultipleDifferentChoices("Choose " + privilegesCount +"different council privilege", mStringList , privilegesCount, MAX_NUMBER);
 
         //it runs the whole choice list and add the required bonuses
         for(int i=0; i<privilegesCount; i++){

@@ -1,7 +1,7 @@
 package it.polimi.ingsw.ps09;
 
 
-import it.polimi.ingsw.ps09.controller.CLIClientGame;
+import it.polimi.ingsw.ps09.view.CLIClientGame;
 import it.polimi.ingsw.ps09.controller.Network.Client.ServerConnections.ServerConnectionSocket;
 
 

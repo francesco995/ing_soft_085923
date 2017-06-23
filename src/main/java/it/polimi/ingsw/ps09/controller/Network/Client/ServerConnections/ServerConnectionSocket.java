@@ -2,7 +2,7 @@ package it.polimi.ingsw.ps09.controller.Network.Client.ServerConnections;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import it.polimi.ingsw.ps09.controller.CLIClientGame;
+import it.polimi.ingsw.ps09.view.CLIClientGame;
 import it.polimi.ingsw.ps09.controller.Game.Game;
 import it.polimi.ingsw.ps09.controller.PlayersOrder;
 import it.polimi.ingsw.ps09.model.Actions.Action;
