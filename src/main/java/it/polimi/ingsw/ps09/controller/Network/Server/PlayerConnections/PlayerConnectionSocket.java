@@ -144,13 +144,16 @@ public class PlayerConnectionSocket extends Thread implements PlayerConnection, 
         );
     }
 
-    public void sendActions(ArrayList<Action> playerActionsList){
+    public int doAction(ArrayList<Action> playerActionsList){
         mLogger.log(INFO, "Game: " + Game.GAME_ID + " sending Actions list to user " + mUserID);
         sendMessage("actions");
         sendMessage(String.valueOf(playerActionsList.size()));
         playerActionsList.stream().forEach(a -> {
             sendMessage(mGson.toJson(a, Action.class));
         });
+
+        return Integer.valueOf(waitForMessage());
+
     }
 
     public String getMessage(){

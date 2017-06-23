@@ -43,6 +43,8 @@ public class Round {
 
             forceClientsReloadData(game);
 
+            sleep(2000);
+
             playerDoAction(game, id);
 
 
@@ -66,10 +68,8 @@ public class Round {
 
         ArrayList<Action> playerActionsList =  AllActions.getValidActionsForPlayer(game.mGameBoard, game.mPlayers.get(playerID));
 
-        game.mConnections.get(playerID).sendActions(playerActionsList);
-
-        int choice = Integer.parseInt(game.mConnections.get(playerID).getMessage());
-
+        int choice = game.mConnections.get(playerID).doAction(playerActionsList);
+        
         mLogger.log(INFO, "Game: " + Game.GAME_ID + " player " + playerID + " chosen action # " + choice);
 
         choice--;
