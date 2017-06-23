@@ -52,6 +52,14 @@ public class Round {
 
     }
 
+    private static void forceClientsReloadData(Game game){
+
+        game.mPlayersOrder.getPlayersOrder().stream().forEach(id -> {
+            game.mConnections.get(id).sendUpdatedData();
+        });
+
+    }
+
     private static void playerDoAction(Game game, int playerID){
 
         mLogger.log(INFO, "Game: " + Game.GAME_ID + " player " + playerID + " turn to do Action!");
@@ -60,16 +68,9 @@ public class Round {
 
         game.mConnections.get(playerID).sendActions(playerActionsList);
 
-        int choice = Integer.valueOf(game.mConnections.get(playerID).getMessage());
+        int choice = Integer.parseInt(game.mConnections.get(playerID).getMessage());
 
-
-    }
-
-    private static void forceClientsReloadData(Game game){
-
-        game.mPlayersOrder.getPlayersOrder().stream().forEach(id -> {
-            game.mConnections.get(id).sendUpdatedData();
-        });
+        //playerActionsList.get(choice)
 
     }
 

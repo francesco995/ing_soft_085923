@@ -1,12 +1,9 @@
 package it.polimi.ingsw.ps09;
 
-import it.polimi.ingsw.ps09.controller.CLIClientGame;
+import it.polimi.ingsw.ps09.view.CLIClientGame;
 import it.polimi.ingsw.ps09.controller.Network.Client.ServerConnections.ServerConnectionSocket;
-import it.polimi.ingsw.ps09.model.Player;
 
 import java.io.IOException;
-import java.util.Scanner;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import static java.util.logging.Level.WARNING;
