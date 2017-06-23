@@ -11,7 +11,6 @@ import java.io.InvalidObjectException;
  */
 public class Harvest implements Action {
 
-    Board mBoard;
     Player mPlayer;
     FamilyMember mFamilyMember;
 
@@ -60,6 +59,15 @@ public class Harvest implements Action {
 
         //TODO: Implement
         return "";
+    }
+
+    public FamilyMember getFamilyMember(){
+        return mFamilyMember;
+    }
+
+    public int getIndex(){
+        //TODO: check if good
+        return 0;
     }
 
 }

@@ -10,7 +10,7 @@ import java.io.InvalidObjectException;
 /**
  * Created by franc on 15/06/2017.
  */
-public class IncreaseFamilyMemberValue implements Action {
+public class IncreaseFamilyMemberValue {
 
     //check if player has enough servant to give
     public static boolean isValid(Player player,FamilyMember familyMember, int index) {
@@ -45,5 +45,6 @@ public class IncreaseFamilyMemberValue implements Action {
         //TODO: Implement
         return "";
     }
+
 
 }

@@ -57,8 +57,8 @@ public class PlayerConnectionSocket extends Thread implements PlayerConnection, 
 
     private int mUserID;
 
-    Gson mGson = null;
-    GsonBuilder mGsonBuilder;
+    private Gson mGson = null;
+    private GsonBuilder mGsonBuilder;
 
 
 
@@ -155,9 +155,8 @@ public class PlayerConnectionSocket extends Thread implements PlayerConnection, 
 
     public String getMessage(){
 
-        while(!hasIncomingMessages()){
-        }
-        return mIncomingMessages.poll();
+    return waitForMessage();
+
     }
 
     @Override
@@ -204,7 +203,6 @@ public class PlayerConnectionSocket extends Thread implements PlayerConnection, 
         } catch (IOException e) {
             e.printStackTrace();
         }
-
 
         //String confirm = waitForMessage();
 

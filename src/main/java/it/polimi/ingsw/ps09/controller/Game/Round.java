@@ -70,7 +70,16 @@ public class Round {
 
         int choice = Integer.parseInt(game.mConnections.get(playerID).getMessage());
 
-        //playerActionsList.get(choice)
+        mLogger.log(INFO, "Game: " + Game.GAME_ID + " player " + playerID + " chosen action # " + choice);
+
+        choice--;
+
+        playerActionsList.get(choice).doAction(
+                game.mGameBoard,
+                game.mPlayers.get(playerID),
+                playerActionsList.get(choice).getFamilyMember(),
+                playerActionsList.get(choice).getIndex()
+                );
 
     }
 

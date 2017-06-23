@@ -39,7 +39,6 @@ public class ServerConnectionSocket extends Thread implements ServerConnection {
     private boolean mHasAction;
     private ArrayList<Action> mPlayerActionsList;
 
-
     private Socket mSocket;
 
     private InetAddress mSERVER_ADDRESS;
@@ -243,7 +242,7 @@ public class ServerConnectionSocket extends Thread implements ServerConnection {
     private void waitForSocketReady() {
         try {
             while (!mMessageReader.ready())
-                sleep(100);
+                sleep(50);
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -1,6 +1,9 @@
 package it.polimi.ingsw.ps09.controller;
 
+import it.polimi.ingsw.ps09.view.Prompter;
+
 import java.util.*;
+import java.util.stream.IntStream;
 
 /**
  * Created by francesco995 on 18/05/2017.
@@ -34,6 +37,7 @@ public class PlayersOrder{
         long seed = System.nanoTime();
         Collections.shuffle(mPlayersOrder, new Random(seed));
     }
+
 
 
 

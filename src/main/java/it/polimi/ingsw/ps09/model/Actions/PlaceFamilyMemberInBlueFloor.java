@@ -72,7 +72,7 @@ public class PlaceFamilyMemberInBlueFloor extends PlaceFamilyMemberInFloor {
         player.add(board.getCharactersTower().getFloors().get(index).getBoardBonus().getPointsBonus());
 
         //pay for card
-        player.remove( board.getCharacterTowerCard(index).getResourcesCosts().get(0) );
+        //player.remove( board.getCharacterTowerCard(index).getResourcesCosts().get(0) );
 
         //pay if floor already occupied
         if(board.getCharactersTower().hasFamilyMember())
@@ -89,6 +89,10 @@ public class PlaceFamilyMemberInBlueFloor extends PlaceFamilyMemberInFloor {
 
         //TODO: Implement
         return "";
+    }
+
+    public FamilyMember getFamilyMember(){
+        return super.getFamilyMember();
     }
 
 }

@@ -91,11 +91,13 @@ public abstract class Prompter {
         return (choice);
     }
 
-    private static void printStringList(List<String> options) {
-        IntStream.rangeClosed(1, options.size())
-                .mapToObj( i -> String.format("%d. %s", i, options.get( i - 1 ) ) )
+    public static void printStringList(List<String> items) {
+        IntStream.rangeClosed(1, items.size())
+                .mapToObj( i -> String.format("%d. %s", i, items.get( i - 1 ) ) )
                 .forEach(System.out::println);
     }
+
+
 
     public static ArrayList<Integer> PromptForMultipleDifferentChoices(String message, List<String> options, int numberOfChoices, int maxNumber) {
 

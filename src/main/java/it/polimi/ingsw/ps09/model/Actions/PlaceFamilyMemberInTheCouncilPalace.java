@@ -47,4 +47,12 @@ public class PlaceFamilyMemberInTheCouncilPalace implements Action {
 
     }
 
+    public FamilyMember getFamilyMember(){
+        return mFamilyMember;
+    }
+
+    public int getIndex(){
+        return 0;
+    }
+
 }

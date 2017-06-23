@@ -11,7 +11,12 @@ import java.io.InvalidObjectException;
  */
 public interface Action {
 
+    @Override
     String toString();
+
     void doAction(Board board, Player player, FamilyMember familyMember, int index) throws UnsupportedOperationException;
 
+    FamilyMember getFamilyMember();
+
+    public int getIndex();
 }

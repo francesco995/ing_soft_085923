@@ -19,5 +19,13 @@ public abstract class PlaceFamilyMemberInFloor implements Action {
 
     }
 
+    public FamilyMember getFamilyMember(){
+        return mFamilyMember;
+    }
+
+    public int getIndex(){
+        return mFloorIndex;
+    }
+
 
 }

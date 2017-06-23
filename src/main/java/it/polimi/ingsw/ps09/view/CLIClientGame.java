@@ -49,6 +49,7 @@ public class CLIClientGame extends Thread{
         mMainMenu = new ArrayList<>();
         mMainMenu.add("Display Players");
         mMainMenu.add("Display Board");
+        mMainMenu.add("Display Players order");
         mMainMenu.add("Refresh main menu");
 
 
@@ -89,6 +90,7 @@ public class CLIClientGame extends Thread{
 
 
     public static void alertActions(){
+
         System.out.println("\n##It's your turn to play, actions available in main menu, please refresh!!!##");
         System.out.println("\n##It's your turn to play, actions available in main menu, please refresh!!!##");
         System.out.println("\n##It's your turn to play, actions available in main menu, please refresh!!!##");
@@ -97,8 +99,16 @@ public class CLIClientGame extends Thread{
 
 
     private void doAction(){
-        Prompter.promptForIntChoice("Choose your action", mPlayerActionsList.stream().map(Action::toString).collect(Collectors.toList()));
+
+        mPlayerActionsList = mServerConnection.getPlayerActionsList();
+
+        int choice = Prompter.promptForIntChoice("Choose your action",
+                mPlayerActionsList.stream().map(Action::toString).collect(Collectors.toList()));
+
+        mServerConnection.sendMessage(String.valueOf(choice));
+
     }
+
 
     /**
      * Sends a request to the connection to update game data
@@ -111,6 +121,12 @@ public class CLIClientGame extends Thread{
 
         mPlayersMenu.clear();
         mPlayersOrder.getPlayersOrder().stream().forEach(id -> mPlayersMenu.add(mPlayers.get(id).getUserName()));
+
+        if(mServerConnection.hasAction() && !mMainMenu.contains("Do Action"))
+            mMainMenu.add("Do Action");
+
+        if(!mServerConnection.hasAction() && mMainMenu.contains("Do Action"))
+            mMainMenu.remove("Do Action");
 
 
     }
@@ -144,22 +160,47 @@ public class CLIClientGame extends Thread{
 
             updateData();
 
-            switch(Prompter.promptForIntChoice("Main menu:", mMainMenu)){
+            switch(Prompter.promptForIntChoice("\nMain menu:", mMainMenu)){
 
                 case 1:{
+                    //Display Players
                     displayPlayers();
                     break;
                 }
 
                 case 2:{
+                    //Display Board
                     displayBoard();
                     break;
                 }
                 case 3:{
-
+                    //Display Players order
+                    displayPlayersOrder();
+                    break;
+                }
+                case 4:{
+                    //Refresh main menu
+                    break;
+                }
+                case 5:{
+                    //Do Action
+                    doAction();
+                    break;
                 }
 
             }
+
+        }
+
+    }
+
+    private void displayPlayersOrder() {
+
+        for(int i=0; i < mPlayersOrder.getPlayersOrder().size(); i++){
+
+            System.out.println(String.valueOf((i + 1)) + ". "
+                    + mPlayers.get(mPlayersOrder.getUserIdByIndex(i)).getUserName()
+                    + ". (" + mPlayers.get(mPlayersOrder.getUserIdByIndex(i)).getUserColor() + ")");
 
         }
 
@@ -173,36 +214,49 @@ public class CLIClientGame extends Thread{
         switch (Prompter.promptForIntChoice("Please choose what to display of Player: " + userName, mPlayerMenu)){
 
             case 1:{
+                //Show Player info
 
                 break;
             }
 
             case 2:{
+                //Show Player available FamilyMembers
 
                 break;
             }
 
             case 3:{
+                //Show Player Resources and Points
 
                 break;
             }
 
             case 4:{
+                //Show Player Green cards
 
                 break;
             }
 
             case 5:{
+                //Show Player Yellow cards
 
                 break;
             }
 
             case 6:{
+                //Show Player Blue cards
 
                 break;
             }
 
             case 7:{
+                //Show Player Purple cards
+
+                break;
+            }
+
+            case 8:{
+                //Show Player last Actions
 
                 break;
             }

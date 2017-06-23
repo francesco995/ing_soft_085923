@@ -13,21 +13,21 @@ public class PlaceFamilyMemberInGreenFloor extends PlaceFamilyMemberInFloor {
 
     private static final int EXTRA_TOWER_COST = 3;
 
-    public PlaceFamilyMemberInGreenFloor(int floorIndex, FamilyMember familyMember) {
+    public PlaceFamilyMemberInGreenFloor(FamilyMember familyMember, int index) {
 
-        super(floorIndex, familyMember);
+        super(familyMember, index);
 
     }
 
 
-    public static boolean isValid(Board board, int floorIndex, Player player, FamilyMember familyMember) {
+    public static boolean isValid(Board board, Player player, FamilyMember familyMember, int index) {
 
         //CONTROLS ON FAMILY MEMBER
         //check if family member is usable
         if (!familyMember.isUsable())
             return false;
         //Check if floor is free
-        if (!board.getTerritoriesTower().getFloors().get(floorIndex).isAvailable())
+        if (!board.getTerritoriesTower().getFloors().get(index).isAvailable())
             return false;
 
         //check if Family Member has enough power
@@ -35,7 +35,7 @@ public class PlaceFamilyMemberInGreenFloor extends PlaceFamilyMemberInFloor {
                 familyMember.getPower()
                         + player.getFamilyMemberPlacementBonus("TERRITORY")
                         <
-                        board.getTerritoriesTower().getFloors().get(floorIndex).getDiceValue())
+                        board.getTerritoriesTower().getFloors().get(index).getDiceValue())
             return false;
 
         //CONTROLS ON PLAYER
@@ -64,20 +64,20 @@ public class PlaceFamilyMemberInGreenFloor extends PlaceFamilyMemberInFloor {
     }
 
 
-    public void doAction(Board board, int floorIndex, Player player, FamilyMember familyMember) {
+    public void doAction(Board board, Player player, FamilyMember familyMember, int index) {
 
         //add instant r&p gains from board
-        player.add(board.getTerritoriesTower().getFloors().get(floorIndex).getBoardBonus().getResourcesBonus());
-        player.add(board.getTerritoriesTower().getFloors().get(floorIndex).getBoardBonus().getPointsBonus());
+        player.add(board.getTerritoriesTower().getFloors().get(index).getBoardBonus().getResourcesBonus());
+        player.add(board.getTerritoriesTower().getFloors().get(index).getBoardBonus().getPointsBonus());
 
         //pay for card
-        //player.remove(board.getTerritoriesTowerCard(floorIndex).getResourcesCosts().get(0));
+        //player.remove(board.getTerritoriesTowerCard(index).getResourcesCosts().get(0));
 
         //pay if floor already occupied
         if (board.getTerritoriesTower().hasFamilyMember())
             player.remove(new Coins(EXTRA_TOWER_COST));
         //get card
-        player.addTerritoryCard((Territory) board.getTerritoriesTower().getFloors().get(floorIndex).getCard());
+        player.addTerritoryCard((Territory) board.getTerritoriesTower().getFloors().get(index).getCard());
 
         //TODO: ASK FRAG if immediate effect must be activated here or where
     }

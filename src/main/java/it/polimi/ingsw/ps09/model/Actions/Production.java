@@ -55,4 +55,13 @@ public class Production implements Action {
 
 
     }
+
+    public FamilyMember getFamilyMember(){
+        return mFamilyMember;
+    }
+
+    public int getIndex(){
+        return 0;
+    }
+
 }
