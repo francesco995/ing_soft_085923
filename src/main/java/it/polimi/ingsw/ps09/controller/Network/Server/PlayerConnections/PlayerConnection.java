@@ -22,4 +22,7 @@ public interface PlayerConnection{
     void sendUpdatedData();
     String getMessage();
     int doAction(ArrayList<Action> playerActionsList);
+    void run();
+    void start();
+
 }

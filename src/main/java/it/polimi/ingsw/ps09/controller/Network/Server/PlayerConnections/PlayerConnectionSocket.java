@@ -180,7 +180,7 @@ public class PlayerConnectionSocket extends Thread implements PlayerConnection, 
         return messages;
     }
 
-    public boolean hasIncomingMessages(){
+    private boolean hasIncomingMessages(){
 
         if(!mIncomingMessages.isEmpty())
             return true;
