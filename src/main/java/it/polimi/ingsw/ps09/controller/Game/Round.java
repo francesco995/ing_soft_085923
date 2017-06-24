@@ -36,19 +36,22 @@ public class Round {
 
         RoundSetup.setupRound(game);
 
-        //TODO: increase to maybe 30 seconds
-        sleep(5000);
 
-        game.mPlayersOrder.getPlayersOrder().stream().forEach(id -> {
+        for(int i = 0; i<4; i++){
 
-            forceClientsReloadData(game);
+            //TODO: increase to maybe 30 seconds
+            sleep(5000);
 
-            sleep(2000);
+            game.mPlayersOrder.getPlayersOrder().stream().forEach(id -> {
 
-            playerDoAction(game, id);
+                forceClientsReloadData(game);
 
+                sleep(2000);
 
-        });
+                playerDoAction(game, id);
+
+            });
+        }
 
 
 
