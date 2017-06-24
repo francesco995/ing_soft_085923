@@ -1,6 +1,7 @@
 package it.polimi.ingsw.ps09;
 
 
+import it.polimi.ingsw.ps09.controller.Network.Client.ServerConnections.ServerConnection;
 import it.polimi.ingsw.ps09.view.CLIClientGame;
 import it.polimi.ingsw.ps09.controller.Network.Client.ServerConnections.ServerConnectionSocket;
 
@@ -40,7 +41,7 @@ public class CLIClientApp {
 
         serverAddress = scanner.nextLine();
 
-        ServerConnectionSocket serverConnectionSocket = new ServerConnectionSocket(serverAddress, userName);
+        ServerConnection serverConnectionSocket = new ServerConnectionSocket(serverAddress, userName);
 
         System.out.print("\nConnecting to server.");
         serverConnectionSocket.start();

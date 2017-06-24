@@ -160,15 +160,6 @@ public class ServerConnectionSocket extends Thread implements ServerConnection {
 
     }
 
-    /**
-     * Send the server requests to get updated data
-     */
-    public void updateData() {
-
-
-
-    }
-
     private void updatePlayers() {
 
         mPlayersOrder.getPlayersOrder().stream().forEach(

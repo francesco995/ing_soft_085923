@@ -1,6 +1,6 @@
 package it.polimi.ingsw.ps09.view;
 
-import it.polimi.ingsw.ps09.controller.Network.Client.ServerConnections.ServerConnectionSocket;
+import it.polimi.ingsw.ps09.controller.Network.Client.ServerConnections.ServerConnection;
 import it.polimi.ingsw.ps09.controller.PlayersOrder;
 import it.polimi.ingsw.ps09.model.Actions.Action;
 import it.polimi.ingsw.ps09.model.Board;
@@ -27,8 +27,7 @@ public class CLIClientGame extends Thread{
 
     private boolean mHasAction;
 
-    //TODO: change to generic ServerConnection
-    private ServerConnectionSocket mServerConnection;
+    private ServerConnection mServerConnection;
 
     private String mMainMenuMessage;
     private ArrayList<String> mMainMenu;
@@ -39,7 +38,7 @@ public class CLIClientGame extends Thread{
 
     private String mUserName;
 
-    public CLIClientGame(ServerConnectionSocket serverConnection, String userName){
+    public CLIClientGame(ServerConnection serverConnection, String userName){
 
         mServerConnection = serverConnection;
         mUserName = userName;
@@ -85,8 +84,6 @@ public class CLIClientGame extends Thread{
         mPlayerMenu.add("Show Player last Actions");
         mPlayerMenu.add("Go back to main menu");
 
-
-        mServerConnection.updateData();
 
         mPlayersMenu = new ArrayList<>();
 
