@@ -60,6 +60,7 @@ public class Production implements Action {
 
         //Do action
         board.getProduction().addMember(familyMember);
+        familyMember.used();
         //check all player cards
         player.getPersonalBoard().getBoardBuildings()
                 .stream()

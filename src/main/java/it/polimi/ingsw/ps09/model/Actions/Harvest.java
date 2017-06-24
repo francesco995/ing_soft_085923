@@ -58,6 +58,7 @@ public class Harvest implements Action {
 
             //Do action
             board.getHarvest().addMember(familyMember);
+            familyMember.used();
             //check all player cards
              player.getPersonalBoard().getBoardTerritories()
                      .stream()

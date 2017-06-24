@@ -170,7 +170,7 @@ public class  AllActions {
             mActionsList.add(new PlaceFamilyMemberInTheCouncilPalace(player.getFamilyMember("WHITE"), 0));
 
         //Check and add placement action for Market
-        for(int i=0; i<3 ; i++) {
+        for(int i=0; i<4 ; i++) {
 
             if (PlaceFamilyMemberInMarket.isValid(board, player, player.getFamilyMember("NEUTRAL"), i))
                 mActionsList.add(new PlaceFamilyMemberInMarket(player.getFamilyMember("NEUTRAL"), i));

@@ -80,6 +80,7 @@ public class PlaceFamilyMemberInMarket implements Action {
 
         //Do action
         board.getMarketList().get(index).setFamilyMember(familyMember);
+        familyMember.used();
         player.add(board.getMarketList().get(index).getBoardBonus().getPointsBonus());
         player.add(board.getMarketList().get(index).getBoardBonus().getResourcesBonus());
 

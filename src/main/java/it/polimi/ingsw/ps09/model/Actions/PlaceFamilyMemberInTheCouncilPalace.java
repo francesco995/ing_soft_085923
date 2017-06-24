@@ -58,6 +58,8 @@ public class PlaceFamilyMemberInTheCouncilPalace implements Action {
 
         //Do action
         player.add(new Coins(1));
+        familyMember.used();
+        board.getCouncil().addFamilyMember(familyMember);
         //
 
     }
