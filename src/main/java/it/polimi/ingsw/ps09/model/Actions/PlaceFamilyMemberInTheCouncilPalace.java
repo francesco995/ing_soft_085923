@@ -84,7 +84,7 @@ public class PlaceFamilyMemberInTheCouncilPalace implements Action {
         StringJoiner mStringCouncil = new StringJoiner("\n", "", "");
 
         mStringCouncil.add("");
-        mStringCouncil.add("Place " + mFamilyMember.getColor() + " family member into the Council");
+        mStringCouncil.add("Place " + mFamilyMember.getColor() + " family member into the Council Palace");
 
         return mStringCouncil.toString();
     }

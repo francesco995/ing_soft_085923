@@ -107,10 +107,10 @@ public class PlaceFamilyMemberInPurpleFloor extends PlaceFamilyMemberInFloor {
     @Override
     public String toString(){
 
-        StringJoiner mStringPurpleFloor = new StringJoiner("\n", "", "");
+        StringJoiner mStringPurpleFloor = new StringJoiner("", "", "");
 
         mStringPurpleFloor.add("");
-        mStringPurpleFloor.add("Place the family member into Purple tower's floor.");
+        mStringPurpleFloor.add("Place your " + getFamilyMember().getColor() + " family member into Purple tower's floor n. " + ( getIndex() + 1 ));
 
         return mStringPurpleFloor.toString();
 
