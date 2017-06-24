@@ -200,7 +200,7 @@ public class CLIClientGame extends Thread{
 
             System.out.println(String.valueOf((i + 1)) + ". "
                     + mPlayers.get(mPlayersOrder.getUserIdByIndex(i)).getUserName()
-                    + ". (" + mPlayers.get(mPlayersOrder.getUserIdByIndex(i)).getUserColor() + ")");
+                    + " (" + mPlayers.get(mPlayersOrder.getUserIdByIndex(i)).getUserColor() + ")");
 
         }
 
