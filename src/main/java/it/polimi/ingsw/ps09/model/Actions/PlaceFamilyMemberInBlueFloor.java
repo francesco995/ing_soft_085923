@@ -95,9 +95,10 @@ public class PlaceFamilyMemberInBlueFloor extends PlaceFamilyMemberInFloor {
         if(board.getCharactersTower().hasFamilyMember())
             player.remove(new Coins(EXTRA_TOWER_COST));
 
-        Character card = (Character) board.getBuildingsTower().getFloors().get(index).getCard();
+        Character card = (Character) board.getCharactersTower().getFloors().get(index).getCard();
         //place family member
-        board.getBuildingsTower().getFloor(index).setCard(card);
+        board.getCharactersTower().getFloor(index).setCard(card);
+        familyMember.used();
         //get card
         player.addCharacterCard(card);
 

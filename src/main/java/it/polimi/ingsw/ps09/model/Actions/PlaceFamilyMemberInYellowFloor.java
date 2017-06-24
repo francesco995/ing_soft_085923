@@ -98,6 +98,7 @@ public class PlaceFamilyMemberInYellowFloor extends PlaceFamilyMemberInFloor {
         Building card = (Building) board.getBuildingsTower().getFloors().get(index).getCard();
         //place family member
         board.getBuildingsTower().getFloor(index).setCard(card);
+        familyMember.used();
         //get card
         player.addBuildingCard(card);
 

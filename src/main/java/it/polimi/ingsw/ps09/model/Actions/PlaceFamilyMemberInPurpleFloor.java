@@ -96,9 +96,10 @@ public class PlaceFamilyMemberInPurpleFloor extends PlaceFamilyMemberInFloor {
             player.remove(new Coins(EXTRA_TOWER_COST));
 
 
-        Venture card = (Venture) board.getBuildingsTower().getFloors().get(index).getCard();
+        Venture card = (Venture) board.getVenturesTower().getFloors().get(index).getCard();
         //place family member
-        board.getBuildingsTower().getFloor(index).setCard(card);
+        board.getVenturesTower().getFloor(index).setCard(card);
+        familyMember.used();
         //get card
         player.addVentureCard(card);
 

@@ -95,9 +95,10 @@ public class PlaceFamilyMemberInGreenFloor extends PlaceFamilyMemberInFloor {
         if (board.getTerritoriesTower().hasFamilyMember())
             player.remove(new Coins(EXTRA_TOWER_COST));
 
-        Territory card = (Territory) board.getBuildingsTower().getFloors().get(index).getCard();
+        Territory card = (Territory) board.getTerritoriesTower().getFloors().get(index).getCard();
         //place family member
-        board.getBuildingsTower().getFloor(index).setCard(card);
+        board.getTerritoriesTower().getFloor(index).setCard(card);
+        familyMember.used();
         //get card
         player.addTerritoryCard(card);
 
