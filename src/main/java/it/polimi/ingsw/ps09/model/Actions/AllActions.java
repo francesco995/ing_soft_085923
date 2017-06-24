@@ -217,15 +217,5 @@ public class  AllActions {
     return mActionsList;
     }
 
-    @Override
-    public String toString(){
 
-        StringJoiner mStringAllAction = new StringJoiner("\n", "", "");
-
-        mStringAllAction.add("");
-
-
-        return mStringAllAction.toString();
-
-    }
 }

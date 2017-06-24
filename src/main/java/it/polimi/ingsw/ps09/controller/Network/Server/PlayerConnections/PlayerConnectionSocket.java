@@ -152,13 +152,16 @@ public class PlayerConnectionSocket extends Thread implements PlayerConnection, 
             sendMessage(mGson.toJson(a, Action.class));
         });
 
-        return Integer.valueOf(waitForMessage());
+        return Integer.valueOf(getMessage());
 
     }
 
     public String getMessage(){
 
-    return waitForMessage();
+        while(mIncomingMessages.isEmpty())
+            sleep(50);
+
+        return mIncomingMessages.poll();
 
     }
 
@@ -216,6 +219,7 @@ public class PlayerConnectionSocket extends Thread implements PlayerConnection, 
     }
 
     private String waitForMessage() {
+
         String message;
 
         waitForInputSocketReady();
