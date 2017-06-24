@@ -97,7 +97,7 @@ public class PlaceFamilyMemberInGreenFloor extends PlaceFamilyMemberInFloor {
 
         Territory card = (Territory) board.getTerritoriesTower().getFloors().get(index).getCard();
         //place family member
-        board.getTerritoriesTower().getFloor(index).setCard(card);
+        board.getTerritoriesTower().getFloor(index).setFamilyMember(familyMember);
         familyMember.used();
         //get card
         player.addTerritoryCard(card);

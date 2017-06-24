@@ -97,7 +97,7 @@ public class PlaceFamilyMemberInBlueFloor extends PlaceFamilyMemberInFloor {
 
         Character card = (Character) board.getCharactersTower().getFloors().get(index).getCard();
         //place family member
-        board.getCharactersTower().getFloor(index).setCard(card);
+        board.getCharactersTower().getFloor(index).setFamilyMember(familyMember);
         familyMember.used();
         //get card
         player.addCharacterCard(card);

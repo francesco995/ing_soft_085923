@@ -98,7 +98,7 @@ public class PlaceFamilyMemberInPurpleFloor extends PlaceFamilyMemberInFloor {
 
         Venture card = (Venture) board.getVenturesTower().getFloors().get(index).getCard();
         //place family member
-        board.getVenturesTower().getFloor(index).setCard(card);
+        board.getVenturesTower().getFloor(index).setFamilyMember(familyMember);
         familyMember.used();
         //get card
         player.addVentureCard(card);
