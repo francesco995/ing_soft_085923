@@ -85,6 +85,8 @@
 									<includes>
 										<include>CLIClientApp.bat</include>
 										<include>ServerApp.bat</include>
+										<include>CLIClientApp.sh</include>
+										<include>ServerApp.sh</include>
 									</includes>
 									<filtering>true</filtering>
 								</resource>
