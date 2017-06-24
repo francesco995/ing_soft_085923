@@ -36,7 +36,6 @@ public class Round {
 
         RoundSetup.setupRound(game);
 
-
         for(int i = 0; i<4; i++){
 
             //TODO: increase to maybe 30 seconds
@@ -73,7 +72,7 @@ public class Round {
 
         int choice = game.mConnections.get(playerID).doAction(playerActionsList);
         
-        mLogger.log(INFO, "Game: " + Game.GAME_ID + " player " + playerID + " chosen action # " + choice);
+        mLogger.log(INFO, "Game: " + Game.GAME_ID + " player " + playerID + " chosen action # " + choice + ": " + playerActionsList.get(choice - 1).toString());
 
         choice--;
 

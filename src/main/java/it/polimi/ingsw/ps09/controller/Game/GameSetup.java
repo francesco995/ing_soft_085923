@@ -113,8 +113,6 @@ public class GameSetup {
             game.mUserColors.remove(0);
         }
 
-        //TODO: Handle memorize connection method here before players order is mixed
-
         game.mPlayersOrder.shufflePlayers();
 
         for(int i = 0; i < game.mPlayersOrder.getPlayersOrder().size(); i++){

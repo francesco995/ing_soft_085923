@@ -30,6 +30,7 @@ public class CLIClientGame extends Thread{
     //TODO: change to generic ServerConnection
     private ServerConnectionSocket mServerConnection;
 
+    private String mMainMenuMessage;
     private ArrayList<String> mMainMenu;
     private ArrayList<String> mBoardMenu;
     private ArrayList<String> mTowersMenu;
@@ -45,7 +46,11 @@ public class CLIClientGame extends Thread{
 
         mHasAction = false;
 
-        //TODO: change add method
+        mMainMenuMessage = "\n###################################################";
+        mMainMenuMessage += "\n######### Lorenzo il Magnifico Main Menu ##########";
+        mMainMenuMessage += "\n###################################################";
+
+
         mMainMenu = new ArrayList<>();
         mMainMenu.add("Display Players");
         mMainMenu.add("Display Board");
@@ -164,21 +169,24 @@ public class CLIClientGame extends Thread{
 
             updateData();
 
-            switch(Prompter.promptForIntChoice("\nMain menu:", mMainMenu)){
+            switch(Prompter.promptForIntChoice(mMainMenuMessage, mMainMenu)){
 
                 case 1:{
                     //Display Players
+                    updateData();
                     displayPlayers();
                     break;
                 }
 
                 case 2:{
                     //Display Board
+                    updateData();
                     displayBoard();
                     break;
                 }
                 case 3:{
                     //Display Players order
+                    updateData();
                     displayPlayersOrder();
                     break;
                 }
@@ -188,6 +196,7 @@ public class CLIClientGame extends Thread{
                 }
                 case 5:{
                     //Do Action
+                    updateData();
                     doAction();
                     break;
                 }
