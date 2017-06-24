@@ -26,10 +26,10 @@ public class Market{
         //Add all MarketSpace Spaces to the list
 
         try {
-            mMarketSpaceSpaces.add(0, new MarketSpaceSpace1(1));
-            mMarketSpaceSpaces.add(1, new MarketSpaceSpace2(1));
-            mMarketSpaceSpaces.add(2, new MarketSpaceSpace3(1));
-            mMarketSpaceSpaces.add(3, new MarketSpaceSpace4(1));
+            mMarketSpaceSpaces.add(0, new MarketSpaceSpace1(1, 1));
+            mMarketSpaceSpaces.add(1, new MarketSpaceSpace2(1, 2));
+            mMarketSpaceSpaces.add(2, new MarketSpaceSpace3(1, 3));
+            mMarketSpaceSpaces.add(3, new MarketSpaceSpace4(1, 4));
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Market.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -57,10 +57,10 @@ public class Market{
         mMarketSpaceSpaces.clear();
 
         try {
-            mMarketSpaceSpaces.add(0, new MarketSpaceSpace1(1));
-            mMarketSpaceSpaces.add(1, new MarketSpaceSpace2(1));
-            mMarketSpaceSpaces.add(2, new MarketSpaceSpace3(1));
-            mMarketSpaceSpaces.add(3, new MarketSpaceSpace4(1));
+            mMarketSpaceSpaces.add(0, new MarketSpaceSpace1(1, 1));
+            mMarketSpaceSpaces.add(1, new MarketSpaceSpace2(1, 2));
+            mMarketSpaceSpaces.add(2, new MarketSpaceSpace3(1, 3));
+            mMarketSpaceSpaces.add(3, new MarketSpaceSpace4(1, 4));
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Market.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -76,11 +76,11 @@ public class Market{
 
         StringJoiner mStringMarket = new StringJoiner("\n", "", "");
 
-        for (int cont=0; cont<mMarketSpaceSpaces.size(); cont++){
+        for (MarketSpace mMSpace : mMarketSpaceSpaces){
 
             mStringMarket.add("");
-            mStringMarket.add("Market Space: " + (cont + 1));
-            mStringMarket.add(mMarketSpaceSpaces.get(cont).toString());
+            mStringMarket.add("Market Space: " + mMSpace.getIndex());
+            mStringMarket.add(mMSpace.toString());
             mStringMarket.add("");
         }
 

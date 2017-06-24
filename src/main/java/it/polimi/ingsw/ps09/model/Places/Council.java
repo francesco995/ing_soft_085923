@@ -3,6 +3,7 @@ package it.polimi.ingsw.ps09.model.Places;
 import it.polimi.ingsw.ps09.model.FamilyMembers.FamilyMember;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.StringJoiner;
 
@@ -46,12 +47,21 @@ public class Council extends Place {
      * Delete all duplicates of the same family
      */
     public void deleteDuplicateFamilyMember(){
-        for(int cont=0; cont<mCouncilOrderList.size(); cont++){
-            for(int contInt=cont+1; contInt<mCouncilOrderList.size(); contInt++){
-                if(mCouncilOrderList.get(contInt).getFamily().equals(mCouncilOrderList.get(cont).getFamily())){
+
+        List<Integer> mIndexToDelete = new ArrayList<Integer>();
+
+        for(int mCont=0; mCont<=mCouncilOrderList.size(); mCont++){
+            for(int contInt = 1; contInt<mCouncilOrderList.size(); contInt++){
+
+                if(mCouncilOrderList.get(contInt).getFamily().equals(mCouncilOrderList.get(mCont).getFamily())){
+
                     mCouncilOrderList.remove(contInt);
+                    contInt = 1;
                 }
+                //DO NOT REFACTOR THIS FILE
+                mCont++;
             }
+
         }
 
     }
@@ -71,13 +81,17 @@ public class Council extends Place {
     public String toString(){
 
         StringJoiner mStringCouncil = new StringJoiner("\n", "", "");
+        int mCont = 0;
 
         mStringCouncil.add("Order list:");
         mStringCouncil.add("");
 
-        for (int cont=0; cont<mCouncilOrderList.size(); cont++){
+        for (FamilyMember mFamily : mCouncilOrderList){
 
-            mStringCouncil.add("     " + (cont + 1) + ": " + mCouncilOrderList.get(cont));
+            mCont++;
+
+            mStringCouncil.add("");
+            mStringCouncil.add("     " + mCont + ": " + mFamily);
         }
 
         return mStringCouncil.toString();

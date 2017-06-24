@@ -82,6 +82,7 @@ public class CreateAreas {
     public String toString(){
 
         StringJoiner mStringSlot = new StringJoiner("\n", "", "");
+        int mCont = 0;
 
         if(mSlotList.size()==0){
 
@@ -90,11 +91,13 @@ public class CreateAreas {
         }
 
         else {
-            for (int cont = 0; cont < mSlotList.size(); cont++) {
+            for (Slot mSlot : mSlotList) {
+
+                mCont++;
 
                 mStringSlot.add("");
-                mStringSlot.add("Area " + (cont + 1) + ":");
-                mStringSlot.add(mSlotList.get(cont).toString());
+                mStringSlot.add("Area " + mCont + ":");
+                mStringSlot.add(mSlot.toString());
                 mStringSlot.add("");
 
             }

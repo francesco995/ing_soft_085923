@@ -6,6 +6,8 @@ import it.polimi.ingsw.ps09.model.FamilyMembers.FamilyMember;
 import it.polimi.ingsw.ps09.model.Player;
 import it.polimi.ingsw.ps09.model.Resources.Coins;
 
+import java.util.StringJoiner;
+
 /**
  * Created by francesco995 on 08/06/2017.
  */
@@ -19,7 +21,15 @@ public class PlaceFamilyMemberInGreenFloor extends PlaceFamilyMemberInFloor {
 
     }
 
-
+    /**
+     *
+     * @param board Main board used to manage the game
+     * @param player The player whom perform the check
+     * @param familyMember The family member that the player want to check
+     * @param index Floor's number
+     * @return Boolean value; false if family member is unavailable, or the floor/tower isn't free,
+     * or the family member doesn't have enough power/resources. Otherwise true
+     */
     public static boolean isValid(Board board, Player player, FamilyMember familyMember, int index) {
 
         //CONTROLS ON FAMILY MEMBER
@@ -64,6 +74,13 @@ public class PlaceFamilyMemberInGreenFloor extends PlaceFamilyMemberInFloor {
     }
 
 
+    /**
+     *
+     * @param board Main board used to manage the game
+     * @param player The player whom perform the action
+     * @param familyMember The family member that do the action
+     * @param index Floor's number
+     */
     public void doAction(Board board, Player player, FamilyMember familyMember, int index) {
 
         //add instant r&p gains from board
@@ -80,6 +97,22 @@ public class PlaceFamilyMemberInGreenFloor extends PlaceFamilyMemberInFloor {
         player.addTerritoryCard((Territory) board.getTerritoriesTower().getFloors().get(index).getCard());
 
         //TODO: ASK FRAG if immediate effect must be activated here or where
+    }
+
+    /**
+     *
+     * @return A string of the action to perform
+     */
+    @Override
+    public String toString(){
+
+        StringJoiner mStringGreenFloor = new StringJoiner("\n", "", "");
+
+        mStringGreenFloor.add("");
+        mStringGreenFloor.add("Place the family member into Green tower's floor.");
+
+        return mStringGreenFloor.toString();
+
     }
 
 

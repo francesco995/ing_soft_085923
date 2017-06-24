@@ -16,9 +16,11 @@ public class MarketSpace extends Place {
     private FamilyMember mFamilyMember;
     protected BoardBonus mBoardBonus;
     private int mDiceValue;
+    private int mIndex;
 
-    public MarketSpace(int DiceValue) {
+    public MarketSpace(int DiceValue, int Index) {
         mDiceValue = DiceValue;
+        mIndex = Index;
     }
 
     /**
@@ -67,6 +69,10 @@ public class MarketSpace extends Place {
      */
     public void setDiceValue(int diceValue) {
         mDiceValue = diceValue;
+    }
+
+    public int getIndex(){
+        return mIndex;
     }
 
     /**

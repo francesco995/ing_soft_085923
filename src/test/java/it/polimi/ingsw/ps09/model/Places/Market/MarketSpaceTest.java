@@ -25,7 +25,7 @@ public class MarketSpaceTest {
     @Before
     public void setUp() throws Exception {
 
-        mMarketSpace = new MarketSpace(1);
+        mMarketSpace = new MarketSpace(1, 1);
         mFamilyMember = new OrangeFamilyMember("Orange");
 
         mBonus = new BoardBonus(mUserResources, mUserPoints, 1);

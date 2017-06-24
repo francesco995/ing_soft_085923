@@ -7,6 +7,7 @@ import it.polimi.ingsw.ps09.model.Player;
 import it.polimi.ingsw.ps09.model.Resources.Servant;
 
 import java.io.InvalidObjectException;
+import java.util.StringJoiner;
 
 /**
  * Created by francesco995 on 11/06/2017.
@@ -21,6 +22,15 @@ public class PlaceFamilyMemberInMarket implements Action {
         mMarketIndex = index;
     }
 
+    /**
+     *
+     * @param board Main board used to manage the game
+     * @param player The player whom perform the check
+     * @param familyMember The family member that the player want to check
+     * @param marketIndex Index of the market space
+     * @return Boolean value, false if the family member isn't available, or the market space isn't available,
+     * or index out of bound or the family member doesn't have enough power; otherwise true
+     */
     public static boolean isValid(Board board, Player player, FamilyMember familyMember, int marketIndex){
 
         //check if family member is usable
@@ -50,6 +60,15 @@ public class PlaceFamilyMemberInMarket implements Action {
         return true;
     }
 
+    /**
+     *
+     * @param board Main board used to manage the game
+     * @param player The player whom perform the action
+     * @param familyMember The family member that do the action
+     * @param index Index of the market space
+     * @throws UnsupportedOperationException
+     * @throws IndexOutOfBoundsException
+     */
     public void doAction
             (Board board, Player player, FamilyMember familyMember, int index)
             throws UnsupportedOperationException, IndexOutOfBoundsException {
@@ -69,12 +88,35 @@ public class PlaceFamilyMemberInMarket implements Action {
     }
 
 
+    /**
+     *
+     * @return Family Member
+     */
     public FamilyMember getFamilyMember(){
         return mFamilyMember;
     }
 
+    /**
+     *
+     * @return Index ot the market space
+     */
     public int getIndex(){
         return mMarketIndex;
+    }
+
+    /**
+     *
+     * @return A string of the action to perform
+     */
+    @Override
+    public String toString(){
+
+        StringJoiner mStringMarket = new StringJoiner("\n", "", "");
+
+        mStringMarket.add("");
+        mStringMarket.add("Add " + mFamilyMember.getColor() + " family member into market space "+ (mMarketIndex +1) + ".");
+
+        return mStringMarket.toString();
     }
 
 }

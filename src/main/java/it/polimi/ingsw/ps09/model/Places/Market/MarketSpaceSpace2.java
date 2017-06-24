@@ -18,8 +18,8 @@ public class MarketSpaceSpace2 extends MarketSpace {
             "src/main/res/MarketSpacesBonus/");
 
 
-    public MarketSpaceSpace2(int DiceValue) throws FileNotFoundException {
-        super(DiceValue);
+    public MarketSpaceSpace2(int DiceValue, int Index) throws FileNotFoundException {
+        super(DiceValue, Index);
 
         Scanner mScanner = new Scanner(new File(mFilePath + "MarketSpace2.json"));
         String mStringDeck = mScanner.useDelimiter("\\A").next();

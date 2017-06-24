@@ -23,6 +23,10 @@ public abstract class FamilyMember {
         return mPower;
     }
 
+    public String getColor() {
+        return mColor;
+    }
+
     public void setPower(Dice dice) {
         mPower = dice.getValue();
     }

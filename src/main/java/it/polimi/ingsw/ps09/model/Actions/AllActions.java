@@ -5,6 +5,7 @@ import it.polimi.ingsw.ps09.model.Board;
 import it.polimi.ingsw.ps09.model.Player;
 
 import java.util.ArrayList;
+import java.util.StringJoiner;
 
 /**
  * Created by francesco995 on 13/06/2017.
@@ -214,5 +215,17 @@ public class  AllActions {
             mActionsList.add(new Production(player.getFamilyMember("WHITE")));
     //returns list of possible actions
     return mActionsList;
+    }
+
+    @Override
+    public String toString(){
+
+        StringJoiner mStringAllAction = new StringJoiner("\n", "", "");
+
+        mStringAllAction.add("");
+
+
+        return mStringAllAction.toString();
+
     }
 }

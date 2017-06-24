@@ -6,6 +6,7 @@ import it.polimi.ingsw.ps09.model.Player;
 import it.polimi.ingsw.ps09.model.Resources.Coins;
 
 import java.io.InvalidObjectException;
+import java.util.StringJoiner;
 
 /**
  * Created by francesco995 on 11/06/2017.
@@ -19,6 +20,11 @@ public class PlaceFamilyMemberInTheCouncilPalace implements Action {
         mFamilyMember = familyMember;
     }
 
+    /**
+     *
+     * @param familyMember The family member that the player want to check
+     * @return Boolean value; false if the family member doesn't have enough power, of if he isn't available; otherwise true
+     */
     public static boolean isValid(FamilyMember familyMember) {
 
         //check if family member is usable
@@ -32,6 +38,15 @@ public class PlaceFamilyMemberInTheCouncilPalace implements Action {
         return true;
     }
 
+    /**
+     *
+     * @param board Main board used to manage the game
+     * @param player The player whom perform the action
+     * @param familyMember The family member that do the action
+     * @param index
+     * @throws UnsupportedOperationException
+     * @throws IndexOutOfBoundsException
+     */
     public void doAction
             (Board board, Player player, FamilyMember familyMember, int index)
             throws UnsupportedOperationException, IndexOutOfBoundsException {
@@ -47,12 +62,31 @@ public class PlaceFamilyMemberInTheCouncilPalace implements Action {
 
     }
 
+    /**
+     *
+     * @return Family member
+     */
     public FamilyMember getFamilyMember(){
         return mFamilyMember;
     }
 
     public int getIndex(){
         return 0;
+    }
+
+    /**
+     *
+     * @return A string of the action to perform
+     */
+    @Override
+    public String toString(){
+
+        StringJoiner mStringCouncil = new StringJoiner("\n", "", "");
+
+        mStringCouncil.add("");
+        mStringCouncil.add("Place " + mFamilyMember.getColor() + " family member into the Council");
+
+        return mStringCouncil.toString();
     }
 
 }

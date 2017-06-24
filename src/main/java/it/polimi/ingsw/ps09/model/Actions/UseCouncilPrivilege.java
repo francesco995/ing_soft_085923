@@ -8,6 +8,7 @@ import it.polimi.ingsw.ps09.view.Prompter;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.StringJoiner;
 
 /**
  * Created by franc on 22/06/2017.
@@ -17,6 +18,11 @@ public class UseCouncilPrivilege{
     static final int MAX_NUMBER = 5;
     List<String> mStringList = new ArrayList<String>();
 
+    /**
+     *
+     * @param player The player whom perform the action
+     * @param privilegesCount Number of player's privilege
+     */
     public void doAction(Player player, int privilegesCount) {
 
         mStringList.add("Get 1 wood and 1 stone");
@@ -62,5 +68,21 @@ public class UseCouncilPrivilege{
         }
 
 
+    }
+
+    /**
+     *
+     * @return A string of the action to perform
+     */
+    @Override
+    public String toString(){
+
+        StringJoiner mStringCouncilPrivilege = new StringJoiner("\n", "", "");
+
+        mStringCouncilPrivilege.add("");
+        mStringCouncilPrivilege.add("Use one privilege council, converting it in: | 1 wood and 1 stone | 2 servants " +
+                "| 2 coins | 2 military points | 1 faith point |");
+
+        return mStringCouncilPrivilege.toString();
     }
 }
