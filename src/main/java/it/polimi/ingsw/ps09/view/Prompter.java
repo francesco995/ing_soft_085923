@@ -93,7 +93,7 @@ public abstract class Prompter {
 
     public static void printStringList(List<String> items) {
         IntStream.rangeClosed(1, items.size())
-                .mapToObj( i -> String.format("%d. %s", i, items.get( i - 1 ) ) )
+                .mapToObj( i -> String.format("%2d. %s", i, items.get( i - 1 ) ) )
                 .forEach(System.out::println);
     }
 
