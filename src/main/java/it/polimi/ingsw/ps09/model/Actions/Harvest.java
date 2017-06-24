@@ -91,7 +91,7 @@ public class Harvest implements Action {
     @Override
     public String toString(){
 
-        StringJoiner mStringHarvest = new StringJoiner("\n", "", "");
+        StringJoiner mStringHarvest = new StringJoiner("", "", "");
 
         mStringHarvest.add("");
         mStringHarvest.add("Add " + mFamilyMember.getColor() + " family member into the Harvest area");

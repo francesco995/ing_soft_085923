@@ -66,7 +66,7 @@ public abstract class FamilyMember {
         mStringFamilyMember.add("Color: " + mColor);
         mStringFamilyMember.add("Power: " + mPower);
 
-        if(mIsUsable==true)
+        if(mIsUsable)
             mIsUsableString = "Yes";
         else
             mIsUsableString = "No";

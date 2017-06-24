@@ -126,33 +126,37 @@ public class Floor {
      * @return All floor's information
      */
     @Override
-    public String toString(){
+    public String toString() {
 
-        StringJoiner mStringFloor = new StringJoiner("\n    ", "", "");
+
+        StringJoiner mStringFloor = new StringJoiner("\n    ", "        ", "");
 
         mStringFloor.add("");
         mStringFloor.add("Dice value: " + mDiceValue);
 
         String stringBonus = "Bonus: ";
 
-        if(mBoardBonus.getPointsBonus().isGreaterOrEqual(new UserPoints(0, 0, 0)))
+        if (mBoardBonus.getPointsBonus().isGreaterOrEqual(new UserPoints(0, 0, 0)))
             stringBonus += mBoardBonus.getPointsBonus().toString();
 
-        if(mBoardBonus.getResourcesBonus().isGreaterOrEqual(new UserResources(0, 0, 0, 0)))
+        if (mBoardBonus.getResourcesBonus().isGreaterOrEqual(new UserResources(0, 0, 0, 0)))
             stringBonus += mBoardBonus.getResourcesBonus().toString();
 
-        if(mBoardBonus.getPrivilegesCount() > 0)
+        if (mBoardBonus.getPrivilegesCount() > 0)
             stringBonus += mBoardBonus.getPrivilegesCount();
 
         mStringFloor.add(stringBonus);
 
-        mStringFloor.add("Card: " + mCard);
-        mStringFloor.add("Family Memeber: " + mFamilyMember);
+        mStringFloor.add("Card: " + mCard.toString());
+
+        if (!isAvailable())
+            mStringFloor.add("Family Member: " + mFamilyMember.toString());
+        else
+            mStringFloor.add("Floor free");
+
         mStringFloor.add("\n");
 
-
-
         return mStringFloor.toString();
-    }
 
+    }
 }
