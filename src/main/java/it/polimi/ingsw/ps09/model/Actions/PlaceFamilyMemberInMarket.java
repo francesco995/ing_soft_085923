@@ -50,10 +50,8 @@ public class PlaceFamilyMemberInMarket implements Action {
             return false;
 
 
-        //Check if Family Member has power or Player has 1 servant
-        if(
-                familyMember.getPower() < 1 &&
-                !player.has(new Servant(1)))
+        //Check if Family Member has power
+        if(familyMember.getPower() < 1)
             return false;
 
         //if reaches here it passed all controls
