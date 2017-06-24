@@ -80,11 +80,11 @@ public class CLIClientGame extends Thread{
         mPlayerMenu.add("Show Player last Actions");
         mPlayerMenu.add("Go back to main menu");
 
+
         mServerConnection.updateData();
 
         mPlayersMenu = new ArrayList<>();
 
-        //updateData();
 
     }
 
@@ -107,6 +107,8 @@ public class CLIClientGame extends Thread{
 
         mServerConnection.sendMessage(String.valueOf(choice));
 
+        mServerConnection.setHasAction(false);
+
     }
 
 
@@ -122,7 +124,9 @@ public class CLIClientGame extends Thread{
         mPlayersMenu.clear();
         mPlayersOrder.getPlayersOrder().stream().forEach(id -> mPlayersMenu.add(mPlayers.get(id).getUserName()));
 
-        if(mServerConnection.hasAction() && !mMainMenu.contains("Do Action"))
+        mHasAction = mServerConnection.hasAction();
+
+        if(mHasAction && !mMainMenu.contains("Do Action"))
             mMainMenu.add("Do Action");
 
         if(!mServerConnection.hasAction() && mMainMenu.contains("Do Action"))

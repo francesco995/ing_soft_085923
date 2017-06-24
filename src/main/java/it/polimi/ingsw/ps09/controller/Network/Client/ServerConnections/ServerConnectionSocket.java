@@ -90,6 +90,10 @@ public class ServerConnectionSocket extends Thread implements ServerConnection {
         return mHasAction;
     }
 
+    public void setHasAction(boolean hasAction){
+        mHasAction = hasAction;
+    }
+
     public boolean gameStarted(){
         return mGameStarted;
     }
