@@ -49,7 +49,7 @@ public abstract class PlaceFamilyMemberInFloor implements Action {
     @Override
     public String toString(){
 
-        StringJoiner mStringPlace = new StringJoiner("\n", "", "");
+        StringJoiner mStringPlace = new StringJoiner("", "", "");
 
         mStringPlace.add("");
         mStringPlace.add("Place  " + mFamilyMember.getColor() + " family member into " + mFloorIndex + ".");

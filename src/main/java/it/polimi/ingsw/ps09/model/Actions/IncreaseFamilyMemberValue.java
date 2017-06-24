@@ -64,7 +64,7 @@ public class IncreaseFamilyMemberValue {
     @Override
     public String toString(){
 
-        StringJoiner mStringIncreaseValue = new StringJoiner("\n", "", "");
+        StringJoiner mStringIncreaseValue = new StringJoiner("", "", "");
 
         mStringIncreaseValue.add("");
         mStringIncreaseValue.add("Increase the power of the family member");

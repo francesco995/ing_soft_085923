@@ -81,7 +81,7 @@ public class PlaceFamilyMemberInTheCouncilPalace implements Action {
     @Override
     public String toString(){
 
-        StringJoiner mStringCouncil = new StringJoiner("\n", "", "");
+        StringJoiner mStringCouncil = new StringJoiner("", "", "");
 
         mStringCouncil.add("");
         mStringCouncil.add("Place " + mFamilyMember.getColor() + " family member into the Council Palace");

@@ -91,7 +91,7 @@ public class Production implements Action {
     @Override
     public String toString(){
 
-        StringJoiner mStringHProduction = new StringJoiner("\n", "", "");
+        StringJoiner mStringHProduction = new StringJoiner("", "", "");
 
         mStringHProduction.add("");
         mStringHProduction.add("Add " + mFamilyMember.getColor() + " family member into the Production area");

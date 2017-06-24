@@ -109,7 +109,7 @@ public class PlaceFamilyMemberInMarket implements Action {
     @Override
     public String toString(){
 
-        StringJoiner mStringMarket = new StringJoiner("\n", "", "");
+        StringJoiner mStringMarket = new StringJoiner("", "", "");
 
         mStringMarket.add("");
         mStringMarket.add("Add " + mFamilyMember.getColor() + " family member into market space "+ (mMarketIndex +1) + ".");

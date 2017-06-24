@@ -77,7 +77,7 @@ public class UseCouncilPrivilege{
     @Override
     public String toString(){
 
-        StringJoiner mStringCouncilPrivilege = new StringJoiner("\n", "", "");
+        StringJoiner mStringCouncilPrivilege = new StringJoiner("", "", "");
 
         mStringCouncilPrivilege.add("");
         mStringCouncilPrivilege.add("Use one privilege council, converting it in: | 1 wood and 1 stone | 2 servants " +
