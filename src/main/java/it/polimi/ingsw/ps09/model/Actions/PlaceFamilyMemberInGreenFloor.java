@@ -2,6 +2,7 @@ package it.polimi.ingsw.ps09.model.Actions;
 
 import it.polimi.ingsw.ps09.model.Board;
 import it.polimi.ingsw.ps09.model.DevelopmentCards.Territory;
+import it.polimi.ingsw.ps09.model.DevelopmentCards.Venture;
 import it.polimi.ingsw.ps09.model.FamilyMembers.FamilyMember;
 import it.polimi.ingsw.ps09.model.Player;
 import it.polimi.ingsw.ps09.model.Resources.Coins;
@@ -93,8 +94,12 @@ public class PlaceFamilyMemberInGreenFloor extends PlaceFamilyMemberInFloor {
         //pay if floor already occupied
         if (board.getTerritoriesTower().hasFamilyMember())
             player.remove(new Coins(EXTRA_TOWER_COST));
+
+        Territory card = (Territory) board.getBuildingsTower().getFloors().get(index).getCard();
+        //place family member
+        board.getBuildingsTower().getFloor(index).setCard(card);
         //get card
-        player.addTerritoryCard((Territory) board.getTerritoriesTower().getFloors().get(index).getCard());
+        player.addTerritoryCard(card);
 
         //TODO: ASK FRAG if immediate effect must be activated here or where
     }

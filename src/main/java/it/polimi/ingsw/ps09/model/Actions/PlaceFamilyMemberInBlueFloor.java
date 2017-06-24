@@ -94,8 +94,12 @@ public class PlaceFamilyMemberInBlueFloor extends PlaceFamilyMemberInFloor {
         //pay if floor already occupied
         if(board.getCharactersTower().hasFamilyMember())
             player.remove(new Coins(EXTRA_TOWER_COST));
+
+        Character card = (Character) board.getBuildingsTower().getFloors().get(index).getCard();
+        //place family member
+        board.getBuildingsTower().getFloor(index).setCard(card);
         //get card
-        player.addCharacterCard((Character) board.getCharactersTower().getFloors().get(index).getCard());
+        player.addCharacterCard(card);
 
         //TODO: ASK FRAG if immediate effect must be activated here or where
 
