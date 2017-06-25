@@ -14,15 +14,15 @@ import java.util.List;
  */
 public interface ServerConnection{
 
-    boolean hasAction();
-    void setHasAction(boolean hasAction);
+    boolean hasPlacementAction();
+    void setHasPlacementAction(boolean hasPlacementAction);
     boolean gameStarted();
     Board getBoard();
     HashMap<Integer, Player> getPlayers();
     PlayersOrder getPlayersOrder();
     String getUserName();
     String getMessage();
-    ArrayList<PlacementAction> getPlayerActionsList();
+    ArrayList<PlacementAction> getPlacementActionsList();
     List<String> getAllMessages();
     boolean hasIncomingMessages();
     void sendMessage(String message);

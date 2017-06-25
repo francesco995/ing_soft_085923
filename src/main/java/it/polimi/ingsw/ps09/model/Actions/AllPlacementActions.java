@@ -12,7 +12,7 @@ import java.util.ArrayList;
  */
 public class AllPlacementActions {
 
-    public static ArrayList<PlacementAction> getValidActionsForPlayer(Board board, Player player) {
+    public static ArrayList<PlacementAction> getValidPlacementActionsForPlayer(Board board, Player player) {
 
         ArrayList<PlacementAction> mActionsList = new ArrayList<>();
 

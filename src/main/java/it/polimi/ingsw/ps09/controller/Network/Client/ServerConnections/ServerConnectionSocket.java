@@ -2,7 +2,9 @@ package it.polimi.ingsw.ps09.controller.Network.Client.ServerConnections;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import it.polimi.ingsw.ps09.model.Actions.FamilyMemberActions.FamilyMemberAction;
 import it.polimi.ingsw.ps09.model.Actions.PlacementActions.PlacementAction;
+import it.polimi.ingsw.ps09.model.Actions.PlayerActions.PlayerAction;
 import it.polimi.ingsw.ps09.view.CLIClientGame;
 import it.polimi.ingsw.ps09.controller.Game.Game;
 import it.polimi.ingsw.ps09.controller.PlayersOrder;
@@ -36,8 +38,14 @@ public class ServerConnectionSocket extends Thread implements ServerConnection {
     //The Players Order manager
     private PlayersOrder mPlayersOrder;
 
-    private boolean mHasAction;
-    private ArrayList<PlacementAction> mPlayerActionsList;
+    private boolean mHasPlacementAction;
+    private ArrayList<PlacementAction> mPlacementActionsList;
+
+    private boolean mHasFamilyMemberAction;
+    private ArrayList<FamilyMemberAction> mFamilyMemberActionsList;
+
+    private boolean mHasPlayerActions;
+    private ArrayList<PlayerAction> mPlayerActionsList;
 
     private Socket mSocket;
 
@@ -74,7 +82,9 @@ public class ServerConnectionSocket extends Thread implements ServerConnection {
 
         mPlayers = new HashMap<>();
 
-        mHasAction = false;
+        mHasPlacementAction = false;
+        mHasFamilyMemberAction = false;
+        mHasPlayerActions = false;
 
         //Create Gson Builder
         mGsonBuilder = new GsonBuilder();
@@ -93,19 +103,35 @@ public class ServerConnectionSocket extends Thread implements ServerConnection {
     }
 
     /**
-     * Check if the Player associated with this connection has an action available to do
+     * Check if the Player associated with this connection has a Placement Action available to do
      * @return true if Player has PlacementAction(s) to do
      */
-    public boolean hasAction() {
-        return mHasAction;
+    public boolean hasPlacementAction() {
+        return mHasPlacementAction;
+    }
+
+    /**
+     * Check if the Player associated with this connection has a FamilyMember Action available to do
+     * @return true if Player has FamilyMemberAction(s) to do
+     */
+    public boolean hasFamilyMemberAction() {
+        return mHasFamilyMemberAction;
+    }
+
+    /**
+     * Check if the Player associated with this connection has a Player Action available to do
+     * @return true if Player has PlayerAction(s) to do
+     */
+    public boolean hasPlayerActions() {
+        return mHasPlayerActions;
     }
 
     /**
      * Set HasAction parameter
-     * @param hasAction
+     * @param hasPlacementAction
      */
-    public void setHasAction(boolean hasAction){
-        mHasAction = hasAction;
+    public void setHasPlacementAction(boolean hasPlacementAction){
+        mHasPlacementAction = hasPlacementAction;
     }
 
     /**
@@ -165,8 +191,8 @@ public class ServerConnectionSocket extends Thread implements ServerConnection {
      * Get updated PlacementActions list for player
      * @return List of valid PlacementActions for player
      */
-    public ArrayList<PlacementAction> getPlayerActionsList() {
-        return mPlayerActionsList;
+    public ArrayList<PlacementAction> getPlacementActionsList() {
+        return mPlacementActionsList;
     }
 
     /**
@@ -228,18 +254,50 @@ public class ServerConnectionSocket extends Thread implements ServerConnection {
     }
 
     /**
-     * Wait for a message, and deserialize PlacementActions
+     * Wait for a message, and deserialize Placement Actions
      * first message is the number of actions to deserialize, next X messages are the serialized actions
      */
-    private void updateActions() {
+    private void updatePlacementActions() {
+
+        mPlacementActionsList = new ArrayList<>();
+        int actionsN = Integer.valueOf(waitForMessage());
+
+        for (int i = 0; i < actionsN; i++)
+            mPlacementActionsList.add(mGson.fromJson(waitForMessage(), PlacementAction.class));
+
+        CLIClientGame.alertActions();
+
+    }
+
+    /**
+     * Wait for a message, and deserialize FamilyMember Actions
+     * first message is the number of actions to deserialize, next X messages are the serialized actions
+     */
+    private void updateFamilyMemberActions() {
+
+        mFamilyMemberActionsList = new ArrayList<>();
+        int actionsN = Integer.valueOf(waitForMessage());
+
+        for (int i = 0; i < actionsN; i++)
+            mFamilyMemberActionsList.add(mGson.fromJson(waitForMessage(), FamilyMemberAction.class));
+
+        //CLIClientGame.alertActions(); TODO: alert for different actions
+
+    }
+
+    /**
+     * Wait for a message, and deserialize Player Actions
+     * first message is the number of actions to deserialize, next X messages are the serialized actions
+     */
+    private void updatePlayerActions() {
 
         mPlayerActionsList = new ArrayList<>();
         int actionsN = Integer.valueOf(waitForMessage());
 
         for (int i = 0; i < actionsN; i++)
-            mPlayerActionsList.add(mGson.fromJson(waitForMessage(), PlacementAction.class));
+            mPlayerActionsList.add(mGson.fromJson(waitForMessage(), PlayerAction.class));
 
-        CLIClientGame.alertActions();
+        //CLIClientGame.alertActions(); TODO: alert for different actions
 
     }
 
@@ -423,13 +481,25 @@ public class ServerConnectionSocket extends Thread implements ServerConnection {
                     }
 
                     case "placementActions": {
-                        updateActions();
-                        mHasAction = true;
+                        updatePlacementActions();
+                        mHasPlacementAction = true;
+                        break;
+                    }
+
+                    case "familyMemberActions": {
+                        updateFamilyMemberActions();
+                        mHasPlacementAction = true;
+                        break;
+                    }
+
+                    case "playerActions": {
+                        updatePlayerActions();
+                        mHasPlacementAction = true;
                         break;
                     }
 
                     case "noAction": {
-                        mHasAction = false;
+                        mHasPlacementAction = false;
                         break;
                     }
 

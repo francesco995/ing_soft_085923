@@ -1,7 +1,9 @@
 package it.polimi.ingsw.ps09.controller.Network.Server.PlayerConnections;
 
 import it.polimi.ingsw.ps09.controller.PlayersOrder;
+import it.polimi.ingsw.ps09.model.Actions.FamilyMemberActions.FamilyMemberAction;
 import it.polimi.ingsw.ps09.model.Actions.PlacementActions.PlacementAction;
+import it.polimi.ingsw.ps09.model.Actions.PlayerActions.PlayerAction;
 import it.polimi.ingsw.ps09.model.Board;
 import it.polimi.ingsw.ps09.model.Player;
 
@@ -20,7 +22,9 @@ public interface PlayerConnection{
     void setUserID(int userID);
     void sendUpdatedData();
     String getMessage();
-    void doPlacementAction(ArrayList<PlacementAction> playerActionsList);
+    void sendPlacementActionsList(ArrayList<PlacementAction> playerActionsList);
+    void sendFamilyMemberActionsList(ArrayList<FamilyMemberAction> familyMemberActionsList);
+    void sendPlayerActionsList(ArrayList<PlayerAction> playerActionsList);
     void run();
     void start();
 

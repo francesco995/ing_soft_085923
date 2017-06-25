@@ -1,7 +1,9 @@
 package it.polimi.ingsw.ps09.controller.Game;
 
+import it.polimi.ingsw.ps09.model.Actions.FamilyMemberActions.FamilyMemberAction;
 import it.polimi.ingsw.ps09.model.Actions.PlacementActions.PlacementAction;
 import it.polimi.ingsw.ps09.model.Actions.AllPlacementActions;
+import it.polimi.ingsw.ps09.model.Actions.PlayerActions.PlayerAction;
 
 import java.util.ArrayList;
 import java.util.logging.Logger;
@@ -68,9 +70,12 @@ public class Round {
 
         mLogger.log(INFO, "Game: " + Game.GAME_ID + " player " + playerID + " turn to do PlacementAction!");
 
-        ArrayList<PlacementAction> playerActionsList =  AllPlacementActions.getValidActionsForPlayer(game.mGameBoard, game.mPlayers.get(playerID));
+        ArrayList<PlacementAction> placementActionsList =  AllPlacementActions.getValidPlacementActionsForPlayer(game.mGameBoard, game.mPlayers.get(playerID));
+        ArrayList<FamilyMemberAction> familyMemberActionsList = new ArrayList<>(); //TODO: switch to getValidFamilyMembersActionsForPlayer
+        ArrayList<PlayerAction> playerActionsList = new ArrayList<>(); //TODO: as previous
 
-        game.mConnections.get(playerID).doPlacementAction(playerActionsList);
+        game.mConnections.get(playerID).sendPlacementActionsList(placementActionsList);
+
 
         int choice = Integer.valueOf(game.mConnections.get(playerID).getMessage());
 
@@ -78,11 +83,11 @@ public class Round {
 
         choice--;
 
-        playerActionsList.get(choice).doAction(
+        placementActionsList.get(choice).doAction(
                 game.mGameBoard,
                 game.mPlayers.get(playerID),
-                playerActionsList.get(choice).getFamilyMember(),
-                playerActionsList.get(choice).getIndex()
+                placementActionsList.get(choice).getFamilyMember(),
+                placementActionsList.get(choice).getIndex()
                 );
         //TODO: pass a second list of action (moved by 1000) that are not ENDING
     }

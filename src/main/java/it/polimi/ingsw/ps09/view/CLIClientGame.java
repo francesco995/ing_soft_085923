@@ -102,14 +102,14 @@ public class CLIClientGame extends Thread{
 
     private void doAction(){
 
-        mPlayerActionsList = mServerConnection.getPlayerActionsList();
+        mPlayerActionsList = mServerConnection.getPlacementActionsList();
 
         int choice = Prompter.promptForIntChoice("Choose your action",
                 mPlayerActionsList.stream().map(PlacementAction::toString).collect(Collectors.toList()));
 
         mServerConnection.sendMessage(String.valueOf(choice));
 
-        mServerConnection.setHasAction(false);
+        mServerConnection.setHasPlacementAction(false);
 
     }
 
@@ -126,12 +126,12 @@ public class CLIClientGame extends Thread{
         mPlayersMenu.clear();
         mPlayersOrder.getPlayersOrder().stream().forEach(id -> mPlayersMenu.add(mPlayers.get(id).getUserName()));
 
-        mHasAction = mServerConnection.hasAction();
+        mHasAction = mServerConnection.hasPlacementAction();
 
         if(mHasAction && !mMainMenu.contains("Do PlacementAction"))
             mMainMenu.add("Do PlacementAction");
 
-        if(!mServerConnection.hasAction() && mMainMenu.contains("Do PlacementAction"))
+        if(!mServerConnection.hasPlacementAction() && mMainMenu.contains("Do PlacementAction"))
             mMainMenu.remove("Do PlacementAction");
 
 

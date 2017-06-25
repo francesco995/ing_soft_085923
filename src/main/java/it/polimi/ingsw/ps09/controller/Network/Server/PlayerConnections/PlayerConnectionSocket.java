@@ -4,7 +4,9 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import it.polimi.ingsw.ps09.controller.Game.Game;
 import it.polimi.ingsw.ps09.controller.PlayersOrder;
+import it.polimi.ingsw.ps09.model.Actions.FamilyMemberActions.FamilyMemberAction;
 import it.polimi.ingsw.ps09.model.Actions.PlacementActions.PlacementAction;
+import it.polimi.ingsw.ps09.model.Actions.PlayerActions.PlayerAction;
 import it.polimi.ingsw.ps09.model.Board;
 import it.polimi.ingsw.ps09.model.DevelopmentCardEffects.DevelopmentCardEffect;
 import it.polimi.ingsw.ps09.model.DevelopmentCards.DevelopmentCard;
@@ -144,14 +146,25 @@ public class PlayerConnectionSocket extends Thread implements PlayerConnection, 
         );
     }
 
-    public void doPlacementAction(ArrayList<PlacementAction> playerActionsList){
-        mLogger.log(INFO, "Game: " + Game.GAME_ID + " sending PlacementActions list to user " + mUserID);
+    public void sendPlacementActionsList(ArrayList<PlacementAction> placementActionsList){
+        mLogger.log(INFO, "Game: " + Game.GAME_ID + " sending Placement Actions list to user " + mUserID);
         sendMessage("placementActions");
-        sendMessage(String.valueOf(playerActionsList.size()));
-        playerActionsList.stream().forEach(a -> {
-            sendMessage(mGson.toJson(a, PlacementAction.class));
-        });
+        sendMessage(String.valueOf(placementActionsList.size()));
+        placementActionsList.stream().forEach(a -> sendMessage(mGson.toJson(a, PlacementAction.class)));
+    }
 
+    public void sendFamilyMemberActionsList(ArrayList<FamilyMemberAction> familyMemberActionsList){
+        mLogger.log(INFO, "Game: " + Game.GAME_ID + " sending FamilyMember Actions list to user " + mUserID);
+        sendMessage("familyMemberActions");
+        sendMessage(String.valueOf(familyMemberActionsList.size()));
+        familyMemberActionsList.stream().forEach(a -> sendMessage(mGson.toJson(a, FamilyMemberAction.class)));
+    }
+
+    public void sendPlayerActionsList(ArrayList<PlayerAction> playerActionsList){
+        mLogger.log(INFO, "Game: " + Game.GAME_ID + " sending Player Actions list to user " + mUserID);
+        sendMessage("playerActions");
+        sendMessage(String.valueOf(playerActionsList.size()));
+        playerActionsList.stream().forEach(a -> sendMessage(mGson.toJson(a, PlayerAction.class)));
     }
 
     public String getMessage(){
