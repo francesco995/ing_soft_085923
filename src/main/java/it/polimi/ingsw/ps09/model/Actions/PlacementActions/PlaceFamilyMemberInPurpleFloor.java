@@ -1,7 +1,6 @@
-package it.polimi.ingsw.ps09.model.Actions;
+package it.polimi.ingsw.ps09.model.Actions.PlacementActions;
 
 import it.polimi.ingsw.ps09.model.Board;
-import it.polimi.ingsw.ps09.model.DevelopmentCards.Building;
 import it.polimi.ingsw.ps09.model.DevelopmentCards.Venture;
 import it.polimi.ingsw.ps09.model.FamilyMembers.FamilyMember;
 import it.polimi.ingsw.ps09.model.Player;

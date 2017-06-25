@@ -1,15 +1,14 @@
-package it.polimi.ingsw.ps09.model.Actions;
+package it.polimi.ingsw.ps09.model.Actions.FamilyMemberActions;
 
 import it.polimi.ingsw.ps09.model.Board;
 import it.polimi.ingsw.ps09.model.FamilyMembers.FamilyMember;
 import it.polimi.ingsw.ps09.model.Player;
 
-import java.io.InvalidObjectException;
-
 /**
- * Created by francesco995 on 08/06/2017.
+ * Created by francesco995 on 25/06/2017.
  */
-public interface Action {
+public interface FamilyMemberAction {
+
 
     @Override
     String toString();
@@ -19,4 +18,6 @@ public interface Action {
     FamilyMember getFamilyMember();
 
     public int getIndex();
+
+
 }

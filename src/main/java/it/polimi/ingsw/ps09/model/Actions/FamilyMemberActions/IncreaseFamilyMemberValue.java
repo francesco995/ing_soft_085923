@@ -1,18 +1,18 @@
-package it.polimi.ingsw.ps09.model.Actions;
+package it.polimi.ingsw.ps09.model.Actions.FamilyMemberActions;
 
 import it.polimi.ingsw.ps09.model.Board;
 import it.polimi.ingsw.ps09.model.FamilyMembers.FamilyMember;
 import it.polimi.ingsw.ps09.model.Player;
 import it.polimi.ingsw.ps09.model.Resources.Servant;
 
-import java.io.InvalidObjectException;
 import java.util.StringJoiner;
 
 /**
  * Created by franc on 15/06/2017.
  */
-public class IncreaseFamilyMemberValue {
+public class IncreaseFamilyMemberValue implements FamilyMemberAction {
 
+    //TODO: Constructor to store FamilyMember info like in other actions
 
     /**
      *
@@ -55,6 +55,16 @@ public class IncreaseFamilyMemberValue {
         //Do action
         familyMember.morePower(index);
 
+    }
+
+    @Override
+    public FamilyMember getFamilyMember() {
+        return null;
+    }
+
+    @Override
+    public int getIndex() {
+        return 0;
     }
 
     /**

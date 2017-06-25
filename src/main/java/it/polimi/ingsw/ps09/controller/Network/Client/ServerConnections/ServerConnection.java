@@ -1,7 +1,7 @@
 package it.polimi.ingsw.ps09.controller.Network.Client.ServerConnections;
 
 import it.polimi.ingsw.ps09.controller.PlayersOrder;
-import it.polimi.ingsw.ps09.model.Actions.Action;
+import it.polimi.ingsw.ps09.model.Actions.PlacementActions.PlacementAction;
 import it.polimi.ingsw.ps09.model.Board;
 import it.polimi.ingsw.ps09.model.Player;
 
@@ -22,7 +22,7 @@ public interface ServerConnection{
     PlayersOrder getPlayersOrder();
     String getUserName();
     String getMessage();
-    ArrayList<Action> getPlayerActionsList();
+    ArrayList<PlacementAction> getPlayerActionsList();
     List<String> getAllMessages();
     boolean hasIncomingMessages();
     void sendMessage(String message);

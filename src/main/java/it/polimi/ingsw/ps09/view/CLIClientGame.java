@@ -2,7 +2,7 @@ package it.polimi.ingsw.ps09.view;
 
 import it.polimi.ingsw.ps09.controller.Network.Client.ServerConnections.ServerConnection;
 import it.polimi.ingsw.ps09.controller.PlayersOrder;
-import it.polimi.ingsw.ps09.model.Actions.Action;
+import it.polimi.ingsw.ps09.model.Actions.PlacementActions.PlacementAction;
 import it.polimi.ingsw.ps09.model.Board;
 import it.polimi.ingsw.ps09.model.Player;
 
@@ -23,7 +23,7 @@ public class CLIClientGame extends Thread{
 
     private HashMap<Integer, Player> mPlayers;
     private PlayersOrder mPlayersOrder;
-    private ArrayList<Action> mPlayerActionsList;
+    private ArrayList<PlacementAction> mPlayerActionsList;
 
     private boolean mHasAction;
 
@@ -81,7 +81,7 @@ public class CLIClientGame extends Thread{
         mPlayerMenu.add("Show Player Yellow cards");
         mPlayerMenu.add("Show Player Blue cards");
         mPlayerMenu.add("Show Player Purple cards");
-        mPlayerMenu.add("Show Player last Actions");
+        mPlayerMenu.add("Show Player last PlacementActions");
         mPlayerMenu.add("Go back to main menu");
 
 
@@ -105,7 +105,7 @@ public class CLIClientGame extends Thread{
         mPlayerActionsList = mServerConnection.getPlayerActionsList();
 
         int choice = Prompter.promptForIntChoice("Choose your action",
-                mPlayerActionsList.stream().map(Action::toString).collect(Collectors.toList()));
+                mPlayerActionsList.stream().map(PlacementAction::toString).collect(Collectors.toList()));
 
         mServerConnection.sendMessage(String.valueOf(choice));
 
@@ -128,11 +128,11 @@ public class CLIClientGame extends Thread{
 
         mHasAction = mServerConnection.hasAction();
 
-        if(mHasAction && !mMainMenu.contains("Do Action"))
-            mMainMenu.add("Do Action");
+        if(mHasAction && !mMainMenu.contains("Do PlacementAction"))
+            mMainMenu.add("Do PlacementAction");
 
-        if(!mServerConnection.hasAction() && mMainMenu.contains("Do Action"))
-            mMainMenu.remove("Do Action");
+        if(!mServerConnection.hasAction() && mMainMenu.contains("Do PlacementAction"))
+            mMainMenu.remove("Do PlacementAction");
 
 
     }
@@ -192,7 +192,7 @@ public class CLIClientGame extends Thread{
                     break;
                 }
                 case 5:{
-                    //Do Action
+                    //Do PlacementAction
                     updateData();
                     doAction();
                     break;
@@ -277,7 +277,7 @@ public class CLIClientGame extends Thread{
             }
 
             case 8:{
-                //Show Player last Actions
+                //Show Player last PlacementActions
 
                 break;
             }

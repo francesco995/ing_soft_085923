@@ -1,4 +1,4 @@
-package it.polimi.ingsw.ps09.model.Actions;
+package it.polimi.ingsw.ps09.model.Actions.PlayerActions;
 
 
 import it.polimi.ingsw.ps09.model.Player;
@@ -13,7 +13,7 @@ import java.util.StringJoiner;
 /**
  * Created by franc on 22/06/2017.
  */
-public class UseCouncilPrivilege{
+public class UseCouncilPrivilege implements PlayerAction{
     //static data
     static final int MAX_NUMBER = 5;
     List<String> mStringList = new ArrayList<String>();

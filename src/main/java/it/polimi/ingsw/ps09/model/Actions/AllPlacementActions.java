@@ -1,20 +1,20 @@
 package it.polimi.ingsw.ps09.model.Actions;
 
 
+import it.polimi.ingsw.ps09.model.Actions.PlacementActions.*;
 import it.polimi.ingsw.ps09.model.Board;
 import it.polimi.ingsw.ps09.model.Player;
 
 import java.util.ArrayList;
-import java.util.StringJoiner;
 
 /**
  * Created by francesco995 on 13/06/2017.
  */
-public class  AllActions {
+public class AllPlacementActions {
 
-    public static ArrayList<Action> getValidActionsForPlayer(Board board, Player player) {
+    public static ArrayList<PlacementAction> getValidActionsForPlayer(Board board, Player player) {
 
-        ArrayList<Action> mActionsList = new ArrayList<>();
+        ArrayList<PlacementAction> mActionsList = new ArrayList<>();
 
         ///////CHECK FOR POSSIBLE ACTION IN TOWERS///////
         /////////////////////////////////////////////////

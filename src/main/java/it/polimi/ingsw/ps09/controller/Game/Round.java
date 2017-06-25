@@ -1,7 +1,7 @@
 package it.polimi.ingsw.ps09.controller.Game;
 
-import it.polimi.ingsw.ps09.model.Actions.Action;
-import it.polimi.ingsw.ps09.model.Actions.AllActions;
+import it.polimi.ingsw.ps09.model.Actions.PlacementActions.PlacementAction;
+import it.polimi.ingsw.ps09.model.Actions.AllPlacementActions;
 
 import java.util.ArrayList;
 import java.util.logging.Logger;
@@ -66,9 +66,9 @@ public class Round {
 
     private static void playerDoAction(Game game, int playerID){
 
-        mLogger.log(INFO, "Game: " + Game.GAME_ID + " player " + playerID + " turn to do Action!");
+        mLogger.log(INFO, "Game: " + Game.GAME_ID + " player " + playerID + " turn to do PlacementAction!");
 
-        ArrayList<Action> playerActionsList =  AllActions.getValidActionsForPlayer(game.mGameBoard, game.mPlayers.get(playerID));
+        ArrayList<PlacementAction> playerActionsList =  AllPlacementActions.getValidActionsForPlayer(game.mGameBoard, game.mPlayers.get(playerID));
 
         int choice = game.mConnections.get(playerID).doAction(playerActionsList);
         

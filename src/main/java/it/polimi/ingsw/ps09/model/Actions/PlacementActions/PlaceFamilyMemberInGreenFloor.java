@@ -1,7 +1,7 @@
-package it.polimi.ingsw.ps09.model.Actions;
+package it.polimi.ingsw.ps09.model.Actions.PlacementActions;
 
 import it.polimi.ingsw.ps09.model.Board;
-import it.polimi.ingsw.ps09.model.DevelopmentCards.Building;
+import it.polimi.ingsw.ps09.model.DevelopmentCards.Territory;
 import it.polimi.ingsw.ps09.model.FamilyMembers.FamilyMember;
 import it.polimi.ingsw.ps09.model.Player;
 import it.polimi.ingsw.ps09.model.Resources.Coins;
@@ -9,13 +9,13 @@ import it.polimi.ingsw.ps09.model.Resources.Coins;
 import java.util.StringJoiner;
 
 /**
- * Created by francesco995 on 11/06/2017.
+ * Created by francesco995 on 08/06/2017.
  */
-public class PlaceFamilyMemberInYellowFloor extends PlaceFamilyMemberInFloor {
+public class PlaceFamilyMemberInGreenFloor extends PlaceFamilyMemberInFloor {
 
     private static final int EXTRA_TOWER_COST = 3;
 
-    public PlaceFamilyMemberInYellowFloor(FamilyMember familyMember, int index) {
+    public PlaceFamilyMemberInGreenFloor(FamilyMember familyMember, int index) {
 
         super(familyMember, index);
 
@@ -32,27 +32,26 @@ public class PlaceFamilyMemberInYellowFloor extends PlaceFamilyMemberInFloor {
      */
     public static boolean isValid(Board board, Player player, FamilyMember familyMember, int index) {
 
-
-        //FAMILY MEMBER CONTROLS
+        //CONTROLS ON FAMILY MEMBER
         //check if family member is usable
         if (!familyMember.isUsable())
             return false;
         //Check if floor is free
-        if (!board.getBuildingsTower().getFloors().get(index).isAvailable())
+        if (!board.getTerritoriesTower().getFloors().get(index).isAvailable())
             return false;
 
         //check if Family Member has enough power
         if (
                 familyMember.getPower()
-                        + player.getFamilyMemberPlacementBonus("BUILDING")
+                        + player.getFamilyMemberPlacementBonus("TERRITORY")
                         <
-                        board.getBuildingsTower().getFloors().get(index).getDiceValue())
+                        board.getTerritoriesTower().getFloors().get(index).getDiceValue())
             return false;
 
-
-        //PLAYER CONTROLS
-        //card variable to check for resources
-        Building card = (Building) board.getBuildingsTowerCard(index);
+        //CONTROLS ON PLAYER
+     /*
+       //card variable to check for resources
+        Territory card = (Territory) board.getTerritoriesTowerCard(floorIndex);
 
         //check if enough resources
         if (!player.has(card.getResourcesCosts().get(0)))
@@ -61,18 +60,19 @@ public class PlaceFamilyMemberInYellowFloor extends PlaceFamilyMemberInFloor {
         //check if enough points
         if (!player.has(card.getPointsCosts().get(0)))
             return false;
-
-        //player has enough resources and/or points, check if tower already filled
-        if (board.getBuildingsTower().hasFamilyMember()) {
+*/
+        //check if tower already filled then he must have 3 more coins
+        if (board.getTerritoriesTower().hasFamilyMember()) {
             if (player.getCoins().getValue()
-                    >
-                    (card.getResourcesCosts().get(0).getCoins().getValue() + EXTRA_TOWER_COST))
+                    <
+                    (EXTRA_TOWER_COST))
                 return false;
         }
 
         //if reaches here it passed all controls
         return true;
     }
+
 
     /**
      *
@@ -84,28 +84,25 @@ public class PlaceFamilyMemberInYellowFloor extends PlaceFamilyMemberInFloor {
     public void doAction(Board board, Player player, FamilyMember familyMember, int index) {
 
         //add instant r&p gains from board
-        player.add(board.getBuildingsTower().getFloors().get(index).getBoardBonus().getResourcesBonus());
-        player.add(board.getBuildingsTower().getFloors().get(index).getBoardBonus().getPointsBonus());
+        player.add(board.getTerritoriesTower().getFloors().get(index).getBoardBonus().getResourcesBonus());
+        player.add(board.getTerritoriesTower().getFloors().get(index).getBoardBonus().getPointsBonus());
 
         //pay for card
-        //player.remove(board.getBuildingsTowerCard(index).getResourcesCosts().get(0));
+        //player.remove(board.getTerritoriesTowerCard(index).getResourcesCosts().get(0));
 
         //pay if floor already occupied
-        if (board.getBuildingsTower().hasFamilyMember())
+        if (board.getTerritoriesTower().hasFamilyMember())
             player.remove(new Coins(EXTRA_TOWER_COST));
 
-
-        Building card = (Building) board.getBuildingsTower().getFloors().get(index).getCard();
+        Territory card = (Territory) board.getTerritoriesTower().getFloors().get(index).getCard();
         //place family member
-        board.getBuildingsTower().getFloor(index).setFamilyMember(familyMember);
+        board.getTerritoriesTower().getFloor(index).setFamilyMember(familyMember);
         familyMember.used();
         //get card
-        player.addBuildingCard(card);
+        player.addTerritoryCard(card);
 
         //TODO: ASK FRAG if immediate effect must be activated here or where
-
     }
-
 
     /**
      *
@@ -114,12 +111,14 @@ public class PlaceFamilyMemberInYellowFloor extends PlaceFamilyMemberInFloor {
     @Override
     public String toString(){
 
-        StringJoiner mStringYellowFloor = new StringJoiner("", "", "");
+        StringJoiner mStringGreenFloor = new StringJoiner("", "", "");
 
-        mStringYellowFloor.add("");
-        mStringYellowFloor.add("Place your " + getFamilyMember().getColor() + " family member into Yellow tower's floor n. " + ( getIndex() + 1 ));
+        mStringGreenFloor.add("");
+        mStringGreenFloor.add("Place your " + getFamilyMember().getColor() + " family member into Green tower's floor n. " + ( getIndex() + 1 ));
 
-        return mStringYellowFloor.toString();
+        return mStringGreenFloor.toString();
 
     }
+
+
 }

@@ -1,4 +1,4 @@
-package it.polimi.ingsw.ps09.model.Actions;
+package it.polimi.ingsw.ps09.model.Actions.PlacementActions;
 
 import it.polimi.ingsw.ps09.controller.Game.Game;
 import it.polimi.ingsw.ps09.model.Board;
@@ -6,13 +6,12 @@ import it.polimi.ingsw.ps09.model.FamilyMembers.FamilyMember;
 import it.polimi.ingsw.ps09.model.Player;
 import it.polimi.ingsw.ps09.model.Resources.Servant;
 
-import java.io.InvalidObjectException;
 import java.util.StringJoiner;
 
 /**
  * Created by francesco995 on 11/06/2017.
  */
-public class PlaceFamilyMemberInMarket implements Action {
+public class PlaceFamilyMemberInMarket implements PlacementAction {
 
     FamilyMember mFamilyMember;
     int mMarketIndex;

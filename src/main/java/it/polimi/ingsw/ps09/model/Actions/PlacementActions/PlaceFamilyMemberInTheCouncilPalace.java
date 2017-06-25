@@ -1,17 +1,16 @@
-package it.polimi.ingsw.ps09.model.Actions;
+package it.polimi.ingsw.ps09.model.Actions.PlacementActions;
 
 import it.polimi.ingsw.ps09.model.Board;
 import it.polimi.ingsw.ps09.model.FamilyMembers.FamilyMember;
 import it.polimi.ingsw.ps09.model.Player;
 import it.polimi.ingsw.ps09.model.Resources.Coins;
 
-import java.io.InvalidObjectException;
 import java.util.StringJoiner;
 
 /**
  * Created by francesco995 on 11/06/2017.
  */
-public class PlaceFamilyMemberInTheCouncilPalace implements Action {
+public class PlaceFamilyMemberInTheCouncilPalace implements PlacementAction {
 
     FamilyMember mFamilyMember;
 

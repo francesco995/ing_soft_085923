@@ -2,10 +2,10 @@ package it.polimi.ingsw.ps09.controller.Network.Client.ServerConnections;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import it.polimi.ingsw.ps09.model.Actions.PlacementActions.PlacementAction;
 import it.polimi.ingsw.ps09.view.CLIClientGame;
 import it.polimi.ingsw.ps09.controller.Game.Game;
 import it.polimi.ingsw.ps09.controller.PlayersOrder;
-import it.polimi.ingsw.ps09.model.Actions.Action;
 import it.polimi.ingsw.ps09.model.Board;
 import it.polimi.ingsw.ps09.model.DevelopmentCardEffects.DevelopmentCardEffect;
 import it.polimi.ingsw.ps09.model.DevelopmentCards.DevelopmentCard;
@@ -37,7 +37,7 @@ public class ServerConnectionSocket extends Thread implements ServerConnection {
     private PlayersOrder mPlayersOrder;
 
     private boolean mHasAction;
-    private ArrayList<Action> mPlayerActionsList;
+    private ArrayList<PlacementAction> mPlayerActionsList;
 
     private Socket mSocket;
 
@@ -83,7 +83,7 @@ public class ServerConnectionSocket extends Thread implements ServerConnection {
         mGsonBuilder.registerTypeAdapter(DevelopmentCard.class, new DevelopmentCardAdapter());
         mGsonBuilder.registerTypeAdapter(DevelopmentCardEffect.class, new DevelopmentCardEffectAdapter());
         mGsonBuilder.registerTypeAdapter(ExcommunicationTileEffect.class, new ExcommunicationTileEffectAdapter());
-        mGsonBuilder.registerTypeAdapter(Action.class, new ActionAdapter());
+        mGsonBuilder.registerTypeAdapter(PlacementAction.class, new ActionAdapter());
         mGsonBuilder.registerTypeAdapter(Game.class, new GameAdapter());
         mGsonBuilder.registerTypeAdapter(FamilyMember.class, new FamilyMemberAdapter());
         mGsonBuilder.registerTypeAdapter(LeaderCardEffect.class, new LeaderCardEffectAdapter());
@@ -94,7 +94,7 @@ public class ServerConnectionSocket extends Thread implements ServerConnection {
 
     /**
      * Check if the Player associated with this connection has an action available to do
-     * @return true if Player has Action(s) to do
+     * @return true if Player has PlacementAction(s) to do
      */
     public boolean hasAction() {
         return mHasAction;
@@ -162,10 +162,10 @@ public class ServerConnectionSocket extends Thread implements ServerConnection {
     }
 
     /**
-     * Get updated Actions list for player
-     * @return List of valid Actions for player
+     * Get updated PlacementActions list for player
+     * @return List of valid PlacementActions for player
      */
-    public ArrayList<Action> getPlayerActionsList() {
+    public ArrayList<PlacementAction> getPlayerActionsList() {
         return mPlayerActionsList;
     }
 
@@ -228,7 +228,7 @@ public class ServerConnectionSocket extends Thread implements ServerConnection {
     }
 
     /**
-     * Wait for a message, and deserialize Actions
+     * Wait for a message, and deserialize PlacementActions
      * first message is the number of actions to deserialize, next X messages are the serialized actions
      */
     private void updateActions() {
@@ -237,7 +237,7 @@ public class ServerConnectionSocket extends Thread implements ServerConnection {
         int actionsN = Integer.valueOf(waitForMessage());
 
         for (int i = 0; i < actionsN; i++)
-            mPlayerActionsList.add(mGson.fromJson(waitForMessage(), Action.class));
+            mPlayerActionsList.add(mGson.fromJson(waitForMessage(), PlacementAction.class));
 
         CLIClientGame.alertActions();
 

@@ -4,7 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import it.polimi.ingsw.ps09.controller.Game.Game;
 import it.polimi.ingsw.ps09.controller.PlayersOrder;
-import it.polimi.ingsw.ps09.model.Actions.Action;
+import it.polimi.ingsw.ps09.model.Actions.PlacementActions.PlacementAction;
 import it.polimi.ingsw.ps09.model.Board;
 import it.polimi.ingsw.ps09.model.DevelopmentCardEffects.DevelopmentCardEffect;
 import it.polimi.ingsw.ps09.model.DevelopmentCards.DevelopmentCard;
@@ -80,7 +80,7 @@ public class PlayerConnectionSocket extends Thread implements PlayerConnection, 
         mGsonBuilder.registerTypeAdapter(DevelopmentCard.class, new DevelopmentCardAdapter());
         mGsonBuilder.registerTypeAdapter(DevelopmentCardEffect.class, new DevelopmentCardEffectAdapter());
         mGsonBuilder.registerTypeAdapter(ExcommunicationTileEffect.class, new ExcommunicationTileEffectAdapter());
-        mGsonBuilder.registerTypeAdapter(Action.class, new ActionAdapter());
+        mGsonBuilder.registerTypeAdapter(PlacementAction.class, new ActionAdapter());
         mGsonBuilder.registerTypeAdapter(Game.class, new GameAdapter());
         mGsonBuilder.registerTypeAdapter(FamilyMember.class, new FamilyMemberAdapter());
         mGsonBuilder.registerTypeAdapter(LeaderCardEffect.class, new LeaderCardEffectAdapter());
@@ -144,12 +144,12 @@ public class PlayerConnectionSocket extends Thread implements PlayerConnection, 
         );
     }
 
-    public int doAction(ArrayList<Action> playerActionsList){
-        mLogger.log(INFO, "Game: " + Game.GAME_ID + " sending Actions list to user " + mUserID);
+    public int doAction(ArrayList<PlacementAction> playerActionsList){
+        mLogger.log(INFO, "Game: " + Game.GAME_ID + " sending PlacementActions list to user " + mUserID);
         sendMessage("actions");
         sendMessage(String.valueOf(playerActionsList.size()));
         playerActionsList.stream().forEach(a -> {
-            sendMessage(mGson.toJson(a, Action.class));
+            sendMessage(mGson.toJson(a, PlacementAction.class));
         });
 
         return Integer.valueOf(getMessage());
