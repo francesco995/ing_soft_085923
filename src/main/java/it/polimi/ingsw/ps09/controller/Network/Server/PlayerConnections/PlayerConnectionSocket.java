@@ -30,7 +30,7 @@ import static java.util.logging.Level.INFO;
  *
  * Thread instantiated by the Server app to connect to a Player
  */
-public class PlayerConnectionSocket extends Thread implements PlayerConnection, Observer{
+public class PlayerConnectionSocket extends Thread implements PlayerConnection{
 
     //LOGGER
     private static final Logger mLogger = Logger.getAnonymousLogger();
@@ -94,19 +94,6 @@ public class PlayerConnectionSocket extends Thread implements PlayerConnection, 
 
     }
 
-    @Override
-    public void update(Observable o, Object arg){
-
-       /* if(o instanceof  Board)
-            sendMessage("board");
-
-        if(o instanceof Player)
-            sendMessage("player");
-
-        if(o instanceof PlayersOrder)
-            sendMessage("order");*/
-
-    }
 
     private void sleep(int mS){
 
