@@ -10,6 +10,10 @@ import java.util.StringJoiner;
 
 /**
  * Created by francesco995 on 09/05/2017.
+ * Territories cards are the green cards
+ * they have all basic card content
+ * they also introduce Harvest concept into game
+ * They have a harvestCost and a List of harvestEffects (might me more than one to chose from)
  */
 public class Territory extends DevelopmentCard {
 

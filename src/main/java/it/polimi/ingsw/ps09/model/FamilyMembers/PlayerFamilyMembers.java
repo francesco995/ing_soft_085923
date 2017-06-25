@@ -7,6 +7,8 @@ import java.util.Map;
 
 /**
  * Created by francesco995 on 10/06/2017.
+ * It creates all necessary familyMembers for a single player as an HashMap<String, FamilyMember>
+ *
  */
 public class PlayerFamilyMembers {
 

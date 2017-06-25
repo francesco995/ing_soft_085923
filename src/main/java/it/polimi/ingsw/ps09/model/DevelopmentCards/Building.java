@@ -9,6 +9,10 @@ import java.util.StringJoiner;
 
 /**
  * Created by francesco995 on 09/05/2017.
+ * Buildings card are the yellow cards
+ * they have all basic card content
+ * they also introduce Production concept into game
+ * They have a productionCost and a List of productionEffects (might me more than one to chose from)
  */
 public class Building extends DevelopmentCard {
 

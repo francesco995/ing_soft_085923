@@ -8,6 +8,11 @@ import java.util.List;
 
 /**
  * Created by francesco995 on 09/05/2017.
+ * Venture card are the purple cards
+ * they have all basic card content
+ * they also introduce endGame concept into game
+ * They have a List of endGameEffects (might me more than one to chose from)
+ * they also have pointsRequirement a list of points required to have but not to spend
  */
 public class Venture extends DevelopmentCard {
 

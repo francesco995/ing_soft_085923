@@ -12,7 +12,9 @@ import java.io.FileNotFoundException;
 import java.util.*;
 
 /**
- * Container for all the single Excommunication tiles
+ * This is a container of all the different excommunication tiles in the game
+ * they all get charged into a single HashMap.
+ * It also offers the draw card method
  */
 public class ExcommunicationTilesDeck {
 

@@ -1,7 +1,9 @@
 package it.polimi.ingsw.ps09.model.Dices;
 
 
-
+/**
+ * OrangeDice object
+ */
 public class OrangeDice extends Dice{
 
     /**

@@ -9,6 +9,9 @@ import java.util.StringJoiner;
 
 /**
  * Created by franc on 09/05/2017.
+ * Character card are the blue cards
+ * they have all basic card content
+ * they do not introduce new mechanic to game
  */
 public class Character extends DevelopmentCard {
 

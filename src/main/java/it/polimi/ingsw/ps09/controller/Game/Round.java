@@ -82,7 +82,7 @@ public class Round {
                 playerActionsList.get(choice).getFamilyMember(),
                 playerActionsList.get(choice).getIndex()
                 );
-
+        //TODO: pass a second list of action (moved by 1000) that are not ENDING
     }
 
 

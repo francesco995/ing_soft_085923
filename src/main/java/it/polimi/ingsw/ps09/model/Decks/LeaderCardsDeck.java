@@ -12,6 +12,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * This is the container of all the LeaderCards in the game
+ * They all get charged into a single Arraylist
+ * It also offers the draw card method
+ */
 public class LeaderCardsDeck {
 
     private final static int CARD_TOTAL = 20;
@@ -98,7 +103,7 @@ public class LeaderCardsDeck {
 
 
     /**
-     *Randomly draw the hands of 4 cards for the player
+     * Randomly draw the hands of 4 cards for the player
      * @param mLeaderCards Deck of cards from which you want to draw the hand of cards for the player
      * @return returns List of 4 Leader Cards drawn from the passed deck
      */

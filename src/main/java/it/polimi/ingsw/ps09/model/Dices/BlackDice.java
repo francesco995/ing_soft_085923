@@ -1,6 +1,8 @@
 package it.polimi.ingsw.ps09.model.Dices;
 
-
+/**
+ * BlackDice object
+ */
 public class BlackDice extends Dice{
 
     /**

@@ -5,6 +5,13 @@ import it.polimi.ingsw.ps09.model.Dices.Dice;
 
 import java.util.StringJoiner;
 
+/**
+ * Abstract class familyMember
+ * Basic variables are power(the placement value of the familyMember it's set every turn by the diceValues
+ * Color and family are string used to describe the familyMember
+ * isUsable is set to true every start of round and to false when the familyMember is no longer usable
+ * It implements the toString necessary to display familyMember content
+ */
 public abstract class FamilyMember {
 
     //VARIABLES
@@ -58,23 +65,20 @@ public abstract class FamilyMember {
     public String toString(){
 
         String mIsUsableString;
-
-        StringJoiner mStringFamilyMember = new StringJoiner("\n", "", "");
-
-        mStringFamilyMember.add("");
-        mStringFamilyMember.add("Family: " + mFamily);
-        mStringFamilyMember.add("Color: " + mColor);
-        mStringFamilyMember.add("Power: " + mPower);
-
         if(mIsUsable)
             mIsUsableString = "Yes";
         else
-            mIsUsableString = "No";
+            mIsUsableString ="No";
 
-        mStringFamilyMember.add("Available: " + mIsUsableString);
+        String mStringFamilyMember ="\n";
+
+        mStringFamilyMember += "Family:" +mFamily;
+        mStringFamilyMember += "  |  Color:" + mColor;
+        mStringFamilyMember += "  |  Power:" + mPower;
+        mStringFamilyMember += "  | Available-->" + mIsUsableString;
+
 
         return mStringFamilyMember.toString();
-
 
     }
 

@@ -41,12 +41,12 @@ public class Player {
     private BonusFlags mUserFlags;
 
     //GAME OBJECTS
-    private PersonalBoard mPersonalBoard; // già toString
-    private UserPoints mUserPoints; // giá toString
+    private PersonalBoard mPersonalBoard;
+    private UserPoints mUserPoints;
 
     //PLAYER OBJECTS
 
-    private PlayerFamilyMembers mPlayerFamilyMembers;// giá toString
+    private PlayerFamilyMembers mPlayerFamilyMembers;
 
     private List<DevelopmentCardEffect> mPermanentEffects;
     private List<DevelopmentCardEffect> mEndGameEffects;
@@ -58,7 +58,21 @@ public class Player {
 
     //LOGGER
     private static final Logger mLogger = Logger.getLogger(Player.class.getName());
+    private void test(){
+        mPlayerFamilyMembers.toString();
+    }
+    /**
+     *
+     * @return A string of the action to perform
+     */
+    @Override
+    public String toString(){
+        String toPrint = "\nThis are the players info:";
+        toPrint += "\nusername:" + mUserName;
+        toPrint += " | color:" +mUserColor;
+        return toPrint;
 
+    }
 
     //CONSTRUCTOR
 
@@ -157,6 +171,9 @@ public class Player {
 
     //Get User info
 
+    public UserPoints getUserPoints() {
+        return mUserPoints;
+    }
     public String getUserName() {
         return mUserName;
     }

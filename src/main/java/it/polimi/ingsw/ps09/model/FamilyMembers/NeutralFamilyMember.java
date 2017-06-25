@@ -1,5 +1,8 @@
 package it.polimi.ingsw.ps09.model.FamilyMembers;
 
+/**
+ * Simple neutralFamilyMember object
+ */
 public class NeutralFamilyMember extends FamilyMember{
 
     //initialized to 0

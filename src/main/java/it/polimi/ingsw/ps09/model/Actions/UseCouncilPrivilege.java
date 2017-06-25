@@ -33,7 +33,7 @@ public class UseCouncilPrivilege{
 
         List<Integer> choice = new ArrayList<>();
 
-        //TODO: not here....
+        //TODO: va deciso dove piazzarlo perchè collide con parte del prompeter (anche se è un azione extra che richiede prompeter addizionali quindi in qualche modo va fatto)
         choice = Prompter.PromptForMultipleDifferentChoices("Choose " + privilegesCount +"different council privilege", mStringList , privilegesCount, MAX_NUMBER);
 
         //it runs the whole choice list and add the required bonuses

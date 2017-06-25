@@ -1,6 +1,8 @@
 package it.polimi.ingsw.ps09.model.FamilyMembers;
 
-
+/**
+ * Simple whiteFamilyMember object
+ */
 public class WhiteFamilyMember extends FamilyMember {
     //initialized to 0
     public WhiteFamilyMember(String family) {

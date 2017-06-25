@@ -53,7 +53,62 @@ public class PersonalBoard {
         return mString;
 
     }
+    //other useful toString
 
+    public String builidingToString(){
+
+        String mString;
+        if(mPersonalBoardCards.getBoardBuildings().size() > 1)
+            mString = "Building cards: \n";
+        else
+            mString = "Building card: \n";
+
+        mString += mPersonalBoardCards.getBoardBuildings().toString();
+
+        return mString;
+    }
+
+
+    public String characterToString(){
+
+        String mString;
+        if(mPersonalBoardCards.getBoardCharacters().size() > 1)
+            mString = "Character cards: \n";
+        else
+            mString = "Character card: \n";
+
+        mString += mPersonalBoardCards.getBoardCharacters().toString();
+
+        return mString;
+    }
+
+
+    public String territoryToString(){
+
+        String mString;
+        if(mPersonalBoardCards.getBoardTerritories().size() > 1)
+            mString = "Territory cards: \n";
+        else
+            mString = "Territory card: \n";
+
+        mString += mPersonalBoardCards.getBoardTerritories().toString();
+
+        return mString;
+    }
+
+
+    public String ventureToString(){
+
+        String mString;
+        if(mPersonalBoardCards.getBoardVentures().size() > 1)
+            mString = "Venture cards: \n";
+        else
+            mString = "Venture card: \n";
+
+        mString += mPersonalBoardCards.getBoardVentures().toString();
+
+        return mString;
+    }
     //GETTERS
 
     //Get ALL BOARD CARDS
