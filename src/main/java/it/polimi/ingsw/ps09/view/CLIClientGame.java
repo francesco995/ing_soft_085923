@@ -219,9 +219,9 @@ public class CLIClientGame extends Thread{
     /**
      * Display a Player to the CLI
      */
-    private void displayPlayer(String userName){
+    private void displayPlayer(Player player){
 
-        switch (Prompter.promptForIntChoice("Please choose what to display of Player: " + userName, mPlayerMenu)){
+        switch (Prompter.promptForIntChoice("Please choose what to display of Player: " + player.getUserName(), mPlayerMenu)){
 
             case 1:{
                 //Show Player info
@@ -284,22 +284,24 @@ public class CLIClientGame extends Thread{
         switch (Prompter.promptForIntChoice("Please choose the Player to display", mPlayersMenu)){
 
             case 1:{
-                displayPlayer(mPlayersMenu.get(0));
+                displayPlayer(mPlayers.get(mPlayersOrder.getUserIdByIndex(0)));
                 break;
             }
 
             case 2:{
-                displayPlayer(mPlayersMenu.get(1));
+                displayPlayer(mPlayers.get(mPlayersOrder.getUserIdByIndex(1)));
                 break;
             }
 
             case 3:{
-                displayPlayer(mPlayersMenu.get(2));
+                if(mPlayersOrder.getPlayersOrder().size() > 2)
+                    displayPlayer(mPlayers.get(mPlayersOrder.getUserIdByIndex(2)));
                 break;
             }
 
             case 4:{
-                displayPlayer(mPlayersMenu.get(3));
+                if(mPlayersOrder.getPlayersOrder().size() > 3)
+                    displayPlayer(mPlayers.get(mPlayersOrder.getUserIdByIndex(3)));
                 break;
             }
 
