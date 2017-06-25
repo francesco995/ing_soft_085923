@@ -144,15 +144,13 @@ public class PlayerConnectionSocket extends Thread implements PlayerConnection, 
         );
     }
 
-    public int doAction(ArrayList<PlacementAction> playerActionsList){
+    public void doPlacementAction(ArrayList<PlacementAction> playerActionsList){
         mLogger.log(INFO, "Game: " + Game.GAME_ID + " sending PlacementActions list to user " + mUserID);
-        sendMessage("actions");
+        sendMessage("placementActions");
         sendMessage(String.valueOf(playerActionsList.size()));
         playerActionsList.stream().forEach(a -> {
             sendMessage(mGson.toJson(a, PlacementAction.class));
         });
-
-        return Integer.valueOf(getMessage());
 
     }
 
@@ -290,7 +288,7 @@ public class PlayerConnectionSocket extends Thread implements PlayerConnection, 
                         break;
                     }
 
-                    case "actions": {
+                    case "placementActions": {
 
                         break;
                     }

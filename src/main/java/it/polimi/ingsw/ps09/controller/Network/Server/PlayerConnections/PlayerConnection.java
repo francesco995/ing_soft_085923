@@ -20,7 +20,7 @@ public interface PlayerConnection{
     void setUserID(int userID);
     void sendUpdatedData();
     String getMessage();
-    int doAction(ArrayList<PlacementAction> playerActionsList);
+    void doPlacementAction(ArrayList<PlacementAction> playerActionsList);
     void run();
     void start();
 

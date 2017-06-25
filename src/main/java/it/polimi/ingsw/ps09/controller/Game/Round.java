@@ -70,8 +70,10 @@ public class Round {
 
         ArrayList<PlacementAction> playerActionsList =  AllPlacementActions.getValidActionsForPlayer(game.mGameBoard, game.mPlayers.get(playerID));
 
-        int choice = game.mConnections.get(playerID).doAction(playerActionsList);
-        
+        game.mConnections.get(playerID).doPlacementAction(playerActionsList);
+
+        int choice = Integer.valueOf(game.mConnections.get(playerID).getMessage());
+
         mLogger.log(INFO, "Game: " + Game.GAME_ID + " player " + playerID + " chosen action # " + choice + ": " + playerActionsList.get(choice - 1).toString());
 
         choice--;

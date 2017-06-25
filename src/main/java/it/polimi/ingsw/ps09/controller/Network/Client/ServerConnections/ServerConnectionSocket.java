@@ -422,7 +422,7 @@ public class ServerConnectionSocket extends Thread implements ServerConnection {
                         break;
                     }
 
-                    case "actions": {
+                    case "placementActions": {
                         updateActions();
                         mHasAction = true;
                         break;
