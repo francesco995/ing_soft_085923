@@ -9,9 +9,10 @@ import java.util.ArrayList;
 
 /**
  * Created by franc on 26/06/2017.
+ * It creates the list of all the possibility to increase the family member value
  */
 public class AllFamilyMemberActions {
-    public static ArrayList<FamilyMemberAction> getValidActionsForPlayer(Board board, Player player /*or maybe here the index*/) {
+    public static ArrayList<FamilyMemberAction> getValidActionsForPlayer(Board board, Player player) {
 
         ArrayList<FamilyMemberAction> mActionsList = new ArrayList<>();
 
@@ -23,28 +24,29 @@ public class AllFamilyMemberActions {
 
         //Check and add the possibility to increase the family member value
 
-        //we need to call the prompter and ask for the number of servant he wants to donate
-        int index = 0;
-        //here we do the index = call
+        int maxNumber = player.getServant().getValue();
 
-        if (IncreaseFamilyMemberValue.isValid(player, player.getFamilyMember("NEUTRAL"),index))
-            mActionsList.add
-                    (new IncreaseFamilyMemberValue(player.getFamilyMember("NEUTRAL")));
+        for(int i=1; i<maxNumber; i++) {
 
-
-        if (IncreaseFamilyMemberValue.isValid(player, player.getFamilyMember("BLACK"),index))
-            mActionsList.add
-                    (new IncreaseFamilyMemberValue(player.getFamilyMember("BLACK")));
+            if (IncreaseFamilyMemberValue.isValid(player, player.getFamilyMember("NEUTRAL"), i))
+                mActionsList.add
+                        (new IncreaseFamilyMemberValue(player.getFamilyMember("NEUTRAL"),i));
 
 
-        if (IncreaseFamilyMemberValue.isValid(player, player.getFamilyMember("ORANGE"),index))
-            mActionsList.add
-                    (new IncreaseFamilyMemberValue(player.getFamilyMember("ORANGE")));
+            if (IncreaseFamilyMemberValue.isValid(player, player.getFamilyMember("BLACK"), i))
+                mActionsList.add
+                        (new IncreaseFamilyMemberValue(player.getFamilyMember("BLACK"),i));
 
-        if (IncreaseFamilyMemberValue.isValid(player, player.getFamilyMember("WHITE"),index))
-            mActionsList.add
-                    (new IncreaseFamilyMemberValue(player.getFamilyMember("WHITE")));
 
+            if (IncreaseFamilyMemberValue.isValid(player, player.getFamilyMember("ORANGE"), i))
+                mActionsList.add
+                        (new IncreaseFamilyMemberValue(player.getFamilyMember("ORANGE"),i));
+
+            if (IncreaseFamilyMemberValue.isValid(player, player.getFamilyMember("WHITE"), i))
+                mActionsList.add
+                        (new IncreaseFamilyMemberValue(player.getFamilyMember("WHITE"),i));
+
+        }
 
         return mActionsList;
     }

@@ -13,9 +13,11 @@ import java.util.StringJoiner;
 public class IncreaseFamilyMemberValue implements FamilyMemberAction {
 
     FamilyMember mFamilyMember;
+    int mIndex;
 
-    public IncreaseFamilyMemberValue(FamilyMember familyMember) {
+    public IncreaseFamilyMemberValue(FamilyMember familyMember,int index) {
         mFamilyMember = familyMember;
+        mIndex = index;
     }
 
     /**
@@ -69,7 +71,7 @@ public class IncreaseFamilyMemberValue implements FamilyMemberAction {
 
     @Override
     public int getIndex() {
-        return 0;
+        return mIndex;
     }
 
     /**
@@ -82,7 +84,7 @@ public class IncreaseFamilyMemberValue implements FamilyMemberAction {
         StringJoiner mStringIncreaseValue = new StringJoiner("", "", "");
 
         mStringIncreaseValue.add("");
-        mStringIncreaseValue.add("Increase the power of the family member");
+        mStringIncreaseValue.add("Increase the "+ mFamilyMember.getColor().toLowerCase()+" family member value by"+ mIndex);
 
         return mStringIncreaseValue.toString();
     }
