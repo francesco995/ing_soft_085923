@@ -12,7 +12,11 @@ import java.util.StringJoiner;
  */
 public class IncreaseFamilyMemberValue implements FamilyMemberAction {
 
-    //TODO: Constructor to store FamilyMember info like in other actions
+    FamilyMember mFamilyMember;
+
+    public IncreaseFamilyMemberValue(FamilyMember familyMember) {
+        mFamilyMember = familyMember;
+    }
 
     /**
      *
@@ -50,7 +54,8 @@ public class IncreaseFamilyMemberValue implements FamilyMemberAction {
         if (!isValid(player, familyMember, index))
             throw new UnsupportedOperationException("Operation not supported");
 
-        //TODO: remove servant from player
+        //remove the servant to pay for action
+        player.remove(new Servant (index));
 
         //Do action
         familyMember.morePower(index);
