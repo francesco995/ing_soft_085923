@@ -76,10 +76,9 @@ public class Round {
 
         game.mConnections.get(playerID).sendPlacementActionsList(placementActionsList);
 
-
         int choice = Integer.valueOf(game.mConnections.get(playerID).getMessage());
 
-        mLogger.log(INFO, "Game: " + Game.GAME_ID + " player " + playerID + " chosen action # " + choice + ": " + playerActionsList.get(choice - 1).toString());
+        mLogger.log(INFO, "Game: " + Game.GAME_ID + " player " + playerID + " chosen action # " + choice + ": " + placementActionsList.get(choice - 1).toString());
 
         choice--;
 

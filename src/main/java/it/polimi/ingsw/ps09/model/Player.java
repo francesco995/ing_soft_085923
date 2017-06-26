@@ -68,8 +68,8 @@ public class Player {
     @Override
     public String toString(){
         String toPrint = "\nThis are the players info:";
-        toPrint += "\nusername:" + mUserName;
-        toPrint += " | color:" +mUserColor;
+        toPrint += "\nUsername: " + mUserName;
+        toPrint += " | Color: " +mUserColor;
         return toPrint;
 
     }
@@ -242,6 +242,7 @@ public class Player {
     public void addTerritoryCard(Territory card){
 
         addCard(card, 0);
+        mPersonalBoard.add(card);
 
         updated();
     }
@@ -250,6 +251,7 @@ public class Player {
     public void addBuildingCard(Building card){
 
         addCard(card, 0);
+        mPersonalBoard.add(card);
 
         updated();
     }
@@ -259,6 +261,7 @@ public class Player {
         addCard(card, 0);
 
         addPermanentEffects(card.getPermanentEffects());
+        mPersonalBoard.add(card);
 
         updated();
     }
@@ -268,6 +271,7 @@ public class Player {
         addCard(card, 0);
 
         addEndGameEffects(card.getEndGameEffects());
+        mPersonalBoard.add(card);
 
         updated();
     }

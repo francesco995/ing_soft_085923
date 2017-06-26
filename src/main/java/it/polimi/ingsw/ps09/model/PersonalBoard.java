@@ -53,17 +53,19 @@ public class PersonalBoard {
         return mString;
 
     }
+
+
     //other useful toString
 
-    public String builidingToString(){
+    public String buildingToString(){
 
         String mString;
-        if(mPersonalBoardCards.getBoardBuildings().size() > 1)
-            mString = "Building cards: \n";
+        if(mPersonalBoardCards.getBoardBuildings().size() > 0)
+            mString = "\nBuilding card(s): \n";
         else
-            mString = "Building card: \n";
+            mString = "\nNo Building cards\n";
 
-        mString += mPersonalBoardCards.getBoardBuildings().toString();
+        mPersonalBoardCards.getBoardBuildings().stream().forEach(c -> mString.concat( "\n " + c.toString()));
 
         return mString;
     }
@@ -72,12 +74,12 @@ public class PersonalBoard {
     public String characterToString(){
 
         String mString;
-        if(mPersonalBoardCards.getBoardCharacters().size() > 1)
-            mString = "Character cards: \n";
+        if(mPersonalBoardCards.getBoardCharacters().size() > 0)
+            mString = "\nCharacter card(s): \n";
         else
-            mString = "Character card: \n";
+            mString = "\nNo Character cards\n";
 
-        mString += mPersonalBoardCards.getBoardCharacters().toString();
+        mPersonalBoardCards.getBoardCharacters().stream().forEach(c -> mString.concat( "\n " + c.toString()));
 
         return mString;
     }
@@ -86,12 +88,12 @@ public class PersonalBoard {
     public String territoryToString(){
 
         String mString;
-        if(mPersonalBoardCards.getBoardTerritories().size() > 1)
-            mString = "Territory cards: \n";
+        if(mPersonalBoardCards.getBoardTerritories().size() > 0)
+            mString = "Territory card(s): \n";
         else
-            mString = "Territory card: \n";
+            mString = "\nNo Territory cards\n";
 
-        mString += mPersonalBoardCards.getBoardTerritories().toString();
+        mPersonalBoardCards.getBoardTerritories().stream().forEach(c -> mString.concat( "\n " + c.toString()));
 
         return mString;
     }
@@ -100,12 +102,12 @@ public class PersonalBoard {
     public String ventureToString(){
 
         String mString;
-        if(mPersonalBoardCards.getBoardVentures().size() > 1)
-            mString = "Venture cards: \n";
+        if(mPersonalBoardCards.getBoardVentures().size() > 0)
+            mString = "Venture card(s): \n";
         else
-            mString = "Venture card: \n";
+            mString = "\nNo Venture cards\n";
 
-        mString += mPersonalBoardCards.getBoardVentures().toString();
+        mPersonalBoardCards.getBoardVentures().stream().forEach(c -> mString.concat( "\n " + c.toString()));
 
         return mString;
     }

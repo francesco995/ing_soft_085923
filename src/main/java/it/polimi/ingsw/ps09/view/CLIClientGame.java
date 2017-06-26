@@ -225,54 +225,52 @@ public class CLIClientGame extends Thread{
 
             case 1:{
                 //Show Player info
-                player.toString();
+                System.out.println(player.toString());
                 break;
             }
 
             case 2:{
                 System.out.println(player.getUserName() + "family members are: \n");
                 //Show Player available FamilyMembers
-                player.getFamilyMember("BLACK").toString();
-                player.getFamilyMember("ORANGE").toString();
-                player.getFamilyMember("WHITE").toString();
-                player.getFamilyMember("NEUTRAL").toString();
+                System.out.println(player.getFamilyMember("BLACK").toString());
+                System.out.println(player.getFamilyMember("ORANGE").toString());
+                System.out.println(player.getFamilyMember("WHITE").toString());
+                System.out.println(player.getFamilyMember("NEUTRAL").toString());
                 break;
             }
 
             case 3:{
                 //Show Player Resources and Points
-                System.out.println(player.getUserName() + "resources are: \n");
-                player.getPersonalBoard().getUserResources().toString();
-                System.out.println(player.getUserName() + "points are: \n");
-                player.getUserPoints().toString();
+                System.out.println(player.getUserName() + " Resources are: " + player.getPersonalBoard().getUserResources().toString());
+                System.out.println(player.getUserName() + "\n Points are: " + player.getUserPoints().toString());
                 break;
             }
 
             case 4:{
                 //Show Player Green cards
-                System.out.println(player.getUserName() + "territory card:");
-                player.getPersonalBoard().territoryToString();
+                System.out.println(player.getUserName() + "Territory cards:");
+                System.out.println(player.getPersonalBoard().territoryToString());
                 break;
             }
 
             case 5:{
                 //Show Player Yellow cards
-                System.out.println(player.getUserName() + "building card:");
-                player.getPersonalBoard().builidingToString();
+                System.out.println(player.getUserName() + "Building cards:");
+                System.out.println(player.getPersonalBoard().buildingToString());
                 break;
             }
 
             case 6:{
                 //Show Player Blue cards
-                System.out.println(player.getUserName() + "character card:");
-                player.getPersonalBoard().characterToString();
+                System.out.println(player.getUserName() + "Character cards:");
+                System.out.println(player.getPersonalBoard().characterToString());
                 break;
             }
 
             case 7:{
                 //Show Player Purple cards
-                System.out.println(player.getUserName() + "venture card:");
-                player.getPersonalBoard().ventureToString();
+                System.out.println(player.getUserName() + "Venture cards:");
+                System.out.println(player.getPersonalBoard().ventureToString());
                 break;
             }
 

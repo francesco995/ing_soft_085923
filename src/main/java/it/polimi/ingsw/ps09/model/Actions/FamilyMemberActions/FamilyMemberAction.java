@@ -17,7 +17,7 @@ public interface FamilyMemberAction {
 
     FamilyMember getFamilyMember();
 
-    public int getIndex();
+    int getIndex();
 
 
 }
