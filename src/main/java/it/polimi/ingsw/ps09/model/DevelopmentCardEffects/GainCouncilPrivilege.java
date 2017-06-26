@@ -20,7 +20,7 @@ public class GainCouncilPrivilege implements DevelopmentCardEffect{
      */
     @Override
     public void applyEffect(Player player) {
-        //TODO: implement
+        player.addCouncilPrivilege(mPrivilegesCount);
     }
 
     /**

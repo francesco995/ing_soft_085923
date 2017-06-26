@@ -39,6 +39,7 @@ public class Player {
     private String mUserName;
     private String mUserColor;
     private BonusFlags mUserFlags;
+    private int mCouncilPrivilege;
 
     //GAME OBJECTS
     private PersonalBoard mPersonalBoard;
@@ -882,7 +883,25 @@ public class Player {
 
     }
 
+    /**
+     * Add a specific amount of council privilege to the player
+     * @param amount of privilege to add
+     */
+    public void addCouncilPrivilege(int amount){
 
+        mCouncilPrivilege = mCouncilPrivilege + amount;
+
+    }
+
+    /**
+     * Add a specific amount of council privilege to the player
+     * @param amount of privilege to add
+     */
+    public void removeCouncilPrivilege(int amount){
+
+        mCouncilPrivilege = mCouncilPrivilege - amount;
+
+    }
 
 
 }

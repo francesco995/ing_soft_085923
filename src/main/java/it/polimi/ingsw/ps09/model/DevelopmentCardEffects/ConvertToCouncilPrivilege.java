@@ -50,7 +50,7 @@ public class ConvertToCouncilPrivilege implements DevelopmentCardEffect{
         player.remove(mPointsCosts.get(0));
 
         //gains for conversion
-        //TODO: gain council privilege
+        player.addCouncilPrivilege(mPrivilegesCount.get(0));
 
     }
 

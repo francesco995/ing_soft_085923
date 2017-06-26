@@ -16,33 +16,36 @@ import java.util.StringJoiner;
 public class UseCouncilPrivilege implements PlayerAction{
     //static data
     static final int MAX_NUMBER = 5;
-    List<String> mStringList = new ArrayList<String>();
+    //List<String> mStringList = new ArrayList<String>();
     int mPrivilegesCount;
 
     public UseCouncilPrivilege(int privilegesCount) {
         mPrivilegesCount = privilegesCount;
     }
 
+
     /**
      *
      * @param player The player whom perform the action
-     * @param privilegesCount Number of player's privilege
+     * @param choice List of all the choices done by the player through prompter
      */
-    public void doAction(Player player, int privilegesCount) {
+    public void doAction(Player player, List<Integer> choice) {
 
+       /* //add all the different effects to a StringList passed to prompter for it to display
         mStringList.add("Get 1 wood and 1 stone");
         mStringList.add("Get 2 servants");
         mStringList.add("Get 2 coins");
         mStringList.add("Get 2 military points");
-        mStringList.add("Get 1 faith point");
+        mStringList.add("Get 1 faith point");*/
 
-        List<Integer> choice = new ArrayList<>();
+        //delegates the task of choosing to player through Prompter
+       /* List<Integer> choice = new ArrayList<>();
+        choice = Prompter.PromptForMultipleDifferentChoices
+                ("Choose " + privilegesCount +" different council privilege", mStringList , privilegesCount, MAX_NUMBER);
+*/
 
-        //TODO: va deciso dove piazzarlo perchè collide con parte del prompeter (anche se è un azione extra che richiede prompeter addizionali quindi in qualche modo va fatto)
-        choice = Prompter.PromptForMultipleDifferentChoices("Choose " + privilegesCount +"different council privilege", mStringList , privilegesCount, MAX_NUMBER);
-
-        //it runs the whole choice list and add the required bonuses
-        for(int i=0; i<privilegesCount; i++){
+        //goes through the choice list to actually do the action
+        for(int i=0; i<choice.size(); i++){
 
             switch(choice.get(i)){
                 //1 wood and 1 stone
@@ -66,7 +69,7 @@ public class UseCouncilPrivilege implements PlayerAction{
                     player.add(new UserPoints(1,0,0));
                     break;
                 default:
-                    System.out.println("Choice not valid, try again!");
+                // somehow passed wrong int, no action done on player to avoid cheating
                     break;
 
             }

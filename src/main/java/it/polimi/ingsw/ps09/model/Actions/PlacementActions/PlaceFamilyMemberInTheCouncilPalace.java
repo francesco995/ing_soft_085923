@@ -59,7 +59,7 @@ public class PlaceFamilyMemberInTheCouncilPalace implements PlacementAction {
         player.add(new Coins(1));
         familyMember.used();
         board.getCouncil().addFamilyMember(familyMember);
-        //
+        player.addCouncilPrivilege(1);
 
     }
 
