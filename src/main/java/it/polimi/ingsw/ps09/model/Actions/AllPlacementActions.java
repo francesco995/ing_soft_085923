@@ -9,6 +9,7 @@ import java.util.ArrayList;
 
 /**
  * Created by francesco995 on 13/06/2017.
+ * It creates the list of all the different placement action that a player can do
  */
 public class AllPlacementActions {
 

@@ -9,6 +9,7 @@ import java.util.ArrayList;
 
 /**
  * Created by franc on 26/06/2017.
+ *
  */
 public class AllPlayerActions {
 
@@ -22,9 +23,9 @@ public class AllPlayerActions {
         /////////////////////////////////////////////////
 
 
-        //Check and add player actions for use council privilage
+        //Check and add player actions for use council privilege
 
-            //how to do check for validity ?
+            //add council privilege to player
 
 
                 mActionsList.add
