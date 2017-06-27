@@ -147,10 +147,11 @@ public class Floor {
 
         mStringFloor.add(stringBonus);
 
-        mStringFloor.add("Card: " + mCard.toString());
+        //mStringFloor.add("Card: " + mCard.toString());
 
-        if (!isAvailable())
-            mStringFloor.add("Family Member: " + mFamilyMember.toString());
+        if (!isAvailable()) {
+            mStringFloor.add(mFamilyMember.toString());
+        }
         else
             mStringFloor.add("Floor free");
 

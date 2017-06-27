@@ -12,8 +12,8 @@ public class Order {
 
     private List<FamilyMember> mOrderList = new ArrayList<FamilyMember>();
 
-    private void addTop(FamilyMember Pawn){
-        mOrderList.add(0,Pawn);
+    private void addTop(FamilyMember FamilyMember){
+        mOrderList.add(0,FamilyMember);
     }
 
     //Get the list of player's order
