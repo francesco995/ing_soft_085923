@@ -2,8 +2,9 @@ package it.polimi.ingsw.ps09.controller.Network.Server.PlayerConnections;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import it.polimi.ingsw.ps09.controller.*;
 import it.polimi.ingsw.ps09.controller.Game.Game;
-import it.polimi.ingsw.ps09.controller.PlayersOrder;
+import it.polimi.ingsw.ps09.controller.Timer;
 import it.polimi.ingsw.ps09.model.Actions.FamilyMemberActions.FamilyMemberAction;
 import it.polimi.ingsw.ps09.model.Actions.PlacementActions.PlacementAction;
 import it.polimi.ingsw.ps09.model.Actions.PlayerActions.PlayerAction;
@@ -13,6 +14,7 @@ import it.polimi.ingsw.ps09.model.DevelopmentCards.DevelopmentCard;
 import it.polimi.ingsw.ps09.model.ExcommunicationTileEffects.ExcommunicationTileEffect;
 import it.polimi.ingsw.ps09.model.FamilyMembers.FamilyMember;
 import it.polimi.ingsw.ps09.model.GsonAdapters.*;
+import it.polimi.ingsw.ps09.model.LeaderCard;
 import it.polimi.ingsw.ps09.model.LeaderCardEffects.LeaderCardEffect;
 import it.polimi.ingsw.ps09.model.Player;
 
@@ -154,12 +156,36 @@ public class PlayerConnectionSocket extends Thread implements PlayerConnection{
         playerActionsList.stream().forEach(a -> sendMessage(mGson.toJson(a, PlayerAction.class)));
     }
 
+    public int sendLeaderCardsList(ArrayList<LeaderCard> leaderCardsList){
+        mLogger.log(INFO, "Game: " + Game.GAME_ID + " sending Leader Cards list to user " + mUserID);
+        sendMessage("leaderCards");
+        sendMessage(String.valueOf(leaderCardsList.size()));
+        leaderCardsList.stream().forEach(l -> sendMessage(mGson.toJson(l, LeaderCard.class)));
+
+        return Integer.valueOf(getMessage(30, "1"));
+    }
+
     public String getMessage(){
 
         while(mIncomingMessages.isEmpty())
             sleep(50);
 
         return mIncomingMessages.poll();
+
+    }
+
+    public String getMessage(int timeout, String defaultTimeout){
+
+        it.polimi.ingsw.ps09.controller.Timer timer = new Timer(timeout);
+        timer.start();
+
+        while(mIncomingMessages.isEmpty() && !timer.isExpired())
+            sleep(50);
+
+        if(mIncomingMessages.isEmpty())
+            return defaultTimeout;
+
+        return getMessage();
 
     }
 
@@ -232,6 +258,8 @@ public class PlayerConnectionSocket extends Thread implements PlayerConnection{
 
         return message;
     }
+
+
 
     private void waitForInputSocketReady(){
         try {

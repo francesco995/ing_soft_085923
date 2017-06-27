@@ -5,6 +5,7 @@ import it.polimi.ingsw.ps09.model.Actions.FamilyMemberActions.FamilyMemberAction
 import it.polimi.ingsw.ps09.model.Actions.PlacementActions.PlacementAction;
 import it.polimi.ingsw.ps09.model.Actions.PlayerActions.PlayerAction;
 import it.polimi.ingsw.ps09.model.Board;
+import it.polimi.ingsw.ps09.model.LeaderCard;
 import it.polimi.ingsw.ps09.model.Player;
 
 import java.util.ArrayList;
@@ -25,6 +26,7 @@ public interface PlayerConnection{
     void sendPlacementActionsList(ArrayList<PlacementAction> playerActionsList);
     void sendFamilyMemberActionsList(ArrayList<FamilyMemberAction> familyMemberActionsList);
     void sendPlayerActionsList(ArrayList<PlayerAction> playerActionsList);
+    int sendLeaderCardsList(ArrayList<LeaderCard> leaderCardsList);
     void run();
     void start();
 
