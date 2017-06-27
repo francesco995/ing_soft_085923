@@ -21,7 +21,7 @@ public class LeaderCardsDeck {
     private final static int HAND_SIZE = 4;
 
     //This list is the full deck of LeaderCards
-    private List<LeaderCard> mDeck = new ArrayList<>();
+    private ArrayList<LeaderCard> mDeck = new ArrayList<>();
 
 
     /**
@@ -91,9 +91,9 @@ public class LeaderCardsDeck {
      * @return
      * @throws FileNotFoundException
      */
-    private List loadDeck(String fileName) throws FileNotFoundException {
+    private ArrayList loadDeck(String fileName) throws FileNotFoundException {
 
-        List<LeaderCard> mTierDeck = new ArrayList<>();
+        ArrayList<LeaderCard> mTierDeck = new ArrayList<>();
 
         for (int i = 1; i <= CARD_TOTAL; i++) {
             mTierDeck.add(loadCardFromString(loadStringFromFile(fileName + i + ".json")));
@@ -109,9 +109,9 @@ public class LeaderCardsDeck {
      * @param mLeaderCards Deck of cards from which you want to draw the hand of cards for the player
      * @return returns List of 4 Leader Cards drawn from the passed deck
      */
-    public List<LeaderCard> cardDraw(List<LeaderCard> mLeaderCards){
+    public ArrayList<LeaderCard> cardDraw(List<LeaderCard> mLeaderCards){
 
-        List<LeaderCard> mHandOfCards = new ArrayList<LeaderCard>();
+        ArrayList<LeaderCard> mHandOfCards = new ArrayList<>();
         int randomNumber;
 
         for(int counter = 1; counter <= HAND_SIZE; counter++) {
@@ -133,7 +133,7 @@ public class LeaderCardsDeck {
         return HAND_SIZE;
     }
 
-    public List<LeaderCard> getDeck() {
+    public ArrayList<LeaderCard> getDeck() {
         return mDeck;
     }
 }
