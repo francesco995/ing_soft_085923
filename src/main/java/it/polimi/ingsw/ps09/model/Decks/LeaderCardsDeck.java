@@ -106,24 +106,24 @@ public class LeaderCardsDeck {
 
     /**
      * Randomly draw the hands of 4 cards for the player
-     * @param mLeaderCards Deck of cards from which you want to draw the hand of cards for the player
      * @return returns List of 4 Leader Cards drawn from the passed deck
      */
-    public ArrayList<LeaderCard> cardDraw(List<LeaderCard> mLeaderCards){
+    public ArrayList<LeaderCard> cardDraw(){
 
         ArrayList<LeaderCard> mHandOfCards = new ArrayList<>();
         int randomNumber;
 
         for(int counter = 1; counter <= HAND_SIZE; counter++) {
 
-            randomNumber = (int) Math.random() * mLeaderCards.size();
-            mHandOfCards.add(mLeaderCards.get(randomNumber));
-            mLeaderCards.remove(randomNumber);
+            randomNumber = (int) Math.random() * mDeck.size();
+            mHandOfCards.add(mDeck.get(randomNumber));
+            mDeck.remove(randomNumber);
 
         }
 
         return mHandOfCards;
     }
+
 
     public static int getCardTotal() {
         return CARD_TOTAL;

@@ -23,7 +23,7 @@ public class LeaderCardsDeckTest {
     }
     @Test
     public void areAllCardDrawn() throws Exception {
-        assertTrue(mTest.getHandSize() == mTest.cardDraw(mTest.getDeck()).size());
+        assertTrue(mTest.getHandSize() == mTest.cardDraw().size());
     }
 
 }

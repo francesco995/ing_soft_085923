@@ -140,8 +140,6 @@ public class Game extends Thread {
      */
     private void startGame() throws FileNotFoundException {
 
-        //TODO: chiama il valzer
-
         LeaderCardsExchange.startExchange(this);
         Round.startRound(this, 1);
 

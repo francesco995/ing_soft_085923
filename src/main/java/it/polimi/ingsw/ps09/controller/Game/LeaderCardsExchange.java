@@ -1,7 +1,6 @@
 package it.polimi.ingsw.ps09.controller.Game;
 
 import it.polimi.ingsw.ps09.model.LeaderCard;
-import it.polimi.ingsw.ps09.model.Player;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,12 +15,12 @@ public class LeaderCardsExchange {
     public static void startExchange(Game game) {
 
         LeaderCardsOrder mLeaderCardsOrder;
-        List<LeaderCardsOrder> mLeaderCardsOrderList = new ArrayList<>();
+        ArrayList<LeaderCardsOrder> mLeaderCardsOrderList = new ArrayList<>();
 
         //Initialize and draw LeaderCard for each player.
         for (int cont = 0; cont < game.PLAYERS_NUMBER; cont++) {
-            List<LeaderCard> mLeaderCardsList = new ArrayList<LeaderCard>();
-            mLeaderCardsList = game.mLeaderCardsDeck.cardDraw(game.mLeaderCardsDeck.getDeck());
+            ArrayList<LeaderCard> mLeaderCardsList = new ArrayList<LeaderCard>();
+            mLeaderCardsList = game.mLeaderCardsDeck.cardDraw();
 
             mLeaderCardsOrder = new LeaderCardsOrder(cont, game.mPlayersOrder.getPlayersOrder().get(cont), mLeaderCardsList);
             mLeaderCardsOrderList.add(mLeaderCardsOrder);
@@ -35,14 +34,16 @@ public class LeaderCardsExchange {
     }
 
     //Each player choose a leader card
-    private static List<LeaderCardsOrder> chooseLeaderCard(Game game, List<LeaderCardsOrder> LeaderCardsOrderList){
+    private static ArrayList<LeaderCardsOrder> chooseLeaderCard(Game game, ArrayList<LeaderCardsOrder> LeaderCardsOrderList){
 
         int choice = 0;
 
-        //LOOP USED TO GET CHOISE
+        //LOOP USED TO GET CHOOSE
         for (int cont = 0; cont < game.PLAYERS_NUMBER; cont++) {
 
             //Retrieve choice
+
+            game.mConnections.get(LeaderCardsOrderList.get(cont).getPlayerID()).sendLeaderCardsList((ArrayList)LeaderCardsOrderList.get(cont).getLeaderCardList());
             choice = Integer.valueOf(game.mConnections.get(LeaderCardsOrderList.get(cont).getPlayerID()).getMessage());
 
             //Add chosen LeaderCard to player's LeaderCard permanent list
@@ -59,7 +60,7 @@ public class LeaderCardsExchange {
 
 
     //Exchange leader card between player
-    private static List<LeaderCardsOrder> leaderCardListExchange(List<LeaderCardsOrder> LeaderCardsOrderList){
+    private static ArrayList<LeaderCardsOrder> leaderCardListExchange(ArrayList<LeaderCardsOrder> LeaderCardsOrderList){
 
         //LOOP TO START A NEW CHOICE LOOP
         int mTemporaryLastPlayerID = 0;

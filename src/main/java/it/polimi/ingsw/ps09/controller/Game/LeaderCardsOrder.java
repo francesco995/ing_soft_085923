@@ -2,6 +2,7 @@ package it.polimi.ingsw.ps09.controller.Game;
 
 import it.polimi.ingsw.ps09.model.LeaderCard;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.StringJoiner;
 
@@ -12,9 +13,9 @@ public class LeaderCardsOrder {
 
     private int mOrder;
     private int mPlayerID;
-    private List<LeaderCard> mLeaderCardList;
+    private ArrayList<LeaderCard> mLeaderCardList;
 
-    public LeaderCardsOrder(int order, int playerID, List<LeaderCard> leaderCardList) {
+    public LeaderCardsOrder(int order, int playerID, ArrayList<LeaderCard> leaderCardList) {
         mOrder = order;
         mPlayerID = playerID;
         mLeaderCardList = leaderCardList;
@@ -40,7 +41,7 @@ public class LeaderCardsOrder {
         mPlayerID = playerID;
     }
 
-    public void setLeaderCardList(List<LeaderCard> leaderCardList) {
+    public void setLeaderCardList(ArrayList<LeaderCard> leaderCardList) {
         mLeaderCardList = leaderCardList;
     }
 
