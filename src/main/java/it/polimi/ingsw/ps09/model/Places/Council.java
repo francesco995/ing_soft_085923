@@ -3,7 +3,6 @@ package it.polimi.ingsw.ps09.model.Places;
 import it.polimi.ingsw.ps09.model.FamilyMembers.FamilyMember;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.StringJoiner;
 
@@ -47,8 +46,6 @@ public class Council extends Place {
      * Delete all duplicates of the same family
      */
     public void deleteDuplicateFamilyMember(){
-
-        List<Integer> mIndexToDelete = new ArrayList<Integer>();
 
         for(int mCont=0; mCont<=mCouncilOrderList.size(); mCont++){
             for(int contInt = 1; contInt<mCouncilOrderList.size(); contInt++){

@@ -72,7 +72,7 @@ public abstract class FamilyMember {
 
         String mStringFamilyMember ="\n";
 
-        mStringFamilyMember += "Family:" +mFamily;
+        mStringFamilyMember += "Family: " +mFamily;
         mStringFamilyMember += "  |  Color:" + mColor;
         mStringFamilyMember += "  |  Power:" + mPower;
         mStringFamilyMember += "  | Available-->" + mIsUsableString;

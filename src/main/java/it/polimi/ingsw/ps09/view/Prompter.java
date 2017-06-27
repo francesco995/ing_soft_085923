@@ -47,7 +47,7 @@ public abstract class Prompter {
         return answer;
     }
 
-    public static int promptForIntChoiceZero(String message, List<String> options){
+    public static int promptForIntChoiceZero(String message, List<String> options) {
 
         BufferedReader mBufferedStringReader = new BufferedReader(new InputStreamReader(System.in));
         Scanner mReader = new Scanner(System.in);
@@ -64,12 +64,12 @@ public abstract class Prompter {
         do {
             System.out.print("\nYour choice? -> ");
             choice = mReader.nextInt();
-        }while(choice < 0 || choice > options.size());
+        } while (choice < 0 || choice > options.size());
 
         return (choice);
     }
 
-    public static int promptForIntChoice(String message, List<String> options){
+    public static int promptForIntChoice(String message, List<String> options) {
 
         BufferedReader mBufferedStringReader = new BufferedReader(new InputStreamReader(System.in));
         Scanner mReader = new Scanner(System.in);
@@ -86,25 +86,36 @@ public abstract class Prompter {
         do {
             System.out.print("\nYour choice? -> ");
             choice = mReader.nextInt();
-        }while(choice < 1 || choice > options.size());
+        } while (choice < 1 || choice > options.size());
 
         return (choice);
     }
 
     public static void printStringList(List<String> items) {
         IntStream.rangeClosed(1, items.size())
-                .mapToObj( i -> String.format("%2d. %s", i, items.get( i - 1 ) ) )
+                .mapToObj(i -> String.format("%2d. %s", i, items.get(i - 1)))
                 .forEach(System.out::println);
     }
 
 
-
-    public static ArrayList<Integer> PromptForMultipleDifferentChoices(String message, List<String> options, int numberOfChoices, int maxNumber) {
+    /**
+     * @param message         personal string that is displayed before asking player to chose, it should tell the player what he is choosing
+     * @param options         string list that contains all the different option from which a player can chose
+     * @param numberOfChoices number of multiple choice the user must do (must be lower or equal to maxNumber)
+     * @param maxNumber       choice will always be between 1 and maxNumber
+     * @return
+     */
+    public static List<Integer> promptMultipleDifferentChoices(String message, List<String> options, int numberOfChoices, int maxNumber) {
 
         BufferedReader mBufferedStringReader = new BufferedReader(new InputStreamReader(System.in));
         Scanner mReader = new Scanner(System.in);
 
-        ArrayList<Integer> mChoices =  new ArrayList<Integer>();
+        ArrayList<Integer> mChoices = new ArrayList<Integer>();
+
+        if (numberOfChoices > maxNumber) {
+            System.out.println("\nError you cannot make" + numberOfChoices + "different choices from" + maxNumber);
+            return mChoices;
+        }
 
         //First prints the message
         System.out.println(message);
@@ -116,10 +127,10 @@ public abstract class Prompter {
 
         do {
 
-            System.out.println("\nYour choice max number("+ maxNumber +"), remember no repetitions? -> ");
+            System.out.println("\nYour choice max number(" + maxNumber + "), remember no repetitions? -> ");
             int control = mReader.nextInt();
 
-            if(control<maxNumber) {
+            if (control < maxNumber) {
                 boolean isUsed = false;
 
                 //control if already entered
@@ -134,11 +145,10 @@ public abstract class Prompter {
                     numberOfChoices--;
                 } else
                     System.out.println("\nChoice already used, don't try to cheat!!!");
-            }
-            else
+            } else
                 System.out.println("\nnumber out of bound, try again");
 
-        }while (numberOfChoices > 0);
+        } while (numberOfChoices > 0);
 
         return mChoices;
     }

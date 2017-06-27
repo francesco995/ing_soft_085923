@@ -8,6 +8,7 @@ import it.polimi.ingsw.ps09.model.Player;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.stream.Collectors;
 
 
@@ -16,6 +17,8 @@ import java.util.stream.Collectors;
  * Client-side game instance for CLI clients
  */
 public class CLIClientGame extends Thread{
+
+    private static final int MAX_COUNCIL=5;
 
     private int mPlayerID;
 
@@ -35,8 +38,10 @@ public class CLIClientGame extends Thread{
     private ArrayList<String> mTowersMenu;
     private ArrayList<String> mPlayersMenu;
     private ArrayList<String> mPlayerMenu;
+    private ArrayList<String> mCouncilMenu;
 
     private String mUserName;
+
 
     public CLIClientGame(ServerConnection serverConnection, String userName){
 
@@ -85,8 +90,17 @@ public class CLIClientGame extends Thread{
         mPlayerMenu.add("Go back to main menu");
 
 
+
         mPlayersMenu = new ArrayList<>();
 
+
+        mCouncilMenu = new ArrayList<>();
+        mCouncilMenu.add("Get 1 wood and 1 stone");
+        mCouncilMenu.add("Get 2 servants");
+        mCouncilMenu.add("Get 2 coins");
+        mCouncilMenu.add("Get 2 military points");
+        mCouncilMenu.add("Get 1 faith point");
+        //no go back because selection must be made all in row
 
     }
 
@@ -113,6 +127,18 @@ public class CLIClientGame extends Thread{
 
     }
 
+    private void useCouncilPrivilege(){
+        int privilegesCount = 0;
+        //privilegesCount = player.getPrivilegesCount;
+
+        List<Integer> choices = Prompter.promptMultipleDifferentChoices
+                ("Choose " + privilegesCount +" different council privilege", mCouncilMenu , privilegesCount, MAX_COUNCIL);
+
+        //needs to send List through socket mServerConnection.sendMessage();
+        //remove privileges of player
+        //do action server side
+
+    }
 
     /**
      * Sends a request to the connection to update game data
