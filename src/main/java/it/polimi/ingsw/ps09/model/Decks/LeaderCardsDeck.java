@@ -8,9 +8,7 @@ import it.polimi.ingsw.ps09.model.LeaderCardEffects.LeaderCardEffect;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 /**
  * This is the container of all the LeaderCards in the game
@@ -46,6 +44,10 @@ public class LeaderCardsDeck {
         //For each period and for each type of card, fill the corresponding Map and LinkedList
 
         mDeck = loadDeck(mFilePath);
+
+        //Shuffle Deck
+        long seed = System.nanoTime();
+        Collections.shuffle(mDeck, new Random(seed));
 
 
     }
@@ -112,7 +114,7 @@ public class LeaderCardsDeck {
         List<LeaderCard> mHandOfCards = new ArrayList<LeaderCard>();
         int randomNumber;
 
-        for(int counter = 1;counter <= HAND_SIZE; counter++) {
+        for(int counter = 1; counter <= HAND_SIZE; counter++) {
 
             randomNumber = (int) Math.random() * mLeaderCards.size();
             mHandOfCards.add(mLeaderCards.get(randomNumber));
