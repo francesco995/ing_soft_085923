@@ -3,14 +3,11 @@ package it.polimi.ingsw.ps09.controller.Game;
 import it.polimi.ingsw.ps09.model.LeaderCard;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by walle on 26/06/17.
  */
 public class LeaderCardsExchange {
-
-    //TODO: shuffle leader cards before draw
 
     public static void startExchange(Game game) {
 

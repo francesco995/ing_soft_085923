@@ -147,7 +147,8 @@ public class Floor {
 
         mStringFloor.add(stringBonus);
 
-        //mStringFloor.add("Card: " + mCard.toString());
+        if(mCard!=null)
+            mStringFloor.add("Card: " + mCard.toString());
 
         if (!isAvailable()) {
             mStringFloor.add(mFamilyMember.toString());

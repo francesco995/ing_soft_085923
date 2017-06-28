@@ -9,66 +9,67 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
- * Created by walle on 14/06/17.
+ * Created by walle on 28/06/17.
  */
-public class TowerTest {
+public class CharactersTowerTest {
 
-    private TerritoriesTower mTerritoriesTower;
+    private CharactersTower mCharactersTower;
     private FamilyMember mOrangeFamily;
     private FamilyMember mBlackFamily;
 
     @Before
     public void setUp() throws Exception {
-        mTerritoriesTower = new TerritoriesTower();
+
+        mCharactersTower = new CharactersTower();
         mOrangeFamily = new OrangeFamilyMember("Smith");
         mBlackFamily = new BlackFamilyMember("Smith");
-        mTerritoriesTower.getFloors().get(1).setFamilyMember(mBlackFamily);
+        mCharactersTower.getFloor(1).setFamilyMember(mBlackFamily);
     }
 
     @Test
     public void SetFamilyMemberTest() throws Exception {
-        mTerritoriesTower.getFloors().get(0).setFamilyMember(mOrangeFamily);
+        mCharactersTower.getFloors().get(0).setFamilyMember(mOrangeFamily);
 
-        assertEquals(mOrangeFamily, mTerritoriesTower.getFloors().get(0).getFamilyMember());
+        assertEquals(mOrangeFamily, mCharactersTower.getFloors().get(0).getFamilyMember());
     }
 
     @Test
     public void hasFamilyMemberTest() throws Exception {
 
-        assertEquals(true, mTerritoriesTower.hasFamilyMember());
+        assertEquals(true, mCharactersTower.hasFamilyMember());
     }
 
     @Test
     public void MustBeFreeTest() throws Exception {
 
-        assertEquals(true, mTerritoriesTower.isFree(0));
+        assertEquals(true, mCharactersTower.isFree(0));
     }
 
     @Test
     public void MustNotBeFreeTest() throws Exception {
 
-        assertEquals(false, mTerritoriesTower.isFree(1));
+        assertEquals(false, mCharactersTower.isFree(1));
     }
 
     @Test
     public void hasSameFamilyMemberTest() throws Exception {
-        mTerritoriesTower.getFloors().get(3).setFamilyMember(mOrangeFamily);
+        mCharactersTower.getFloors().get(3).setFamilyMember(mOrangeFamily);
 
-        assertEquals(true, mTerritoriesTower.hasSameFamilyMember(mBlackFamily));
+        assertEquals(true, mCharactersTower.hasSameFamilyMember(mBlackFamily));
     }
 
     @Test
     public void clearAllTest() throws Exception {
-        mTerritoriesTower.clearAll();
+        mCharactersTower.clearAll();
 
-        assertEquals(4, mTerritoriesTower.getFloors().size());
+        assertEquals(4, mCharactersTower.getFloors().size());
 
     }
 
     @Test
     public void getColorTest() throws Exception{
 
-        assertEquals(true, mTerritoriesTower.getColor().equals("green"));
+        assertEquals(true, mCharactersTower.getColor().equals("blue"));
     }
 
 }
