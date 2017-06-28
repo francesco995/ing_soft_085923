@@ -2,13 +2,11 @@ package it.polimi.ingsw.ps09.controller;
 
 import it.polimi.ingsw.ps09.controller.Game.Game;
 import it.polimi.ingsw.ps09.controller.Network.Server.PlayerConnections.PlayerConnection;
-import it.polimi.ingsw.ps09.controller.Network.Server.PlayerConnections.PlayerConnectionSocket;
 import it.polimi.ingsw.ps09.controller.Network.Server.WelcomeServers.WelcomeSocketServer;
 import it.polimi.ingsw.ps09.model.Player;
 
 import java.io.IOException;
 import java.util.*;
-import java.util.function.Supplier;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
@@ -47,19 +45,12 @@ public class Server extends Thread{
 
     }
 
-    private void addReadyConnection(){
+    private void addReadyConnection() {
 
-        if(mWelcomeSocketServer.hasReadyPorts()) {
-            try {
+        if (mWelcomeSocketServer.hasReadyConnections()) {
 
-                mQueuedPlayers.add(new PlayerConnectionSocket(mWelcomeSocketServer.getReadyPort()));
-
-
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            mQueuedPlayers.add(mWelcomeSocketServer.getReadyConnection());
         }
-
     }
 
     private void addReadyGame(){

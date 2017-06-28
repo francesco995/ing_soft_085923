@@ -1,6 +1,7 @@
 package it.polimi.ingsw.ps09.controller.Network.Server.WelcomeServers;
 
-import it.polimi.ingsw.ps09.controller.Network.Server.SocketPortsManager;
+import it.polimi.ingsw.ps09.controller.Network.Server.PlayerConnections.PlayerConnection;
+import it.polimi.ingsw.ps09.controller.Network.Server.PlayerConnections.PlayerConnectionSocket;
 
 import java.io.*;
 import java.net.ServerSocket;
@@ -23,9 +24,7 @@ public class WelcomeSocketServer extends Thread implements WelcomeServer {
     private ServerSocket mLocalSocket;
     private Socket mRemoteSocket;
 
-    private SocketPortsManager mSocketPortsManager;
-
-    private Queue<Integer> mReadyPorts;
+    private Queue<PlayerConnection> mReadyConnections;
 
     private BufferedReader mIncomingMessages;
     private BufferedWriter mOutgoingMessages;
@@ -34,24 +33,22 @@ public class WelcomeSocketServer extends Thread implements WelcomeServer {
 
     public WelcomeSocketServer() throws IOException {
 
-        //Start ServerSocket on port 100
+        //Start ServerSocket on port 1024
         mLocalSocket = new ServerSocket(1024);
         mLogger.log(INFO, "Created ServerSocket on port 1024");
 
-        //Start SocketPortsManager to get a new free port every time a client connects
-        mSocketPortsManager = new SocketPortsManager(10001, 20000);
-        mReadyPorts = new LinkedList<>();
+        mReadyConnections = new LinkedList<>();
 
     }
 
 
-    public int getReadyPort(){
-        mLogger.log(INFO, "Server requested new ready port, sending port " + mReadyPorts.peek());
-        return mReadyPorts.poll();
+    public PlayerConnection getReadyConnection(){
+        mLogger.log(INFO, "Server requested new ready connection, sending port " + mReadyConnections.peek());
+        return mReadyConnections.poll();
     }
 
-    public boolean hasReadyPorts(){
-        if(!mReadyPorts.isEmpty())
+    public boolean hasReadyConnections(){
+        if(!mReadyConnections.isEmpty())
             return true;
         else
             return false;
@@ -68,6 +65,8 @@ public class WelcomeSocketServer extends Thread implements WelcomeServer {
 
             try {
 
+
+
                 //Start listening to the socket
                 mRemoteSocket = mLocalSocket.accept();
 
@@ -75,24 +74,11 @@ public class WelcomeSocketServer extends Thread implements WelcomeServer {
                 mIncomingMessages = new BufferedReader(new InputStreamReader(mRemoteSocket.getInputStream()));
                 mMessage = mIncomingMessages.readLine();
 
-                mLogger.log(INFO, "New Client request, message is: " + mMessage);
+                mLogger.log(INFO, "New Client request, UserName is: " + mMessage);
 
-                //Setup the message sender
-                mOutgoingMessages = new BufferedWriter(new OutputStreamWriter(mRemoteSocket.getOutputStream()));
+                mReadyConnections.add(new PlayerConnectionSocket(mRemoteSocket, mMessage));
 
-
-                //Answer the client with a new free port
-                port = mSocketPortsManager.getAvailablePort();
-
-                mOutgoingMessages.write(String.valueOf(port));
-                mOutgoingMessages.write("\n");
-                mOutgoingMessages.flush();
-
-                mLogger.log(INFO, "Sent new port available, port: " + port);
-
-                mReadyPorts.add(port);
-
-                mLogger.log(INFO, "Port " + port + " added to mReadyPorts");
+                mLogger.log(INFO, "Socket from " + mRemoteSocket.getInetAddress() + " added to Ready Connections");
 
 
 

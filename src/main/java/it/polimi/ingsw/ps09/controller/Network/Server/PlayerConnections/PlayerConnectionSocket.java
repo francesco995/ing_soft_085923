@@ -47,7 +47,6 @@ public class PlayerConnectionSocket extends Thread implements PlayerConnection{
     private PlayersOrder mPlayersOrder;
 
     //A ServerSocket listening and a Socket to answer
-    private ServerSocket mLocalSocket;
     private Socket mRemoteSocket;
 
     private BufferedReader mMessageReader;
@@ -69,11 +68,10 @@ public class PlayerConnectionSocket extends Thread implements PlayerConnection{
 
 
 
-    public PlayerConnectionSocket(int port) throws IOException {
+    public PlayerConnectionSocket(Socket remoteSocket, String userName) throws IOException {
 
-        //Start ServerSocket on port 100
-        mLocalSocket = new ServerSocket(port);
-
+        mRemoteSocket = remoteSocket;
+        mUserName = userName;
 
         mIncomingMessages = new LinkedList<>();
 
@@ -274,12 +272,9 @@ public class PlayerConnectionSocket extends Thread implements PlayerConnection{
 
     public void run() {
 
-        mLogger.log(INFO, "Starting new Connection on port " + mLocalSocket.getLocalPort());
+        mLogger.log(INFO, "Starting new Connection on port " + mRemoteSocket.getLocalPort());
 
         try {
-
-            //Start listening to the socket
-            mRemoteSocket = mLocalSocket.accept();
 
             //Read the incoming message
             mMessageReader = new BufferedReader(new InputStreamReader(mRemoteSocket.getInputStream()));
@@ -287,10 +282,8 @@ public class PlayerConnectionSocket extends Thread implements PlayerConnection{
             //Setup the message sender
             mMessageSender = new BufferedWriter(new OutputStreamWriter(mRemoteSocket.getOutputStream()));
 
-            mUserName = mMessageReader.readLine();
-
             mLogger.log(INFO, "User " + mUserName +
-                    " connected on port " + mLocalSocket.getLocalPort() +
+                    " connected on port " + mRemoteSocket.getLocalPort() +
                     " form address " + mRemoteSocket.getInetAddress());
 
             do {
@@ -337,12 +330,6 @@ public class PlayerConnectionSocket extends Thread implements PlayerConnection{
 
         try {
             mRemoteSocket.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        try {
-            mLocalSocket.close();
         } catch (IOException e) {
             e.printStackTrace();
         }

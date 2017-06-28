@@ -237,8 +237,6 @@ public class ServerConnectionSocket extends Thread implements ServerConnection {
             e.printStackTrace();
         }
 
-        System.out.println(message);
-
     }
 
 
@@ -379,6 +377,7 @@ public class ServerConnectionSocket extends Thread implements ServerConnection {
             message = "";
         }
 
+
         return message;
     }
 
@@ -399,26 +398,6 @@ public class ServerConnectionSocket extends Thread implements ServerConnection {
         try {
 
             //Connects to Server
-            mSocket = new Socket(mSERVER_ADDRESS, mSERVER_PORT);
-
-            //Incoming and Outgoing Messages
-            mMessageSender = new BufferedWriter(new OutputStreamWriter(mSocket.getOutputStream()));
-            mMessageReader = new BufferedReader(new InputStreamReader(mSocket.getInputStream()));
-
-            //Request connection to server
-            mMessageSender.write("connect\n");
-            mMessageSender.flush();
-
-            //Wait for Server response with a new free port
-            mSERVER_PORT = Integer.parseInt(mMessageReader.readLine());
-
-            //Close old connection
-            mSocket.close();
-
-            //Sleep 5 seconds to let the server create new socket
-            sleep(5000);
-
-            //Start connection to new Port
             mSocket = new Socket(mSERVER_ADDRESS, mSERVER_PORT);
 
             //Incoming and Outgoing Messages
