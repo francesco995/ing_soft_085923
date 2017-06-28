@@ -119,13 +119,22 @@ public class Tower {
      */
     public boolean hasSameFamilyMember(FamilyMember familyMember){
 
-        String familyColor = familyMember.getFamily();
+        String familyName = familyMember.getFamily();
 
         for (Floor mFloor: mFloors) {
 
             if(mFloor.getFamilyMember()!=null){
-                if (mFloor.getFamilyMember().getFamily().equals(familyColor)) {
-                    return true;
+                if (mFloor.getFamilyMember().getFamily().equals(familyName)) {
+
+                    if((mFloor.getFamilyMember().getColor().equals("Neutral")) ||
+                            (familyMember.getColor().equals("Neutral"))){
+
+                        return false;
+                    }
+
+                    else
+                        return true;
+
                 }
             }
         }
