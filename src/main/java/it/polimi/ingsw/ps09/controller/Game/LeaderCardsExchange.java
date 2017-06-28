@@ -28,13 +28,13 @@ public class LeaderCardsExchange {
 
         //Loop until there are no more leader cards to exchange
         while((mLeaderCardsOrderList.get(0).getLeaderCardList().size())!=0) {
-            mLeaderCardsOrderList = chooseLeaderCard(game, mLeaderCardsOrderList);
-            mLeaderCardsOrderList = leaderCardListExchange(mLeaderCardsOrderList);
+            chooseLeaderCard(game, mLeaderCardsOrderList);
+            leaderCardListExchange(mLeaderCardsOrderList);
         }
     }
 
     //Each player choose a leader card
-    private static ArrayList<LeaderCardsOrder> chooseLeaderCard(Game game, ArrayList<LeaderCardsOrder> LeaderCardsOrderList){
+    private static void chooseLeaderCard(Game game, ArrayList<LeaderCardsOrder> LeaderCardsOrderList){
 
         int choice = 0;
 
@@ -53,14 +53,11 @@ public class LeaderCardsExchange {
             LeaderCardsOrderList.get(cont).getLeaderCardList().remove(choice);
         }
 
-
-        return LeaderCardsOrderList;
-
     }
 
 
     //Exchange leader card between player
-    private static ArrayList<LeaderCardsOrder> leaderCardListExchange(ArrayList<LeaderCardsOrder> LeaderCardsOrderList){
+    private static void leaderCardListExchange(ArrayList<LeaderCardsOrder> LeaderCardsOrderList){
 
         //LOOP TO START A NEW CHOICE LOOP
         int mTemporaryLastPlayerID = 0;
@@ -79,11 +76,6 @@ public class LeaderCardsExchange {
                 LeaderCardsOrderList.get(cont).setPlayerID(mTemporaryLastPlayerID);
         }
 
-
-        return LeaderCardsOrderList;
-
     }
-
-
 
 }
