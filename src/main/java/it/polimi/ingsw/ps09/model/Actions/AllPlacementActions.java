@@ -17,6 +17,12 @@ public class AllPlacementActions {
 
         ArrayList<PlacementAction> mActionsList = new ArrayList<>();
 
+
+        //ADD NoAction AS FIRST ELEMENT IN LIST
+
+        mActionsList.add(new NoAction());
+
+
         ///////CHECK FOR POSSIBLE ACTION IN TOWERS///////
         /////////////////////////////////////////////////
         /////////////////////////////////////////////////
