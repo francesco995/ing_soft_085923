@@ -97,6 +97,7 @@ public class ServerConnectionSocket extends Thread implements ServerConnection {
         mGsonBuilder.registerTypeAdapter(Game.class, new GameAdapter());
         mGsonBuilder.registerTypeAdapter(FamilyMember.class, new FamilyMemberAdapter());
         mGsonBuilder.registerTypeAdapter(LeaderCardEffect.class, new LeaderCardEffectAdapter());
+        mGsonBuilder.registerTypeAdapter(FamilyMemberAction.class, new FamilyMemberActionAdapter());
 
         mGson = mGsonBuilder.create();
 
@@ -467,13 +468,13 @@ public class ServerConnectionSocket extends Thread implements ServerConnection {
 
                     case "familyMemberActions": {
                         updateFamilyMemberActions();
-                        mHasPlacementAction = true;
+                        mHasFamilyMemberAction = true;
                         break;
                     }
 
                     case "playerActions": {
                         updatePlayerActions();
-                        mHasPlacementAction = true;
+                        mHasPlayerActions = true;
                         break;
                     }
 

@@ -86,6 +86,7 @@ public class PlayerConnectionSocket extends Thread implements PlayerConnection{
         mGsonBuilder.registerTypeAdapter(Game.class, new GameAdapter());
         mGsonBuilder.registerTypeAdapter(FamilyMember.class, new FamilyMemberAdapter());
         mGsonBuilder.registerTypeAdapter(LeaderCardEffect.class, new LeaderCardEffectAdapter());
+        mGsonBuilder.registerTypeAdapter(FamilyMemberAction.class, new FamilyMemberActionAdapter());
 
         //Create Gson
         mGson = mGsonBuilder.create();
