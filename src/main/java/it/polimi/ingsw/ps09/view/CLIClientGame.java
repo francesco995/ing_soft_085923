@@ -2,6 +2,7 @@ package it.polimi.ingsw.ps09.view;
 
 import it.polimi.ingsw.ps09.controller.Network.Client.ServerConnections.ServerConnection;
 import it.polimi.ingsw.ps09.controller.PlayersOrder;
+import it.polimi.ingsw.ps09.model.Actions.FamilyMemberActions.FamilyMemberAction;
 import it.polimi.ingsw.ps09.model.Actions.PlacementActions.PlacementAction;
 import it.polimi.ingsw.ps09.model.Board;
 import it.polimi.ingsw.ps09.model.Player;
@@ -26,7 +27,6 @@ public class CLIClientGame extends Thread{
 
     private HashMap<Integer, Player> mPlayers;
     private PlayersOrder mPlayersOrder;
-    private ArrayList<PlacementAction> mPlayerActionsList;
 
     private boolean mHasPlacementAction;
     private boolean mHasFamilyMemberAction;
@@ -118,14 +118,30 @@ public class CLIClientGame extends Thread{
 
     private void doPlacementAction(){
 
-        mPlayerActionsList = mServerConnection.getPlacementActionsList();
+        ArrayList<PlacementAction> playerActionsList;
+
+        playerActionsList = mServerConnection.getPlacementActionsList();
 
         int choice = Prompter.promptForIntChoice("Choose your action",
-                mPlayerActionsList.stream().map(PlacementAction::toString).collect(Collectors.toList()));
+                playerActionsList.stream().map(PlacementAction::toString).collect(Collectors.toList()));
 
-        mServerConnection.sendMessage(String.valueOf(choice));
+        mServerConnection.doPlacementAction(choice);
 
         mServerConnection.setHasPlacementAction(false);
+
+    }
+
+    private void doFamilyMemberAction(){
+
+        ArrayList<FamilyMemberAction> familyMemberActionsList;
+
+        familyMemberActionsList = mServerConnection.getFamilyMemberActionsList();
+
+        int choice = Prompter.promptForIntChoice("Choose what Family Member give power to",
+                familyMemberActionsList.stream().map(FamilyMemberAction::toString).collect(Collectors.toList()));
+
+        mServerConnection.doFamilyMemberAction(choice);
+
 
     }
 
@@ -242,6 +258,12 @@ public class CLIClientGame extends Thread{
                     //Do PlacementAction
                     updateData();
                     doPlacementAction();
+                    break;
+                }
+                case 6:{
+                    //Do Family Member Action
+                    updateData();
+                    doFamilyMemberAction();
                     break;
                 }
 

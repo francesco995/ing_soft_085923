@@ -65,6 +65,7 @@ public class PersonalBoard {
         else
             mString = "\nNo Building cards\n";
 
+        //TODO: fix
         mPersonalBoardCards.getBoardBuildings().stream().forEach(c -> mString.concat( "\n " + c.toString()));
 
         return mString;

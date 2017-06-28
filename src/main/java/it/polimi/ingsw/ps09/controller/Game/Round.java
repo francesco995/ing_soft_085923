@@ -78,18 +78,53 @@ public class Round {
         game.mConnections.get(playerID).sendPlacementActionsList(placementActionsList);
         game.mConnections.get(playerID).sendFamilyMemberActionsList(familyMemberActionsList);
 
-        int choice = Integer.valueOf(game.mConnections.get(playerID).getMessage());
+        game.mConnections.get(playerID).waitActionReady();
 
-        mLogger.log(INFO, "Game: " + Game.GAME_ID + " player " + playerID + " chosen action # " + choice + ": " + placementActionsList.get(choice - 1).toString());
-
+        int choice = Integer.valueOf(game.mConnections.get(playerID).getActionChoice());
         choice--;
 
-        placementActionsList.get(choice).doAction(
-                game.mGameBoard,
-                game.mPlayers.get(playerID),
-                placementActionsList.get(choice).getFamilyMember(),
-                placementActionsList.get(choice).getIndex()
+        switch(game.mConnections.get(playerID).getActionType()){
+
+            case "PLACEMENT": {
+
+                mLogger.log(INFO, "Game: " + Game.GAME_ID + " player " + playerID + " chosen action # " + choice + ": " + placementActionsList.get(choice - 1).toString());
+
+                placementActionsList.get(choice).doAction(
+                        game.mGameBoard,
+                        game.mPlayers.get(playerID),
+                        placementActionsList.get(choice).getFamilyMember(),
+                        placementActionsList.get(choice).getIndex()
                 );
+
+                break;
+            }
+
+            case "FAMILY_MEMBER": {
+
+                mLogger.log(INFO, "Game: " + Game.GAME_ID + " player " + playerID + " chosen action # " + choice + ": " + familyMemberActionsList.get(choice - 1).toString());
+
+                familyMemberActionsList.get(choice).doAction(
+                        game.mGameBoard,
+                        game.mPlayers.get(playerID),
+                        familyMemberActionsList.get(choice).getFamilyMember(),
+                        familyMemberActionsList.get(choice).getIndex()
+                );
+
+                break;
+            }
+
+            case "PLAYER": {
+
+                break;
+            }
+
+
+        }
+
+
+
+
+
         //TODO: pass a second list of action (moved by 1000) that are not ENDING
     }
 

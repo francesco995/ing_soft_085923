@@ -197,6 +197,17 @@ public class ServerConnectionSocket extends Thread implements ServerConnection {
     }
 
     /**
+     * Get updated PlacementActions list for player
+     * @return List of valid PlacementActions for player
+     */
+    public ArrayList<FamilyMemberAction> getFamilyMemberActionsList() {
+        return mFamilyMemberActionsList;
+    }
+
+
+
+
+    /**
      * Get all incoming messages not yet ridden
      * @return List of received messages
      */
@@ -317,6 +328,22 @@ public class ServerConnectionSocket extends Thread implements ServerConnection {
         mBoard = mGson.fromJson(waitForMessage(), Board.class);
 
     }
+
+
+    public void doPlacementAction(int actionIndex){
+
+        sendMessage("doPlacementAction");
+
+        sendMessage(String.valueOf(actionIndex));
+    }
+
+    public void doFamilyMemberAction(int actionIndex){
+
+        sendMessage("doFamilyMemberAction");
+
+        sendMessage(String.valueOf(actionIndex));
+    }
+
 
     /**
      * Sleep for x seconds unless Interrupted

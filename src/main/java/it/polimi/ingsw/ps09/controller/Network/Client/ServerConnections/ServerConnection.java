@@ -1,6 +1,7 @@
 package it.polimi.ingsw.ps09.controller.Network.Client.ServerConnections;
 
 import it.polimi.ingsw.ps09.controller.PlayersOrder;
+import it.polimi.ingsw.ps09.model.Actions.FamilyMemberActions.FamilyMemberAction;
 import it.polimi.ingsw.ps09.model.Actions.PlacementActions.PlacementAction;
 import it.polimi.ingsw.ps09.model.Board;
 import it.polimi.ingsw.ps09.model.Player;
@@ -18,6 +19,7 @@ public interface ServerConnection{
     boolean hasFamilyMemberAction();
     boolean hasPlayerActions();
     void setHasPlacementAction(boolean hasPlacementAction);
+    void doPlacementAction(int actionIndex);
     boolean gameStarted();
     Board getBoard();
     HashMap<Integer, Player> getPlayers();
@@ -26,6 +28,8 @@ public interface ServerConnection{
     String getMessage();
     ArrayList<PlacementAction> getPlacementActionsList();
     List<String> getAllMessages();
+    ArrayList<FamilyMemberAction> getFamilyMemberActionsList();
+    void doFamilyMemberAction(int actionIndex);
     boolean hasIncomingMessages();
     void sendMessage(String message);
     boolean isConnected();

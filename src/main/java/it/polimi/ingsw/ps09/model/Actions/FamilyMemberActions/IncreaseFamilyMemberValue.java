@@ -1,16 +1,23 @@
 package it.polimi.ingsw.ps09.model.Actions.FamilyMemberActions;
 
+import it.polimi.ingsw.ps09.controller.Game.Game;
 import it.polimi.ingsw.ps09.model.Board;
 import it.polimi.ingsw.ps09.model.FamilyMembers.FamilyMember;
 import it.polimi.ingsw.ps09.model.Player;
 import it.polimi.ingsw.ps09.model.Resources.Servant;
 
 import java.util.StringJoiner;
+import java.util.logging.Logger;
+
+import static java.util.logging.Level.INFO;
 
 /**
  * Created by franc on 15/06/2017.
  */
 public class IncreaseFamilyMemberValue implements FamilyMemberAction {
+
+    //LOGGER
+    private static final Logger mLogger = Logger.getAnonymousLogger();
 
     FamilyMember mFamilyMember;
     int mIndex;
@@ -52,6 +59,10 @@ public class IncreaseFamilyMemberValue implements FamilyMemberAction {
     public void doAction(Board board, Player player, FamilyMember familyMember, int index)
             throws UnsupportedOperationException {
 
+        mLogger.log(INFO, "Game: " + Game.GAME_ID +
+                " player " + player.getPlayerId() +
+                " increase " + familyMember.getColor() + " Family Member power by " + index);
+
         //check if action is valid
         if (!isValid(player, familyMember, index))
             throw new UnsupportedOperationException("Operation not supported");
@@ -66,7 +77,7 @@ public class IncreaseFamilyMemberValue implements FamilyMemberAction {
 
     @Override
     public FamilyMember getFamilyMember() {
-        return null;
+        return mFamilyMember;
     }
 
     @Override
@@ -84,7 +95,7 @@ public class IncreaseFamilyMemberValue implements FamilyMemberAction {
         StringJoiner mStringIncreaseValue = new StringJoiner("", "", "");
 
         mStringIncreaseValue.add("");
-        mStringIncreaseValue.add("Increase the "+ mFamilyMember.getColor().toLowerCase()+" family member value by"+ mIndex);
+        mStringIncreaseValue.add("Increase the "+ mFamilyMember.getColor().toLowerCase()+" family member value by "+ mIndex);
 
         return mStringIncreaseValue.toString();
     }

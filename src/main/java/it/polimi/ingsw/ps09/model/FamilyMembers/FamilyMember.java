@@ -75,7 +75,7 @@ public abstract class FamilyMember {
         mStringFamilyMember += "Family: " +mFamily;
         mStringFamilyMember += "  |  Color:" + mColor;
         mStringFamilyMember += "  |  Power:" + mPower;
-        mStringFamilyMember += "  | Available-->" + mIsUsableString;
+        mStringFamilyMember += "  | Available--> " + mIsUsableString;
 
 
         return mStringFamilyMember.toString();

@@ -27,6 +27,9 @@ public interface PlayerConnection{
     void sendFamilyMemberActionsList(ArrayList<FamilyMemberAction> familyMemberActionsList);
     void sendPlayerActionsList(ArrayList<PlayerAction> playerActionsList);
     int sendLeaderCardsList(ArrayList<LeaderCard> leaderCardsList);
+    void waitActionReady();
+    int getActionChoice();
+    String getActionType();
     void run();
     void start();
 

@@ -64,7 +64,9 @@ public class PlayerConnectionSocket extends Thread implements PlayerConnection{
     private GsonBuilder mGsonBuilder;
 
 
-
+    private int mActionChoice;
+    private String mActionType;
+    private boolean mHasActionReady = false;
 
 
 
@@ -111,6 +113,25 @@ public class PlayerConnectionSocket extends Thread implements PlayerConnection{
         sendBoard();
         sendPlayersOrder();
         sendPlayers();
+    }
+
+    public boolean hasActionReady(){
+        return mHasActionReady;
+    }
+
+
+    public int getActionChoice() {
+        return mActionChoice;
+    }
+
+    public String getActionType() {
+        return mActionType;
+    }
+
+    public void waitActionReady(){
+        while(!mHasActionReady){
+            sleep(100);
+        }
     }
 
 
@@ -295,22 +316,20 @@ public class PlayerConnectionSocket extends Thread implements PlayerConnection{
                 switch(mMessage){
 
                     //TODO: remove unused messages
-                    case "board": {
-                        sendBoard();
+                    case "doPlacementAction":{
+
+                        mActionType = "PLACEMENT";
+                        mActionChoice = Integer.valueOf(waitForMessage());
+                        mHasActionReady = true;
+
                         break;
                     }
 
-                    case "playersOrder":{
-                        sendPlayersOrder();
-                        break;
-                    }
+                    case "doFamilyMemberAction": {
 
-                    case "players": {
-                        sendPlayers();
-                        break;
-                    }
-
-                    case "placementActions": {
+                        mActionType = "FAMILY_MEMBER";
+                        mActionChoice = Integer.valueOf(waitForMessage());
+                        mHasActionReady = true;
 
                         break;
                     }
