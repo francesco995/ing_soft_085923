@@ -71,6 +71,11 @@ public class RoundSetup {
         game.mWhiteDice.roll();
         game.mOrangeDice.roll();
 
+        //Copy dice value into Board per la view
+        game.mGameBoard.setBlackDice(game.mBlackDice.getValue());
+        game.mGameBoard.setOrangeDice(game.mOrangeDice.getValue());
+        game.mGameBoard.setWhiteDice(game.mWhiteDice.getValue());
+
     }
 
 

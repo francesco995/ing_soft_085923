@@ -58,4 +58,9 @@ public class SlotTest {
 
     }
 
+    @Test
+    public void isFreeTest() throws Exception{
+        assertEquals(false, mSlot.isFree());
+    }
+
 }

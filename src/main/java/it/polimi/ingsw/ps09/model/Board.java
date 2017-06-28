@@ -1,6 +1,9 @@
 package it.polimi.ingsw.ps09.model;
 
 import it.polimi.ingsw.ps09.model.DevelopmentCards.DevelopmentCard;
+import it.polimi.ingsw.ps09.model.Dices.BlackDice;
+import it.polimi.ingsw.ps09.model.Dices.OrangeDice;
+import it.polimi.ingsw.ps09.model.Dices.WhiteDice;
 import it.polimi.ingsw.ps09.model.FamilyMembers.FamilyMember;
 import it.polimi.ingsw.ps09.model.Places.Council;
 import it.polimi.ingsw.ps09.model.Places.HarvestAndProductionAreas.Harvest;
@@ -36,6 +39,10 @@ public class Board{
 
     private Order mOrder;
 
+    private BlackDice mBlackDice;
+    private OrangeDice mOrangeDice;
+    private WhiteDice mWhiteDice;
+
     /**
      * Create the board whit market, harvest, production, towers, church and council
      */
@@ -56,6 +63,10 @@ public class Board{
         mExcommunicationTile3 = ExcomTile3;
         mExcommunicationTilesList = new ArrayList<ExcommunicationTile>();
         mOrder = new Order();
+
+        mBlackDice = new BlackDice();
+        mOrangeDice = new OrangeDice();
+        mWhiteDice = new WhiteDice();
 
     }
 
@@ -501,6 +512,29 @@ public class Board{
 
         return mExcommunicationTilesList;
     }
+
+
+    //####################################################
+    //####################################################
+    //#################### Dices #########################
+
+    public void setBlackDice(int diceValue){
+        mBlackDice.setValue(diceValue);
+    }
+
+    public void setOrangeDice(int diceValue){
+        mOrangeDice.setValue(diceValue);
+    }
+
+    public void setWhiteDice(int diceValue){
+        mWhiteDice.setValue(diceValue);
+    }
+
+
+
+    //####################################################
+    //####################################################
+
 
   /*  //TODO: Remember to create setTitleName in Excommunication
     public void setExcommunicationTitleName(String name, int period) {
