@@ -479,6 +479,8 @@ public class ServerConnectionSocket extends Thread implements ServerConnection {
 
                     case "noAction": {
                         mHasPlacementAction = false;
+                        mHasPlayerActions = false;
+                        mHasFamilyMemberAction = false;
                         break;
                     }
 

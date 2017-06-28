@@ -15,6 +15,8 @@ import java.util.List;
 public interface ServerConnection{
 
     boolean hasPlacementAction();
+    boolean hasFamilyMemberAction();
+    boolean hasPlayerActions();
     void setHasPlacementAction(boolean hasPlacementAction);
     boolean gameStarted();
     Board getBoard();

@@ -28,7 +28,9 @@ public class CLIClientGame extends Thread{
     private PlayersOrder mPlayersOrder;
     private ArrayList<PlacementAction> mPlayerActionsList;
 
-    private boolean mHasAction;
+    private boolean mHasPlacementAction;
+    private boolean mHasFamilyMemberAction;
+    private boolean mHasPlayerAction;
 
     private ServerConnection mServerConnection;
 
@@ -48,7 +50,7 @@ public class CLIClientGame extends Thread{
         mServerConnection = serverConnection;
         mUserName = userName;
 
-        mHasAction = false;
+        mHasPlacementAction = false;
 
         mMainMenuMessage = "\n###################################################";
         mMainMenuMessage += "\n######### Lorenzo il Magnifico Main Menu ##########";
@@ -114,7 +116,7 @@ public class CLIClientGame extends Thread{
     }
 
 
-    private void doAction(){
+    private void doPlacementAction(){
 
         mPlayerActionsList = mServerConnection.getPlacementActionsList();
 
@@ -152,14 +154,33 @@ public class CLIClientGame extends Thread{
         mPlayersMenu.clear();
         mPlayersOrder.getPlayersOrder().stream().forEach(id -> mPlayersMenu.add(mPlayers.get(id).getUserName()));
 
-        mHasAction = mServerConnection.hasPlacementAction();
+        mHasPlacementAction = mServerConnection.hasPlacementAction();
+        mHasFamilyMemberAction = mServerConnection.hasFamilyMemberAction();
+        mHasPlayerAction = mServerConnection.hasPlayerActions();
 
-        if(mHasAction && !mMainMenu.contains("Do PlacementAction"))
-            mMainMenu.add("Do PlacementAction");
+        //Add Placement Action to menu
+        if(mHasPlacementAction && !mMainMenu.contains("Do Placement Action"))
+            mMainMenu.add("Do Placement Action");
 
-        if(!mServerConnection.hasPlacementAction() && mMainMenu.contains("Do PlacementAction"))
-            mMainMenu.remove("Do PlacementAction");
+        //Add Family Member Action to menu
+        if(mHasFamilyMemberAction && !mMainMenu.contains("Do Family Member Action"))
+            mMainMenu.add("Do Family Member Action");
 
+        //Add Player Action to menu
+        if(mHasPlayerAction && !mMainMenu.contains("Do Player Action"))
+            mMainMenu.add("Do Player Action");
+
+        //Remove Placement Action from menu
+        if(!mHasPlacementAction && mMainMenu.contains("Do Placement Action"))
+            mMainMenu.remove("Do Placement Action");
+
+        //Remove Family Member Action from menu
+        if(!mHasFamilyMemberAction && mMainMenu.contains("Do Family Member Action"))
+            mMainMenu.remove("Do Family Member Action");
+
+        //Remove Placement Action from menu
+        if(!mHasPlayerAction && mMainMenu.contains("Do Player Action"))
+            mMainMenu.remove("Do Player Action");
 
     }
 
@@ -220,7 +241,7 @@ public class CLIClientGame extends Thread{
                 case 5:{
                     //Do PlacementAction
                     updateData();
-                    doAction();
+                    doPlacementAction();
                     break;
                 }
 
