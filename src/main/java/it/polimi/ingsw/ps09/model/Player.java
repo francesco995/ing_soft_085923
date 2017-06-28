@@ -907,5 +907,12 @@ public class Player {
 
     }
 
+    public UserResources PlayerResourcesCopy(UserResources sum){
 
+        UserResources resourcesCopy = getPersonalBoard().getUserResources();
+
+        resourcesCopy.add(sum);
+
+        return resourcesCopy;
+    }
 }

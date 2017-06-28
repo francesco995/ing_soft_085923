@@ -623,4 +623,16 @@ public class Board{
 
         return mStringBoard.toString();
     }
+
+    public BlackDice getBlackDice() {
+        return mBlackDice;
+    }
+
+    public OrangeDice getOrangeDice() {
+        return mOrangeDice;
+    }
+
+    public WhiteDice getWhiteDice() {
+        return mWhiteDice;
+    }
 }

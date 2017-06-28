@@ -69,6 +69,7 @@ public class CLIClientGame extends Thread{
         mBoardMenu.add("Display Towers");
         mBoardMenu.add("Display Markets");
         mBoardMenu.add("Display Harvest & Production");
+        mBoardMenu.add("Display Dices values");
         mBoardMenu.add("Go back to main menu");
 
 
@@ -396,23 +397,35 @@ public class CLIClientGame extends Thread{
         switch(Prompter.promptForIntChoice("Please choose what to display", mBoardMenu)){
 
             case 1:{
+
                 System.out.println(mBoard.toString());
                 break;
             }
 
             case 2:{
+
                 displayTowers();
                 break;
             }
 
             case 3:{
+
                 System.out.println(mBoard.getMarket().toString());
                 break;
             }
 
             case 4:{
+
                 System.out.println(mBoard.getHarvest().toString());
                 System.out.println(mBoard.getProduction().toString());
+                break;
+            }
+
+            case 5:{
+
+                System.out.println(mBoard.getBlackDice().toString());
+                System.out.println(mBoard.getWhiteDice().toString());
+                System.out.println(mBoard.getOrangeDice().toString());
                 break;
             }
         }

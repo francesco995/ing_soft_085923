@@ -5,6 +5,7 @@ import it.polimi.ingsw.ps09.model.DevelopmentCards.Character;
 import it.polimi.ingsw.ps09.model.FamilyMembers.FamilyMember;
 import it.polimi.ingsw.ps09.model.Player;
 import it.polimi.ingsw.ps09.model.Resources.Coins;
+import it.polimi.ingsw.ps09.model.UserResources;
 
 import java.util.StringJoiner;
 
@@ -36,7 +37,9 @@ public class PlaceFamilyMemberInBlueFloor extends PlaceFamilyMemberInFloor {
         //check if family member is usable
         if (!familyMember.isUsable())
             return false;
-
+        //check if family member of same color present
+       /* if( board.get)
+            return false;*/
         //Check if floor is free
         if (!board.getCharactersTower().getFloors().get(index).isAvailable())
             return false;
@@ -54,8 +57,10 @@ public class PlaceFamilyMemberInBlueFloor extends PlaceFamilyMemberInFloor {
         //card variable to check for resources
         Character card = (Character) board.getCharacterTowerCard(index);
 
+        UserResources ResourceWithBonus = player.PlayerResourcesCopy(player.getFamilyMemberPlacementResourcesDiscount("CHARACTER"));
+
         //check if enough resources
-        if (!player.has(card.getResourcesCosts().get(0)))
+        if (ResourceWithBonus.isGreaterOrEqual(card.getResourcesCosts().get(0)))
             return false;
 
         //check if enough points

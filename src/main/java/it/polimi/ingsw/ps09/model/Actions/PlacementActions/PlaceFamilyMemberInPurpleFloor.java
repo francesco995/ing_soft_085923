@@ -5,6 +5,7 @@ import it.polimi.ingsw.ps09.model.DevelopmentCards.Venture;
 import it.polimi.ingsw.ps09.model.FamilyMembers.FamilyMember;
 import it.polimi.ingsw.ps09.model.Player;
 import it.polimi.ingsw.ps09.model.Resources.Coins;
+import it.polimi.ingsw.ps09.model.UserResources;
 
 import java.util.StringJoiner;
 
@@ -54,8 +55,10 @@ public class PlaceFamilyMemberInPurpleFloor extends PlaceFamilyMemberInFloor {
         //card variable to check for resources
         Venture card = (Venture) board.getVenturesTowerCard(index);
 
+        UserResources ResourceWithBonus = player.PlayerResourcesCopy(player.getFamilyMemberPlacementResourcesDiscount("VENTURE"));
+
         //check if enough resources
-        if (!player.has(card.getResourcesCosts().get(0)))
+        if (ResourceWithBonus.isGreaterOrEqual(card.getResourcesCosts().get(0)))
             return false;
 
         //check if enough points

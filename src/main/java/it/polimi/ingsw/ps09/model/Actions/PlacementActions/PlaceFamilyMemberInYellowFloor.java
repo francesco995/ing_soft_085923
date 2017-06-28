@@ -5,6 +5,7 @@ import it.polimi.ingsw.ps09.model.DevelopmentCards.Building;
 import it.polimi.ingsw.ps09.model.FamilyMembers.FamilyMember;
 import it.polimi.ingsw.ps09.model.Player;
 import it.polimi.ingsw.ps09.model.Resources.Coins;
+import it.polimi.ingsw.ps09.model.UserResources;
 
 import java.util.StringJoiner;
 
@@ -54,10 +55,11 @@ public class PlaceFamilyMemberInYellowFloor extends PlaceFamilyMemberInFloor {
         //card variable to check for resources
         Building card = (Building) board.getBuildingsTowerCard(index);
 
-        //check if enough resources
-        if (!player.has(card.getResourcesCosts().get(0)))
-            return false;
+        UserResources ResourceWithBonus = player.PlayerResourcesCopy(player.getFamilyMemberPlacementResourcesDiscount("BUILDING"));
 
+        //check if enough resources
+        if (ResourceWithBonus.isGreaterOrEqual(card.getResourcesCosts().get(0)))
+            return false;
         //check if enough points
         if (!player.has(card.getPointsCosts().get(0)))
             return false;
@@ -87,7 +89,7 @@ public class PlaceFamilyMemberInYellowFloor extends PlaceFamilyMemberInFloor {
         player.add(board.getBuildingsTower().getFloors().get(index).getBoardBonus().getResourcesBonus());
         player.add(board.getBuildingsTower().getFloors().get(index).getBoardBonus().getPointsBonus());
 
-        //pay for card
+        //pay for card removed because already done by add card
         //player.remove(board.getBuildingsTowerCard(index).getResourcesCosts().get(0));
 
         //pay if floor already occupied
