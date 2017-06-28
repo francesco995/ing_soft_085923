@@ -22,4 +22,12 @@ public class NoAction implements PlacementAction {
     public int getIndex() {
         return 0;
     }
+
+    @Override
+    public String toString(){
+
+        String mString = "Pass your turn to next player";
+
+        return mString;
+    }
 }

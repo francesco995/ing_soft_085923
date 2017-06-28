@@ -1,5 +1,6 @@
 package it.polimi.ingsw.ps09.controller.Game;
 
+import it.polimi.ingsw.ps09.model.Actions.AllFamilyMemberActions;
 import it.polimi.ingsw.ps09.model.Actions.FamilyMemberActions.FamilyMemberAction;
 import it.polimi.ingsw.ps09.model.Actions.PlacementActions.PlacementAction;
 import it.polimi.ingsw.ps09.model.Actions.AllPlacementActions;
@@ -71,10 +72,11 @@ public class Round {
         mLogger.log(INFO, "Game: " + Game.GAME_ID + " player " + playerID + " turn to do PlacementAction!");
 
         ArrayList<PlacementAction> placementActionsList =  AllPlacementActions.getValidPlacementActionsForPlayer(game.mGameBoard, game.mPlayers.get(playerID));
-        ArrayList<FamilyMemberAction> familyMemberActionsList = new ArrayList<>(); //TODO: switch to getValidFamilyMembersActionsForPlayer
+        ArrayList<FamilyMemberAction> familyMemberActionsList = AllFamilyMemberActions.getValidActionsForPlayer(game.mGameBoard, game.mPlayers.get(playerID));
         ArrayList<PlayerAction> playerActionsList = new ArrayList<>(); //TODO: as previous
 
         game.mConnections.get(playerID).sendPlacementActionsList(placementActionsList);
+        game.mConnections.get(playerID).sendFamilyMemberActionsList(familyMemberActionsList);
 
         int choice = Integer.valueOf(game.mConnections.get(playerID).getMessage());
 
