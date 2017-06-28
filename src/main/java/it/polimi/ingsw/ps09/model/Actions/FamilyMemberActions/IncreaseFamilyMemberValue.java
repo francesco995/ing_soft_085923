@@ -22,7 +22,7 @@ public class IncreaseFamilyMemberValue implements FamilyMemberAction {
     FamilyMember mFamilyMember;
     int mIndex;
 
-    public IncreaseFamilyMemberValue(FamilyMember familyMember,int index) {
+    public IncreaseFamilyMemberValue(FamilyMember familyMember, int index) {
         mFamilyMember = familyMember;
         mIndex = index;
     }

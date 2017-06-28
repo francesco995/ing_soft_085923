@@ -30,6 +30,7 @@ public interface PlayerConnection{
     void waitActionReady();
     int getActionChoice();
     String getActionType();
+    void resetActionReady();
     void run();
     void start();
 

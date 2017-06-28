@@ -119,6 +119,10 @@ public class PlayerConnectionSocket extends Thread implements PlayerConnection{
         return mHasActionReady;
     }
 
+    public void resetActionReady(){
+        mHasActionReady = false;
+    }
+
 
     public int getActionChoice() {
         return mActionChoice;

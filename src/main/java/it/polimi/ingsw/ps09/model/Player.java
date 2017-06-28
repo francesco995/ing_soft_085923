@@ -624,7 +624,7 @@ public class Player {
 
         //LOG
         mLogger.log(INFO, "Game: " + Game.GAME_ID +
-                " add " + removeServant.toString() +
+                " remove " + removeServant.toString() +
                 " Servant to player: " + mUserName +
                 " now has: " + getServant().toString() + " Servant");
 
@@ -909,7 +909,8 @@ public class Player {
 
     public UserResources PlayerResourcesCopy(UserResources sum){
 
-        UserResources resourcesCopy = getPersonalBoard().getUserResources();
+        UserResources resourcesCopy = new UserResources();
+        resourcesCopy.add(getPersonalBoard().getUserResources());
 
         resourcesCopy.add(sum);
 
