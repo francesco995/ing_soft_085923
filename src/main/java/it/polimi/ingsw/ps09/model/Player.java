@@ -226,12 +226,19 @@ public class Player {
     //####################################################
     //########## Add Cards and apply effects #############
 
-    public void addCard(DevelopmentCard card, int costChoice){
+    public void addCard(DevelopmentCard card, int costChoice, String cardType){
 
 
-        if(card.getResourcesCosts().size() > 0)
-            remove(card.getResourcesCosts().get(costChoice));
+        if(card.getResourcesCosts().size() > 0) {
 
+            //creates a copy of the cost of the card and remove the player discount
+            UserResources ResourceWithDiscount = new UserResources();
+            ResourceWithDiscount.add(card.getResourcesCosts().get(costChoice));
+            ResourceWithDiscount.remove(mFamilyMemberPlacementResourcesDiscount.getBonus(cardType));
+
+
+            remove(ResourceWithDiscount);
+        }
         if(card.getPointsCosts().size() > 0)
             remove(card.getPointsCosts().get(costChoice));
 
@@ -243,7 +250,7 @@ public class Player {
 
     public void addTerritoryCard(Territory card){
 
-        addCard(card, 0);
+        addCard(card, 0, "TERRITORY");
         mPersonalBoard.add(card);
 
         updated();
@@ -252,7 +259,7 @@ public class Player {
 
     public void addBuildingCard(Building card){
 
-        addCard(card, 0);
+        addCard(card, 0, "BUILDING");
         mPersonalBoard.add(card);
 
         updated();
@@ -260,7 +267,7 @@ public class Player {
 
     public void addCharacterCard(Character card){
 
-        addCard(card, 0);
+        addCard(card, 0,"CHARACTER");
 
         addPermanentEffects(card.getPermanentEffects());
         mPersonalBoard.add(card);
@@ -270,7 +277,7 @@ public class Player {
 
     public void addVentureCard(Venture card){
 
-        addCard(card, 0);
+        addCard(card, 0,"VENTURE");
 
         addEndGameEffects(card.getEndGameEffects());
         mPersonalBoard.add(card);

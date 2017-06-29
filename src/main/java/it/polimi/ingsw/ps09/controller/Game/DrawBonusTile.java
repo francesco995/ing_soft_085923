@@ -19,7 +19,7 @@ public class DrawBonusTile {
         PlayersOrder mOrder = game.mPlayersOrder;
         List<Integer> mReverseOrder = new ArrayList<>();
 
-        //TODO ASK GIANNI IF PLAYERS ORDER JUST USER ID LIST (integer)
+
         mOrder.getPlayersOrder().stream().forEach(id -> mReverseOrder.add(id));
 
         //order actually get reversed
@@ -44,7 +44,7 @@ public class DrawBonusTile {
        // game.mPlayers.get(LeaderCardsOrderList.get(cont).getPlayerID()).add(LeaderCardsOrderList.get(cont).getLeaderCardList().get(choice - 1));
 
         //Remove chosen BonusTile from BonusTile list
-         game.mPersonalBonusTilesDeck.getDeck().remove(choice);
+         game.mPersonalBonusTilesDeck.getDeck().remove(choice - 1);
 
 
     }
