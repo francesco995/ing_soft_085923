@@ -68,6 +68,10 @@ public abstract class FamilyMember {
         return mFamily;
     }
 
+    public int getPlayerId(){
+        return Player.PLAYER_ID;
+    }
+
     public boolean isUsable() {
         return mIsUsable;
     }
