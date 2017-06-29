@@ -6,6 +6,7 @@ import it.polimi.ingsw.ps09.model.Board;
 import it.polimi.ingsw.ps09.model.Decks.DevelopmentCardsDeck;
 import it.polimi.ingsw.ps09.model.Decks.ExcommunicationTilesDeck;
 import it.polimi.ingsw.ps09.model.Decks.LeaderCardsDeck;
+import it.polimi.ingsw.ps09.model.Decks.PersonalBonusTilesDeck;
 import it.polimi.ingsw.ps09.model.Dices.BlackDice;
 import it.polimi.ingsw.ps09.model.Dices.OrangeDice;
 import it.polimi.ingsw.ps09.model.Dices.WhiteDice;
@@ -77,6 +78,10 @@ public class Game extends Thread {
     protected BlackDice mBlackDice;
     protected OrangeDice mOrangeDice;
     protected WhiteDice mWhiteDice;
+
+    //All personalBoardBonusTiles
+    protected PersonalBonusTilesDeck mPersonalBonusTilesDeck;
+
 
     //LOGGER
     protected static final Logger mLogger = Logger.getLogger(Player.class.getName());

@@ -5,6 +5,7 @@ import it.polimi.ingsw.ps09.model.Board;
 import it.polimi.ingsw.ps09.model.Decks.DevelopmentCardsDeck;
 import it.polimi.ingsw.ps09.model.Decks.ExcommunicationTilesDeck;
 import it.polimi.ingsw.ps09.model.Decks.LeaderCardsDeck;
+import it.polimi.ingsw.ps09.model.Decks.PersonalBonusTilesDeck;
 import it.polimi.ingsw.ps09.model.Dices.BlackDice;
 import it.polimi.ingsw.ps09.model.Dices.OrangeDice;
 import it.polimi.ingsw.ps09.model.Dices.WhiteDice;
@@ -46,6 +47,7 @@ public class GameSetup {
         //Setup and loads the bonus
         setupFaithTracksBonus(game);
         setupPersonalBoardBonus(game);
+        setupPersonalBoardBonusTile(game);
 
         //Set the Board
         setupBoard(game);
@@ -154,6 +156,11 @@ public class GameSetup {
 
     }
 
+    private static void setupPersonalBoardBonusTile(Game game) throws FileNotFoundException{
+
+        game.mPersonalBonusTilesDeck = new PersonalBonusTilesDeck();
+
+    }
     private static void setupBoard(Game game){
         game.mGameBoard = new Board(
                 game.mExcommunicationTilesDeck.drawCard(1),

@@ -41,6 +41,7 @@ public class CLIClientGame extends Thread{
     private ArrayList<String> mPlayersMenu;
     private ArrayList<String> mPlayerMenu;
     private ArrayList<String> mCouncilMenu;
+    private ArrayList<String> mBonusTileMenu;
 
     private String mUserName;
 
@@ -107,6 +108,13 @@ public class CLIClientGame extends Thread{
         mCouncilMenu.add("Get 2 military points");
         mCouncilMenu.add("Get 1 faith point");
         //no go back because selection must be made all in row
+
+        mBonusTileMenu = new ArrayList<>();
+        mBonusTileMenu.add("Get Bonus Tile 1");
+        mBonusTileMenu.add("Get Bonus Tile 2");
+        mBonusTileMenu.add("Get Bonus Tile 3");
+        mBonusTileMenu.add("Get Bonus Tile 4");
+        //no go back selection must be made
 
     }
 
@@ -471,7 +479,15 @@ public class CLIClientGame extends Thread{
 
         }
     }
-
-
+    /**
+     * Display Bonus tile to user
+     */
+    private void displayBonusTiles(){
+    //TODO ASK GIANNI IF RIGHT PLACE FOR THIS THING
+        switch (Prompter.promptForIntChoice("Please choose a Bonus Tile", mBonusTileMenu)){
+            case 1:
+                break;
+        }
+    }
 
 }

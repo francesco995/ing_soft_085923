@@ -43,6 +43,7 @@ public class Player {
 
     //GAME OBJECTS
     private PersonalBoard mPersonalBoard;
+    private PersonalBonusTile mPersonalBonusTile;
     private UserPoints mUserPoints;
 
     //PLAYER OBJECTS
@@ -916,5 +917,13 @@ public class Player {
         resourcesCopy.add(sum);
 
         return resourcesCopy;
+    }
+
+    public PersonalBonusTile getPersonalBonusTile() {
+        return mPersonalBonusTile;
+    }
+
+    public void setPersonalBonusTile(PersonalBonusTile personalBonusTile) {
+        mPersonalBonusTile = personalBonusTile;
     }
 }
