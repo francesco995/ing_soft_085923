@@ -112,7 +112,7 @@ public class PlaceFamilyMemberInMarket implements PlacementAction {
         StringJoiner mStringMarket = new StringJoiner("", "", "");
 
         mStringMarket.add("");
-        mStringMarket.add("Add " + mFamilyMember.getColor() + " family member into market space "+ (mMarketIndex +1) + ".");
+        mStringMarket.add("Place your " + mFamilyMember.getColor() + " family member into market space "+ (mMarketIndex +1) + ".");
 
         return mStringMarket.toString();
     }

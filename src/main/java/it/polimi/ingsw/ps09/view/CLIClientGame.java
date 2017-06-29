@@ -54,13 +54,16 @@ public class CLIClientGame extends Thread{
 
         mMainMenuMessage = "\n###################################################";
         mMainMenuMessage += "\n######### Lorenzo il Magnifico Main Menu ##########";
-        mMainMenuMessage += "\n###################################################";
+        mMainMenuMessage += "\n###################################################\n";
 
 
         mMainMenu = new ArrayList<>();
         mMainMenu.add("Display Players");
         mMainMenu.add("Display Board");
         mMainMenu.add("Display Players order");
+        mMainMenu.add("Do Placement Action");
+        mMainMenu.add("Do Family Member Action");
+        mMainMenu.add("Do Player Action");
         mMainMenu.add("Refresh main menu");
 
 
@@ -123,12 +126,14 @@ public class CLIClientGame extends Thread{
 
         playerActionsList = mServerConnection.getPlacementActionsList();
 
-        int choice = Prompter.promptForIntChoice("Choose your action",
+        int choice = Prompter.promptForIntChoiceZero("Choose your action, or press 0 to go back",
                 playerActionsList.stream().map(PlacementAction::toString).collect(Collectors.toList()));
 
-        mServerConnection.doPlacementAction(choice);
+       if(choice > 0){
 
-        mServerConnection.setHasPlacementAction(false);
+           mServerConnection.doPlacementAction(choice);
+           mServerConnection.setHasPlacementAction(false);
+       }
 
     }
 
@@ -138,10 +143,13 @@ public class CLIClientGame extends Thread{
 
         familyMemberActionsList = mServerConnection.getFamilyMemberActionsList();
 
-        int choice = Prompter.promptForIntChoice("Choose what Family Member give power to",
+        int choice = Prompter.promptForIntChoiceZero("Choose what Family Member give power to, or press 0 to go back",
                 familyMemberActionsList.stream().map(FamilyMemberAction::toString).collect(Collectors.toList()));
 
-        mServerConnection.doFamilyMemberAction(choice);
+        if(choice > 0){
+
+            mServerConnection.doFamilyMemberAction(choice);
+        }
 
 
     }
@@ -176,28 +184,28 @@ public class CLIClientGame extends Thread{
         mHasPlayerAction = mServerConnection.hasPlayerActions();
 
         //Add Placement Action to menu
-        if(mHasPlacementAction && !mMainMenu.contains("Do Placement Action"))
-            mMainMenu.add("Do Placement Action");
+        if(mHasPlacementAction)
+            mMainMenu.set(3, "Do Placement Action");
 
         //Add Family Member Action to menu
-        if(mHasFamilyMemberAction && !mMainMenu.contains("Do Family Member Action"))
-            mMainMenu.add("Do Family Member Action");
+        if(mHasFamilyMemberAction)
+            mMainMenu.set(4, "Do Family Member Action");
 
         //Add Player Action to menu
-        if(mHasPlayerAction && !mMainMenu.contains("Do Player Action"))
-            mMainMenu.add("Do Player Action");
+        if(mHasPlayerAction)
+            mMainMenu.set(5, "Do Player Action");
 
         //Remove Placement Action from menu
-        if(!mHasPlacementAction && mMainMenu.contains("Do Placement Action"))
-            mMainMenu.remove("Do Placement Action");
+        if(!mHasPlacementAction)
+            mMainMenu.set(3, "Placement Action - Not your turn to play");
 
         //Remove Family Member Action from menu
-        if(!mHasFamilyMemberAction && mMainMenu.contains("Do Family Member Action"))
-            mMainMenu.remove("Do Family Member Action");
+        if(!mHasFamilyMemberAction)
+            mMainMenu.set(4, "No Family Member Action available");
 
         //Remove Placement Action from menu
-        if(!mHasPlayerAction && mMainMenu.contains("Do Player Action"))
-            mMainMenu.remove("Do Player Action");
+        if(!mHasPlayerAction)
+            mMainMenu.set(5, "Not your turn to play, or you don't have an action");
 
     }
 
@@ -252,21 +260,23 @@ public class CLIClientGame extends Thread{
                     break;
                 }
                 case 4:{
-                    //Refresh main menu
+                    //Do PlacementAction
+                    updateData();
+                    if(mHasPlacementAction)
+                        doPlacementAction();
                     break;
                 }
                 case 5:{
-                    //Do PlacementAction
+                    //Do Family Member Action
                     updateData();
-                    doPlacementAction();
+                    if(mHasFamilyMemberAction)
+                        doFamilyMemberAction();
                     break;
                 }
                 case 6:{
-                    //Do Family Member Action
-                    updateData();
-                    doFamilyMemberAction();
-                    break;
+                    //Do Player Action
                 }
+
 
             }
 

@@ -94,7 +94,7 @@ public class Harvest implements PlacementAction {
         StringJoiner mStringHarvest = new StringJoiner("", "", "");
 
         mStringHarvest.add("");
-        mStringHarvest.add("Add " + mFamilyMember.getColor() + " family member into the Harvest area");
+        mStringHarvest.add("Place your " + mFamilyMember.getColor() + " family member into the Harvest area");
 
         return mStringHarvest.toString();
     }

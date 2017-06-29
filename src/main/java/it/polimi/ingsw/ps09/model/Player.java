@@ -275,6 +275,7 @@ public class Player {
         mPersonalBoard.add(card);
 
         updated();
+
     }
 
 

@@ -94,7 +94,7 @@ public class Production implements PlacementAction {
         StringJoiner mStringHProduction = new StringJoiner("", "", "");
 
         mStringHProduction.add("");
-        mStringHProduction.add("Add " + mFamilyMember.getColor() + " family member into the Production area");
+        mStringHProduction.add("Place your " + mFamilyMember.getColor() + " family member into the Production area");
 
         return mStringHProduction.toString();
     }
