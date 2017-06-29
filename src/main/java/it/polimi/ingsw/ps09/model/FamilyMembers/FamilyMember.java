@@ -1,9 +1,14 @@
 package it.polimi.ingsw.ps09.model.FamilyMembers;
 
 
+import it.polimi.ingsw.ps09.controller.Game.Game;
 import it.polimi.ingsw.ps09.model.Dices.Dice;
+import it.polimi.ingsw.ps09.model.Player;
 
 import java.util.StringJoiner;
+import java.util.logging.Logger;
+
+import static java.util.logging.Level.INFO;
 
 /**
  * Abstract class familyMember
@@ -13,6 +18,9 @@ import java.util.StringJoiner;
  * It implements the toString necessary to display familyMember content
  */
 public abstract class FamilyMember {
+
+    //LOGGER
+    private static final Logger mLogger = Logger.getAnonymousLogger();
 
     //VARIABLES
     private int mPower;
@@ -38,12 +46,22 @@ public abstract class FamilyMember {
         mPower = dice.getValue();
     }
 
-    public int morePower(int addToTotal) {
-        return mPower + addToTotal;
+    public void morePower(int addToTotal) {
+
+        mPower += addToTotal;
+
+        mLogger.log(INFO, "Game: " + Game.GAME_ID + " player " +
+                Player.PLAYER_ID + " increase family member power by " + addToTotal +
+                " now has " + mPower + " power");
     }
 
-    public int lessPower(int removeFromTotal) {
-        return mPower - removeFromTotal;
+    public void lessPower(int removeFromTotal) {
+
+        mPower =- removeFromTotal;
+
+        mLogger.log(INFO, "Game: " + Game.GAME_ID + " player " +
+                Player.PLAYER_ID + " decrease family member power by " + removeFromTotal +
+                " now has " + mPower + " power");
     }
 
     public String getFamily() {

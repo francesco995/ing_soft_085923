@@ -59,7 +59,7 @@ public class Server extends Thread{
         //TODO put back to 4 with timeout
         if(mQueuedPlayers.size() >= 4){
 
-            sleep(6000);
+            sleep(3000);
 
             int playersN;
 
@@ -114,7 +114,7 @@ public class Server extends Thread{
 
         while(true){
 
-            sleep(500);
+            sleep(100);
 
             addReadyConnection();
 
