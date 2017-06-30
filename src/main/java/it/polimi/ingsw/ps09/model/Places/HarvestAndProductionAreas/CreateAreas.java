@@ -57,8 +57,19 @@ public class CreateAreas {
             return true;
 
         for(Slot mSlot : mSlotList){
-            if(mSlot.getFamilyMember() == familyMember)
-                return false;
+
+            if(mSlot.getFamilyMember().getFamily().equals(familyMember.getFamily())){
+
+                if((mSlot.getFamilyMember().getColor().equals("Neutral")) || (familyMember.getColor().equals("Neutral"))){
+                    return true;
+                }
+
+                else
+                    return false;
+
+            }
+
+
         }
 
         return true;

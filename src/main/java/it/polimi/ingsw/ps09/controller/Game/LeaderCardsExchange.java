@@ -60,16 +60,16 @@ public class LeaderCardsExchange {
         int mTemporaryLastPlayerID = 0;
 
         //Get the last playerID of mLeaderCardsOrderList
-        mTemporaryLastPlayerID = LeaderCardsOrderList.get(LeaderCardsOrderList.size()-1).getPlayerID();
+        mTemporaryLastPlayerID = LeaderCardsOrderList.get(0).getPlayerID();
 
         //Loop through mLeaderCardsOrderList IN INVERSE ORDER to switch PlayerID.
-        //It's a easy way to exchange LeaderCards without passing the entire lits.
-        for(int cont=(LeaderCardsOrderList.size()-1); cont==0; cont--) {
+        //It's a easy way to exchange LeaderCards without passing the entire list.
+        for(int cont=0; cont==(LeaderCardsOrderList.size()-1); cont++) {
 
-            if(cont!=0)
-                LeaderCardsOrderList.get(cont-1).setPlayerID(LeaderCardsOrderList.get(cont).getPlayerID());
+            if(cont!=(LeaderCardsOrderList.size()-1))
+                LeaderCardsOrderList.get(cont+1).setPlayerID(LeaderCardsOrderList.get(cont).getPlayerID());
 
-            else if(cont==0)
+            else if(cont==(LeaderCardsOrderList.size()-1))
                 LeaderCardsOrderList.get(cont).setPlayerID(mTemporaryLastPlayerID);
         }
 

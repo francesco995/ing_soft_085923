@@ -74,6 +74,7 @@ public class CLIClientGame extends Thread{
         mBoardMenu.add("Display Markets");
         mBoardMenu.add("Display Harvest & Production");
         mBoardMenu.add("Display Dices values");
+        mBoardMenu.add("Display Excommunication tiles");
         mBoardMenu.add("Go back to main menu");
 
 
@@ -412,6 +413,8 @@ public class CLIClientGame extends Thread{
      */
     private void displayBoard(){
 
+        String mString = new String();
+
         switch(Prompter.promptForIntChoice("Please choose what to display", mBoardMenu)){
 
             case 1:{
@@ -445,6 +448,18 @@ public class CLIClientGame extends Thread{
                 System.out.println(mBoard.getWhiteDice().toString());
                 System.out.println(mBoard.getOrangeDice().toString());
                 break;
+            }
+
+            case 6:{
+
+                mString = mBoard.getExcommunicationTilesList().toString();
+
+                mString = mString.replace("[", "");
+                mString = mString.replace("]", "");
+                mString = mString.replace(",", "");
+
+                System.out.println(mString);
+
             }
         }
 

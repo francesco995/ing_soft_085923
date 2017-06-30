@@ -52,11 +52,13 @@ public class  ExcommunicationTile {
     @Override
     public String toString(){
         String mTile = "\n";
-        mTile += mTileName+ "period:" +mPeriod + "\neffect:";
+        mTile += "period: " +mPeriod + "\neffect: ";
         for(int i= 0; i<mExcommunicationTileEffects.size(); i++)
         {
             mTile += mExcommunicationTileEffects.get(i).toString();
+            mTile += "\n";
         }
+
         return mTile;
     }
 }
