@@ -2,9 +2,11 @@ package it.polimi.ingsw.ps09.controller.Network.Client.ServerConnections;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import it.polimi.ingsw.ps09.Constants;
 import it.polimi.ingsw.ps09.model.Actions.FamilyMemberActions.FamilyMemberAction;
 import it.polimi.ingsw.ps09.model.Actions.PlacementActions.PlacementAction;
 import it.polimi.ingsw.ps09.model.Actions.PlayerActions.PlayerAction;
+import it.polimi.ingsw.ps09.model.LeaderCard;
 import it.polimi.ingsw.ps09.view.CLIClientGame;
 import it.polimi.ingsw.ps09.controller.Game.Game;
 import it.polimi.ingsw.ps09.controller.PlayersOrder;
@@ -21,6 +23,9 @@ import java.io.*;
 import java.net.InetAddress;
 import java.net.Socket;
 import java.util.*;
+import java.util.logging.Logger;
+
+import static java.util.logging.Level.INFO;
 
 /**
  * Created by francesco995 on 15/06/2017.
@@ -28,6 +33,9 @@ import java.util.*;
  * Thread instantiated by the user app to connect to the Server
  */
 public class ServerConnectionSocket extends Thread implements ServerConnection {
+
+    //LOGGER
+    protected static final Logger mLogger = Logger.getAnonymousLogger();
 
     //Game
     private Board mBoard;
@@ -46,6 +54,9 @@ public class ServerConnectionSocket extends Thread implements ServerConnection {
 
     private boolean mHasPlayerActions;
     private ArrayList<PlayerAction> mPlayerActionsList;
+
+    private boolean mHasLeaderCardChoice;
+    private ArrayList<LeaderCard> mLeaderCardsList;
 
     private Socket mSocket;
 
@@ -85,6 +96,7 @@ public class ServerConnectionSocket extends Thread implements ServerConnection {
         mHasPlacementAction = false;
         mHasFamilyMemberAction = false;
         mHasPlayerActions = false;
+        mHasLeaderCardChoice = false;
 
         //Create Gson Builder
         mGsonBuilder = new GsonBuilder();
@@ -125,6 +137,14 @@ public class ServerConnectionSocket extends Thread implements ServerConnection {
      */
     public boolean hasPlayerActions() {
         return mHasPlayerActions;
+    }
+
+    /**
+     * Check if the Player associated with this connection has a Leader Card choice available to do
+     * @return true if Player has LeaderCard(s) to choose
+     */
+    public boolean hasLeaderCardChoice() {
+        return mHasLeaderCardChoice;
     }
 
     /**
@@ -205,6 +225,22 @@ public class ServerConnectionSocket extends Thread implements ServerConnection {
     }
 
 
+    /**
+     * Get updated Leader Card list to choose from
+     * @return List of valid LeaderCards for player
+     */
+    public ArrayList<LeaderCard> getLeaderCardsChoiceList() {
+        return mLeaderCardsList;
+    }
+
+    /**
+     * Setup phase, wait until player has a leader card to choose
+     */
+    public void waitLeaderCardsChoiceList(){
+        while (!mHasLeaderCardChoice)
+            sleep(100);
+    }
+
 
 
     /**
@@ -240,13 +276,18 @@ public class ServerConnectionSocket extends Thread implements ServerConnection {
      * @param message Message to send
      */
     public void sendMessage(String message) {
-        //TODO: maybe switch to boolean return
+
         try {
             mMessageSender.write(message);
             mMessageSender.write("\n");
             mMessageSender.flush();
         } catch (IOException e) {
             e.printStackTrace();
+        }
+
+
+        if(Constants.ADVANCED_TESTING_CLIENT) {
+            mLogger.log(INFO, message);
         }
 
     }
@@ -329,6 +370,21 @@ public class ServerConnectionSocket extends Thread implements ServerConnection {
 
     }
 
+    /**
+     * Wait for a message, and deserialize Leader Cards
+     * first message is the number of cards to deserialize, next X messages are the serialized cards
+     */
+    private void updateLeaderCards(){
+
+        int size = Integer.valueOf(waitForMessage());
+        mLeaderCardsList = new ArrayList<>();
+
+        for (int i = 0; i < size; i++){
+            mLeaderCardsList.add(mGson.fromJson(waitForMessage(), LeaderCard.class));
+        }
+
+    }
+
 
     public void doPlacementAction(int actionIndex){
 
@@ -344,6 +400,15 @@ public class ServerConnectionSocket extends Thread implements ServerConnection {
         sendMessage(String.valueOf(actionIndex));
     }
 
+    public void chooseLeaderCard(int index){
+
+        sendMessage("leaderCardChoice");
+
+        sendMessage(String.valueOf(index));
+        mHasLeaderCardChoice = false;
+
+
+    }
 
     /**
      * Sleep for x seconds unless Interrupted
@@ -405,6 +470,9 @@ public class ServerConnectionSocket extends Thread implements ServerConnection {
             message = "";
         }
 
+        if(Constants.ADVANCED_TESTING_CLIENT) {
+            mLogger.log(INFO, message);
+        }
 
         return message;
     }
@@ -502,6 +570,12 @@ public class ServerConnectionSocket extends Thread implements ServerConnection {
                     case "playerActions": {
                         updatePlayerActions();
                         mHasPlayerActions = true;
+                        break;
+                    }
+
+                    case "leaderCards": {
+                        updateLeaderCards();
+                        mHasLeaderCardChoice = true;
                         break;
                     }
 

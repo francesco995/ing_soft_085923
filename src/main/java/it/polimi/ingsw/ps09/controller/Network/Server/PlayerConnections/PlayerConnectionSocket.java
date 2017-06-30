@@ -2,6 +2,7 @@ package it.polimi.ingsw.ps09.controller.Network.Server.PlayerConnections;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import it.polimi.ingsw.ps09.Constants;
 import it.polimi.ingsw.ps09.controller.*;
 import it.polimi.ingsw.ps09.controller.Game.Game;
 import it.polimi.ingsw.ps09.controller.Timer;
@@ -19,7 +20,6 @@ import it.polimi.ingsw.ps09.model.LeaderCardEffects.LeaderCardEffect;
 import it.polimi.ingsw.ps09.model.Player;
 
 import java.io.*;
-import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.*;
 import java.util.logging.Logger;
@@ -67,6 +67,9 @@ public class PlayerConnectionSocket extends Thread implements PlayerConnection{
     private int mActionChoice;
     private String mActionType;
     private boolean mHasActionReady = false;
+
+    private int mLeaderCardChoice;
+    private boolean mHasLeaderCardChoiceReady = false;
 
 
 
@@ -138,6 +141,18 @@ public class PlayerConnectionSocket extends Thread implements PlayerConnection{
         }
     }
 
+    public void waitLeaderCardChoiceReady(){
+        while(!mHasLeaderCardChoiceReady){
+            sleep(100);
+        }
+    }
+
+    public int getLeaderCardChoice(){
+        waitLeaderCardChoiceReady();
+        mHasLeaderCardChoiceReady = false;
+        return mLeaderCardChoice;
+    }
+
 
     private void sendBoard(){
         mLogger.log(INFO, "Game: " + Game.GAME_ID + " sending Board to user " + mUserID);
@@ -180,13 +195,12 @@ public class PlayerConnectionSocket extends Thread implements PlayerConnection{
         playerActionsList.stream().forEach(a -> sendMessage(mGson.toJson(a, PlayerAction.class)));
     }
 
-    public int sendLeaderCardsList(ArrayList<LeaderCard> leaderCardsList){
+    public void sendLeaderCardsList(ArrayList<LeaderCard> leaderCardsList){
         mLogger.log(INFO, "Game: " + Game.GAME_ID + " sending Leader Cards list to user " + mUserID);
         sendMessage("leaderCards");
         sendMessage(String.valueOf(leaderCardsList.size()));
         leaderCardsList.stream().forEach(l -> sendMessage(mGson.toJson(l, LeaderCard.class)));
 
-        return Integer.valueOf(getMessage(30, "1"));
     }
 
     public String getMessage(){
@@ -248,7 +262,6 @@ public class PlayerConnectionSocket extends Thread implements PlayerConnection{
     }
 
     public void sendMessage(String message){
-        //TODO: maybe switch to boolean return
 
         try {
             mMessageSender.write(message);
@@ -258,8 +271,10 @@ public class PlayerConnectionSocket extends Thread implements PlayerConnection{
             e.printStackTrace();
         }
 
-        //String confirm = waitForMessage();
 
+        if(Constants.ADVANCED_TESTING_SERVER) {
+            mLogger.log(INFO, message);
+        }
     }
 
     public void setUserID(int userID) {
@@ -278,6 +293,11 @@ public class PlayerConnectionSocket extends Thread implements PlayerConnection{
         } catch (IOException e) {
             e.printStackTrace();
             message = "";
+        }
+
+
+        if(Constants.ADVANCED_TESTING_SERVER) {
+            mLogger.log(INFO, message);
         }
 
         return message;
@@ -319,7 +339,15 @@ public class PlayerConnectionSocket extends Thread implements PlayerConnection{
 
                 switch(mMessage){
 
-                    //TODO: remove unused messages
+                    case "leaderCardChoice":{
+
+                        mLeaderCardChoice = Integer.valueOf(waitForMessage());
+                        mHasLeaderCardChoiceReady = true;
+
+                        break;
+
+                    }
+
                     case "doPlacementAction":{
 
                         mActionType = "PLACEMENT";

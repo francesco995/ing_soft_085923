@@ -26,11 +26,13 @@ public interface PlayerConnection{
     void sendPlacementActionsList(ArrayList<PlacementAction> playerActionsList);
     void sendFamilyMemberActionsList(ArrayList<FamilyMemberAction> familyMemberActionsList);
     void sendPlayerActionsList(ArrayList<PlayerAction> playerActionsList);
-    int sendLeaderCardsList(ArrayList<LeaderCard> leaderCardsList);
+    void sendLeaderCardsList(ArrayList<LeaderCard> leaderCardsList);
     void waitActionReady();
     int getActionChoice();
     String getActionType();
     void resetActionReady();
+    void waitLeaderCardChoiceReady();
+    int getLeaderCardChoice();
     void run();
     void start();
 

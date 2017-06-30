@@ -16,5 +16,5 @@ public interface PlacementAction {
 
     FamilyMember getFamilyMember();
 
-    public int getIndex();
+    int getIndex();
 }

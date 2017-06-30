@@ -52,7 +52,7 @@ public class LeaderCardsOrder {
 
         mStringLeaderOrder.add("");
         mStringLeaderOrder.add("Player order: " + mOrder);
-        mStringLeaderOrder.add("PlayrID: " + mPlayerID);
+        mStringLeaderOrder.add("PlayerID: " + mPlayerID);
         mStringLeaderOrder.add("LeaderCardList: " + mLeaderCardList.toString());
 
         return mStringLeaderOrder.toString();

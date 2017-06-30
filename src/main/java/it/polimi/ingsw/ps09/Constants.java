@@ -17,6 +17,19 @@ public final class Constants {
      */
     public static final int SOCKET_PORT = 1024;
 
+    //####################################################
+    //####################################################
+    //############### Testing constants ##################
+
+    /**
+     * True if you want to run server with more output for diagnostics
+     */
+    public static final boolean ADVANCED_TESTING_SERVER = true;
+
+    /**
+     * True if you want to run clients with more output for diagnostics
+     */
+    public static final boolean ADVANCED_TESTING_CLIENT = false;
 
 
 

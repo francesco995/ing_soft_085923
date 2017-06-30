@@ -84,7 +84,7 @@ public class Game extends Thread {
 
 
     //LOGGER
-    protected static final Logger mLogger = Logger.getLogger(Player.class.getName());
+    protected static final Logger mLogger = Logger.getAnonymousLogger();
 
 
     /**
@@ -145,7 +145,7 @@ public class Game extends Thread {
      */
     private void startGame() throws FileNotFoundException {
 
-        //LeaderCardsExchange.startExchange(this);
+        LeaderCardsExchange.startExchange(this);
         Round.startRound(this, 1);
         Round.startRound(this, 2);
 

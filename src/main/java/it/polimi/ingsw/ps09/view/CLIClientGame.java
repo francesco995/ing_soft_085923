@@ -1,10 +1,12 @@
 package it.polimi.ingsw.ps09.view;
 
+import it.polimi.ingsw.ps09.Constants;
 import it.polimi.ingsw.ps09.controller.Network.Client.ServerConnections.ServerConnection;
 import it.polimi.ingsw.ps09.controller.PlayersOrder;
 import it.polimi.ingsw.ps09.model.Actions.FamilyMemberActions.FamilyMemberAction;
 import it.polimi.ingsw.ps09.model.Actions.PlacementActions.PlacementAction;
 import it.polimi.ingsw.ps09.model.Board;
+import it.polimi.ingsw.ps09.model.LeaderCard;
 import it.polimi.ingsw.ps09.model.Player;
 
 import java.util.ArrayList;
@@ -218,6 +220,18 @@ public class CLIClientGame extends Thread{
 
     }
 
+    private void chooseLeaderCard(){
+        mServerConnection.waitLeaderCardsChoiceList();
+        ArrayList<LeaderCard> mCards = mServerConnection.getLeaderCardsChoiceList();
+
+        int choice = Prompter.promptForIntChoice(
+                "Choose a Leader card to keep, the others will be passed to the next player",
+                mCards.stream().map(LeaderCard::toString).collect(Collectors.toList()));
+
+        mServerConnection.chooseLeaderCard(choice);
+
+    }
+
 
     /**
      * Starts game session when 2+ players are ready
@@ -240,6 +254,17 @@ public class CLIClientGame extends Thread{
         }while (!mServerConnection.gameStarted());
 
         System.out.println("\nGame Starting!!!");
+
+        System.out.println("\n## Before the Game start, Players need to choose their 4 leader cards ##");
+
+        for(int i = 0; i < Constants.HAND_SIZE; i++){
+
+            chooseLeaderCard();
+
+        }
+
+
+
 
         boolean run = true;
 

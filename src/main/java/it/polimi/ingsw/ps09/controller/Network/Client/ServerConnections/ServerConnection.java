@@ -4,6 +4,7 @@ import it.polimi.ingsw.ps09.controller.PlayersOrder;
 import it.polimi.ingsw.ps09.model.Actions.FamilyMemberActions.FamilyMemberAction;
 import it.polimi.ingsw.ps09.model.Actions.PlacementActions.PlacementAction;
 import it.polimi.ingsw.ps09.model.Board;
+import it.polimi.ingsw.ps09.model.LeaderCard;
 import it.polimi.ingsw.ps09.model.Player;
 
 import java.util.ArrayList;
@@ -30,6 +31,10 @@ public interface ServerConnection{
     List<String> getAllMessages();
     ArrayList<FamilyMemberAction> getFamilyMemberActionsList();
     void doFamilyMemberAction(int actionIndex);
+    boolean hasLeaderCardChoice();
+    ArrayList<LeaderCard> getLeaderCardsChoiceList();
+    void waitLeaderCardsChoiceList();
+    void chooseLeaderCard(int index);
     boolean hasIncomingMessages();
     void sendMessage(String message);
     boolean isConnected();

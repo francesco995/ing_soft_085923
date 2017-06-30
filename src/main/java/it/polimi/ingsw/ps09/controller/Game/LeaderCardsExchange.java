@@ -33,7 +33,7 @@ public class LeaderCardsExchange {
     //Each player choose a leader card
     private static void chooseLeaderCard(Game game, ArrayList<LeaderCardsOrder> LeaderCardsOrderList){
 
-        int choice = 0;
+        int choice;
 
         //LOOP USED TO GET CHOOSE
         for (int cont = 0; cont < game.PLAYERS_NUMBER; cont++) {
@@ -41,10 +41,12 @@ public class LeaderCardsExchange {
             //Retrieve choice
 
             game.mConnections.get(LeaderCardsOrderList.get(cont).getPlayerID()).sendLeaderCardsList((ArrayList)LeaderCardsOrderList.get(cont).getLeaderCardList());
-            choice = Integer.valueOf(game.mConnections.get(LeaderCardsOrderList.get(cont).getPlayerID()).getMessage());
 
+            choice = game.mConnections.get(LeaderCardsOrderList.get(cont).getPlayerID()).getLeaderCardChoice();
+
+            choice--;
             //Add chosen LeaderCard to player's LeaderCard permanent list
-            game.mPlayers.get(LeaderCardsOrderList.get(cont).getPlayerID()).add(LeaderCardsOrderList.get(cont).getLeaderCardList().get(choice - 1));
+            game.mPlayers.get(LeaderCardsOrderList.get(cont).getPlayerID()).add(LeaderCardsOrderList.get(cont).getLeaderCardList().get(choice));
 
             //Remove chosen leader card form temporary leader card list
             LeaderCardsOrderList.get(cont).getLeaderCardList().remove(choice);
