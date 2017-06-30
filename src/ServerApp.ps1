@@ -1,0 +1,1 @@
+java -cp ps09-0.0.1-SNAPSHOT-jar-with-dependencies.jar it.polimi.ingsw.ps09.ServerApp
