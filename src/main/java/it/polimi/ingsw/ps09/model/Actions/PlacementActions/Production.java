@@ -31,6 +31,8 @@ public class Production implements PlacementAction {
         //check if family member is usable
         if (!familyMember.isUsable() == true)
             return false;
+        //check if family member of same color present && not the neutral one
+        //if(!familyMember.getColor().equalsIgnoreCase("neutral") && board.getProduction().hasSameFamilyMember(familyMember))
         //Check if the family Member has enough power to do basic action
         if(
                 familyMember.getPower() + player.getProductionBonus() < board.getProductionSlotDiceValue()

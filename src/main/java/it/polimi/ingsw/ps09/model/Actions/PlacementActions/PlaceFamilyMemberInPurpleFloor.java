@@ -1,5 +1,6 @@
 package it.polimi.ingsw.ps09.model.Actions.PlacementActions;
 
+import it.polimi.ingsw.ps09.Constants;
 import it.polimi.ingsw.ps09.model.Board;
 import it.polimi.ingsw.ps09.model.DevelopmentCards.Venture;
 import it.polimi.ingsw.ps09.model.FamilyMembers.FamilyMember;
@@ -37,7 +38,8 @@ public class PlaceFamilyMemberInPurpleFloor extends PlaceFamilyMemberInFloor {
         //check if family member is usable
         if (!familyMember.isUsable())
             return false;
-
+        //check if family member of same color present && not the neutral one
+        if(!familyMember.getColor().equalsIgnoreCase("neutral") && board.getVenturesTower().hasSameFamilyMember(familyMember))
         //Check if floor is free
         if (!board.getVenturesTower().getFloors().get(index).isAvailable())
             return false;
@@ -69,7 +71,7 @@ public class PlaceFamilyMemberInPurpleFloor extends PlaceFamilyMemberInFloor {
         if (board.getVenturesTower().hasFamilyMember()) {
             if (player.getCoins().getValue()
                     <
-                    (card.getResourcesCosts().get(0).getCoins().getValue() + EXTRA_TOWER_COST))
+                    (card.getResourcesCosts().get(0).getCoins().getValue() + Constants.EXTRA_TOWER_COST))
                 return false;
         }
 
@@ -95,7 +97,7 @@ public class PlaceFamilyMemberInPurpleFloor extends PlaceFamilyMemberInFloor {
 
         //pay if floor already occupied
         if (board.getVenturesTower().hasFamilyMember())
-            player.remove(new Coins(EXTRA_TOWER_COST));
+            player.remove(new Coins(Constants.EXTRA_TOWER_COST));
 
 
         Venture card = (Venture) board.getVenturesTower().getFloors().get(index).getCard();

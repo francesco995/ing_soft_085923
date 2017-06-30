@@ -1,5 +1,7 @@
 package it.polimi.ingsw.ps09.model.Dices;
 
+import it.polimi.ingsw.ps09.Constants;
+
 /**
  * Abstract class dice contains all necessary methods for it to function
  */
@@ -33,7 +35,7 @@ public abstract class Dice {
      * simulates the roll of a six sided dice
      */
     public void roll() {
-        mValue = (int) (Math.random() * 6 + 1);
+        mValue = (int) (Math.random() * Constants.MAX_DICE_VALUE + 1);
     }
 
     @Override

@@ -1,5 +1,6 @@
 package it.polimi.ingsw.ps09.model.Actions.PlacementActions;
 
+import it.polimi.ingsw.ps09.Constants;
 import it.polimi.ingsw.ps09.model.Board;
 import it.polimi.ingsw.ps09.model.DevelopmentCards.Territory;
 import it.polimi.ingsw.ps09.model.FamilyMembers.FamilyMember;
@@ -13,8 +14,9 @@ import java.util.StringJoiner;
  */
 public class PlaceFamilyMemberInGreenFloor extends PlaceFamilyMemberInFloor {
 
-    private static final int EXTRA_TOWER_COST = 3;
+    //private static final int EXTRA_TOWER_COST = 3;
 
+    //todo add control of military points from board
     public PlaceFamilyMemberInGreenFloor(FamilyMember familyMember, int index) {
 
         super(familyMember, index);
@@ -36,6 +38,8 @@ public class PlaceFamilyMemberInGreenFloor extends PlaceFamilyMemberInFloor {
         //check if family member is usable
         if (!familyMember.isUsable())
             return false;
+        //check if family member of same color present && not the neutral one
+        if(!familyMember.getColor().equalsIgnoreCase("neutral") && board.getTerritoriesTower().hasSameFamilyMember(familyMember))
         //Check if floor is free
         if (!board.getTerritoriesTower().getFloors().get(index).isAvailable())
             return false;
@@ -67,7 +71,7 @@ public class PlaceFamilyMemberInGreenFloor extends PlaceFamilyMemberInFloor {
         if (board.getTerritoriesTower().hasFamilyMember()) {
             if (player.getCoins().getValue()
                     <
-                    (EXTRA_TOWER_COST))
+                    (Constants.EXTRA_TOWER_COST))
                 return false;
         }
 
@@ -94,7 +98,7 @@ public class PlaceFamilyMemberInGreenFloor extends PlaceFamilyMemberInFloor {
 
         //pay if floor already occupied
         if (board.getTerritoriesTower().hasFamilyMember())
-            player.remove(new Coins(EXTRA_TOWER_COST));
+            player.remove(new Coins(Constants.EXTRA_TOWER_COST));
 
         Territory card = (Territory) board.getTerritoriesTower().getFloors().get(index).getCard();
         //place family member

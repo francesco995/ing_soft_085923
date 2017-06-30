@@ -31,7 +31,8 @@ public class Harvest implements PlacementAction {
         //check if family member is usable
         if (!familyMember.isUsable())
             return false;
-
+        //check if family member of same color present && not the neutral one
+        //if(!familyMember.getColor().equalsIgnoreCase("neutral") && board.getHarvest().hasSameFamilyMember(familyMember))
         //Check if the family Member has enough power to do basic action
         if(familyMember.getPower() + player.getHarvestBonus() < board.getHarvestSlotDiceValue())
             return false;

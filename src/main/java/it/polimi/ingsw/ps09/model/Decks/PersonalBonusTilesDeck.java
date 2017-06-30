@@ -2,6 +2,7 @@ package it.polimi.ingsw.ps09.model.Decks;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import it.polimi.ingsw.ps09.Constants;
 import it.polimi.ingsw.ps09.model.DevelopmentCardEffects.DevelopmentCardEffect;
 import it.polimi.ingsw.ps09.model.GsonAdapters.DevelopmentCardEffectAdapter;
 import it.polimi.ingsw.ps09.model.GsonAdapters.LeaderCardEffectAdapter;
@@ -21,8 +22,6 @@ import java.util.Scanner;
  */
 public class PersonalBonusTilesDeck {
 
-
-    private final static int TILE_TOTAL = 4;
 
     //List of all the PersonalBonusTiles
     private ArrayList<PersonalBonusTile> mDeck = new ArrayList<>();
@@ -99,7 +98,7 @@ public class PersonalBonusTilesDeck {
 
         ArrayList<PersonalBonusTile> mTierDeck = new ArrayList<>();
 
-        for (int i = 1; i <= TILE_TOTAL; i++) {
+        for (int i = 1; i <= Constants.TILE_TOTAL; i++) {
             mTierDeck.add(loadTileFromString(loadStringFromFile(fileName + i + ".json")));
         }
 

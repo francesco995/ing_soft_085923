@@ -1,5 +1,6 @@
 package it.polimi.ingsw.ps09.model.Actions.PlacementActions;
 
+import it.polimi.ingsw.ps09.Constants;
 import it.polimi.ingsw.ps09.model.Board;
 import it.polimi.ingsw.ps09.model.DevelopmentCards.Building;
 import it.polimi.ingsw.ps09.model.FamilyMembers.FamilyMember;
@@ -14,7 +15,7 @@ import java.util.StringJoiner;
  */
 public class PlaceFamilyMemberInYellowFloor extends PlaceFamilyMemberInFloor {
 
-    private static final int EXTRA_TOWER_COST = 3;
+    //private static final int EXTRA_TOWER_COST = 3;
 
     public PlaceFamilyMemberInYellowFloor(FamilyMember familyMember, int index) {
 
@@ -38,6 +39,8 @@ public class PlaceFamilyMemberInYellowFloor extends PlaceFamilyMemberInFloor {
         //check if family member is usable
         if (!familyMember.isUsable())
             return false;
+        //check if family member of same color present && not the neutral one
+        if(!familyMember.getColor().equalsIgnoreCase("neutral") && board.getBuildingsTower().hasSameFamilyMember(familyMember))
         //Check if floor is free
         if (!board.getBuildingsTower().getFloors().get(index).isAvailable())
             return false;
@@ -68,7 +71,7 @@ public class PlaceFamilyMemberInYellowFloor extends PlaceFamilyMemberInFloor {
         if (board.getBuildingsTower().hasFamilyMember()) {
             if (player.getCoins().getValue()
                     >
-                    (card.getResourcesCosts().get(0).getCoins().getValue() + EXTRA_TOWER_COST))
+                    (card.getResourcesCosts().get(0).getCoins().getValue() + Constants.EXTRA_TOWER_COST))
                 return false;
         }
 
@@ -94,7 +97,7 @@ public class PlaceFamilyMemberInYellowFloor extends PlaceFamilyMemberInFloor {
 
         //pay if floor already occupied
         if (board.getBuildingsTower().hasFamilyMember())
-            player.remove(new Coins(EXTRA_TOWER_COST));
+            player.remove(new Coins(Constants.EXTRA_TOWER_COST));
 
 
         Building card = (Building) board.getBuildingsTower().getFloors().get(index).getCard();

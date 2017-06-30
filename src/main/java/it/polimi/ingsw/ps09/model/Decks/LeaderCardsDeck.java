@@ -2,6 +2,7 @@ package it.polimi.ingsw.ps09.model.Decks;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import it.polimi.ingsw.ps09.Constants;
 import it.polimi.ingsw.ps09.model.GsonAdapters.LeaderCardEffectAdapter;
 import it.polimi.ingsw.ps09.model.LeaderCard;
 import it.polimi.ingsw.ps09.model.LeaderCardEffects.LeaderCardEffect;
@@ -17,8 +18,7 @@ import java.util.*;
  */
 public class LeaderCardsDeck {
 
-    private final static int CARD_TOTAL = 20;
-    private final static int HAND_SIZE = 4;
+
 
     //This list is the full deck of LeaderCards
     private ArrayList<LeaderCard> mDeck = new ArrayList<>();
@@ -95,7 +95,7 @@ public class LeaderCardsDeck {
 
         ArrayList<LeaderCard> mTierDeck = new ArrayList<>();
 
-        for (int i = 1; i <= CARD_TOTAL; i++) {
+        for (int i = 1; i <= Constants.CARD_TOTAL; i++) {
             mTierDeck.add(loadCardFromString(loadStringFromFile(fileName + i + ".json")));
         }
 
@@ -113,7 +113,7 @@ public class LeaderCardsDeck {
         ArrayList<LeaderCard> mHandOfCards = new ArrayList<>();
         int randomNumber;
 
-        for(int counter = 1; counter <= HAND_SIZE; counter++) {
+        for(int counter = 1; counter <= Constants.HAND_SIZE; counter++) {
 
             randomNumber = (int) Math.random() * mDeck.size();
             mHandOfCards.add(mDeck.get(randomNumber));
@@ -124,14 +124,6 @@ public class LeaderCardsDeck {
         return mHandOfCards;
     }
 
-
-    public static int getCardTotal() {
-        return CARD_TOTAL;
-    }
-
-    public static int getHandSize() {
-        return HAND_SIZE;
-    }
 
     public ArrayList<LeaderCard> getDeck() {
         return mDeck;
