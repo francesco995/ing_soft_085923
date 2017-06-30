@@ -1,5 +1,6 @@
 package it.polimi.ingsw.ps09.model;
 
+import it.polimi.ingsw.ps09.Constants;
 import it.polimi.ingsw.ps09.model.Resources.Coins;
 import it.polimi.ingsw.ps09.model.Resources.Servant;
 import it.polimi.ingsw.ps09.model.Resources.Stone;
@@ -11,9 +12,9 @@ import it.polimi.ingsw.ps09.model.Resources.Wood;
 public class UserResources {
 
     //CONSTANTS
-    private static final int INITIAL_SERVANT = 3;
-    private static final int INITIAL_STONE = 2;
-    private static final int INITIAL_WOOD = 2;
+    //private static final int INITIAL_SERVANT = 3;
+    //private static final int INITIAL_STONE = 2;
+    //private static final int INITIAL_WOOD = 2;
 
     //VARIABLES
 
@@ -37,7 +38,7 @@ public class UserResources {
     }
 
     public UserResources(int initialCoins){
-        this(initialCoins, INITIAL_SERVANT, INITIAL_STONE, INITIAL_WOOD);
+        this(initialCoins, Constants.INITIAL_SERVANT, Constants.INITIAL_STONE, Constants.INITIAL_WOOD);
     }
 
     public UserResources(int initialCoins, int initialServant, int initialStone, int initialWood){

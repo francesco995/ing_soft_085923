@@ -1,5 +1,6 @@
 package it.polimi.ingsw.ps09.model.Decks;
 
+import it.polimi.ingsw.ps09.Constants;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -19,11 +20,11 @@ public class LeaderCardsDeckTest {
 
     @Test
     public void areAllCardLoaded() throws Exception {
-        assertTrue(mTest.getCardTotal() == mTest.getDeck().size());
+        assertTrue(Constants.CARD_TOTAL == mTest.getDeck().size());
     }
     @Test
     public void areAllCardDrawn() throws Exception {
-        assertTrue(mTest.getHandSize() == mTest.cardDraw().size());
+        assertTrue(Constants.HAND_SIZE == mTest.cardDraw().size());
     }
 
 }

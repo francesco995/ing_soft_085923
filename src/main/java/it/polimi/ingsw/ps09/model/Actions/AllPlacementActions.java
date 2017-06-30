@@ -1,6 +1,7 @@
 package it.polimi.ingsw.ps09.model.Actions;
 
 
+import it.polimi.ingsw.ps09.Constants;
 import it.polimi.ingsw.ps09.model.Actions.PlacementActions.*;
 import it.polimi.ingsw.ps09.model.Board;
 import it.polimi.ingsw.ps09.model.Player;
@@ -30,7 +31,7 @@ public class AllPlacementActions {
 
 
         //Check and add placement actions for Territory Tower
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < Constants.TOWER_HEIGHT; i++) {
 
             if (PlaceFamilyMemberInGreenFloor.isValid
                     (board, player, player.getFamilyMember("NEUTRAL"), i))
@@ -62,7 +63,7 @@ public class AllPlacementActions {
         }
 
         //Check and add placement actions for Character Tower
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < Constants.TOWER_HEIGHT; i++) {
 
             if (PlaceFamilyMemberInBlueFloor.isValid
                     (board, player, player.getFamilyMember("NEUTRAL"), i))
@@ -94,7 +95,7 @@ public class AllPlacementActions {
         }
 
         //Check and add placement actions for Building Tower
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < Constants.TOWER_HEIGHT; i++) {
 
             if (PlaceFamilyMemberInYellowFloor.isValid
                     (board, player, player.getFamilyMember("NEUTRAL"), i))
@@ -126,7 +127,7 @@ public class AllPlacementActions {
         }
 
         //Check and add placement actions for Venture Tower
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < Constants.TOWER_HEIGHT; i++) {
 
             if (PlaceFamilyMemberInPurpleFloor.isValid
                     (board, player, player.getFamilyMember("NEUTRAL"), i))

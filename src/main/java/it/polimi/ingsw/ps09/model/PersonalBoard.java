@@ -20,6 +20,7 @@ public class PersonalBoard {
 
     //VARIABLES
 
+    private PersonalBonusTile mPersonalBonusTile;
     private PersonalBoardCards mPersonalBoardCards;
     private UserResources mUserResources;
 
@@ -245,6 +246,15 @@ public class PersonalBoard {
         mUserResources.remove(removeWood);
     }
 
+    //PERSONAL BONUS TILE
 
+
+    public PersonalBonusTile getPersonalBonusTile() {
+        return mPersonalBonusTile;
+    }
+
+    public void setPersonalBonusTile(PersonalBonusTile personalBonusTile) {
+        mPersonalBonusTile = personalBonusTile;
+    }
 
 }

@@ -15,7 +15,7 @@ import java.util.StringJoiner;
  */
 public class UseCouncilPrivilege implements PlayerAction{
     //static data
-    static final int MAX_NUMBER = 5;
+    //static final int MAX_NUMBER = 5
     //List<String> mStringList = new ArrayList<String>();
     int mPrivilegesCount;
 

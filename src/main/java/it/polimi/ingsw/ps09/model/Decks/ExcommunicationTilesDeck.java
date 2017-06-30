@@ -3,6 +3,7 @@ package it.polimi.ingsw.ps09.model.Decks;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import it.polimi.ingsw.ps09.Constants;
 import it.polimi.ingsw.ps09.model.ExcommunicationTile;
 import it.polimi.ingsw.ps09.model.ExcommunicationTileEffects.ExcommunicationTileEffect;
 import it.polimi.ingsw.ps09.model.GsonAdapters.ExcommunicationTileEffectAdapter;
@@ -95,7 +96,7 @@ public class ExcommunicationTilesDeck {
 
         List<ExcommunicationTile> mTierDeck = new ArrayList<>();
 
-        for (int i = 1; i <= 7; i++) {
+        for (int i = 1; i <= Constants.CARD_PER_PERIOD; i++) {
             mTierDeck.add(loadCardFromString(loadStringFromFile(fileName + i + ".json")));
         }
 

@@ -33,16 +33,18 @@ public class FamilyMemberTest {
     @Test
     public void hasFamilyMemberMorePower() throws Exception {
 
-        //TODO: fix
-        //assertTrue(mTest.getPower() < mTest.morePower(1));
+        int powerBefore = mTest.getPower();
+        mTest.morePower(1);
+        assertTrue(mTest.getPower() > powerBefore);
 
     }
 
     @Test
     public void hasFamilyMemberLessPower() throws Exception {
 
-        //TODO: fix
-        //assertTrue(mTest.getPower() > mTest.lessPower(1));
+        int powerBefore = mTest.getPower();
+        mTest.lessPower(1);
+        assertTrue(mTest.getPower() < powerBefore);
 
     }
 

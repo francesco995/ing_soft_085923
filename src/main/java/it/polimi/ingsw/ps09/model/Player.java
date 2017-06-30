@@ -38,12 +38,11 @@ public class Player {
     //VARIABLES
     private String mUserName;
     private String mUserColor;
-    private BonusFlags mUserFlags;
+    private BonusFlags mUserFlags;//this can contain excommunication ?? (for fraG)
     private int mCouncilPrivilege;
 
     //GAME OBJECTS
     private PersonalBoard mPersonalBoard;
-    private PersonalBonusTile mPersonalBonusTile;
     private UserPoints mUserPoints;
 
     //PLAYER OBJECTS
@@ -926,11 +925,4 @@ public class Player {
         return resourcesCopy;
     }
 
-    public PersonalBonusTile getPersonalBonusTile() {
-        return mPersonalBonusTile;
-    }
-
-    public void setPersonalBonusTile(PersonalBonusTile personalBonusTile) {
-        mPersonalBonusTile = personalBonusTile;
-    }
 }

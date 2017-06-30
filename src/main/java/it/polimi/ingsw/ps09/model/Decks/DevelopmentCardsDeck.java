@@ -1,6 +1,7 @@
 package it.polimi.ingsw.ps09.model.Decks;
 
 import com.google.gson.GsonBuilder;
+import it.polimi.ingsw.ps09.Constants;
 import it.polimi.ingsw.ps09.controller.Game.Game;
 import it.polimi.ingsw.ps09.model.DevelopmentCardEffects.DevelopmentCardEffect;
 import it.polimi.ingsw.ps09.model.DevelopmentCards.*;
@@ -73,7 +74,7 @@ public class DevelopmentCardsDeck {
         mDeck.put("VENTURE", new HashMap<>());
 
         //For each period and for each type of card, fill the corresponding Map and LinkedList
-        for (int i = 1; i <= MAX_PERIODS; i++) {
+        for (int i = 1; i <= Constants.MAX_PERIODS; i++) {
 
             mDeck.get("BUILDING").put(i, loadDeck(mFilePath + "BuildingDeck/Tier" + i + "/"));
 
@@ -164,7 +165,7 @@ public class DevelopmentCardsDeck {
      */
     public DevelopmentCard drawCard(String cardType) {
 
-        for (int i = 1; i <= MAX_PERIODS; i++) {
+        for (int i = 1; i <= Constants.MAX_PERIODS; i++) {
 
             //Check if tier is not empty
             if (!mDeck.get(cardType.toUpperCase()).get(i).isEmpty()) {

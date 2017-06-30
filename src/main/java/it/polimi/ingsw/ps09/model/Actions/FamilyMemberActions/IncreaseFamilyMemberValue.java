@@ -1,5 +1,6 @@
 package it.polimi.ingsw.ps09.model.Actions.FamilyMemberActions;
 
+import it.polimi.ingsw.ps09.Constants;
 import it.polimi.ingsw.ps09.controller.Game.Game;
 import it.polimi.ingsw.ps09.model.Board;
 import it.polimi.ingsw.ps09.model.FamilyMembers.FamilyMember;
@@ -68,10 +69,10 @@ public class IncreaseFamilyMemberValue implements FamilyMemberAction {
             throw new UnsupportedOperationException("Operation not supported");
 
         //remove the servant to pay for action
-        player.remove(new Servant (index));
+        player.remove(new Servant (index % Constants.SERVANT_TO_ADD_POWER));
 
         //Do action
-        familyMember.morePower(index);
+        familyMember.morePower(index % Constants.SERVANT_TO_ADD_POWER);
 
     }
 
