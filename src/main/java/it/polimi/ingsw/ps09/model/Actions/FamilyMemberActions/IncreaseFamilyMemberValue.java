@@ -69,10 +69,10 @@ public class IncreaseFamilyMemberValue implements FamilyMemberAction {
             throw new UnsupportedOperationException("Operation not supported");
 
         //remove the servant to pay for action
-        player.remove(new Servant (index % Constants.SERVANT_TO_ADD_POWER));
+        player.remove(new Servant (index * Constants.SERVANT_TO_ADD_POWER));
 
         //Do action
-        familyMember.morePower(index % Constants.SERVANT_TO_ADD_POWER);
+        familyMember.morePower(index * Constants.SERVANT_TO_ADD_POWER);
 
     }
 

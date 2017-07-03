@@ -23,9 +23,9 @@ import static java.util.logging.Level.INFO;
  * Created by francesco995 on 10/05/2017.
  * DevelopmentCardsDeck is a Collections that contains all the Development cards
  * Provides a method for drawing cards
- * <p>
+ * <b>
  * HashMap of CARD TYPE to a Map of GAME PERIODS (Tiers) to a LinkedList of Cards
- * <p>
+ * <b>
  * BUILDING
  * TIER 1
  * LinkedList of Buildings
