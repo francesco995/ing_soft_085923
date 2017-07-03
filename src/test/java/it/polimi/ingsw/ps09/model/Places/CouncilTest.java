@@ -54,14 +54,6 @@ public class CouncilTest {
         assertEquals(true, mList.equals(mCouncil.getList()) );
     }
 
-    @Test
-    public void deleteDuplicateFamilyMemberTest() throws Exception{
-        mCouncil.deleteDuplicateFamilyMember();
-
-        assertEquals(1, mCouncil.getList().size());
-
-    }
-
 
 
 }

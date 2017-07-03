@@ -21,14 +21,31 @@ public class Order {
         return mOrderList;
     }
 
-    public List<FamilyMember> getFinalOrderList(Council councilList){
+    public ArrayList<Integer> getFinalOrderList(ArrayList<Integer> councilList, ArrayList<Integer> playersOrder){
 
-        councilList.deleteDuplicateFamilyMember();
+        ArrayList<Integer> mFinalOrderList = new ArrayList<>(councilList);
+        int mFlag = 0;
 
-        for(int cont=0; cont<councilList.getList().size(); cont++){
-            mOrderList.add(0,councilList.getFamilyMember(cont));
+        //Return council list if all player are there
+        if(councilList.size()==4)
+            return councilList;
+
+
+        //For each playerOrder check if is in the council too
+        for(int orderPlayerId : playersOrder){
+
+            for(int councilPlayerId : councilList){
+
+                if(orderPlayerId==councilPlayerId)
+                    mFlag=1;
+            }
+
+            if(mFlag==0)
+                mFinalOrderList.add(orderPlayerId);
+
+            mFlag = 0;
         }
 
-        return mOrderList;
+        return mFinalOrderList;
     }
 }

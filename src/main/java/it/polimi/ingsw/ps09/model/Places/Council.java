@@ -45,7 +45,7 @@ public class Council extends Place {
     /**
      * Delete all duplicates of the same family
      */
-    public void deleteDuplicateFamilyMember(){
+    private void deleteDuplicateFamilyMember(){
 
         for(int mCont=0; mCont<=mCouncilOrderList.size(); mCont++){
             for(int contInt = 1; contInt<mCouncilOrderList.size(); contInt++){
@@ -60,6 +60,21 @@ public class Council extends Place {
             }
 
         }
+
+    }
+
+
+    public ArrayList getFinalCouncilList(List familyMember){
+
+        ArrayList<Integer> mList = new ArrayList<>();
+
+        deleteDuplicateFamilyMember();
+
+        for (FamilyMember mMember: mCouncilOrderList) {
+            mList.add(mMember.getPlayerId());
+        }
+
+        return mList;
 
     }
 
