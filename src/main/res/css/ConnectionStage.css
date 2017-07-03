@@ -1,0 +1,19 @@
+.root{
+    -fx-alignment: center;
+    -fx-vgap: 5px;
+    -fx-hgap: 5px;
+
+}
+
+#welcome{
+
+    -fx-font-family: Papyrus;
+    -fx-font-size: 20px;
+    -fx-text-alignment: center;
+}
+
+#innerHbox{
+    -fx-alignment: center;
+    -fx-spacing: 30px;
+    -fx-padding: 10px;
+}

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.text.Text?>
+
+
+
+<GridPane xmlns="http://javafx.com/javafx"
+          xmlns:fx="http://javafx.com/fxml"
+          fx:controller="it.polimi.ingsw.ps09.GUIClientApp"
+          stylesheets="/css/ConnectionStage.css"
+          gridLinesVisible="false"
+          prefHeight="400.0" prefWidth="600.0">
+
+    <Text text="Hello and Welcome to Lorenzo il Magnifico"
+          fx:id="welcome"
+          GridPane.columnIndex="0"
+          GridPane.rowIndex="0"
+          GridPane.columnSpan="2"
+    />
+
+    <Label text="User name:"
+           fx:id="userName"
+            GridPane.columnIndex="0"
+            GridPane.rowIndex="1"/>
+
+    <TextField fx:id="nameInput"
+            GridPane.columnIndex="1"
+            GridPane.rowIndex="1"/>
+
+
+    <Label text="Server address:"
+           fx:id="serverAddress"
+           GridPane.columnIndex="0"
+           GridPane.rowIndex="2"/>
+
+    <TextField fx:id="serverInput"
+               GridPane.columnIndex="1"
+               GridPane.rowIndex="2"/>
+
+    <HBox fx:id="innerHbox"
+          GridPane.columnIndex="0"
+          GridPane.rowIndex="3"
+            GridPane.columnSpan="2">
+
+
+        <Button fx:id="quitBtn"
+                text="Quit"
+                onAction="#quitGame"/>
+
+        <Button fx:id="startBtn"
+                text="Start"
+                onAction="#startGame"/>
+
+    </HBox>
+
+</GridPane>
