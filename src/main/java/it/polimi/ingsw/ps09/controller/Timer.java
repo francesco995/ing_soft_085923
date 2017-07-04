@@ -50,14 +50,23 @@ public class Timer extends Thread {
             try {
                 Thread.sleep(1000);
             } catch (InterruptedException e) {
+                mLogger.log(INFO, "Server: Timer interrupted");
+                i=0;
+                mIsExpired = false;
+                mIsRunning = false;
 
             }
 
-            mLogger.log(INFO, "Server: Timer running, -" + i);
+            if(i==0){
+                mLogger.log(INFO, "Server: Timer expired!!!");
+            }
+            else{
+                mLogger.log(INFO, "Server: Timer running, -" + i);
+            }
 
         }
 
-
+        mIsRunning = false;
         mIsExpired = true;
 
     }

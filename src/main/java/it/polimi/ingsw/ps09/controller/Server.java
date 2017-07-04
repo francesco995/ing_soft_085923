@@ -56,23 +56,22 @@ public class Server extends Thread{
 
     private void addReadyGame(){
 
-        if(mQueuedPlayers.size() >= 2){
+        if(mQueuedPlayers.size() >= 2) {
 
-            if(!mTimer.isRunning()){
-                mTimer.startTimer();
-            }
-
-            if(mTimer.isExpired()){
+            if (mTimer.isExpired()) {
+                mTimer = new Timer(Constants.GAME_START_TIMEOUT);
                 startNewGame();
+            } else {
+                if (!mTimer.isRunning()) {
+                    mTimer.startTimer();
+                }
             }
         }
 
-
-
-        //TODO: timeout
         if(mQueuedPlayers.size() >= 4){
 
             if(mTimer.isRunning()){
+                mTimer.interrupt();
                 mTimer = new Timer(Constants.GAME_START_TIMEOUT);
             }
 
