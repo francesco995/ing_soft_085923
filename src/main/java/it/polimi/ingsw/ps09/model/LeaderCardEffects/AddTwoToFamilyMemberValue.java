@@ -1,11 +1,13 @@
 package it.polimi.ingsw.ps09.model.LeaderCardEffects;
 
+import it.polimi.ingsw.ps09.model.Board;
+import it.polimi.ingsw.ps09.model.FamilyMembers.FamilyMember;
 import it.polimi.ingsw.ps09.model.Player;
 
 /**
  * Created by walle on 19/06/17.
  */
-public class AddTwoToFamilyMemberValue extends LeaderCardEffect{
+public class AddTwoToFamilyMemberValue implements LeaderCardEffect {
 
     private int mCharacterCardsRequired;
     private int mBuildingCardsRequired;
@@ -38,6 +40,11 @@ public class AddTwoToFamilyMemberValue extends LeaderCardEffect{
         toString += "Increase colored family members +2 as value. You can increase it with servants or other character card";
 
         return toString;
+
+    }
+
+    @Override
+    public void doAction(Board board, Player player, FamilyMember familyMember, int index) throws UnsupportedOperationException {
 
     }
 }

@@ -1,5 +1,7 @@
 package it.polimi.ingsw.ps09.model.LeaderCardEffects;
 
+import it.polimi.ingsw.ps09.model.Board;
+import it.polimi.ingsw.ps09.model.FamilyMembers.FamilyMember;
 import it.polimi.ingsw.ps09.model.Player;
 
 import java.util.List;
@@ -7,7 +9,7 @@ import java.util.List;
 /**
  * Created by walle on 19/06/17.
  */
-public class DoHarvestAction extends LeaderCardEffect {
+public class DoHarvestAction implements LeaderCardEffect {
 
     private int mVentureCardsRequired;
 
@@ -34,6 +36,11 @@ public class DoHarvestAction extends LeaderCardEffect {
         toString += "Do an harvest action of value 1. You can increase it with servants or by character card effect.";
 
         return toString;
+
+    }
+
+    @Override
+    public void doAction(Board board, Player player, FamilyMember familyMember, int index) throws UnsupportedOperationException {
 
     }
 }

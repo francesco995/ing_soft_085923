@@ -234,7 +234,7 @@ public class Player {
             UserResources ResourceWithDiscount = new UserResources();
             ResourceWithDiscount.add(card.getResourcesCosts().get(costChoice));
             ResourceWithDiscount.remove(mFamilyMemberPlacementResourcesDiscount.getBonus(cardType));
-
+            //TODO: add method to control dont go below 0 !!!
 
             remove(ResourceWithDiscount);
         }
@@ -924,5 +924,4 @@ public class Player {
 
         return resourcesCopy;
     }
-
-}
+    }

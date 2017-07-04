@@ -1,11 +1,13 @@
 package it.polimi.ingsw.ps09.model.LeaderCardEffects;
 
+import it.polimi.ingsw.ps09.model.Board;
+import it.polimi.ingsw.ps09.model.FamilyMembers.FamilyMember;
 import it.polimi.ingsw.ps09.model.Player;
 
 /**
  * Created by walle on 19/06/17.
  */
-public class PlaceInOccupiedSpace extends LeaderCardEffect{
+public class PlaceInOccupiedSpace implements LeaderCardEffect {
 
     private int mCharacterCardsRequired;
 
@@ -36,6 +38,11 @@ public class PlaceInOccupiedSpace extends LeaderCardEffect{
         toString += "You can place your family members into occupied action spaces. ";
 
         return toString;
+
+    }
+
+    @Override
+    public void doAction(Board board, Player player, FamilyMember familyMember, int index) throws UnsupportedOperationException {
 
     }
 

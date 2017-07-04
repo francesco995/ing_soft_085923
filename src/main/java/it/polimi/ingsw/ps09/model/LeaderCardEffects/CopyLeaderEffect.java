@@ -1,12 +1,14 @@
 package it.polimi.ingsw.ps09.model.LeaderCardEffects;
 
+import it.polimi.ingsw.ps09.model.Board;
+import it.polimi.ingsw.ps09.model.FamilyMembers.FamilyMember;
 import it.polimi.ingsw.ps09.model.Player;
 import it.polimi.ingsw.ps09.model.UserPoints;
 
 /**
  * Created by walle on 19/06/17.
  */
-public class CopyLeaderEffect extends LeaderCardEffect{
+public class CopyLeaderEffect implements LeaderCardEffect {
 
     private UserPoints mUserPointsRequirements;
 
@@ -33,6 +35,11 @@ public class CopyLeaderEffect extends LeaderCardEffect{
         toString += "Copy a leader's ability. Once chosen, you can't undo it.";
 
         return toString;
+
+    }
+
+    @Override
+    public void doAction(Board board, Player player, FamilyMember familyMember, int index) throws UnsupportedOperationException {
 
     }
 }

@@ -42,6 +42,9 @@ public class FamilyMemberTest {
     @Test
     public void hasFamilyMemberLessPower() throws Exception {
 
+        Dice mDice = new BlackDice();
+        mDice.roll();
+        mTest.setPower(mDice);
         int powerBefore = mTest.getPower();
         mTest.lessPower(1);
         assertTrue(mTest.getPower() < powerBefore);

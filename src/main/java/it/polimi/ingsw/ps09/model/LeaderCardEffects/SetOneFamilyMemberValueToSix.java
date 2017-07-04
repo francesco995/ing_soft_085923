@@ -1,12 +1,14 @@
 package it.polimi.ingsw.ps09.model.LeaderCardEffects;
 
+import it.polimi.ingsw.ps09.model.Board;
+import it.polimi.ingsw.ps09.model.FamilyMembers.FamilyMember;
 import it.polimi.ingsw.ps09.model.Player;
 import it.polimi.ingsw.ps09.model.UserPoints;
 
 /**
  * Created by walle on 19/06/17.
  */
-public class SetOneFamilyMemberValueToSix extends LeaderCardEffect {
+public class SetOneFamilyMemberValueToSix implements LeaderCardEffect {
 
     private int mTerritoryCardsRequired;
 
@@ -38,6 +40,11 @@ public class SetOneFamilyMemberValueToSix extends LeaderCardEffect {
                 "You can increase its value with servants or character cards.";
 
         return toString;
+
+    }
+
+    @Override
+    public void doAction(Board board, Player player, FamilyMember familyMember, int index) throws UnsupportedOperationException {
 
     }
 }

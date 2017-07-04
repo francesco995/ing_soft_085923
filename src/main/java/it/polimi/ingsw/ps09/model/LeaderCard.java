@@ -3,12 +3,14 @@ package it.polimi.ingsw.ps09.model;
 import it.polimi.ingsw.ps09.model.LeaderCardEffects.LeaderCardEffect;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.StringJoiner;
 
 public class LeaderCard {
     //CARD INFO
 
     private String mCardName;
+    private Optional<Boolean> mPlayed;
 
     //Effects
 

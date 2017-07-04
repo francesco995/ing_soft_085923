@@ -107,8 +107,6 @@ public class PlaceFamilyMemberInPurpleFloor extends PlaceFamilyMemberInFloor {
         //get card
         player.addVentureCard(card);
 
-        //TODO: ASK FRAG if immediate effect must be activated here or where
-
     }
 
     /**

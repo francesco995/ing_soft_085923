@@ -1,5 +1,7 @@
 package it.polimi.ingsw.ps09.model.LeaderCardEffects;
 
+import it.polimi.ingsw.ps09.model.Board;
+import it.polimi.ingsw.ps09.model.FamilyMembers.FamilyMember;
 import it.polimi.ingsw.ps09.model.Player;
 import it.polimi.ingsw.ps09.model.UserPoints;
 import it.polimi.ingsw.ps09.model.UserResources;
@@ -7,7 +9,7 @@ import it.polimi.ingsw.ps09.model.UserResources;
 /**
  * Created by walle on 19/06/17.
  */
-public class EarnFiveVictoryPointsFromChurch extends LeaderCardEffect {
+public class EarnFiveVictoryPointsFromChurch implements LeaderCardEffect {
 
     private UserResources mUserResourcesRequirements;
 
@@ -34,6 +36,11 @@ public class EarnFiveVictoryPointsFromChurch extends LeaderCardEffect {
         toString += "Gain 5 victory points each time you show support for the church during Vatican Report round.";
 
         return toString;
+
+    }
+
+    @Override
+    public void doAction(Board board, Player player, FamilyMember familyMember, int index) throws UnsupportedOperationException {
 
     }
 }

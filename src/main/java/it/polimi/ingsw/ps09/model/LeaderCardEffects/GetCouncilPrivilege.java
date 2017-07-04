@@ -1,12 +1,14 @@
 package it.polimi.ingsw.ps09.model.LeaderCardEffects;
 
+import it.polimi.ingsw.ps09.model.Board;
+import it.polimi.ingsw.ps09.model.FamilyMembers.FamilyMember;
 import it.polimi.ingsw.ps09.model.Player;
 import it.polimi.ingsw.ps09.model.UserResources;
 
 /**
  * Created by walle on 19/06/17.
  */
-public class GetCouncilPrivilege extends LeaderCardEffect{
+public class GetCouncilPrivilege implements LeaderCardEffect {
 
     private UserResources mUserResourcesRequirements = new UserResources();
 
@@ -37,6 +39,11 @@ public class GetCouncilPrivilege extends LeaderCardEffect{
         toString += "Receive 1 Council Privilege.";
 
         return toString;
+
+    }
+
+    @Override
+    public void doAction(Board board, Player player, FamilyMember familyMember, int index) throws UnsupportedOperationException {
 
     }
 
