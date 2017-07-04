@@ -39,6 +39,11 @@ public final class Constants {
 
 
     /**
+     * Timeout to start game with 2-3 players
+     */
+    public static final int GAME_START_TIMEOUT = 30;
+
+    /**
      * Max players number for each game
      */
     public static final int MAX_PLAYERS = 4;
@@ -85,6 +90,9 @@ public final class Constants {
      * Timeout for placement action
      */
     public static final int PLACEMENT_ACTION_TIMEOUT = 30;
+
+
+
 
 
 

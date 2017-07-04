@@ -1,5 +1,6 @@
 package it.polimi.ingsw.ps09.controller;
 
+import it.polimi.ingsw.ps09.Constants;
 import it.polimi.ingsw.ps09.controller.Game.Game;
 import it.polimi.ingsw.ps09.controller.Network.Server.PlayerConnections.PlayerConnection;
 import it.polimi.ingsw.ps09.controller.Network.Server.WelcomeServers.WelcomeSocketServer;
@@ -23,7 +24,7 @@ public class Server extends Thread{
 
     private List<Game> mActiveGames;
 
-
+    private Timer mTimer = new Timer(Constants.GAME_START_TIMEOUT);
 
     public void startWelcomeServer() throws IOException {
 
@@ -55,57 +56,79 @@ public class Server extends Thread{
 
     private void addReadyGame(){
 
+        if(mQueuedPlayers.size() >= 2){
 
-        //TODO put back to 4 with timeout
+            if(!mTimer.isRunning()){
+                mTimer.startTimer();
+            }
+
+            if(mTimer.isExpired()){
+                startNewGame();
+            }
+        }
+
+
+
+        //TODO: timeout
         if(mQueuedPlayers.size() >= 4){
 
-            sleep(3000);
-
-            int playersN;
-
-            if(mQueuedPlayers.size() > 4)
-                playersN = 4;
-            else
-                playersN = mQueuedPlayers.size();
-
-            //Generate GameID
-            int gameID = (mActiveGames.size() + 1) * 100;
-
-            //Generate userIDs
-            ArrayList<Integer> userIDs = new ArrayList<>();
-
-            //Generate Player connections
-            HashMap<Integer, PlayerConnection> connections = new HashMap<>();
-
-            for(int i = 0; i < playersN; i++){
-                userIDs.add(gameID + userIDs.size() + 1);
+            if(mTimer.isRunning()){
+                mTimer = new Timer(Constants.GAME_START_TIMEOUT);
             }
 
-            //Generate partial PlayerConnections List
-            ArrayList<PlayerConnection> readyPlayersConnections = new ArrayList<>();
-
-            for(int i = 0; i < playersN; i++){
-                readyPlayersConnections.add(mQueuedPlayers.poll());
-                connections.put(userIDs.get(i), readyPlayersConnections.get(i));
-            }
-
-            //Generate userName List
-            List<String> userNames = readyPlayersConnections.stream()
-                    .map(p -> p.getUserName())
-                    .collect(Collectors.toList());
-
-            //Generate userColor List
-            ArrayList<String> userColors = new ArrayList<>();
-            userColors.add("RED");
-            userColors.add("GREEN");
-            userColors.add("BLUE");
-            userColors.add("YELLOW");
-
-            mActiveGames.add(new Game(userIDs, userNames, userColors, gameID, connections));
-            mActiveGames.get(mActiveGames.size() - 1).start();
-
+            startNewGame();
 
         }
+
+    }
+
+    private void startNewGame(){
+
+        sleep(3000);
+
+        int playersN;
+
+        if(mQueuedPlayers.size() > 4)
+            playersN = 4;
+        else
+            playersN = mQueuedPlayers.size();
+
+        //Generate GameID
+        int gameID = (mActiveGames.size() + 1) * 100;
+
+        //Generate userIDs
+        ArrayList<Integer> userIDs = new ArrayList<>();
+
+        //Generate Player connections
+        HashMap<Integer, PlayerConnection> connections = new HashMap<>();
+
+        for(int i = 0; i < playersN; i++){
+            userIDs.add(gameID + userIDs.size() + 1);
+        }
+
+        //Generate partial PlayerConnections List
+        ArrayList<PlayerConnection> readyPlayersConnections = new ArrayList<>();
+
+        for(int i = 0; i < playersN; i++){
+            readyPlayersConnections.add(mQueuedPlayers.poll());
+            connections.put(userIDs.get(i), readyPlayersConnections.get(i));
+        }
+
+        //Generate userName List
+        List<String> userNames = readyPlayersConnections.stream()
+                .map(p -> p.getUserName())
+                .collect(Collectors.toList());
+
+        //Generate userColor List
+        ArrayList<String> userColors = new ArrayList<>();
+        userColors.add("RED");
+        userColors.add("GREEN");
+        userColors.add("BLUE");
+        userColors.add("YELLOW");
+
+        mActiveGames.add(new Game(userIDs, userNames, userColors, gameID, connections));
+        mActiveGames.get(mActiveGames.size() - 1).start();
+
 
     }
 
