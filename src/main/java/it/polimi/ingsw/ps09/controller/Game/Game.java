@@ -146,6 +146,7 @@ public class Game extends Thread {
     private void startGame() throws FileNotFoundException {
 
         LeaderCardsExchange.startExchange(this);
+        DrawBonusTile.startSelection(this);
         Round.startRound(this, 1);
         Round.startRound(this, 2);
 

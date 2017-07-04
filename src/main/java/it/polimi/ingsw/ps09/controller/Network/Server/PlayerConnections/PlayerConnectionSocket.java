@@ -6,18 +6,16 @@ import it.polimi.ingsw.ps09.Constants;
 import it.polimi.ingsw.ps09.controller.*;
 import it.polimi.ingsw.ps09.controller.Game.Game;
 import it.polimi.ingsw.ps09.controller.Timer;
+import it.polimi.ingsw.ps09.model.*;
 import it.polimi.ingsw.ps09.model.Actions.FamilyMemberActions.FamilyMemberAction;
 import it.polimi.ingsw.ps09.model.Actions.PlacementActions.PlacementAction;
 import it.polimi.ingsw.ps09.model.Actions.PlayerActions.PlayerAction;
-import it.polimi.ingsw.ps09.model.Board;
 import it.polimi.ingsw.ps09.model.DevelopmentCardEffects.DevelopmentCardEffect;
 import it.polimi.ingsw.ps09.model.DevelopmentCards.DevelopmentCard;
 import it.polimi.ingsw.ps09.model.ExcommunicationTileEffects.ExcommunicationTileEffect;
 import it.polimi.ingsw.ps09.model.FamilyMembers.FamilyMember;
 import it.polimi.ingsw.ps09.model.GsonAdapters.*;
-import it.polimi.ingsw.ps09.model.LeaderCard;
 import it.polimi.ingsw.ps09.model.LeaderCardEffects.LeaderCardEffect;
-import it.polimi.ingsw.ps09.model.Player;
 
 import java.io.*;
 import java.net.Socket;
@@ -70,6 +68,9 @@ public class PlayerConnectionSocket extends Thread implements PlayerConnection{
 
     private int mLeaderCardChoice;
     private boolean mHasLeaderCardChoiceReady = false;
+
+    private int mPersonalBoardBonusTileChoice;
+    private boolean mHasPersonalBoardBonusTileChoiceReady = false;
 
 
 
@@ -153,6 +154,17 @@ public class PlayerConnectionSocket extends Thread implements PlayerConnection{
         return mLeaderCardChoice;
     }
 
+    public void waitPersonalBoardBonusTileChoice(){
+        while(!mHasPersonalBoardBonusTileChoiceReady){
+            sleep(100);
+        }
+    }
+
+    public int getPersonalBoardBonusTileChoice(){
+        waitPersonalBoardBonusTileChoice();
+        mHasPersonalBoardBonusTileChoiceReady = false;
+        return mPersonalBoardBonusTileChoice;
+    }
 
     private void sendBoard(){
         mLogger.log(INFO, "Game: " + Game.GAME_ID + " sending Board to user " + mUserID);
@@ -197,9 +209,17 @@ public class PlayerConnectionSocket extends Thread implements PlayerConnection{
 
     public void sendLeaderCardsList(ArrayList<LeaderCard> leaderCardsList){
         mLogger.log(INFO, "Game: " + Game.GAME_ID + " sending Leader Cards list to user " + mUserID);
-        sendMessage("leaderCards");
+        sendMessage("leaderCardChoice");
         sendMessage(String.valueOf(leaderCardsList.size()));
         leaderCardsList.stream().forEach(l -> sendMessage(mGson.toJson(l, LeaderCard.class)));
+
+    }
+
+    public void sendPersonalBoardBonusTilesList(ArrayList<PersonalBonusTile> personalBoardBonuses){
+        mLogger.log(INFO, "Game: " + Game.GAME_ID + " sending Personal Board Bonus Tiles list to user " + mUserID);
+        sendMessage("personalBonusTileChoice");
+        sendMessage(String.valueOf(personalBoardBonuses.size()));
+        personalBoardBonuses.stream().forEach(b -> sendMessage(mGson.toJson(b, PersonalBonusTile.class)));
 
     }
 
@@ -346,6 +366,14 @@ public class PlayerConnectionSocket extends Thread implements PlayerConnection{
 
                         break;
 
+                    }
+
+                    case "personalBoardBonusTileChoice":{
+
+                        mPersonalBoardBonusTileChoice = Integer.valueOf(waitForMessage());
+                        mHasPersonalBoardBonusTileChoiceReady = true;
+
+                        break;
                     }
 
                     case "doPlacementAction":{

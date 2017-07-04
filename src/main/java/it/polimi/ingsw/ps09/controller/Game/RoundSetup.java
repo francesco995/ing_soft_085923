@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * Created by francesco995 on 14/06/2017.
  */
-public class RoundSetup {
+public abstract class RoundSetup {
 
     private RoundSetup(){
         //NO INSTANCE

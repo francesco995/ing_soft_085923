@@ -7,7 +7,7 @@ import java.util.ArrayList;
 /**
  * Created by walle on 26/06/17.
  */
-public class LeaderCardsExchange {
+public abstract class LeaderCardsExchange {
 
     public static void startExchange(Game game) {
 

@@ -14,7 +14,7 @@ import static java.util.logging.Level.INFO;
 /**
  * Created by francesco995 on 14/06/2017.
  */
-public class Round {
+public abstract class Round {
 
     //LOGGER
     private static final Logger mLogger = Logger.getAnonymousLogger();

@@ -7,6 +7,7 @@ import it.polimi.ingsw.ps09.model.Actions.FamilyMemberActions.FamilyMemberAction
 import it.polimi.ingsw.ps09.model.Actions.PlacementActions.PlacementAction;
 import it.polimi.ingsw.ps09.model.Actions.PlayerActions.PlayerAction;
 import it.polimi.ingsw.ps09.model.LeaderCard;
+import it.polimi.ingsw.ps09.model.PersonalBonusTile;
 import it.polimi.ingsw.ps09.view.CLIClientGame;
 import it.polimi.ingsw.ps09.controller.Game.Game;
 import it.polimi.ingsw.ps09.controller.PlayersOrder;
@@ -57,6 +58,9 @@ public class ServerConnectionSocket extends Thread implements ServerConnection {
 
     private boolean mHasLeaderCardChoice;
     private ArrayList<LeaderCard> mLeaderCardsList;
+
+    private boolean mHasPersonalBonusTileChoice;
+    private ArrayList<PersonalBonusTile> mPersonalBonusTilesList;
 
     private Socket mSocket;
 
@@ -148,6 +152,14 @@ public class ServerConnectionSocket extends Thread implements ServerConnection {
     }
 
     /**
+     * Check if the Player associated with this connection has a Personal Board Bonus Tile choice available to do
+     * @return true if Player has Personal Board Bonus Tile(s) to choose
+     */
+    public boolean hasPersonalBonusTileChoice() {
+        return mHasPersonalBonusTileChoice;
+    }
+
+    /**
      * Set HasAction parameter
      * @param hasPlacementAction
      */
@@ -196,6 +208,7 @@ public class ServerConnectionSocket extends Thread implements ServerConnection {
         return mUserName;
     }
 
+
     /**
      * Get first message received
      * @return First message on the received messages Queue
@@ -208,6 +221,7 @@ public class ServerConnectionSocket extends Thread implements ServerConnection {
         return mIncomingMessages.poll();
     }
 
+
     /**
      * Get updated PlacementActions list for player
      * @return List of valid PlacementActions for player
@@ -215,6 +229,7 @@ public class ServerConnectionSocket extends Thread implements ServerConnection {
     public ArrayList<PlacementAction> getPlacementActionsList() {
         return mPlacementActionsList;
     }
+
 
     /**
      * Get updated PlacementActions list for player
@@ -226,12 +241,23 @@ public class ServerConnectionSocket extends Thread implements ServerConnection {
 
 
     /**
-     * Get updated Leader Card list to choose from
+     * Get updated Leader Card choice list to choose from
      * @return List of valid LeaderCards for player
      */
     public ArrayList<LeaderCard> getLeaderCardsChoiceList() {
         return mLeaderCardsList;
     }
+
+
+    /**
+     * Get updated Personal Board Bonus Tile list to choose from
+     * @return List of valid Personal Board Bonus Tile list for player
+     */
+    public ArrayList<PersonalBonusTile> getPersonalBonusTilesList() {
+        return mPersonalBonusTilesList;
+    }
+
+
 
     /**
      * Setup phase, wait until player has a leader card to choose
@@ -241,6 +267,13 @@ public class ServerConnectionSocket extends Thread implements ServerConnection {
             sleep(100);
     }
 
+    /**
+     * Setup phase, wait until player has a Personal Board Bonus Tile to choose
+     */
+    public void waitPersonalBoardBonusTileChoiceList(){
+        while (!mHasPersonalBonusTileChoice)
+            sleep(100);
+    }
 
 
     /**
@@ -374,13 +407,25 @@ public class ServerConnectionSocket extends Thread implements ServerConnection {
      * Wait for a message, and deserialize Leader Cards
      * first message is the number of cards to deserialize, next X messages are the serialized cards
      */
-    private void updateLeaderCards(){
+    private void updateLeaderCardsList(){
 
         int size = Integer.valueOf(waitForMessage());
         mLeaderCardsList = new ArrayList<>();
 
         for (int i = 0; i < size; i++){
             mLeaderCardsList.add(mGson.fromJson(waitForMessage(), LeaderCard.class));
+        }
+
+    }
+
+
+    private void updatePersonalBoardBonusTilesList(){
+
+        int size = Integer.valueOf(waitForMessage());
+        mPersonalBonusTilesList = new ArrayList<>();
+
+        for(int i = 0; i < size; i++){
+            mPersonalBonusTilesList.add(mGson.fromJson(waitForMessage(), PersonalBonusTile.class));
         }
 
     }
@@ -393,6 +438,7 @@ public class ServerConnectionSocket extends Thread implements ServerConnection {
         sendMessage(String.valueOf(actionIndex));
     }
 
+
     public void doFamilyMemberAction(int actionIndex){
 
         sendMessage("doFamilyMemberAction");
@@ -400,12 +446,23 @@ public class ServerConnectionSocket extends Thread implements ServerConnection {
         sendMessage(String.valueOf(actionIndex));
     }
 
+
     public void chooseLeaderCard(int index){
 
         sendMessage("leaderCardChoice");
 
         sendMessage(String.valueOf(index));
         mHasLeaderCardChoice = false;
+
+
+    }
+
+    public void choosePersonalBoardBonusTile(int index){
+
+        sendMessage("personalBoardBonusTileChoice");
+
+        sendMessage(String.valueOf(index));
+        mHasPersonalBonusTileChoice = false;
 
 
     }
@@ -573,9 +630,15 @@ public class ServerConnectionSocket extends Thread implements ServerConnection {
                         break;
                     }
 
-                    case "leaderCards": {
-                        updateLeaderCards();
+                    case "leaderCardChoice": {
+                        updateLeaderCardsList();
                         mHasLeaderCardChoice = true;
+                        break;
+                    }
+
+                    case "personalBonusTileChoice":{
+                        updatePersonalBoardBonusTilesList();
+                        mHasPersonalBonusTileChoice = true;
                         break;
                     }
 

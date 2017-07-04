@@ -3,11 +3,9 @@ package it.polimi.ingsw.ps09.view;
 import it.polimi.ingsw.ps09.Constants;
 import it.polimi.ingsw.ps09.controller.Network.Client.ServerConnections.ServerConnection;
 import it.polimi.ingsw.ps09.controller.PlayersOrder;
+import it.polimi.ingsw.ps09.model.*;
 import it.polimi.ingsw.ps09.model.Actions.FamilyMemberActions.FamilyMemberAction;
 import it.polimi.ingsw.ps09.model.Actions.PlacementActions.PlacementAction;
-import it.polimi.ingsw.ps09.model.Board;
-import it.polimi.ingsw.ps09.model.LeaderCard;
-import it.polimi.ingsw.ps09.model.Player;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -226,10 +224,23 @@ public class CLIClientGame extends Thread{
 
         int choice = Prompter.promptForIntChoice(
                 "Choose a Leader card to keep, the others will be passed to the next player",
-                mCards.stream().map(LeaderCard::toString).collect(Collectors.toList()));
+                mCards.stream().map(LeaderCard::toString).collect(Collectors.toList())
+        );
 
         mServerConnection.chooseLeaderCard(choice);
 
+    }
+
+    private void choosePersonalBoardBonusTile(){
+        mServerConnection.waitPersonalBoardBonusTileChoiceList();
+        ArrayList<PersonalBonusTile> mTiles = mServerConnection.getPersonalBonusTilesList();
+
+        int choice = Prompter.promptForIntChoice(
+                "Choose a Personal Board Bonus Tile to keep, the others will be passed to the previous player",
+                mTiles.stream().map(PersonalBonusTile::toString).collect(Collectors.toList())
+        );
+
+        mServerConnection.choosePersonalBoardBonusTile(choice);
     }
 
 
@@ -262,6 +273,11 @@ public class CLIClientGame extends Thread{
             chooseLeaderCard();
 
         }
+
+        System.out.println("\n## Before the Game start, Players need to choose their Personal Board Bonus Tile ##");
+
+        choosePersonalBoardBonusTile();
+
 
 
 

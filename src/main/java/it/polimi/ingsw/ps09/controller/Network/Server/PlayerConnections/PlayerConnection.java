@@ -1,12 +1,10 @@
 package it.polimi.ingsw.ps09.controller.Network.Server.PlayerConnections;
 
 import it.polimi.ingsw.ps09.controller.PlayersOrder;
+import it.polimi.ingsw.ps09.model.*;
 import it.polimi.ingsw.ps09.model.Actions.FamilyMemberActions.FamilyMemberAction;
 import it.polimi.ingsw.ps09.model.Actions.PlacementActions.PlacementAction;
 import it.polimi.ingsw.ps09.model.Actions.PlayerActions.PlayerAction;
-import it.polimi.ingsw.ps09.model.Board;
-import it.polimi.ingsw.ps09.model.LeaderCard;
-import it.polimi.ingsw.ps09.model.Player;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -27,7 +25,10 @@ public interface PlayerConnection{
     void sendFamilyMemberActionsList(ArrayList<FamilyMemberAction> familyMemberActionsList);
     void sendPlayerActionsList(ArrayList<PlayerAction> playerActionsList);
     void sendLeaderCardsList(ArrayList<LeaderCard> leaderCardsList);
+    void sendPersonalBoardBonusTilesList(ArrayList<PersonalBonusTile> personalBoardBonuses);
     void waitActionReady();
+    void waitPersonalBoardBonusTileChoice();
+    int getPersonalBoardBonusTileChoice();
     int getActionChoice();
     String getActionType();
     void resetActionReady();

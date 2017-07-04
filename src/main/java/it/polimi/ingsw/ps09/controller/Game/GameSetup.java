@@ -21,7 +21,7 @@ import java.util.HashMap;
  * Created by francesco995 on 13/06/2017.
  * Delegate Class to setup the Game Objects for the first time
  */
-public class GameSetup {
+public abstract class GameSetup {
 
 
     private GameSetup(){
