@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import java.util.stream.IntStream;
+import java.util.InputMismatchException;
 
 /**
  * Created by francesco995 on 25/05/2017.
@@ -51,8 +52,9 @@ public abstract class Prompter {
 
         BufferedReader mBufferedStringReader = new BufferedReader(new InputStreamReader(System.in));
         Scanner mReader = new Scanner(System.in);
+        boolean valid = false;
 
-        int choice;
+        int choice = -1;
 
         //First prints the message
         System.out.println(message);
@@ -63,8 +65,23 @@ public abstract class Prompter {
         //Asks for the choice
         do {
             System.out.print("\nYour choice? -> ");
-            choice = mReader.nextInt();
+
+            do {
+                try {
+                    mReader = new Scanner(System.in);
+                    choice = mReader.nextInt();
+                    valid = true;
+                }catch (NumberFormatException e){
+                    System.out.println("Please only numbers");
+                    System.out.print("\nYour choice? -> ");
+                }catch (InputMismatchException e){
+                    System.out.println("Please only numbers");
+                    System.out.print("\nYour choice? -> ");
+                }
+            }while (!valid);
+
         } while (choice < 0 || choice > options.size());
+
 
         return (choice);
     }
@@ -74,7 +91,8 @@ public abstract class Prompter {
         BufferedReader mBufferedStringReader = new BufferedReader(new InputStreamReader(System.in));
         Scanner mReader = new Scanner(System.in);
 
-        int choice;
+        int choice = 0;
+        boolean valid = false;
 
         //First prints the message
         System.out.println(message);
@@ -85,7 +103,21 @@ public abstract class Prompter {
         //Asks for the choice
         do {
             System.out.print("\nYour choice? -> ");
-            choice = mReader.nextInt();
+
+        do {
+            try {
+                mReader = new Scanner(System.in);
+                choice = mReader.nextInt();
+                valid = true;
+            }catch (NumberFormatException e){
+                System.out.println("Please only numbers");
+                System.out.print("\nYour choice? -> ");
+            }catch (InputMismatchException e){
+                    System.out.println("Please only numbers");
+                    System.out.print("\nYour choice? -> ");
+                }
+            }while (!valid);
+
         } while (choice < 1 || choice > options.size());
 
         return (choice);
