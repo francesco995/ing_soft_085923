@@ -102,6 +102,10 @@ public class PlayerConnectionSocket extends Thread implements PlayerConnection{
     }
 
 
+    /**
+     * Put thread to sleep for x seconds
+     * @param mS milliseconds to sleep for
+     */
     private void sleep(int mS){
 
         try {
@@ -113,71 +117,116 @@ public class PlayerConnectionSocket extends Thread implements PlayerConnection{
     }
 
 
+    /**
+     * Send updated game objects to the clients
+     */
     public synchronized void sendUpdatedData(){
         sendBoard();
         sendPlayersOrder();
         sendPlayers();
     }
 
+    /**
+     * Check if the player associated with this connection has an Action ready (chosen)
+     * @return
+     */
     public boolean hasActionReady(){
         return mHasActionReady;
     }
 
+    /**
+     * Reset Action ready status
+     */
     public void resetActionReady(){
         mHasActionReady = false;
     }
 
-
+    /**
+     * Get the index of the Action chosen by the player
+     * @return index of the Action
+     */
     public int getActionChoice() {
         return mActionChoice;
     }
 
+    /**
+     * Get the type of the action the player is willing to do
+     * @return String identifying the Action type
+     */
     public String getActionType() {
         return mActionType;
     }
 
+    /**
+     * Wait for the player to have an action chosen
+     */
     public void waitActionReady(){
+        //TODO: add timeout
         while(!mHasActionReady){
             sleep(100);
         }
     }
 
+    /**
+     * Wait for player to have chosen a Leader Card
+     */
     public void waitLeaderCardChoiceReady(){
+        //TODO: add timeout
         while(!mHasLeaderCardChoiceReady){
             sleep(100);
         }
     }
 
+    /**
+     * Get the index of the Leader card chosen by the player
+     * @return index of the chosen card
+     */
     public int getLeaderCardChoice(){
         waitLeaderCardChoiceReady();
         mHasLeaderCardChoiceReady = false;
         return mLeaderCardChoice;
     }
 
+    /**
+     * Wait for player to have chosen a Personal Board Bonus tile
+     */
     public void waitPersonalBoardBonusTileChoice(){
         while(!mHasPersonalBoardBonusTileChoiceReady){
             sleep(100);
         }
     }
 
+    /**
+     * Get the index of the tile chosen by the player
+     * @return
+     */
     public int getPersonalBoardBonusTileChoice(){
         waitPersonalBoardBonusTileChoice();
         mHasPersonalBoardBonusTileChoiceReady = false;
         return mPersonalBoardBonusTileChoice;
     }
 
+    /**
+     * Send updated Board to client
+     */
     private void sendBoard(){
         mLogger.log(INFO, "Game: " + Game.GAME_ID + " sending Board to user " + mUserID);
         sendMessage("board");
         sendMessage(mGson.toJson(mBoard, Board.class));
     }
 
+    /**
+     * Send updated Players Order to client
+     */
     private void sendPlayersOrder(){
         mLogger.log(INFO, "Game: " + Game.GAME_ID + " sending Players Order to user " + mUserID);
         sendMessage("order");
         sendMessage(mGson.toJson(mPlayersOrder, PlayersOrder.class));
     }
 
+    /**
+     * Send updated Players to client
+     */
     private void sendPlayers(){
         mLogger.log(INFO, "Game: " + Game.GAME_ID + " sending Players to user " + mUserID);
         sendMessage("players");
@@ -186,6 +235,10 @@ public class PlayerConnectionSocket extends Thread implements PlayerConnection{
         );
     }
 
+    /**
+     * Send Placement Actions list to client
+     * @param placementActionsList list of PlacementActions to sent to client
+     */
     public void sendPlacementActionsList(ArrayList<PlacementAction> placementActionsList){
         mLogger.log(INFO, "Game: " + Game.GAME_ID + " sending Placement Actions list to user " + mUserID);
         sendMessage("placementActions");
@@ -193,6 +246,10 @@ public class PlayerConnectionSocket extends Thread implements PlayerConnection{
         placementActionsList.stream().forEach(a -> sendMessage(mGson.toJson(a, PlacementAction.class)));
     }
 
+    /**
+     * Send Family Member Actions list to client
+     * @param familyMemberActionsList
+     */
     public void sendFamilyMemberActionsList(ArrayList<FamilyMemberAction> familyMemberActionsList){
         mLogger.log(INFO, "Game: " + Game.GAME_ID + " sending FamilyMember Actions list to user " + mUserID);
         sendMessage("familyMemberActions");
@@ -200,6 +257,10 @@ public class PlayerConnectionSocket extends Thread implements PlayerConnection{
         familyMemberActionsList.stream().forEach(a -> sendMessage(mGson.toJson(a, FamilyMemberAction.class)));
     }
 
+    /**
+     * Send Player Actions list to client
+     * @param playerActionsList list of Player Actions to send
+     */
     public void sendPlayerActionsList(ArrayList<PlayerAction> playerActionsList){
         mLogger.log(INFO, "Game: " + Game.GAME_ID + " sending Player Actions list to user " + mUserID);
         sendMessage("playerActions");
@@ -207,6 +268,10 @@ public class PlayerConnectionSocket extends Thread implements PlayerConnection{
         playerActionsList.stream().forEach(a -> sendMessage(mGson.toJson(a, PlayerAction.class)));
     }
 
+    /**
+     * Send Leader Cards list to client
+     * @param leaderCardsList Leader Card list to send
+     */
     public void sendLeaderCardsList(ArrayList<LeaderCard> leaderCardsList){
         mLogger.log(INFO, "Game: " + Game.GAME_ID + " sending Leader Cards list to user " + mUserID);
         sendMessage("leaderCardChoice");
@@ -215,6 +280,10 @@ public class PlayerConnectionSocket extends Thread implements PlayerConnection{
 
     }
 
+    /**
+     * Send Personal Board Bonus tiles list to client
+     * @param personalBoardBonuses Personal Board Bonus tiles list to send
+     */
     public void sendPersonalBoardBonusTilesList(ArrayList<PersonalBonusTile> personalBoardBonuses){
         mLogger.log(INFO, "Game: " + Game.GAME_ID + " sending Personal Board Bonus Tiles list to user " + mUserID);
         sendMessage("personalBonusTileChoice");
@@ -223,6 +292,10 @@ public class PlayerConnectionSocket extends Thread implements PlayerConnection{
 
     }
 
+    /**
+     * Get a message from the Incoming Messages queue
+     * @return
+     */
     public String getMessage(){
 
         while(mIncomingMessages.isEmpty())
@@ -232,6 +305,12 @@ public class PlayerConnectionSocket extends Thread implements PlayerConnection{
 
     }
 
+    /**
+     * Get a message from client with timeout
+     * @param timeout max seconds to wait
+     * @param defaultTimeout default message if timeout expires
+     * @return message received or default message in case of timeout
+     */
     public String getMessage(int timeout, String defaultTimeout){
 
         it.polimi.ingsw.ps09.controller.Timer timer = new Timer(timeout);
@@ -247,11 +326,19 @@ public class PlayerConnectionSocket extends Thread implements PlayerConnection{
 
     }
 
+    /**
+     * Get the UserName of the player associated with the connection
+     * @return UserName String
+     */
     @Override
     public String getUserName(){
         return mUserName;
     }
 
+    /**
+     * Get all incoming messages
+     * @return List of String messages
+     */
     public List<String> getAllMessages(){
         List<String> messages = new LinkedList<>();
 
@@ -262,6 +349,10 @@ public class PlayerConnectionSocket extends Thread implements PlayerConnection{
         return messages;
     }
 
+    /**
+     * Check if there is an incoming message
+     * @return true if a message is present
+     */
     private boolean hasIncomingMessages(){
 
         if(!mIncomingMessages.isEmpty())
@@ -270,6 +361,12 @@ public class PlayerConnectionSocket extends Thread implements PlayerConnection{
         return false;
     }
 
+    /**
+     * Set game objects for the first time when game is created
+     * @param board game Board for current game
+     * @param players Players for current game
+     * @param playersOrder PlayersOrder for current game
+     */
     public void setGameData(Board board, HashMap<Integer, Player> players, PlayersOrder playersOrder){
         mBoard = board;
         mPlayers = players;
@@ -277,10 +374,17 @@ public class PlayerConnectionSocket extends Thread implements PlayerConnection{
 
     }
 
+    /**
+     * Start game
+     */
     public void startGame(){
         sendUpdatedData();
     }
 
+    /**
+     * Send generic message
+     * @param message Message to send
+     */
     public void sendMessage(String message){
 
         try {
@@ -297,10 +401,18 @@ public class PlayerConnectionSocket extends Thread implements PlayerConnection{
         }
     }
 
+    /**
+     * Set user id for the player associated with this connection
+     * @param userID UserID integer to set
+     */
     public void setUserID(int userID) {
         mUserID = userID;
     }
 
+    /**
+     * Wait for an incoming message from client
+     * @return Message received
+     */
     private String waitForMessage() {
 
         String message;

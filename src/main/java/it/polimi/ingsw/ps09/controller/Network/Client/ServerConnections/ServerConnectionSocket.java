@@ -31,7 +31,7 @@ import static java.util.logging.Level.INFO;
 /**
  * Created by francesco995 on 15/06/2017.
  * <p>
- * Thread instantiated by the user app to connect to the Server
+ * Thread instantiated by the user app to connect to the Server via Socket
  */
 public class ServerConnectionSocket extends Thread implements ServerConnection {
 
@@ -418,7 +418,10 @@ public class ServerConnectionSocket extends Thread implements ServerConnection {
 
     }
 
-
+    /**
+     * Wait for a message, and deserialize Personal Board Bonus Tiles
+     * first message is the number of tiles to deserialize, next X messages are the serialized cards
+     */
     private void updatePersonalBoardBonusTilesList(){
 
         int size = Integer.valueOf(waitForMessage());
@@ -431,6 +434,10 @@ public class ServerConnectionSocket extends Thread implements ServerConnection {
     }
 
 
+    /**
+     * Send to server the index of the Placement Action chosen by the player
+     * @param actionIndex index of the chosen action (increased by 1)
+     */
     public void doPlacementAction(int actionIndex){
 
         sendMessage("doPlacementAction");
@@ -439,6 +446,10 @@ public class ServerConnectionSocket extends Thread implements ServerConnection {
     }
 
 
+    /**
+     * Send to server the index of the Family Member Action chosen by the player
+     * @param actionIndex index if the chosen action (increased by 1)
+     */
     public void doFamilyMemberAction(int actionIndex){
 
         sendMessage("doFamilyMemberAction");
@@ -447,6 +458,10 @@ public class ServerConnectionSocket extends Thread implements ServerConnection {
     }
 
 
+    /**
+     * Send to server the index of the Leader Card chosen by the player
+     * @param index index of the chosen Leader Card
+     */
     public void chooseLeaderCard(int index){
 
         sendMessage("leaderCardChoice");
@@ -457,6 +472,10 @@ public class ServerConnectionSocket extends Thread implements ServerConnection {
 
     }
 
+    /**
+     * Send to server the index of the Personal Board Bonus Tile chosen by the player
+     * @param index index of the chosen tile
+     */
     public void choosePersonalBoardBonusTile(int index){
 
         sendMessage("personalBoardBonusTileChoice");

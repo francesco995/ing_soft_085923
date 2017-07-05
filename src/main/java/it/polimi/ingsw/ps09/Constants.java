@@ -49,10 +49,12 @@ public final class Constants {
      * Max players number for each game
      */
     public static final int MAX_PLAYERS = 4;
+
     /**
      * Static number for PersonalBoardBonusDeck
      */
     public static final int TILE_TOTAL = 4;
+
     /**
      * Static numbers for LeaderCardDeck
      */
@@ -65,6 +67,7 @@ public final class Constants {
      */
     public final static int MAX_PERIODS = 3;
     public static final int CARD_PER_PERIOD = 7;
+
     /**
      * Static number for Actions
      */
@@ -72,10 +75,12 @@ public final class Constants {
     public static final int SERVANT_TO_ADD_POWER = 1;
     public static final int MAX_NUMBER_PRIVILEGE = 5;
     public static final int TOWER_HEIGHT = 4;
+
     /**
      * Max dice number
      */
     public static final int MAX_DICE_VALUE = 6;
+
     /**
      * User resources constant for new player
      */
