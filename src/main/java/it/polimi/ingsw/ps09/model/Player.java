@@ -233,8 +233,7 @@ public class Player {
             //creates a copy of the cost of the card and remove the player discount
             UserResources ResourceWithDiscount = new UserResources();
             ResourceWithDiscount.add(card.getResourcesCosts().get(costChoice));
-            ResourceWithDiscount.remove(mFamilyMemberPlacementResourcesDiscount.getBonus(cardType));
-            //TODO: add method to control dont go below 0 !!!
+            ResourceWithDiscount.removeDiscount(mFamilyMemberPlacementResourcesDiscount.getBonus(cardType));
 
             remove(ResourceWithDiscount);
         }
@@ -917,7 +916,7 @@ public class Player {
 
     public UserResources PlayerResourcesCopy(UserResources sum){
 
-        UserResources resourcesCopy = new UserResources();
+        UserResources resourcesCopy = new UserResources(0,0,0,0);
         resourcesCopy.add(getPersonalBoard().getUserResources());
 
         resourcesCopy.add(sum);

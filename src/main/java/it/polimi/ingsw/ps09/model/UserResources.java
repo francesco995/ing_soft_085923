@@ -146,5 +146,33 @@ public class UserResources {
         remove(userResources.getWood());
     }
 
+    public void removeDiscount(UserResources userResources){
+
+        if(getCoins().isGreaterOrEqual(userResources.getCoins())){
+            remove(userResources.getCoins());
+        }else{
+            getCoins().remove(getCoins());
+        }
+
+        if(getStone().isGreaterOrEqual(userResources.getStone())){
+            remove(userResources.getStone());
+        }else{
+            getStone().remove(getStone());
+        }
+
+        if(getServant().isGreaterOrEqual(userResources.getServant())){
+            remove(userResources.getServant());
+        }else{
+            getServant().remove(getServant());
+        }
+
+        if(getWood().isGreaterOrEqual(userResources.getWood())){
+            remove(userResources.getWood());
+        }else{
+            getWood().remove(getWood());
+        }
+
+    }
+
 
 }
