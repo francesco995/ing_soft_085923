@@ -35,13 +35,9 @@ public class CLIClientGame extends Thread{
     private ServerConnection mServerConnection;
 
     private String mMainMenuMessage;
+
     private ArrayList<String> mMainMenu;
-    private ArrayList<String> mBoardMenu;
-    private ArrayList<String> mTowersMenu;
     private ArrayList<String> mPlayersMenu;
-    private ArrayList<String> mPlayerMenu;
-    private ArrayList<String> mCouncilMenu;
-    private ArrayList<String> mBonusTileMenu;
 
     private String mUserName;
 
@@ -57,65 +53,19 @@ public class CLIClientGame extends Thread{
         mMainMenuMessage += "\n######### Lorenzo il Magnifico Main Menu ##########";
         mMainMenuMessage += "\n###################################################\n";
 
-
-        mMainMenu = new ArrayList<>();
-        mMainMenu.add("Display Players");
-        mMainMenu.add("Display Board");
-        mMainMenu.add("Display Players order");
-        mMainMenu.add("Do Placement Action");
-        mMainMenu.add("Do Family Member Action");
-        mMainMenu.add("Do Player Action");
-        mMainMenu.add("Refresh main menu");
+        mMainMenu = Constants.CLI_MAIN_MENU;
 
 
-        mBoardMenu = new ArrayList<>();
-        mBoardMenu.add("Display the whole Board");
-        mBoardMenu.add("Display Towers");
-        mBoardMenu.add("Display Markets");
-        mBoardMenu.add("Display Harvest & Production");
-        mBoardMenu.add("Display Dices values");
-        mBoardMenu.add("Display Excommunication tiles");
-        mBoardMenu.add("Go back to main menu");
 
 
-        mTowersMenu = new ArrayList<>();
-        mTowersMenu.add("Green Tower");
-        mTowersMenu.add("Yellow Tower");
-        mTowersMenu.add("Blue Tower");
-        mTowersMenu.add("Purple Tower");
-        mTowersMenu.add("Go back to main menu");
-
-
-        mPlayerMenu = new ArrayList<>();
-        mPlayerMenu.add("Show Player info");
-        mPlayerMenu.add("Show Player available FamilyMembers");
-        mPlayerMenu.add("Show Player Resources and Points");
-        mPlayerMenu.add("Show Player Green cards");
-        mPlayerMenu.add("Show Player Yellow cards");
-        mPlayerMenu.add("Show Player Blue cards");
-        mPlayerMenu.add("Show Player Purple cards");
-        mPlayerMenu.add("Show Player last PlacementActions");
-        mPlayerMenu.add("Go back to main menu");
 
 
 
         mPlayersMenu = new ArrayList<>();
 
 
-        mCouncilMenu = new ArrayList<>();
-        mCouncilMenu.add("Get 1 wood and 1 stone");
-        mCouncilMenu.add("Get 2 servants");
-        mCouncilMenu.add("Get 2 coins");
-        mCouncilMenu.add("Get 2 military points");
-        mCouncilMenu.add("Get 1 faith point");
-        //no go back because selection must be made all in row
 
-        mBonusTileMenu = new ArrayList<>();
-        mBonusTileMenu.add("Get Bonus Tile 1");
-        mBonusTileMenu.add("Get Bonus Tile 2");
-        mBonusTileMenu.add("Get Bonus Tile 3");
-        mBonusTileMenu.add("Get Bonus Tile 4");
-        //no go back selection must be made
+
 
     }
 
@@ -168,7 +118,7 @@ public class CLIClientGame extends Thread{
         //privilegesCount = player.getPrivilegesCount;
 
         List<Integer> choices = Prompter.promptMultipleDifferentChoices
-                ("Choose " + privilegesCount +" different council privilege", mCouncilMenu , privilegesCount, MAX_COUNCIL);
+                ("Choose " + privilegesCount +" different council privilege", Constants.CLI_COUNCIL_MENU , privilegesCount, MAX_COUNCIL);
 
         //needs to send List through socket mServerConnection.sendMessage();
         //remove privileges of player
@@ -351,7 +301,7 @@ public class CLIClientGame extends Thread{
      */
     private void displayPlayer(Player player){
 
-        switch (Prompter.promptForIntChoice("Please choose what to display of Player: " + player.getUserName(), mPlayerMenu)){
+        switch (Prompter.promptForIntChoice("Please choose what to display of Player: " + player.getUserName(), Constants.CLI_PLAYER_MENU)){
 
             case 1:{
                 //Show Player info
@@ -456,7 +406,7 @@ public class CLIClientGame extends Thread{
 
         String mString = new String();
 
-        switch(Prompter.promptForIntChoice("Please choose what to display", mBoardMenu)){
+        switch(Prompter.promptForIntChoice("Please choose what to display", Constants.CLI_BOARD_MENU)){
 
             case 1:{
 
@@ -512,7 +462,7 @@ public class CLIClientGame extends Thread{
      */
     private void displayTowers(){
 
-        switch (Prompter.promptForIntChoice("Please choose a Tower", mTowersMenu)){
+        switch (Prompter.promptForIntChoice("Please choose a Tower", Constants.CLI_TOWERS_MENU)){
 
             case 1:{
                 System.out.println(mBoard.getTerritoriesTower().toString());
@@ -535,15 +485,6 @@ public class CLIClientGame extends Thread{
 
         }
     }
-    /**
-     * Display Bonus tile to user
-     */
-    private void displayBonusTiles(){
-    //TODO ASK GIANNI IF RIGHT PLACE FOR THIS THING
-        switch (Prompter.promptForIntChoice("Please choose a Bonus Tile", mBonusTileMenu)){
-            case 1:
-                break;
-        }
-    }
+
 
 }

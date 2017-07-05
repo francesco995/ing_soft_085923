@@ -1,5 +1,9 @@
 package it.polimi.ingsw.ps09;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Arrays;
+
 /**
  * Created by francesco995 on 30/06/2017.
  * Application constants
@@ -30,7 +34,6 @@ public final class Constants {
      * True if you want to run clients with more output for diagnostics
      */
     public static final boolean ADVANCED_TESTING_CLIENT = false;
-
 
 
     //####################################################
@@ -91,9 +94,62 @@ public final class Constants {
      */
     public static final int PLACEMENT_ACTION_TIMEOUT = 30;
 
+    public static final ArrayList<String> CLI_MAIN_MENU = new ArrayList<>(
+            Arrays.asList(
+                    "Display Players",
+                    "Display Board",
+                    "Display Players order",
+                    "Do Placement Action",
+                    "Do Family Member Action",
+                    "Do Player Action",
+                    "Refresh main menu"
+            ));
+
+
+    public static final ArrayList<String> CLI_BOARD_MENU = new ArrayList<>(
+            Arrays.asList(
+                    "Display the whole Board",
+                        "Display Towers",
+                        "Display Markets",
+                        "Display Harvest & Production",
+                        "Display Dices values",
+                        "Display Excommunication tiles",
+                        "Go back to main menu"
+            ));
+
+
+    public static final ArrayList<String> CLI_PLAYER_MENU = new ArrayList<>(
+            Arrays.asList(
+                    "Show Player info",
+                    "Show Player available FamilyMembers",
+                    "Show Player Resources and Points",
+                    "Show Player Green cards",
+                    "Show Player Yellow cards",
+                    "Show Player Blue cards",
+                    "Show Player Purple cards",
+                    "Show Player last PlacementActions",
+                    "Go back to main menu"
+            ));
+
+
+    public static final ArrayList<String> CLI_TOWERS_MENU = new ArrayList<>(
+            Arrays.asList(
+                    "Green Tower",
+                        "Yellow Tower",
+                        "Blue Tower",
+                        "Purple Tower",
+                        "Go back to main menu"
+            ));
 
 
 
-
+    public static final ArrayList<String> CLI_COUNCIL_MENU = new ArrayList<>(
+            Arrays.asList(
+                    "Get 1 wood and 1 stone",
+                        "Get 2 servants",
+                        "Get 2 coins",
+                        "Get 2 military points",
+                        "Get 1 faith point"
+            ));
 
 }
