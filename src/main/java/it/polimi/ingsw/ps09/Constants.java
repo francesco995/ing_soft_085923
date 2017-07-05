@@ -1,6 +1,5 @@
 package it.polimi.ingsw.ps09;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -59,9 +58,8 @@ public final class Constants {
      */
     public static final int CARD_TOTAL = 20;
     public static final int HAND_SIZE = 4;
-    /**
-     * Static number for ExcommunicationTilesDeck
-     */
+
+
     /**
      * Static number for DevelopmentCardsDeck
      */
@@ -94,6 +92,10 @@ public final class Constants {
      */
     public static final int PLACEMENT_ACTION_TIMEOUT = 30;
 
+
+    /**
+     * Main CLI menu
+     */
     public static final ArrayList<String> CLI_MAIN_MENU = new ArrayList<>(
             Arrays.asList(
                     "Display Players",
@@ -106,18 +108,24 @@ public final class Constants {
             ));
 
 
+    /**
+     * Board CLI menu
+     */
     public static final ArrayList<String> CLI_BOARD_MENU = new ArrayList<>(
             Arrays.asList(
-                    "Display the whole Board",
-                        "Display Towers",
-                        "Display Markets",
-                        "Display Harvest & Production",
-                        "Display Dices values",
-                        "Display Excommunication tiles",
-                        "Go back to main menu"
+                "Display the whole Board",
+                    "Display Towers",
+                    "Display Markets",
+                    "Display Harvest & Production",
+                    "Display Dices values",
+                    "Display Excommunication tiles",
+                    "Go back to main menu"
             ));
 
 
+    /**
+     * Player CLI menu
+     */
     public static final ArrayList<String> CLI_PLAYER_MENU = new ArrayList<>(
             Arrays.asList(
                     "Show Player info",
@@ -132,24 +140,29 @@ public final class Constants {
             ));
 
 
+    /**
+     * Towers CLI menu
+     */
     public static final ArrayList<String> CLI_TOWERS_MENU = new ArrayList<>(
             Arrays.asList(
-                    "Green Tower",
-                        "Yellow Tower",
-                        "Blue Tower",
-                        "Purple Tower",
-                        "Go back to main menu"
+                "Green Tower",
+                    "Yellow Tower",
+                    "Blue Tower",
+                    "Purple Tower",
+                    "Go back to main menu"
             ));
 
 
-
+    /**
+     * Council CLI menu
+     */
     public static final ArrayList<String> CLI_COUNCIL_MENU = new ArrayList<>(
             Arrays.asList(
-                    "Get 1 wood and 1 stone",
-                        "Get 2 servants",
-                        "Get 2 coins",
-                        "Get 2 military points",
-                        "Get 1 faith point"
+                "Get 1 wood and 1 stone",
+                    "Get 2 servants",
+                    "Get 2 coins",
+                    "Get 2 military points",
+                    "Get 1 faith point"
             ));
 
 }
