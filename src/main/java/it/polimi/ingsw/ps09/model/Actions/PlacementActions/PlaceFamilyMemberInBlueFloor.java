@@ -38,9 +38,11 @@ public class PlaceFamilyMemberInBlueFloor extends PlaceFamilyMemberInFloor {
         //check if family member is usable
         if (!familyMember.isUsable())
             return false;
+
         //check if family member of same color present && not the neutral one
         if(!familyMember.getColor().equalsIgnoreCase("neutral") && board.getCharactersTower().hasSameFamilyMember(familyMember))
             return false;
+
         //Check if floor is free
         if (!board.getCharactersTower().getFloors().get(index).isAvailable())
             return false;

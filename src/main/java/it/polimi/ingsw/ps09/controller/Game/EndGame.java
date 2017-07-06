@@ -1,12 +1,15 @@
 package it.polimi.ingsw.ps09.controller.Game;
 
 import it.polimi.ingsw.ps09.Constants;
+import it.polimi.ingsw.ps09.controller.PlayersOrder;
 import it.polimi.ingsw.ps09.model.Player;
 import it.polimi.ingsw.ps09.model.Points.VictoryPoints;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
+
+import static javafx.scene.input.KeyCode.K;
+import static javafx.scene.input.KeyCode.V;
 
 /**
  * Created by franc on 05/07/2017.
@@ -17,14 +20,14 @@ public class EndGame {
     /**
      * This is the method called for calculating all the final scores and giving last bonus (LAST PHASE)
      */
-    private void endGame(Game game) {
+    public static void endGame(Game game) {
 
         //runs all players
         for (int i = 0; i < game.mPlayers.size(); i++) {
 
             int total;
             int myRank;
-            Player currentPlayer = game.mPlayers.get(i);
+            Player currentPlayer = game.mPlayers.get(game.mPlayersOrder.getPlayersOrder().get(i));
 
             //Conquered territories Bonus//
             ///////////////////////////////
@@ -69,6 +72,24 @@ public class EndGame {
             currentPlayer.add(collectedResources);
         }
 
+        //creates a list of all the points sorted by max
+        List<Integer> pointsList = victoryRank(game);
+
+
+
+
+
+/*
+            PlayersOrder finalPlacement;
+
+            game.mPlayersOrder.getPlayersOrder().stream().forEach(id -> {
+                Player currentPlayer = game.mPlayers.get(id);
+                for(int i = 0; i < pointsList.size(); i++)
+                if(currentPlayer.getVictoryPoints().getValue() == pointsList.get(i))
+
+            });*/
+
+
 
     }
 
@@ -79,7 +100,7 @@ public class EndGame {
      * @param player this param is used as a control for ensuring right values
      * @return
      */
-    public int militaryRank(Game game, Player player) {
+    private static int militaryRank(Game game, Player player) {
 
         int playerRank = 0;
         int playerPoints = player.getMilitaryPoints().getValue();
@@ -87,7 +108,7 @@ public class EndGame {
 
         //insert all players military points value  into arrayList
         for (int i = 0; i < game.mPlayers.size(); i++)
-            rankList.add(player.getMilitaryPoints().getValue());
+            rankList.add(game.mPlayers.get(game.mPlayersOrder.getPlayersOrder().get(i)).getMilitaryPoints().getValue());
 
         Collections.sort(rankList);
 
@@ -99,24 +120,36 @@ public class EndGame {
         return playerRank;
     }
 
-    //TODO: still need some fixing
-    public int victoryRank(Game game, Player player) {
 
-        int playerRank = 0;
-        int playerPoints = player.getVictoryPoints().getValue();
+    private static List<Integer> victoryRank(Game game) {
+
         List<Integer> rankList = new ArrayList<Integer>();
-
-        //insert all players military points value  into arrayList
-        for (int i = 0; i < game.mPlayers.size(); i++)
-            rankList.add(player.getVictoryPoints().getValue());
-
-        Collections.sort(rankList);
-
-        for (int i = 0; i < rankList.size(); i++) {
-            if (rankList.get(i) == playerPoints)
-                playerRank = Constants.MAX_PLAYERS - i;
+        Map<Integer, Integer> finalRank = new HashMap<Integer, Integer>(); //first integer is for id, second is for victory points value
+        //insert all players victory points value  into arrayList
+        for (int i = 0; i < game.mPlayers.size(); i++) {
+            Player currentPlayer = game.mPlayers.get(game.mPlayersOrder.getPlayersOrder().get(i));
+            rankList.add(currentPlayer.getMilitaryPoints().getValue());
+            finalRank.put(currentPlayer.getPlayerId(), currentPlayer.getVictoryPoints().getValue());
         }
+        Collections.sort(rankList);
+        sortByValue(finalRank);
 
-        return playerRank;
+
+        for(int i = 0; i < game.mPlayers.size(); i++)
+        ;
+        return rankList;
+
+    }
+
+    public static <K, V extends Comparable<? super V>> Map<K, V> sortByValue(Map<K, V> map) {
+        return map.entrySet()
+                .stream()
+                .sorted(Map.Entry.comparingByValue(/*Collections.reverseOrder()*/))
+                .collect(Collectors.toMap(
+                        Map.Entry::getKey,
+                        Map.Entry::getValue,
+                        (e1, e2) -> e1,
+                        LinkedHashMap::new
+                ));
     }
 }
