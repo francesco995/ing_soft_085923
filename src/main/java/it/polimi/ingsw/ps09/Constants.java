@@ -87,6 +87,11 @@ public final class Constants {
     public static final int INITIAL_SERVANT = 3;
     public static final int INITIAL_STONE = 2;
     public static final int INITIAL_WOOD = 2;
+    /**
+     * End game constants
+     */
+    public static final int FIRST_MILITARY = 5;
+    public static final int SECOND_MILITARY  = 2;
     //####################################################
     //####################################################
     //############### Game view constants ################

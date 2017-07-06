@@ -201,44 +201,6 @@ public class Game extends Thread {
 
     }
 
-    /**
-     * This is the method called for calculating all the final scores and giving last bonus (LAST PHASE)
-     */
-    private void endGame() {
-
-        //cicla tutti i giocatori (in base a come mettiamo id)
-
-        //Collected resources bonus//
-        /////////////////////////////
-        int total =
-                mPlayers.get(0).getWood().getValue() +
-                        mPlayers.get(0).getStone().getValue() +
-                        mPlayers.get(0).getCoins().getValue() +
-                        mPlayers.get(0).getServant().getValue();
-
-        VictoryPoints collectedResources = new VictoryPoints(total / 5);
-        mPlayers.get(0).add(collectedResources);
-
-        //Conquered territories Bonus//
-        ///////////////////////////////
-
-        total = mPlayers.get(0).getTerritoriesCount();
-        mPlayers.get(0).add(mPersonalBoardBonus.EndTerritoriesBonus(total));
-
-        //Influenced Characters Bonus//
-        /////////////////////////
-
-        total = mPlayers.get(0).getCharactersCount();
-        mPlayers.get(0).add(mPersonalBoardBonus.EndCharactersBonus(total));
-
-        //Encouraged Ventures Bonus//
-        ///////////////////////
-
-
-        //Military Strength//
-        /////////////////////
-        mPlayers.get(0).getMilitaryPoints().getValue();
-    }
 
     /**
      *

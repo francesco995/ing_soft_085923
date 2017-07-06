@@ -59,7 +59,7 @@ public class Harvest implements PlacementAction {
             //Do action
             board.getHarvest().addMember(familyMember);
             familyMember.used();
-            //check all player cards
+            //apply effect for  all player cards
              player.getPersonalBoard().getBoardTerritories()
                      .stream()
                      .filter(card -> card.getProductionCost()>familyMember.getPower()+ player.getHarvestBonus())
@@ -67,7 +67,10 @@ public class Harvest implements PlacementAction {
                          card.getHarvestEffects().stream()
                                  .forEach(effect -> effect.applyEffect(player))
                      );
-
+            //apply effect for the personal board
+            player.getPersonalBoard().getPersonalBonusTile().getHarvestBonus()
+                    .stream()
+                    .forEach(developmentCardEffect -> developmentCardEffect.applyEffect(player));
 
     }
 

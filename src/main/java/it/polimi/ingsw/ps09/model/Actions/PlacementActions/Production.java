@@ -70,7 +70,10 @@ public class Production implements PlacementAction {
                         card.getProductionEffects().stream()
                                 .forEach(effect -> effect.applyEffect(player))
                 );
-
+        //apply effect for the personal board
+        player.getPersonalBoard().getPersonalBonusTile().getProductionBonus()
+                .stream()
+                .forEach(developmentCardEffect -> developmentCardEffect.applyEffect(player));
 
     }
 
