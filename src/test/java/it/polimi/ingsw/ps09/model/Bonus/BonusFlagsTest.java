@@ -18,17 +18,17 @@ public class BonusFlagsTest {
     }
 
     @Test
-    public void isFlagContainedFoundReturnsFalse() throws Exception {
+    public void isFlagContainedFoundReturnsTure() throws Exception {
 
         mTest.putBonus("test");
-        assertFalse(mTest.getBonus("test"));
+        assertTrue(mTest.getBonus("test"));
 
     }
 
     @Test
-    public void isFlagNotContainedReturnsTrue() throws Exception {
+    public void isFlagNotContainedReturnsFalse() throws Exception {
 
-        assertTrue(mTest.getBonus("test"));
+        assertFalse(mTest.getBonus("test"));
 
     }
 
