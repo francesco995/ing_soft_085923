@@ -9,11 +9,11 @@ import java.util.Map;
  * with various flags set to false so that the game can check for them before some special actions
  */
 public class BonusFlags {
-    private Map<String,Boolean> mFlags= new HashMap<String, Boolean>();
+    private HashMap<String,Boolean> mFlags= new HashMap<String, Boolean>();
 
     public void putBonus(String bonus)
     {
-        mFlags.put(bonus, false) ;
+        mFlags.put(bonus, true) ;
     }
 
     /**
@@ -23,7 +23,7 @@ public class BonusFlags {
      */
     public boolean getBonus(String bonusName) {
         if(!mFlags.containsKey(bonusName)){
-            return true;
+            return false;
         }
         else
             return mFlags.get(bonusName).booleanValue();
