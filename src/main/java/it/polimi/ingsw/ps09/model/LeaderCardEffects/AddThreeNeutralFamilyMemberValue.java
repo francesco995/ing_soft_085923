@@ -45,6 +45,7 @@ public class AddThreeNeutralFamilyMemberValue implements LeaderCardEffect {
 
     @Override
     public void doAction(Board board, Player player, FamilyMember familyMember, int index) throws UnsupportedOperationException {
+        player.getFamilyMember("Neutral").morePower(3);
 
     }
 

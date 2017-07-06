@@ -3,6 +3,7 @@ package it.polimi.ingsw.ps09.model.LeaderCardEffects;
 import it.polimi.ingsw.ps09.model.Board;
 import it.polimi.ingsw.ps09.model.FamilyMembers.FamilyMember;
 import it.polimi.ingsw.ps09.model.Player;
+import it.polimi.ingsw.ps09.model.Points.VictoryPoints;
 import it.polimi.ingsw.ps09.model.UserPoints;
 import it.polimi.ingsw.ps09.model.UserResources;
 
@@ -41,6 +42,9 @@ public class EarnFiveVictoryPointsFromChurch implements LeaderCardEffect {
 
     @Override
     public void doAction(Board board, Player player, FamilyMember familyMember, int index) throws UnsupportedOperationException {
+        VictoryPoints mVictoryPoints = new VictoryPoints(5);
+
+        player.add(mVictoryPoints);
 
     }
 }

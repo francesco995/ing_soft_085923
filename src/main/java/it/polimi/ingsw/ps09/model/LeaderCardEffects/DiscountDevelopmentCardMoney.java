@@ -42,6 +42,11 @@ public class DiscountDevelopmentCardMoney implements LeaderCardEffect {
 
     @Override
     public void doAction(Board board, Player player, FamilyMember familyMember, int index) throws UnsupportedOperationException {
+        player.getFamilyMemberPlacementBonus().addBonus("TERRITORY", 3);
+        player.getFamilyMemberPlacementBonus().addBonus("BUILDING", 3);
+        player.getFamilyMemberPlacementBonus().addBonus("CHARACTER", 3);
+        player.getFamilyMemberPlacementBonus().addBonus("VENTURE", 3);
 
+        //TODO: Remove this Leader Crad. How?
     }
 }

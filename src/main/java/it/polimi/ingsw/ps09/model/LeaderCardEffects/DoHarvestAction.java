@@ -41,6 +41,7 @@ public class DoHarvestAction implements LeaderCardEffect {
 
     @Override
     public void doAction(Board board, Player player, FamilyMember familyMember, int index) throws UnsupportedOperationException {
+        player.getHarvestAndProductionBonus().addBonus("HARVEST", 1);
 
     }
 }

@@ -44,6 +44,7 @@ public class GetCouncilPrivilege implements LeaderCardEffect {
 
     @Override
     public void doAction(Board board, Player player, FamilyMember familyMember, int index) throws UnsupportedOperationException {
+        player.addCouncilPrivilege(1);
 
     }
 

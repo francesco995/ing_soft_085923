@@ -43,6 +43,7 @@ public class OccupyTowerForFree implements LeaderCardEffect {
 
     @Override
     public void doAction(Board board, Player player, FamilyMember familyMember, int index) throws UnsupportedOperationException {
+        player.setThreeCoinsTowerPlacementDiscount();
 
     }
 

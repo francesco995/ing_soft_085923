@@ -45,6 +45,9 @@ public class AddTwoToFamilyMemberValue implements LeaderCardEffect {
 
     @Override
     public void doAction(Board board, Player player, FamilyMember familyMember, int index) throws UnsupportedOperationException {
+        player.getFamilyMember("White").morePower(2);
+        player.getFamilyMember("Orange").morePower(2);
+        player.getFamilyMember("Black").morePower(2);
 
     }
 }

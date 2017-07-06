@@ -22,6 +22,7 @@ import it.polimi.ingsw.ps09.model.Resources.Wood;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Observable;
+import java.util.Optional;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -56,6 +57,12 @@ public class Player {
     private HarvestAndProductionBonus mHarvestAndProductionBonus;
     private FamilyMemberPlacementBonus mFamilyMemberPlacementBonus;
     private FamilyMemberPlacementResourcesDiscount mFamilyMemberPlacementResourcesDiscount;
+
+    //PLAYER FLAGS
+    private boolean mThreeCoinsTowerPlacementDiscount = false;
+    private boolean mUnlimitedTerritoryCards = false;
+    private boolean mDoubleResourcesDevelopmentCard = false;
+
 
     //LOGGER
     private static final Logger mLogger = Logger.getLogger(Player.class.getName());
@@ -354,6 +361,30 @@ public class Player {
 
     public int getPlayerId() {
         return PLAYER_ID;
+    }
+
+    public void setThreeCoinsTowerPlacementDiscount(){
+        mThreeCoinsTowerPlacementDiscount = true;
+    }
+
+    public boolean isThreeCoinsTowerPlacementDiscountAvailable(){
+        return mThreeCoinsTowerPlacementDiscount;
+    }
+
+    public void setUnlimitedTerritoryCards(){
+        mUnlimitedTerritoryCards = true;
+    }
+
+    public boolean isUnlimitedTerritoryCardsAvailable(){
+        return mUnlimitedTerritoryCards;
+    }
+
+    public void setDoubleResourcesDevelopmentCard(){
+        mDoubleResourcesDevelopmentCard = true;
+    }
+
+    public boolean isDoubleResourcesDevelopmentCardAvailable(){
+        return mDoubleResourcesDevelopmentCard;
     }
 
 

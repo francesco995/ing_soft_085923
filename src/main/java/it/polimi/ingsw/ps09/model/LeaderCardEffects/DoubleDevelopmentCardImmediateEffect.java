@@ -45,6 +45,6 @@ public class DoubleDevelopmentCardImmediateEffect implements LeaderCardEffect {
 
     @Override
     public void doAction(Board board, Player player, FamilyMember familyMember, int index) throws UnsupportedOperationException {
-
+        player.setDoubleResourcesDevelopmentCard();
     }
 }

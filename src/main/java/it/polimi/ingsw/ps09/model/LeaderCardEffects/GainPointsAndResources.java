@@ -1,10 +1,7 @@
 package it.polimi.ingsw.ps09.model.LeaderCardEffects;
 
-import it.polimi.ingsw.ps09.model.Board;
+import it.polimi.ingsw.ps09.model.*;
 import it.polimi.ingsw.ps09.model.FamilyMembers.FamilyMember;
-import it.polimi.ingsw.ps09.model.Player;
-import it.polimi.ingsw.ps09.model.UserPoints;
-import it.polimi.ingsw.ps09.model.UserResources;
 
 /**
  * Created by francesco995 on 19/06/2017.
@@ -55,7 +52,7 @@ public class GainPointsAndResources implements LeaderCardEffect {
 
         String toString = "";
 
-        toString += "Gain points and/or resources.";
+        toString += "Gain " + mUserPointsGains.toString() + " and " + mUserResourcesGains.toString();
 
         return toString;
 
@@ -63,6 +60,10 @@ public class GainPointsAndResources implements LeaderCardEffect {
 
     @Override
     public void doAction(Board board, Player player, FamilyMember familyMember, int index) throws UnsupportedOperationException {
+
+        player.add(mUserPointsGains);
+        player.add(mUserResourcesGains);
+
 
     }
 

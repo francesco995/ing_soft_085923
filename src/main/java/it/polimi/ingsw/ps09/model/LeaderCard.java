@@ -39,9 +39,12 @@ public class LeaderCard {
 
         StringJoiner mStringLeaderCard = new StringJoiner("\n", "", "");
 
-        mStringLeaderCard.add("Order list:");
+        mStringLeaderCard.add("");
         mStringLeaderCard.add("Card name: " + mCardName.toString());
-        mStringLeaderCard.add("Effect: " + mLeaderCardEffects.toString());
+        mStringLeaderCard.add("Effect: " + mLeaderCardEffects.toString()
+                .replace("[", "")
+                .replace("]", ""));
+        mStringLeaderCard.add("\n");
 
         return mStringLeaderCard.toString();
     }
