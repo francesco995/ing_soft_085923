@@ -62,6 +62,8 @@ public class ServerConnectionSocket extends Thread implements ServerConnection {
     private boolean mHasPersonalBonusTileChoice;
     private ArrayList<PersonalBonusTile> mPersonalBonusTilesList;
 
+    private boolean mCanSupportVatican;
+
     private Socket mSocket;
 
     private InetAddress mSERVER_ADDRESS;
@@ -101,6 +103,7 @@ public class ServerConnectionSocket extends Thread implements ServerConnection {
         mHasFamilyMemberAction = false;
         mHasPlayerActions = false;
         mHasLeaderCardChoice = false;
+        mCanSupportVatican = false;
 
         //Create Gson Builder
         mGsonBuilder = new GsonBuilder();
@@ -157,6 +160,10 @@ public class ServerConnectionSocket extends Thread implements ServerConnection {
      */
     public boolean hasPersonalBonusTileChoice() {
         return mHasPersonalBonusTileChoice;
+    }
+
+    public boolean canSupportVatican(){
+        return mCanSupportVatican;
     }
 
     /**
@@ -483,7 +490,12 @@ public class ServerConnectionSocket extends Thread implements ServerConnection {
         sendMessage(String.valueOf(index));
         mHasPersonalBonusTileChoice = false;
 
+    }
 
+    public void vaticanReportChoice(int choice){
+        sendMessage("vaticanReportChoice");
+        sendMessage(String.valueOf(choice));
+        mCanSupportVatican = false;
     }
 
     /**
@@ -658,6 +670,12 @@ public class ServerConnectionSocket extends Thread implements ServerConnection {
                     case "personalBonusTileChoice":{
                         updatePersonalBoardBonusTilesList();
                         mHasPersonalBonusTileChoice = true;
+                        break;
+                    }
+
+                    case "vaticanReport": {
+                        mCanSupportVatican = true;
+                        CLIClientGame.alertVaticanReport();
                         break;
                     }
 

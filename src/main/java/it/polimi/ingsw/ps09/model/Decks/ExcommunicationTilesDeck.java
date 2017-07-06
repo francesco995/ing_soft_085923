@@ -19,7 +19,7 @@ import java.util.*;
  */
 public class ExcommunicationTilesDeck {
 
-    //three ExcommunicationTile list one for each period
+    //three ExcommunicationTile list one for each mPeriod
 
     private Map<Integer, List<ExcommunicationTile>> mDeck = new HashMap<Integer, List<ExcommunicationTile>>();
 
@@ -42,7 +42,7 @@ public class ExcommunicationTilesDeck {
                 "src/main/res/ExcommunicationTilesDecks/");
 
 
-        //For each period and for each type of card, fill the corresponding Map and LinkedList
+        //For each mPeriod and for each type of card, fill the corresponding Map and LinkedList
 
         mDeck.put(1, loadDeck(mFilePath + "/Tier1/"));
 

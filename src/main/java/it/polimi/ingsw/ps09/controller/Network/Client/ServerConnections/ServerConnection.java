@@ -38,6 +38,8 @@ public interface ServerConnection{
     void waitPersonalBoardBonusTileChoiceList();
     ArrayList<PersonalBonusTile> getPersonalBonusTilesList();
     void choosePersonalBoardBonusTile(int index);
+    boolean canSupportVatican();
+    void vaticanReportChoice(int choice);
     void waitLeaderCardsChoiceList();
     void chooseLeaderCard(int index);
     boolean hasIncomingMessages();

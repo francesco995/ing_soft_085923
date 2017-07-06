@@ -41,7 +41,7 @@ public class LeaderCardsDeck {
         String mFilePath = mDirectory.getAbsolutePath().replace(".",
                 "src/main/res/LeaderCardsDeck/");
 
-        //For each period and for each type of card, fill the corresponding Map and LinkedList
+        //For each mPeriod and for each type of card, fill the corresponding Map and LinkedList
 
         mDeck = loadDeck(mFilePath);
 

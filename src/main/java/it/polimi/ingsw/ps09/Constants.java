@@ -1,5 +1,7 @@
 package it.polimi.ingsw.ps09;
 
+import it.polimi.ingsw.ps09.model.Points.FaithPoints;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -38,6 +40,20 @@ public final class Constants {
     //####################################################
     //####################################################
     //############## Game logic constants ################
+
+
+    /**
+     * Vatican report Faith Points requirements
+     */
+    public static final ArrayList<FaithPoints> VATICAN_FAITH_POINTS = new ArrayList<>(
+            Arrays.asList(
+                    //First is empty because periods start from 1
+                    new FaithPoints(0),
+                    new FaithPoints(3),
+                    new FaithPoints(4),
+                    new FaithPoints(5)
+            ));
+
 
 
     /**
@@ -173,6 +189,15 @@ public final class Constants {
                     "Get 2 coins",
                     "Get 2 military points",
                     "Get 1 faith point"
+            ));
+
+    /**
+     * Yes / No choice
+     */
+    public static final ArrayList<String> YES_NO_CHOICE = new ArrayList<>(
+            Arrays.asList(
+                    "Yes",
+                    "No"
             ));
 
 }

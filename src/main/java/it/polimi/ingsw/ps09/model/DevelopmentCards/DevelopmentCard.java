@@ -11,7 +11,7 @@ import java.util.StringJoiner;
 /**
  * Created by francesco995 on 10/05/2017.
  * Abstract class for Development Card
- * They all have name,number,period values
+ * They all have name,number,mPeriod values
  * Then a list of Resources and/or points cost (might be more than one option for paying so its a list)
  * Implements the toString used by all cards to print their content
  */

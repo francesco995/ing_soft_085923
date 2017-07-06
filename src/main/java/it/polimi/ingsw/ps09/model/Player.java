@@ -19,6 +19,7 @@ import it.polimi.ingsw.ps09.model.Resources.Servant;
 import it.polimi.ingsw.ps09.model.Resources.Stone;
 import it.polimi.ingsw.ps09.model.Resources.Wood;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Observable;
@@ -54,6 +55,8 @@ public class Player {
     private List<DevelopmentCardEffect> mEndGameEffects;
 
     private List<LeaderCard> mLeaderCards;
+    private List<ExcommunicationTile> mExcommunicationTiles;
+
     private HarvestAndProductionBonus mHarvestAndProductionBonus;
     private FamilyMemberPlacementBonus mFamilyMemberPlacementBonus;
     private FamilyMemberPlacementResourcesDiscount mFamilyMemberPlacementResourcesDiscount;
@@ -150,6 +153,8 @@ public class Player {
         mFamilyMemberPlacementResourcesDiscount = new FamilyMemberPlacementResourcesDiscount();
 
         mPlayerFamilyMembers = new PlayerFamilyMembers(mUserColor);
+
+        mExcommunicationTiles = new ArrayList<>();
 
 
         //log created player
@@ -441,6 +446,25 @@ public class Player {
                 " now has: " + mLeaderCards.size() + " Leader Cards");
 
         updated();
+    }
+
+    //####################################################
+    //####################################################
+    //########### Add a Excommunication tile #############
+
+    /**
+     * Add a Excommunication tile to Player
+     *
+     * @param excommunicationTile to add
+     */
+    public void add(ExcommunicationTile excommunicationTile) {
+        mExcommunicationTiles.add(excommunicationTile);
+
+        //LOG
+        mLogger.log(INFO, "Game: " + Game.GAME_ID +
+                " add Excommunication tile " + excommunicationTile.getTileName() +
+                " to player: " + mUserName);
+
     }
 
 

@@ -71,7 +71,7 @@ public class DevelopmentCardsDeck {
         mDeck.put("TERRITORY", new HashMap<>());
         mDeck.put("VENTURE", new HashMap<>());
 
-        //For each period and for each type of card, fill the corresponding Map and LinkedList
+        //For each mPeriod and for each type of card, fill the corresponding Map and LinkedList
         for (int i = 1; i <= Constants.MAX_PERIODS; i++) {
 
             mDeck.get("BUILDING").put(i, loadDeck(mFilePath + "BuildingDeck/Tier" + i + "/"));

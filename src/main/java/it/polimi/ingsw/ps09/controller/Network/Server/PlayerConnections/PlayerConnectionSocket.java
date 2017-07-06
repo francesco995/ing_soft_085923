@@ -72,6 +72,9 @@ public class PlayerConnectionSocket extends Thread implements PlayerConnection{
     private int mPersonalBoardBonusTileChoice;
     private boolean mHasPersonalBoardBonusTileChoiceReady = false;
 
+    private boolean mHasChosenVaticanReportAction = false;
+    private int mVaticanReportChoice;
+
 
 
     public PlayerConnectionSocket(Socket remoteSocket, String userName) throws IOException {
@@ -175,6 +178,22 @@ public class PlayerConnectionSocket extends Thread implements PlayerConnection{
         while(!mHasLeaderCardChoiceReady){
             sleep(100);
         }
+    }
+
+    /**
+     * Sends a player signal to choose Vatican report action
+     * Wait for player to have chosen Vatican report action
+     */
+    public void waitCouncilChoiceReady(){
+        //TODO: add timeout
+        while(!mHasChosenVaticanReportAction){
+            sleep(100);
+        }
+    }
+
+    public int getVaticanReportChoice(){
+        mHasChosenVaticanReportAction = false;
+        return mVaticanReportChoice;
     }
 
     /**
@@ -502,6 +521,14 @@ public class PlayerConnectionSocket extends Thread implements PlayerConnection{
                         mActionType = "FAMILY_MEMBER";
                         mActionChoice = Integer.valueOf(waitForMessage());
                         mHasActionReady = true;
+
+                        break;
+                    }
+
+                    case "vaticanReportChoice": {
+
+                        mVaticanReportChoice = Integer.valueOf(waitForMessage());
+                        mHasChosenVaticanReportAction = true;
 
                         break;
                     }

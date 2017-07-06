@@ -1,5 +1,6 @@
 package it.polimi.ingsw.ps09.controller.Game;
 
+import it.polimi.ingsw.ps09.Constants;
 import it.polimi.ingsw.ps09.controller.PlayersOrder;
 import it.polimi.ingsw.ps09.controller.Network.Server.PlayerConnections.PlayerConnection;
 import it.polimi.ingsw.ps09.model.Board;
@@ -60,7 +61,7 @@ public class Game extends Thread {
     protected Board mGameBoard;
 
     //The Period
-    protected int period = 1;
+    protected int mPeriod = 0;
 
     //The Tracks
     protected FaithPointsTrack mFaithPointsTrack;
@@ -147,32 +148,76 @@ public class Game extends Thread {
 
         LeaderCardsExchange.startExchange(this);
         DrawBonusTile.startSelection(this);
+
+        mPeriod = 1;
         Round.startRound(this, 1);
         Round.startRound(this, 2);
+        vaticanReport();
+
+        mPeriod = 2;
+        Round.startRound(this, 3);
+        Round.startRound(this, 4);
+        vaticanReport();
+
+        mPeriod = 3;
+        Round.startRound(this, 5);
+        Round.startRound(this, 6);
+        vaticanReport();
+
+
+        //End Game
 
     }
 
 
 
     /**
-     * It calls the vatican report only when a period end (once every two round) (PHASE C)
+     * It calls the vatican report only when a mPeriod end (once every two round) (PHASE C)
      */
     private void vaticanReport() {
 
 
-        int numberOfPlayer = mPlayers.size();
+        mPlayersOrder.getPlayersOrder().stream().forEach(id -> {
 
-        if (mPlayers.get(0).getFaithPoints().getValue() < period+2) {
-            //autoaggiunge scomunica
-            //mPlayers.get(0).add();
-        } else {
-            //if(mDonate == false){
-            //mPlayers.get(0).add(tilescomunica);
-            //}else{
-            // FaithPoints mOffer = mPlayers.get(0).clearFaithPoints();
-            //VictoryPoints mReward = mFaithPointsTrack.convertToBonus(mOffer);
-            //mPlayers.get(0).add(mReward);
-        }
+            if(mPlayers.get(id).has(Constants.VATICAN_FAITH_POINTS.get(mPeriod))){
+
+                //Ask if player wants to donate FaithPoints to vatican
+                mConnections.get(id).waitCouncilChoiceReady();
+
+                boolean choice = false; //Get choice from connection
+
+                if(mConnections.get(id).getVaticanReportChoice() == 1) {
+                    choice = true;
+                }
+
+                if(choice){
+
+                    mPlayers.get(id).clearFaithPoints();
+
+                }else{
+                    //Player don't want to support vatican
+                    mPlayers.get(id).add(mGameBoard.getExcommunicationTilesList().get(mPeriod-1));
+
+                    mGameBoard.getExcommunicationTilesList().get(mPeriod-1).getExcommunicationTileEffects().stream().
+                            forEach(effect -> effect.applyEffect(mPlayers.get(id)));
+                }
+
+                //If player has enough Faith Points to do vatican report
+
+
+            }else{
+
+                //If player don't have enough Faith Points
+
+                mPlayers.get(id).add(mGameBoard.getExcommunicationTilesList().get(mPeriod-1));
+
+                mGameBoard.getExcommunicationTilesList().get(mPeriod-1).getExcommunicationTileEffects().stream().
+                        forEach(effect -> effect.applyEffect(mPlayers.get(id)));
+
+            }
+
+
+        });
 
     }
 
@@ -189,14 +234,14 @@ public class Game extends Thread {
     }
 
     /**
-     *It must be called at the end of every period, does the same things that endRound does plus it adds the vaticanReport phase (PHASE D2)
+     *It must be called at the end of every mPeriod, does the same things that endRound does plus it adds the vaticanReport phase (PHASE D2)
      */
     private void endPeriod() {
 
         //reorder dei pedoni
         mGameBoard.clearAll();
         vaticanReport();
-        period++;
+        mPeriod++;
 
 
     }

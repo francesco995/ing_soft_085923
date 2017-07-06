@@ -52,7 +52,7 @@ public class  ExcommunicationTile {
     @Override
     public String toString(){
         String mTile = "\n";
-        mTile += "period: " +mPeriod + "\neffect: ";
+        mTile += "mPeriod: " +mPeriod + "\neffect: ";
         for(int i= 0; i<mExcommunicationTileEffects.size(); i++)
         {
             mTile += mExcommunicationTileEffects.get(i).toString();

@@ -35,7 +35,7 @@ public class Board{
     private ExcommunicationTile mExcommunicationTile1;
     private ExcommunicationTile mExcommunicationTile2;
     private ExcommunicationTile mExcommunicationTile3;
-    private List<ExcommunicationTile> mExcommunicationTilesList;
+    private ArrayList<ExcommunicationTile> mExcommunicationTilesList;
 
     private Order mOrder;
 
@@ -502,7 +502,7 @@ public class Board{
     //####################################################
     //####################################################
 
-    public List getExcommunicationTilesList() {
+    public ArrayList<ExcommunicationTile> getExcommunicationTilesList() {
 
         mExcommunicationTilesList = new ArrayList<>();
 
@@ -537,42 +537,42 @@ public class Board{
 
 
   /*  //TODO: Remember to create setTitleName in Excommunication
-    public void setExcommunicationTitleName(String name, int period) {
-        if(period==1)
+    public void setExcommunicationTitleName(String name, int mPeriod) {
+        if(mPeriod==1)
             mExcommunicationTile1.setTitleName(name);
             updated();
 
-        else if(period==2)
+        else if(mPeriod==2)
             mExcommunicationTile2.setTitleName(name);
             updated();
 
-        else if(period==3)
+        else if(mPeriod==3)
             mExcommunicationTile3.setTitleName(name);
             updated();
     }
 
-    public void setExcommunicationEffect(LinkedList effect, int period){
-        if(period==1)
+    public void setExcommunicationEffect(LinkedList effect, int mPeriod){
+        if(mPeriod==1)
             mExcommunicationTile1.setEffects(effect);
             updated();
 
-        else if(period==2)
+        else if(mPeriod==2)
             mExcommunicationTile2.setEffects(effect);
             updated();
 
-        else if(period==3)
+        else if(mPeriod==3)
             mExcommunicationTile3.setEffects(effect);
             updated();
     }
 
-    public LinkedList getExcommunicationEffect(int period){
-        if(period==1)
+    public LinkedList getExcommunicationEffect(int mPeriod){
+        if(mPeriod==1)
             return mExcommunicationTile1.getEffects();
 
-        else if(period==2)
+        else if(mPeriod==2)
             return mExcommunicationTile2.getEffects();
 
-        else if(period==3)
+        else if(mPeriod==3)
             return mExcommunicationTile3.getEffects();
 
         else

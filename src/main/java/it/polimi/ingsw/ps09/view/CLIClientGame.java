@@ -31,6 +31,7 @@ public class CLIClientGame extends Thread{
     private boolean mHasPlacementAction;
     private boolean mHasFamilyMemberAction;
     private boolean mHasPlayerAction;
+    private boolean mCanSupportVatican;
 
     private ServerConnection mServerConnection;
 
@@ -48,6 +49,7 @@ public class CLIClientGame extends Thread{
         mUserName = userName;
 
         mHasPlacementAction = false;
+        mCanSupportVatican = false;
 
         mMainMenuMessage = "\n###################################################";
         mMainMenuMessage += "\n######### Lorenzo il Magnifico Main Menu ##########";
@@ -55,17 +57,7 @@ public class CLIClientGame extends Thread{
 
         mMainMenu = Constants.CLI_MAIN_MENU;
 
-
-
-
-
-
-
         mPlayersMenu = new ArrayList<>();
-
-
-
-
 
     }
 
@@ -75,6 +67,18 @@ public class CLIClientGame extends Thread{
         System.out.println("\n##It's your turn to play, actions available in main menu, please refresh!!!##");
         System.out.println("\n##It's your turn to play, actions available in main menu, please refresh!!!##");
         System.out.println("\n##It's your turn to play, actions available in main menu, please refresh!!!##");
+        System.out.println("\nYour choice? -> ");
+
+    }
+
+
+    public static void alertVaticanReport(){
+
+        System.out.println("\n##You have a vatican action to do, please refresh!!!##");
+        System.out.println("\n##You have a vatican action to do, please refresh!!!##");
+        System.out.println("\n##You have a vatican action to do, please refresh!!!##");
+        System.out.println("\nYour choice? -> ");
+
 
     }
 
@@ -173,7 +177,7 @@ public class CLIClientGame extends Thread{
         ArrayList<LeaderCard> mCards = mServerConnection.getLeaderCardsChoiceList();
 
         int choice = Prompter.promptForIntChoice(
-                "Choose a Leader card to keep, the others will be passed to the next player",
+                "Choose a Leader card to keep, the others will be passed to the next player\n\n",
                 mCards.stream().map(LeaderCard::toString).collect(Collectors.toList())
         );
 
@@ -191,6 +195,17 @@ public class CLIClientGame extends Thread{
         );
 
         mServerConnection.choosePersonalBoardBonusTile(choice);
+    }
+
+
+    private void vaticanReport(){
+
+        int choice = Prompter.promptForIntChoice(
+                "Do you want to support the vatican?",
+                Constants.YES_NO_CHOICE
+        );
+        choice--;
+        mServerConnection.vaticanReportChoice(choice);
     }
 
 
@@ -237,6 +252,11 @@ public class CLIClientGame extends Thread{
         while(run){
 
             updateData();
+
+            if(mCanSupportVatican){
+                vaticanReport();
+                mCanSupportVatican = false;
+            }
 
             switch(Prompter.promptForIntChoice(mMainMenuMessage, mMainMenu)){
 
