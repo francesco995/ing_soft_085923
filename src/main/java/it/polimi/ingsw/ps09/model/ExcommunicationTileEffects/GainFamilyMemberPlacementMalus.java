@@ -2,7 +2,7 @@ package it.polimi.ingsw.ps09.model.ExcommunicationTileEffects;
 
 import it.polimi.ingsw.ps09.model.Player;
 
-public class GainFamilyMemberPlacementMalus extends  ExcommunicationTileEffect{
+public class GainFamilyMemberPlacementMalus implements ExcommunicationTileEffect{
     private String mCardType;
     private int mMalusValue;
 

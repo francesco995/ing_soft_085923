@@ -2,7 +2,7 @@ package it.polimi.ingsw.ps09.model.ExcommunicationTileEffects;
 
 import it.polimi.ingsw.ps09.model.Player;
 
-public class GainHarverstAndProductionMalus extends ExcommunicationTileEffect {
+public class GainHarverstAndProductionMalus implements ExcommunicationTileEffect {
 
     /**
      * HARVEST or PRODUCTION
