@@ -9,6 +9,7 @@ import java.util.ArrayList;
  */
 public abstract class LeaderCardsExchange {
 
+
     public static void startExchange(Game game) {
 
         LeaderCardsOrder mLeaderCardsOrder;
@@ -24,7 +25,7 @@ public abstract class LeaderCardsExchange {
         }
 
         //Loop until there are no more leader cards to exchange
-        while((mLeaderCardsOrderList.get(0).getLeaderCardList().size())!=0) {
+        while((mLeaderCardsOrderList.get(0).getLeaderCardList().size())>0) {
             chooseLeaderCard(game, mLeaderCardsOrderList);
             leaderCardListExchange(mLeaderCardsOrderList);
         }
@@ -34,9 +35,10 @@ public abstract class LeaderCardsExchange {
     private static void chooseLeaderCard(Game game, ArrayList<LeaderCardsOrder> LeaderCardsOrderList){
 
         int choice;
+        int cont;
 
         //LOOP USED TO GET CHOOSE
-        for (int cont = 0; cont < game.PLAYERS_NUMBER; cont++) {
+        for (cont=0; cont < game.PLAYERS_NUMBER; cont++) {
 
             //Retrieve choice
 
@@ -48,7 +50,7 @@ public abstract class LeaderCardsExchange {
             //Add chosen LeaderCard to player's LeaderCard permanent list
             game.mPlayers.get(LeaderCardsOrderList.get(cont).getPlayerID()).add(LeaderCardsOrderList.get(cont).getLeaderCardList().get(choice));
 
-            //Remove chosen leader card form temporary leader card list
+            //Remove chosen leader card from temporary leader card list
             LeaderCardsOrderList.get(cont).getLeaderCardList().remove(choice);
         }
 
@@ -59,20 +61,27 @@ public abstract class LeaderCardsExchange {
     private static void leaderCardListExchange(ArrayList<LeaderCardsOrder> LeaderCardsOrderList){
 
         //LOOP TO START A NEW CHOICE LOOP
-        int mTemporaryLastPlayerID = 0;
+        ArrayList<LeaderCard> mTemporaryFirstLeaderCardList;
+        int mListSize = LeaderCardsOrderList.size();
 
-        //Get the last playerID of mLeaderCardsOrderList
-        mTemporaryLastPlayerID = LeaderCardsOrderList.get(0).getPlayerID();
+
+        //Get the first playerID of mLeaderCardsOrderList
+        mTemporaryFirstLeaderCardList = (ArrayList)LeaderCardsOrderList.get(0).getLeaderCardList();
 
         //Loop through mLeaderCardsOrderList IN INVERSE ORDER to switch PlayerID.
         //It's a easy way to exchange LeaderCards without passing the entire list.
-        for(int cont=0; cont==(LeaderCardsOrderList.size()-1); cont++) {
+        for(int cont=0; cont<(mListSize-1); cont++) {
 
-            if(cont!=(LeaderCardsOrderList.size()-1))
-                LeaderCardsOrderList.get(cont+1).setPlayerID(LeaderCardsOrderList.get(cont).getPlayerID());
+            if(cont<(mListSize-1)) {
 
-            else if(cont==(LeaderCardsOrderList.size()-1))
-                LeaderCardsOrderList.get(cont).setPlayerID(mTemporaryLastPlayerID);
+
+                LeaderCardsOrderList.get(cont).setLeaderCardList((ArrayList<LeaderCard>) LeaderCardsOrderList.get(cont+1).getLeaderCardList());
+
+            }
+
+            else{
+                LeaderCardsOrderList.get(cont).setLeaderCardList(mTemporaryFirstLeaderCardList);
+            }
         }
 
     }
