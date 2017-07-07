@@ -6,6 +6,8 @@ import it.polimi.ingsw.ps09.controller.Network.Server.PlayerConnections.PlayerCo
 import it.polimi.ingsw.ps09.controller.Network.Server.WelcomeServers.WelcomeSocketServer;
 import it.polimi.ingsw.ps09.model.Player;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.*;
 import java.util.logging.Logger;
@@ -18,13 +20,15 @@ public class Server extends Thread{
 
     private static final Logger mLogger = Logger.getLogger(Player.class.getName());
 
+    private int mGameTimeout = Constants.GAME_START_TIMEOUT;
+
     private Queue<PlayerConnection> mQueuedPlayers = new LinkedList<>();
 
     private WelcomeSocketServer mWelcomeSocketServer;
 
     private List<Game> mActiveGames;
 
-    private Timer mTimer = new Timer(Constants.GAME_START_TIMEOUT);
+    private Timer mTimer;
 
     public void startWelcomeServer() throws IOException {
 
@@ -34,6 +38,50 @@ public class Server extends Thread{
         mActiveGames = new LinkedList<>();
 
 
+    }
+
+    public Server(){
+
+        String stringTimeout;
+
+        //Create the directory path
+        File mDirectory = new File("./");
+        String mFilePath = mDirectory.getAbsolutePath().replace(".",
+                "src/main/res/");
+
+        try {
+            stringTimeout = loadStringFromFile(mFilePath + Constants.GAME_START_TIMEOUT_FILE);
+            mGameTimeout = Integer.valueOf(stringTimeout);
+        } catch (FileNotFoundException e) {
+            mGameTimeout = Constants.GAME_START_TIMEOUT;
+        } catch (NumberFormatException e) {
+            mGameTimeout = Constants.GAME_START_TIMEOUT;
+        }
+
+        mTimer = new Timer(mGameTimeout);
+
+
+    }
+
+
+
+    /**
+     * Loads a text-based file to a string
+     *
+     * @param fileName name of the file to load
+     * @return returns the file as a string
+     * @throws FileNotFoundException
+     */
+    private String loadStringFromFile(String fileName) throws FileNotFoundException {
+
+        String mStringDeck;
+
+        Scanner mScanner = new Scanner(new File(fileName));
+        mStringDeck = mScanner.next();
+
+        mScanner.close();
+
+        return mStringDeck;
     }
 
     private void sleep(int mS){
@@ -59,7 +107,7 @@ public class Server extends Thread{
         if(mQueuedPlayers.size() >= 2) {
 
             if (mTimer.isExpired()) {
-                mTimer = new Timer(Constants.GAME_START_TIMEOUT);
+                mTimer = new Timer(mGameTimeout);
                 startNewGame();
             } else {
                 if (!mTimer.isRunning()) {
@@ -72,7 +120,7 @@ public class Server extends Thread{
 
             if(mTimer.isRunning()){
                 mTimer.interrupt();
-                mTimer = new Timer(Constants.GAME_START_TIMEOUT);
+                mTimer = new Timer(mGameTimeout);
             }
 
             startNewGame();

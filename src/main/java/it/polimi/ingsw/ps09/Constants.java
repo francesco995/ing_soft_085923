@@ -59,7 +59,12 @@ public final class Constants {
     /**
      * Timeout to start game with 2-3 players
      */
-    public static final int GAME_START_TIMEOUT = 10;
+    public static final int GAME_START_TIMEOUT = 25;
+
+    /**
+     * File with the Timeout to start game with 2-3 players
+     */
+    public static final String GAME_START_TIMEOUT_FILE = "gameTimeout.txt";
 
     /**
      * Max players number for each game
