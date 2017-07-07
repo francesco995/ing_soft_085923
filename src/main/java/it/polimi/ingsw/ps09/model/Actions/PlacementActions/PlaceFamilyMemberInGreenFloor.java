@@ -58,7 +58,7 @@ public class PlaceFamilyMemberInGreenFloor extends PlaceFamilyMemberInFloor {
        //card variable to check for resources
         Territory card = (Territory) board.getTerritoriesTowerCard(floorIndex);
 
-        UserResources ResourceWithBonus = player.PlayerResourcesCopy(player.getFamilyMemberPlacementResourcesDiscount("CHARACTER"));
+        UserResources ResourceWithBonus = player.PlayerResourcesCopy(player.getFamilyMemberPlacementResourcesDiscount("TERRITORIES"));
 
         //check if enough resources
         if (!ResourceWithBonus.isGreaterOrEqual(card.getResourcesCosts().get(0)))

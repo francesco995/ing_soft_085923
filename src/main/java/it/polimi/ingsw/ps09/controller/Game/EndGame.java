@@ -123,8 +123,8 @@ public class EndGame {
 
     private static List<Integer> victoryRank(Game game) {
 
-        List<Integer> rankList = new ArrayList<Integer>();
-        Map<Integer, Integer> finalRank = new HashMap<Integer, Integer>(); //first integer is for id, second is for victory points value
+        ArrayList<Integer> rankList = new ArrayList<Integer>();
+        HashMap<Integer, Integer> finalRank = new HashMap<Integer, Integer>(); //first integer is for id, second is for victory points value
         //insert all players victory points value  into arrayList
         for (int i = 0; i < game.mPlayers.size(); i++) {
             Player currentPlayer = game.mPlayers.get(game.mPlayersOrder.getPlayersOrder().get(i));

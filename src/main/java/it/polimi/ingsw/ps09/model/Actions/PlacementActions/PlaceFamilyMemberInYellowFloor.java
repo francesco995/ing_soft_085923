@@ -59,8 +59,9 @@ public class PlaceFamilyMemberInYellowFloor extends PlaceFamilyMemberInFloor {
         //card variable to check for resources
         Building card = (Building) board.getBuildingsTowerCard(index);
 
-        UserResources ResourceWithBonus = player.PlayerResourcesCopy(player.getFamilyMemberPlacementResourcesDiscount("BUILDING"));
+        //UserResources ResourceWithBonus = player.PlayerResourcesCopy(player.getFamilyMemberPlacementResourcesDiscount("BUILDING"));
 
+        UserResources ResourceWithBonus = player.getPersonalBoard().getUserResources();
         //check if enough resources
         if (!ResourceWithBonus.isGreaterOrEqual(card.getResourcesCosts().get(0)))
             return false;

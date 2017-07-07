@@ -58,8 +58,9 @@ public class PlaceFamilyMemberInPurpleFloor extends PlaceFamilyMemberInFloor {
         //card variable to check for resources
         Venture card = (Venture) board.getVenturesTowerCard(index);
 
-        UserResources ResourceWithBonus = player.PlayerResourcesCopy(player.getFamilyMemberPlacementResourcesDiscount("VENTURE"));
+        //UserResources ResourceWithBonus = player.PlayerResourcesCopy(player.getFamilyMemberPlacementResourcesDiscount("VENTURE"));
 
+        UserResources ResourceWithBonus = player.getPersonalBoard().getUserResources();
         //check if enough resources
         if (!ResourceWithBonus.isGreaterOrEqual(card.getResourcesCosts().get(0)))
             return false;
