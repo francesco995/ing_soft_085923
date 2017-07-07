@@ -29,7 +29,7 @@ public final class Constants {
     /**
      * True if you want to run server with more output for diagnostics
      */
-    public static final boolean ADVANCED_TESTING_SERVER = false;
+    public static final boolean ADVANCED_TESTING_SERVER = true;
 
     /**
      * True if you want to run clients with more output for diagnostics
@@ -59,7 +59,7 @@ public final class Constants {
     /**
      * Timeout to start game with 2-3 players
      */
-    public static final int GAME_START_TIMEOUT = 30;
+    public static final int GAME_START_TIMEOUT = 10;
 
     /**
      * Max players number for each game

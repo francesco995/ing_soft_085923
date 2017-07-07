@@ -19,11 +19,7 @@ import it.polimi.ingsw.ps09.model.Resources.Servant;
 import it.polimi.ingsw.ps09.model.Resources.Stone;
 import it.polimi.ingsw.ps09.model.Resources.Wood;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Observable;
-import java.util.Optional;
+import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -32,7 +28,7 @@ import static java.util.logging.Level.INFO;
 /**
  * Created by francesco995 on 10/05/2017.
  */
-public class Player {
+public class Player{
 
     //CONSTANTS
     public static int PLAYER_ID;
@@ -243,11 +239,11 @@ public class Player {
         if(card.getResourcesCosts().size() > 0) {
 
             //creates a copy of the cost of the card and remove the player discount
-            UserResources ResourceWithDiscount = new UserResources();
-            ResourceWithDiscount.add(card.getResourcesCosts().get(costChoice));
-            ResourceWithDiscount.removeDiscount(mFamilyMemberPlacementResourcesDiscount.getBonus(cardType));
+            UserResources resourceWithDiscount = new UserResources(0, 0, 0, 0);
+            resourceWithDiscount.add(card.getResourcesCosts().get(costChoice));
+            resourceWithDiscount.removeDiscount(mFamilyMemberPlacementResourcesDiscount.getBonus(cardType));
 
-            remove(ResourceWithDiscount);
+            remove(resourceWithDiscount);
         }
         if(card.getPointsCosts().size() > 0)
             remove(card.getPointsCosts().get(costChoice));
@@ -978,4 +974,5 @@ public class Player {
 
         return resourcesCopy;
     }
-    }
+
+}

@@ -71,12 +71,36 @@ public class PlaceFamilyMemberInBlueFloor extends PlaceFamilyMemberInFloor {
             return false;
 
         //player has enough resources and/or points, check if tower already filled
-        if (board.getVenturesTower().hasFamilyMember()) {
+
+        if(Constants.ADVANCED_TESTING_SERVER){
+            System.out.println(board.getCharactersTower().hasFamilyMember());
+        }
+
+        if (board.getCharactersTower().hasFamilyMember()) {
+
+            if(Constants.ADVANCED_TESTING_SERVER){
+                System.out.println("Card #: " + card.getCARD_N() + " Floor already has family member, check if player has 3 more coins");
+            }
+
             if (player.getCoins().getValue()
                     <
-                    (card.getResourcesCosts().get(0).getCoins().getValue() + Constants.EXTRA_TOWER_COST))
+                    (card.getResourcesCosts().get(0).getCoins().getValue() + Constants.EXTRA_TOWER_COST)){
+
+                if(Constants.ADVANCED_TESTING_SERVER){
+                    System.out.println("Card #: " + card.getCARD_N() + " Check failed!!!");
+                }
+
                 return false;
+
+            }
+
+            if(Constants.ADVANCED_TESTING_SERVER){
+                System.out.println("Card #: " + card.getCARD_N() +  "Check passed!!!");
+            }
+
         }
+
+
 
         //if reaches here it passed all controls
         return true;

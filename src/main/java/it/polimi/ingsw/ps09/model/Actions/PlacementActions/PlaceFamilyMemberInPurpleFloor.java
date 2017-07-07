@@ -40,6 +40,7 @@ public class PlaceFamilyMemberInPurpleFloor extends PlaceFamilyMemberInFloor {
             return false;
         //check if family member of same color present && not the neutral one
         if(!familyMember.getColor().equalsIgnoreCase("neutral") && board.getVenturesTower().hasSameFamilyMember(familyMember))
+            return false;
         //Check if floor is free
         if (!board.getVenturesTower().getFloors().get(index).isAvailable())
             return false;
@@ -71,8 +72,9 @@ public class PlaceFamilyMemberInPurpleFloor extends PlaceFamilyMemberInFloor {
         if (board.getVenturesTower().hasFamilyMember()) {
             if (player.getCoins().getValue()
                     <
-                    (card.getResourcesCosts().get(0).getCoins().getValue() + Constants.EXTRA_TOWER_COST))
+                    (card.getResourcesCosts().get(0).getCoins().getValue() + Constants.EXTRA_TOWER_COST)){
                 return false;
+            }
         }
 
         //if reaches here it passed all controls

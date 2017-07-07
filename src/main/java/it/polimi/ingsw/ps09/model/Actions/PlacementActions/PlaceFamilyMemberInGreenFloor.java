@@ -40,6 +40,7 @@ public class PlaceFamilyMemberInGreenFloor extends PlaceFamilyMemberInFloor {
             return false;
         //check if family member of same color present && not the neutral one
         if(!familyMember.getColor().equalsIgnoreCase("neutral") && board.getTerritoriesTower().hasSameFamilyMember(familyMember))
+            return false;
         //Check if floor is free
         if (!board.getTerritoriesTower().getFloors().get(index).isAvailable())
             return false;

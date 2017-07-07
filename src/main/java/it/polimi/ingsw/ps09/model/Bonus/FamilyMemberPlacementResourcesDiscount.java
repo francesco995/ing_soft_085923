@@ -48,11 +48,8 @@ public class FamilyMemberPlacementResourcesDiscount {
      */
     public void addBonus(String cardType, UserResources addBonus){
 
-        UserResources tempBonus = mBonus.get(cardType.toUpperCase());
-        tempBonus.add(addBonus);
+        mBonus.get(cardType.toUpperCase()).add(addBonus);
 
-        mBonus.put(
-                cardType.toUpperCase(), tempBonus );
     }
 
     //TODO: test
