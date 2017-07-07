@@ -2,8 +2,11 @@ package it.polimi.ingsw.ps09.model.Actions.PlacementActions;
 
 import it.polimi.ingsw.ps09.Constants;
 import it.polimi.ingsw.ps09.model.Board;
+
 import it.polimi.ingsw.ps09.model.DevelopmentCards.Territory;
 import it.polimi.ingsw.ps09.model.FamilyMembers.FamilyMember;
+import it.polimi.ingsw.ps09.model.Places.Towers.Floor.Floor;
+import it.polimi.ingsw.ps09.model.Places.Towers.Tower;
 import it.polimi.ingsw.ps09.model.Player;
 import it.polimi.ingsw.ps09.model.Resources.Coins;
 
@@ -34,49 +37,47 @@ public class PlaceFamilyMemberInGreenFloor extends PlaceFamilyMemberInFloor {
      */
     public static boolean isValid(Board board, Player player, FamilyMember familyMember, int index) {
 
-        //CONTROLS ON FAMILY MEMBER
-        //check if family member is usable
-        if (!familyMember.isUsable())
-            return false;
-        //check if family member of same color present && not the neutral one
-        if(!familyMember.getColor().equalsIgnoreCase("neutral") && board.getTerritoriesTower().hasSameFamilyMember(familyMember))
-            return false;
-        //Check if floor is free
-        if (!board.getTerritoriesTower().getFloors().get(index).isAvailable())
-            return false;
+        Floor currentFloor = board.getTerritoriesTower().getFloor(index);
+        Tower currentTower = board.getTerritoriesTower();
+        Territory currentCard = (Territory) currentFloor.getCard();
 
-        //check if Family Member has enough power
-        if (
-                familyMember.getPower()
-                        + player.getFamilyMemberPlacementBonus("TERRITORY")
-                        <
-                        board.getTerritoriesTower().getFloors().get(index).getDiceValue())
+        //controls if familyMember is usable
+        if(!familyMember.isUsable()) {
             return false;
-
-        //CONTROLS ON PLAYER
-     /*
-       //card variable to check for resources
-        Territory card = (Territory) board.getTerritoriesTowerCard(floorIndex);
-
-        UserResources ResourceWithBonus = player.PlayerResourcesCopy(player.getFamilyMemberPlacementResourcesDiscount("TERRITORIES"));
-
-        //check if enough resources
-        if (!ResourceWithBonus.isGreaterOrEqual(card.getResourcesCosts().get(0)))
-            return false;
-
-        //check if enough points
-        if (!player.has(card.getPointsCosts().get(0)))
-            return false;
-*/
-        //check if tower already filled then he must have 3 more coins
-        if (board.getTerritoriesTower().hasFamilyMember()) {
-            if (player.getCoins().getValue()
-                    <
-                    (Constants.EXTRA_TOWER_COST))
-                return false;
         }
 
-        //if reaches here it passed all controls
+        //controls if familyMember has enough power
+        if(familyMember.getPower() + player.getFamilyMemberPlacementBonus("TERRITORY")
+                < currentFloor.getDiceValue()) {
+            return false;
+        }
+
+        //controls if tower floor is empty
+        if(!currentFloor.isAvailable()) {
+            return false;
+        }
+
+        //controls if family member of same family not already used and not the neutral one
+        if(currentTower.hasSameFamilyMember(familyMember) && !familyMember.getColor().equalsIgnoreCase("neutral")){
+            return false;
+        }
+        /*//controls if player has enough resources
+        if(!player.has(currentCard.getResourcesCosts().get(0))) {
+            return false;
+        }
+        if(!player.has(currentCard.getPointsCosts().get(0))) {
+            return false;
+        }*/
+        //controls if tower occupied pays extra 3 coins
+        if(currentTower.hasFamilyMember()) {
+            if(player.getPersonalBoard().getCoins().getValue()
+                    <
+                    (Constants.EXTRA_TOWER_COST )) {
+                return false;
+            }
+        }
+
+        //else passed all check action isValid
         return true;
     }
 

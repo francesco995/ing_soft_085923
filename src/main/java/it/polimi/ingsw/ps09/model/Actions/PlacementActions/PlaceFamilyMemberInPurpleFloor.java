@@ -4,6 +4,8 @@ import it.polimi.ingsw.ps09.Constants;
 import it.polimi.ingsw.ps09.model.Board;
 import it.polimi.ingsw.ps09.model.DevelopmentCards.Venture;
 import it.polimi.ingsw.ps09.model.FamilyMembers.FamilyMember;
+import it.polimi.ingsw.ps09.model.Places.Towers.Floor.Floor;
+import it.polimi.ingsw.ps09.model.Places.Towers.Tower;
 import it.polimi.ingsw.ps09.model.Player;
 import it.polimi.ingsw.ps09.model.Resources.Coins;
 import it.polimi.ingsw.ps09.model.UserResources;
@@ -34,51 +36,47 @@ public class PlaceFamilyMemberInPurpleFloor extends PlaceFamilyMemberInFloor {
      */
     public static boolean isValid(Board board, Player player, FamilyMember familyMember, int index) {
 
-        //FAMILY MEMBER CONTROLS
-        //check if family member is usable
-        if (!familyMember.isUsable())
+        Floor currentFloor = board.getVenturesTower().getFloor(index);
+        Tower currentTower = board.getVenturesTower();
+        Venture currentCard = (Venture) currentFloor.getCard();
+
+        //controls if familyMember is usable
+        if(!familyMember.isUsable()) {
             return false;
-        //check if family member of same color present && not the neutral one
-        if(!familyMember.getColor().equalsIgnoreCase("neutral") && board.getVenturesTower().hasSameFamilyMember(familyMember))
+        }
+
+        //controls if familyMember has enough power
+        if(familyMember.getPower() + player.getFamilyMemberPlacementBonus("VENTURE")
+                < currentFloor.getDiceValue()) {
             return false;
-        //Check if floor is free
-        if (!board.getVenturesTower().getFloors().get(index).isAvailable())
+        }
+
+        //controls if tower floor is empty
+        if(!currentFloor.isAvailable()) {
             return false;
+        }
 
-        //check if Family Member has enough power
-        if (
-                familyMember.getPower()
-                        + player.getFamilyMemberPlacementBonus("VENTURE")
-                        <
-                        board.getVenturesTower().getFloors().get(index).getDiceValue())
+        //controls if family member of same family not already used and not the neutral one
+        if(currentTower.hasSameFamilyMember(familyMember) && !familyMember.getColor().equalsIgnoreCase("neutral")){
             return false;
-
-
-        //PLAYERS CONTROLS
-        //card variable to check for resources
-        Venture card = (Venture) board.getVenturesTowerCard(index);
-
-        //UserResources ResourceWithBonus = player.PlayerResourcesCopy(player.getFamilyMemberPlacementResourcesDiscount("VENTURE"));
-
-        UserResources ResourceWithBonus = player.getPersonalBoard().getUserResources();
-        //check if enough resources
-        if (!ResourceWithBonus.isGreaterOrEqual(card.getResourcesCosts().get(0)))
+        }
+        //controls if player has enough resources
+        if(!player.has(currentCard.getResourcesCosts().get(0))) {
             return false;
-
-        //check if enough points
-        if (!player.has(card.getPointsCosts().get(0)))
+        }
+        if(!player.has(currentCard.getPointsCosts().get(0))) {
             return false;
-
-        //player has enough resources and/or points, check if tower already filled
-        if (board.getVenturesTower().hasFamilyMember()) {
-            if (player.getCoins().getValue()
+        }
+        //controls if tower occupied pays extra 3 coins
+        if(currentTower.hasFamilyMember()) {
+            if(player.getPersonalBoard().getCoins().getValue()
                     <
-                    (card.getResourcesCosts().get(0).getCoins().getValue() + Constants.EXTRA_TOWER_COST)){
+                    (currentCard.getResourcesCosts().get(0).getCoins().getValue() + Constants.EXTRA_TOWER_COST )) {
                 return false;
             }
         }
 
-        //if reaches here it passed all controls
+        //else passed all check action isValid
         return true;
     }
 

@@ -184,8 +184,10 @@ public class PlayerConnectionSocket extends Thread implements PlayerConnection{
      * Sends a player signal to choose Vatican report action
      * Wait for player to have chosen Vatican report action
      */
-    public void waitCouncilChoiceReady(){
+    public void waitVaticanReportChoiceReady(){
         //TODO: add timeout
+        //TODO: create other method
+        sendMessage("vaticanReport");
         while(!mHasChosenVaticanReportAction){
             sleep(100);
         }

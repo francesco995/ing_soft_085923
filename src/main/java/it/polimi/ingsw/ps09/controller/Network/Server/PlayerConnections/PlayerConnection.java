@@ -27,7 +27,7 @@ public interface PlayerConnection{
     void sendLeaderCardsList(ArrayList<LeaderCard> leaderCardsList);
     void sendPersonalBoardBonusTilesList(ArrayList<PersonalBonusTile> personalBoardBonuses);
     void waitActionReady();
-    void waitCouncilChoiceReady();
+    void waitVaticanReportChoiceReady();
     int getVaticanReportChoice();
     void waitPersonalBoardBonusTileChoice();
     int getPersonalBoardBonusTileChoice();

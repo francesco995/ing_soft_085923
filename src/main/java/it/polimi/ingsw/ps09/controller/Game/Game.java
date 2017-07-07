@@ -16,7 +16,6 @@ import it.polimi.ingsw.ps09.model.FamilyMembers.FamilyMember;
 import it.polimi.ingsw.ps09.model.PersonalBoardBonus;
 import it.polimi.ingsw.ps09.model.Places.Towers.Tower;
 import it.polimi.ingsw.ps09.model.Player;
-import it.polimi.ingsw.ps09.model.Points.VictoryPoints;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -176,13 +175,16 @@ public class Game extends Thread {
      */
     private void vaticanReport() {
 
+        mLogger.log(INFO, "Game: " + GAME_ID + " entering Vatican Report phase after period: " + mPeriod);
 
         mPlayersOrder.getPlayersOrder().stream().forEach(id -> {
+
+            mLogger.log(INFO, "Game: " + GAME_ID + " checking Vatican Report for player: " + id);
 
             if(mPlayers.get(id).has(Constants.VATICAN_FAITH_POINTS.get(mPeriod))){
 
                 //Ask if player wants to donate FaithPoints to vatican
-                mConnections.get(id).waitCouncilChoiceReady();
+                mConnections.get(id).waitVaticanReportChoiceReady();
 
                 boolean choice = false; //Get choice from connection
 

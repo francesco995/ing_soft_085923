@@ -4,6 +4,8 @@ import it.polimi.ingsw.ps09.Constants;
 import it.polimi.ingsw.ps09.model.Board;
 import it.polimi.ingsw.ps09.model.DevelopmentCards.Building;
 import it.polimi.ingsw.ps09.model.FamilyMembers.FamilyMember;
+import it.polimi.ingsw.ps09.model.Places.Towers.Floor.Floor;
+import it.polimi.ingsw.ps09.model.Places.Towers.Tower;
 import it.polimi.ingsw.ps09.model.Player;
 import it.polimi.ingsw.ps09.model.Resources.Coins;
 import it.polimi.ingsw.ps09.model.UserResources;
@@ -35,49 +37,47 @@ public class PlaceFamilyMemberInYellowFloor extends PlaceFamilyMemberInFloor {
     public static boolean isValid(Board board, Player player, FamilyMember familyMember, int index) {
 
 
-        //FAMILY MEMBER CONTROLS
-        //check if family member is usable
-        if (!familyMember.isUsable())
-            return false;
-        //check if family member of same color present && not the neutral one
-        if(!familyMember.getColor().equalsIgnoreCase("neutral") && board.getBuildingsTower().hasSameFamilyMember(familyMember))
-            return false;
-        //Check if floor is free
-        if (!board.getBuildingsTower().getFloors().get(index).isAvailable())
-            return false;
+        Floor currentFloor = board.getBuildingsTower().getFloor(index);
+        Tower currentTower = board.getBuildingsTower();
+        Building currentCard = (Building) currentFloor.getCard();
 
-        //check if Family Member has enough power
-        if (
-                familyMember.getPower()
-                        + player.getFamilyMemberPlacementBonus("BUILDING")
-                        <
-                        board.getBuildingsTower().getFloors().get(index).getDiceValue())
+        //controls if familyMember is usable
+        if(!familyMember.isUsable()) {
             return false;
-
-
-        //PLAYER CONTROLS
-        //card variable to check for resources
-        Building card = (Building) board.getBuildingsTowerCard(index);
-
-        //UserResources ResourceWithBonus = player.PlayerResourcesCopy(player.getFamilyMemberPlacementResourcesDiscount("BUILDING"));
-
-        UserResources ResourceWithBonus = player.getPersonalBoard().getUserResources();
-        //check if enough resources
-        if (!ResourceWithBonus.isGreaterOrEqual(card.getResourcesCosts().get(0)))
-            return false;
-        //check if enough points
-        if (!player.has(card.getPointsCosts().get(0)))
-            return false;
-
-        //player has enough resources and/or points, check if tower already filled
-        if (board.getBuildingsTower().hasFamilyMember()) {
-            if (player.getCoins().getValue()
-                    >
-                    (card.getResourcesCosts().get(0).getCoins().getValue() + Constants.EXTRA_TOWER_COST))
-                return false;
         }
 
-        //if reaches here it passed all controls
+        //controls if familyMember has enough power
+        if(familyMember.getPower() + player.getFamilyMemberPlacementBonus("BUILDING")
+                < currentFloor.getDiceValue()) {
+            return false;
+        }
+
+        //controls if tower floor is empty
+        if(!currentFloor.isAvailable()) {
+            return false;
+        }
+
+        //controls if family member of same family not already used and not the neutral one
+        if(currentTower.hasSameFamilyMember(familyMember) && !familyMember.getColor().equalsIgnoreCase("neutral")){
+            return false;
+        }
+        //controls if player has enough resources
+        if(!player.has(currentCard.getResourcesCosts().get(0))) {
+            return false;
+        }
+        if(!player.has(currentCard.getPointsCosts().get(0))) {
+            return false;
+        }
+        //controls if tower occupied pays extra 3 coins
+        if(currentTower.hasFamilyMember()) {
+            if(player.getPersonalBoard().getCoins().getValue()
+                    <
+                    (currentCard.getResourcesCosts().get(0).getCoins().getValue() + Constants.EXTRA_TOWER_COST )) {
+                return false;
+            }
+        }
+
+        //else passed all check action isValid
         return true;
     }
 

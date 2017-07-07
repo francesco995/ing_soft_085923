@@ -2,8 +2,11 @@ package it.polimi.ingsw.ps09.model.Actions.PlacementActions;
 
 import it.polimi.ingsw.ps09.Constants;
 import it.polimi.ingsw.ps09.model.Board;
+
 import it.polimi.ingsw.ps09.model.DevelopmentCards.Character;
 import it.polimi.ingsw.ps09.model.FamilyMembers.FamilyMember;
+import it.polimi.ingsw.ps09.model.Places.Towers.Floor.Floor;
+import it.polimi.ingsw.ps09.model.Places.Towers.Tower;
 import it.polimi.ingsw.ps09.model.Player;
 import it.polimi.ingsw.ps09.model.Resources.Coins;
 import it.polimi.ingsw.ps09.model.UserResources;
@@ -34,76 +37,47 @@ public class PlaceFamilyMemberInBlueFloor extends PlaceFamilyMemberInFloor {
      */
     public static boolean isValid(Board board,  Player player, FamilyMember familyMember, int index){
 
-        //FAMILY MEMBER CONTROLS
-        //check if family member is usable
-        if (!familyMember.isUsable())
+        Floor currentFloor = board.getCharactersTower().getFloor(index);
+        Tower currentTower = board.getCharactersTower();
+        Character currentCard = (Character) currentFloor.getCard();
+
+        //controls if familyMember is usable
+        if(!familyMember.isUsable()) {
             return false;
-
-        //check if family member of same color present && not the neutral one
-        if(!familyMember.getColor().equalsIgnoreCase("neutral") && board.getCharactersTower().hasSameFamilyMember(familyMember))
-            return false;
-
-        //Check if floor is free
-        if (!board.getCharactersTower().getFloors().get(index).isAvailable())
-            return false;
-
-        //check if Family Member has enough power
-        if (
-                familyMember.getPower()
-                        + player.getFamilyMemberPlacementBonus("CHARACTER")
-                        <
-                        board.getCharactersTower().getFloors().get(index).getDiceValue())
-            return false;
-
-
-        //PLAYERS CONTROLS
-        //card variable to check for resources
-        Character card = (Character) board.getCharacterTowerCard(index);
-
-        //UserResources ResourceWithBonus = player.PlayerResourcesCopy(player.getFamilyMemberPlacementResourcesDiscount("CHARACTER"));
-
-        UserResources ResourceWithBonus = player.getPersonalBoard().getUserResources();
-        //check if enough resources
-        if (!ResourceWithBonus.isGreaterOrEqual(card.getResourcesCosts().get(0)))
-            return false;
-
-        //check if enough points
-        if (!player.has(card.getPointsCosts().get(0)))
-            return false;
-
-        //player has enough resources and/or points, check if tower already filled
-
-        if(Constants.ADVANCED_TESTING_SERVER){
-            System.out.println(board.getCharactersTower().hasFamilyMember());
         }
 
-        if (board.getCharactersTower().hasFamilyMember()) {
+        //controls if familyMember has enough power
+        if(familyMember.getPower() + player.getFamilyMemberPlacementBonus("CHARACTER")
+                < currentFloor.getDiceValue()) {
+            return false;
+        }
 
-            if(Constants.ADVANCED_TESTING_SERVER){
-                System.out.println("Card #: " + card.getCARD_N() + " Floor already has family member, check if player has 3 more coins");
-            }
+        //controls if tower floor is empty
+        if(!currentFloor.isAvailable()) {
+            return false;
+        }
 
-            if (player.getCoins().getValue()
+        //controls if family member of same family not already used and not the neutral one
+        if(currentTower.hasSameFamilyMember(familyMember) && !familyMember.getColor().equalsIgnoreCase("neutral")){
+            return false;
+        }
+        //controls if player has enough resources
+        if(!player.has(currentCard.getResourcesCosts().get(0))) {
+            return false;
+        }
+        if(!player.has(currentCard.getPointsCosts().get(0))) {
+            return false;
+        }
+        //controls if tower occupied pays extra 3 coins
+        if(currentTower.hasFamilyMember()) {
+            if(player.getPersonalBoard().getCoins().getValue()
                     <
-                    (card.getResourcesCosts().get(0).getCoins().getValue() + Constants.EXTRA_TOWER_COST)){
-
-                if(Constants.ADVANCED_TESTING_SERVER){
-                    System.out.println("Card #: " + card.getCARD_N() + " Check failed!!!");
-                }
-
+                    (currentCard.getResourcesCosts().get(0).getCoins().getValue() + Constants.EXTRA_TOWER_COST )) {
                 return false;
-
             }
-
-            if(Constants.ADVANCED_TESTING_SERVER){
-                System.out.println("Card #: " + card.getCARD_N() +  "Check passed!!!");
-            }
-
         }
 
-
-
-        //if reaches here it passed all controls
+        //else passed all check action isValid
         return true;
 
     }
