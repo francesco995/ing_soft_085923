@@ -76,6 +76,15 @@ public class CreateAreas {
     }
 
 
+    public boolean hasOneFamilyMember(){
+        if(mSlotList.size()==1){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
     /**
      * Clear the list containing all family member in the area
      */

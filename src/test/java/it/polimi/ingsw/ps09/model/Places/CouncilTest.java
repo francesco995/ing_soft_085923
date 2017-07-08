@@ -35,7 +35,7 @@ public class CouncilTest {
     }
 
     @Test
-    public void getFamilyMemberTEst() throws Exception{
+    public void getFamilyMemberTest() throws Exception{
         assertEquals(mFamilyMember1, mCouncil.getFamilyMember(0));
 
     }
@@ -52,6 +52,23 @@ public class CouncilTest {
     @Test
     public void getListTest() throws Exception{
         assertEquals(true, mList.equals(mCouncil.getList()) );
+    }
+
+    @Test
+    public void clearAllTest() throws Exception{
+
+        mCouncil.clearAll();
+
+        assertEquals(0, mCouncil.getList().size());
+    }
+
+    @Test
+    public void deleteDuplicatesTest()throws Exception{
+
+        mCouncil.getFinalCouncilList(mList);
+
+        assertEquals(1, mCouncil.getList().size());
+
     }
 
 
