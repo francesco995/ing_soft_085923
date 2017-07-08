@@ -68,7 +68,7 @@ public class Production implements PlacementAction {
         //check all player cards
         player.getPersonalBoard().getBoardBuildings()
                 .stream()
-                .filter(card -> card.getProductionCost()>familyMember.getPower()+ player.getProductionBonus())
+                .filter(card -> card.getProductionCost() <= familyMember.getPower()+ player.getProductionBonus())
                 .forEach(card ->
                         card.getProductionEffects().stream()
                                 .forEach(effect -> effect.applyEffect(player))

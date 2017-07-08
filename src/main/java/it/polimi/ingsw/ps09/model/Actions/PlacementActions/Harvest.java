@@ -71,7 +71,7 @@ public class Harvest implements PlacementAction {
             //apply effect for  all player cards
              player.getPersonalBoard().getBoardTerritories()
                      .stream()
-                     .filter(card -> card.getProductionCost()>familyMember.getPower()+ player.getHarvestBonus())
+                     .filter(card -> card.getProductionCost() <= familyMember.getPower() + player.getHarvestBonus())
                      .forEach(card ->
                          card.getHarvestEffects().stream()
                                  .forEach(effect -> effect.applyEffect(player))
