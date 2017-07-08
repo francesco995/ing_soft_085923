@@ -39,6 +39,8 @@ public abstract class Round {
 
         RoundSetup.setupRound(game);
 
+        forceClientsReloadData(game);
+
         for(int i = 0; i<4; i++){
 
             //TODO: increase to maybe 30 seconds
