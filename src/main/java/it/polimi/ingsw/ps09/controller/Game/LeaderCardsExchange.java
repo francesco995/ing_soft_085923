@@ -70,18 +70,18 @@ public abstract class LeaderCardsExchange {
 
         //Loop through mLeaderCardsOrderList IN INVERSE ORDER to switch PlayerID.
         //It's a easy way to exchange LeaderCards without passing the entire list.
-        for(int cont=0; cont<(mListSize-1); cont++) {
-
-            if(cont<(mListSize-1)) {
+        for(int cont=0; cont<=(mListSize-1); cont++) {
 
 
+            if(cont==(mListSize-1)){
+                LeaderCardsOrderList.get(cont).setLeaderCardList(mTemporaryFirstLeaderCardList);
+            }
+
+            else {
                 LeaderCardsOrderList.get(cont).setLeaderCardList((ArrayList<LeaderCard>) LeaderCardsOrderList.get(cont+1).getLeaderCardList());
 
             }
 
-            else{
-                LeaderCardsOrderList.get(cont).setLeaderCardList(mTemporaryFirstLeaderCardList);
-            }
         }
 
     }
