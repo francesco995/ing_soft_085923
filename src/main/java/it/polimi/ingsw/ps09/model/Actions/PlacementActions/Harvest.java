@@ -1,5 +1,6 @@
 package it.polimi.ingsw.ps09.model.Actions.PlacementActions;
 
+import it.polimi.ingsw.ps09.controller.Game.Game;
 import it.polimi.ingsw.ps09.model.Board;
 import it.polimi.ingsw.ps09.model.FamilyMembers.FamilyMember;
 import it.polimi.ingsw.ps09.model.Player;
@@ -28,11 +29,19 @@ public class Harvest implements PlacementAction {
      */
     public static boolean isValid(Board board, Player player, FamilyMember familyMember){
 
+
         //check if family member is usable
         if (!familyMember.isUsable())
             return false;
-        //check if family member of same color present && not the neutral one
-        //if(!familyMember.getColor().equalsIgnoreCase("neutral") && board.getHarvest().hasSameFamilyMember(familyMember))
+
+        //controls number of player to know how many slot to open
+        if(Game.PLAYERS_NUMBER == 2 && board.getHarvest().hasOneFamilyMember())
+            return false;
+        //controls if family member of same family not already used and not the neutral one
+        /*if(currentTower.hasSameFamilyMember(familyMember) && !familyMember.getColor().equalsIgnoreCase("neutral")){
+            return false;
+        }*/
+
         //Check if the family Member has enough power to do basic action
         if(familyMember.getPower() + player.getHarvestBonus() < board.getHarvestSlotDiceValue())
             return false;

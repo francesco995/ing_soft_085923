@@ -8,6 +8,7 @@ import it.polimi.ingsw.ps09.model.FamilyMembers.FamilyMember;
 import it.polimi.ingsw.ps09.model.Places.Towers.Floor.Floor;
 import it.polimi.ingsw.ps09.model.Places.Towers.Tower;
 import it.polimi.ingsw.ps09.model.Player;
+import it.polimi.ingsw.ps09.model.Points.MilitaryPoints;
 import it.polimi.ingsw.ps09.model.Resources.Coins;
 
 import java.util.StringJoiner;
@@ -17,9 +18,9 @@ import java.util.StringJoiner;
  */
 public class PlaceFamilyMemberInGreenFloor extends PlaceFamilyMemberInFloor {
 
-    //private static final int EXTRA_TOWER_COST = 3;
 
-    //todo add control of military points from board
+
+
     public PlaceFamilyMemberInGreenFloor(FamilyMember familyMember, int index) {
 
         super(familyMember, index);
@@ -39,7 +40,7 @@ public class PlaceFamilyMemberInGreenFloor extends PlaceFamilyMemberInFloor {
 
         Floor currentFloor = board.getTerritoriesTower().getFloor(index);
         Tower currentTower = board.getTerritoriesTower();
-        Territory currentCard = (Territory) currentFloor.getCard();
+        int territoriesCardCount = player.getPersonalBoard().getBoardTerritories().size();
 
         //controls if familyMember is usable
         if(!familyMember.isUsable()) {
@@ -61,13 +62,20 @@ public class PlaceFamilyMemberInGreenFloor extends PlaceFamilyMemberInFloor {
         if(currentTower.hasSameFamilyMember(familyMember) && !familyMember.getColor().equalsIgnoreCase("neutral")){
             return false;
         }
-        /*//controls if player has enough resources
-        if(!player.has(currentCard.getResourcesCosts().get(0))) {
-            return false;
-        }
-        if(!player.has(currentCard.getPointsCosts().get(0))) {
-            return false;
-        }*/
+        //controls if enough military points
+        switch(territoriesCardCount){
+                case 3 : if (!player.has(new MilitaryPoints(Constants.THREE_GREEN)))
+                    return false;
+                    break;
+                case 4 : if (!player.has(new MilitaryPoints(Constants.FOUR_GREEN)))
+                    return false;
+                    break;
+                case 5 : if (!player.has(new MilitaryPoints(Constants.FIVE_GREEN)))
+                    return false;
+                    break;
+                default : break;
+            }
+
         //controls if tower occupied pays extra 3 coins
         if(currentTower.hasFamilyMember()) {
             if(player.getPersonalBoard().getCoins().getValue()

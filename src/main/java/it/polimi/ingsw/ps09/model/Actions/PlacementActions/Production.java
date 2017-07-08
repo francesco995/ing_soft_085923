@@ -1,6 +1,7 @@
 package it.polimi.ingsw.ps09.model.Actions.PlacementActions;
 
 
+import it.polimi.ingsw.ps09.controller.Game.Game;
 import it.polimi.ingsw.ps09.model.Board;
 import it.polimi.ingsw.ps09.model.FamilyMembers.FamilyMember;
 import it.polimi.ingsw.ps09.model.Player;
@@ -27,7 +28,7 @@ public class Production implements PlacementAction {
      * @return Boolean value; false if the family member isn't usable or he doesn't have enough power, otherwise true
      */
     public static boolean isValid(Board board, Player player, FamilyMember familyMember){
-
+        //todo: controllo neutrali
         //check if family member is usable
         if (!familyMember.isUsable() == true)
             return false;
@@ -38,7 +39,9 @@ public class Production implements PlacementAction {
                 familyMember.getPower() + player.getProductionBonus() < board.getProductionSlotDiceValue()
                 )
             return false;
-
+        //controls number of player to know how many slot to open
+        if(Game.PLAYERS_NUMBER == 2 && board.getProduction().hasOneFamilyMember())
+            return false;
         //if reaches here it passed all controls
         return true;
     }

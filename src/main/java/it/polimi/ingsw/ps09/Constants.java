@@ -113,6 +113,13 @@ public final class Constants {
      */
     public static final int FIRST_MILITARY = 5;
     public static final int SECOND_MILITARY  = 2;
+    /**
+     * Military requirement for green cards
+     */
+    public static final int THREE_GREEN= 3;
+    public static final int FOUR_GREEN = 7;
+    public static final int FIVE_GREEN = 12;
+    public static final int SIX_GREEN = 18;
     //####################################################
     //####################################################
     //############### Game view constants ################
