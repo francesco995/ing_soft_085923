@@ -68,8 +68,7 @@ public abstract class LeaderCardsExchange {
         //Get the first playerID of mLeaderCardsOrderList
         mTemporaryFirstLeaderCardList = (ArrayList)LeaderCardsOrderList.get(0).getLeaderCardList();
 
-        //Loop through mLeaderCardsOrderList IN INVERSE ORDER to switch PlayerID.
-        //It's a easy way to exchange LeaderCards without passing the entire list.
+        //Loop through mLeaderCardsOrderList IN INVERSE ORDER to switch LeaderCardsList.
         for(int cont=0; cont<=(mListSize-1); cont++) {
 
 
