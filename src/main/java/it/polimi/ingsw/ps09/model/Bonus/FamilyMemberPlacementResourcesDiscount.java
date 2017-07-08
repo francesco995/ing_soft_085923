@@ -24,10 +24,10 @@ public class FamilyMemberPlacementResourcesDiscount {
      * Map of Discount Bonus value (UserResources) to card Type (String)
      */
     private Map<String, UserResources> mBonus = new HashMap<String, UserResources>(){{
-        put("BUILDING", new UserResources());
-        put("CHARACTER", new UserResources());
-        put("TERRITORY", new UserResources());
-        put("VENTURE", new UserResources());
+        put("BUILDING", new UserResources(0, 0, 0, 0));
+        put("CHARACTER", new UserResources(0, 0, 0, 0));
+        put("TERRITORY", new UserResources(0, 0, 0, 0));
+        put("VENTURE", new UserResources(0, 0, 0, 0));
     }};
 
 
