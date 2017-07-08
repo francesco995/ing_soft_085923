@@ -65,6 +65,7 @@ public class Production implements PlacementAction {
         //Do action
         board.getProduction().addMember(familyMember);
         familyMember.used();
+
         //check all player cards
         player.getPersonalBoard().getBoardBuildings()
                 .stream()
