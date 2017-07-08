@@ -188,7 +188,7 @@ public class Game extends Thread {
 
                 boolean choice = false; //Get choice from connection
 
-                if(mConnections.get(id).getVaticanReportChoice() == 1) {
+                if(mConnections.get(id).getVaticanReportChoice() == 0) {
                     choice = true;
                 }
 

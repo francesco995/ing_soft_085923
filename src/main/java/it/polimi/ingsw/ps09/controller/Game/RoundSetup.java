@@ -93,6 +93,9 @@ public abstract class RoundSetup {
             game.mPlayers.get(iD).getFamilyMember("WHITE").setUsable();
             game.mPlayers.get(iD).getFamilyMember("ORANGE").setUsable();
 
+            //Set neutral family member power to 0
+            game.mPlayers.get(iD).getFamilyMember("NEUTRAL").setPower(new Dice(0, "NEUTRAL"));
+
             game.mPlayers.get(iD).setFamilyMemberPower("BLACK", game.mBlackDice);
             game.mPlayers.get(iD).setFamilyMemberPower("WHITE", game.mWhiteDice);
             game.mPlayers.get(iD).setFamilyMemberPower("ORANGE", game.mOrangeDice);

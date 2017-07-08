@@ -5,7 +5,7 @@ import it.polimi.ingsw.ps09.Constants;
 /**
  * Abstract class dice contains all necessary methods for it to function
  */
-public abstract class Dice {
+public class Dice {
 
 
     //VARIABLES
