@@ -26,7 +26,7 @@ public class AllFamilyMemberActions {
 
         int maxNumber = player.getServant().getValue();
 
-        for(int i=1; i<maxNumber; i++) {
+        for(int i=1; i<=maxNumber; i++) {
 
             if (IncreaseFamilyMemberValue.isValid(player, player.getFamilyMember("NEUTRAL"), i))
                 mActionsList.add
