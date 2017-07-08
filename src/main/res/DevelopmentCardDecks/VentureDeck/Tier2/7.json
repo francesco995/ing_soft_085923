@@ -33,7 +33,20 @@
         "mCardName": "Crusade",
         "CARD_N": 87,
         "mPeriod": 2,
-        "mResourcesCosts": [],
+        "mResourcesCosts": [{
+            "mCoins": {
+                "mValue": 0
+            },
+            "mServant": {
+                "mValue": 0
+            },
+            "mStone": {
+                "mValue": 0
+            },
+            "mWood": {
+                "mValue": 0
+            }
+        }],
         "mPointsCosts": [{
             "mFaithPoints": {
                 "mPoints": 0

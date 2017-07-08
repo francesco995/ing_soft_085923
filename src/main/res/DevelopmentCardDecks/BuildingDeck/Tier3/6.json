@@ -130,7 +130,17 @@
                 }
             }
         ],
-        "mPointsCosts": [],
+        "mPointsCosts": [{
+            "mFaithPoints": {
+                "mPoints": 0
+            },
+            "mMilitaryPoints": {
+                "mPoints": 0
+            },
+            "mVictoryPoints": {
+                "mPoints": 0
+            }
+        }],
         "mImmediateEffects": [
             {
                 "CLASSNAME": "it.polimi.ingsw.ps09.model.DevelopmentCardEffects.GainPointsEffect",
