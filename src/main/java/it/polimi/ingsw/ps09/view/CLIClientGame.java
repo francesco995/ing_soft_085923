@@ -64,9 +64,9 @@ public class CLIClientGame extends Thread{
 
     public static void alertActions(){
 
-        System.out.println("\n##It's your turn to play, actions available in main menu, please refresh!!!##");
-        System.out.println("\n##It's your turn to play, actions available in main menu, please refresh!!!##");
-        System.out.println("\n##It's your turn to play, actions available in main menu, please refresh!!!##");
+        System.out.println("##It's your turn to play, actions available in main menu, please refresh!!!##");
+        System.out.println("##It's your turn to play, actions available in main menu, please refresh!!!##");
+        System.out.println("##It's your turn to play, actions available in main menu, please refresh!!!##");
         System.out.println("\nYour choice? -> ");
 
     }
@@ -74,9 +74,9 @@ public class CLIClientGame extends Thread{
 
     public static void alertVaticanReport(){
 
-        System.out.println("\n##You have a vatican action to do, please refresh!!!##");
-        System.out.println("\n##You have a vatican action to do, please refresh!!!##");
-        System.out.println("\n##You have a vatican action to do, please refresh!!!##");
+        System.out.println("##You have a vatican action to do, please refresh!!!##");
+        System.out.println("##You have a vatican action to do, please refresh!!!##");
+        System.out.println("##You have a vatican action to do, please refresh!!!##");
         System.out.println("\nYour choice? -> ");
 
 
@@ -145,6 +145,8 @@ public class CLIClientGame extends Thread{
         mHasPlacementAction = mServerConnection.hasPlacementAction();
         mHasFamilyMemberAction = mServerConnection.hasFamilyMemberAction();
         mHasPlayerAction = mServerConnection.hasPlayerActions();
+
+        mCanSupportVatican = mServerConnection.canSupportVatican();
 
         //Add Placement Action to menu
         if(mHasPlacementAction)
