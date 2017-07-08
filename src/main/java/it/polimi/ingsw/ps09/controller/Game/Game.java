@@ -194,7 +194,9 @@ public class Game extends Thread {
 
                 if(choice){
 
-                    mPlayers.get(id).clearFaithPoints();
+                    mPlayers.get(id).add(
+                            mFaithPointsTrack.convertToBonus(
+                                    mPlayers.get(id).clearFaithPoints()));
 
                 }else{
                     //Player don't want to support vatican
