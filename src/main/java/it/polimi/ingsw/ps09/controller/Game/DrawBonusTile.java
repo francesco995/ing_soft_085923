@@ -51,7 +51,7 @@ public abstract class DrawBonusTile {
 
         mLogger.log(INFO, "Game: " + Game.GAME_ID + " player " +
                 playerId + " chosen Personal Board Bonus Tile # " +
-                (choice + 1) + ": " + game.mPersonalBonusTilesDeck.getDeck().get(choice).toString());
+                (choice + 1));
 
         //Add chosen BonusTile to player's BonusTile object
         game.mPlayers.get(playerId).getPersonalBoard().setPersonalBonusTile(game.mPersonalBonusTilesDeck.getDeck().get(choice));
