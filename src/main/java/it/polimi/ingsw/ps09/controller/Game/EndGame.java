@@ -18,11 +18,15 @@ public class EndGame {
 
 
     /**
-     * This is the method called for calculating all the final scores and giving last bonus (LAST PHASE)
+     * This method is used to add all the victory points based on:
+     * -Conquered territories
+     * -Influenced Chharacters
+     * -Military Strength
+     * -Collected Resources
      */
     public static void endGame(Game game) {
 
-        //runs all players
+        //updates all players
         for (int i = 0; i < game.mPlayers.size(); i++) {
 
             int total;
@@ -72,29 +76,25 @@ public class EndGame {
             currentPlayer.add(collectedResources);
         }
 
-        //creates a list of all the points sorted by max
-        List<Integer> pointsList = victoryRank(game);
+        //after calculating all points force client to reload board
+        forceClientsReloadData(game);
+        game.mPlayersOrder.getPlayersOrder().stream().forEach(id -> {
+            game.mConnections.get(id).endGame();
+        });
 
+        /**
+         * This methods forces all the clients to refresh
+          */
+    }
+    private static void forceClientsReloadData(Game game){
 
-
-
-
-/*
-            PlayersOrder finalPlacement;
-
-            game.mPlayersOrder.getPlayersOrder().stream().forEach(id -> {
-                Player currentPlayer = game.mPlayers.get(id);
-                for(int i = 0; i < pointsList.size(); i++)
-                if(currentPlayer.getVictoryPoints().getValue() == pointsList.get(i))
-
-            });*/
-
-
+        game.mPlayersOrder.getPlayersOrder().stream().forEach(id -> {
+            game.mConnections.get(id).sendUpdatedData();
+        });
 
     }
-
     /**
-     * This methods receives a player and it returns the rank of his militaryPoints
+     * This methods receives a player and it returns the rank of his militaryPoints compared to other players
      *
      * @param game   this param is used to make possible to check for all Players points
      * @param player this param is used as a control for ensuring right values
@@ -118,38 +118,5 @@ public class EndGame {
         }
 
         return playerRank;
-    }
-
-
-    private static List<Integer> victoryRank(Game game) {
-
-        ArrayList<Integer> rankList = new ArrayList<Integer>();
-        HashMap<Integer, Integer> finalRank = new HashMap<Integer, Integer>(); //first integer is for id, second is for victory points value
-        //insert all players victory points value  into arrayList
-        for (int i = 0; i < game.mPlayers.size(); i++) {
-            Player currentPlayer = game.mPlayers.get(game.mPlayersOrder.getPlayersOrder().get(i));
-            rankList.add(currentPlayer.getMilitaryPoints().getValue());
-            finalRank.put(currentPlayer.getPlayerId(), currentPlayer.getVictoryPoints().getValue());
-        }
-        Collections.sort(rankList);
-        sortByValue(finalRank);
-
-
-        for(int i = 0; i < game.mPlayers.size(); i++)
-        ;
-        return rankList;
-
-    }
-
-    public static <K, V extends Comparable<? super V>> Map<K, V> sortByValue(Map<K, V> map) {
-        return map.entrySet()
-                .stream()
-                .sorted(Map.Entry.comparingByValue(/*Collections.reverseOrder()*/))
-                .collect(Collectors.toMap(
-                        Map.Entry::getKey,
-                        Map.Entry::getValue,
-                        (e1, e2) -> e1,
-                        LinkedHashMap::new
-                ));
     }
 }
