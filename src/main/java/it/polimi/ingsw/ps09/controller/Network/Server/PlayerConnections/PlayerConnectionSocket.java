@@ -72,6 +72,9 @@ public class PlayerConnectionSocket extends Thread implements PlayerConnection{
     private int mPersonalBoardBonusTileChoice;
     private boolean mHasPersonalBoardBonusTileChoiceReady = false;
 
+    private ArrayList<Integer> mCouncilPrivilegeChoices;
+    private boolean mHasCouncilPrivilegeChoices = false;
+
     private boolean mHasChosenVaticanReportAction = false;
     private int mVaticanReportChoice;
 
@@ -197,6 +200,45 @@ public class PlayerConnectionSocket extends Thread implements PlayerConnection{
         }
     }
 
+    /**
+     * Sends a player signal to choose Vatican report action
+     * Wait for player to have chosen Vatican report action
+     * @param choicesN
+     */
+    public void waitCouncilPrivilegeChoice(int choicesN){
+        //TODO: add timeout
+        //TODO: create other method
+        sendMessage("councilPrivilege");
+        sendMessage(String.valueOf(choicesN));
+        while(!mHasCouncilPrivilegeChoices){
+            sleep(100);
+        }
+    }
+
+
+    private void receiveCouncilPrivilegeChoices() {
+
+        mCouncilPrivilegeChoices = new ArrayList<>();
+
+        int size = Integer.valueOf(waitForMessage());
+
+        for (int i = 0; i < size; i++){
+            mCouncilPrivilegeChoices.add(Integer.valueOf(waitForMessage()));
+        }
+
+        mHasCouncilPrivilegeChoices = true;
+    }
+
+    public ArrayList<Integer> getCouncilPrivilegeChoices(){
+
+        mHasCouncilPrivilegeChoices = false;
+
+        return mCouncilPrivilegeChoices;
+
+    }
+
+
+
     public int getVaticanReportChoice(){
         mHasChosenVaticanReportAction = false;
         return mVaticanReportChoice;
@@ -248,6 +290,9 @@ public class PlayerConnectionSocket extends Thread implements PlayerConnection{
         sendMessage("order");
         sendMessage(mGson.toJson(mPlayersOrder, PlayersOrder.class));
     }
+
+
+
 
     /**
      * Send updated Players to client
@@ -539,6 +584,13 @@ public class PlayerConnectionSocket extends Thread implements PlayerConnection{
                         break;
                     }
 
+                    case "councilPrivilegeChoice": {
+
+                        receiveCouncilPrivilegeChoices();
+
+                        break;
+                    }
+
                     default: {
                         mIncomingMessages.add(mMessage);
                     }
@@ -560,6 +612,8 @@ public class PlayerConnectionSocket extends Thread implements PlayerConnection{
         }
 
     }
+
+
 
 
 }

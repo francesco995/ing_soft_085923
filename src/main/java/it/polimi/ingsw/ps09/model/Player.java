@@ -152,6 +152,8 @@ public class Player{
 
         mExcommunicationTiles = new ArrayList<>();
 
+        mCouncilPrivilege = 0;
+
         mUserFlags = new BonusFlags();
 
 
@@ -927,19 +929,16 @@ public class Player{
      */
     public void addCouncilPrivilege(int amount){
 
-        mCouncilPrivilege = mCouncilPrivilege + amount;
+        mCouncilPrivilege = amount;
+
+
+        //LOG
+        mLogger.log(INFO, "Game: " + Game.GAME_ID +
+                " add " + amount +
+                " Council Privileges to player: " + mUserName);
 
     }
 
-    /**
-     * Add a specific amount of council privilege to the player
-     * @param amount of privilege to add
-     */
-    public void removeCouncilPrivilege(int amount){
-
-        mCouncilPrivilege = mCouncilPrivilege - amount;
-
-    }
 
     public int getCouncilPrivilege(){
         return mCouncilPrivilege;

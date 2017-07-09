@@ -28,6 +28,9 @@ public interface ServerConnection{
     PlayersOrder getPlayersOrder();
     String getUserName();
     String getMessage();
+    boolean hasCouncilAction();
+    void sendCouncilChoices(ArrayList<Integer> choices);
+    int getCouncilChoices();
     ArrayList<PlacementAction> getPlacementActionsList();
     List<String> getAllMessages();
     ArrayList<FamilyMemberAction> getFamilyMemberActionsList();

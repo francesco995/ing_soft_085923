@@ -19,8 +19,6 @@ import java.util.stream.Collectors;
  */
 public class CLIClientGame extends Thread{
 
-    private static final int MAX_COUNCIL=5;
-
     private int mPlayerID;
 
     private Board mBoard;
@@ -72,6 +70,16 @@ public class CLIClientGame extends Thread{
     }
 
 
+    public static void alertCouncilAction(){
+
+        System.out.println("\n##You have Council Choice, please refresh!!!##");
+        System.out.println("##You have Council Choice, please refresh!!!##");
+        System.out.println("##You have Council Choice, please refresh!!!##");
+        System.out.println("\nYour choice? -> ");
+
+    }
+
+
     public static void alertVaticanReport(){
 
         System.out.println("\n##You have a vatican action to do, please refresh!!!##");
@@ -118,15 +126,13 @@ public class CLIClientGame extends Thread{
     }
 
     private void useCouncilPrivilege(){
-        int privilegesCount = 0;
-        //privilegesCount = player.getPrivilegesCount;
 
-        List<Integer> choices = Prompter.promptMultipleDifferentChoices
-                ("Choose " + privilegesCount +" different council privilege", Constants.CLI_COUNCIL_MENU , privilegesCount, MAX_COUNCIL);
+        int privilegesCount = mServerConnection.getCouncilChoices();
 
-        //needs to send List through socket mServerConnection.sendMessage();
-        //remove privileges of player
-        //do action server side
+        ArrayList<Integer> choices = Prompter.promptMultipleDifferentChoices
+                ("Choose " + privilegesCount +" different council privilege", Constants.CLI_COUNCIL_MENU , privilegesCount, Constants.MAX_COUNCIL);
+
+        mServerConnection.sendCouncilChoices(choices);
 
     }
 
@@ -258,6 +264,10 @@ public class CLIClientGame extends Thread{
             if(mCanSupportVatican){
                 vaticanReport();
                 mCanSupportVatican = false;
+            }
+
+            if(mServerConnection.hasCouncilAction()){
+                useCouncilPrivilege();
             }
 
             switch(Prompter.promptForIntChoice(mMainMenuMessage, mMainMenu)){

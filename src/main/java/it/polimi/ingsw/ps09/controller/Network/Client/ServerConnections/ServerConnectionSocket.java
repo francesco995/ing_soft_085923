@@ -62,6 +62,9 @@ public class ServerConnectionSocket extends Thread implements ServerConnection {
     private boolean mHasPersonalBonusTileChoice;
     private ArrayList<PersonalBonusTile> mPersonalBonusTilesList;
 
+    private boolean mHasCouncilAction;
+    private int mCouncilPrivileges;
+
     private boolean mCanSupportVatican;
 
     private Socket mSocket;
@@ -104,8 +107,11 @@ public class ServerConnectionSocket extends Thread implements ServerConnection {
         mHasPlayerActions = false;
         mHasLeaderCardChoice = false;
         mCanSupportVatican = false;
+        mHasCouncilAction = false;
+        mCouncilPrivileges = 0;
 
-        //Create Gson Builder
+
+                //Create Gson Builder
         mGsonBuilder = new GsonBuilder();
 
         //Register adapters
@@ -129,6 +135,29 @@ public class ServerConnectionSocket extends Thread implements ServerConnection {
     public boolean hasPlacementAction() {
         return mHasPlacementAction;
     }
+
+    /**
+     * Check if the Player associated with this connection has a Placement Action available to do
+     * @return true if Player has PlacementAction(s) to do
+     */
+    public boolean hasCouncilAction() {
+        return mHasCouncilAction;
+    }
+
+    public void sendCouncilChoices(ArrayList<Integer> choices){
+
+        sendMessage("councilPrivilegeChoice");
+        sendMessage(String.valueOf(choices.size()));
+        choices.stream().forEach(i -> sendMessage(String.valueOf(i)));
+        mHasCouncilAction = false;
+
+    }
+
+    public int getCouncilChoices(){
+        return mCouncilPrivileges;
+    }
+
+
 
     /**
      * Check if the Player associated with this connection has a FamilyMember Action available to do
@@ -683,6 +712,13 @@ public class ServerConnectionSocket extends Thread implements ServerConnection {
                         mHasPlacementAction = false;
                         mHasPlayerActions = false;
                         mHasFamilyMemberAction = false;
+                        break;
+                    }
+
+                    case "councilPrivilege": {
+                        mCouncilPrivileges = Integer.valueOf(waitForMessage());
+                        mHasCouncilAction = true;
+                        CLIClientGame.alertCouncilAction();
                         break;
                     }
 

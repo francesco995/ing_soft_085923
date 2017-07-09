@@ -5,6 +5,8 @@ import it.polimi.ingsw.ps09.model.Actions.FamilyMemberActions.FamilyMemberAction
 import it.polimi.ingsw.ps09.model.Actions.PlacementActions.PlacementAction;
 import it.polimi.ingsw.ps09.model.Actions.AllPlacementActions;
 import it.polimi.ingsw.ps09.model.Actions.PlayerActions.PlayerAction;
+import it.polimi.ingsw.ps09.model.UserPoints;
+import it.polimi.ingsw.ps09.model.UserResources;
 
 import java.util.ArrayList;
 import java.util.logging.Logger;
@@ -141,13 +143,48 @@ public abstract class Round {
             }
 
 
+            if(game.mPlayers.get(playerID).getCouncilPrivilege() > 0){
+
+                mLogger.log(INFO, "Game: " + Game.GAME_ID + " player " +
+                        playerID + " has Council Privilege to choose ");
+
+                game.mConnections.get(playerID).waitCouncilPrivilegeChoice(
+                        game.mPlayers.get(playerID).getCouncilPrivilege());
+
+                ArrayList<Integer> councilChoices = game.mConnections.get(playerID).getCouncilPrivilegeChoices();
+
+                ArrayList<UserResources> councilResources = new ArrayList<>();
+                councilResources.add(new UserResources(0, 0, 1, 1));
+                councilResources.add(new UserResources(0, 2, 0, 0));
+                councilResources.add(new UserResources(2, 0, 0, 0));
+                councilResources.add(new UserResources(0, 0, 0, 0));
+                councilResources.add(new UserResources(0, 0, 0, 0));
+
+
+                ArrayList<UserPoints> councilPoints = new ArrayList<>();
+                councilPoints.add(new UserPoints(0, 0, 0));
+                councilPoints.add(new UserPoints(0, 0, 0));
+                councilPoints.add(new UserPoints(0, 0, 0));
+                councilPoints.add(new UserPoints(0, 2, 0));
+                councilPoints.add(new UserPoints(1, 0, 0));
+
+                councilChoices.stream().forEach(i -> {
+                    game.mPlayers.get(playerID).add(councilResources.get(i-1));
+                    game.mPlayers.get(playerID).add(councilPoints.get(i-1));
+                });
+
+
+
+            }
+
+
 
 
 
         }
 
 
-        //TODO: pass a second list of action (moved by 1000) that are not ENDING
+
     }
 
 

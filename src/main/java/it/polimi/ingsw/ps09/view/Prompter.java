@@ -137,7 +137,7 @@ public abstract class Prompter {
      * @param maxNumber       choice will always be between 1 and maxNumber
      * @return
      */
-    public static List<Integer> promptMultipleDifferentChoices(String message, List<String> options, int numberOfChoices, int maxNumber) {
+    public static ArrayList<Integer> promptMultipleDifferentChoices(String message, List<String> options, int numberOfChoices, int maxNumber) {
 
         BufferedReader mBufferedStringReader = new BufferedReader(new InputStreamReader(System.in));
         Scanner mReader = new Scanner(System.in);

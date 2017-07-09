@@ -29,12 +29,12 @@ public final class Constants {
     /**
      * True if you want to run server with more output for diagnostics
      */
-    public static final boolean ADVANCED_TESTING_SERVER = false;
+    public static final boolean ADVANCED_TESTING_SERVER = true;
 
     /**
      * True if you want to run clients with more output for diagnostics
      */
-    public static final boolean ADVANCED_TESTING_CLIENT = false;
+    public static final boolean ADVANCED_TESTING_CLIENT = true;
 
 
     //####################################################
@@ -190,6 +190,8 @@ public final class Constants {
                     "Go back to main menu"
             ));
 
+
+    public static final int MAX_COUNCIL=5;
 
     /**
      * Council CLI menu
