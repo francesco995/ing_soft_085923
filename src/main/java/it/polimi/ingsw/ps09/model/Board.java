@@ -280,9 +280,6 @@ public class Board{
     //####################################################
     //################ CharacterTower ####################
 
-    //TODO: ALE L STAY DRY CON LE TORRY INSIEME
-    //TODO: ALE L Fra L passa le carte devel specifiche (Building, character, etc)
-
     public CharactersTower getCharactersTower() {
         return mCharactersTower;
     }
@@ -312,7 +309,7 @@ public class Board{
     }
 
     public boolean isCharacterTowerAvailable(){
-        return mCharactersTower.hasFamilyMember();
+        return !mCharactersTower.hasFamilyMember();
     }
 
     public boolean isCharacterTowerFloorAvailable(int floor){
@@ -367,7 +364,7 @@ public class Board{
     }
 
     public boolean isTerritoriesTowerAvailable(){
-        return mTerritoriesTower.hasFamilyMember();
+        return !mTerritoriesTower.hasFamilyMember();
     }
 
     public boolean isTerritoriesTowerFloorAvailable(int floor){
@@ -422,7 +419,7 @@ public class Board{
     }
 
     public boolean isVenturesTowerAvailable(){
-        return mVenturesTower.hasFamilyMember();
+        return !mVenturesTower.hasFamilyMember();
     }
 
     public boolean isVenturesTowerFloorAvailable(int floor){
@@ -477,7 +474,7 @@ public class Board{
     }
 
     public boolean isBuildingsTowerAvailable(){
-        return mBuildingsTower.hasFamilyMember();
+        return !mBuildingsTower.hasFamilyMember();
     }
 
     public boolean isBuildingsTowerFloorAvailable(int floor){
