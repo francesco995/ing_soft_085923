@@ -29,12 +29,12 @@ public final class Constants {
     /**
      * True if you want to run server with more output for diagnostics
      */
-    public static final boolean ADVANCED_TESTING_SERVER = true;
+    public static final boolean ADVANCED_TESTING_SERVER = false;
 
     /**
      * True if you want to run clients with more output for diagnostics
      */
-    public static final boolean ADVANCED_TESTING_CLIENT = true;
+    public static final boolean ADVANCED_TESTING_CLIENT = false;
 
 
     //####################################################
