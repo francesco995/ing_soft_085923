@@ -15,7 +15,10 @@ public class BonusFlags {
     {
         mFlags.put(bonus, true) ;
     }
-
+    public void putMalus(String malus)
+    {
+        mFlags.put(malus, true) ;
+    }
     /**
      *
      * @param bonusName the bonus that must be searched in the bonus flags map
@@ -27,5 +30,12 @@ public class BonusFlags {
         }
         else
             return mFlags.get(bonusName).booleanValue();
+    }
+    public boolean getMalus(String malusName){
+        if(!mFlags.containsKey(malusName)){
+            return false;
+        }
+        else
+            return mFlags.get(malusName).booleanValue();
     }
 }
