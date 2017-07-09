@@ -163,6 +163,7 @@ public class Game extends Thread {
         Round.startRound(this, 6);
         vaticanReport();
 
+        EndGame.endGame(this);
 
         //End Game
 
