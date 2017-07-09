@@ -81,8 +81,6 @@ public final class Constants {
      */
     public static final int CARD_TOTAL = 20;
     public static final int HAND_SIZE = 4;
-
-
     /**
      * Static number for DevelopmentCardsDeck
      */

@@ -35,27 +35,33 @@ public class EndGame {
 
             //Conquered territories Bonus//
             ///////////////////////////////
-
-            total = currentPlayer.getTerritoriesCount();
-            currentPlayer.add(game.mPersonalBoardBonus.EndTerritoriesBonus(total));
-
+            //check for excommunication malus
+            if(!currentPlayer.getBonusFlags().getMalus("noTerritories"))
+            {
+                total = currentPlayer.getTerritoriesCount();
+                currentPlayer.add(game.mPersonalBoardBonus.EndTerritoriesBonus(total));
+            }
             //Influenced Characters Bonus//
             /////////////////////////
-
-            total = currentPlayer.getCharactersCount();
-            currentPlayer.add(game.mPersonalBoardBonus.EndCharactersBonus(total));
-
+            //check for excommunication malus
+            if (!currentPlayer.getBonusFlags().getMalus("noCharacterBonus"))
+            {
+                total = currentPlayer.getCharactersCount();
+                currentPlayer.add(game.mPersonalBoardBonus.EndCharactersBonus(total));
+            }
             //Encouraged Ventures Bonus//
             ///////////////////////
-
-            //check all player ventures card
-            currentPlayer.getPersonalBoard().getBoardVentures()
-                    .stream()
-                    .forEach(card ->
-                            card.getEndGameEffects().stream()
-                                    .forEach(effect -> effect.applyEffect(currentPlayer))
-                    );
-
+            //check for excommunication malus
+            if(!currentPlayer.getBonusFlags().getMalus("noVenture"))
+            {
+                //check all player ventures card
+                currentPlayer.getPersonalBoard().getBoardVentures()
+                        .stream()
+                        .forEach(card ->
+                                card.getEndGameEffects().stream()
+                                        .forEach(effect -> effect.applyEffect(currentPlayer))
+                        );
+            }
             //Military Strength//
             /////////////////////
             myRank = militaryRank(game, currentPlayer);
@@ -74,6 +80,22 @@ public class EndGame {
 
             VictoryPoints collectedResources = new VictoryPoints(total / 5);
             currentPlayer.add(collectedResources);
+            //Excommunication only malus//
+            /////////////////////////////
+            if(currentPlayer.getBonusFlags().getMalus("loseForVictoryPoints"))
+            {
+
+            }
+            if(currentPlayer.getBonusFlags().getMalus("loseForResources")) {
+                total =
+                        currentPlayer.getWood().getValue() +
+                                currentPlayer.getStone().getValue() +
+                                currentPlayer.getCoins().getValue() +
+                                currentPlayer.getServant().getValue();
+
+                VictoryPoints numberOfResources = new VictoryPoints(total);
+                currentPlayer.add(collectedResources);
+            }
         }
 
         //after calculating all points force client to reload board
@@ -84,15 +106,17 @@ public class EndGame {
 
         /**
          * This methods forces all the clients to refresh
-          */
+         */
     }
-    private static void forceClientsReloadData(Game game){
+
+    private static void forceClientsReloadData(Game game) {
 
         game.mPlayersOrder.getPlayersOrder().stream().forEach(id -> {
             game.mConnections.get(id).sendUpdatedData();
         });
 
     }
+
     /**
      * This methods receives a player and it returns the rank of his militaryPoints compared to other players
      *
