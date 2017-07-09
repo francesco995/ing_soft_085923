@@ -54,13 +54,15 @@ public class ConvertEffect implements DevelopmentCardEffect{
 
         //TODO: Prompt User for cost/gain 0 or 1
 
-        //cost payments
-        player.remove(mResourcesCosts.get(0));
-        player.remove(mPointsCosts.get(0));
+        if(player.has(mResourcesCosts.get(0)) && player.has(mPointsCosts.get(0))){
+            //cost payments
+            player.remove(mResourcesCosts.get(0));
+            player.remove(mPointsCosts.get(0));
 
-        //gains for conversion
-        player.add(mResourcesGains.get(0));
-        player.add(mPointsGains.get(0));
+            //gains for conversion
+            player.add(mResourcesGains.get(0));
+            player.add(mPointsGains.get(0));
+        }
 
 
     }
