@@ -38,5 +38,6 @@ public interface PlayerConnection{
     int getLeaderCardChoice();
     void run();
     void start();
+    void endGame();
 
 }

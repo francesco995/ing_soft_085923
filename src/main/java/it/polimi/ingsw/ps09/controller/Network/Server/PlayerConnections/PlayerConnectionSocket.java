@@ -119,6 +119,10 @@ public class PlayerConnectionSocket extends Thread implements PlayerConnection{
 
     }
 
+    public void endGame(){
+        //TODO: implement
+    }
+
 
     /**
      * Send updated game objects to the clients
