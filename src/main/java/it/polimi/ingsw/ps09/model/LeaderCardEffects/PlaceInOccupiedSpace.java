@@ -43,7 +43,7 @@ public class PlaceInOccupiedSpace implements LeaderCardEffect {
 
     @Override
     public void doAction(Board board, Player player, FamilyMember familyMember, int index) throws UnsupportedOperationException {
-
+        player.getBonusFlags().putBonus("PlaceFamilyMemberInOccupiedActionsSpaces");
     }
 
 }

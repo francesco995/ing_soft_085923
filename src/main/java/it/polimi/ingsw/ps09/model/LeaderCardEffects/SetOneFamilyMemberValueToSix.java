@@ -49,6 +49,7 @@ public class SetOneFamilyMemberValueToSix implements LeaderCardEffect {
         BlackDice mDice = new BlackDice();
         mDice.setValue(6);
 
+        player.setFamilyMemberPower(familyMember.getColor().toUpperCase(), mDice);
 
     }
 }

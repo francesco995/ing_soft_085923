@@ -10,7 +10,7 @@ import it.polimi.ingsw.ps09.model.Player;
 public class DiscountDevelopmentCardMoney implements LeaderCardEffect {
 
     private int mVentureCardsRequired;
-    private int mTerritoryCardsRequired;
+    private int mBuildingCardsRequired;
 
     /**
      *
@@ -21,7 +21,7 @@ public class DiscountDevelopmentCardMoney implements LeaderCardEffect {
 
         //Pico della Mirandola
         if((player.getVenturesCount()>=mVentureCardsRequired)
-            &&(player.getTerritoriesCount()>=mTerritoryCardsRequired))
+            &&(player.getBuildingsCount()>=mBuildingCardsRequired))
             return true;
 
         return false;
@@ -47,6 +47,6 @@ public class DiscountDevelopmentCardMoney implements LeaderCardEffect {
         player.getFamilyMemberPlacementBonus().addBonus("CHARACTER", 3);
         player.getFamilyMemberPlacementBonus().addBonus("VENTURE", 3);
 
-        //TODO: Remove this Leader Crad. How?
+        //TODO: Remove this Leader Card. How?
     }
 }

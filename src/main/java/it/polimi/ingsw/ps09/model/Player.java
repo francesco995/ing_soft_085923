@@ -152,6 +152,8 @@ public class Player{
 
         mExcommunicationTiles = new ArrayList<>();
 
+        mUserFlags = new BonusFlags();
+
 
         //log created player
         mLogger.log(INFO, "Game: " + Game.GAME_ID +
@@ -340,14 +342,12 @@ public class Player{
         updated();
     }
 
-    public FamilyMemberPlacementBonus getFamilyMemberPlacementBonus() {
-        return mFamilyMemberPlacementBonus;
+    public BonusFlags getBonusFlags(){
+        return mUserFlags;
     }
 
-    public UserResources getFamilyMemberPlacementResourcesDiscount(String cardType) {
-
-        return mFamilyMemberPlacementResourcesDiscount.getBonus(cardType);
-
+    public FamilyMemberPlacementBonus getFamilyMemberPlacementBonus() {
+        return mFamilyMemberPlacementBonus;
     }
 
     public void addFamilyMemberPlacementResourcesDiscount(String cardType, UserResources resourcesDiscount){
@@ -362,30 +362,6 @@ public class Player{
 
     public int getPlayerId() {
         return PLAYER_ID;
-    }
-
-    public void setThreeCoinsTowerPlacementDiscount(){
-        mThreeCoinsTowerPlacementDiscount = true;
-    }
-
-    public boolean isThreeCoinsTowerPlacementDiscountAvailable(){
-        return mThreeCoinsTowerPlacementDiscount;
-    }
-
-    public void setUnlimitedTerritoryCards(){
-        mUnlimitedTerritoryCards = true;
-    }
-
-    public boolean isUnlimitedTerritoryCardsAvailable(){
-        return mUnlimitedTerritoryCards;
-    }
-
-    public void setDoubleResourcesDevelopmentCard(){
-        mDoubleResourcesDevelopmentCard = true;
-    }
-
-    public boolean isDoubleResourcesDevelopmentCardAvailable(){
-        return mDoubleResourcesDevelopmentCard;
     }
 
 
@@ -963,6 +939,10 @@ public class Player{
 
         mCouncilPrivilege = mCouncilPrivilege - amount;
 
+    }
+
+    public int getCouncilPrivilege(){
+        return mCouncilPrivilege;
     }
 
     public UserResources PlayerResourcesCopy(UserResources sum){
