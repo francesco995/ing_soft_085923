@@ -410,30 +410,8 @@ public class CLIClientGame extends Thread{
             }
 
             case 4:{
-                //Show Player Green cards
-                System.out.println(player.getUserName() + "Territory cards:");
-                System.out.println(player.getPersonalBoard().territoryToString());
-                break;
-            }
-
-            case 5:{
-                //Show Player Yellow cards
-                System.out.println(player.getUserName() + "Building cards:");
-                System.out.println(player.getPersonalBoard().buildingToString());
-                break;
-            }
-
-            case 6:{
-                //Show Player Blue cards
-                System.out.println(player.getUserName() + "Character cards:");
-                System.out.println(player.getPersonalBoard().characterToString());
-                break;
-            }
-
-            case 7:{
-                //Show Player Purple cards
-                System.out.println(player.getUserName() + "Venture cards:");
-                System.out.println(player.getPersonalBoard().ventureToString());
+                //Show Player Personal Board
+                System.out.println(player.getPersonalBoard().toString());
                 break;
             }
 

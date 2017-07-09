@@ -47,9 +47,7 @@ public class PersonalBoard {
 
         String mString = "Personal Board: \n";
 
-        mString += mPersonalBoardCards.toString();
-        mString += "\n\nUser Resources: \n\n";
-        mString += mUserResources.toString();
+        mString += mPersonalBoardCards.toString();;
 
         return mString;
 
