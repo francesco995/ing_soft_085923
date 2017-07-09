@@ -91,6 +91,15 @@ public class CLIClientGame extends Thread{
     }
 
 
+    public static void alertGameEnd() {
+
+        System.out.println("\n##Game is ended, please refresh!!!##");
+        System.out.println("##Game is ended, please refresh!!!##");
+        System.out.println("##Game is ended, please refresh!!!##");
+
+    }
+
+
     private void doPlacementAction(){
 
         ArrayList<PlacementAction> playerActionsList;
@@ -270,6 +279,22 @@ public class CLIClientGame extends Thread{
                 useCouncilPrivilege();
             }
 
+            if(mServerConnection.isGameEnded()){
+
+                if(!mMainMenu.contains("Exit game"))
+                    mMainMenu.add("Exit game");
+
+                System.out.println("\n\n");
+                System.out.println("Game is ended, here are the final results: ");
+                mPlayersOrder.getPlayersOrder().stream().forEach(id -> {
+                    System.out.println("\n\n");
+                    System.out.println(mPlayers.get(id).toString());
+                });
+
+
+            }
+
+
             switch(Prompter.promptForIntChoice(mMainMenuMessage, mMainMenu)){
 
                 case 1:{
@@ -285,12 +310,14 @@ public class CLIClientGame extends Thread{
                     displayBoard();
                     break;
                 }
+
                 case 3:{
                     //Display Players order
                     updateData();
                     displayPlayersOrder();
                     break;
                 }
+
                 case 4:{
                     //Do PlacementAction
                     updateData();
@@ -298,6 +325,7 @@ public class CLIClientGame extends Thread{
                         doPlacementAction();
                     break;
                 }
+
                 case 5:{
                     //Do Family Member Action
                     updateData();
@@ -305,8 +333,15 @@ public class CLIClientGame extends Thread{
                         doFamilyMemberAction();
                     break;
                 }
-                case 6:{
+
+                case 6: {
                     //Do Player Action
+                    break;
+                }
+
+                case 7: {
+                    mServerConnection.close();
+                    break;
                 }
 
 
