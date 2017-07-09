@@ -127,6 +127,11 @@ public class PlayerConnectionSocket extends Thread implements PlayerConnection{
         sendMessage("endGame");
     }
 
+    public void alertNewRound(int roundN){
+        sendMessage("newRound");
+        sendMessage(String.valueOf(roundN));
+    }
+
 
     /**
      * Send updated game objects to the clients

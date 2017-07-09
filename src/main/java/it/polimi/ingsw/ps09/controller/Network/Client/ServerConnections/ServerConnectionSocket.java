@@ -742,6 +742,11 @@ public class ServerConnectionSocket extends Thread implements ServerConnection {
                         break;
                     }
 
+                    case "newRound": {
+                        CLIClientGame.alertNewRound(waitForMessage());
+                        break;
+                    }
+
                     default: {
                         //Add new messages to IncomingMessages
                         mIncomingMessages.add(mMessage);

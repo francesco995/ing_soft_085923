@@ -41,6 +41,15 @@ public abstract class Round {
 
         RoundSetup.setupRound(game);
 
+        sleep(2000);
+
+        mLogger.log(INFO, "Game: " + Game.GAME_ID + " starting round #" + roundN);
+
+
+        game.mPlayersOrder.getPlayersOrder().stream().forEach(id -> {
+            game.mConnections.get(id).alertNewRound(roundN);
+        });
+
         forceClientsReloadData(game);
 
         for(int i = 0; i<4; i++){

@@ -96,6 +96,17 @@ public class CLIClientGame extends Thread{
         System.out.println("\n##Game is ended, please refresh!!!##");
         System.out.println("##Game is ended, please refresh!!!##");
         System.out.println("##Game is ended, please refresh!!!##");
+        System.out.println("\nYour choice? -> ");
+
+    }
+
+
+    public static void alertNewRound( String round ) {
+
+        System.out.println("\n##Round" + round + " starting!!!##");
+        System.out.println("##Round" + round + " starting!!!##");
+        System.out.println("##Round" + round + " starting!!!##");
+        System.out.println("\nYour choice? -> ");
 
     }
 
@@ -340,6 +351,11 @@ public class CLIClientGame extends Thread{
                 }
 
                 case 7: {
+                    //Refresh menu
+                    break;
+                }
+
+                case 8: {
                     mServerConnection.close();
                     break;
                 }
