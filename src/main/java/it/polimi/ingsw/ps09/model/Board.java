@@ -178,7 +178,7 @@ public class Board{
      *
      * @return Get family member list of those are in the council
      */
-    public List getCouncilList(){
+    public ArrayList<FamilyMember> getCouncilList(){
         return mCouncil.getList();
     }
 

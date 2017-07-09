@@ -20,7 +20,7 @@ public class EndGame {
     /**
      * This method is used to add all the victory points based on:
      * -Conquered territories
-     * -Influenced Chharacters
+     * -Influenced Characters
      * -Military Strength
      * -Collected Resources
      */

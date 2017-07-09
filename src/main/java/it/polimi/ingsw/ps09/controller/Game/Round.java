@@ -46,7 +46,7 @@ public abstract class Round {
         for(int i = 0; i<4; i++){
 
             //TODO: increase to maybe 30 seconds
-            sleep(5000);
+            sleep(3000);
 
             game.mPlayersOrder.getPlayersOrder().stream().forEach(id -> {
 
@@ -173,7 +173,7 @@ public abstract class Round {
                     game.mPlayers.get(playerID).add(councilPoints.get(i-1));
                 });
 
-
+                game.mPlayers.get(playerID).resetCouncilPrivilege();
 
             }
 

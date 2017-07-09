@@ -12,7 +12,7 @@ import java.util.StringJoiner;
 public class Council extends Place {
 
     //ArrayList of FamilyMembers to know the order player for the next game
-    private List<FamilyMember> mCouncilOrderList = new ArrayList<>();
+    private ArrayList<FamilyMember> mCouncilOrderList = new ArrayList<>();
 
     /**
      *
@@ -29,7 +29,7 @@ public class Council extends Place {
      * @return Get an ordered list of all the family member into the council
      */
     //Get queue in the Council
-    public List getList(){
+    public ArrayList<FamilyMember> getList(){
         return mCouncilOrderList;
     }
 

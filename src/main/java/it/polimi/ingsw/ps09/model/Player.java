@@ -148,7 +148,7 @@ public class Player{
         mFamilyMemberPlacementBonus = new FamilyMemberPlacementBonus();
         mFamilyMemberPlacementResourcesDiscount = new FamilyMemberPlacementResourcesDiscount();
 
-        mPlayerFamilyMembers = new PlayerFamilyMembers(mUserColor);
+        mPlayerFamilyMembers = new PlayerFamilyMembers(mUserColor, PLAYER_ID);
 
         mExcommunicationTiles = new ArrayList<>();
 
@@ -942,6 +942,10 @@ public class Player{
 
     public int getCouncilPrivilege(){
         return mCouncilPrivilege;
+    }
+
+    public void resetCouncilPrivilege(){
+        mCouncilPrivilege = 0;
     }
 
     public UserResources PlayerResourcesCopy(UserResources sum){

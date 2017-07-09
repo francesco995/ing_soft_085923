@@ -19,6 +19,7 @@ import it.polimi.ingsw.ps09.model.Player;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
@@ -150,22 +151,52 @@ public class Game extends Thread {
 
         mPeriod = 1;
         Round.startRound(this, 1);
+        reorderPlayers();
         Round.startRound(this, 2);
         vaticanReport();
+        reorderPlayers();
 
         mPeriod = 2;
         Round.startRound(this, 3);
+        reorderPlayers();
         Round.startRound(this, 4);
+        reorderPlayers();
         vaticanReport();
+        reorderPlayers();
 
         mPeriod = 3;
         Round.startRound(this, 5);
+        reorderPlayers();
         Round.startRound(this, 6);
+        reorderPlayers();
         vaticanReport();
 
         EndGame.endGame(this);
 
-        //End Game
+    }
+
+
+    private void reorderPlayers(){
+
+        mLogger.log(INFO, "Game: " + GAME_ID +
+                " is reordering players, old order is: " + mPlayersOrder.getPlayersOrder());
+
+        ArrayList<FamilyMember> councilList;
+        councilList = mGameBoard.getCouncilList();
+
+        ArrayList<Integer> idsInCouncil = new ArrayList<>();
+
+        councilList.stream().forEach(familyMember -> {
+            if(!idsInCouncil.contains(familyMember.getPlayerId())){
+                idsInCouncil.add(familyMember.getPlayerId());
+            }
+        });
+
+        mPlayersOrder.rearrangePlayers(idsInCouncil);
+
+        mLogger.log(INFO, "Game: " + GAME_ID +
+                " has reordered players, new order is: " + mPlayersOrder.getPlayersOrder());
+
 
     }
 
