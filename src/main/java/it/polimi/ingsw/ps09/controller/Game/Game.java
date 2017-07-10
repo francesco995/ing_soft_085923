@@ -168,7 +168,6 @@ public class Game extends Thread {
         Round.startRound(this, 5);
         reorderPlayers();
         Round.startRound(this, 6);
-        reorderPlayers();
         vaticanReport();
 
         EndGame.endGame(this);
@@ -257,103 +256,6 @@ public class Game extends Thread {
 
     }
 
-    /**
-     * It must be called  at the end  of every round, it clears the board and reorders the player order (PHASE D1)
-     */
-    private void endRound() {
-
-
-        //inserire funzione gianni reorder
-        mGameBoard.clearAll();
-
-
-    }
-
-    /**
-     *It must be called at the end of every mPeriod, does the same things that endRound does plus it adds the vaticanReport phase (PHASE D2)
-     */
-    private void endPeriod() {
-
-        //reorder dei pedoni
-        mGameBoard.clearAll();
-        vaticanReport();
-        mPeriod++;
-
-
-    }
-
-
-    /**
-     *
-     * @return ArrayList of booelan value, true if tower is free otherwise false
-     */
-    private ArrayList TowerDisposability(){
-
-        ArrayList<Boolean> TowerDispos = new ArrayList<Boolean>();
-
-        if(mGameBoard.isTerritoriesTowerAvailable())
-            TowerDispos.add(true);
-        else
-            TowerDispos.add(false);
-
-        if(mGameBoard.isCharacterTowerAvailable())
-            TowerDispos.add(true);
-        else
-            TowerDispos.add(false);
-
-        if(mGameBoard.isBuildingsTowerAvailable())
-            TowerDispos.add(true);
-        else
-            TowerDispos.add(false);
-
-        if(mGameBoard.isVenturesTowerAvailable())
-            TowerDispos.add(true);
-        else
-            TowerDispos.add(false);
-
-        return TowerDispos;
-    }
-
-    /**
-     *
-     * @param tower The specific tower you like to check
-     * @return ArrayList of boolean value for each floor. True if a floor is free, otherwise false
-     */
-    private ArrayList AvailableFloor(Tower tower){
-
-        ArrayList<Boolean> FloorDispos = new ArrayList<Boolean>();
-
-        for(int cont=0; cont<tower.getFloors().size(); cont++){
-            if(tower.getFloors().get(cont).isAvailable())
-                FloorDispos.add(true);
-            else
-                FloorDispos.add(false);
-        }
-
-        return FloorDispos;
-    }
-
-    /**
-     *
-     * @return ArrayList of boolean value for each marketspace. True if available, false if not
-     */
-    private ArrayList AvailableMarketSpaces(){
-
-        ArrayList<Boolean> MarketSpacesDispos = new ArrayList<Boolean>();
-
-        for(int cont = 0; cont<mGameBoard.getMarketList().size(); cont++){
-            if(mGameBoard.isMarketSpaceAvailable(cont))
-                MarketSpacesDispos.add(true);
-            else
-                MarketSpacesDispos.add(false);
-        }
-
-        return MarketSpacesDispos;
-    }
-
-    private void setFamilyMemberOnFloor(FamilyMember familyMember, Tower tower, int floor){
-        tower.getFloors().get(floor).setFamilyMember(familyMember);
-    }
 
 
 

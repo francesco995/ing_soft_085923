@@ -6,8 +6,10 @@ import it.polimi.ingsw.ps09.model.Player;
 import it.polimi.ingsw.ps09.model.Points.VictoryPoints;
 
 import java.util.*;
+import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
+import static java.util.logging.Level.INFO;
 import static javafx.scene.input.KeyCode.K;
 import static javafx.scene.input.KeyCode.V;
 
@@ -26,12 +28,21 @@ public class EndGame {
      */
     public static void endGame(Game game) {
 
+
+        //LOGGER
+        Logger mLogger = Logger.getAnonymousLogger();
+
+        mLogger.log(INFO, "Game: " + game.GAME_ID +
+                " message ");
+
         //updates all players
         for (int i = 0; i < game.mPlayers.size(); i++) {
 
             int total;
             int myRank;
             Player currentPlayer = game.mPlayers.get(game.mPlayersOrder.getPlayersOrder().get(i));
+
+
 
             //Conquered territories Bonus//
             ///////////////////////////////

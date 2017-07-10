@@ -57,6 +57,7 @@ public class Player{
     private HarvestAndProductionBonus mHarvestAndProductionMalus;
     private FamilyMemberPlacementBonus mFamilyMemberPlacementMalus;
     private DiceBonus mDiceMalus;
+
     //PLAYER FLAGS
     private boolean mThreeCoinsTowerPlacementDiscount = false;
     private boolean mUnlimitedTerritoryCards = false;
@@ -65,16 +66,20 @@ public class Player{
 
     //LOGGER
     private static final Logger mLogger = Logger.getLogger(Player.class.getName());
+
+
     private void test(){
         mPlayerFamilyMembers.toString();
     }
+
+
     /**
      *
      * @return A string of the action to perform
      */
     @Override
     public String toString(){
-        String toPrint = "\nThis are the players info:";
+        String toPrint = "\nThis are the player info:";
         toPrint += "\nUsername: " + mUserName;
         toPrint += " | Color: " +mUserColor;
         return toPrint;

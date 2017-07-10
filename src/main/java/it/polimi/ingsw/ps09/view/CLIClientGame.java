@@ -103,9 +103,9 @@ public class CLIClientGame extends Thread{
 
     public static void alertNewRound( String round ) {
 
-        System.out.println("\n##Round" + round + " starting!!!##");
-        System.out.println("##Round" + round + " starting!!!##");
-        System.out.println("##Round" + round + " starting!!!##");
+        System.out.println("\n##Round " + round + " starting!!!##");
+        System.out.println("##Round " + round + " starting!!!##");
+        System.out.println("##Round " + round + " starting!!!##");
         System.out.println("\nYour choice? -> ");
 
     }
@@ -300,6 +300,7 @@ public class CLIClientGame extends Thread{
                 mPlayersOrder.getPlayersOrder().stream().forEach(id -> {
                     System.out.println("\n\n");
                     System.out.println(mPlayers.get(id).toString());
+                    System.out.println("\n Points are: " + mPlayers.get(id).getUserPoints().toString());
                 });
 
 
