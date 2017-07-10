@@ -969,4 +969,10 @@ public class Player{
     public DiceBonus getDiceMalus() {
         return mDiceMalus;
     }
+
+    public void resetCouncilPrivilege(){
+        mCouncilPrivilege = 0;
+    }
+
+
 }
