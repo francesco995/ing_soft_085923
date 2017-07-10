@@ -40,6 +40,8 @@ public class PlayersOrder{
 
     public void rearrangePlayers(ArrayList<Integer> councilIds){
 
+        Collections.reverse(councilIds);
+
         councilIds.stream().forEach(id -> {
             if(mPlayersOrder.contains(id)){
 

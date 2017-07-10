@@ -157,7 +157,7 @@ public class Player{
         mHarvestAndProductionMalus = new HarvestAndProductionBonus();
         mDiceMalus = new DiceBonus();
 
-        mPlayerFamilyMembers = new PlayerFamilyMembers(mUserColor);
+        mPlayerFamilyMembers = new PlayerFamilyMembers(mUserColor, PLAYER_ID);
 
         mExcommunicationTiles = new ArrayList<>();
 
