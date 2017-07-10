@@ -31,7 +31,8 @@ public class EndGame {
 
         //LOGGER
         Logger mLogger = Logger.getAnonymousLogger();
-
+        mLogger.log(INFO, "Game: " + game.GAME_ID +
+                " starting end game phase ");
 
 
         //updates all players
@@ -192,7 +193,7 @@ public class EndGame {
 
         for (int i = 0; i < rankList.size(); i++) {
             if (rankList.get(i) == playerPoints)
-                playerRank = Constants.MAX_PLAYERS - i;
+                playerRank = game.mPlayers.size() - i;
         }
 
         return playerRank;
