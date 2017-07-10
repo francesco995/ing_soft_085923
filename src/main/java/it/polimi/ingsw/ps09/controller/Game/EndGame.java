@@ -32,8 +32,7 @@ public class EndGame {
         //LOGGER
         Logger mLogger = Logger.getAnonymousLogger();
 
-        mLogger.log(INFO, "Game: " + game.GAME_ID +
-                " message ");
+
 
         //updates all players
         for (int i = 0; i < game.mPlayers.size(); i++) {
@@ -41,30 +40,40 @@ public class EndGame {
             int total;
             int myRank;
             Player currentPlayer = game.mPlayers.get(game.mPlayersOrder.getPlayersOrder().get(i));
-
+            mLogger.log(INFO, "Game: " + game.GAME_ID +
+                    " player " + currentPlayer.getUserName());
 
 
             //Conquered territories Bonus//
             ///////////////////////////////
             //check for excommunication malus
+
             if(!currentPlayer.getBonusFlags().getMalus("noTerritories"))
             {
+                mLogger.log(INFO, "Game: " + game.GAME_ID +
+                        " adding conquered territories bonus");
                 total = currentPlayer.getTerritoriesCount();
                 currentPlayer.add(game.mPersonalBoardBonus.EndTerritoriesBonus(total));
             }
             //Influenced Characters Bonus//
             /////////////////////////
             //check for excommunication malus
-            if (!currentPlayer.getBonusFlags().getMalus("noCharacterBonus"))
+
+            if (!currentPlayer.getBonusFlags().getMalus("noCharacter"))
             {
+                mLogger.log(INFO, "Game: " + game.GAME_ID +
+                        " adding influenced character bonus");
                 total = currentPlayer.getCharactersCount();
                 currentPlayer.add(game.mPersonalBoardBonus.EndCharactersBonus(total));
             }
             //Encouraged Ventures Bonus//
             ///////////////////////
             //check for excommunication malus
+
             if(!currentPlayer.getBonusFlags().getMalus("noVenture"))
             {
+                mLogger.log(INFO, "Game: " + game.GAME_ID +
+                        " adding encouraged ventures");
                 //check all player ventures card
                 currentPlayer.getPersonalBoard().getBoardVentures()
                         .stream()
@@ -76,6 +85,8 @@ public class EndGame {
             //Military Strength//
             /////////////////////
             myRank = militaryRank(game, currentPlayer);
+            mLogger.log(INFO, "Game: " + game.GAME_ID +
+                    " player " + currentPlayer.getUserName() + " military rank " + myRank);
             if (myRank == 1)
                 currentPlayer.add(new VictoryPoints(Constants.FIRST_MILITARY));
             else if (myRank == 2)
@@ -88,26 +99,37 @@ public class EndGame {
                             currentPlayer.getStone().getValue() +
                             currentPlayer.getCoins().getValue() +
                             currentPlayer.getServant().getValue();
-
+            mLogger.log(INFO, "Game: " + game.GAME_ID +
+                    " player " + currentPlayer.getUserName() + " collected resources (/5) " + total);
             VictoryPoints collectedResources = new VictoryPoints(total / 5);
             currentPlayer.add(collectedResources);
+
             //Excommunication only malus//
             /////////////////////////////
+
             if(currentPlayer.getBonusFlags().getMalus("loseForVictoryPoints"))
             {
+                mLogger.log(INFO, "Game: " + game.GAME_ID +
+                        " losing one victory for every military");
                 total= currentPlayer.getMilitaryPoints().getValue();
 
                 VictoryPoints numberOfMilitaryPoints = new VictoryPoints(total);
                 currentPlayer.remove(numberOfMilitaryPoints);
             }
+
             if(currentPlayer.getBonusFlags().getMalus("loseForVictoryPoints2"))
             {
+                mLogger.log(INFO, "Game: " + game.GAME_ID +
+                        " losing one victory for every 5 victory");
                 total= currentPlayer.getFaithPoints().getValue();
 
                 VictoryPoints numberOfFaithPoints = new VictoryPoints(total / 5);
                 currentPlayer.remove(numberOfFaithPoints);
             }
+
             if(currentPlayer.getBonusFlags().getMalus("loseForResources")) {
+                mLogger.log(INFO, "Game: " + game.GAME_ID +
+                        " losing one victory for each resource");
                 total =
                         currentPlayer.getWood().getValue() +
                                 currentPlayer.getStone().getValue() +
@@ -117,7 +139,10 @@ public class EndGame {
                 VictoryPoints numberOfResources = new VictoryPoints(total);
                 currentPlayer.remove(collectedResources);
             }
+
             if(currentPlayer.getBonusFlags().getMalus("loseForResources2")) {
+                mLogger.log(INFO, "Game: " + game.GAME_ID +
+                        " losing one victory for each wood and stone");
                 total =
                         currentPlayer.getWood().getValue() +
                                 currentPlayer.getStone().getValue();

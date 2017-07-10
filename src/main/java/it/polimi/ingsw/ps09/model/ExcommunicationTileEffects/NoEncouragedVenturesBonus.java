@@ -7,7 +7,7 @@ public class NoEncouragedVenturesBonus implements ExcommunicationTileEffect{
 
     @Override
     public String toString(){
-        return ("You will no longer get the Encourged Ventures bonus");
+        return ("You will no longer get the Encouraged Ventures bonus");
     }
 
     @Override

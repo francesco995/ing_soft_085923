@@ -7,11 +7,11 @@ public class NoInfluencedCharactersBonus implements ExcommunicationTileEffect{
 
     @Override
     public String toString(){
-        return ("You will no longer get the Conquered territories bonus");
+        return ("You will no longer get the Conquered character bonus");
     }
 
     @Override
     public void applyEffect(Player player) {
-        player.getBonusFlags().putMalus("noCharacterBonus");
+        player.getBonusFlags().putMalus("noCharacter");
     }
 }
