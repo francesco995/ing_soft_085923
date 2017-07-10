@@ -67,6 +67,11 @@ public final class Constants {
     public static final String GAME_START_TIMEOUT_FILE = "gameTimeout.txt";
 
     /**
+     * File with the Action timeout
+     */
+    public static final String PLACEMENT_ACTION_TIMEOUT_FILE = "actionTimeout.txt";
+
+    /**
      * Max players number for each game
      */
     public static final int MAX_PLAYERS = 4;
@@ -126,7 +131,7 @@ public final class Constants {
     /**
      * Timeout for placement action
      */
-    public static final int PLACEMENT_ACTION_TIMEOUT = 30;
+    public static final int PLACEMENT_ACTION_TIMEOUT = 120;
 
 
     /**

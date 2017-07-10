@@ -722,6 +722,7 @@ public class ServerConnectionSocket extends Thread implements ServerConnection {
                         mHasPlacementAction = false;
                         mHasPlayerActions = false;
                         mHasFamilyMemberAction = false;
+                        mHasCouncilAction = false;
                         break;
                     }
 

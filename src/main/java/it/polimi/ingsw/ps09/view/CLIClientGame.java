@@ -120,8 +120,7 @@ public class CLIClientGame extends Thread{
         int choice = Prompter.promptForIntChoiceZero("Choose your action, or press 0 to go back",
                 playerActionsList.stream().map(PlacementAction::toString).collect(Collectors.toList()));
 
-       if(choice > 0){
-
+       if(choice > 0 && mServerConnection.hasPlacementAction()){
            mServerConnection.doPlacementAction(choice);
            mServerConnection.setHasPlacementAction(false);
        }
@@ -137,8 +136,7 @@ public class CLIClientGame extends Thread{
         int choice = Prompter.promptForIntChoiceZero("Choose what Family Member give power to, or press 0 to go back",
                 familyMemberActionsList.stream().map(FamilyMemberAction::toString).collect(Collectors.toList()));
 
-        if(choice > 0){
-
+        if(choice > 0 && mServerConnection.hasFamilyMemberAction()){
             mServerConnection.doFamilyMemberAction(choice);
         }
 
@@ -152,7 +150,9 @@ public class CLIClientGame extends Thread{
         ArrayList<Integer> choices = Prompter.promptMultipleDifferentChoices
                 ("Choose " + privilegesCount +" different council privilege", Constants.CLI_COUNCIL_MENU , privilegesCount, Constants.MAX_COUNCIL);
 
-        mServerConnection.sendCouncilChoices(choices);
+        if(mServerConnection.hasCouncilAction()){
+            mServerConnection.sendCouncilChoices(choices);
+        }
 
     }
 

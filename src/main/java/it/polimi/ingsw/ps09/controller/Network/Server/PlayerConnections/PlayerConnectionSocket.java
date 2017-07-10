@@ -58,6 +58,8 @@ public class PlayerConnectionSocket extends Thread implements PlayerConnection{
 
     private int mUserID;
 
+    private int mActionTimeout;
+
     private Gson mGson = null;
     private GsonBuilder mGsonBuilder;
 
@@ -82,6 +84,26 @@ public class PlayerConnectionSocket extends Thread implements PlayerConnection{
 
     public PlayerConnectionSocket(Socket remoteSocket, String userName) throws IOException {
 
+
+
+        String stringTimeout;
+
+        //Create the directory path
+        File mDirectory = new File("./");
+        String mFilePath = mDirectory.getAbsolutePath().replace(".",
+                "src/main/res/");
+
+        try {
+            stringTimeout = loadStringFromFile(mFilePath + Constants.PLACEMENT_ACTION_TIMEOUT_FILE);
+            mActionTimeout = Integer.valueOf(stringTimeout);
+        } catch (FileNotFoundException e) {
+            mActionTimeout = Constants.PLACEMENT_ACTION_TIMEOUT;
+        } catch (NumberFormatException e) {
+            mActionTimeout = Constants.PLACEMENT_ACTION_TIMEOUT;
+        }
+
+
+
         mRemoteSocket = remoteSocket;
         mUserName = userName;
 
@@ -105,6 +127,27 @@ public class PlayerConnectionSocket extends Thread implements PlayerConnection{
 
         this.start();
 
+    }
+
+
+
+    /**
+     * Loads a text-based file to a string
+     *
+     * @param fileName name of the file to load
+     * @return returns the file as a string
+     * @throws FileNotFoundException
+     */
+    private String loadStringFromFile(String fileName) throws FileNotFoundException {
+
+        String mStringDeck;
+
+        Scanner mScanner = new Scanner(new File(fileName));
+        mStringDeck = mScanner.next();
+
+        mScanner.close();
+
+        return mStringDeck;
     }
 
 
@@ -177,9 +220,25 @@ public class PlayerConnectionSocket extends Thread implements PlayerConnection{
      * Wait for the player to have an action chosen
      */
     public void waitActionReady(){
-        //TODO: add timeout
-        while(!mHasActionReady){
+
+        Timer timer = new Timer(mActionTimeout);
+        timer.startTimer();
+
+        while(!hasActionReady()){
             sleep(100);
+
+            if(hasActionReady()){
+                timer.interrupt();
+            }
+
+            if(timer.isExpired()){
+
+                sendMessage("noAction");
+                mActionType = "PLACEMENT";
+                mActionChoice = 1;
+
+                mHasActionReady = true;
+            }
         }
     }
 
@@ -187,7 +246,7 @@ public class PlayerConnectionSocket extends Thread implements PlayerConnection{
      * Wait for player to have chosen a Leader Card
      */
     public void waitLeaderCardChoiceReady(){
-        //TODO: add timeout
+
         while(!mHasLeaderCardChoiceReady){
             sleep(100);
         }
