@@ -123,7 +123,13 @@ public class PlayerConnectionSocket extends Thread implements PlayerConnection{
     }
 
     public void endGame(){
-        //TODO: implement
+        sendPlayers();
+        sendMessage("endGame");
+    }
+
+    public void alertNewRound(int roundN){
+        sendMessage("newRound");
+        sendMessage(String.valueOf(roundN));
     }
 
 
@@ -608,7 +614,6 @@ public class PlayerConnectionSocket extends Thread implements PlayerConnection{
         try {
             mRemoteSocket.close();
         } catch (IOException e) {
-            e.printStackTrace();
         }
 
     }

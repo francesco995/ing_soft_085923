@@ -31,6 +31,7 @@ public interface ServerConnection{
     boolean hasCouncilAction();
     void sendCouncilChoices(ArrayList<Integer> choices);
     int getCouncilChoices();
+    boolean isGameEnded();
     ArrayList<PlacementAction> getPlacementActionsList();
     List<String> getAllMessages();
     ArrayList<FamilyMemberAction> getFamilyMemberActionsList();
@@ -52,6 +53,5 @@ public interface ServerConnection{
     String getAddress();
     void run();
     void start();
-
-
+    void close();
 }

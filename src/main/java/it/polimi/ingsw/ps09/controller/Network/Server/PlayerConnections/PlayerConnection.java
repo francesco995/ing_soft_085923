@@ -39,6 +39,7 @@ public interface PlayerConnection{
     void run();
     void start();
     void endGame();
+    void alertNewRound(int roundN);
     void waitCouncilPrivilegeChoice(int choicesN);
     ArrayList<Integer> getCouncilPrivilegeChoices();
 

@@ -38,6 +38,20 @@ public class PlayersOrder{
         Collections.shuffle(mPlayersOrder, new Random(seed));
     }
 
+    public void rearrangePlayers(ArrayList<Integer> councilIds){
+
+        councilIds.stream().forEach(id -> {
+            if(mPlayersOrder.contains(id)){
+
+                mPlayersOrder.remove(id);
+                mPlayersOrder.add(0, id);
+
+            }
+        });
+
+
+    }
+
 
 
 

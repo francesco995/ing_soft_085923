@@ -167,10 +167,7 @@ public final class Constants {
                     "Show Player info",
                     "Show Player available FamilyMembers",
                     "Show Player Resources and Points",
-                    "Show Player Green cards",
-                    "Show Player Yellow cards",
-                    "Show Player Blue cards",
-                    "Show Player Purple cards",
+                    "Show Player Cards",
                     "Show Player last PlacementActions",
                     "Go back to main menu"
             ));

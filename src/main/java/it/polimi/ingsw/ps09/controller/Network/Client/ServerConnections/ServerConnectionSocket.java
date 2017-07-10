@@ -84,6 +84,7 @@ public class ServerConnectionSocket extends Thread implements ServerConnection {
 
     private boolean mIsConnected = false;
     private boolean mGameStarted = false;
+    private boolean mGameEnded = false;
 
     Gson mGson = null;
     GsonBuilder mGsonBuilder;
@@ -126,6 +127,15 @@ public class ServerConnectionSocket extends Thread implements ServerConnection {
 
         mGson = mGsonBuilder.create();
 
+    }
+
+    private void endGame(){
+        mGameEnded = true;
+        CLIClientGame.alertGameEnd();
+    }
+
+    public boolean isGameEnded(){
+        return mGameEnded;
     }
 
     /**
@@ -727,6 +737,16 @@ public class ServerConnectionSocket extends Thread implements ServerConnection {
                         break;
                     }
 
+                    case "endGame": {
+                        endGame();
+                        break;
+                    }
+
+                    case "newRound": {
+                        CLIClientGame.alertNewRound(waitForMessage());
+                        break;
+                    }
+
                     default: {
                         //Add new messages to IncomingMessages
                         mIncomingMessages.add(mMessage);
@@ -742,6 +762,18 @@ public class ServerConnectionSocket extends Thread implements ServerConnection {
 
         } catch (IOException e) {
             e.printStackTrace();
+        }
+
+    }
+
+    @Override
+    public void close() {
+
+        sendMessage("close");
+
+        try {
+            mSocket.close();
+        } catch (IOException e) {
         }
 
     }

@@ -26,13 +26,20 @@ public abstract class FamilyMember {
     private int mPower;
     private String mColor;
     private String mFamily;
+    private int mPlayerID;
     private boolean mIsUsable;
-    //METHODS
-    public FamilyMember(int power, String color, String family) {
+
+
+    public FamilyMember(int power, String color, String family, int playerID) {
         mPower = power;
         mColor = color;
         mFamily = family;
+        mPlayerID = playerID;
     }
+
+    //METHODS
+
+
 
     public int getPower() {
         return mPower;
@@ -69,7 +76,7 @@ public abstract class FamilyMember {
     }
 
     public int getPlayerId(){
-        return Player.PLAYER_ID;
+        return mPlayerID;
     }
 
     public boolean isUsable() {

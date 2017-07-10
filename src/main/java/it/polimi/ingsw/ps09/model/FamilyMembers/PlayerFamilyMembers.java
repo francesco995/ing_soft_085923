@@ -15,10 +15,19 @@ public class PlayerFamilyMembers {
     private Map<String, FamilyMember> mPlayerFamilyMembers = new HashMap<String, FamilyMember>();
 
 
+    public PlayerFamilyMembers(String playerColor, int playerID) {
+
+        mPlayerFamilyMembers.put("BLACK", new BlackFamilyMember(playerColor, playerID));
+        mPlayerFamilyMembers.put("ORANGE",new OrangeFamilyMember(playerColor, playerID));
+        mPlayerFamilyMembers.put("WHITE", new WhiteFamilyMember(playerColor, playerID));
+        mPlayerFamilyMembers.put("NEUTRAL", new NeutralFamilyMember(playerColor, playerID));
+
+    }
+
     public PlayerFamilyMembers(String playerColor) {
 
         mPlayerFamilyMembers.put("BLACK", new BlackFamilyMember(playerColor));
-        mPlayerFamilyMembers.put("ORANGE",new OrangeFamilyMember((playerColor)));
+        mPlayerFamilyMembers.put("ORANGE",new OrangeFamilyMember(playerColor));
         mPlayerFamilyMembers.put("WHITE", new WhiteFamilyMember(playerColor));
         mPlayerFamilyMembers.put("NEUTRAL", new NeutralFamilyMember(playerColor));
 

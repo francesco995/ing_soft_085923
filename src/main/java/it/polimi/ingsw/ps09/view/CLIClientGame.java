@@ -91,6 +91,26 @@ public class CLIClientGame extends Thread{
     }
 
 
+    public static void alertGameEnd() {
+
+        System.out.println("\n##Game is ended, please refresh!!!##");
+        System.out.println("##Game is ended, please refresh!!!##");
+        System.out.println("##Game is ended, please refresh!!!##");
+        System.out.println("\nYour choice? -> ");
+
+    }
+
+
+    public static void alertNewRound( String round ) {
+
+        System.out.println("\n##Round" + round + " starting!!!##");
+        System.out.println("##Round" + round + " starting!!!##");
+        System.out.println("##Round" + round + " starting!!!##");
+        System.out.println("\nYour choice? -> ");
+
+    }
+
+
     private void doPlacementAction(){
 
         ArrayList<PlacementAction> playerActionsList;
@@ -270,6 +290,22 @@ public class CLIClientGame extends Thread{
                 useCouncilPrivilege();
             }
 
+            if(mServerConnection.isGameEnded()){
+
+                if(!mMainMenu.contains("Exit game"))
+                    mMainMenu.add("Exit game");
+
+                System.out.println("\n\n");
+                System.out.println("Game is ended, here are the final results: ");
+                mPlayersOrder.getPlayersOrder().stream().forEach(id -> {
+                    System.out.println("\n\n");
+                    System.out.println(mPlayers.get(id).toString());
+                });
+
+
+            }
+
+
             switch(Prompter.promptForIntChoice(mMainMenuMessage, mMainMenu)){
 
                 case 1:{
@@ -285,12 +321,14 @@ public class CLIClientGame extends Thread{
                     displayBoard();
                     break;
                 }
+
                 case 3:{
                     //Display Players order
                     updateData();
                     displayPlayersOrder();
                     break;
                 }
+
                 case 4:{
                     //Do PlacementAction
                     updateData();
@@ -298,6 +336,7 @@ public class CLIClientGame extends Thread{
                         doPlacementAction();
                     break;
                 }
+
                 case 5:{
                     //Do Family Member Action
                     updateData();
@@ -305,8 +344,20 @@ public class CLIClientGame extends Thread{
                         doFamilyMemberAction();
                     break;
                 }
-                case 6:{
+
+                case 6: {
                     //Do Player Action
+                    break;
+                }
+
+                case 7: {
+                    //Refresh menu
+                    break;
+                }
+
+                case 8: {
+                    mServerConnection.close();
+                    break;
                 }
 
 
@@ -359,30 +410,8 @@ public class CLIClientGame extends Thread{
             }
 
             case 4:{
-                //Show Player Green cards
-                System.out.println(player.getUserName() + "Territory cards:");
-                System.out.println(player.getPersonalBoard().territoryToString());
-                break;
-            }
-
-            case 5:{
-                //Show Player Yellow cards
-                System.out.println(player.getUserName() + "Building cards:");
-                System.out.println(player.getPersonalBoard().buildingToString());
-                break;
-            }
-
-            case 6:{
-                //Show Player Blue cards
-                System.out.println(player.getUserName() + "Character cards:");
-                System.out.println(player.getPersonalBoard().characterToString());
-                break;
-            }
-
-            case 7:{
-                //Show Player Purple cards
-                System.out.println(player.getUserName() + "Venture cards:");
-                System.out.println(player.getPersonalBoard().ventureToString());
+                //Show Player Personal Board
+                System.out.println(player.getPersonalBoard().toString());
                 break;
             }
 
