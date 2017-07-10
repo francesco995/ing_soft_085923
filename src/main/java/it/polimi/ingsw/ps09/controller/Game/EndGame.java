@@ -84,7 +84,17 @@ public class EndGame {
             /////////////////////////////
             if(currentPlayer.getBonusFlags().getMalus("loseForVictoryPoints"))
             {
+                total= currentPlayer.getMilitaryPoints().getValue();
 
+                VictoryPoints numberOfMilitaryPoints = new VictoryPoints(total);
+                currentPlayer.remove(numberOfMilitaryPoints);
+            }
+            if(currentPlayer.getBonusFlags().getMalus("loseForVictoryPoints2"))
+            {
+                total= currentPlayer.getFaithPoints().getValue();
+
+                VictoryPoints numberOfFaithPoints = new VictoryPoints(total / 5);
+                currentPlayer.remove(numberOfFaithPoints);
             }
             if(currentPlayer.getBonusFlags().getMalus("loseForResources")) {
                 total =
@@ -94,7 +104,15 @@ public class EndGame {
                                 currentPlayer.getServant().getValue();
 
                 VictoryPoints numberOfResources = new VictoryPoints(total);
-                currentPlayer.add(collectedResources);
+                currentPlayer.remove(collectedResources);
+            }
+            if(currentPlayer.getBonusFlags().getMalus("loseForResources2")) {
+                total =
+                        currentPlayer.getWood().getValue() +
+                                currentPlayer.getStone().getValue();
+
+                VictoryPoints numberOfResources = new VictoryPoints(total);
+                currentPlayer.remove(collectedResources);
             }
         }
 

@@ -1,10 +1,7 @@
 package it.polimi.ingsw.ps09.model;
 
 import it.polimi.ingsw.ps09.controller.Game.Game;
-import it.polimi.ingsw.ps09.model.Bonus.BonusFlags;
-import it.polimi.ingsw.ps09.model.Bonus.FamilyMemberPlacementBonus;
-import it.polimi.ingsw.ps09.model.Bonus.FamilyMemberPlacementResourcesDiscount;
-import it.polimi.ingsw.ps09.model.Bonus.HarvestAndProductionBonus;
+import it.polimi.ingsw.ps09.model.Bonus.*;
 import it.polimi.ingsw.ps09.model.DevelopmentCardEffects.DevelopmentCardEffect;
 import it.polimi.ingsw.ps09.model.DevelopmentCards.*;
 import it.polimi.ingsw.ps09.model.DevelopmentCards.Character;
@@ -36,7 +33,7 @@ public class Player{
     //VARIABLES
     private String mUserName;
     private String mUserColor;
-    private BonusFlags mUserFlags;//this can contain excommunication ?? (for fraG)
+    private BonusFlags mUserFlags;
     private int mCouncilPrivilege;
 
     //GAME OBJECTS
@@ -57,6 +54,9 @@ public class Player{
     private FamilyMemberPlacementBonus mFamilyMemberPlacementBonus;
     private FamilyMemberPlacementResourcesDiscount mFamilyMemberPlacementResourcesDiscount;
 
+    private HarvestAndProductionBonus mHarvestAndProductionMalus;
+    private FamilyMemberPlacementBonus mFamilyMemberPlacementMalus;
+    private DiceBonus mDiceMalus;
     //PLAYER FLAGS
     private boolean mThreeCoinsTowerPlacementDiscount = false;
     private boolean mUnlimitedTerritoryCards = false;
@@ -147,6 +147,10 @@ public class Player{
         mHarvestAndProductionBonus = new HarvestAndProductionBonus();
         mFamilyMemberPlacementBonus = new FamilyMemberPlacementBonus();
         mFamilyMemberPlacementResourcesDiscount = new FamilyMemberPlacementResourcesDiscount();
+
+        mFamilyMemberPlacementMalus = new FamilyMemberPlacementBonus();
+        mHarvestAndProductionMalus = new HarvestAndProductionBonus();
+        mDiceMalus = new DiceBonus();
 
         mPlayerFamilyMembers = new PlayerFamilyMembers(mUserColor);
 
@@ -954,4 +958,15 @@ public class Player{
         return resourcesCopy;
     }
 
+    public HarvestAndProductionBonus getHarvestAndProductionMalus() {
+        return mHarvestAndProductionMalus;
+    }
+
+    public FamilyMemberPlacementBonus getFamilyMemberPlacementMalus() {
+        return mFamilyMemberPlacementMalus;
+    }
+
+    public DiceBonus getDiceMalus() {
+        return mDiceMalus;
+    }
 }

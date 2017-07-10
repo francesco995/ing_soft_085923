@@ -3,7 +3,7 @@ package it.polimi.ingsw.ps09.model.ExcommunicationTileEffects;
 import it.polimi.ingsw.ps09.model.Player;
 
 public class NoConqueredTerritoriesBonus implements ExcommunicationTileEffect{
-    private boolean mConqueredTerritoriesBonus = false;
+
 
     @Override
     public String toString(){
@@ -12,6 +12,6 @@ public class NoConqueredTerritoriesBonus implements ExcommunicationTileEffect{
 
     @Override
     public void applyEffect(Player player) {
-
+        player.getBonusFlags().putMalus("noTerritories");
     }
 }

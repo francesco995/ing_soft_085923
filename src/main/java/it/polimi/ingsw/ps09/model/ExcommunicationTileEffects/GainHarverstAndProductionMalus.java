@@ -17,7 +17,7 @@ public class GainHarverstAndProductionMalus implements ExcommunicationTileEffect
 
 
     public void applyEffect( Player player ){
-        player.getHarvestAndProductionBonus().addMalus(mMalusType,mMalusValue);
+        player.getHarvestAndProductionMalus().addMalus(mMalusType,mMalusValue);
     }
 
     @Override
@@ -27,7 +27,7 @@ public class GainHarverstAndProductionMalus implements ExcommunicationTileEffect
 
         toString += "Gain " + mMalusType.toLowerCase();
 
-        toString += " malus => +" + mMalusValue;
+        toString += " malus => -" + mMalusValue;
 
         return toString;
 

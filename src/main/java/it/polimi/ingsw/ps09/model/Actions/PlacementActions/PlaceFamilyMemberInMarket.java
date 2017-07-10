@@ -32,6 +32,9 @@ public class PlaceFamilyMemberInMarket implements PlacementAction {
      */
     public static boolean isValid(Board board, Player player, FamilyMember familyMember, int marketIndex){
 
+        //check if has noMarketAccess malus
+        if(player.getBonusFlags().getMalus("noMarketAccess"))
+            return false;
         //check if family member is usable
         if (!familyMember.isUsable() == true)
             return false;

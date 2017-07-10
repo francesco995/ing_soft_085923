@@ -59,7 +59,7 @@ public class FamilyMemberPlacementBonus {
     public void addMalus(String cardType, int bonusValue){
         mBonus.put(
                 cardType.toUpperCase(),
-                - bonusValue + mBonus.get(cardType.toUpperCase()));
+                bonusValue + mBonus.get(cardType.toUpperCase()));
     }
     //TODO: test
 

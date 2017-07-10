@@ -162,7 +162,7 @@ public abstract class Prompter {
             System.out.println("\nYour choice max number(" + maxNumber + "), remember no repetitions? -> ");
             int control = mReader.nextInt();
 
-            if (control <= maxNumber) {
+            if (control >= 1 && control <= maxNumber) {
                 boolean isUsed = false;
 
                 //control if already entered

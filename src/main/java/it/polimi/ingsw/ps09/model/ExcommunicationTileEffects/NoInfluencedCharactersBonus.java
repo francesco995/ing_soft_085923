@@ -3,7 +3,7 @@ package it.polimi.ingsw.ps09.model.ExcommunicationTileEffects;
 import it.polimi.ingsw.ps09.model.Player;
 
 public class NoInfluencedCharactersBonus implements ExcommunicationTileEffect{
-    private boolean mInfluencedCharactersBonus = false;
+
 
     @Override
     public String toString(){
@@ -12,6 +12,6 @@ public class NoInfluencedCharactersBonus implements ExcommunicationTileEffect{
 
     @Override
     public void applyEffect(Player player) {
-
+        player.getBonusFlags().putMalus("noCharacterBonus");
     }
 }

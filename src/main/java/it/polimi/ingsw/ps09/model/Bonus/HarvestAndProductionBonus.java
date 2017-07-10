@@ -51,7 +51,7 @@ public class HarvestAndProductionBonus {
     public void addMalus(String malusType, int malusValue){
         mBonus.put(
                 malusType.toUpperCase(),
-                - malusValue + mBonus.get(malusType.toUpperCase()));
+                malusValue + mBonus.get(malusType.toUpperCase()));
     }
     //TODO: test
 

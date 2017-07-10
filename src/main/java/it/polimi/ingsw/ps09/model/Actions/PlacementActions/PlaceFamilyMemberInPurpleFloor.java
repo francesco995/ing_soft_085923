@@ -64,6 +64,10 @@ public class PlaceFamilyMemberInPurpleFloor extends PlaceFamilyMemberInFloor {
         if(!player.has(currentCard.getResourcesCosts().get(0))) {
             return false;
         }
+        //control if has enough points
+        if(!player.has(currentCard.getPointsRequirements())) {
+            return false;
+        }
         if(!player.has(currentCard.getPointsCosts().get(0))) {
             return false;
         }

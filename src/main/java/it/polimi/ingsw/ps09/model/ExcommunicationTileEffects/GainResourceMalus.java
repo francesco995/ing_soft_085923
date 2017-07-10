@@ -8,8 +8,8 @@ import it.polimi.ingsw.ps09.model.UserResources;
  */
 public class GainResourceMalus implements ExcommunicationTileEffect{
 
-        //everytime you gain a resource of the kind indicated in Excommunication you will receive corrisponding malus
-        private UserResources mResourcesMalus;
+    //everytime you gain a resource of the kind indicated in Excommunication you will receive corresponding malus
+    private UserResources mResourcesMalus;
 
     public UserResources getResourcesMalus() {
         return mResourcesMalus;

@@ -8,7 +8,7 @@ public class GainFamilyMemberPlacementMalus implements ExcommunicationTileEffect
 
 
     public void applyEffect(Player player) {
-        player.getFamilyMemberPlacementBonus().addMalus(mCardType,mMalusValue);
+        player.getFamilyMemberPlacementMalus().addMalus(mCardType,mMalusValue);
     }
 
 

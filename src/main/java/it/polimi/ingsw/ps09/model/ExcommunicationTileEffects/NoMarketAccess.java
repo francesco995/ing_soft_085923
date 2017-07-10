@@ -7,7 +7,6 @@ import it.polimi.ingsw.ps09.model.Player;
  */
 public class NoMarketAccess implements ExcommunicationTileEffect{
 
-    private boolean mMarketAccess = false;
 
     @Override
     public String toString(){
@@ -16,7 +15,7 @@ public class NoMarketAccess implements ExcommunicationTileEffect{
 
     @Override
     public void applyEffect(Player player) {
-
+        player.getBonusFlags().putMalus("noMarketAccess");
     }
 
 }

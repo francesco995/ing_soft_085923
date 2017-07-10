@@ -10,15 +10,6 @@ public class DiceRollMalus implements ExcommunicationTileEffect{
 
     private int mDiceMalus;
 
-    public DiceRollMalus(int diceMalus) {
-        mDiceMalus = diceMalus;
-    }
-
-    public int getDiceMalus() {
-        return Math.abs(mDiceMalus);
-    }
-
-
     @Override
     public String toString(){
         return ("Dice Malus -> " + mDiceMalus);
@@ -26,6 +17,6 @@ public class DiceRollMalus implements ExcommunicationTileEffect{
 
     @Override
     public void applyEffect(Player player) {
-
+        player.getDiceMalus().setMalus(mDiceMalus);
     }
 }
