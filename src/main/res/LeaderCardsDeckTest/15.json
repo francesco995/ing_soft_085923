@@ -1,0 +1,36 @@
+{
+  "mCardName": "Cesare Borgia",
+  "mLeaderCardEffects": [
+    {
+      "CLASSNAME": "it.polimi.ingsw.ps09.model.LeaderCardEffects.UnlimitedTerritoryCards",
+      "INSTANCE": {
+        "mUserResourcesRequirements": {
+          "mCoins": {
+            "mValue": 12
+          },
+          "mServant": {
+            "mValue": 0
+          },
+          "mStone": {
+            "mValue": 0
+          },
+          "mWood": {
+            "mValue": 0
+          }
+        },
+        "mUserPointsRequirements": {
+          "mFaithPoints": {
+            "mPoints": 2
+          },
+          "mMilitaryPoints": {
+            "mPoints": 0
+          },
+          "mVictoryPoints": {
+            "mPoints": 0
+          }
+        },
+        "mBuildingCardsRequired": 3
+      }
+    }
+  ]
+}

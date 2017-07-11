@@ -1,0 +1,10 @@
+{
+    "mCardName": "Filippo Brunelleschi",
+    "mLeaderCardEffects": [{
+            "CLASSNAME": "it.polimi.ingsw.ps09.model.LeaderCardEffects.OccupyTowerForFree",
+            "INSTANCE": {
+              "mBuildingCardsRequired": 5
+            }
+            }
+        ]
+}

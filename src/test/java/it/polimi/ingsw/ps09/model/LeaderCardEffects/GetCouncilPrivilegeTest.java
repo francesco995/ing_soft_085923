@@ -38,7 +38,7 @@ public class GetCouncilPrivilegeTest {
 
     private File mDirectory = new File("./");
     private String mFilePath = mDirectory.getAbsolutePath().replace(".",
-            "src/main/res/LeaderCardsDeck/");
+            "src/main/res/LeaderCardsDeckTest/");
 
 
 

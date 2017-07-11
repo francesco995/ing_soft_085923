@@ -1,0 +1,21 @@
+{
+  "mCardName": "Lorenzo de’ Medici",
+  "mLeaderCardEffects": [
+    {
+      "CLASSNAME": "it.polimi.ingsw.ps09.model.LeaderCardEffects.CopyLeaderEffect",
+      "INSTANCE": {
+        "mUserPointsRequirements": {
+          "mFaithPoints": {
+            "mPoints": 0
+          },
+          "mMilitaryPoints": {
+            "mPoints": 0
+          },
+          "mVictoryPoints": {
+            "mPoints": 35
+          }
+        }
+      }
+    }
+  ]
+}

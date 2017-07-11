@@ -1,0 +1,13 @@
+{
+  "mCardName": "Lucrezia Borgia",
+  "mLeaderCardEffects": [{
+    "CLASSNAME": "it.polimi.ingsw.ps09.model.LeaderCardEffects.AddTwoToFamilyMemberValue",
+    "INSTANCE": {
+      "mCharacterCardsRequired": 6,
+      "mBuildingCardsRequired": 6,
+      "mVentureCardsRequired": 6,
+      "mTerritoryCardsRequired": 6
+    }
+  }
+  ]
+}
