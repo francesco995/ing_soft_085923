@@ -140,14 +140,14 @@ public class PlayerConnectionSocket extends Thread implements PlayerConnection{
      */
     private String loadStringFromFile(String fileName) throws FileNotFoundException {
 
-        String mStringDeck;
+        String mStringFile;
 
         Scanner mScanner = new Scanner(new File(fileName));
-        mStringDeck = mScanner.next();
+        mStringFile = mScanner.next();
 
         mScanner.close();
 
-        return mStringDeck;
+        return mStringFile;
     }
 
 
