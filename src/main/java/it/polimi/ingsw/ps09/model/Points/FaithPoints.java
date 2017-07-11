@@ -12,5 +12,8 @@ public class FaithPoints extends Points{
     public FaithPoints(){
         this(0);
     }
-    
+
+    public void setZero() {
+        setPoints(0);
+    }
 }

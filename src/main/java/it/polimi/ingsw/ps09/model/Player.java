@@ -979,5 +979,8 @@ public class Player{
         mCouncilPrivilege = 0;
     }
 
+    public void setVictoryPointsZero(){
+        mUserPoints.getFaithPoints().setZero();
+    }
 
 }

@@ -88,6 +88,7 @@ public class EndGame {
             myRank = militaryRank(game, currentPlayer);
             mLogger.log(INFO, "Game: " + game.GAME_ID +
                     " player " + currentPlayer.getUserName() + " military rank " + myRank);
+
             if (myRank == 1)
                 currentPlayer.add(new VictoryPoints(Constants.FIRST_MILITARY));
             else if (myRank == 2)
@@ -102,6 +103,7 @@ public class EndGame {
                             currentPlayer.getServant().getValue();
             mLogger.log(INFO, "Game: " + game.GAME_ID +
                     " player " + currentPlayer.getUserName() + " collected resources (/5) " + total);
+
             VictoryPoints collectedResources = new VictoryPoints(total / 5);
             currentPlayer.add(collectedResources);
 
@@ -112,25 +114,36 @@ public class EndGame {
             {
                 mLogger.log(INFO, "Game: " + game.GAME_ID +
                         " losing one victory for every military");
-                total= currentPlayer.getMilitaryPoints().getValue();
 
+                total= currentPlayer.getMilitaryPoints().getValue();
                 VictoryPoints numberOfMilitaryPoints = new VictoryPoints(total);
-                currentPlayer.remove(numberOfMilitaryPoints);
+
+                if(currentPlayer.has(numberOfMilitaryPoints)) {
+                    currentPlayer.remove(numberOfMilitaryPoints);
+                }else{
+                    currentPlayer.setVictoryPointsZero();
+                }
             }
 
             if(currentPlayer.getBonusFlags().getMalus("loseForVictoryPoints2"))
             {
                 mLogger.log(INFO, "Game: " + game.GAME_ID +
                         " losing one victory for every 5 victory");
-                total= currentPlayer.getFaithPoints().getValue();
 
+                total= currentPlayer.getFaithPoints().getValue();
                 VictoryPoints numberOfFaithPoints = new VictoryPoints(total / 5);
-                currentPlayer.remove(numberOfFaithPoints);
+
+                if(currentPlayer.has(numberOfFaithPoints)) {
+                    currentPlayer.remove(numberOfFaithPoints);
+                }else{
+                    currentPlayer.setVictoryPointsZero();
+                }
             }
 
             if(currentPlayer.getBonusFlags().getMalus("loseForResources")) {
                 mLogger.log(INFO, "Game: " + game.GAME_ID +
                         " losing one victory for each resource");
+
                 total =
                         currentPlayer.getWood().getValue() +
                                 currentPlayer.getStone().getValue() +
@@ -138,18 +151,29 @@ public class EndGame {
                                 currentPlayer.getServant().getValue();
 
                 VictoryPoints numberOfResources = new VictoryPoints(total);
-                currentPlayer.remove(collectedResources);
+
+                if(currentPlayer.has(numberOfResources)) {
+                    currentPlayer.remove(numberOfResources);
+                }else{
+                    currentPlayer.setVictoryPointsZero();
+                }
             }
 
             if(currentPlayer.getBonusFlags().getMalus("loseForResources2")) {
                 mLogger.log(INFO, "Game: " + game.GAME_ID +
                         " losing one victory for each wood and stone");
+
                 total =
                         currentPlayer.getWood().getValue() +
                                 currentPlayer.getStone().getValue();
 
                 VictoryPoints numberOfResources = new VictoryPoints(total);
-                currentPlayer.remove(collectedResources);
+
+                if(currentPlayer.has(numberOfResources)) {
+                    currentPlayer.remove(numberOfResources);
+                }else{
+                    currentPlayer.setVictoryPointsZero();
+                }
             }
         }
 

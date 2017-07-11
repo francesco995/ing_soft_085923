@@ -30,6 +30,10 @@ public abstract class Points {
         return mPoints;
     }
 
+    public void setPoints(int points) {
+        mPoints = points;
+    }
+
     //Override toString method to get points value
     public String toString(){
         return String.valueOf(mPoints);
