@@ -5,7 +5,7 @@ Francesco Gianni - francesco2.gianni@mail.polimi.it - 829230
 
 Francesco Lorenti - francesco1.lorenti@mail.polimi.it - 827035
 
-Alessandro Losavio - alessandro.losavio@mail.polimi.it - 
+Alessandro Losavio - alessandro.losavio@mail.polimi.it - 825918
 
 ## Requisiti sviluppati
 
