@@ -43,7 +43,7 @@ public class WelcomeSocketServer extends Thread implements WelcomeServer {
 
 
     public PlayerConnection getReadyConnection(){
-        mLogger.log(INFO, "Server requested new ready connection, sending port " + mReadyConnections.peek());
+        mLogger.log(INFO, "Server requested new ready connection, sending Thread " + mReadyConnections.peek());
         return mReadyConnections.poll();
     }
 
