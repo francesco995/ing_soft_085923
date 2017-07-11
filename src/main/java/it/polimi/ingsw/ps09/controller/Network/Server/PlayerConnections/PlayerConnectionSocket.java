@@ -527,7 +527,7 @@ public class PlayerConnectionSocket extends Thread implements PlayerConnection{
             mMessageSender.write("\n");
             mMessageSender.flush();
         } catch (IOException e) {
-            e.printStackTrace();
+            mLogger.log(INFO, "Game: " + Game.GAME_ID + " failed to send message to user: " + mUserID);
         }
 
 
@@ -558,8 +558,8 @@ public class PlayerConnectionSocket extends Thread implements PlayerConnection{
             waitForInputSocketReady();
             message = mMessageReader.readLine();
         } catch (IOException e) {
-            e.printStackTrace();
-            message = "";
+            mLogger.log(INFO, "Game: " + Game.GAME_ID + " failed to get message form player: " + mUserID);
+            message = "1";
         }
 
 
@@ -577,7 +577,6 @@ public class PlayerConnectionSocket extends Thread implements PlayerConnection{
             while(!mMessageReader.ready())
                 sleep(100);
         } catch (IOException e) {
-            e.printStackTrace();
         }
     }
 
@@ -666,7 +665,6 @@ public class PlayerConnectionSocket extends Thread implements PlayerConnection{
             }while(!mMessage.equalsIgnoreCase("close"));
 
         } catch (IOException e) {
-            e.printStackTrace();
         }
 
 
