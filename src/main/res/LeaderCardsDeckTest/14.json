@@ -1,0 +1,24 @@
+{
+  "mCardName": "Sisto IV",
+  "mLeaderCardEffects": [
+    {
+      "CLASSNAME": "it.polimi.ingsw.ps09.model.LeaderCardEffects.EarnFiveVictoryPointsFromChurch",
+      "INSTANCE": {
+        "mUserResourcesRequirements": {
+          "mCoins": {
+            "mValue": 6
+          },
+          "mServant": {
+            "mValue": 6
+          },
+          "mStone": {
+            "mValue": 6
+          },
+          "mWood": {
+            "mValue": 6
+          }
+        }
+      }
+    }
+  ]
+}

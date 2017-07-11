@@ -48,7 +48,7 @@ public class AddThreeNeutralFamilyMemberValueTest {
 
     File mDirectory = new File("./");
     String mFilePath = mDirectory.getAbsolutePath().replace(".",
-            "src/main/res/LeaderCardsDeck/");
+            "src/main/res/LeaderCardsDeckTest/");
 
 
 

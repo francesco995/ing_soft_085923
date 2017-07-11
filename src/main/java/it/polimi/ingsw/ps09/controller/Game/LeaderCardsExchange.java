@@ -9,7 +9,10 @@ import java.util.ArrayList;
  */
 public abstract class LeaderCardsExchange {
 
-
+    /**
+     *
+     * @param game game object
+     */
     public static void startExchange(Game game) {
 
         LeaderCardsOrder mLeaderCardsOrder;
@@ -31,6 +34,11 @@ public abstract class LeaderCardsExchange {
         }
     }
 
+    /**
+     *
+     * @param game game object
+     * @param LeaderCardsOrderList List of player with temporary leader card list
+     */
     //Each player choose a leader card
     private static void chooseLeaderCard(Game game, ArrayList<LeaderCardsOrder> LeaderCardsOrderList){
 
@@ -56,7 +64,10 @@ public abstract class LeaderCardsExchange {
 
     }
 
-
+    /**
+     *
+     * @param LeaderCardsOrderList List of player with temporary leader card list
+     */
     //Exchange leader card between player
     private static void leaderCardListExchange(ArrayList<LeaderCardsOrder> LeaderCardsOrderList){
 

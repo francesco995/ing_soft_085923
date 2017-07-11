@@ -1,0 +1,11 @@
+{
+    "mCardName": "Pico della Mirandola",
+    "mLeaderCardEffects": [{
+            "CLASSNAME": "it.polimi.ingsw.ps09.model.LeaderCardEffects.DiscountDevelopmentCardMoney",
+            "INSTANCE": {
+              "mVentureCardsRequired": 4,
+              "mTerritoryCardsRequired": 2
+            }
+            }
+        ]
+}

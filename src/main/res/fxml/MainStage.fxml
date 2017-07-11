@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.control.Button?>
+<GridPane xmlns="http://javafx.com/javafx"
+          xmlns:fx="http://javafx.com/fxml"
+          stylesheets="/css/MainStage.css"
+          fx:controller="it.polimi.ingsw.ps09.GUIClientApp"
+          prefHeight="400.0" prefWidth="600.0">
+
+
+    <Button
+            fx:id="firstBtn"
+            GridPane.rowIndex="0"
+            GridPane.columnIndex="0"
+        />
+
+    <Button
+        fx:id="secondBtn"
+        GridPane.rowIndex="0"
+        GridPane.columnIndex="1"/>
+
+    <Button
+        fx:id="thirdBtn"
+        GridPane.rowIndex="1"
+        GridPane.columnIndex="0"/>
+
+    <Button
+        fx:id="fourthBtn"
+        GridPane.rowIndex="1"
+        GridPane.columnIndex="1"/>
+
+
+
+</GridPane>

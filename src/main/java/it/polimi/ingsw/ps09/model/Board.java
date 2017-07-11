@@ -194,8 +194,6 @@ public class Board{
     //####################################################
     //################# ProductionArea #######################
 
-    //TODO: ALE L VEDI SE RIESCI A RIMANERE DRY CON HARVEST E PRODUCTION INSIEME
-
     /**
      *
      * @return Get production area object
@@ -219,8 +217,6 @@ public class Board{
     public void addFamilyMemberInProduction(FamilyMember pawn){
         mProductionArea.addMember(pawn);
     }
-
-    //TODO: Ale try to do not hardcode
 
     /**
      *
@@ -261,8 +257,6 @@ public class Board{
     public void addFamilyMemberInHarvest(FamilyMember pawn){
         mHarvestArea.addMember(pawn);
     }
-
-    //TODO: Ale try to do not hardcode
 
     /**
      *
@@ -309,7 +303,7 @@ public class Board{
     }
 
     public boolean isCharacterTowerAvailable(){
-        return !mCharactersTower.hasFamilyMember();
+        return mCharactersTower.hasFamilyMember();
     }
 
     public boolean isCharacterTowerFloorAvailable(int floor){
@@ -364,7 +358,7 @@ public class Board{
     }
 
     public boolean isTerritoriesTowerAvailable(){
-        return !mTerritoriesTower.hasFamilyMember();
+        return mTerritoriesTower.hasFamilyMember();
     }
 
     public boolean isTerritoriesTowerFloorAvailable(int floor){
@@ -419,7 +413,7 @@ public class Board{
     }
 
     public boolean isVenturesTowerAvailable(){
-        return !mVenturesTower.hasFamilyMember();
+        return mVenturesTower.hasFamilyMember();
     }
 
     public boolean isVenturesTowerFloorAvailable(int floor){
@@ -474,7 +468,7 @@ public class Board{
     }
 
     public boolean isBuildingsTowerAvailable(){
-        return !mBuildingsTower.hasFamilyMember();
+        return mBuildingsTower.hasFamilyMember();
     }
 
     public boolean isBuildingsTowerFloorAvailable(int floor){
