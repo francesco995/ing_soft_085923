@@ -228,18 +228,18 @@ public class BoardTest {
     }
 
     @Test
-    public void isCharacterTowerAvailableTestTrue() throws Exception{
+    public void isCharacterTowerAvailableTestFalse() throws Exception{
 
-        assertEquals(true, mBoard.isCharacterTowerAvailable());
+        assertEquals(false, mBoard.isCharacterTowerAvailable());
 
     }
 
     @Test
-    public void isCharacterTowerAvailableTestFalse() throws Exception{
+    public void isCharacterTowerAvailableTestTrue() throws Exception{
 
         mBoard.getCharactersTower().getFloor(0).setFamilyMember(mBlackFamilyMember);
 
-        assertEquals(false, mBoard.isCharacterTowerAvailable());
+        assertEquals(true, mBoard.isCharacterTowerAvailable());
 
     }
 
@@ -261,18 +261,18 @@ public class BoardTest {
     }
 
     @Test
-    public void isTerritoriesTowerAvailableTestTrue() throws Exception{
+    public void isTerritoriesTowerAvailableTestFalse() throws Exception{
 
-        assertEquals(true, mBoard.isTerritoriesTowerAvailable());
+        assertEquals(false, mBoard.isTerritoriesTowerAvailable());
 
     }
 
     @Test
-    public void isTerritoriesTowerAvailableTestFalse() throws Exception{
+    public void isTerritoriesTowerAvailableTestTrue() throws Exception{
 
         mBoard.getTerritoriesTower().getFloor(0).setFamilyMember(mBlackFamilyMember);
 
-        assertEquals(false, mBoard.isTerritoriesTowerAvailable());
+        assertEquals(true, mBoard.isTerritoriesTowerAvailable());
 
     }
 
@@ -294,18 +294,18 @@ public class BoardTest {
     }
 
     @Test
-    public void isVenturesTowerAvailableTestTrue() throws Exception{
+    public void isVenturesTowerAvailableTestFalse() throws Exception{
 
-        assertEquals(true, mBoard.isVenturesTowerAvailable());
+        assertEquals(false, mBoard.isVenturesTowerAvailable());
 
     }
 
     @Test
-    public void isVenturesTowerAvailableTestFalse() throws Exception{
+    public void isVenturesTowerAvailableTestTrue() throws Exception{
 
         mBoard.getVenturesTower().getFloor(0).setFamilyMember(mBlackFamilyMember);
 
-        assertEquals(false, mBoard.isVenturesTowerAvailable());
+        assertEquals(true, mBoard.isVenturesTowerAvailable());
 
     }
 
@@ -327,18 +327,18 @@ public class BoardTest {
     }
 
     @Test
-    public void isBuildingsTowerAvailableTestTrue() throws Exception{
+    public void isBuildingsTowerAvailableTestFalse() throws Exception{
 
-        assertEquals(true, mBoard.isBuildingsTowerAvailable());
+        assertEquals(false, mBoard.isBuildingsTowerAvailable());
 
     }
 
     @Test
-    public void isBuildingsTowerAvailableTestFalse() throws Exception{
+    public void isBuildingsTowerAvailableTestTrue() throws Exception{
 
         mBoard.getBuildingsTower().getFloor(0).setFamilyMember(mBlackFamilyMember);
 
-        assertEquals(false, mBoard.isBuildingsTowerAvailable());
+        assertEquals(true, mBoard.isBuildingsTowerAvailable());
 
     }
 
