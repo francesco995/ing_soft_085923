@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement />
+  <nodes>
+    <node x="3443.2406609195396" y="22.0">it.polimi.ingsw.ps09.model.Points.FaithPoints</node>
+    <node x="672.2440318302386" y="157.0">it.polimi.ingsw.ps09.model.Dices.BlackDice</node>
+    <node x="919.0" y="487.0">it.polimi.ingsw.ps09.model.Decks.DevelopmentCardsDeck</node>
+    <node x="607.0" y="531.0">it.polimi.ingsw.ps09.model.FaithPointsTrack</node>
+    <node x="1664.0" y="531.0">it.polimi.ingsw.ps09.model.Decks.ExcommunicationTilesDeck</node>
+    <node x="2951.803354332449" y="1187.0">it.polimi.ingsw.ps09.model.DevelopmentCards.Territory</node>
+    <node x="0.0" y="520.0">it.polimi.ingsw.ps09.model.PersonalBoardBonus</node>
+    <node x="316.0" y="531.0">it.polimi.ingsw.ps09.model.Decks.PersonalBonusTilesDeck</node>
+    <node x="1483.770639920424" y="157.0">it.polimi.ingsw.ps09.model.Dices.WhiteDice</node>
+    <node x="1040.25" y="989.0">it.polimi.ingsw.ps09.controller.Game.Game</node>
+    <node x="1186.6847645888595" y="157.0">it.polimi.ingsw.ps09.model.Dices.OrangeDice</node>
+    <node x="3877.3031609195396" y="1187.0">it.polimi.ingsw.ps09.model.DevelopmentCards.Venture</node>
+    <node x="3655.3031609195396" y="1187.0">it.polimi.ingsw.ps09.model.DevelopmentCards.Building</node>
+    <node x="2280.0" y="542.0">it.polimi.ingsw.ps09.controller.Network.Server.PlayerConnections.PlayerConnection</node>
+    <node x="2378.9906609195396" y="124.0">it.polimi.ingsw.ps09.model.LeaderCard</node>
+    <node x="2766.125" y="300.0">it.polimi.ingsw.ps09.model.Player</node>
+    <node x="2190.625" y="934.0">it.polimi.ingsw.ps09.controller.Network.Server.PlayerConnections.PlayerConnectionSocket</node>
+    <node x="1706.125" y="124.0">it.polimi.ingsw.ps09.model.ExcommunicationTile</node>
+    <node x="1184.0" y="366.0">it.polimi.ingsw.ps09.model.Board</node>
+    <node x="1228.2887378426167" y="0.0">it.polimi.ingsw.ps09.model.Dices.Dice</node>
+    <node x="3297.3031609195396" y="1198.0">it.polimi.ingsw.ps09.model.DevelopmentCards.Character</node>
+    <node x="2444.0" y="531.0">it.polimi.ingsw.ps09.controller.PlayersOrder</node>
+    <node x="2027.0" y="531.0">it.polimi.ingsw.ps09.model.Decks.LeaderCardsDeck</node>
+    <node x="3376.2406609195396" y="124.0">it.polimi.ingsw.ps09.model.UserPoints</node>
+    <node x="3367.4092893457114" y="476.0">it.polimi.ingsw.ps09.model.DevelopmentCards.DevelopmentCard</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="it.polimi.ingsw.ps09.controller.Game.Game" target="it.polimi.ingsw.ps09.model.Decks.DevelopmentCardsDeck">
+      <point x="-39.76923076923072" y="-235.0" />
+      <point x="1258.9807692307693" y="864.0" />
+      <point x="1041.5" y="864.0" />
+      <point x="0.0" y="70.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps09.controller.Game.Game" target="it.polimi.ingsw.ps09.model.FaithPointsTrack">
+      <point x="-79.53846153846143" y="-235.0" />
+      <point x="1219.2115384615386" y="874.0" />
+      <point x="753.0" y="874.0" />
+      <point x="0.0" y="26.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps09.model.Dices.WhiteDice" target="it.polimi.ingsw.ps09.model.Dices.Dice">
+      <point x="0.0" y="-15.0" />
+      <point x="1535.770639920424" y="104.0" />
+      <point x="1351.62207117595" y="104.0" />
+      <point x="49.33333333333326" y="37.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps09.controller.Game.Game" target="it.polimi.ingsw.ps09.model.Dices.BlackDice">
+      <point x="-198.8461538461538" y="-235.0" />
+      <point x="1099.9038461538462" y="904.0" />
+      <point x="305.5" y="904.0" />
+      <point x="305.5" y="270.0" />
+      <point x="689.0773651635718" y="270.0" />
+      <point x="-33.66666666666674" y="15.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps09.controller.Game.Game" target="it.polimi.ingsw.ps09.model.PersonalBoardBonus">
+      <point x="-238.61538461538476" y="-235.0" />
+      <point x="1060.1346153846152" y="914.0" />
+      <point x="147.5" y="914.0" />
+      <point x="0.0" y="37.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps09.model.DevelopmentCards.Venture" target="it.polimi.ingsw.ps09.model.UserPoints">
+      <point x="66.75" y="-37.0" />
+      <point x="4077.5531609195396" y="280.0" />
+      <point x="3588.8656609195396" y="280.0" />
+      <point x="91.125" y="48.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps09.model.DevelopmentCards.Territory" target="it.polimi.ingsw.ps09.model.DevelopmentCards.DevelopmentCard">
+      <point x="0.0" y="-37.0" />
+      <point x="3052.803354332449" y="914.0" />
+      <point x="3401.5342893457114" y="914.0" />
+      <point x="-102.375" y="81.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps09.model.Board" target="it.polimi.ingsw.ps09.model.Dices.OrangeDice">
+      <point x="-28.6875" y="-191.0" />
+      <point x="1384.8125" y="240.0" />
+      <point x="1280.0180979221927" y="240.0" />
+      <point x="37.33333333333326" y="15.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps09.model.Board" target="it.polimi.ingsw.ps09.model.Dices.WhiteDice">
+      <point x="86.0625" y="-191.0" />
+      <point x="1499.5625" y="280.0" />
+      <point x="1535.770639920424" y="280.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps09.controller.Game.Game" target="it.polimi.ingsw.ps09.model.Dices.OrangeDice">
+      <point x="-119.30769230769238" y="-235.0" />
+      <point x="1179.4423076923076" y="884.0" />
+      <point x="596.5" y="884.0" />
+      <point x="596.5" y="280.0" />
+      <point x="1205.3514312555262" y="280.0" />
+      <point x="-37.33333333333326" y="15.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps09.controller.Game.Game" target="it.polimi.ingsw.ps09.model.Decks.ExcommunicationTilesDeck">
+      <point x="79.53846153846143" y="-235.0" />
+      <point x="1378.2884615384614" y="854.0" />
+      <point x="1835.5" y="854.0" />
+      <point x="0.0" y="26.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps09.model.Board" target="it.polimi.ingsw.ps09.model.Dices.BlackDice">
+      <point x="-143.4375" y="-191.0" />
+      <point x="1270.0625" y="260.0" />
+      <point x="756.4106984969053" y="260.0" />
+      <point x="33.66666666666674" y="15.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps09.controller.Network.Server.PlayerConnections.PlayerConnectionSocket" target="it.polimi.ingsw.ps09.controller.PlayersOrder">
+      <point x="79.875" y="-290.0" />
+      <point x="2590.0" y="884.0" />
+      <point x="2632.25" y="884.0" />
+      <point x="62.75" y="26.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps09.model.Board" target="it.polimi.ingsw.ps09.model.ExcommunicationTile">
+      <point x="200.8125" y="-191.0" />
+      <point x="1614.3125" y="280.0" />
+      <point x="1783.75" y="280.0" />
+      <point x="-25.875" y="48.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps09.model.Player" target="it.polimi.ingsw.ps09.model.UserPoints">
+      <point x="70.625" y="-257.0" />
+      <point x="3119.25" y="270.0" />
+      <point x="3406.6156609195396" y="270.0" />
+      <point x="-91.125" y="48.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps09.model.Player" target="it.polimi.ingsw.ps09.model.ExcommunicationTile">
+      <point x="-211.875" y="-257.0" />
+      <point x="2836.75" y="270.0" />
+      <point x="1887.25" y="270.0" />
+      <point x="77.625" y="48.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps09.model.DevelopmentCards.Building" target="it.polimi.ingsw.ps09.model.DevelopmentCards.DevelopmentCard">
+      <point x="0.0" y="-37.0" />
+      <point x="3756.3031609195396" y="914.0" />
+      <point x="3538.0342893457114" y="914.0" />
+      <point x="34.125" y="81.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps09.controller.Game.Game" target="it.polimi.ingsw.ps09.model.Decks.PersonalBonusTilesDeck">
+      <point x="-159.0769230769231" y="-235.0" />
+      <point x="1139.673076923077" y="894.0" />
+      <point x="451.0" y="894.0" />
+      <point x="0.0" y="26.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps09.controller.Network.Server.PlayerConnections.PlayerConnectionSocket" target="it.polimi.ingsw.ps09.model.Player">
+      <point x="239.625" y="-290.0" />
+      <point x="2749.75" y="904.0" />
+      <point x="3189.875" y="904.0" />
+      <point x="141.25" y="257.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps09.controller.Network.Server.PlayerConnections.PlayerConnectionSocket" target="it.polimi.ingsw.ps09.model.Board">
+      <point x="-239.625" y="-290.0" />
+      <point x="2270.5" y="834.0" />
+      <point x="1528.25" y="834.0" />
+      <point x="114.75" y="191.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps09.model.DevelopmentCards.Character" target="it.polimi.ingsw.ps09.model.DevelopmentCards.DevelopmentCard">
+      <point x="0.0" y="-26.0" />
+      <point x="3466.3031609195396" y="914.0" />
+      <point x="3469.7842893457114" y="914.0" />
+      <point x="-34.125" y="81.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps09.model.Dices.OrangeDice" target="it.polimi.ingsw.ps09.model.Dices.Dice">
+      <point x="0.0" y="-15.0" />
+      <point x="1242.6847645888595" y="104.0" />
+      <point x="1302.2887378426167" y="104.0" />
+      <point x="0.0" y="37.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps09.model.Decks.LeaderCardsDeck" target="it.polimi.ingsw.ps09.model.LeaderCard">
+      <point x="0.0" y="-26.0" />
+      <point x="2143.5" y="280.0" />
+      <point x="2432.2406609195396" y="280.0" />
+      <point x="-53.25" y="48.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps09.controller.Game.Game" target="it.polimi.ingsw.ps09.controller.Network.Server.PlayerConnections.PlayerConnection">
+      <point x="159.0769230769231" y="-235.0" />
+      <point x="1457.826923076923" y="874.0" />
+      <point x="2316.0" y="874.0" />
+      <point x="-36.0" y="15.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps09.model.Decks.ExcommunicationTilesDeck" target="it.polimi.ingsw.ps09.model.ExcommunicationTile">
+      <point x="0.0" y="-26.0" />
+      <point x="25.875" y="48.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps09.controller.Game.Game" target="it.polimi.ingsw.ps09.model.Player">
+      <point x="238.61538461538453" y="-235.0" />
+      <point x="1537.3653846153845" y="894.0" />
+      <point x="2907.375" y="894.0" />
+      <point x="-141.25" y="257.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps09.controller.Game.Game" target="it.polimi.ingsw.ps09.controller.PlayersOrder">
+      <point x="198.8461538461538" y="-235.0" />
+      <point x="1497.5961538461538" y="884.0" />
+      <point x="2506.75" y="884.0" />
+      <point x="-62.75" y="26.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps09.model.Player" target="it.polimi.ingsw.ps09.model.LeaderCard">
+      <point x="-70.625" y="-257.0" />
+      <point x="2978.0" y="260.0" />
+      <point x="2538.7406609195396" y="260.0" />
+      <point x="53.25" y="48.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps09.controller.Game.Game" target="it.polimi.ingsw.ps09.model.Dices.WhiteDice">
+      <point x="39.76923076923072" y="-235.0" />
+      <point x="1338.5192307692307" y="844.0" />
+      <point x="1653.5" y="844.0" />
+      <point x="1653.5" y="260.0" />
+      <point x="1570.4373065870905" y="260.0" />
+      <point x="34.66666666666663" y="15.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps09.model.DevelopmentCards.DevelopmentCard" target="it.polimi.ingsw.ps09.model.UserPoints">
+      <point x="0.0" y="-81.0" />
+      <point x="3503.9092893457114" y="280.0" />
+      <point x="3528.1156609195396" y="280.0" />
+      <point x="30.375" y="48.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps09.controller.Game.Game" target="it.polimi.ingsw.ps09.model.Decks.LeaderCardsDeck">
+      <point x="119.30769230769238" y="-235.0" />
+      <point x="1418.0576923076924" y="864.0" />
+      <point x="2143.5" y="864.0" />
+      <point x="0.0" y="26.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps09.model.DevelopmentCards.Venture" target="it.polimi.ingsw.ps09.model.DevelopmentCards.DevelopmentCard">
+      <point x="-66.75" y="-37.0" />
+      <point x="3944.0531609195396" y="904.0" />
+      <point x="3606.2842893457114" y="904.0" />
+      <point x="102.375" y="81.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps09.controller.Game.Game" target="it.polimi.ingsw.ps09.model.Board">
+      <point x="0.0" y="-235.0" />
+      <point x="-114.75" y="191.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps09.model.Dices.BlackDice" target="it.polimi.ingsw.ps09.model.Dices.Dice">
+      <point x="0.0" y="-15.0" />
+      <point x="722.7440318302386" y="94.0" />
+      <point x="1252.9554045092834" y="94.0" />
+      <point x="-49.33333333333326" y="37.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps09.model.UserPoints" target="it.polimi.ingsw.ps09.model.Points.FaithPoints">
+      <point x="60.75" y="-48.0" />
+      <point x="3558.4906609195396" y="104.0" />
+      <point x="3524.9906609195396" y="104.0" />
+      <point x="27.25" y="15.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps09.controller.Network.Server.PlayerConnections.PlayerConnectionSocket" target="it.polimi.ingsw.ps09.controller.Network.Server.PlayerConnections.PlayerConnection">
+      <point x="-79.875" y="-290.0" />
+      <point x="2430.25" y="874.0" />
+      <point x="2388.0" y="874.0" />
+      <point x="36.0" y="15.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.40000000000000013" x="1590.0" y="313.0" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Fields</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

@@ -1,0 +1,345 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement />
+  <nodes>
+    <node x="660.8678205128213" y="474.0">it.polimi.ingsw.ps09.model.Places.Towers.Floor.FloorFour</node>
+    <node x="1858.6638383838394" y="274.0">it.polimi.ingsw.ps09.model.Actions.PlacementActions.Harvest</node>
+    <node x="953.4489562289566" y="765.0">it.polimi.ingsw.ps09.model.Places.Towers.TerritoriesTower</node>
+    <node x="781.8678205128213" y="474.0">it.polimi.ingsw.ps09.model.Places.Towers.Floor.FloorThree</node>
+    <node x="2481.9989562289566" y="765.0">it.polimi.ingsw.ps09.model.Dices.BlackDice</node>
+    <node x="1593.6638383838394" y="285.0">it.polimi.ingsw.ps09.model.Actions.PlacementActions.Production</node>
+    <node x="535.5" y="296.0">it.polimi.ingsw.ps09.model.FamilyMembers.OrangeFamilyMember</node>
+    <node x="2198.9761538461544" y="608.0">it.polimi.ingsw.ps09.model.Places.Market.MarketSpaceSpace2</node>
+    <node x="1790.075" y="754.0">it.polimi.ingsw.ps09.model.Places.Market.Market</node>
+    <node x="1615.0739562289566" y="608.0">it.polimi.ingsw.ps09.model.Places.Market.MarketSpaceSpace3</node>
+    <node x="1424.0739562289566" y="608.0">it.polimi.ingsw.ps09.model.Places.Market.MarketSpaceSpace1</node>
+    <node x="794.4489562289566" y="765.0">it.polimi.ingsw.ps09.model.Places.Towers.CharactersTower</node>
+    <node x="1885.6638383838394" y="430.0">it.polimi.ingsw.ps09.model.Places.Market.MarketSpace</node>
+    <node x="1886.4489562289566" y="608.0">it.polimi.ingsw.ps09.model.Places.Market.MarketSpaceSpace4</node>
+    <node x="2340.075" y="765.0">it.polimi.ingsw.ps09.model.Dices.WhiteDice</node>
+    <node x="913.4500000000002" y="474.0">it.polimi.ingsw.ps09.model.Places.Towers.Floor.FloorTwo</node>
+    <node x="168.5" y="296.0">it.polimi.ingsw.ps09.model.FamilyMembers.BlackFamilyMember</node>
+    <node x="2602.9989562289566" y="765.0">it.polimi.ingsw.ps09.model.Dices.OrangeDice</node>
+    <node x="2230.075" y="765.0">it.polimi.ingsw.ps09.model.Places.HarvestAndProductionAreas.Harvest</node>
+    <node x="905.5000000000001" y="252.0">it.polimi.ingsw.ps09.model.Places.Towers.Floor.Floor</node>
+    <node x="642.4489562289566" y="765.0">it.polimi.ingsw.ps09.model.Places.Towers.BuildingsTower</node>
+    <node x="2101.075" y="765.0">it.polimi.ingsw.ps09.model.Places.HarvestAndProductionAreas.Production</node>
+    <node x="2734.9989562289566" y="732.0">it.polimi.ingsw.ps09.model.ExcommunicationTile</node>
+    <node x="1229.1148821548827" y="285.0">it.polimi.ingsw.ps09.model.Order</node>
+    <node x="1816.9898821548827" y="998.0">it.polimi.ingsw.ps09.model.Board</node>
+    <node x="2479.1583333333333" y="608.0">it.polimi.ingsw.ps09.model.Dices.Dice</node>
+    <node x="1033.4500000000003" y="474.0">it.polimi.ingsw.ps09.model.Places.Towers.Floor.FloorOne</node>
+    <node x="0.0" y="754.0">it.polimi.ingsw.ps09.model.Places.Council</node>
+    <node x="1109.4489562289566" y="765.0">it.polimi.ingsw.ps09.model.Places.Towers.VenturesTower</node>
+    <node x="817.5648821548828" y="608.0">it.polimi.ingsw.ps09.model.Places.Towers.Tower</node>
+    <node x="977.4239562289567" y="0.0">it.polimi.ingsw.ps09.model.FamilyMembers.FamilyMember</node>
+    <node x="724.5000000000001" y="296.0">it.polimi.ingsw.ps09.model.FamilyMembers.WhiteFamilyMember</node>
+    <node x="346.5" y="296.0">it.polimi.ingsw.ps09.model.FamilyMembers.NeutralFamilyMember</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="it.polimi.ingsw.ps09.model.Board" target="it.polimi.ingsw.ps09.model.Places.HarvestAndProductionAreas.Production">
+      <point x="26.480769230769056" y="-191.0" />
+      <point x="2072.9706513856518" y="868.0" />
+      <point x="2128.325" y="868.0" />
+      <point x="-27.25" y="15.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps09.model.Dices.WhiteDice" target="it.polimi.ingsw.ps09.model.Dices.Dice">
+      <point x="0.0" y="-15.0" />
+      <point x="2392.075" y="712.0" />
+      <point x="2503.825" y="712.0" />
+      <point x="-49.333333333333485" y="37.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps09.model.Board" target="it.polimi.ingsw.ps09.model.Places.HarvestAndProductionAreas.Harvest">
+      <point x="61.78846153846143" y="-191.0" />
+      <point x="2108.278343693344" y="888.0" />
+      <point x="2252.575" y="888.0" />
+      <point x="-22.5" y="15.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps09.model.Places.Council" target="it.polimi.ingsw.ps09.model.FamilyMembers.FamilyMember">
+      <point x="0.0" y="-26.0" />
+      <point x="158.0" y="182.0" />
+      <point x="989.196683501684" y="182.0" />
+      <point x="-117.72727272727275" y="81.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps09.model.Board" target="it.polimi.ingsw.ps09.model.Places.Council">
+      <point x="-220.67307692307668" y="-191.0" />
+      <point x="1825.816805231806" y="978.0" />
+      <point x="79.0" y="978.0" />
+      <point x="-79.0" y="26.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps09.model.Places.Towers.Tower" target="it.polimi.ingsw.ps09.model.Places.Towers.Floor.FloorTwo">
+      <point x="0.0" y="-37.0" />
+      <point x="916.5648821548828" y="568.0" />
+      <point x="963.4500000000002" y="568.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps09.model.Places.Towers.Tower" target="it.polimi.ingsw.ps09.model.Places.Towers.Floor.FloorFour">
+      <point x="-79.19999999999993" y="-37.0" />
+      <point x="837.3648821548828" y="588.0" />
+      <point x="711.3678205128213" y="588.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps09.model.Places.Market.Market" target="it.polimi.ingsw.ps09.model.Places.Market.MarketSpaceSpace4">
+      <point x="0.0" y="-26.0" />
+      <point x="1935.575" y="712.0" />
+      <point x="1971.9489562289566" y="712.0" />
+      <point x="0.0" y="37.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps09.model.Board" target="it.polimi.ingsw.ps09.model.Dices.OrangeDice">
+      <point x="167.71153846153857" y="-191.0" />
+      <point x="2214.2014206164213" y="948.0" />
+      <point x="2630.9989562289566" y="948.0" />
+      <point x="-28.0" y="15.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps09.model.Actions.PlacementActions.Harvest" target="it.polimi.ingsw.ps09.model.FamilyMembers.FamilyMember">
+      <point x="0.0" y="-37.0" />
+      <point x="1943.1638383838394" y="202.0" />
+      <point x="1201.105774410775" y="202.0" />
+      <point x="94.18181818181824" y="81.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps09.model.Places.Market.Market" target="it.polimi.ingsw.ps09.model.Places.Market.MarketSpace">
+      <point x="116.40000000000009" y="-26.0" />
+      <point x="2051.9750000000004" y="712.0" />
+      <point x="2380.4761538461544" y="712.0" />
+      <point x="2380.4761538461544" y="578.0" />
+      <point x="2160.1638383838394" y="578.0" />
+      <point x="122.0" y="59.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps09.model.Places.Towers.VenturesTower" target="it.polimi.ingsw.ps09.model.Places.Towers.Tower">
+      <point x="0.0" y="-15.0" />
+      <point x="1173.9489562289566" y="702.0" />
+      <point x="990.8148821548828" y="702.0" />
+      <point x="74.25" y="37.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps09.model.Places.Market.Market" target="it.polimi.ingsw.ps09.model.Places.Market.MarketSpaceSpace1">
+      <point x="-116.40000000000009" y="-26.0" />
+      <point x="1819.175" y="712.0" />
+      <point x="1509.5739562289566" y="712.0" />
+      <point x="0.0" y="37.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps09.model.Board" target="it.polimi.ingsw.ps09.model.Dices.WhiteDice">
+      <point x="97.09615384615381" y="-191.0" />
+      <point x="2143.5860360010365" y="908.0" />
+      <point x="2366.075" y="908.0" />
+      <point x="-26.0" y="15.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps09.model.Places.Market.Market" target="it.polimi.ingsw.ps09.model.Places.Market.MarketSpaceSpace2">
+      <point x="58.200000000000045" y="-26.0" />
+      <point x="1993.775" y="702.0" />
+      <point x="2284.4761538461544" y="702.0" />
+      <point x="0.0" y="37.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps09.model.Places.Market.Market" target="it.polimi.ingsw.ps09.model.Places.Market.MarketSpaceSpace3">
+      <point x="-58.200000000000045" y="-26.0" />
+      <point x="1877.375" y="702.0" />
+      <point x="1700.5739562289566" y="702.0" />
+      <point x="0.0" y="37.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps09.model.Places.Towers.Floor.FloorThree" target="it.polimi.ingsw.ps09.model.Places.Towers.Floor.Floor">
+      <point x="0.0" y="-15.0" />
+      <point x="835.3678205128213" y="400.0" />
+      <point x="968.8000000000001" y="400.0" />
+      <point x="-42.200000000000045" y="59.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps09.model.Places.Market.MarketSpaceSpace1" target="it.polimi.ingsw.ps09.model.Places.Market.MarketSpace">
+      <point x="0.0" y="-37.0" />
+      <point x="1509.5739562289566" y="568.0" />
+      <point x="1916.1638383838394" y="568.0" />
+      <point x="-122.0" y="59.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps09.model.Places.Towers.BuildingsTower" target="it.polimi.ingsw.ps09.model.Places.Towers.Tower">
+      <point x="0.0" y="-15.0" />
+      <point x="708.4489562289566" y="712.0" />
+      <point x="842.3148821548828" y="712.0" />
+      <point x="-74.25" y="37.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps09.model.FamilyMembers.WhiteFamilyMember" target="it.polimi.ingsw.ps09.model.FamilyMembers.FamilyMember">
+      <point x="0.0" y="-15.0" />
+      <point x="805.0000000000001" y="222.0" />
+      <point x="1083.3785016835022" y="222.0" />
+      <point x="-23.545454545454504" y="81.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps09.model.Board" target="it.polimi.ingsw.ps09.model.Dices.BlackDice">
+      <point x="132.4038461538462" y="-191.0" />
+      <point x="2178.893728308729" y="928.0" />
+      <point x="2507.2489562289566" y="928.0" />
+      <point x="-25.25" y="15.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps09.model.Board" target="it.polimi.ingsw.ps09.model.Order">
+      <point x="-26.480769230769283" y="-191.0" />
+      <point x="2020.0091129241137" y="868.0" />
+      <point x="1358.1148821548827" y="868.0" />
+      <point x="1358.1148821548827" y="410.0" />
+      <point x="1414.3648821548827" y="410.0" />
+      <point x="61.75" y="26.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps09.model.Places.Market.MarketSpace" target="it.polimi.ingsw.ps09.model.FamilyMembers.FamilyMember">
+      <point x="0.0" y="-59.0" />
+      <point x="2038.1638383838394" y="192.0" />
+      <point x="1224.6512289562295" y="192.0" />
+      <point x="117.72727272727275" y="81.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps09.model.Places.Towers.Tower" target="it.polimi.ingsw.ps09.model.Places.Towers.Floor.FloorThree">
+      <point x="-39.59999999999991" y="-37.0" />
+      <point x="876.9648821548828" y="578.0" />
+      <point x="835.3678205128213" y="578.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps09.model.Board" target="it.polimi.ingsw.ps09.model.ExcommunicationTile">
+      <point x="203.01923076923094" y="-191.0" />
+      <point x="2249.5091129241137" y="968.0" />
+      <point x="2786.7489562289566" y="968.0" />
+      <point x="-51.75" y="48.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps09.model.Places.Market.MarketSpaceSpace3" target="it.polimi.ingsw.ps09.model.Places.Market.MarketSpace">
+      <point x="0.0" y="-37.0" />
+      <point x="1700.5739562289566" y="578.0" />
+      <point x="1977.1638383838394" y="578.0" />
+      <point x="-61.0" y="59.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps09.model.Places.Towers.TerritoriesTower" target="it.polimi.ingsw.ps09.model.Places.Towers.Tower">
+      <point x="0.0" y="-15.0" />
+      <point x="1021.4489562289566" y="712.0" />
+      <point x="941.3148821548828" y="712.0" />
+      <point x="24.75" y="37.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps09.model.Places.Towers.Floor.FloorOne" target="it.polimi.ingsw.ps09.model.Places.Towers.Floor.Floor">
+      <point x="0.0" y="-15.0" />
+      <point x="1082.9500000000003" y="410.0" />
+      <point x="1053.2000000000003" y="410.0" />
+      <point x="42.200000000000045" y="59.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps09.model.Board" target="it.polimi.ingsw.ps09.model.Places.Towers.CharactersTower">
+      <point x="-132.4038461538462" y="-191.0" />
+      <point x="1914.0860360010365" y="928.0" />
+      <point x="898.6989562289566" y="928.0" />
+      <point x="34.75" y="15.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps09.model.FamilyMembers.OrangeFamilyMember" target="it.polimi.ingsw.ps09.model.FamilyMembers.FamilyMember">
+      <point x="0.0" y="-15.0" />
+      <point x="620.0" y="212.0" />
+      <point x="1059.8330471380477" y="212.0" />
+      <point x="-47.09090909090901" y="81.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps09.model.Places.Towers.Floor.FloorFour" target="it.polimi.ingsw.ps09.model.Places.Towers.Floor.Floor">
+      <point x="0.0" y="-15.0" />
+      <point x="711.3678205128213" y="390.0" />
+      <point x="926.6000000000001" y="390.0" />
+      <point x="-84.39999999999998" y="59.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps09.model.Board" target="it.polimi.ingsw.ps09.model.Places.Market.Market">
+      <point x="-8.826923076923094" y="-191.0" />
+      <point x="2037.6629590779598" y="858.0" />
+      <point x="1862.825" y="858.0" />
+      <point x="-72.75" y="26.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps09.model.Dices.OrangeDice" target="it.polimi.ingsw.ps09.model.Dices.Dice">
+      <point x="0.0" y="-15.0" />
+      <point x="2658.9989562289566" y="712.0" />
+      <point x="2602.491666666667" y="712.0" />
+      <point x="49.333333333333485" y="37.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps09.model.Order" target="it.polimi.ingsw.ps09.model.FamilyMembers.FamilyMember">
+      <point x="61.75" y="-26.0" />
+      <point x="1414.3648821548827" y="222.0" />
+      <point x="1154.0148653198657" y="222.0" />
+      <point x="47.09090909090901" y="81.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps09.model.Places.Towers.Floor.FloorTwo" target="it.polimi.ingsw.ps09.model.Places.Towers.Floor.Floor">
+      <point x="0.0" y="-15.0" />
+      <point x="963.4500000000002" y="410.0" />
+      <point x="1011.0000000000001" y="410.0" />
+      <point x="0.0" y="59.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps09.model.Board" target="it.polimi.ingsw.ps09.model.Places.Towers.TerritoriesTower">
+      <point x="-114.75" y="-191.0" />
+      <point x="1931.7398821548827" y="918.0" />
+      <point x="987.4489562289566" y="918.0" />
+      <point x="-34.0" y="15.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps09.model.Actions.PlacementActions.Production" target="it.polimi.ingsw.ps09.model.FamilyMembers.FamilyMember">
+      <point x="0.0" y="-26.0" />
+      <point x="1716.1638383838394" y="212.0" />
+      <point x="1177.5603198653205" y="212.0" />
+      <point x="70.63636363636374" y="81.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps09.model.Places.Towers.CharactersTower" target="it.polimi.ingsw.ps09.model.Places.Towers.Tower">
+      <point x="0.0" y="-15.0" />
+      <point x="863.9489562289566" y="712.0" />
+      <point x="891.8148821548828" y="712.0" />
+      <point x="-24.75" y="37.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps09.model.Places.Market.MarketSpaceSpace2" target="it.polimi.ingsw.ps09.model.Places.Market.MarketSpace">
+      <point x="0.0" y="-37.0" />
+      <point x="2284.4761538461544" y="588.0" />
+      <point x="2099.1638383838394" y="588.0" />
+      <point x="61.0" y="59.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps09.model.Places.Towers.Tower" target="it.polimi.ingsw.ps09.model.Places.Towers.Floor.Floor">
+      <point x="79.20000000000005" y="-37.0" />
+      <point x="995.7648821548828" y="588.0" />
+      <point x="1142.9500000000003" y="588.0" />
+      <point x="1142.9500000000003" y="410.0" />
+      <point x="1095.4" y="410.0" />
+      <point x="84.40000000000009" y="59.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps09.model.Places.Market.MarketSpaceSpace4" target="it.polimi.ingsw.ps09.model.Places.Market.MarketSpace">
+      <point x="0.0" y="-37.0" />
+      <point x="1971.9489562289566" y="588.0" />
+      <point x="2038.1638383838394" y="588.0" />
+      <point x="0.0" y="59.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps09.model.Board" target="it.polimi.ingsw.ps09.model.Places.Towers.BuildingsTower">
+      <point x="-167.71153846153834" y="-191.0" />
+      <point x="1878.7783436933446" y="948.0" />
+      <point x="741.4489562289566" y="948.0" />
+      <point x="33.0" y="15.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps09.model.Dices.BlackDice" target="it.polimi.ingsw.ps09.model.Dices.Dice">
+      <point x="0.0" y="-15.0" />
+      <point x="2532.4989562289566" y="712.0" />
+      <point x="2553.1583333333333" y="712.0" />
+      <point x="0.0" y="37.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps09.model.FamilyMembers.NeutralFamilyMember" target="it.polimi.ingsw.ps09.model.FamilyMembers.FamilyMember">
+      <point x="0.0" y="-15.0" />
+      <point x="431.0" y="202.0" />
+      <point x="1036.287592592593" y="202.0" />
+      <point x="-70.63636363636374" y="81.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps09.model.Places.Towers.Floor.Floor" target="it.polimi.ingsw.ps09.model.FamilyMembers.FamilyMember">
+      <point x="0.0" y="-59.0" />
+      <point x="1011.0000000000001" y="232.0" />
+      <point x="1106.9239562289567" y="232.0" />
+      <point x="0.0" y="81.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps09.model.Board" target="it.polimi.ingsw.ps09.model.Places.Towers.VenturesTower">
+      <point x="-79.44230769230762" y="-191.0" />
+      <point x="1967.047574462575" y="898.0" />
+      <point x="1141.6989562289566" y="898.0" />
+      <point x="-32.25" y="15.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps09.model.Places.Towers.Tower" target="it.polimi.ingsw.ps09.model.Places.Towers.Floor.FloorOne">
+      <point x="39.60000000000002" y="-37.0" />
+      <point x="956.1648821548828" y="578.0" />
+      <point x="1082.9500000000003" y="578.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps09.model.FamilyMembers.BlackFamilyMember" target="it.polimi.ingsw.ps09.model.FamilyMembers.FamilyMember">
+      <point x="0.0" y="-15.0" />
+      <point x="247.5" y="192.0" />
+      <point x="1012.7421380471385" y="192.0" />
+      <point x="-94.18181818181824" y="81.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.5000000000000001" x="1511.2380952380947" y="749.4999999999991" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Fields</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

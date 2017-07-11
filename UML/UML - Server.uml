@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement />
+  <nodes>
+    <node x="479.0" y="165.0">it.polimi.ingsw.ps09.controller.PlayersOrder</node>
+    <node x="133.0" y="707.0">it.polimi.ingsw.ps09.controller.Network.Server.WelcomeServers.WelcomeServer</node>
+    <node x="844.0" y="176.0">it.polimi.ingsw.ps09.controller.Network.Server.PlayerConnections.PlayerConnection</node>
+    <node x="285.0" y="432.0">it.polimi.ingsw.ps09.controller.Network.Server.PlayerConnections.PlayerConnectionSocket</node>
+    <node x="0.0" y="0.0">it.polimi.ingsw.ps09.model.Board</node>
+    <node x="544.75" y="1296.0">it.polimi.ingsw.ps09.controller.Server</node>
+    <node x="465.0" y="1062.0">it.polimi.ingsw.ps09.controller.Network.Server.WelcomeServers.WelcomeSocketServer</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="it.polimi.ingsw.ps09.controller.Network.Server.WelcomeServers.WelcomeSocketServer" target="it.polimi.ingsw.ps09.controller.Network.Server.PlayerConnections.PlayerConnection">
+      <point x="93.0" y="-92.0" />
+      <point x="697.5" y="1037.0" />
+      <point x="934.5" y="1037.0" />
+      <point x="934.5" y="407.0" />
+      <point x="916.0" y="407.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps09.controller.Network.Server.PlayerConnections.PlayerConnectionSocket" target="it.polimi.ingsw.ps09.model.Board">
+      <point x="-213.0" y="-290.0" />
+      <point x="391.5" y="407.0" />
+      <point x="229.5" y="407.0" />
+      <point x="0.0" y="191.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps09.controller.Network.Server.PlayerConnections.PlayerConnectionSocket" target="it.polimi.ingsw.ps09.controller.PlayersOrder">
+      <point x="0.0" y="-290.0" />
+      <point x="0.0" y="26.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps09.controller.Network.Server.WelcomeServers.WelcomeSocketServer" target="it.polimi.ingsw.ps09.controller.Network.Server.WelcomeServers.WelcomeServer">
+      <point x="-93.0" y="-92.0" />
+      <point x="511.5" y="1037.0" />
+      <point x="199.0" y="1037.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps09.controller.Server" target="it.polimi.ingsw.ps09.controller.Network.Server.WelcomeServers.WelcomeSocketServer">
+      <point x="-86.33333333333348" y="-81.0" />
+      <point x="587.9166666666665" y="1271.0" />
+      <point x="534.75" y="1271.0" />
+      <point x="-69.75" y="92.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps09.controller.Server" target="it.polimi.ingsw.ps09.controller.Network.Server.PlayerConnections.PlayerConnection">
+      <point x="86.33333333333348" y="-81.0" />
+      <point x="760.5833333333335" y="1271.0" />
+      <point x="945.5" y="1271.0" />
+      <point x="945.5" y="407.0" />
+      <point x="964.0" y="407.0" />
+      <point x="48.00000000000003" y="15.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps09.controller.Network.Server.WelcomeServers.WelcomeSocketServer" target="it.polimi.ingsw.ps09.controller.Network.Server.PlayerConnections.PlayerConnectionSocket">
+      <point x="0.0" y="-92.0" />
+      <point x="0.0" y="290.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.ps09.controller.Network.Server.PlayerConnections.PlayerConnectionSocket" target="it.polimi.ingsw.ps09.controller.Network.Server.PlayerConnections.PlayerConnection">
+      <point x="213.0" y="-290.0" />
+      <point x="817.5" y="407.0" />
+      <point x="868.0" y="407.0" />
+      <point x="-48.0" y="15.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.6000000000000001" x="729.9999999999999" y="456.1666666666666" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Fields</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
