@@ -24,3 +24,4 @@ Alessandro Losavio - alessandro.losavio@mail.polimi.it - 825918
 ## UML
 
 UML iniziali e finali disponibili nella cartella UML del repository e a questo link
+https://goo.gl/pF8fT3
