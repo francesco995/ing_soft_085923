@@ -1,11 +1,11 @@
 # Project Template - Prova Finale (Ingegneria del Software)
 
 ## Gruppo: ps09
-Francesco Gianni - francesco2.gianni@mail.polimi.it - 829230
+Francesco Gianni - francesco2.gianni@mail.polimi.it
 
-Francesco Lorenti - francesco1.lorenti@mail.polimi.it - 827035
+Francesco Lorenti - francesco1.lorenti@mail.polimi.it
 
-Alessandro Losavio - alessandro.losavio@mail.polimi.it - 825918
+Alessandro Losavio - alessandro.losavio@mail.polimi.it
 
 ## Requisiti sviluppati
 
